@@ -18,7 +18,7 @@ List<dynamic> folderPeers = [];len = reader.readInt();
 		folderPeers.add(reader.tgReadObject());
 }		return new EditPeerFolders(folderPeers : folderPeers);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1749536939,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.folderPeers.length,4,little:true,signed:true),this.folderPeers.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1749536939,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.folderPeers!.length,4,little:true,signed:true),this.folderPeers!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

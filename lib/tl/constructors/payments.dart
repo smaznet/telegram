@@ -6,8 +6,8 @@ class PaymentForm {
     static const SUBCLASS_OF_ID = 2689089305;
     final classType = "constructor";
     final ID = 2954050359;
-	bool canSaveCredentials;
-	bool passwordMissing;
+	bool? canSaveCredentials;
+	bool? passwordMissing;
 	BigInt formId;
 	BigInt botId;
 	String title;
@@ -16,7 +16,7 @@ class PaymentForm {
 	var invoice;
 	BigInt providerId;
 	String url;
-	String nativeProvider;
+	String? nativeProvider;
 	var nativeParams;
 	var savedInfo;
 	var savedCredentials;
@@ -32,7 +32,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }		return new PaymentForm(canSaveCredentials : canSaveCredentials, passwordMissing : passwordMissing, formId : formId, botId : botId, title : title, description : description, photo : photo, invoice : invoice, providerId : providerId, url : url, nativeProvider : nativeProvider, nativeParams : nativeParams, savedInfo : savedInfo, savedCredentials : savedCredentials, users : users);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2954050359,4),[0,0,0,0],readBufferFromBigInt(this.formId,8,little:true,signed:true),readBufferFromBigInt(this.botId,8,little:true,signed:true),serializeBytes(this.title),serializeBytes(this.description),(this.photo==null||this.photo==false)?new List<int>.empty():[(this.photo.getBytes() as List<int>)].expand((element) => element).toList(),(this.invoice.getBytes() as List<int>),readBufferFromBigInt(this.providerId,8,little:true,signed:true),serializeBytes(this.url),(this.nativeProvider==null||this.nativeProvider==false)?new List<int>.empty():[serializeBytes(this.nativeProvider)].expand((element) => element).toList(),(this.nativeParams==null||this.nativeParams==false)?new List<int>.empty():[(this.nativeParams.getBytes() as List<int>)].expand((element) => element).toList(),(this.savedInfo==null||this.savedInfo==false)?new List<int>.empty():[(this.savedInfo.getBytes() as List<int>)].expand((element) => element).toList(),(this.savedCredentials==null||this.savedCredentials==false)?new List<int>.empty():[(this.savedCredentials.getBytes() as List<int>)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2954050359,4),[0,0,0,0],readBufferFromBigInt(this.formId,8,little:true,signed:true),readBufferFromBigInt(this.botId,8,little:true,signed:true),serializeBytes(this.title),serializeBytes(this.description),(this.photo==null||this.photo==false)?new List<int>.empty():[(this.photo.getBytes() as List<int>)].expand((element) => element).toList(),(this.invoice.getBytes() as List<int>),readBufferFromBigInt(this.providerId,8,little:true,signed:true),serializeBytes(this.url),(this.nativeProvider==null||this.nativeProvider==false)?new List<int>.empty():[serializeBytes(this.nativeProvider)].expand((element) => element).toList(),(this.nativeParams==null||this.nativeParams==false)?new List<int>.empty():[(this.nativeParams.getBytes() as List<int>)].expand((element) => element).toList(),(this.savedInfo==null||this.savedInfo==false)?new List<int>.empty():[(this.savedInfo.getBytes() as List<int>)].expand((element) => element).toList(),(this.savedCredentials==null||this.savedCredentials==false)?new List<int>.empty():[(this.savedCredentials.getBytes() as List<int>)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -41,8 +41,8 @@ class ValidatedRequestedInfo {
     static const SUBCLASS_OF_ID = 2407548087;
     final classType = "constructor";
     final ID = 3510966403;
-	String id;
-	List<dynamic> shippingOptions;
+	String? id;
+	List<dynamic>? shippingOptions;
 
 
 	ValidatedRequestedInfo({required this.id, required this.shippingOptions});
@@ -54,7 +54,7 @@ List<dynamic> shippingOptions = [];len = reader.readInt();
 		shippingOptions.add(reader.tgReadObject());
 } } else {shippingOptions=null;}		return new ValidatedRequestedInfo(id : id, shippingOptions : shippingOptions);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3510966403,4),[0,0,0,0],(this.id==null||this.id==false)?new List<int>.empty():[serializeBytes(this.id)].expand((element) => element).toList(),(this.shippingOptions==null||this.shippingOptions==false)?new List<int>.empty():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.shippingOptions.length,4,little:true,signed:true),this.shippingOptions.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3510966403,4),[0,0,0,0],(this.id==null||this.id==false)?new List<int>.empty():[serializeBytes(this.id)].expand((element) => element).toList(),(this.shippingOptions==null||this.shippingOptions==false)?new List<int>.empty():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.shippingOptions!.length,4,little:true,signed:true),this.shippingOptions!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
 
 }
 
@@ -106,7 +106,7 @@ class PaymentReceipt {
 	var invoice;
 	var info;
 	var shipping;
-	BigInt tipAmount;
+	BigInt? tipAmount;
 	String currency;
 	BigInt totalAmount;
 	String credentialsTitle;
@@ -122,7 +122,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }		return new PaymentReceipt(date : date, botId : botId, providerId : providerId, title : title, description : description, photo : photo, invoice : invoice, info : info, shipping : shipping, tipAmount : tipAmount, currency : currency, totalAmount : totalAmount, credentialsTitle : credentialsTitle, users : users);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1891958275,4),[0,0,0,0],readBufferFromBigInt(this.date,4,little:true,signed:true),readBufferFromBigInt(this.botId,8,little:true,signed:true),readBufferFromBigInt(this.providerId,8,little:true,signed:true),serializeBytes(this.title),serializeBytes(this.description),(this.photo==null||this.photo==false)?new List<int>.empty():[(this.photo.getBytes() as List<int>)].expand((element) => element).toList(),(this.invoice.getBytes() as List<int>),(this.info==null||this.info==false)?new List<int>.empty():[(this.info.getBytes() as List<int>)].expand((element) => element).toList(),(this.shipping==null||this.shipping==false)?new List<int>.empty():[(this.shipping.getBytes() as List<int>)].expand((element) => element).toList(),(this.tipAmount==null||this.tipAmount==false)?new List<int>.empty():[readBufferFromBigInt(this.tipAmount,8,little:true,signed:true)].expand((element) => element).toList(),serializeBytes(this.currency),readBufferFromBigInt(this.totalAmount,8,little:true,signed:true),serializeBytes(this.credentialsTitle),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1891958275,4),[0,0,0,0],readBufferFromBigInt(this.date,4,little:true,signed:true),readBufferFromBigInt(this.botId,8,little:true,signed:true),readBufferFromBigInt(this.providerId,8,little:true,signed:true),serializeBytes(this.title),serializeBytes(this.description),(this.photo==null||this.photo==false)?new List<int>.empty():[(this.photo.getBytes() as List<int>)].expand((element) => element).toList(),(this.invoice.getBytes() as List<int>),(this.info==null||this.info==false)?new List<int>.empty():[(this.info.getBytes() as List<int>)].expand((element) => element).toList(),(this.shipping==null||this.shipping==false)?new List<int>.empty():[(this.shipping.getBytes() as List<int>)].expand((element) => element).toList(),(this.tipAmount==null||this.tipAmount==false)?new List<int>.empty():[readBufferFromBigInt(this.tipAmount,8,little:true,signed:true)].expand((element) => element).toList(),serializeBytes(this.currency),readBufferFromBigInt(this.totalAmount,8,little:true,signed:true),serializeBytes(this.credentialsTitle),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -131,7 +131,7 @@ class SavedInfo {
     static const SUBCLASS_OF_ID = 2906452294;
     final classType = "constructor";
     final ID = 4220511292;
-	bool hasSavedCredentials;
+	bool? hasSavedCredentials;
 	var savedInfo;
 
 
@@ -162,7 +162,7 @@ List<dynamic> openUrls = [];len = reader.readInt();
 		openUrls.add(reader.tgReadObject());
 }		return new BankCardData(title : title, openUrls : openUrls);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1042605427,4),serializeBytes(this.title),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.openUrls.length,4,little:true,signed:true),this.openUrls.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1042605427,4),serializeBytes(this.title),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.openUrls!.length,4,little:true,signed:true),this.openUrls!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 

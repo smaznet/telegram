@@ -105,7 +105,7 @@ class Connection {
     while (this._connected) {
       try {
         data = await this._recv();
-        print("GOT ${data.length} bytes");
+
         if (data.length == 0) {
           throw ("no data received");
         }
@@ -130,7 +130,7 @@ class Connection {
 
   _send(data) async {
     final encodedPacket = this._codec!.encodePacket(data);
-    print("SENDING ${encodedPacket.length} bytes");
+
     this.socket.write(encodedPacket);
   }
 

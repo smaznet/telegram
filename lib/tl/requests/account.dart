@@ -6,7 +6,7 @@ class RegisterDevice {
     static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3968205178;
-	bool noMuted;
+	bool? noMuted;
 	int tokenType;
 	String token;
 	bool appSandbox;
@@ -23,7 +23,7 @@ List<BigInt> otherUids = [];len = reader.readInt();
 		otherUids.add(reader.readLong());
 }		return new RegisterDevice(noMuted : noMuted, tokenType : tokenType, token : token, appSandbox : appSandbox, secret : secret, otherUids : otherUids);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3968205178,4),[0,0,0,0],readBufferFromBigInt(this.tokenType,4,little:true,signed:true),serializeBytes(this.token),[this.appSandbox ? 0xb5757299 : 0x379779bc],serializeBytes(this.secret),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.otherUids.length,4,little:true,signed:true),this.otherUids.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3968205178,4),[0,0,0,0],readBufferFromBigInt(this.tokenType,4,little:true,signed:true),serializeBytes(this.token),[this.appSandbox == true ? 0xb5757299 : 0x379779bc],serializeBytes(this.secret),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.otherUids!.length,4,little:true,signed:true),this.otherUids!.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -49,7 +49,7 @@ List<BigInt> otherUids = [];len = reader.readInt();
 		otherUids.add(reader.readLong());
 }		return new UnregisterDevice(tokenType : tokenType, token : token, otherUids : otherUids);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1779249670,4),readBufferFromBigInt(this.tokenType,4,little:true,signed:true),serializeBytes(this.token),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.otherUids.length,4,little:true,signed:true),this.otherUids.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1779249670,4),readBufferFromBigInt(this.tokenType,4,little:true,signed:true),serializeBytes(this.token),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.otherUids!.length,4,little:true,signed:true),this.otherUids!.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -121,9 +121,9 @@ class UpdateProfile {
     static const SUBCLASS_OF_ID = 765557111;
     final classType = "request";
     final ID = 2018596725;
-	String firstName;
-	String lastName;
-	String about;
+	String? firstName;
+	String? lastName;
+	String? about;
 
 
 	UpdateProfile({required this.firstName, required this.lastName, required this.about});
@@ -151,7 +151,7 @@ class UpdateStatus {
 	static UpdateStatus fromReader(BinaryReader reader) {
 	var temp,len;var offline = reader.tgReadBool();		return new UpdateStatus(offline : offline);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1713919532,4),[this.offline ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1713919532,4),[this.offline == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -278,7 +278,7 @@ List<dynamic> rules = [];len = reader.readInt();
 		rules.add(reader.tgReadObject());
 }		return new SetPrivacy(key : key, rules : rules);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3388480744,4),(this.key.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.rules.length,4,little:true,signed:true),this.rules.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3388480744,4),(this.key.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.rules!.length,4,little:true,signed:true),this.rules!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -663,7 +663,7 @@ List<dynamic> types = [];len = reader.readInt();
 		types.add(reader.tgReadObject());
 }		return new GetSecureValue(types : types);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1936088002,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.types.length,4,little:true,signed:true),this.types.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1936088002,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.types!.length,4,little:true,signed:true),this.types!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -708,7 +708,7 @@ List<dynamic> types = [];len = reader.readInt();
 		types.add(reader.tgReadObject());
 }		return new DeleteSecureValue(types : types);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3095444555,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.types.length,4,little:true,signed:true),this.types.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3095444555,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.types!.length,4,little:true,signed:true),this.types!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -758,7 +758,7 @@ List<dynamic> valueHashes = [];len = reader.readInt();
 		valueHashes.add(reader.tgReadObject());
 }var credentials = reader.tgReadObject();		return new AcceptAuthorization(botId : botId, scope : scope, publicKey : publicKey, valueHashes : valueHashes, credentials : credentials);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(4092415091,4),readBufferFromBigInt(this.botId,8,little:true,signed:true),serializeBytes(this.scope),serializeBytes(this.publicKey),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.valueHashes.length,4,little:true,signed:true),this.valueHashes.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.credentials.getBytes() as List<int>),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(4092415091,4),readBufferFromBigInt(this.botId,8,little:true,signed:true),serializeBytes(this.scope),serializeBytes(this.publicKey),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.valueHashes!.length,4,little:true,signed:true),this.valueHashes!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.credentials.getBytes() as List<int>),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -854,13 +854,13 @@ class InitTakeoutSession {
     static const SUBCLASS_OF_ID = 2218704517;
     final classType = "request";
     final ID = 2398350000;
-	bool contacts;
-	bool messageUsers;
-	bool messageChats;
-	bool messageMegagroups;
-	bool messageChannels;
-	bool files;
-	BigInt fileMaxSize;
+	bool? contacts;
+	bool? messageUsers;
+	bool? messageChats;
+	bool? messageMegagroups;
+	bool? messageChannels;
+	bool? files;
+	BigInt? fileMaxSize;
 
 
 	InitTakeoutSession({required this.contacts, required this.messageUsers, required this.messageChats, required this.messageMegagroups, required this.messageChannels, required this.files, required this.fileMaxSize});
@@ -880,7 +880,7 @@ class FinishTakeoutSession {
     static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 489050862;
-	bool success;
+	bool? success;
 
 
 	FinishTakeoutSession({required this.success});
@@ -985,7 +985,7 @@ class SetContactSignUpNotification {
 	static SetContactSignUpNotification fromReader(BinaryReader reader) {
 	var temp,len;var silent = reader.tgReadBool();		return new SetContactSignUpNotification(silent : silent);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3488890721,4),[this.silent ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3488890721,4),[this.silent == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -997,7 +997,7 @@ class GetNotifyExceptions {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1398240377;
-	bool compareSound;
+	bool? compareSound;
 	var peer;
 
 
@@ -1070,7 +1070,7 @@ class SaveWallPaper {
 	static SaveWallPaper fromReader(BinaryReader reader) {
 	var temp,len;var wallpaper = reader.tgReadObject();var unsave = reader.tgReadBool();var settings = reader.tgReadObject();		return new SaveWallPaper(wallpaper : wallpaper, unsave : unsave, settings : settings);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1817860919,4),(this.wallpaper.getBytes() as List<int>),[this.unsave ? 0xb5757299 : 0x379779bc],(this.settings.getBytes() as List<int>),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1817860919,4),(this.wallpaper.getBytes() as List<int>),[this.unsave == true ? 0xb5757299 : 0x379779bc],(this.settings.getBytes() as List<int>),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1141,8 +1141,8 @@ class SaveAutoDownloadSettings {
     static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1995661875;
-	bool low;
-	bool high;
+	bool? low;
+	bool? high;
 	var settings;
 
 
@@ -1189,7 +1189,7 @@ class CreateTheme {
 	String slug;
 	String title;
 	var document;
-	List<dynamic> settings;
+	List<dynamic>? settings;
 
 
 	CreateTheme({required this.slug, required this.title, required this.document, required this.settings});
@@ -1201,7 +1201,7 @@ List<dynamic> settings = [];len = reader.readInt();
 		settings.add(reader.tgReadObject());
 } } else {settings=null;}		return new CreateTheme(slug : slug, title : title, document : document, settings : settings);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1697530880,4),[0,0,0,0],serializeBytes(this.slug),serializeBytes(this.title),(this.document==null||this.document==false)?new List<int>.empty():[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.settings==null||this.settings==false)?new List<int>.empty():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.settings.length,4,little:true,signed:true),this.settings.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1697530880,4),[0,0,0,0],serializeBytes(this.slug),serializeBytes(this.title),(this.document==null||this.document==false)?new List<int>.empty():[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.settings==null||this.settings==false)?new List<int>.empty():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.settings!.length,4,little:true,signed:true),this.settings!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1215,10 +1215,10 @@ class UpdateTheme {
     final ID = 737414348;
 	String format;
 	var theme;
-	String slug;
-	String title;
+	String? slug;
+	String? title;
 	var document;
-	List<dynamic> settings;
+	List<dynamic>? settings;
 
 
 	UpdateTheme({required this.format, required this.theme, required this.slug, required this.title, required this.document, required this.settings});
@@ -1230,7 +1230,7 @@ List<dynamic> settings = [];len = reader.readInt();
 		settings.add(reader.tgReadObject());
 } } else {settings=null;}		return new UpdateTheme(format : format, theme : theme, slug : slug, title : title, document : document, settings : settings);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(737414348,4),[0,0,0,0],serializeBytes(this.format),(this.theme.getBytes() as List<int>),(this.slug==null||this.slug==false)?new List<int>.empty():[serializeBytes(this.slug)].expand((element) => element).toList(),(this.title==null||this.title==false)?new List<int>.empty():[serializeBytes(this.title)].expand((element) => element).toList(),(this.document==null||this.document==false)?new List<int>.empty():[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.settings==null||this.settings==false)?new List<int>.empty():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.settings.length,4,little:true,signed:true),this.settings.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(737414348,4),[0,0,0,0],serializeBytes(this.format),(this.theme.getBytes() as List<int>),(this.slug==null||this.slug==false)?new List<int>.empty():[serializeBytes(this.slug)].expand((element) => element).toList(),(this.title==null||this.title==false)?new List<int>.empty():[serializeBytes(this.title)].expand((element) => element).toList(),(this.document==null||this.document==false)?new List<int>.empty():[(this.document.getBytes() as List<int>)].expand((element) => element).toList(),(this.settings==null||this.settings==false)?new List<int>.empty():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.settings!.length,4,little:true,signed:true),this.settings!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1251,7 +1251,7 @@ class SaveTheme {
 	static SaveTheme fromReader(BinaryReader reader) {
 	var temp,len;var theme = reader.tgReadObject();var unsave = reader.tgReadBool();		return new SaveTheme(theme : theme, unsave : unsave);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(4065792108,4),(this.theme.getBytes() as List<int>),[this.unsave ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(4065792108,4),(this.theme.getBytes() as List<int>),[this.unsave == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1263,9 +1263,9 @@ class InstallTheme {
     static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3341269819;
-	bool dark;
+	bool? dark;
 	var theme;
-	String format;
+	String? format;
 	var baseTheme;
 
 
@@ -1329,7 +1329,7 @@ class SetContentSettings {
     static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3044323691;
-	bool sensitiveEnabled;
+	bool? sensitiveEnabled;
 
 
 	SetContentSettings({required this.sensitiveEnabled});
@@ -1380,7 +1380,7 @@ List<dynamic> wallpapers = [];len = reader.readInt();
 		wallpapers.add(reader.tgReadObject());
 }		return new GetMultiWallPapers(wallpapers : wallpapers);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1705865692,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.wallpapers.length,4,little:true,signed:true),this.wallpapers.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1705865692,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.wallpapers!.length,4,little:true,signed:true),this.wallpapers!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1533,8 +1533,8 @@ class ChangeAuthorizationSettings {
     final classType = "request";
     final ID = 1089766498;
 	BigInt hash;
-	bool encryptedRequestsDisabled;
-	bool callRequestsDisabled;
+	bool? encryptedRequestsDisabled;
+	bool? callRequestsDisabled;
 
 
 	ChangeAuthorizationSettings({required this.hash, required this.encryptedRequestsDisabled, required this.callRequestsDisabled});
@@ -1542,7 +1542,7 @@ class ChangeAuthorizationSettings {
 	static ChangeAuthorizationSettings fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var hash = reader.readLong();var encryptedRequestsDisabled;if ((flags & 1)==1){encryptedRequestsDisabled = reader.tgReadBool(); } else {encryptedRequestsDisabled=null;}var callRequestsDisabled;if ((flags & 2)==1){callRequestsDisabled = reader.tgReadBool(); } else {callRequestsDisabled=null;}		return new ChangeAuthorizationSettings(hash : hash, encryptedRequestsDisabled : encryptedRequestsDisabled, callRequestsDisabled : callRequestsDisabled);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1089766498,4),[0,0,0,0],readBufferFromBigInt(this.hash,8,little:true,signed:true),(this.encryptedRequestsDisabled==null||this.encryptedRequestsDisabled==false)?new List<int>.empty():[[this.encryptedRequestsDisabled ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.callRequestsDisabled==null||this.callRequestsDisabled==false)?new List<int>.empty():[[this.callRequestsDisabled ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1089766498,4),[0,0,0,0],readBufferFromBigInt(this.hash,8,little:true,signed:true),(this.encryptedRequestsDisabled==null||this.encryptedRequestsDisabled==false)?new List<int>.empty():[[this.encryptedRequestsDisabled == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.callRequestsDisabled==null||this.callRequestsDisabled==false)?new List<int>.empty():[[this.callRequestsDisabled == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -1583,7 +1583,7 @@ class SaveRingtone {
 	static SaveRingtone fromReader(BinaryReader reader) {
 	var temp,len;var id = reader.tgReadObject();var unsave = reader.tgReadBool();		return new SaveRingtone(id : id, unsave : unsave);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1038768899,4),(this.id.getBytes() as List<int>),[this.unsave ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1038768899,4),(this.id.getBytes() as List<int>),[this.unsave == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

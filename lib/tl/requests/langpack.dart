@@ -41,7 +41,7 @@ List<String> keys = [];len = reader.readInt();
 		keys.add(reader.tgReadString());
 }		return new GetStrings(langPack : langPack, langCode : langCode, keys : keys);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(4025104387,4),serializeBytes(this.langPack),serializeBytes(this.langCode),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.keys.length,4,little:true,signed:true),this.keys.map((x)=>serializeBytes(x)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(4025104387,4),serializeBytes(this.langPack),serializeBytes(this.langCode),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.keys!.length,4,little:true,signed:true),this.keys!.map((x)=>serializeBytes(x)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

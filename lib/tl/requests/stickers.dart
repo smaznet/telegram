@@ -6,15 +6,15 @@ class CreateStickerSet {
     static const SUBCLASS_OF_ID = 2607827546;
     final classType = "request";
     final ID = 2418125671;
-	bool masks;
-	bool animated;
-	bool videos;
+	bool? masks;
+	bool? animated;
+	bool? videos;
 	var userId;
 	String title;
 	String shortName;
 	var thumb;
 	List<dynamic> stickers;
-	String software;
+	String? software;
 
 
 	CreateStickerSet({required this.masks, required this.animated, required this.videos, required this.userId, required this.title, required this.shortName, required this.thumb, required this.stickers, required this.software});
@@ -26,7 +26,7 @@ List<dynamic> stickers = [];len = reader.readInt();
 		stickers.add(reader.tgReadObject());
 }var software;if ((flags & 8)==1){software = reader.tgReadString(); } else {software=null;}		return new CreateStickerSet(masks : masks, animated : animated, videos : videos, userId : userId, title : title, shortName : shortName, thumb : thumb, stickers : stickers, software : software);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2418125671,4),[0,0,0,0],(this.userId.getBytes() as List<int>),serializeBytes(this.title),serializeBytes(this.shortName),(this.thumb==null||this.thumb==false)?new List<int>.empty():[(this.thumb.getBytes() as List<int>)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.stickers.length,4,little:true,signed:true),this.stickers.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.software==null||this.software==false)?new List<int>.empty():[serializeBytes(this.software)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2418125671,4),[0,0,0,0],(this.userId.getBytes() as List<int>),serializeBytes(this.title),serializeBytes(this.shortName),(this.thumb==null||this.thumb==false)?new List<int>.empty():[(this.thumb.getBytes() as List<int>)].expand((element) => element).toList(),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.stickers!.length,4,little:true,signed:true),this.stickers!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.software==null||this.software==false)?new List<int>.empty():[serializeBytes(this.software)].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

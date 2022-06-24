@@ -18,7 +18,7 @@ List<dynamic> id = [];len = reader.readInt();
 		id.add(reader.tgReadObject());
 }		return new GetUsers(id : id);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(227648840,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(227648840,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id!.length,4,little:true,signed:true),this.id!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -63,7 +63,7 @@ List<dynamic> errors = [];len = reader.readInt();
 		errors.add(reader.tgReadObject());
 }		return new SetSecureValueErrors(id : id, errors : errors);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2429064373,4),(this.id.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.errors.length,4,little:true,signed:true),this.errors.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2429064373,4),(this.id.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.errors!.length,4,little:true,signed:true),this.errors!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

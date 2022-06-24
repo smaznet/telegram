@@ -99,7 +99,7 @@ class MTProtoState {
    * @param afterId
    */
   BigInt writeDataAsMessage(
-      BinaryWriter buffer, List<int> data, bool contentRelated, bool afterId) {
+      BinaryWriter buffer, List<int> data, bool contentRelated, bool? afterId) {
     final msgId = this.getNewMsgId();
     final seqNo = this._getSeqNo(contentRelated);
     var body;

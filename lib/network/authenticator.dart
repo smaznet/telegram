@@ -24,8 +24,6 @@ doAuthentication(MTProtoPlainSender sender, log) async {
     throw ('Step 1 answer was ${resPQ}');
   }
   if (resPQ.nonce != nonce) {
-    print("Sent nonce $nonce");
-    print("Recieved Nonce ${resPQ.nonce}");
     throw new SecurityError('Step 1 invalid nonce from server');
   }
   final pq = readBigIntFromBuffer(resPQ.pq, little: false, signed: true);

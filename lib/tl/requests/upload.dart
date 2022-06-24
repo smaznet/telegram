@@ -28,8 +28,8 @@ class GetFile {
     static const SUBCLASS_OF_ID = 1822152488;
     final classType = "request";
     final ID = 3193124286;
-	bool precise;
-	bool cdnSupported;
+	bool? precise;
+	bool? cdnSupported;
 	var location;
 	BigInt offset;
 	int limit;

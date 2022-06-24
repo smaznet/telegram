@@ -91,7 +91,7 @@ loadFromTlSchemas() {
 // {name: DestroySession, constructorId: 3880853798, argsConfig: {sessionId: {isVector: false, isFlag: false, skipConstructorId: true,
 //flagIndex: -1, flagIndicator: false, type: long, useVectorId: null}}, subclassOfId: 2936858557, result:
 //DestroySessionRes, isFunction: true, namespace: null}
-String getType(String tgType, bool isVector) {
+String getType(String tgType, bool isVector, [bool isFlag = false]) {
   String result = "";
   if (isVector) {
     result += "List<";
@@ -138,6 +138,9 @@ String getType(String tgType, bool isVector) {
   }
   if (isVector) {
     result += ">";
+  }
+  if (isFlag && result != "var") {
+    result += "?";
   }
 
   return result;
@@ -217,10 +220,10 @@ bool writeArgToBytes(ClassWriter writer, arg, Map<dynamic, dynamic> argsConfig,
       writer.write(
           "readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),");
     }
-    writer
-        .write("readBufferFromBigInt($name.length,4,little:true,signed:true),");
+    writer.write(
+        "readBufferFromBigInt($name!.length,4,little:true,signed:true),");
 
-    writer.write(("$name.map((x)=>"));
+    writer.write(("$name!.map((x)=>"));
     final bool oldFlag = arg['isFlag'];
     arg['isVector'] = false;
     arg['isFlag'] = false;
@@ -261,7 +264,7 @@ bool writeArgToBytes(ClassWriter writer, arg, Map<dynamic, dynamic> argsConfig,
   } else if (arg['type'] == 'string') {
     writer.write('serializeBytes($name)');
   } else if (arg['type'] == 'Bool') {
-    writer.write('[$name ? 0xb5757299 : 0x379779bc]');
+    writer.write('[$name == true ? 0xb5757299 : 0x379779bc]');
   } else if (arg['type'] == 'true') {
   } else if (arg['type'] == 'bytes') {
     writer.write('serializeBytes($name)');
@@ -345,9 +348,9 @@ createClasses(classesType, params) {
         return;
       }
       filtered.add("this.$key");
-
-      writer
-          .write("""\t${getType(value['type'], value['isVector'])} $key;\n""");
+      print("$key => ${value['isFlag']}");
+      writer.write(
+          """\t${getType(value['type'], value['isVector'], value["isFlag"])} $key;\n""");
     });
     //Constructor
     argsConfig.forEach((key, value) {});

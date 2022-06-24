@@ -272,7 +272,7 @@ List<dynamic> events = [];len = reader.readInt();
 		events.add(reader.tgReadObject());
 }		return new SaveAppLog(events : events);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1862465352,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.events.length,4,little:true,signed:true),this.events.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1862465352,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.events!.length,4,little:true,signed:true),this.events!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -357,7 +357,7 @@ List<dynamic> entities = [];len = reader.readInt();
 		entities.add(reader.tgReadObject());
 }		return new EditUserInfo(userId : userId, message : message, entities : entities);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1723407216,4),(this.userId.getBytes() as List<int>),serializeBytes(this.message),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities.length,4,little:true,signed:true),this.entities.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1723407216,4),(this.userId.getBytes() as List<int>),serializeBytes(this.message),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities!.length,4,little:true,signed:true),this.entities!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

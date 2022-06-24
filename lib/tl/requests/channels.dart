@@ -40,7 +40,7 @@ List<int> id = [];len = reader.readInt();
 		id.add(reader.readInt());
 }		return new DeleteMessages(channel : channel, id : id);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2227305806,4),(this.channel.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2227305806,4),(this.channel.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id!.length,4,little:true,signed:true),this.id!.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -66,7 +66,7 @@ List<int> id = [];len = reader.readInt();
 		id.add(reader.readInt());
 }		return new ReportSpam(channel : channel, participant : participant, id : id);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(4098523925,4),(this.channel.getBytes() as List<int>),(this.participant.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(4098523925,4),(this.channel.getBytes() as List<int>),(this.participant.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id!.length,4,little:true,signed:true),this.id!.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -91,7 +91,7 @@ List<dynamic> id = [];len = reader.readInt();
 		id.add(reader.tgReadObject());
 }		return new GetMessages(channel : channel, id : id);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2911672867,4),(this.channel.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2911672867,4),(this.channel.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id!.length,4,little:true,signed:true),this.id!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -160,7 +160,7 @@ List<dynamic> id = [];len = reader.readInt();
 		id.add(reader.tgReadObject());
 }		return new GetChannels(id : id);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(176122811,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(176122811,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id!.length,4,little:true,signed:true),this.id!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -192,13 +192,13 @@ class CreateChannel {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1029681423;
-	bool broadcast;
-	bool megagroup;
-	bool forImport;
+	bool? broadcast;
+	bool? megagroup;
+	bool? forImport;
 	String title;
 	String about;
 	var geoPoint;
-	String address;
+	String? address;
 
 
 	CreateChannel({required this.broadcast, required this.megagroup, required this.forImport, required this.title, required this.about, required this.geoPoint, required this.address});
@@ -378,7 +378,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }		return new InviteToChannel(channel : channel, users : users);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(429865580,4),(this.channel.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(429865580,4),(this.channel.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -410,8 +410,8 @@ class ExportMessageLink {
     static const SUBCLASS_OF_ID = 3739632844;
     final classType = "request";
     final ID = 3862932971;
-	bool grouped;
-	bool thread;
+	bool? grouped;
+	bool? thread;
 	var channel;
 	int id;
 
@@ -442,7 +442,7 @@ class ToggleSignatures {
 	static ToggleSignatures fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var enabled = reader.tgReadBool();		return new ToggleSignatures(channel : channel, enabled : enabled);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(527021574,4),(this.channel.getBytes() as List<int>),[this.enabled ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(527021574,4),(this.channel.getBytes() as List<int>),[this.enabled == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -454,8 +454,8 @@ class GetAdminedPublicChannels {
     static const SUBCLASS_OF_ID = 2580925204;
     final classType = "request";
     final ID = 4172297903;
-	bool byLocation;
-	bool checkLimit;
+	bool? byLocation;
+	bool? checkLimit;
 
 
 	GetAdminedPublicChannels({required this.byLocation, required this.checkLimit});
@@ -500,7 +500,7 @@ class GetAdminLog {
 	var channel;
 	String q;
 	var eventsFilter;
-	List<dynamic> admins;
+	List<dynamic>? admins;
 	BigInt maxId;
 	BigInt minId;
 	int limit;
@@ -515,7 +515,7 @@ List<dynamic> admins = [];len = reader.readInt();
 		admins.add(reader.tgReadObject());
 } } else {admins=null;}var maxId = reader.readLong();var minId = reader.readLong();var limit = reader.readInt();		return new GetAdminLog(channel : channel, q : q, eventsFilter : eventsFilter, admins : admins, maxId : maxId, minId : minId, limit : limit);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(870184064,4),[0,0,0,0],(this.channel.getBytes() as List<int>),serializeBytes(this.q),(this.eventsFilter==null||this.eventsFilter==false)?new List<int>.empty():[(this.eventsFilter.getBytes() as List<int>)].expand((element) => element).toList(),(this.admins==null||this.admins==false)?new List<int>.empty():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.admins.length,4,little:true,signed:true),this.admins.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),readBufferFromBigInt(this.maxId,8,little:true,signed:true),readBufferFromBigInt(this.minId,8,little:true,signed:true),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(870184064,4),[0,0,0,0],(this.channel.getBytes() as List<int>),serializeBytes(this.q),(this.eventsFilter==null||this.eventsFilter==false)?new List<int>.empty():[(this.eventsFilter.getBytes() as List<int>)].expand((element) => element).toList(),(this.admins==null||this.admins==false)?new List<int>.empty():[readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.admins!.length,4,little:true,signed:true),this.admins!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element)].expand((element) => element).toList(),readBufferFromBigInt(this.maxId,8,little:true,signed:true),readBufferFromBigInt(this.minId,8,little:true,signed:true),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -561,7 +561,7 @@ List<int> id = [];len = reader.readInt();
 		id.add(reader.readInt());
 }		return new ReadMessageContents(channel : channel, id : id);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3937786936,4),(this.channel.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3937786936,4),(this.channel.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id!.length,4,little:true,signed:true),this.id!.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -573,7 +573,7 @@ class DeleteHistory {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2611648071;
-	bool forEveryone;
+	bool? forEveryone;
 	var channel;
 	int maxId;
 
@@ -604,7 +604,7 @@ class TogglePreHistoryHidden {
 	static TogglePreHistoryHidden fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var enabled = reader.tgReadBool();		return new TogglePreHistoryHidden(channel : channel, enabled : enabled);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3938171212,4),(this.channel.getBytes() as List<int>),[this.enabled ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3938171212,4),(this.channel.getBytes() as List<int>),[this.enabled == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -871,7 +871,7 @@ class ToggleJoinToSend {
 	static ToggleJoinToSend fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var enabled = reader.tgReadBool();		return new ToggleJoinToSend(channel : channel, enabled : enabled);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3838547328,4),(this.channel.getBytes() as List<int>),[this.enabled ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3838547328,4),(this.channel.getBytes() as List<int>),[this.enabled == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -892,7 +892,7 @@ class ToggleJoinRequest {
 	static ToggleJoinRequest fromReader(BinaryReader reader) {
 	var temp,len;var channel = reader.tgReadObject();var enabled = reader.tgReadBool();		return new ToggleJoinRequest(channel : channel, enabled : enabled);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1277789622,4),(this.channel.getBytes() as List<int>),[this.enabled ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1277789622,4),(this.channel.getBytes() as List<int>),[this.enabled == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

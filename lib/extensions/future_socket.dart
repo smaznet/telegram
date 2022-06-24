@@ -65,7 +65,6 @@ class FutureSocket {
 
   Future<void> receive() async {
     this.client!.listen((List<int> event) {
-      print("Received: ${event.length}");
       this.stream!.write(event);
       if (!this.canRead.isCompleted) {
         this.canRead.complete(true);

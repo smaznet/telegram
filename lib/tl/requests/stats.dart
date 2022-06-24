@@ -6,7 +6,7 @@ class GetBroadcastStats {
     static const SUBCLASS_OF_ID = 2146587688;
     final classType = "request";
     final ID = 2873246746;
-	bool dark;
+	bool? dark;
 	var channel;
 
 
@@ -28,7 +28,7 @@ class LoadAsyncGraph {
     final classType = "request";
     final ID = 1646092192;
 	String token;
-	BigInt x;
+	BigInt? x;
 
 
 	LoadAsyncGraph({required this.token, required this.x});
@@ -48,7 +48,7 @@ class GetMegagroupStats {
     static const SUBCLASS_OF_ID = 1532608141;
     final classType = "request";
     final ID = 3705636359;
-	bool dark;
+	bool? dark;
 	var channel;
 
 
@@ -94,7 +94,7 @@ class GetMessageStats {
     static const SUBCLASS_OF_ID = 2516886306;
     final classType = "request";
     final ID = 3068175349;
-	bool dark;
+	bool? dark;
 	var channel;
 	int msgId;
 

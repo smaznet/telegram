@@ -25,7 +25,7 @@ class RequestCall {
     static const SUBCLASS_OF_ID = 3565878863;
     final classType = "request";
     final ID = 1124046573;
-	bool video;
+	bool? video;
 	var userId;
 	int randomId;
 	List<int> gAHash;
@@ -114,7 +114,7 @@ class DiscardCall {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2999697856;
-	bool video;
+	bool? video;
 	var peer;
 	int duration;
 	var reason;
@@ -138,7 +138,7 @@ class SetCallRating {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1508562471;
-	bool userInitiative;
+	bool? userInitiative;
 	var peer;
 	int rating;
 	String comment;
@@ -203,11 +203,11 @@ class CreateGroupCall {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1221445336;
-	bool rtmpStream;
+	bool? rtmpStream;
 	var peer;
 	int randomId;
-	String title;
-	int scheduleDate;
+	String? title;
+	int? scheduleDate;
 
 
 	CreateGroupCall({required this.rtmpStream, required this.peer, required this.randomId, required this.title, required this.scheduleDate});
@@ -227,11 +227,11 @@ class JoinGroupCall {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2972909435;
-	bool muted;
-	bool videoStopped;
+	bool? muted;
+	bool? videoStopped;
 	var call;
 	var joinAs;
-	String inviteHash;
+	String? inviteHash;
 	var params;
 
 
@@ -286,7 +286,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }		return new InviteToGroupCall(call : call, users : users);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2067345760,4),(this.call.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2067345760,4),(this.call.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -318,9 +318,9 @@ class ToggleGroupCallSettings {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1958458429;
-	bool resetInviteHash;
+	bool? resetInviteHash;
 	var call;
-	bool joinMuted;
+	bool? joinMuted;
 
 
 	ToggleGroupCallSettings({required this.resetInviteHash, required this.call, required this.joinMuted});
@@ -328,7 +328,7 @@ class ToggleGroupCallSettings {
 	static ToggleGroupCallSettings fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final resetInviteHash = false;var call = reader.tgReadObject();var joinMuted;if ((flags & 1)==1){joinMuted = reader.tgReadBool(); } else {joinMuted=null;}		return new ToggleGroupCallSettings(resetInviteHash : resetInviteHash, call : call, joinMuted : joinMuted);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1958458429,4),[0,0,0,0],(this.call.getBytes() as List<int>),(this.joinMuted==null||this.joinMuted==false)?new List<int>.empty():[[this.joinMuted ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1958458429,4),[0,0,0,0],(this.call.getBytes() as List<int>),(this.joinMuted==null||this.joinMuted==false)?new List<int>.empty():[[this.joinMuted == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -381,7 +381,7 @@ List<int> sources = [];len = reader.readInt();
 		sources.add(reader.readInt());
 }var offset = reader.tgReadString();var limit = reader.readInt();		return new GetGroupParticipants(call : call, ids : ids, sources : sources, offset : offset, limit : limit);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3310934187,4),(this.call.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.ids.length,4,little:true,signed:true),this.ids.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.sources.length,4,little:true,signed:true),this.sources.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),serializeBytes(this.offset),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3310934187,4),(this.call.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.ids!.length,4,little:true,signed:true),this.ids!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.sources!.length,4,little:true,signed:true),this.sources!.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),serializeBytes(this.offset),readBufferFromBigInt(this.limit,4,little:true,signed:true),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -406,7 +406,7 @@ List<int> sources = [];len = reader.readInt();
 		sources.add(reader.readInt());
 }		return new CheckGroupCall(call : call, sources : sources);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3046963575,4),(this.call.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.sources.length,4,little:true,signed:true),this.sources.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3046963575,4),(this.call.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.sources!.length,4,little:true,signed:true),this.sources!.map((x)=>readBufferFromBigInt(x,4,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
 	List<int> readResult(BinaryReader reader) {
 	
 reader.readInt();
@@ -424,11 +424,11 @@ class ToggleGroupCallRecord {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 4045981448;
-	bool start;
-	bool video;
+	bool? start;
+	bool? video;
 	var call;
-	String title;
-	bool videoPortrait;
+	String? title;
+	bool? videoPortrait;
 
 
 	ToggleGroupCallRecord({required this.start, required this.video, required this.call, required this.title, required this.videoPortrait});
@@ -436,7 +436,7 @@ class ToggleGroupCallRecord {
 	static ToggleGroupCallRecord fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();final start = false;final video = false;var call = reader.tgReadObject();var title;if ((flags & 2)==1){title = reader.tgReadString(); } else {title=null;}var videoPortrait;if ((flags & 4)==1){videoPortrait = reader.tgReadBool(); } else {videoPortrait=null;}		return new ToggleGroupCallRecord(start : start, video : video, call : call, title : title, videoPortrait : videoPortrait);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(4045981448,4),[0,0,0,0],(this.call.getBytes() as List<int>),(this.title==null||this.title==false)?new List<int>.empty():[serializeBytes(this.title)].expand((element) => element).toList(),(this.videoPortrait==null||this.videoPortrait==false)?new List<int>.empty():[[this.videoPortrait ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(4045981448,4),[0,0,0,0],(this.call.getBytes() as List<int>),(this.title==null||this.title==false)?new List<int>.empty():[serializeBytes(this.title)].expand((element) => element).toList(),(this.videoPortrait==null||this.videoPortrait==false)?new List<int>.empty():[[this.videoPortrait == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -450,12 +450,12 @@ class EditGroupCallParticipant {
     final ID = 2770811583;
 	var call;
 	var participant;
-	bool muted;
-	int volume;
-	bool raiseHand;
-	bool videoStopped;
-	bool videoPaused;
-	bool presentationPaused;
+	bool? muted;
+	int? volume;
+	bool? raiseHand;
+	bool? videoStopped;
+	bool? videoPaused;
+	bool? presentationPaused;
 
 
 	EditGroupCallParticipant({required this.call, required this.participant, required this.muted, required this.volume, required this.raiseHand, required this.videoStopped, required this.videoPaused, required this.presentationPaused});
@@ -463,7 +463,7 @@ class EditGroupCallParticipant {
 	static EditGroupCallParticipant fromReader(BinaryReader reader) {
 	var temp,len;final flags = reader.readInt();var call = reader.tgReadObject();var participant = reader.tgReadObject();var muted;if ((flags & 1)==1){muted = reader.tgReadBool(); } else {muted=null;}var volume;if ((flags & 2)==1){volume = reader.readInt(); } else {volume=null;}var raiseHand;if ((flags & 4)==1){raiseHand = reader.tgReadBool(); } else {raiseHand=null;}var videoStopped;if ((flags & 8)==1){videoStopped = reader.tgReadBool(); } else {videoStopped=null;}var videoPaused;if ((flags & 16)==1){videoPaused = reader.tgReadBool(); } else {videoPaused=null;}var presentationPaused;if ((flags & 32)==1){presentationPaused = reader.tgReadBool(); } else {presentationPaused=null;}		return new EditGroupCallParticipant(call : call, participant : participant, muted : muted, volume : volume, raiseHand : raiseHand, videoStopped : videoStopped, videoPaused : videoPaused, presentationPaused : presentationPaused);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2770811583,4),[0,0,0,0],(this.call.getBytes() as List<int>),(this.participant.getBytes() as List<int>),(this.muted==null||this.muted==false)?new List<int>.empty():[[this.muted ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.volume==null||this.volume==false)?new List<int>.empty():[readBufferFromBigInt(this.volume,4,little:true,signed:true)].expand((element) => element).toList(),(this.raiseHand==null||this.raiseHand==false)?new List<int>.empty():[[this.raiseHand ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.videoStopped==null||this.videoStopped==false)?new List<int>.empty():[[this.videoStopped ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.videoPaused==null||this.videoPaused==false)?new List<int>.empty():[[this.videoPaused ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.presentationPaused==null||this.presentationPaused==false)?new List<int>.empty():[[this.presentationPaused ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2770811583,4),[0,0,0,0],(this.call.getBytes() as List<int>),(this.participant.getBytes() as List<int>),(this.muted==null||this.muted==false)?new List<int>.empty():[[this.muted == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.volume==null||this.volume==false)?new List<int>.empty():[readBufferFromBigInt(this.volume,4,little:true,signed:true)].expand((element) => element).toList(),(this.raiseHand==null||this.raiseHand==false)?new List<int>.empty():[[this.raiseHand == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.videoStopped==null||this.videoStopped==false)?new List<int>.empty():[[this.videoStopped == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.videoPaused==null||this.videoPaused==false)?new List<int>.empty():[[this.videoPaused == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),(this.presentationPaused==null||this.presentationPaused==false)?new List<int>.empty():[[this.presentationPaused == true ? 0xb5757299 : 0x379779bc]].expand((element) => element).toList(),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -516,7 +516,7 @@ class ExportGroupCallInvite {
     static const SUBCLASS_OF_ID = 993787535;
     final classType = "request";
     final ID = 3869926527;
-	bool canSelfUnmute;
+	bool? canSelfUnmute;
 	var call;
 
 
@@ -546,7 +546,7 @@ class ToggleGroupCallStartSubscription {
 	static ToggleGroupCallStartSubscription fromReader(BinaryReader reader) {
 	var temp,len;var call = reader.tgReadObject();var subscribed = reader.tgReadBool();		return new ToggleGroupCallStartSubscription(call : call, subscribed : subscribed);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(563885286,4),(this.call.getBytes() as List<int>),[this.subscribed ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(563885286,4),(this.call.getBytes() as List<int>),[this.subscribed == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -669,7 +669,7 @@ class GetGroupCallStreamRtmpUrl {
 	static GetGroupCallStreamRtmpUrl fromReader(BinaryReader reader) {
 	var temp,len;var peer = reader.tgReadObject();var revoke = reader.tgReadBool();		return new GetGroupCallStreamRtmpUrl(peer : peer, revoke : revoke);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3736316863,4),(this.peer.getBytes() as List<int>),[this.revoke ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3736316863,4),(this.peer.getBytes() as List<int>),[this.revoke == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

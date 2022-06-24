@@ -313,7 +313,7 @@ List<BigInt> exceptAuthKeys = [];len = reader.readInt();
 		exceptAuthKeys.add(reader.readLong());
 }		return new DropTempAuthKeys(exceptAuthKeys : exceptAuthKeys);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2387124616,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.exceptAuthKeys.length,4,little:true,signed:true),this.exceptAuthKeys.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2387124616,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.exceptAuthKeys!.length,4,little:true,signed:true),this.exceptAuthKeys!.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -339,7 +339,7 @@ List<BigInt> exceptIds = [];len = reader.readInt();
 		exceptIds.add(reader.readLong());
 }		return new ExportLoginToken(apiId : apiId, apiHash : apiHash, exceptIds : exceptIds);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3084944894,4),readBufferFromBigInt(this.apiId,4,little:true,signed:true),serializeBytes(this.apiHash),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.exceptIds.length,4,little:true,signed:true),this.exceptIds.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3084944894,4),readBufferFromBigInt(this.apiId,4,little:true,signed:true),serializeBytes(this.apiHash),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.exceptIds!.length,4,little:true,signed:true),this.exceptIds!.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

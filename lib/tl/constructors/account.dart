@@ -28,7 +28,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }		return new PrivacyRules(rules : rules, chats : chats, users : users);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1352683077,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.rules.length,4,little:true,signed:true),this.rules.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats.length,4,little:true,signed:true),this.chats.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1352683077,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.rules!.length,4,little:true,signed:true),this.rules!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats!.length,4,little:true,signed:true),this.chats!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -50,7 +50,7 @@ List<dynamic> authorizations = [];len = reader.readInt();
 		authorizations.add(reader.tgReadObject());
 }		return new Authorizations(authorizationTtlDays : authorizationTtlDays, authorizations : authorizations);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1275039392,4),readBufferFromBigInt(this.authorizationTtlDays,4,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.authorizations.length,4,little:true,signed:true),this.authorizations.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1275039392,4),readBufferFromBigInt(this.authorizationTtlDays,4,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.authorizations!.length,4,little:true,signed:true),this.authorizations!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -59,18 +59,18 @@ class Password {
     static const SUBCLASS_OF_ID = 1403130275;
     final classType = "constructor";
     final ID = 408623183;
-	bool hasRecovery;
-	bool hasSecureValues;
-	bool hasPassword;
+	bool? hasRecovery;
+	bool? hasSecureValues;
+	bool? hasPassword;
 	var currentAlgo;
-	List<int> srp_B;
-	BigInt srpId;
-	String hint;
-	String emailUnconfirmedPattern;
+	List<int>? srp_B;
+	BigInt? srpId;
+	String? hint;
+	String? emailUnconfirmedPattern;
 	var newAlgo;
 	var newSecureAlgo;
 	List<int> secureRandom;
-	int pendingResetDate;
+	int? pendingResetDate;
 
 
 	Password({required this.hasRecovery, required this.hasSecureValues, required this.hasPassword, required this.currentAlgo, required this.srp_B, required this.srpId, required this.hint, required this.emailUnconfirmedPattern, required this.newAlgo, required this.newSecureAlgo, required this.secureRandom, required this.pendingResetDate});
@@ -87,7 +87,7 @@ class PasswordSettings {
     static const SUBCLASS_OF_ID = 3527389304;
     final classType = "constructor";
     final ID = 2589733861;
-	String email;
+	String? email;
 	var secureSettings;
 
 
@@ -106,9 +106,9 @@ class PasswordInputSettings {
     final classType = "constructor";
     final ID = 3258394569;
 	var newAlgo;
-	List<int> newPasswordHash;
-	String hint;
-	String email;
+	List<int>? newPasswordHash;
+	String? hint;
+	String? email;
 	var newSecureSettings;
 
 
@@ -161,7 +161,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }		return new WebAuthorizations(authorizations : authorizations, users : users);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3981887996,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.authorizations.length,4,little:true,signed:true),this.authorizations.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3981887996,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.authorizations!.length,4,little:true,signed:true),this.authorizations!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -174,7 +174,7 @@ class AuthorizationForm {
 	List<dynamic> values;
 	List<dynamic> errors;
 	List<dynamic> users;
-	String privacyPolicyUrl;
+	String? privacyPolicyUrl;
 
 
 	AuthorizationForm({required this.requiredTypes, required this.values, required this.errors, required this.users, required this.privacyPolicyUrl});
@@ -198,7 +198,7 @@ List<dynamic> users = [];len = reader.readInt();
 		users.add(reader.tgReadObject());
 }var privacyPolicyUrl;if ((flags & 1)==1){privacyPolicyUrl = reader.tgReadString(); } else {privacyPolicyUrl=null;}		return new AuthorizationForm(requiredTypes : requiredTypes, values : values, errors : errors, users : users, privacyPolicyUrl : privacyPolicyUrl);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2905480408,4),[0,0,0,0],readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.requiredTypes.length,4,little:true,signed:true),this.requiredTypes.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.values.length,4,little:true,signed:true),this.values.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.errors.length,4,little:true,signed:true),this.errors.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users.length,4,little:true,signed:true),this.users.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.privacyPolicyUrl==null||this.privacyPolicyUrl==false)?new List<int>.empty():[serializeBytes(this.privacyPolicyUrl)].expand((element) => element).toList(),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2905480408,4),[0,0,0,0],readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.requiredTypes!.length,4,little:true,signed:true),this.requiredTypes!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.values!.length,4,little:true,signed:true),this.values!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.errors!.length,4,little:true,signed:true),this.errors!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),(this.privacyPolicyUrl==null||this.privacyPolicyUrl==false)?new List<int>.empty():[serializeBytes(this.privacyPolicyUrl)].expand((element) => element).toList(),].expand((element) => element).toList();}
 
 }
 
@@ -271,7 +271,7 @@ List<dynamic> wallpapers = [];len = reader.readInt();
 		wallpapers.add(reader.tgReadObject());
 }		return new WallPapers(hash : hash, wallpapers : wallpapers);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3452142988,4),readBufferFromBigInt(this.hash,8,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.wallpapers.length,4,little:true,signed:true),this.wallpapers.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3452142988,4),readBufferFromBigInt(this.hash,8,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.wallpapers!.length,4,little:true,signed:true),this.wallpapers!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -328,7 +328,7 @@ List<dynamic> themes = [];len = reader.readInt();
 		themes.add(reader.tgReadObject());
 }		return new Themes(hash : hash, themes : themes);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2587724909,4),readBufferFromBigInt(this.hash,8,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.themes.length,4,little:true,signed:true),this.themes.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2587724909,4),readBufferFromBigInt(this.hash,8,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.themes!.length,4,little:true,signed:true),this.themes!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 
@@ -337,8 +337,8 @@ class ContentSettings {
     static const SUBCLASS_OF_ID = 2923427985;
     final classType = "constructor";
     final ID = 1474462241;
-	bool sensitiveEnabled;
-	bool sensitiveCanChange;
+	bool? sensitiveEnabled;
+	bool? sensitiveCanChange;
 
 
 	ContentSettings({required this.sensitiveEnabled, required this.sensitiveCanChange});
@@ -434,7 +434,7 @@ List<dynamic> ringtones = [];len = reader.readInt();
 		ringtones.add(reader.tgReadObject());
 }		return new SavedRingtones(hash : hash, ringtones : ringtones);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(3253284037,4),readBufferFromBigInt(this.hash,8,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.ringtones.length,4,little:true,signed:true),this.ringtones.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(3253284037,4),readBufferFromBigInt(this.hash,8,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.ringtones!.length,4,little:true,signed:true),this.ringtones!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 

@@ -28,7 +28,7 @@ class UploadProfilePhoto {
     final ID = 2314407785;
 	var file;
 	var video;
-	double videoStartTs;
+	double? videoStartTs;
 
 
 	UploadProfilePhoto({required this.file, required this.video, required this.videoStartTs});
@@ -60,7 +60,7 @@ List<dynamic> id = [];len = reader.readInt();
 		id.add(reader.tgReadObject());
 }		return new DeletePhotos(id : id);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2278522671,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2278522671,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id!.length,4,little:true,signed:true),this.id!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	List<BigInt> readResult(BinaryReader reader) {
 	
 reader.readInt();

@@ -48,7 +48,7 @@ class ValidateRequestedInfo {
     static const SUBCLASS_OF_ID = 2407548087;
     final classType = "request";
     final ID = 3066622251;
-	bool save;
+	bool? save;
 	var invoice;
 	var info;
 
@@ -72,10 +72,10 @@ class SendPaymentForm {
     final ID = 755192367;
 	BigInt formId;
 	var invoice;
-	String requestedInfoId;
-	String shippingOptionId;
+	String? requestedInfoId;
+	String? shippingOptionId;
 	var credentials;
-	BigInt tipAmount;
+	BigInt? tipAmount;
 
 
 	SendPaymentForm({required this.formId, required this.invoice, required this.requestedInfoId, required this.shippingOptionId, required this.credentials, required this.tipAmount});
@@ -114,8 +114,8 @@ class ClearSavedInfo {
     static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3627905217;
-	bool credentials;
-	bool info;
+	bool? credentials;
+	bool? info;
 
 
 	ClearSavedInfo({required this.credentials, required this.info});
@@ -175,7 +175,7 @@ class AssignAppStoreTransaction {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 267129798;
-	bool restore;
+	bool? restore;
 	String transactionId;
 	List<int> receipt;
 

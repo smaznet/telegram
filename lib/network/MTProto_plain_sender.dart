@@ -34,11 +34,11 @@ class MTProtoPlainSender {
     final res = [new List.filled(8, 0), m, b, body]
         .expand((element) => element)
         .toList();
-    print("Sending: ${res.toString()}");
+
     await this._connection.send(res);
-    print("Receving");
+
     body = await this._connection.recv();
-    print("Received: ${body.toString()}");
+
     if (body.length < 8) {
       throw ("Invalid response buffer (too short $body)");
     }

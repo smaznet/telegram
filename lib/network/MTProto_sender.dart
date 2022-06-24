@@ -408,6 +408,7 @@ class MTProtoSender {
         }
       }
       try {
+        this._log.debug('Decrypted message: ${message.obj.runtimeType}');
         await this._processMessage(message);
       } catch (e, stacktrace) {
         print(stacktrace);
@@ -434,6 +435,8 @@ class MTProtoSender {
     var handler = this._handlers[message.obj.ID];
     if (handler == null) {
       handler = this._handleUpdate;
+    } else {
+      this._log.debug('Handling message internal ${message.obj.ID}');
     }
 
     await handler(message);

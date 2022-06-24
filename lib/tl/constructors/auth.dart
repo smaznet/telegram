@@ -9,7 +9,7 @@ class SentCode {
 	var type;
 	String phoneCodeHash;
 	var nextType;
-	int timeout;
+	int? timeout;
 
 
 	SentCode({required this.type, required this.phoneCodeHash, required this.nextType, required this.timeout});
@@ -26,9 +26,9 @@ class Authorization {
     static const SUBCLASS_OF_ID = 3118485049;
     final classType = "constructor";
     final ID = 872119224;
-	bool setupPasswordRequired;
-	int otherwiseReloginDays;
-	int tmpSessions;
+	bool? setupPasswordRequired;
+	int? otherwiseReloginDays;
+	int? tmpSessions;
 	var user;
 
 
@@ -301,7 +301,7 @@ class LoggedOut {
     static const SUBCLASS_OF_ID = 176177941;
     final classType = "constructor";
     final ID = 3282207583;
-	List<int> futureAuthToken;
+	List<int>? futureAuthToken;
 
 
 	LoggedOut({required this.futureAuthToken});

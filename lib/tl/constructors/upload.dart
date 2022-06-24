@@ -41,7 +41,7 @@ List<dynamic> fileHashes = [];len = reader.readInt();
 		fileHashes.add(reader.tgReadObject());
 }		return new FileCdnRedirect(dcId : dcId, fileToken : fileToken, encryptionKey : encryptionKey, encryptionIv : encryptionIv, fileHashes : fileHashes);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(4052539972,4),readBufferFromBigInt(this.dcId,4,little:true,signed:true),serializeBytes(this.fileToken),serializeBytes(this.encryptionKey),serializeBytes(this.encryptionIv),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.fileHashes.length,4,little:true,signed:true),this.fileHashes.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(4052539972,4),readBufferFromBigInt(this.dcId,4,little:true,signed:true),serializeBytes(this.fileToken),serializeBytes(this.encryptionKey),serializeBytes(this.encryptionIv),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.fileHashes!.length,4,little:true,signed:true),this.fileHashes!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 
 }
 

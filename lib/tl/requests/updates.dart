@@ -26,7 +26,7 @@ class GetDifference {
     final classType = "request";
     final ID = 630429265;
 	int pts;
-	int ptsTotalLimit;
+	int? ptsTotalLimit;
 	int date;
 	int qts;
 
@@ -48,7 +48,7 @@ class GetChannelDifference {
     static const SUBCLASS_OF_ID = 696872797;
     final classType = "request";
     final ID = 51854712;
-	bool force;
+	bool? force;
 	var channel;
 	var filter;
 	int pts;

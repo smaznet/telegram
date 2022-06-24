@@ -83,7 +83,7 @@ List<dynamic> contacts = [];len = reader.readInt();
 		contacts.add(reader.tgReadObject());
 }		return new ImportContacts(contacts : contacts);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(746589157,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.contacts.length,4,little:true,signed:true),this.contacts.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(746589157,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.contacts!.length,4,little:true,signed:true),this.contacts!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -107,7 +107,7 @@ List<dynamic> id = [];len = reader.readInt();
 		id.add(reader.tgReadObject());
 }		return new DeleteContacts(id : id);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(157945344,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id.length,4,little:true,signed:true),this.id.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(157945344,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.id!.length,4,little:true,signed:true),this.id!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -131,7 +131,7 @@ List<String> phones = [];len = reader.readInt();
 		phones.add(reader.tgReadString());
 }		return new DeleteByPhones(phones : phones);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(269745566,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.phones.length,4,little:true,signed:true),this.phones.map((x)=>serializeBytes(x)).expand((element) => element),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(269745566,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.phones!.length,4,little:true,signed:true),this.phones!.map((x)=>serializeBytes(x)).expand((element) => element),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -245,14 +245,14 @@ class GetTopPeers {
     static const SUBCLASS_OF_ID = 2666052488;
     final classType = "request";
     final ID = 2536798390;
-	bool correspondents;
-	bool botsPm;
-	bool botsInline;
-	bool phoneCalls;
-	bool forwardUsers;
-	bool forwardChats;
-	bool groups;
-	bool channels;
+	bool? correspondents;
+	bool? botsPm;
+	bool? botsInline;
+	bool? phoneCalls;
+	bool? forwardUsers;
+	bool? forwardChats;
+	bool? groups;
+	bool? channels;
 	int offset;
 	int limit;
 	BigInt hash;
@@ -342,7 +342,7 @@ class ToggleTopPeers {
 	static ToggleTopPeers fromReader(BinaryReader reader) {
 	var temp,len;var enabled = reader.tgReadBool();		return new ToggleTopPeers(enabled : enabled);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(2232729050,4),[this.enabled ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(2232729050,4),[this.enabled == true ? 0xb5757299 : 0x379779bc],].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}
@@ -354,7 +354,7 @@ class AddContact {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3908330448;
-	bool addPhonePrivacyException;
+	bool? addPhonePrivacyException;
 	var id;
 	String firstName;
 	String lastName;
@@ -398,9 +398,9 @@ class GetLocated {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3544759364;
-	bool background;
+	bool? background;
 	var geoPoint;
-	int selfExpires;
+	int? selfExpires;
 
 
 	GetLocated({required this.background, required this.geoPoint, required this.selfExpires});
@@ -420,9 +420,9 @@ class BlockFromReplies {
     static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 698914348;
-	bool deleteMessage;
-	bool deleteHistory;
-	bool reportSpam;
+	bool? deleteMessage;
+	bool? deleteHistory;
+	bool? reportSpam;
 	int msgId;
 
 

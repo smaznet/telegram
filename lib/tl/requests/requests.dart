@@ -40,7 +40,7 @@ List<BigInt> msgIds = [];len = reader.readInt();
 		msgIds.add(reader.readLong());
 }var query = reader.tgReadObject();		return new InvokeAfterMsgs(msgIds : msgIds, query : query);
 	}
-	List<int> getBytes(){return [readBufferFromBigInt(1036301552,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.msgIds.length,4,little:true,signed:true),this.msgIds.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),(this.query.getBytes() as List<int>),].expand((element) => element).toList();}
+	List<int> getBytes(){return [readBufferFromBigInt(1036301552,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.msgIds!.length,4,little:true,signed:true),this.msgIds!.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),(this.query.getBytes() as List<int>),].expand((element) => element).toList();}
 	readResult(BinaryReader reader) {
 	return reader.tgReadObject();
 	}

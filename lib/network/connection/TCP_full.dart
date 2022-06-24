@@ -37,15 +37,14 @@ class FullPacketCodec extends PacketCodec {
    */
   Future<List<int>> readPacket(FutureSocket reader) async {
     final packetLenSeq = await reader.readExactly(8); // 4 and 4
-    print("Packet len seq: ${packetLenSeq.toString()}");
-// process.exit(0);
+
     if (packetLenSeq == false) {
       return [];
     }
     final int packetLen =
         readBigIntFromBuffer(packetLenSeq.sublist(0, 4), signed: true).toInt();
     final body = await reader.read(packetLen - 8);
-    print("Packet body: ${body.toString()}");
+
     final int checksum =
         readBigIntFromBuffer(body.sublist(body.length - 4), signed: false)
             .toInt();

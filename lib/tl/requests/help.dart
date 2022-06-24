@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetConfig {
     static const CONSTRUCTOR_ID = 3304659051;
-    static const SUBCLASS_OF_ID = 1201231714;
+    static const SUBCLASS_OF_ID = 3542493770;
     final classType = "request";
     final ID = 3304659051;
 
@@ -22,7 +22,7 @@ class GetConfig {
 
 class GetNearestDc {
     static const CONSTRUCTOR_ID = 531836966;
-    static const SUBCLASS_OF_ID = 1983421984;
+    static const SUBCLASS_OF_ID = 947323999;
     final classType = "request";
     final ID = 531836966;
 
@@ -41,7 +41,7 @@ class GetNearestDc {
 
 class GetAppUpdate {
     static const CONSTRUCTOR_ID = 1378703997;
-    static const SUBCLASS_OF_ID = 854462511;
+    static const SUBCLASS_OF_ID = 1486292638;
     final classType = "request";
     final ID = 1378703997;
 	String source;
@@ -61,7 +61,7 @@ class GetAppUpdate {
 
 class GetInviteText {
     static const CONSTRUCTOR_ID = 1295590211;
-    static const SUBCLASS_OF_ID = 3853016587;
+    static const SUBCLASS_OF_ID = 3480267317;
     final classType = "request";
     final ID = 1295590211;
 
@@ -80,7 +80,7 @@ class GetInviteText {
 
 class GetSupport {
     static const CONSTRUCTOR_ID = 2631862477;
-    static const SUBCLASS_OF_ID = 193609672;
+    static const SUBCLASS_OF_ID = 1901706475;
     final classType = "request";
     final ID = 2631862477;
 
@@ -99,7 +99,7 @@ class GetSupport {
 
 class GetAppChangelog {
     static const CONSTRUCTOR_ID = 2417028975;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2417028975;
 	String prevAppVersion;
@@ -119,7 +119,7 @@ class GetAppChangelog {
 
 class SetBotUpdatesStatus {
     static const CONSTRUCTOR_ID = 3961704397;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3961704397;
 	int pendingUpdatesCount;
@@ -140,7 +140,7 @@ class SetBotUpdatesStatus {
 
 class GetCdnConfig {
     static const CONSTRUCTOR_ID = 1375900482;
-    static const SUBCLASS_OF_ID = 2274463212;
+    static const SUBCLASS_OF_ID = 3973724540;
     final classType = "request";
     final ID = 1375900482;
 
@@ -159,7 +159,7 @@ class GetCdnConfig {
 
 class GetRecentMeUrls {
     static const CONSTRUCTOR_ID = 1036054804;
-    static const SUBCLASS_OF_ID = 2677659895;
+    static const SUBCLASS_OF_ID = 4067017847;
     final classType = "request";
     final ID = 1036054804;
 	String referer;
@@ -179,7 +179,7 @@ class GetRecentMeUrls {
 
 class GetTermsOfServiceUpdate {
     static const CONSTRUCTOR_ID = 749019089;
-    static const SUBCLASS_OF_ID = 3949960262;
+    static const SUBCLASS_OF_ID = 691808631;
     final classType = "request";
     final ID = 749019089;
 
@@ -198,7 +198,7 @@ class GetTermsOfServiceUpdate {
 
 class AcceptTermsOfService {
     static const CONSTRUCTOR_ID = 4000511898;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4000511898;
 	var id;
@@ -218,7 +218,7 @@ class AcceptTermsOfService {
 
 class GetDeepLinkInfo {
     static const CONSTRUCTOR_ID = 1072547679;
-    static const SUBCLASS_OF_ID = 1508534000;
+    static const SUBCLASS_OF_ID = 2555030584;
     final classType = "request";
     final ID = 1072547679;
 	String path;
@@ -238,7 +238,7 @@ class GetDeepLinkInfo {
 
 class GetAppConfig {
     static const CONSTRUCTOR_ID = 2559656208;
-    static const SUBCLASS_OF_ID = 278193419;
+    static const SUBCLASS_OF_ID = 3952707507;
     final classType = "request";
     final ID = 2559656208;
 
@@ -257,7 +257,7 @@ class GetAppConfig {
 
 class SaveAppLog {
     static const CONSTRUCTOR_ID = 1862465352;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1862465352;
 	List<dynamic> events;
@@ -281,7 +281,7 @@ List<dynamic> events = [];len = reader.readInt();
 
 class GetPassportConfig {
     static const CONSTRUCTOR_ID = 3328290056;
-    static const SUBCLASS_OF_ID = 1044550453;
+    static const SUBCLASS_OF_ID = 3328622765;
     final classType = "request";
     final ID = 3328290056;
 	int hash;
@@ -301,7 +301,7 @@ class GetPassportConfig {
 
 class GetSupportName {
     static const CONSTRUCTOR_ID = 3546343212;
-    static const SUBCLASS_OF_ID = 3585326847;
+    static const SUBCLASS_OF_ID = 2135996354;
     final classType = "request";
     final ID = 3546343212;
 
@@ -320,7 +320,7 @@ class GetSupportName {
 
 class GetUserInfo {
     static const CONSTRUCTOR_ID = 59377875;
-    static const SUBCLASS_OF_ID = 587564554;
+    static const SUBCLASS_OF_ID = 1548998616;
     final classType = "request";
     final ID = 59377875;
 	var userId;
@@ -340,7 +340,7 @@ class GetUserInfo {
 
 class EditUserInfo {
     static const CONSTRUCTOR_ID = 1723407216;
-    static const SUBCLASS_OF_ID = 587564554;
+    static const SUBCLASS_OF_ID = 1548998616;
     final classType = "request";
     final ID = 1723407216;
 	var userId;
@@ -366,7 +366,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class GetPromoData {
     static const CONSTRUCTOR_ID = 3231151137;
-    static const SUBCLASS_OF_ID = 3585125367;
+    static const SUBCLASS_OF_ID = 2639877442;
     final classType = "request";
     final ID = 3231151137;
 
@@ -385,7 +385,7 @@ class GetPromoData {
 
 class HidePromoData {
     static const CONSTRUCTOR_ID = 505748629;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 505748629;
 	var peer;
@@ -405,7 +405,7 @@ class HidePromoData {
 
 class DismissSuggestion {
     static const CONSTRUCTOR_ID = 4111317665;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4111317665;
 	var peer;
@@ -426,7 +426,7 @@ class DismissSuggestion {
 
 class GetCountriesList {
     static const CONSTRUCTOR_ID = 1935116200;
-    static const SUBCLASS_OF_ID = 1297383408;
+    static const SUBCLASS_OF_ID = 3929144968;
     final classType = "request";
     final ID = 1935116200;
 	String langCode;
@@ -447,7 +447,7 @@ class GetCountriesList {
 
 class GetPremiumPromo {
     static const CONSTRUCTOR_ID = 3088815060;
-    static const SUBCLASS_OF_ID = 1462837209;
+    static const SUBCLASS_OF_ID = 3381109560;
     final classType = "request";
     final ID = 3088815060;
 

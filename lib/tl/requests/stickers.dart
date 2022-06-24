@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class CreateStickerSet {
     static const CONSTRUCTOR_ID = 2418125671;
-    static const SUBCLASS_OF_ID = 4289717157;
+    static const SUBCLASS_OF_ID = 2607827546;
     final classType = "request";
     final ID = 2418125671;
 	bool masks;
@@ -35,7 +35,7 @@ List<dynamic> stickers = [];len = reader.readInt();
 
 class RemoveStickerFromSet {
     static const CONSTRUCTOR_ID = 4151709521;
-    static const SUBCLASS_OF_ID = 4289717157;
+    static const SUBCLASS_OF_ID = 2607827546;
     final classType = "request";
     final ID = 4151709521;
 	var sticker;
@@ -55,7 +55,7 @@ class RemoveStickerFromSet {
 
 class ChangeStickerPosition {
     static const CONSTRUCTOR_ID = 4290172106;
-    static const SUBCLASS_OF_ID = 4289717157;
+    static const SUBCLASS_OF_ID = 2607827546;
     final classType = "request";
     final ID = 4290172106;
 	var sticker;
@@ -76,7 +76,7 @@ class ChangeStickerPosition {
 
 class AddStickerToSet {
     static const CONSTRUCTOR_ID = 2253651646;
-    static const SUBCLASS_OF_ID = 4289717157;
+    static const SUBCLASS_OF_ID = 2607827546;
     final classType = "request";
     final ID = 2253651646;
 	var stickerset;
@@ -97,7 +97,7 @@ class AddStickerToSet {
 
 class SetStickerSetThumb {
     static const CONSTRUCTOR_ID = 2587250224;
-    static const SUBCLASS_OF_ID = 4289717157;
+    static const SUBCLASS_OF_ID = 2607827546;
     final classType = "request";
     final ID = 2587250224;
 	var stickerset;
@@ -118,7 +118,7 @@ class SetStickerSetThumb {
 
 class CheckShortName {
     static const CONSTRUCTOR_ID = 676017721;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 676017721;
 	String shortName;
@@ -138,7 +138,7 @@ class CheckShortName {
 
 class SuggestShortName {
     static const CONSTRUCTOR_ID = 1303364867;
-    static const SUBCLASS_OF_ID = 2267192888;
+    static const SUBCLASS_OF_ID = 3293203233;
     final classType = "request";
     final ID = 1303364867;
 	String title;

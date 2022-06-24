@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class InvokeAfterMsg {
     static const CONSTRUCTOR_ID = 3416209197;
-    static const SUBCLASS_OF_ID = 4016572148;
+    static const SUBCLASS_OF_ID = 3081909835;
     final classType = "request";
     final ID = 3416209197;
 	BigInt msgId;
@@ -24,7 +24,7 @@ class InvokeAfterMsg {
 
 class InvokeAfterMsgs {
     static const CONSTRUCTOR_ID = 1036301552;
-    static const SUBCLASS_OF_ID = 4016572148;
+    static const SUBCLASS_OF_ID = 3081909835;
     final classType = "request";
     final ID = 1036301552;
 	List<BigInt> msgIds;
@@ -49,7 +49,7 @@ List<BigInt> msgIds = [];len = reader.readInt();
 
 class InitConnection {
     static const CONSTRUCTOR_ID = 3251461801;
-    static const SUBCLASS_OF_ID = 4016572148;
+    static const SUBCLASS_OF_ID = 3081909835;
     final classType = "request";
     final ID = 3251461801;
 	int apiId;
@@ -78,7 +78,7 @@ class InitConnection {
 
 class InvokeWithLayer {
     static const CONSTRUCTOR_ID = 3667594509;
-    static const SUBCLASS_OF_ID = 4016572148;
+    static const SUBCLASS_OF_ID = 3081909835;
     final classType = "request";
     final ID = 3667594509;
 	int layer;
@@ -99,7 +99,7 @@ class InvokeWithLayer {
 
 class InvokeWithoutUpdates {
     static const CONSTRUCTOR_ID = 3214170551;
-    static const SUBCLASS_OF_ID = 4016572148;
+    static const SUBCLASS_OF_ID = 3081909835;
     final classType = "request";
     final ID = 3214170551;
 	var query;
@@ -119,7 +119,7 @@ class InvokeWithoutUpdates {
 
 class InvokeWithMessagesRange {
     static const CONSTRUCTOR_ID = 911373810;
-    static const SUBCLASS_OF_ID = 4016572148;
+    static const SUBCLASS_OF_ID = 3081909835;
     final classType = "request";
     final ID = 911373810;
 	var range;
@@ -140,7 +140,7 @@ class InvokeWithMessagesRange {
 
 class InvokeWithTakeout {
     static const CONSTRUCTOR_ID = 2896821550;
-    static const SUBCLASS_OF_ID = 4016572148;
+    static const SUBCLASS_OF_ID = 3081909835;
     final classType = "request";
     final ID = 2896821550;
 	BigInt takeoutId;
@@ -161,7 +161,7 @@ class InvokeWithTakeout {
 
 class ReqPq {
     static const CONSTRUCTOR_ID = 1615239032;
-    static const SUBCLASS_OF_ID = 1259555595;
+    static const SUBCLASS_OF_ID = 2020181688;
     final classType = "request";
     final ID = 1615239032;
 	BigInt nonce;
@@ -181,7 +181,7 @@ class ReqPq {
 
 class ReqPqMulti {
     static const CONSTRUCTOR_ID = 3195965169;
-    static const SUBCLASS_OF_ID = 1259555595;
+    static const SUBCLASS_OF_ID = 2020181688;
     final classType = "request";
     final ID = 3195965169;
 	BigInt nonce;
@@ -201,7 +201,7 @@ class ReqPqMulti {
 
 class ReqDHParams {
     static const CONSTRUCTOR_ID = 3608339646;
-    static const SUBCLASS_OF_ID = 3729891486;
+    static const SUBCLASS_OF_ID = 2786626974;
     final classType = "request";
     final ID = 3608339646;
 	BigInt nonce;
@@ -226,7 +226,7 @@ class ReqDHParams {
 
 class SetClientDHParams {
     static const CONSTRUCTOR_ID = 4110704415;
-    static const SUBCLASS_OF_ID = 23357575;
+    static const SUBCLASS_OF_ID = 1440574683;
     final classType = "request";
     final ID = 4110704415;
 	BigInt nonce;
@@ -248,7 +248,7 @@ class SetClientDHParams {
 
 class DestroyAuthKey {
     static const CONSTRUCTOR_ID = 3510849888;
-    static const SUBCLASS_OF_ID = 1147138432;
+    static const SUBCLASS_OF_ID = 2190599822;
     final classType = "request";
     final ID = 3510849888;
 
@@ -267,7 +267,7 @@ class DestroyAuthKey {
 
 class RpcDropAnswer {
     static const CONSTRUCTOR_ID = 1491380032;
-    static const SUBCLASS_OF_ID = 2287644326;
+    static const SUBCLASS_OF_ID = 1271559536;
     final classType = "request";
     final ID = 1491380032;
 	BigInt reqMsgId;
@@ -287,7 +287,7 @@ class RpcDropAnswer {
 
 class GetFutureSalts {
     static const CONSTRUCTOR_ID = 3105996036;
-    static const SUBCLASS_OF_ID = 3494478179;
+    static const SUBCLASS_OF_ID = 277935383;
     final classType = "request";
     final ID = 3105996036;
 	int num;
@@ -307,7 +307,7 @@ class GetFutureSalts {
 
 class Ping {
     static const CONSTRUCTOR_ID = 2059302892;
-    static const SUBCLASS_OF_ID = 3834985971;
+    static const SUBCLASS_OF_ID = 2171268721;
     final classType = "request";
     final ID = 2059302892;
 	BigInt pingId;
@@ -327,7 +327,7 @@ class Ping {
 
 class PingDelayDisconnect {
     static const CONSTRUCTOR_ID = 4081220492;
-    static const SUBCLASS_OF_ID = 3834985971;
+    static const SUBCLASS_OF_ID = 2171268721;
     final classType = "request";
     final ID = 4081220492;
 	BigInt pingId;
@@ -348,7 +348,7 @@ class PingDelayDisconnect {
 
 class DestroySession {
     static const CONSTRUCTOR_ID = 3880853798;
-    static const SUBCLASS_OF_ID = 3533302729;
+    static const SUBCLASS_OF_ID = 2936858557;
     final classType = "request";
     final ID = 3880853798;
 	BigInt sessionId;

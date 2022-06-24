@@ -83,9 +83,10 @@ class TelegramClient {
   _handleUpdate(update) {
     //this.session.processEntities(update)
     // this._entityCache.add(update)
+
+    print("GOT Update ${update}");
     if (update is Updates || update is UpdatesCombined) {
       // TODO deal with entities
-      print("GOT Update ${update}");
       const entities = [];
       for (final x in [...update.users, ...update.chats]) {
         entities.add(x);

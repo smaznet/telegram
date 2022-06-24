@@ -65,7 +65,7 @@ fromLine(String line, bool isFunction) {
     'name': match[1],
     'constructorId': match[2] != null ? int.parse(match[2]!, radix: 16) : null,
     'argsConfig': new Map<String, dynamic>(),
-    'subclassOfId': Crc32Bzip2().convert(utf8.encode(match.group(3)!)),
+    'subclassOfId': Crc32Xz().convert(utf8.encode(match.group(3)!)),
     'result': match.group(3),
     'isFunction': isFunction,
     'namespace': null
@@ -95,7 +95,7 @@ fromLine(String line, bool isFunction) {
     }
 
     currentConfig['constructorId'] =
-        Crc32Bzip2().convert(utf8.encode(representation));
+        Crc32Xz().convert(utf8.encode(representation));
   }
 
   argsMatch.forEach((element) {

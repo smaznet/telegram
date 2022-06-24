@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class UpdateProfilePhoto {
     static const CONSTRUCTOR_ID = 1926525996;
-    static const SUBCLASS_OF_ID = 4203905254;
+    static const SUBCLASS_OF_ID = 3264396580;
     final classType = "request";
     final ID = 1926525996;
 	var id;
@@ -23,7 +23,7 @@ class UpdateProfilePhoto {
 
 class UploadProfilePhoto {
     static const CONSTRUCTOR_ID = 2314407785;
-    static const SUBCLASS_OF_ID = 4203905254;
+    static const SUBCLASS_OF_ID = 3264396580;
     final classType = "request";
     final ID = 2314407785;
 	var file;
@@ -45,7 +45,7 @@ class UploadProfilePhoto {
 
 class DeletePhotos {
     static const CONSTRUCTOR_ID = 2278522671;
-    static const SUBCLASS_OF_ID = 3827148722;
+    static const SUBCLASS_OF_ID = 2300109160;
     final classType = "request";
     final ID = 2278522671;
 	List<dynamic> id;
@@ -75,7 +75,7 @@ final List<BigInt> result = [];
 
 class GetUserPhotos {
     static const CONSTRUCTOR_ID = 2446144168;
-    static const SUBCLASS_OF_ID = 1756542634;
+    static const SUBCLASS_OF_ID = 667924839;
     final classType = "request";
     final ID = 2446144168;
 	var userId;

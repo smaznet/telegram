@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class BroadcastStats {
     static const CONSTRUCTOR_ID = 3187114900;
-    static const SUBCLASS_OF_ID = 2653194799;
+    static const SUBCLASS_OF_ID = 2146587688;
     final classType = "constructor";
     final ID = 3187114900;
 	var period;
@@ -38,7 +38,7 @@ List<dynamic> recentMessageInteractions = [];len = reader.readInt();
 
 class MegagroupStats {
     static const CONSTRUCTOR_ID = 4018141462;
-    static const SUBCLASS_OF_ID = 3451120903;
+    static const SUBCLASS_OF_ID = 1532608141;
     final classType = "constructor";
     final ID = 4018141462;
 	var period;
@@ -87,7 +87,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class MessageStats {
     static const CONSTRUCTOR_ID = 2308567701;
-    static const SUBCLASS_OF_ID = 1807133955;
+    static const SUBCLASS_OF_ID = 2516886306;
     final classType = "constructor";
     final ID = 2308567701;
 	var viewsGraph;

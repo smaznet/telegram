@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetCallConfig {
     static const CONSTRUCTOR_ID = 1430593449;
-    static const SUBCLASS_OF_ID = 1992315082;
+    static const SUBCLASS_OF_ID = 2902676200;
     final classType = "request";
     final ID = 1430593449;
 
@@ -22,7 +22,7 @@ class GetCallConfig {
 
 class RequestCall {
     static const CONSTRUCTOR_ID = 1124046573;
-    static const SUBCLASS_OF_ID = 3387368802;
+    static const SUBCLASS_OF_ID = 3565878863;
     final classType = "request";
     final ID = 1124046573;
 	bool video;
@@ -46,7 +46,7 @@ class RequestCall {
 
 class AcceptCall {
     static const CONSTRUCTOR_ID = 1003664544;
-    static const SUBCLASS_OF_ID = 3387368802;
+    static const SUBCLASS_OF_ID = 3565878863;
     final classType = "request";
     final ID = 1003664544;
 	var peer;
@@ -68,7 +68,7 @@ class AcceptCall {
 
 class ConfirmCall {
     static const CONSTRUCTOR_ID = 788404002;
-    static const SUBCLASS_OF_ID = 3387368802;
+    static const SUBCLASS_OF_ID = 3565878863;
     final classType = "request";
     final ID = 788404002;
 	var peer;
@@ -91,7 +91,7 @@ class ConfirmCall {
 
 class ReceivedCall {
     static const CONSTRUCTOR_ID = 399855457;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 399855457;
 	var peer;
@@ -111,7 +111,7 @@ class ReceivedCall {
 
 class DiscardCall {
     static const CONSTRUCTOR_ID = 2999697856;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2999697856;
 	bool video;
@@ -135,7 +135,7 @@ class DiscardCall {
 
 class SetCallRating {
     static const CONSTRUCTOR_ID = 1508562471;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1508562471;
 	bool userInitiative;
@@ -158,7 +158,7 @@ class SetCallRating {
 
 class SaveCallDebug {
     static const CONSTRUCTOR_ID = 662363518;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 662363518;
 	var peer;
@@ -179,7 +179,7 @@ class SaveCallDebug {
 
 class SendSignalingData {
     static const CONSTRUCTOR_ID = 4286223235;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4286223235;
 	var peer;
@@ -200,7 +200,7 @@ class SendSignalingData {
 
 class CreateGroupCall {
     static const CONSTRUCTOR_ID = 1221445336;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1221445336;
 	bool rtmpStream;
@@ -224,7 +224,7 @@ class CreateGroupCall {
 
 class JoinGroupCall {
     static const CONSTRUCTOR_ID = 2972909435;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2972909435;
 	bool muted;
@@ -249,7 +249,7 @@ class JoinGroupCall {
 
 class LeaveGroupCall {
     static const CONSTRUCTOR_ID = 1342404601;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1342404601;
 	var call;
@@ -270,7 +270,7 @@ class LeaveGroupCall {
 
 class InviteToGroupCall {
     static const CONSTRUCTOR_ID = 2067345760;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2067345760;
 	var call;
@@ -295,7 +295,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class DiscardGroupCall {
     static const CONSTRUCTOR_ID = 2054648117;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2054648117;
 	var call;
@@ -315,7 +315,7 @@ class DiscardGroupCall {
 
 class ToggleGroupCallSettings {
     static const CONSTRUCTOR_ID = 1958458429;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1958458429;
 	bool resetInviteHash;
@@ -337,7 +337,7 @@ class ToggleGroupCallSettings {
 
 class GetGroupCall {
     static const CONSTRUCTOR_ID = 68699611;
-    static const SUBCLASS_OF_ID = 1617350143;
+    static const SUBCLASS_OF_ID = 809572030;
     final classType = "request";
     final ID = 68699611;
 	var call;
@@ -358,7 +358,7 @@ class GetGroupCall {
 
 class GetGroupParticipants {
     static const CONSTRUCTOR_ID = 3310934187;
-    static const SUBCLASS_OF_ID = 3617841446;
+    static const SUBCLASS_OF_ID = 1926431988;
     final classType = "request";
     final ID = 3310934187;
 	var call;
@@ -390,7 +390,7 @@ List<int> sources = [];len = reader.readInt();
 
 class CheckGroupCall {
     static const CONSTRUCTOR_ID = 3046963575;
-    static const SUBCLASS_OF_ID = 2634394217;
+    static const SUBCLASS_OF_ID = 1344696591;
     final classType = "request";
     final ID = 3046963575;
 	var call;
@@ -421,7 +421,7 @@ final List<int> result = [];
 
 class ToggleGroupCallRecord {
     static const CONSTRUCTOR_ID = 4045981448;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 4045981448;
 	bool start;
@@ -445,7 +445,7 @@ class ToggleGroupCallRecord {
 
 class EditGroupCallParticipant {
     static const CONSTRUCTOR_ID = 2770811583;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2770811583;
 	var call;
@@ -472,7 +472,7 @@ class EditGroupCallParticipant {
 
 class EditGroupCallTitle {
     static const CONSTRUCTOR_ID = 480685066;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 480685066;
 	var call;
@@ -493,7 +493,7 @@ class EditGroupCallTitle {
 
 class GetGroupCallJoinAs {
     static const CONSTRUCTOR_ID = 4017889594;
-    static const SUBCLASS_OF_ID = 1199058535;
+    static const SUBCLASS_OF_ID = 3031920891;
     final classType = "request";
     final ID = 4017889594;
 	var peer;
@@ -513,7 +513,7 @@ class GetGroupCallJoinAs {
 
 class ExportGroupCallInvite {
     static const CONSTRUCTOR_ID = 3869926527;
-    static const SUBCLASS_OF_ID = 1650604524;
+    static const SUBCLASS_OF_ID = 993787535;
     final classType = "request";
     final ID = 3869926527;
 	bool canSelfUnmute;
@@ -534,7 +534,7 @@ class ExportGroupCallInvite {
 
 class ToggleGroupCallStartSubscription {
     static const CONSTRUCTOR_ID = 563885286;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 563885286;
 	var call;
@@ -555,7 +555,7 @@ class ToggleGroupCallStartSubscription {
 
 class StartScheduledGroupCall {
     static const CONSTRUCTOR_ID = 1451287362;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1451287362;
 	var call;
@@ -575,7 +575,7 @@ class StartScheduledGroupCall {
 
 class SaveDefaultGroupCallJoinAs {
     static const CONSTRUCTOR_ID = 1465786252;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1465786252;
 	var peer;
@@ -596,7 +596,7 @@ class SaveDefaultGroupCallJoinAs {
 
 class JoinGroupCallPresentation {
     static const CONSTRUCTOR_ID = 3421137860;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3421137860;
 	var call;
@@ -617,7 +617,7 @@ class JoinGroupCallPresentation {
 
 class LeaveGroupCallPresentation {
     static const CONSTRUCTOR_ID = 475058500;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 475058500;
 	var call;
@@ -637,7 +637,7 @@ class LeaveGroupCallPresentation {
 
 class GetGroupCallStreamChannels {
     static const CONSTRUCTOR_ID = 447879488;
-    static const SUBCLASS_OF_ID = 2393609420;
+    static const SUBCLASS_OF_ID = 2438448612;
     final classType = "request";
     final ID = 447879488;
 	var call;
@@ -657,7 +657,7 @@ class GetGroupCallStreamChannels {
 
 class GetGroupCallStreamRtmpUrl {
     static const CONSTRUCTOR_ID = 3736316863;
-    static const SUBCLASS_OF_ID = 2835494870;
+    static const SUBCLASS_OF_ID = 3522500043;
     final classType = "request";
     final ID = 3736316863;
 	var peer;
@@ -678,7 +678,7 @@ class GetGroupCallStreamRtmpUrl {
 
 class SaveCallLog {
     static const CONSTRUCTOR_ID = 1092913030;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1092913030;
 	var peer;

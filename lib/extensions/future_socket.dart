@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'binary_writer.dart';
@@ -13,7 +14,8 @@ class FutureSocket {
     stream = new BinaryWriter(new List<int>.empty(growable: true));
     canRead = new Completer<bool>();
 
-    client = await Socket.connect(ip, port);
+    client = await Socket.connect(ip, port, timeout: Duration(seconds: 10));
+
     this.receive();
 
     this.closed = false;
@@ -24,11 +26,11 @@ class FutureSocket {
     if (this.closed) {
       throw ("Socket was closed");
     }
-    this.client?.add(data);
+    this.client!.add(data);
   }
 
   Future<void> close() async {
-    await this.client?.close();
+    await this.client!.close();
     this.closed = true;
   }
 
@@ -63,6 +65,7 @@ class FutureSocket {
 
   Future<void> receive() async {
     this.client!.listen((List<int> event) {
+      print("Received: ${event.length}");
       this.stream!.write(event);
       if (!this.canRead.isCompleted) {
         this.canRead.complete(true);
@@ -73,9 +76,9 @@ class FutureSocket {
 
 void main() async {
   final s = new FutureSocket();
-  await s.connect("149.154.167.51", 443);
-  s.write([1, 5, 4, 8]);
-  // final data = await s.readExactly(10);
-  //print(utf8.decode(data).replaceAll("\n", r"\n").replaceAll("\r", r"\r"));
+  await s.connect("91.108.56.130", 443);
+  s.write([]);
+  final data = await s.read(1);
+  print(utf8.decode(data).replaceAll("\n", r"\n").replaceAll("\r", r"\r"));
   await s.close();
 }

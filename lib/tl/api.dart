@@ -19,7 +19,7 @@ buildApiFromTlSchema() {
     }
   }
 
-  final file = new File('telegram/tl/all_tl_objects.dart');
+  final file = new File('lib/tl/all_tl_objects.dart');
   if (!file.existsSync()) {
     file.createSync(recursive: true);
   }
@@ -34,20 +34,21 @@ buildApiFromTlSchema() {
   }
   writer.write("import 'constructors/constructors.dart';\n");
   writer.write("\nconst int LAYER = ${definitions['layer']};\n");
-  writer.write("final Map<int, dynamic> tlobjects = {");
+  writer.write("typedef Generator = Function(dynamic reader);\n\n");
+  writer.write("final Map<int, Generator> tlobjects = {");
   for (final tlobject in definitions['constructors']) {
-    writer.write(tlobject['constructorId'].toString() + ": ");
+    writer.write(tlobject['constructorId'].toString() + ": (reader)=>");
     if (tlobject['namespace'] != null) {
       writer.write("${tlobject['namespace']}.");
     }
-    writer.write("${tlobject['name']},\n");
+    writer.write("${tlobject['name']}.fromReader(reader),\n");
   }
   for (final tlobject in definitions['requests']) {
-    writer.write(tlobject['constructorId'].toString() + ": ");
+    writer.write(tlobject['constructorId'].toString() + ": (reader)=>");
     if (tlobject['namespace'] != null) {
       writer.write("${tlobject['namespace']}.");
     }
-    writer.write("${tlobject['name']},\n");
+    writer.write("${tlobject['name']}.fromReader(reader),\n");
   }
   writer.write("};");
 
@@ -55,9 +56,9 @@ buildApiFromTlSchema() {
   createClasses('requests', definitions['requests']);
 }
 
-final tlContent = new File('telegram/static/api.tl').readAsStringSync();
+final tlContent = new File('lib/static/api.tl').readAsStringSync();
 
-final schemeContent = new File('telegram/static/schema.tl').readAsStringSync();
+final schemeContent = new File('lib/static/schema.tl').readAsStringSync();
 
 extractLayer(String tlContent) {
   final layerRegex = new RegExp(r'^//\s*LAYER\s*(\d+)');
@@ -318,7 +319,7 @@ createClasses(classesType, params) {
     final namespace = classParams['namespace'];
     final result = classParams['result'];
     final file =
-        new File('telegram/tl/${classesType}/${namespace ?? classesType}.dart');
+        new File('lib/tl/${classesType}/${namespace ?? classesType}.dart');
     var append = "\n\n";
     //Creating files
     if (!file.existsSync()) {
@@ -480,13 +481,18 @@ extractParams(fileContent) {
   return [constructors, functions];
 }
 
-void main() {
+deleteDir(String path) {
   try {
-    new Directory('telegram/tl/constructors').deleteSync(recursive: true);
-    new Directory('telegram/tl/requests').deleteSync(recursive: true);
-    new File('telegram/tl/all_tl_objects.dart').deleteSync(recursive: true);
-  } catch (e) {
-    print(e);
+    new Directory(path).deleteSync(recursive: true);
+  } catch (err) {
+    print("ERROR: delete $path\n$err");
   }
+}
+
+void main() {
+  deleteDir('lib/tl/constructors');
+  deleteDir('lib/tl/requests');
+  deleteDir('lib/tl/all_tl_objects.dart');
+
   buildApiFromTlSchema();
 }

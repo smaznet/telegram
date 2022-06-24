@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:convert/convert.dart';
+import 'package:crclib/crclib.dart';
 import 'package:crypto/crypto.dart';
 
 BigInt readBigIntFromBuffer(List<int> buffer, {little: true, signed: false}) {
@@ -52,7 +53,10 @@ asyncSleep(duration) async {
 List<int> readBufferFromBigInt(bigInt, int bytesNumber,
     {bool little: true, bool signed: false}) {
   if (!(bigInt is BigInt)) {
-    bigInt = new BigInt.from(bigInt);
+    if (bigInt is CrcValue) {
+      bigInt = bigInt.toBigInt();
+    } else
+      bigInt = new BigInt.from(bigInt);
   }
   final bitLength = bigInt.bitLength;
   final bytes = (bitLength / 8).ceil();

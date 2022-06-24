@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class SaveFilePart {
     static const CONSTRUCTOR_ID = 3003426337;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3003426337;
 	BigInt fileId;
@@ -25,7 +25,7 @@ class SaveFilePart {
 
 class GetFile {
     static const CONSTRUCTOR_ID = 3193124286;
-    static const SUBCLASS_OF_ID = 1357236314;
+    static const SUBCLASS_OF_ID = 1822152488;
     final classType = "request";
     final ID = 3193124286;
 	bool precise;
@@ -49,7 +49,7 @@ class GetFile {
 
 class SaveBigFilePart {
     static const CONSTRUCTOR_ID = 3732629309;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3732629309;
 	BigInt fileId;
@@ -72,7 +72,7 @@ class SaveBigFilePart {
 
 class GetWebFile {
     static const CONSTRUCTOR_ID = 619086221;
-    static const SUBCLASS_OF_ID = 1148905190;
+    static const SUBCLASS_OF_ID = 1760657233;
     final classType = "request";
     final ID = 619086221;
 	var location;
@@ -94,7 +94,7 @@ class GetWebFile {
 
 class GetCdnFile {
     static const CONSTRUCTOR_ID = 962554330;
-    static const SUBCLASS_OF_ID = 3785434404;
+    static const SUBCLASS_OF_ID = 4123851048;
     final classType = "request";
     final ID = 962554330;
 	List<int> fileToken;
@@ -116,7 +116,7 @@ class GetCdnFile {
 
 class ReuploadCdnFile {
     static const CONSTRUCTOR_ID = 2603046056;
-    static const SUBCLASS_OF_ID = 1149248798;
+    static const SUBCLASS_OF_ID = 2777941798;
     final classType = "request";
     final ID = 2603046056;
 	List<int> fileToken;
@@ -137,7 +137,7 @@ class ReuploadCdnFile {
 
 class GetCdnFileHashes {
     static const CONSTRUCTOR_ID = 2447130417;
-    static const SUBCLASS_OF_ID = 1149248798;
+    static const SUBCLASS_OF_ID = 2777941798;
     final classType = "request";
     final ID = 2447130417;
 	List<int> fileToken;
@@ -158,7 +158,7 @@ class GetCdnFileHashes {
 
 class GetFileHashes {
     static const CONSTRUCTOR_ID = 2438371370;
-    static const SUBCLASS_OF_ID = 1149248798;
+    static const SUBCLASS_OF_ID = 2777941798;
     final classType = "request";
     final ID = 2438371370;
 	var location;

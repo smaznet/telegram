@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class AppUpdate {
     static const CONSTRUCTOR_ID = 3434860080;
-    static const SUBCLASS_OF_ID = 854462511;
+    static const SUBCLASS_OF_ID = 1486292638;
     final classType = "constructor";
     final ID = 3434860080;
 	bool canNotSkip;
@@ -31,7 +31,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class NoAppUpdate {
     static const CONSTRUCTOR_ID = 3294258486;
-    static const SUBCLASS_OF_ID = 854462511;
+    static const SUBCLASS_OF_ID = 1486292638;
     final classType = "constructor";
     final ID = 3294258486;
 
@@ -47,7 +47,7 @@ class NoAppUpdate {
 
 class InviteText {
     static const CONSTRUCTOR_ID = 415997816;
-    static const SUBCLASS_OF_ID = 3853016587;
+    static const SUBCLASS_OF_ID = 3480267317;
     final classType = "constructor";
     final ID = 415997816;
 	String message;
@@ -64,7 +64,7 @@ class InviteText {
 
 class Support {
     static const CONSTRUCTOR_ID = 398898678;
-    static const SUBCLASS_OF_ID = 193609672;
+    static const SUBCLASS_OF_ID = 1901706475;
     final classType = "constructor";
     final ID = 398898678;
 	String phoneNumber;
@@ -82,7 +82,7 @@ class Support {
 
 class TermsOfService {
     static const CONSTRUCTOR_ID = 2013922064;
-    static const SUBCLASS_OF_ID = 233332874;
+    static const SUBCLASS_OF_ID = 552502034;
     final classType = "constructor";
     final ID = 2013922064;
 	bool popup;
@@ -107,7 +107,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class RecentMeUrls {
     static const CONSTRUCTOR_ID = 235081943;
-    static const SUBCLASS_OF_ID = 2677659895;
+    static const SUBCLASS_OF_ID = 4067017847;
     final classType = "constructor";
     final ID = 235081943;
 	List<dynamic> urls;
@@ -138,7 +138,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class TermsOfServiceUpdateEmpty {
     static const CONSTRUCTOR_ID = 3811614591;
-    static const SUBCLASS_OF_ID = 3949960262;
+    static const SUBCLASS_OF_ID = 691808631;
     final classType = "constructor";
     final ID = 3811614591;
 	int expires;
@@ -155,7 +155,7 @@ class TermsOfServiceUpdateEmpty {
 
 class TermsOfServiceUpdate {
     static const CONSTRUCTOR_ID = 686618977;
-    static const SUBCLASS_OF_ID = 3949960262;
+    static const SUBCLASS_OF_ID = 691808631;
     final classType = "constructor";
     final ID = 686618977;
 	int expires;
@@ -173,7 +173,7 @@ class TermsOfServiceUpdate {
 
 class DeepLinkInfoEmpty {
     static const CONSTRUCTOR_ID = 1722786150;
-    static const SUBCLASS_OF_ID = 1508534000;
+    static const SUBCLASS_OF_ID = 2555030584;
     final classType = "constructor";
     final ID = 1722786150;
 
@@ -189,7 +189,7 @@ class DeepLinkInfoEmpty {
 
 class DeepLinkInfo {
     static const CONSTRUCTOR_ID = 1783556146;
-    static const SUBCLASS_OF_ID = 1508534000;
+    static const SUBCLASS_OF_ID = 2555030584;
     final classType = "constructor";
     final ID = 1783556146;
 	bool updateApp;
@@ -212,7 +212,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class PassportConfigNotModified {
     static const CONSTRUCTOR_ID = 3216634967;
-    static const SUBCLASS_OF_ID = 1044550453;
+    static const SUBCLASS_OF_ID = 3328622765;
     final classType = "constructor";
     final ID = 3216634967;
 
@@ -228,7 +228,7 @@ class PassportConfigNotModified {
 
 class PassportConfig {
     static const CONSTRUCTOR_ID = 2694370991;
-    static const SUBCLASS_OF_ID = 1044550453;
+    static const SUBCLASS_OF_ID = 3328622765;
     final classType = "constructor";
     final ID = 2694370991;
 	int hash;
@@ -246,7 +246,7 @@ class PassportConfig {
 
 class SupportName {
     static const CONSTRUCTOR_ID = 2349199817;
-    static const SUBCLASS_OF_ID = 3585326847;
+    static const SUBCLASS_OF_ID = 2135996354;
     final classType = "constructor";
     final ID = 2349199817;
 	String name;
@@ -263,7 +263,7 @@ class SupportName {
 
 class UserInfoEmpty {
     static const CONSTRUCTOR_ID = 4088278765;
-    static const SUBCLASS_OF_ID = 587564554;
+    static const SUBCLASS_OF_ID = 1548998616;
     final classType = "constructor";
     final ID = 4088278765;
 
@@ -279,7 +279,7 @@ class UserInfoEmpty {
 
 class UserInfo {
     static const CONSTRUCTOR_ID = 32192344;
-    static const SUBCLASS_OF_ID = 587564554;
+    static const SUBCLASS_OF_ID = 1548998616;
     final classType = "constructor";
     final ID = 32192344;
 	String message;
@@ -303,7 +303,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class PromoDataEmpty {
     static const CONSTRUCTOR_ID = 2566302837;
-    static const SUBCLASS_OF_ID = 3585125367;
+    static const SUBCLASS_OF_ID = 2639877442;
     final classType = "constructor";
     final ID = 2566302837;
 	int expires;
@@ -320,7 +320,7 @@ class PromoDataEmpty {
 
 class PromoData {
     static const CONSTRUCTOR_ID = 2352576831;
-    static const SUBCLASS_OF_ID = 3585125367;
+    static const SUBCLASS_OF_ID = 2639877442;
     final classType = "constructor";
     final ID = 2352576831;
 	bool proxy;
@@ -351,7 +351,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class CountryCode {
     static const CONSTRUCTOR_ID = 1107543535;
-    static const SUBCLASS_OF_ID = 3201344035;
+    static const SUBCLASS_OF_ID = 1995654757;
     final classType = "constructor";
     final ID = 1107543535;
 	String countryCode;
@@ -378,7 +378,7 @@ List<String> patterns = [];len = reader.readInt();
 
 class Country {
     static const CONSTRUCTOR_ID = 3280440867;
-    static const SUBCLASS_OF_ID = 866818410;
+    static const SUBCLASS_OF_ID = 2720964136;
     final classType = "constructor";
     final ID = 3280440867;
 	bool hidden;
@@ -403,7 +403,7 @@ List<dynamic> countryCodes = [];len = reader.readInt();
 
 class CountriesListNotModified {
     static const CONSTRUCTOR_ID = 2479628082;
-    static const SUBCLASS_OF_ID = 1297383408;
+    static const SUBCLASS_OF_ID = 3929144968;
     final classType = "constructor";
     final ID = 2479628082;
 
@@ -419,7 +419,7 @@ class CountriesListNotModified {
 
 class CountriesList {
     static const CONSTRUCTOR_ID = 2278585758;
-    static const SUBCLASS_OF_ID = 1297383408;
+    static const SUBCLASS_OF_ID = 3929144968;
     final classType = "constructor";
     final ID = 2278585758;
 	List<dynamic> countries;
@@ -441,7 +441,7 @@ List<dynamic> countries = [];len = reader.readInt();
 
 class PremiumPromo {
     static const CONSTRUCTOR_ID = 2320448553;
-    static const SUBCLASS_OF_ID = 1462837209;
+    static const SUBCLASS_OF_ID = 3381109560;
     final classType = "constructor";
     final ID = 2320448553;
 	String statusText;
@@ -480,7 +480,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ConfigSimple {
     static const CONSTRUCTOR_ID = 1515793004;
-    static const SUBCLASS_OF_ID = 425297963;
+    static const SUBCLASS_OF_ID = 689453764;
     final classType = "constructor";
     final ID = 1515793004;
 	int date;

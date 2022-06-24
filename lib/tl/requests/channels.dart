@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class ReadHistory {
     static const CONSTRUCTOR_ID = 3423619383;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3423619383;
 	var channel;
@@ -24,7 +24,7 @@ class ReadHistory {
 
 class DeleteMessages {
     static const CONSTRUCTOR_ID = 2227305806;
-    static const SUBCLASS_OF_ID = 3515066396;
+    static const SUBCLASS_OF_ID = 3469983854;
     final classType = "request";
     final ID = 2227305806;
 	var channel;
@@ -49,7 +49,7 @@ List<int> id = [];len = reader.readInt();
 
 class ReportSpam {
     static const CONSTRUCTOR_ID = 4098523925;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4098523925;
 	var channel;
@@ -75,7 +75,7 @@ List<int> id = [];len = reader.readInt();
 
 class GetMessages {
     static const CONSTRUCTOR_ID = 2911672867;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 2911672867;
 	var channel;
@@ -100,7 +100,7 @@ List<dynamic> id = [];len = reader.readInt();
 
 class GetParticipants {
     static const CONSTRUCTOR_ID = 2010044880;
-    static const SUBCLASS_OF_ID = 4214721583;
+    static const SUBCLASS_OF_ID = 3859443300;
     final classType = "request";
     final ID = 2010044880;
 	var channel;
@@ -124,7 +124,7 @@ class GetParticipants {
 
 class GetParticipant {
     static const CONSTRUCTOR_ID = 2695589062;
-    static const SUBCLASS_OF_ID = 2139081815;
+    static const SUBCLASS_OF_ID = 1717048602;
     final classType = "request";
     final ID = 2695589062;
 	var channel;
@@ -145,7 +145,7 @@ class GetParticipant {
 
 class GetChannels {
     static const CONSTRUCTOR_ID = 176122811;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "request";
     final ID = 176122811;
 	List<dynamic> id;
@@ -169,7 +169,7 @@ List<dynamic> id = [];len = reader.readInt();
 
 class GetFullChannel {
     static const CONSTRUCTOR_ID = 141781513;
-    static const SUBCLASS_OF_ID = 2713854326;
+    static const SUBCLASS_OF_ID = 576344329;
     final classType = "request";
     final ID = 141781513;
 	var channel;
@@ -189,7 +189,7 @@ class GetFullChannel {
 
 class CreateChannel {
     static const CONSTRUCTOR_ID = 1029681423;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1029681423;
 	bool broadcast;
@@ -215,7 +215,7 @@ class CreateChannel {
 
 class EditAdmin {
     static const CONSTRUCTOR_ID = 3543959810;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3543959810;
 	var channel;
@@ -238,7 +238,7 @@ class EditAdmin {
 
 class EditTitle {
     static const CONSTRUCTOR_ID = 1450044624;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1450044624;
 	var channel;
@@ -259,7 +259,7 @@ class EditTitle {
 
 class EditPhoto {
     static const CONSTRUCTOR_ID = 4046346185;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 4046346185;
 	var channel;
@@ -280,7 +280,7 @@ class EditPhoto {
 
 class CheckUsername {
     static const CONSTRUCTOR_ID = 283557164;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 283557164;
 	var channel;
@@ -301,7 +301,7 @@ class CheckUsername {
 
 class UpdateUsername {
     static const CONSTRUCTOR_ID = 890549214;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 890549214;
 	var channel;
@@ -322,7 +322,7 @@ class UpdateUsername {
 
 class JoinChannel {
     static const CONSTRUCTOR_ID = 615851205;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 615851205;
 	var channel;
@@ -342,7 +342,7 @@ class JoinChannel {
 
 class LeaveChannel {
     static const CONSTRUCTOR_ID = 4164332181;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 4164332181;
 	var channel;
@@ -362,7 +362,7 @@ class LeaveChannel {
 
 class InviteToChannel {
     static const CONSTRUCTOR_ID = 429865580;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 429865580;
 	var channel;
@@ -387,7 +387,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class DeleteChannel {
     static const CONSTRUCTOR_ID = 3222347747;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3222347747;
 	var channel;
@@ -407,7 +407,7 @@ class DeleteChannel {
 
 class ExportMessageLink {
     static const CONSTRUCTOR_ID = 3862932971;
-    static const SUBCLASS_OF_ID = 209877552;
+    static const SUBCLASS_OF_ID = 3739632844;
     final classType = "request";
     final ID = 3862932971;
 	bool grouped;
@@ -430,7 +430,7 @@ class ExportMessageLink {
 
 class ToggleSignatures {
     static const CONSTRUCTOR_ID = 527021574;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 527021574;
 	var channel;
@@ -451,7 +451,7 @@ class ToggleSignatures {
 
 class GetAdminedPublicChannels {
     static const CONSTRUCTOR_ID = 4172297903;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "request";
     final ID = 4172297903;
 	bool byLocation;
@@ -472,7 +472,7 @@ class GetAdminedPublicChannels {
 
 class EditBanned {
     static const CONSTRUCTOR_ID = 2531708289;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2531708289;
 	var channel;
@@ -494,7 +494,7 @@ class EditBanned {
 
 class GetAdminLog {
     static const CONSTRUCTOR_ID = 870184064;
-    static const SUBCLASS_OF_ID = 2619893187;
+    static const SUBCLASS_OF_ID = 1374713532;
     final classType = "request";
     final ID = 870184064;
 	var channel;
@@ -524,7 +524,7 @@ List<dynamic> admins = [];len = reader.readInt();
 
 class SetStickers {
     static const CONSTRUCTOR_ID = 3935085817;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3935085817;
 	var channel;
@@ -545,7 +545,7 @@ class SetStickers {
 
 class ReadMessageContents {
     static const CONSTRUCTOR_ID = 3937786936;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3937786936;
 	var channel;
@@ -570,7 +570,7 @@ List<int> id = [];len = reader.readInt();
 
 class DeleteHistory {
     static const CONSTRUCTOR_ID = 2611648071;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2611648071;
 	bool forEveryone;
@@ -592,7 +592,7 @@ class DeleteHistory {
 
 class TogglePreHistoryHidden {
     static const CONSTRUCTOR_ID = 3938171212;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3938171212;
 	var channel;
@@ -613,7 +613,7 @@ class TogglePreHistoryHidden {
 
 class GetLeftChannels {
     static const CONSTRUCTOR_ID = 2202135744;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "request";
     final ID = 2202135744;
 	int offset;
@@ -633,7 +633,7 @@ class GetLeftChannels {
 
 class GetGroupsForDiscussion {
     static const CONSTRUCTOR_ID = 4124758904;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "request";
     final ID = 4124758904;
 
@@ -652,7 +652,7 @@ class GetGroupsForDiscussion {
 
 class SetDiscussionGroup {
     static const CONSTRUCTOR_ID = 1079520178;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1079520178;
 	var broadcast;
@@ -673,7 +673,7 @@ class SetDiscussionGroup {
 
 class EditCreator {
     static const CONSTRUCTOR_ID = 2402864415;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2402864415;
 	var channel;
@@ -695,7 +695,7 @@ class EditCreator {
 
 class EditLocation {
     static const CONSTRUCTOR_ID = 1491484525;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1491484525;
 	var channel;
@@ -717,7 +717,7 @@ class EditLocation {
 
 class ToggleSlowMode {
     static const CONSTRUCTOR_ID = 3990134512;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3990134512;
 	var channel;
@@ -738,7 +738,7 @@ class ToggleSlowMode {
 
 class GetInactiveChannels {
     static const CONSTRUCTOR_ID = 300429806;
-    static const SUBCLASS_OF_ID = 1038564508;
+    static const SUBCLASS_OF_ID = 2348013524;
     final classType = "request";
     final ID = 300429806;
 
@@ -757,7 +757,7 @@ class GetInactiveChannels {
 
 class ConvertToGigagroup {
     static const CONSTRUCTOR_ID = 187239529;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 187239529;
 	var channel;
@@ -777,7 +777,7 @@ class ConvertToGigagroup {
 
 class ViewSponsoredMessage {
     static const CONSTRUCTOR_ID = 3199130516;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3199130516;
 	var channel;
@@ -798,7 +798,7 @@ class ViewSponsoredMessage {
 
 class GetSponsoredMessages {
     static const CONSTRUCTOR_ID = 3961589695;
-    static const SUBCLASS_OF_ID = 3330472341;
+    static const SUBCLASS_OF_ID = 2134993376;
     final classType = "request";
     final ID = 3961589695;
 	var channel;
@@ -818,7 +818,7 @@ class GetSponsoredMessages {
 
 class GetSendAs {
     static const CONSTRUCTOR_ID = 231174382;
-    static const SUBCLASS_OF_ID = 1938362498;
+    static const SUBCLASS_OF_ID = 952864033;
     final classType = "request";
     final ID = 231174382;
 	var peer;
@@ -838,7 +838,7 @@ class GetSendAs {
 
 class DeleteParticipantHistory {
     static const CONSTRUCTOR_ID = 913655003;
-    static const SUBCLASS_OF_ID = 2033342386;
+    static const SUBCLASS_OF_ID = 743031062;
     final classType = "request";
     final ID = 913655003;
 	var channel;
@@ -859,7 +859,7 @@ class DeleteParticipantHistory {
 
 class ToggleJoinToSend {
     static const CONSTRUCTOR_ID = 3838547328;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3838547328;
 	var channel;
@@ -880,7 +880,7 @@ class ToggleJoinToSend {
 
 class ToggleJoinRequest {
     static const CONSTRUCTOR_ID = 1277789622;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1277789622;
 	var channel;

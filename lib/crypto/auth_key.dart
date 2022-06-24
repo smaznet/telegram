@@ -4,8 +4,8 @@ import '../extensions/binary_reader.dart';
 import '../utils.dart';
 
 class AuthKey {
-  late List<int>? _key, _hash;
-  late BigInt? auxHash, keyId;
+  List<int>? _key, _hash;
+  BigInt? auxHash, keyId;
 
   AuthKey(value, hash) {
     if (value == null || hash == null) {
@@ -39,7 +39,7 @@ class AuthKey {
     this.keyId = reader.readLong(signed: false);
   }
 
-  List<int> getKey() => this._key!;
+  List<int>? getKey() => this._key;
 
   calcNewNonceHash(newNonce, number) {
     List<int> newNonceList = toSignedLittleBuffer(newNonce, number: 32);

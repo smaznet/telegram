@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class SendCode {
     static const CONSTRUCTOR_ID = 2792825935;
-    static const SUBCLASS_OF_ID = 3075349260;
+    static const SUBCLASS_OF_ID = 1827172481;
     final classType = "request";
     final ID = 2792825935;
 	String phoneNumber;
@@ -26,7 +26,7 @@ class SendCode {
 
 class SignUp {
     static const CONSTRUCTOR_ID = 2163139623;
-    static const SUBCLASS_OF_ID = 3152158208;
+    static const SUBCLASS_OF_ID = 3118485049;
     final classType = "request";
     final ID = 2163139623;
 	String phoneNumber;
@@ -49,7 +49,7 @@ class SignUp {
 
 class SignIn {
     static const CONSTRUCTOR_ID = 3168081281;
-    static const SUBCLASS_OF_ID = 3152158208;
+    static const SUBCLASS_OF_ID = 3118485049;
     final classType = "request";
     final ID = 3168081281;
 	String phoneNumber;
@@ -71,7 +71,7 @@ class SignIn {
 
 class LogOut {
     static const CONSTRUCTOR_ID = 1047706137;
-    static const SUBCLASS_OF_ID = 633723213;
+    static const SUBCLASS_OF_ID = 176177941;
     final classType = "request";
     final ID = 1047706137;
 
@@ -90,7 +90,7 @@ class LogOut {
 
 class ResetAuthorizations {
     static const CONSTRUCTOR_ID = 2678787354;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2678787354;
 
@@ -109,7 +109,7 @@ class ResetAuthorizations {
 
 class ExportAuthorization {
     static const CONSTRUCTOR_ID = 3854565325;
-    static const SUBCLASS_OF_ID = 3580724234;
+    static const SUBCLASS_OF_ID = 1607593041;
     final classType = "request";
     final ID = 3854565325;
 	int dcId;
@@ -129,7 +129,7 @@ class ExportAuthorization {
 
 class ImportAuthorization {
     static const CONSTRUCTOR_ID = 2776268205;
-    static const SUBCLASS_OF_ID = 3152158208;
+    static const SUBCLASS_OF_ID = 3118485049;
     final classType = "request";
     final ID = 2776268205;
 	BigInt id;
@@ -150,7 +150,7 @@ class ImportAuthorization {
 
 class BindTempAuthKey {
     static const CONSTRUCTOR_ID = 3453233669;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3453233669;
 	BigInt permAuthKeyId;
@@ -173,7 +173,7 @@ class BindTempAuthKey {
 
 class ImportBotAuthorization {
     static const CONSTRUCTOR_ID = 1738800940;
-    static const SUBCLASS_OF_ID = 3152158208;
+    static const SUBCLASS_OF_ID = 3118485049;
     final classType = "request";
     final ID = 1738800940;
 	int flags;
@@ -196,7 +196,7 @@ class ImportBotAuthorization {
 
 class CheckPassword {
     static const CONSTRUCTOR_ID = 3515567382;
-    static const SUBCLASS_OF_ID = 3152158208;
+    static const SUBCLASS_OF_ID = 3118485049;
     final classType = "request";
     final ID = 3515567382;
 	var password;
@@ -216,7 +216,7 @@ class CheckPassword {
 
 class RequestPasswordRecovery {
     static const CONSTRUCTOR_ID = 3633822822;
-    static const SUBCLASS_OF_ID = 3625306418;
+    static const SUBCLASS_OF_ID = 4201829434;
     final classType = "request";
     final ID = 3633822822;
 
@@ -235,7 +235,7 @@ class RequestPasswordRecovery {
 
 class RecoverPassword {
     static const CONSTRUCTOR_ID = 923364464;
-    static const SUBCLASS_OF_ID = 3152158208;
+    static const SUBCLASS_OF_ID = 3118485049;
     final classType = "request";
     final ID = 923364464;
 	String code;
@@ -256,7 +256,7 @@ class RecoverPassword {
 
 class ResendCode {
     static const CONSTRUCTOR_ID = 1056025023;
-    static const SUBCLASS_OF_ID = 3075349260;
+    static const SUBCLASS_OF_ID = 1827172481;
     final classType = "request";
     final ID = 1056025023;
 	String phoneNumber;
@@ -277,7 +277,7 @@ class ResendCode {
 
 class CancelCode {
     static const CONSTRUCTOR_ID = 520357240;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 520357240;
 	String phoneNumber;
@@ -298,7 +298,7 @@ class CancelCode {
 
 class DropTempAuthKeys {
     static const CONSTRUCTOR_ID = 2387124616;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2387124616;
 	List<BigInt> exceptAuthKeys;
@@ -322,7 +322,7 @@ List<BigInt> exceptAuthKeys = [];len = reader.readInt();
 
 class ExportLoginToken {
     static const CONSTRUCTOR_ID = 3084944894;
-    static const SUBCLASS_OF_ID = 4099573989;
+    static const SUBCLASS_OF_ID = 1800795702;
     final classType = "request";
     final ID = 3084944894;
 	int apiId;
@@ -348,7 +348,7 @@ List<BigInt> exceptIds = [];len = reader.readInt();
 
 class ImportLoginToken {
     static const CONSTRUCTOR_ID = 2511101156;
-    static const SUBCLASS_OF_ID = 4099573989;
+    static const SUBCLASS_OF_ID = 1800795702;
     final classType = "request";
     final ID = 2511101156;
 	List<int> token;
@@ -368,7 +368,7 @@ class ImportLoginToken {
 
 class AcceptLoginToken {
     static const CONSTRUCTOR_ID = 3902057805;
-    static const SUBCLASS_OF_ID = 3858151421;
+    static const SUBCLASS_OF_ID = 3373514778;
     final classType = "request";
     final ID = 3902057805;
 	List<int> token;
@@ -388,7 +388,7 @@ class AcceptLoginToken {
 
 class CheckRecoveryPassword {
     static const CONSTRUCTOR_ID = 221691769;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 221691769;
 	String code;

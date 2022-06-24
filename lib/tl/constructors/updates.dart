@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class State {
     static const CONSTRUCTOR_ID = 2775329342;
-    static const SUBCLASS_OF_ID = 3387548233;
+    static const SUBCLASS_OF_ID = 601823745;
     final classType = "constructor";
     final ID = 2775329342;
 	int pts;
@@ -24,7 +24,7 @@ class State {
 
 class DifferenceEmpty {
     static const CONSTRUCTOR_ID = 1567990072;
-    static const SUBCLASS_OF_ID = 651126040;
+    static const SUBCLASS_OF_ID = 541599860;
     final classType = "constructor";
     final ID = 1567990072;
 	int date;
@@ -42,7 +42,7 @@ class DifferenceEmpty {
 
 class Difference {
     static const CONSTRUCTOR_ID = 16030880;
-    static const SUBCLASS_OF_ID = 651126040;
+    static const SUBCLASS_OF_ID = 541599860;
     final classType = "constructor";
     final ID = 16030880;
 	List<dynamic> newMessages;
@@ -84,7 +84,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class DifferenceSlice {
     static const CONSTRUCTOR_ID = 2835028353;
-    static const SUBCLASS_OF_ID = 651126040;
+    static const SUBCLASS_OF_ID = 541599860;
     final classType = "constructor";
     final ID = 2835028353;
 	List<dynamic> newMessages;
@@ -126,7 +126,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class DifferenceTooLong {
     static const CONSTRUCTOR_ID = 1258196845;
-    static const SUBCLASS_OF_ID = 651126040;
+    static const SUBCLASS_OF_ID = 541599860;
     final classType = "constructor";
     final ID = 1258196845;
 	int pts;
@@ -143,7 +143,7 @@ class DifferenceTooLong {
 
 class ChannelDifferenceEmpty {
     static const CONSTRUCTOR_ID = 1041346555;
-    static const SUBCLASS_OF_ID = 1148408860;
+    static const SUBCLASS_OF_ID = 696872797;
     final classType = "constructor";
     final ID = 1041346555;
 	bool finalVar;
@@ -162,7 +162,7 @@ class ChannelDifferenceEmpty {
 
 class ChannelDifferenceTooLong {
     static const CONSTRUCTOR_ID = 2763835134;
-    static const SUBCLASS_OF_ID = 1148408860;
+    static const SUBCLASS_OF_ID = 696872797;
     final classType = "constructor";
     final ID = 2763835134;
 	bool finalVar;
@@ -196,7 +196,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ChannelDifference {
     static const CONSTRUCTOR_ID = 543450958;
-    static const SUBCLASS_OF_ID = 1148408860;
+    static const SUBCLASS_OF_ID = 696872797;
     final classType = "constructor";
     final ID = 543450958;
 	bool finalVar;

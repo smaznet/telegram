@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class Photos {
     static const CONSTRUCTOR_ID = 2378853029;
-    static const SUBCLASS_OF_ID = 1756542634;
+    static const SUBCLASS_OF_ID = 667924839;
     final classType = "constructor";
     final ID = 2378853029;
 	List<dynamic> photos;
@@ -29,7 +29,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class PhotosSlice {
     static const CONSTRUCTOR_ID = 352657236;
-    static const SUBCLASS_OF_ID = 1756542634;
+    static const SUBCLASS_OF_ID = 667924839;
     final classType = "constructor";
     final ID = 352657236;
 	int count;
@@ -56,7 +56,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class Photo {
     static const CONSTRUCTOR_ID = 539045032;
-    static const SUBCLASS_OF_ID = 4203905254;
+    static const SUBCLASS_OF_ID = 3264396580;
     final classType = "constructor";
     final ID = 539045032;
 	var photo;

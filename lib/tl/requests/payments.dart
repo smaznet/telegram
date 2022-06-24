@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetPaymentForm {
     static const CONSTRUCTOR_ID = 924093883;
-    static const SUBCLASS_OF_ID = 2451093605;
+    static const SUBCLASS_OF_ID = 2689089305;
     final classType = "request";
     final ID = 924093883;
 	var invoice;
@@ -24,7 +24,7 @@ class GetPaymentForm {
 
 class GetPaymentReceipt {
     static const CONSTRUCTOR_ID = 611897804;
-    static const SUBCLASS_OF_ID = 490074591;
+    static const SUBCLASS_OF_ID = 1493210057;
     final classType = "request";
     final ID = 611897804;
 	var peer;
@@ -45,7 +45,7 @@ class GetPaymentReceipt {
 
 class ValidateRequestedInfo {
     static const CONSTRUCTOR_ID = 3066622251;
-    static const SUBCLASS_OF_ID = 3400500112;
+    static const SUBCLASS_OF_ID = 2407548087;
     final classType = "request";
     final ID = 3066622251;
 	bool save;
@@ -67,7 +67,7 @@ class ValidateRequestedInfo {
 
 class SendPaymentForm {
     static const CONSTRUCTOR_ID = 755192367;
-    static const SUBCLASS_OF_ID = 2215780944;
+    static const SUBCLASS_OF_ID = 2330028701;
     final classType = "request";
     final ID = 755192367;
 	BigInt formId;
@@ -92,7 +92,7 @@ class SendPaymentForm {
 
 class GetSavedInfo {
     static const CONSTRUCTOR_ID = 578650699;
-    static const SUBCLASS_OF_ID = 3726086227;
+    static const SUBCLASS_OF_ID = 2906452294;
     final classType = "request";
     final ID = 578650699;
 
@@ -111,7 +111,7 @@ class GetSavedInfo {
 
 class ClearSavedInfo {
     static const CONSTRUCTOR_ID = 3627905217;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3627905217;
 	bool credentials;
@@ -132,7 +132,7 @@ class ClearSavedInfo {
 
 class GetBankCardData {
     static const CONSTRUCTOR_ID = 779736953;
-    static const SUBCLASS_OF_ID = 792015025;
+    static const SUBCLASS_OF_ID = 2356008587;
     final classType = "request";
     final ID = 779736953;
 	String number;
@@ -152,7 +152,7 @@ class GetBankCardData {
 
 class ExportInvoice {
     static const CONSTRUCTOR_ID = 261206117;
-    static const SUBCLASS_OF_ID = 2563156734;
+    static const SUBCLASS_OF_ID = 907039794;
     final classType = "request";
     final ID = 261206117;
 	var invoiceMedia;
@@ -172,7 +172,7 @@ class ExportInvoice {
 
 class AssignAppStoreTransaction {
     static const CONSTRUCTOR_ID = 267129798;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 267129798;
 	bool restore;
@@ -194,7 +194,7 @@ class AssignAppStoreTransaction {
 
 class AssignPlayMarketTransaction {
     static const CONSTRUCTOR_ID = 1336560365;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1336560365;
 	String purchaseToken;
@@ -214,7 +214,7 @@ class AssignPlayMarketTransaction {
 
 class RestorePlayMarketReceipt {
     static const CONSTRUCTOR_ID = 3513049962;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3513049962;
 	List<int> receipt;
@@ -234,7 +234,7 @@ class RestorePlayMarketReceipt {
 
 class CanPurchasePremium {
     static const CONSTRUCTOR_ID = 2859110600;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2859110600;
 
@@ -253,7 +253,7 @@ class CanPurchasePremium {
 
 class RequestRecurringPayment {
     static const CONSTRUCTOR_ID = 342791565;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 342791565;
 	var userId;

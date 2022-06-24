@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class ChannelParticipants {
     static const CONSTRUCTOR_ID = 2595290799;
-    static const SUBCLASS_OF_ID = 4214721583;
+    static const SUBCLASS_OF_ID = 3859443300;
     final classType = "constructor";
     final ID = 2595290799;
 	int count;
@@ -35,7 +35,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ChannelParticipantsNotModified {
     static const CONSTRUCTOR_ID = 4028055529;
-    static const SUBCLASS_OF_ID = 4214721583;
+    static const SUBCLASS_OF_ID = 3859443300;
     final classType = "constructor";
     final ID = 4028055529;
 
@@ -51,7 +51,7 @@ class ChannelParticipantsNotModified {
 
 class ChannelParticipant {
     static const CONSTRUCTOR_ID = 3753378583;
-    static const SUBCLASS_OF_ID = 2139081815;
+    static const SUBCLASS_OF_ID = 1717048602;
     final classType = "constructor";
     final ID = 3753378583;
 	var participant;
@@ -78,7 +78,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class AdminLogResults {
     static const CONSTRUCTOR_ID = 3985307469;
-    static const SUBCLASS_OF_ID = 2619893187;
+    static const SUBCLASS_OF_ID = 1374713532;
     final classType = "constructor";
     final ID = 3985307469;
 	List<dynamic> events;
@@ -109,7 +109,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class SendAsPeers {
     static const CONSTRUCTOR_ID = 2203504041;
-    static const SUBCLASS_OF_ID = 1938362498;
+    static const SUBCLASS_OF_ID = 952864033;
     final classType = "constructor";
     final ID = 2203504041;
 	List<dynamic> peers;

@@ -1,5 +1,4 @@
 import "dart:collection";
-import 'dart:mirrors';
 
 import '../../extensions/async_queue.dart';
 import '../../extensions/future_socket.dart';
@@ -19,15 +18,8 @@ final queue = Queue<String>();
  */
 class Connection {
   var PacketCodecClass;
-  var _ip,
-      _port,
-      _dcId,
-      _log,
-      _connected,
-      _sendTask,
-      _recvTask,
-      _codec,
-      _obfuscation;
+  var _ip, _port, _dcId, _log, _connected, _sendTask, _recvTask, _obfuscation;
+  PacketCodec? _codec;
   late AsyncQueue _sendArray, _recvArray;
   late FutureSocket socket;
   Connection(ip, port, dcId, loggers) {
@@ -113,6 +105,7 @@ class Connection {
     while (this._connected) {
       try {
         data = await this._recv();
+        print("GOT ${data.length} bytes");
         if (data.length == 0) {
           throw ("no data received");
         }
@@ -130,18 +123,19 @@ class Connection {
   }
 
   _initConn() async {
-    if (this._codec.tag != null) {
-      this.socket.write(this._codec.tag);
+    if (this._codec!.tag != null) {
+      this.socket.write(this._codec!.tag!.codeUnits);
     }
   }
 
   _send(data) async {
-    final encodedPacket = this._codec.encodePacket(data);
+    final encodedPacket = this._codec!.encodePacket(data);
+    print("SENDING ${encodedPacket.length} bytes");
     this.socket.write(encodedPacket);
   }
 
   _recv() async {
-    return await this._codec.readPacket(this.socket);
+    return await this._codec!.readPacket(this.socket);
   }
 
   toString() {
@@ -156,22 +150,27 @@ class ObfuscatedConnection extends Connection {
       : super(ip, port, dcId, loggers);
 
   _initConn() async {
-    this._obfuscation =
-        reflectClass(this.PacketCodecClass).newInstance(new Symbol(''), []);
+    if (this.PacketCodecClass is FullPacketCodec) {
+      this._obfuscation = FullPacketCodec(this);
+    } else {
+      throw new UnimplementedError("PacketCodecClass is not implemented");
+    }
+
     this.socket.write(this._obfuscation.header);
   }
 
   _send(data) {
-    this._obfuscation.write(this._codec.encodePacket(data));
+    this._obfuscation.write(this._codec!.encodePacket(data));
   }
 
   _recv() async {
-    return await this._codec.readPacket(this._obfuscation);
+    return await this._codec!.readPacket(this._obfuscation);
   }
 }
 
 class PacketCodec {
   var _conn;
+  String? tag;
   PacketCodec(connection) {
     this._conn = connection;
   }

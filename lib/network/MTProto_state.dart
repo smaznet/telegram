@@ -131,12 +131,12 @@ class MTProtoState {
     // Being substr(what, offset, length); x = 0 for client
     // "msg_key_large = SHA256(substr(auth_key, 88+x, 32) + pt + padding)"
     final List<int> msgKeyLarge = sha256
-        .convert(this.authKey!.getKey().sublist(88, 88 + 32) + data + padding)
+        .convert(this.authKey!.getKey()!.sublist(88, 88 + 32) + data + padding)
         .bytes;
     // "msg_key = substr (msg_key_large, 8, 16)"
     final List<int> msgKey = msgKeyLarge.sublist(8, 24);
 
-    final result = this._calcKey(this.authKey!.getKey(), msgKey, true);
+    final result = this._calcKey(this.authKey!.getKey()!, msgKey, true);
     final List<int> key = result[0];
     final List<int> iv = result[1];
     final keyId = readBufferFromBigInt(this.authKey!.keyId, 8);
@@ -161,7 +161,7 @@ class MTProtoState {
     }
 
     final msgKey = body.sublist(8, 24);
-    final result = this._calcKey(this.authKey!.getKey(), msgKey, false);
+    final result = this._calcKey(this.authKey!.getKey()!, msgKey, false);
     final key = result[0];
     final iv = result[1];
 
@@ -171,7 +171,7 @@ class MTProtoState {
     // Sections "checking sha256 hash" and "message length"
 
     final ourKey = sha256
-        .convert([this.authKey!.getKey().sublist(96, 96 + 32), body]
+        .convert([this.authKey!.getKey()!.sublist(96, 96 + 32), body]
             .expand((element) => element)
             .toList())
         .bytes;

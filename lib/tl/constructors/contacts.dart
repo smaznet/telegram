@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class ContactsNotModified {
     static const CONSTRUCTOR_ID = 3075189202;
-    static const SUBCLASS_OF_ID = 409327542;
+    static const SUBCLASS_OF_ID = 951985654;
     final classType = "constructor";
     final ID = 3075189202;
 
@@ -19,7 +19,7 @@ class ContactsNotModified {
 
 class Contacts {
     static const CONSTRUCTOR_ID = 3941105218;
-    static const SUBCLASS_OF_ID = 409327542;
+    static const SUBCLASS_OF_ID = 951985654;
     final classType = "constructor";
     final ID = 3941105218;
 	List<dynamic> contacts;
@@ -46,7 +46,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ImportedContacts {
     static const CONSTRUCTOR_ID = 2010127419;
-    static const SUBCLASS_OF_ID = 3622042187;
+    static const SUBCLASS_OF_ID = 2171776403;
     final classType = "constructor";
     final ID = 2010127419;
 	List<dynamic> imported;
@@ -82,7 +82,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class Blocked {
     static const CONSTRUCTOR_ID = 182326673;
-    static const SUBCLASS_OF_ID = 3687220896;
+    static const SUBCLASS_OF_ID = 4290400079;
     final classType = "constructor";
     final ID = 182326673;
 	List<dynamic> blocked;
@@ -113,7 +113,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class BlockedSlice {
     static const CONSTRUCTOR_ID = 3781575060;
-    static const SUBCLASS_OF_ID = 3687220896;
+    static const SUBCLASS_OF_ID = 4290400079;
     final classType = "constructor";
     final ID = 3781575060;
 	int count;
@@ -145,7 +145,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class Found {
     static const CONSTRUCTOR_ID = 3004386717;
-    static const SUBCLASS_OF_ID = 2639130989;
+    static const SUBCLASS_OF_ID = 1132896995;
     final classType = "constructor";
     final ID = 3004386717;
 	List<dynamic> myResults;
@@ -181,7 +181,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ResolvedPeer {
     static const CONSTRUCTOR_ID = 2131196633;
-    static const SUBCLASS_OF_ID = 2277333274;
+    static const SUBCLASS_OF_ID = 4033196968;
     final classType = "constructor";
     final ID = 2131196633;
 	var peer;
@@ -208,7 +208,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class TopPeersNotModified {
     static const CONSTRUCTOR_ID = 3727060725;
-    static const SUBCLASS_OF_ID = 3096014790;
+    static const SUBCLASS_OF_ID = 2666052488;
     final classType = "constructor";
     final ID = 3727060725;
 
@@ -224,7 +224,7 @@ class TopPeersNotModified {
 
 class TopPeers {
     static const CONSTRUCTOR_ID = 1891070632;
-    static const SUBCLASS_OF_ID = 3096014790;
+    static const SUBCLASS_OF_ID = 2666052488;
     final classType = "constructor";
     final ID = 1891070632;
 	List<dynamic> categories;
@@ -255,7 +255,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class TopPeersDisabled {
     static const CONSTRUCTOR_ID = 3039597469;
-    static const SUBCLASS_OF_ID = 3096014790;
+    static const SUBCLASS_OF_ID = 2666052488;
     final classType = "constructor";
     final ID = 3039597469;
 

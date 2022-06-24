@@ -13,11 +13,12 @@ import 'MTProto_plain_sender.dart';
 
 doAuthentication(MTProtoPlainSender sender, log) async {
   // Step 1 sending: PQ Request, endianness doesn't matter since it's random
+  log.debug('Starting authKey generation step 1');
   var bytes = generateRandomBytes(16);
 
   final nonce = readBigIntFromBuffer(bytes, little: false, signed: true);
+  log.debug('Generated nonce: $nonce');
   final ResPQ resPQ = await sender.send(new ReqPqMulti(nonce: nonce));
-  log.debug('Starting authKey generation step 1');
 
   if (!(resPQ is ResPQ)) {
     throw ('Step 1 answer was ${resPQ}');

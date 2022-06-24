@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class SentCode {
     static const CONSTRUCTOR_ID = 1577067778;
-    static const SUBCLASS_OF_ID = 3075349260;
+    static const SUBCLASS_OF_ID = 1827172481;
     final classType = "constructor";
     final ID = 1577067778;
 	var type;
@@ -23,7 +23,7 @@ class SentCode {
 
 class Authorization {
     static const CONSTRUCTOR_ID = 872119224;
-    static const SUBCLASS_OF_ID = 3152158208;
+    static const SUBCLASS_OF_ID = 3118485049;
     final classType = "constructor";
     final ID = 872119224;
 	bool setupPasswordRequired;
@@ -43,7 +43,7 @@ class Authorization {
 
 class AuthorizationSignUpRequired {
     static const CONSTRUCTOR_ID = 1148485274;
-    static const SUBCLASS_OF_ID = 3152158208;
+    static const SUBCLASS_OF_ID = 3118485049;
     final classType = "constructor";
     final ID = 1148485274;
 	var termsOfService;
@@ -60,7 +60,7 @@ class AuthorizationSignUpRequired {
 
 class ExportedAuthorization {
     static const CONSTRUCTOR_ID = 3023364792;
-    static const SUBCLASS_OF_ID = 3580724234;
+    static const SUBCLASS_OF_ID = 1607593041;
     final classType = "constructor";
     final ID = 3023364792;
 	BigInt id;
@@ -78,7 +78,7 @@ class ExportedAuthorization {
 
 class PasswordRecovery {
     static const CONSTRUCTOR_ID = 326715557;
-    static const SUBCLASS_OF_ID = 3625306418;
+    static const SUBCLASS_OF_ID = 4201829434;
     final classType = "constructor";
     final ID = 326715557;
 	String emailPattern;
@@ -95,7 +95,7 @@ class PasswordRecovery {
 
 class CodeTypeSms {
     static const CONSTRUCTOR_ID = 1923290508;
-    static const SUBCLASS_OF_ID = 1970554274;
+    static const SUBCLASS_OF_ID = 3019105281;
     final classType = "constructor";
     final ID = 1923290508;
 
@@ -111,7 +111,7 @@ class CodeTypeSms {
 
 class CodeTypeCall {
     static const CONSTRUCTOR_ID = 1948046307;
-    static const SUBCLASS_OF_ID = 1970554274;
+    static const SUBCLASS_OF_ID = 3019105281;
     final classType = "constructor";
     final ID = 1948046307;
 
@@ -127,7 +127,7 @@ class CodeTypeCall {
 
 class CodeTypeFlashCall {
     static const CONSTRUCTOR_ID = 577556219;
-    static const SUBCLASS_OF_ID = 1970554274;
+    static const SUBCLASS_OF_ID = 3019105281;
     final classType = "constructor";
     final ID = 577556219;
 
@@ -143,7 +143,7 @@ class CodeTypeFlashCall {
 
 class CodeTypeMissedCall {
     static const CONSTRUCTOR_ID = 3592083182;
-    static const SUBCLASS_OF_ID = 1970554274;
+    static const SUBCLASS_OF_ID = 3019105281;
     final classType = "constructor";
     final ID = 3592083182;
 
@@ -159,7 +159,7 @@ class CodeTypeMissedCall {
 
 class SentCodeTypeApp {
     static const CONSTRUCTOR_ID = 1035688326;
-    static const SUBCLASS_OF_ID = 4046328869;
+    static const SUBCLASS_OF_ID = 4284159374;
     final classType = "constructor";
     final ID = 1035688326;
 	int length;
@@ -176,7 +176,7 @@ class SentCodeTypeApp {
 
 class SentCodeTypeSms {
     static const CONSTRUCTOR_ID = 3221273506;
-    static const SUBCLASS_OF_ID = 4046328869;
+    static const SUBCLASS_OF_ID = 4284159374;
     final classType = "constructor";
     final ID = 3221273506;
 	int length;
@@ -193,7 +193,7 @@ class SentCodeTypeSms {
 
 class SentCodeTypeCall {
     static const CONSTRUCTOR_ID = 1398007207;
-    static const SUBCLASS_OF_ID = 4046328869;
+    static const SUBCLASS_OF_ID = 4284159374;
     final classType = "constructor";
     final ID = 1398007207;
 	int length;
@@ -210,7 +210,7 @@ class SentCodeTypeCall {
 
 class SentCodeTypeFlashCall {
     static const CONSTRUCTOR_ID = 2869151449;
-    static const SUBCLASS_OF_ID = 4046328869;
+    static const SUBCLASS_OF_ID = 4284159374;
     final classType = "constructor";
     final ID = 2869151449;
 	String pattern;
@@ -227,7 +227,7 @@ class SentCodeTypeFlashCall {
 
 class SentCodeTypeMissedCall {
     static const CONSTRUCTOR_ID = 2181063812;
-    static const SUBCLASS_OF_ID = 4046328869;
+    static const SUBCLASS_OF_ID = 4284159374;
     final classType = "constructor";
     final ID = 2181063812;
 	String prefix;
@@ -245,7 +245,7 @@ class SentCodeTypeMissedCall {
 
 class LoginToken {
     static const CONSTRUCTOR_ID = 1654593920;
-    static const SUBCLASS_OF_ID = 4099573989;
+    static const SUBCLASS_OF_ID = 1800795702;
     final classType = "constructor";
     final ID = 1654593920;
 	int expires;
@@ -263,7 +263,7 @@ class LoginToken {
 
 class LoginTokenMigrateTo {
     static const CONSTRUCTOR_ID = 110008598;
-    static const SUBCLASS_OF_ID = 4099573989;
+    static const SUBCLASS_OF_ID = 1800795702;
     final classType = "constructor";
     final ID = 110008598;
 	int dcId;
@@ -281,7 +281,7 @@ class LoginTokenMigrateTo {
 
 class LoginTokenSuccess {
     static const CONSTRUCTOR_ID = 957176926;
-    static const SUBCLASS_OF_ID = 4099573989;
+    static const SUBCLASS_OF_ID = 1800795702;
     final classType = "constructor";
     final ID = 957176926;
 	var authorization;
@@ -298,7 +298,7 @@ class LoginTokenSuccess {
 
 class LoggedOut {
     static const CONSTRUCTOR_ID = 3282207583;
-    static const SUBCLASS_OF_ID = 633723213;
+    static const SUBCLASS_OF_ID = 176177941;
     final classType = "constructor";
     final ID = 3282207583;
 	List<int> futureAuthToken;

@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class PhoneCall {
     static const CONSTRUCTOR_ID = 3968000320;
-    static const SUBCLASS_OF_ID = 3387368802;
+    static const SUBCLASS_OF_ID = 3565878863;
     final classType = "constructor";
     final ID = 3968000320;
 	var phoneCall;
@@ -25,7 +25,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class GroupCall {
     static const CONSTRUCTOR_ID = 2658302637;
-    static const SUBCLASS_OF_ID = 1617350143;
+    static const SUBCLASS_OF_ID = 809572030;
     final classType = "constructor";
     final ID = 2658302637;
 	var call;
@@ -58,7 +58,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class GroupParticipants {
     static const CONSTRUCTOR_ID = 4101460406;
-    static const SUBCLASS_OF_ID = 3617841446;
+    static const SUBCLASS_OF_ID = 1926431988;
     final classType = "constructor";
     final ID = 4101460406;
 	int count;
@@ -92,7 +92,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class JoinAsPeers {
     static const CONSTRUCTOR_ID = 2951045695;
-    static const SUBCLASS_OF_ID = 1199058535;
+    static const SUBCLASS_OF_ID = 3031920891;
     final classType = "constructor";
     final ID = 2951045695;
 	List<dynamic> peers;
@@ -123,7 +123,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ExportedGroupCallInvite {
     static const CONSTRUCTOR_ID = 541839704;
-    static const SUBCLASS_OF_ID = 1650604524;
+    static const SUBCLASS_OF_ID = 993787535;
     final classType = "constructor";
     final ID = 541839704;
 	String link;
@@ -140,7 +140,7 @@ class ExportedGroupCallInvite {
 
 class GroupCallStreamChannels {
     static const CONSTRUCTOR_ID = 3504636594;
-    static const SUBCLASS_OF_ID = 2393609420;
+    static const SUBCLASS_OF_ID = 2438448612;
     final classType = "constructor";
     final ID = 3504636594;
 	List<dynamic> channels;
@@ -161,7 +161,7 @@ List<dynamic> channels = [];len = reader.readInt();
 
 class GroupCallStreamRtmpUrl {
     static const CONSTRUCTOR_ID = 767505458;
-    static const SUBCLASS_OF_ID = 2835494870;
+    static const SUBCLASS_OF_ID = 3522500043;
     final classType = "constructor";
     final ID = 767505458;
 	String url;

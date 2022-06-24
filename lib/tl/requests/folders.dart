@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class EditPeerFolders {
     static const CONSTRUCTOR_ID = 1749536939;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1749536939;
 	List<dynamic> folderPeers;
@@ -27,7 +27,7 @@ List<dynamic> folderPeers = [];len = reader.readInt();
 
 class DeleteFolder {
     static const CONSTRUCTOR_ID = 472471681;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 472471681;
 	int folderId;

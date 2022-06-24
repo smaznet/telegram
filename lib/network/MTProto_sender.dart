@@ -37,7 +37,7 @@ class MTProtoSender {
   Map<BigInt, dynamic> _pendingState = {};
   late MTProtoState _state;
   late Logger _log;
-  late AuthKey authKey;
+  late AuthKey? authKey;
   var _connection;
   bool _userConnected = false, _reconnecting = false, _disconnected = true;
   var _sendLoopHandle, _recvLoopHandle, _autoReconnectCallback;
@@ -48,7 +48,7 @@ class MTProtoSender {
    * @param authKey
    * @param opts
    */
-  MTProtoSender(AuthKey authKey,
+  MTProtoSender(AuthKey? authKey,
       {updateCallback: null,
       autoReconnectCallback: null,
       dcId: null,
@@ -234,12 +234,12 @@ class MTProtoSender {
     await this._connection.connect();
     this._log.debug('Connection success!');
 //process.exit(0)
-    if (this.authKey.getKey() == null) {
+    if (this.authKey?.getKey() == null) {
       final plain = new MTProtoPlainSender(this._connection, this._log);
       this._log.debug('New auth_key attempt ...');
       final res = await doAuthentication(plain, this._log);
       this._log.debug('Generated new auth_key successfully');
-      await this.authKey.setKey(res['authKey']);
+      await this.authKey?.setKey(res['authKey']);
 
       this._state.timeOffset = res['timeOffset'];
 

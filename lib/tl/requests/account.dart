@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class RegisterDevice {
     static const CONSTRUCTOR_ID = 3968205178;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3968205178;
 	bool noMuted;
@@ -32,7 +32,7 @@ List<BigInt> otherUids = [];len = reader.readInt();
 
 class UnregisterDevice {
     static const CONSTRUCTOR_ID = 1779249670;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1779249670;
 	int tokenType;
@@ -58,7 +58,7 @@ List<BigInt> otherUids = [];len = reader.readInt();
 
 class UpdateNotifySettings {
     static const CONSTRUCTOR_ID = 2227067795;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2227067795;
 	var peer;
@@ -79,7 +79,7 @@ class UpdateNotifySettings {
 
 class GetNotifySettings {
     static const CONSTRUCTOR_ID = 313765169;
-    static const SUBCLASS_OF_ID = 2104865639;
+    static const SUBCLASS_OF_ID = 3475030132;
     final classType = "request";
     final ID = 313765169;
 	var peer;
@@ -99,7 +99,7 @@ class GetNotifySettings {
 
 class ResetNotifySettings {
     static const CONSTRUCTOR_ID = 3682473799;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3682473799;
 
@@ -118,7 +118,7 @@ class ResetNotifySettings {
 
 class UpdateProfile {
     static const CONSTRUCTOR_ID = 2018596725;
-    static const SUBCLASS_OF_ID = 4082588047;
+    static const SUBCLASS_OF_ID = 765557111;
     final classType = "request";
     final ID = 2018596725;
 	String firstName;
@@ -140,7 +140,7 @@ class UpdateProfile {
 
 class UpdateStatus {
     static const CONSTRUCTOR_ID = 1713919532;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1713919532;
 	bool offline;
@@ -160,7 +160,7 @@ class UpdateStatus {
 
 class GetWallPapers {
     static const CONSTRUCTOR_ID = 127302966;
-    static const SUBCLASS_OF_ID = 47911047;
+    static const SUBCLASS_OF_ID = 2730838269;
     final classType = "request";
     final ID = 127302966;
 	BigInt hash;
@@ -180,7 +180,7 @@ class GetWallPapers {
 
 class ReportPeer {
     static const CONSTRUCTOR_ID = 3317316998;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3317316998;
 	var peer;
@@ -202,7 +202,7 @@ class ReportPeer {
 
 class CheckUsername {
     static const CONSTRUCTOR_ID = 655677548;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 655677548;
 	String username;
@@ -222,7 +222,7 @@ class CheckUsername {
 
 class UpdateUsername {
     static const CONSTRUCTOR_ID = 1040964988;
-    static const SUBCLASS_OF_ID = 4082588047;
+    static const SUBCLASS_OF_ID = 765557111;
     final classType = "request";
     final ID = 1040964988;
 	String username;
@@ -242,7 +242,7 @@ class UpdateUsername {
 
 class GetPrivacy {
     static const CONSTRUCTOR_ID = 3671837008;
-    static const SUBCLASS_OF_ID = 2893749843;
+    static const SUBCLASS_OF_ID = 3042622082;
     final classType = "request";
     final ID = 3671837008;
 	var key;
@@ -262,7 +262,7 @@ class GetPrivacy {
 
 class SetPrivacy {
     static const CONSTRUCTOR_ID = 3388480744;
-    static const SUBCLASS_OF_ID = 2893749843;
+    static const SUBCLASS_OF_ID = 3042622082;
     final classType = "request";
     final ID = 3388480744;
 	var key;
@@ -287,7 +287,7 @@ List<dynamic> rules = [];len = reader.readInt();
 
 class DeleteAccount {
     static const CONSTRUCTOR_ID = 1099779595;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1099779595;
 	String reason;
@@ -307,7 +307,7 @@ class DeleteAccount {
 
 class GetAccountTTL {
     static const CONSTRUCTOR_ID = 150761757;
-    static const SUBCLASS_OF_ID = 2736351567;
+    static const SUBCLASS_OF_ID = 3131284872;
     final classType = "request";
     final ID = 150761757;
 
@@ -326,7 +326,7 @@ class GetAccountTTL {
 
 class SetAccountTTL {
     static const CONSTRUCTOR_ID = 608323678;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 608323678;
 	var ttl;
@@ -346,7 +346,7 @@ class SetAccountTTL {
 
 class SendChangePhoneCode {
     static const CONSTRUCTOR_ID = 2186758885;
-    static const SUBCLASS_OF_ID = 3075349260;
+    static const SUBCLASS_OF_ID = 1827172481;
     final classType = "request";
     final ID = 2186758885;
 	String phoneNumber;
@@ -367,7 +367,7 @@ class SendChangePhoneCode {
 
 class ChangePhone {
     static const CONSTRUCTOR_ID = 1891839707;
-    static const SUBCLASS_OF_ID = 4082588047;
+    static const SUBCLASS_OF_ID = 765557111;
     final classType = "request";
     final ID = 1891839707;
 	String phoneNumber;
@@ -389,7 +389,7 @@ class ChangePhone {
 
 class UpdateDeviceLocked {
     static const CONSTRUCTOR_ID = 954152242;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 954152242;
 	int period;
@@ -409,7 +409,7 @@ class UpdateDeviceLocked {
 
 class GetAuthorizations {
     static const CONSTRUCTOR_ID = 3810574680;
-    static const SUBCLASS_OF_ID = 1152082085;
+    static const SUBCLASS_OF_ID = 200663295;
     final classType = "request";
     final ID = 3810574680;
 
@@ -428,7 +428,7 @@ class GetAuthorizations {
 
 class ResetAuthorization {
     static const CONSTRUCTOR_ID = 3749180348;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3749180348;
 	BigInt hash;
@@ -448,7 +448,7 @@ class ResetAuthorization {
 
 class GetPassword {
     static const CONSTRUCTOR_ID = 1418342645;
-    static const SUBCLASS_OF_ID = 4025773633;
+    static const SUBCLASS_OF_ID = 1403130275;
     final classType = "request";
     final ID = 1418342645;
 
@@ -467,7 +467,7 @@ class GetPassword {
 
 class GetPasswordSettings {
     static const CONSTRUCTOR_ID = 2631199481;
-    static const SUBCLASS_OF_ID = 1979417585;
+    static const SUBCLASS_OF_ID = 3527389304;
     final classType = "request";
     final ID = 2631199481;
 	var password;
@@ -487,7 +487,7 @@ class GetPasswordSettings {
 
 class UpdatePasswordSettings {
     static const CONSTRUCTOR_ID = 2778402863;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2778402863;
 	var password;
@@ -508,7 +508,7 @@ class UpdatePasswordSettings {
 
 class SendConfirmPhoneCode {
     static const CONSTRUCTOR_ID = 457157256;
-    static const SUBCLASS_OF_ID = 3075349260;
+    static const SUBCLASS_OF_ID = 1827172481;
     final classType = "request";
     final ID = 457157256;
 	String hash;
@@ -529,7 +529,7 @@ class SendConfirmPhoneCode {
 
 class ConfirmPhone {
     static const CONSTRUCTOR_ID = 1596029123;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1596029123;
 	String phoneCodeHash;
@@ -550,7 +550,7 @@ class ConfirmPhone {
 
 class GetTmpPassword {
     static const CONSTRUCTOR_ID = 1151208273;
-    static const SUBCLASS_OF_ID = 1735435464;
+    static const SUBCLASS_OF_ID = 2959382829;
     final classType = "request";
     final ID = 1151208273;
 	var password;
@@ -571,7 +571,7 @@ class GetTmpPassword {
 
 class GetWebAuthorizations {
     static const CONSTRUCTOR_ID = 405695855;
-    static const SUBCLASS_OF_ID = 3672824589;
+    static const SUBCLASS_OF_ID = 2587253554;
     final classType = "request";
     final ID = 405695855;
 
@@ -590,7 +590,7 @@ class GetWebAuthorizations {
 
 class ResetWebAuthorization {
     static const CONSTRUCTOR_ID = 755087855;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 755087855;
 	BigInt hash;
@@ -610,7 +610,7 @@ class ResetWebAuthorization {
 
 class ResetWebAuthorizations {
     static const CONSTRUCTOR_ID = 1747789204;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1747789204;
 
@@ -629,7 +629,7 @@ class ResetWebAuthorizations {
 
 class GetAllSecureValues {
     static const CONSTRUCTOR_ID = 2995305597;
-    static const SUBCLASS_OF_ID = 2583645335;
+    static const SUBCLASS_OF_ID = 3895345441;
     final classType = "request";
     final ID = 2995305597;
 
@@ -648,7 +648,7 @@ class GetAllSecureValues {
 
 class GetSecureValue {
     static const CONSTRUCTOR_ID = 1936088002;
-    static const SUBCLASS_OF_ID = 2583645335;
+    static const SUBCLASS_OF_ID = 3895345441;
     final classType = "request";
     final ID = 1936088002;
 	List<dynamic> types;
@@ -672,7 +672,7 @@ List<dynamic> types = [];len = reader.readInt();
 
 class SaveSecureValue {
     static const CONSTRUCTOR_ID = 2308956957;
-    static const SUBCLASS_OF_ID = 1830999016;
+    static const SUBCLASS_OF_ID = 85014702;
     final classType = "request";
     final ID = 2308956957;
 	var value;
@@ -693,7 +693,7 @@ class SaveSecureValue {
 
 class DeleteSecureValue {
     static const CONSTRUCTOR_ID = 3095444555;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3095444555;
 	List<dynamic> types;
@@ -717,7 +717,7 @@ List<dynamic> types = [];len = reader.readInt();
 
 class GetAuthorizationForm {
     static const CONSTRUCTOR_ID = 2838059386;
-    static const SUBCLASS_OF_ID = 3711964628;
+    static const SUBCLASS_OF_ID = 2013567636;
     final classType = "request";
     final ID = 2838059386;
 	BigInt botId;
@@ -739,7 +739,7 @@ class GetAuthorizationForm {
 
 class AcceptAuthorization {
     static const CONSTRUCTOR_ID = 4092415091;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4092415091;
 	BigInt botId;
@@ -767,7 +767,7 @@ List<dynamic> valueHashes = [];len = reader.readInt();
 
 class SendVerifyPhoneCode {
     static const CONSTRUCTOR_ID = 2778945273;
-    static const SUBCLASS_OF_ID = 3075349260;
+    static const SUBCLASS_OF_ID = 1827172481;
     final classType = "request";
     final ID = 2778945273;
 	String phoneNumber;
@@ -788,7 +788,7 @@ class SendVerifyPhoneCode {
 
 class VerifyPhone {
     static const CONSTRUCTOR_ID = 1305716726;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1305716726;
 	String phoneNumber;
@@ -810,7 +810,7 @@ class VerifyPhone {
 
 class SendVerifyEmailCode {
     static const CONSTRUCTOR_ID = 1880182943;
-    static const SUBCLASS_OF_ID = 3982715776;
+    static const SUBCLASS_OF_ID = 1777582190;
     final classType = "request";
     final ID = 1880182943;
 	String email;
@@ -830,7 +830,7 @@ class SendVerifyEmailCode {
 
 class VerifyEmail {
     static const CONSTRUCTOR_ID = 3971627483;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3971627483;
 	String email;
@@ -851,7 +851,7 @@ class VerifyEmail {
 
 class InitTakeoutSession {
     static const CONSTRUCTOR_ID = 2398350000;
-    static const SUBCLASS_OF_ID = 2501695420;
+    static const SUBCLASS_OF_ID = 2218704517;
     final classType = "request";
     final ID = 2398350000;
 	bool contacts;
@@ -877,7 +877,7 @@ class InitTakeoutSession {
 
 class FinishTakeoutSession {
     static const CONSTRUCTOR_ID = 489050862;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 489050862;
 	bool success;
@@ -897,7 +897,7 @@ class FinishTakeoutSession {
 
 class ConfirmPasswordEmail {
     static const CONSTRUCTOR_ID = 2413762848;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2413762848;
 	String code;
@@ -917,7 +917,7 @@ class ConfirmPasswordEmail {
 
 class ResendPasswordEmail {
     static const CONSTRUCTOR_ID = 2055154197;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2055154197;
 
@@ -936,7 +936,7 @@ class ResendPasswordEmail {
 
 class CancelPasswordEmail {
     static const CONSTRUCTOR_ID = 3251361206;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3251361206;
 
@@ -955,7 +955,7 @@ class CancelPasswordEmail {
 
 class GetContactSignUpNotification {
     static const CONSTRUCTOR_ID = 2668087080;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2668087080;
 
@@ -974,7 +974,7 @@ class GetContactSignUpNotification {
 
 class SetContactSignUpNotification {
     static const CONSTRUCTOR_ID = 3488890721;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3488890721;
 	bool silent;
@@ -994,7 +994,7 @@ class SetContactSignUpNotification {
 
 class GetNotifyExceptions {
     static const CONSTRUCTOR_ID = 1398240377;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1398240377;
 	bool compareSound;
@@ -1015,7 +1015,7 @@ class GetNotifyExceptions {
 
 class GetWallPaper {
     static const CONSTRUCTOR_ID = 4237155306;
-    static const SUBCLASS_OF_ID = 1462898468;
+    static const SUBCLASS_OF_ID = 2527250827;
     final classType = "request";
     final ID = 4237155306;
 	var wallpaper;
@@ -1035,7 +1035,7 @@ class GetWallPaper {
 
 class UploadWallPaper {
     static const CONSTRUCTOR_ID = 3716494945;
-    static const SUBCLASS_OF_ID = 1462898468;
+    static const SUBCLASS_OF_ID = 2527250827;
     final classType = "request";
     final ID = 3716494945;
 	var file;
@@ -1057,7 +1057,7 @@ class UploadWallPaper {
 
 class SaveWallPaper {
     static const CONSTRUCTOR_ID = 1817860919;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1817860919;
 	var wallpaper;
@@ -1079,7 +1079,7 @@ class SaveWallPaper {
 
 class InstallWallPaper {
     static const CONSTRUCTOR_ID = 4276967273;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4276967273;
 	var wallpaper;
@@ -1100,7 +1100,7 @@ class InstallWallPaper {
 
 class ResetWallPapers {
     static const CONSTRUCTOR_ID = 3141244932;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3141244932;
 
@@ -1119,7 +1119,7 @@ class ResetWallPapers {
 
 class GetAutoDownloadSettings {
     static const CONSTRUCTOR_ID = 1457130303;
-    static const SUBCLASS_OF_ID = 1270573569;
+    static const SUBCLASS_OF_ID = 800610593;
     final classType = "request";
     final ID = 1457130303;
 
@@ -1138,7 +1138,7 @@ class GetAutoDownloadSettings {
 
 class SaveAutoDownloadSettings {
     static const CONSTRUCTOR_ID = 1995661875;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1995661875;
 	bool low;
@@ -1160,7 +1160,7 @@ class SaveAutoDownloadSettings {
 
 class UploadTheme {
     static const CONSTRUCTOR_ID = 473805619;
-    static const SUBCLASS_OF_ID = 726754441;
+    static const SUBCLASS_OF_ID = 555739168;
     final classType = "request";
     final ID = 473805619;
 	var file;
@@ -1183,7 +1183,7 @@ class UploadTheme {
 
 class CreateTheme {
     static const CONSTRUCTOR_ID = 1697530880;
-    static const SUBCLASS_OF_ID = 1399291670;
+    static const SUBCLASS_OF_ID = 1454688268;
     final classType = "request";
     final ID = 1697530880;
 	String slug;
@@ -1210,7 +1210,7 @@ List<dynamic> settings = [];len = reader.readInt();
 
 class UpdateTheme {
     static const CONSTRUCTOR_ID = 737414348;
-    static const SUBCLASS_OF_ID = 1399291670;
+    static const SUBCLASS_OF_ID = 1454688268;
     final classType = "request";
     final ID = 737414348;
 	String format;
@@ -1239,7 +1239,7 @@ List<dynamic> settings = [];len = reader.readInt();
 
 class SaveTheme {
     static const CONSTRUCTOR_ID = 4065792108;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4065792108;
 	var theme;
@@ -1260,7 +1260,7 @@ class SaveTheme {
 
 class InstallTheme {
     static const CONSTRUCTOR_ID = 3341269819;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3341269819;
 	bool dark;
@@ -1283,7 +1283,7 @@ class InstallTheme {
 
 class GetTheme {
     static const CONSTRUCTOR_ID = 2375906347;
-    static const SUBCLASS_OF_ID = 1399291670;
+    static const SUBCLASS_OF_ID = 1454688268;
     final classType = "request";
     final ID = 2375906347;
 	String format;
@@ -1305,7 +1305,7 @@ class GetTheme {
 
 class GetThemes {
     static const CONSTRUCTOR_ID = 1913054296;
-    static const SUBCLASS_OF_ID = 3110636470;
+    static const SUBCLASS_OF_ID = 2143625732;
     final classType = "request";
     final ID = 1913054296;
 	String format;
@@ -1326,7 +1326,7 @@ class GetThemes {
 
 class SetContentSettings {
     static const CONSTRUCTOR_ID = 3044323691;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3044323691;
 	bool sensitiveEnabled;
@@ -1346,7 +1346,7 @@ class SetContentSettings {
 
 class GetContentSettings {
     static const CONSTRUCTOR_ID = 2342210990;
-    static const SUBCLASS_OF_ID = 3180708204;
+    static const SUBCLASS_OF_ID = 2923427985;
     final classType = "request";
     final ID = 2342210990;
 
@@ -1365,7 +1365,7 @@ class GetContentSettings {
 
 class GetMultiWallPapers {
     static const CONSTRUCTOR_ID = 1705865692;
-    static const SUBCLASS_OF_ID = 1785833882;
+    static const SUBCLASS_OF_ID = 2395165315;
     final classType = "request";
     final ID = 1705865692;
 	List<dynamic> wallpapers;
@@ -1389,7 +1389,7 @@ List<dynamic> wallpapers = [];len = reader.readInt();
 
 class GetGlobalPrivacySettings {
     static const CONSTRUCTOR_ID = 3945483510;
-    static const SUBCLASS_OF_ID = 321093757;
+    static const SUBCLASS_OF_ID = 3373160304;
     final classType = "request";
     final ID = 3945483510;
 
@@ -1408,7 +1408,7 @@ class GetGlobalPrivacySettings {
 
 class SetGlobalPrivacySettings {
     static const CONSTRUCTOR_ID = 517647042;
-    static const SUBCLASS_OF_ID = 321093757;
+    static const SUBCLASS_OF_ID = 3373160304;
     final classType = "request";
     final ID = 517647042;
 	var settings;
@@ -1428,7 +1428,7 @@ class SetGlobalPrivacySettings {
 
 class ReportProfilePhoto {
     static const CONSTRUCTOR_ID = 4203529973;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4203529973;
 	var peer;
@@ -1451,7 +1451,7 @@ class ReportProfilePhoto {
 
 class ResetPassword {
     static const CONSTRUCTOR_ID = 2466827803;
-    static const SUBCLASS_OF_ID = 2681946297;
+    static const SUBCLASS_OF_ID = 1230009366;
     final classType = "request";
     final ID = 2466827803;
 
@@ -1470,7 +1470,7 @@ class ResetPassword {
 
 class DeclinePasswordReset {
     static const CONSTRUCTOR_ID = 1284770294;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1284770294;
 
@@ -1489,7 +1489,7 @@ class DeclinePasswordReset {
 
 class GetChatThemes {
     static const CONSTRUCTOR_ID = 3594051209;
-    static const SUBCLASS_OF_ID = 3110636470;
+    static const SUBCLASS_OF_ID = 2143625732;
     final classType = "request";
     final ID = 3594051209;
 	BigInt hash;
@@ -1509,7 +1509,7 @@ class GetChatThemes {
 
 class SetAuthorizationTTL {
     static const CONSTRUCTOR_ID = 3213466272;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3213466272;
 	int authorizationTtlDays;
@@ -1529,7 +1529,7 @@ class SetAuthorizationTTL {
 
 class ChangeAuthorizationSettings {
     static const CONSTRUCTOR_ID = 1089766498;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1089766498;
 	BigInt hash;
@@ -1551,7 +1551,7 @@ class ChangeAuthorizationSettings {
 
 class GetSavedRingtones {
     static const CONSTRUCTOR_ID = 3784319624;
-    static const SUBCLASS_OF_ID = 1850196031;
+    static const SUBCLASS_OF_ID = 666683742;
     final classType = "request";
     final ID = 3784319624;
 	BigInt hash;
@@ -1571,7 +1571,7 @@ class GetSavedRingtones {
 
 class SaveRingtone {
     static const CONSTRUCTOR_ID = 1038768899;
-    static const SUBCLASS_OF_ID = 3445489837;
+    static const SUBCLASS_OF_ID = 2984412196;
     final classType = "request";
     final ID = 1038768899;
 	var id;
@@ -1592,7 +1592,7 @@ class SaveRingtone {
 
 class UploadRingtone {
     static const CONSTRUCTOR_ID = 2199552930;
-    static const SUBCLASS_OF_ID = 726754441;
+    static const SUBCLASS_OF_ID = 555739168;
     final classType = "request";
     final ID = 2199552930;
 	var file;

@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetBroadcastStats {
     static const CONSTRUCTOR_ID = 2873246746;
-    static const SUBCLASS_OF_ID = 2653194799;
+    static const SUBCLASS_OF_ID = 2146587688;
     final classType = "request";
     final ID = 2873246746;
 	bool dark;
@@ -24,7 +24,7 @@ class GetBroadcastStats {
 
 class LoadAsyncGraph {
     static const CONSTRUCTOR_ID = 1646092192;
-    static const SUBCLASS_OF_ID = 3562669186;
+    static const SUBCLASS_OF_ID = 2609918291;
     final classType = "request";
     final ID = 1646092192;
 	String token;
@@ -45,7 +45,7 @@ class LoadAsyncGraph {
 
 class GetMegagroupStats {
     static const CONSTRUCTOR_ID = 3705636359;
-    static const SUBCLASS_OF_ID = 3451120903;
+    static const SUBCLASS_OF_ID = 1532608141;
     final classType = "request";
     final ID = 3705636359;
 	bool dark;
@@ -66,7 +66,7 @@ class GetMegagroupStats {
 
 class GetMessagePublicForwards {
     static const CONSTRUCTOR_ID = 1445996571;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 1445996571;
 	var channel;
@@ -91,7 +91,7 @@ class GetMessagePublicForwards {
 
 class GetMessageStats {
     static const CONSTRUCTOR_ID = 3068175349;
-    static const SUBCLASS_OF_ID = 1807133955;
+    static const SUBCLASS_OF_ID = 2516886306;
     final classType = "request";
     final ID = 3068175349;
 	bool dark;

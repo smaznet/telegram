@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class PrivacyRules {
     static const CONSTRUCTOR_ID = 1352683077;
-    static const SUBCLASS_OF_ID = 2893749843;
+    static const SUBCLASS_OF_ID = 3042622082;
     final classType = "constructor";
     final ID = 1352683077;
 	List<dynamic> rules;
@@ -34,7 +34,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class Authorizations {
     static const CONSTRUCTOR_ID = 1275039392;
-    static const SUBCLASS_OF_ID = 1152082085;
+    static const SUBCLASS_OF_ID = 200663295;
     final classType = "constructor";
     final ID = 1275039392;
 	int authorizationTtlDays;
@@ -56,7 +56,7 @@ List<dynamic> authorizations = [];len = reader.readInt();
 
 class Password {
     static const CONSTRUCTOR_ID = 408623183;
-    static const SUBCLASS_OF_ID = 4025773633;
+    static const SUBCLASS_OF_ID = 1403130275;
     final classType = "constructor";
     final ID = 408623183;
 	bool hasRecovery;
@@ -84,7 +84,7 @@ class Password {
 
 class PasswordSettings {
     static const CONSTRUCTOR_ID = 2589733861;
-    static const SUBCLASS_OF_ID = 1979417585;
+    static const SUBCLASS_OF_ID = 3527389304;
     final classType = "constructor";
     final ID = 2589733861;
 	String email;
@@ -102,7 +102,7 @@ class PasswordSettings {
 
 class PasswordInputSettings {
     static const CONSTRUCTOR_ID = 3258394569;
-    static const SUBCLASS_OF_ID = 586691691;
+    static const SUBCLASS_OF_ID = 205679782;
     final classType = "constructor";
     final ID = 3258394569;
 	var newAlgo;
@@ -123,7 +123,7 @@ class PasswordInputSettings {
 
 class TmpPassword {
     static const CONSTRUCTOR_ID = 3680828724;
-    static const SUBCLASS_OF_ID = 1735435464;
+    static const SUBCLASS_OF_ID = 2959382829;
     final classType = "constructor";
     final ID = 3680828724;
 	List<int> tmpPassword;
@@ -141,7 +141,7 @@ class TmpPassword {
 
 class WebAuthorizations {
     static const CONSTRUCTOR_ID = 3981887996;
-    static const SUBCLASS_OF_ID = 3672824589;
+    static const SUBCLASS_OF_ID = 2587253554;
     final classType = "constructor";
     final ID = 3981887996;
 	List<dynamic> authorizations;
@@ -167,7 +167,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class AuthorizationForm {
     static const CONSTRUCTOR_ID = 2905480408;
-    static const SUBCLASS_OF_ID = 3711964628;
+    static const SUBCLASS_OF_ID = 2013567636;
     final classType = "constructor";
     final ID = 2905480408;
 	List<dynamic> requiredTypes;
@@ -204,7 +204,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class SentEmailCode {
     static const CONSTRUCTOR_ID = 2166326607;
-    static const SUBCLASS_OF_ID = 3982715776;
+    static const SUBCLASS_OF_ID = 1777582190;
     final classType = "constructor";
     final ID = 2166326607;
 	String emailPattern;
@@ -222,7 +222,7 @@ class SentEmailCode {
 
 class Takeout {
     static const CONSTRUCTOR_ID = 1304052993;
-    static const SUBCLASS_OF_ID = 2501695420;
+    static const SUBCLASS_OF_ID = 2218704517;
     final classType = "constructor";
     final ID = 1304052993;
 	BigInt id;
@@ -239,7 +239,7 @@ class Takeout {
 
 class WallPapersNotModified {
     static const CONSTRUCTOR_ID = 471437699;
-    static const SUBCLASS_OF_ID = 47911047;
+    static const SUBCLASS_OF_ID = 2730838269;
     final classType = "constructor";
     final ID = 471437699;
 
@@ -255,7 +255,7 @@ class WallPapersNotModified {
 
 class WallPapers {
     static const CONSTRUCTOR_ID = 3452142988;
-    static const SUBCLASS_OF_ID = 47911047;
+    static const SUBCLASS_OF_ID = 2730838269;
     final classType = "constructor";
     final ID = 3452142988;
 	BigInt hash;
@@ -277,7 +277,7 @@ List<dynamic> wallpapers = [];len = reader.readInt();
 
 class AutoDownloadSettings {
     static const CONSTRUCTOR_ID = 1674235686;
-    static const SUBCLASS_OF_ID = 1270573569;
+    static const SUBCLASS_OF_ID = 800610593;
     final classType = "constructor";
     final ID = 1674235686;
 	var low;
@@ -296,7 +296,7 @@ class AutoDownloadSettings {
 
 class ThemesNotModified {
     static const CONSTRUCTOR_ID = 4095653410;
-    static const SUBCLASS_OF_ID = 3110636470;
+    static const SUBCLASS_OF_ID = 2143625732;
     final classType = "constructor";
     final ID = 4095653410;
 
@@ -312,7 +312,7 @@ class ThemesNotModified {
 
 class Themes {
     static const CONSTRUCTOR_ID = 2587724909;
-    static const SUBCLASS_OF_ID = 3110636470;
+    static const SUBCLASS_OF_ID = 2143625732;
     final classType = "constructor";
     final ID = 2587724909;
 	BigInt hash;
@@ -334,7 +334,7 @@ List<dynamic> themes = [];len = reader.readInt();
 
 class ContentSettings {
     static const CONSTRUCTOR_ID = 1474462241;
-    static const SUBCLASS_OF_ID = 3180708204;
+    static const SUBCLASS_OF_ID = 2923427985;
     final classType = "constructor";
     final ID = 1474462241;
 	bool sensitiveEnabled;
@@ -352,7 +352,7 @@ class ContentSettings {
 
 class ResetPasswordFailedWait {
     static const CONSTRUCTOR_ID = 3816265825;
-    static const SUBCLASS_OF_ID = 2681946297;
+    static const SUBCLASS_OF_ID = 1230009366;
     final classType = "constructor";
     final ID = 3816265825;
 	int retryDate;
@@ -369,7 +369,7 @@ class ResetPasswordFailedWait {
 
 class ResetPasswordRequestedWait {
     static const CONSTRUCTOR_ID = 3924819069;
-    static const SUBCLASS_OF_ID = 2681946297;
+    static const SUBCLASS_OF_ID = 1230009366;
     final classType = "constructor";
     final ID = 3924819069;
 	int untilDate;
@@ -386,7 +386,7 @@ class ResetPasswordRequestedWait {
 
 class ResetPasswordOk {
     static const CONSTRUCTOR_ID = 3911636542;
-    static const SUBCLASS_OF_ID = 2681946297;
+    static const SUBCLASS_OF_ID = 1230009366;
     final classType = "constructor";
     final ID = 3911636542;
 
@@ -402,7 +402,7 @@ class ResetPasswordOk {
 
 class SavedRingtonesNotModified {
     static const CONSTRUCTOR_ID = 4227262641;
-    static const SUBCLASS_OF_ID = 1850196031;
+    static const SUBCLASS_OF_ID = 666683742;
     final classType = "constructor";
     final ID = 4227262641;
 
@@ -418,7 +418,7 @@ class SavedRingtonesNotModified {
 
 class SavedRingtones {
     static const CONSTRUCTOR_ID = 3253284037;
-    static const SUBCLASS_OF_ID = 1850196031;
+    static const SUBCLASS_OF_ID = 666683742;
     final classType = "constructor";
     final ID = 3253284037;
 	BigInt hash;
@@ -440,7 +440,7 @@ List<dynamic> ringtones = [];len = reader.readInt();
 
 class SavedRingtone {
     static const CONSTRUCTOR_ID = 3072737133;
-    static const SUBCLASS_OF_ID = 3445489837;
+    static const SUBCLASS_OF_ID = 2984412196;
     final classType = "constructor";
     final ID = 3072737133;
 
@@ -456,7 +456,7 @@ class SavedRingtone {
 
 class SavedRingtoneConverted {
     static const CONSTRUCTOR_ID = 523271863;
-    static const SUBCLASS_OF_ID = 3445489837;
+    static const SUBCLASS_OF_ID = 2984412196;
     final classType = "constructor";
     final ID = 523271863;
 	var document;

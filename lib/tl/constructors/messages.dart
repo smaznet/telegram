@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class Dialogs {
     static const CONSTRUCTOR_ID = 364538944;
-    static const SUBCLASS_OF_ID = 3960369816;
+    static const SUBCLASS_OF_ID = 236671726;
     final classType = "constructor";
     final ID = 364538944;
 	List<dynamic> dialogs;
@@ -39,7 +39,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class DialogsSlice {
     static const CONSTRUCTOR_ID = 1910543603;
-    static const SUBCLASS_OF_ID = 3960369816;
+    static const SUBCLASS_OF_ID = 236671726;
     final classType = "constructor";
     final ID = 1910543603;
 	int count;
@@ -76,7 +76,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class DialogsNotModified {
     static const CONSTRUCTOR_ID = 4041467286;
-    static const SUBCLASS_OF_ID = 3960369816;
+    static const SUBCLASS_OF_ID = 236671726;
     final classType = "constructor";
     final ID = 4041467286;
 	int count;
@@ -93,7 +93,7 @@ class DialogsNotModified {
 
 class Messages {
     static const CONSTRUCTOR_ID = 2356252295;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "constructor";
     final ID = 2356252295;
 	List<dynamic> messages;
@@ -124,7 +124,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class MessagesSlice {
     static const CONSTRUCTOR_ID = 978610270;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "constructor";
     final ID = 978610270;
 	bool inexact;
@@ -159,7 +159,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ChannelMessages {
     static const CONSTRUCTOR_ID = 1682413576;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "constructor";
     final ID = 1682413576;
 	bool inexact;
@@ -194,7 +194,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class MessagesNotModified {
     static const CONSTRUCTOR_ID = 1951620897;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "constructor";
     final ID = 1951620897;
 	int count;
@@ -211,7 +211,7 @@ class MessagesNotModified {
 
 class Chats {
     static const CONSTRUCTOR_ID = 1694474197;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "constructor";
     final ID = 1694474197;
 	List<dynamic> chats;
@@ -232,7 +232,7 @@ List<dynamic> chats = [];len = reader.readInt();
 
 class ChatsSlice {
     static const CONSTRUCTOR_ID = 2631405892;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "constructor";
     final ID = 2631405892;
 	int count;
@@ -254,7 +254,7 @@ List<dynamic> chats = [];len = reader.readInt();
 
 class ChatFull {
     static const CONSTRUCTOR_ID = 3856126364;
-    static const SUBCLASS_OF_ID = 2713854326;
+    static const SUBCLASS_OF_ID = 576344329;
     final classType = "constructor";
     final ID = 3856126364;
 	var fullChat;
@@ -281,7 +281,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class AffectedHistory {
     static const CONSTRUCTOR_ID = 3025955281;
-    static const SUBCLASS_OF_ID = 2033342386;
+    static const SUBCLASS_OF_ID = 743031062;
     final classType = "constructor";
     final ID = 3025955281;
 	int pts;
@@ -300,7 +300,7 @@ class AffectedHistory {
 
 class DhConfigNotModified {
     static const CONSTRUCTOR_ID = 3236054581;
-    static const SUBCLASS_OF_ID = 3503214613;
+    static const SUBCLASS_OF_ID = 3834178955;
     final classType = "constructor";
     final ID = 3236054581;
 	List<int> random;
@@ -317,7 +317,7 @@ class DhConfigNotModified {
 
 class DhConfig {
     static const CONSTRUCTOR_ID = 740433629;
-    static const SUBCLASS_OF_ID = 3503214613;
+    static const SUBCLASS_OF_ID = 3834178955;
     final classType = "constructor";
     final ID = 740433629;
 	int g;
@@ -337,7 +337,7 @@ class DhConfig {
 
 class SentEncryptedMessage {
     static const CONSTRUCTOR_ID = 1443858741;
-    static const SUBCLASS_OF_ID = 3879435338;
+    static const SUBCLASS_OF_ID = 3382591056;
     final classType = "constructor";
     final ID = 1443858741;
 	int date;
@@ -354,7 +354,7 @@ class SentEncryptedMessage {
 
 class SentEncryptedFile {
     static const CONSTRUCTOR_ID = 2492727090;
-    static const SUBCLASS_OF_ID = 3879435338;
+    static const SUBCLASS_OF_ID = 3382591056;
     final classType = "constructor";
     final ID = 2492727090;
 	int date;
@@ -372,7 +372,7 @@ class SentEncryptedFile {
 
 class StickersNotModified {
     static const CONSTRUCTOR_ID = 4050950690;
-    static const SUBCLASS_OF_ID = 2755410095;
+    static const SUBCLASS_OF_ID = 3611015646;
     final classType = "constructor";
     final ID = 4050950690;
 
@@ -388,7 +388,7 @@ class StickersNotModified {
 
 class Stickers {
     static const CONSTRUCTOR_ID = 816245886;
-    static const SUBCLASS_OF_ID = 2755410095;
+    static const SUBCLASS_OF_ID = 3611015646;
     final classType = "constructor";
     final ID = 816245886;
 	BigInt hash;
@@ -410,7 +410,7 @@ List<dynamic> stickers = [];len = reader.readInt();
 
 class AllStickersNotModified {
     static const CONSTRUCTOR_ID = 3898999491;
-    static const SUBCLASS_OF_ID = 3920753571;
+    static const SUBCLASS_OF_ID = 1166231593;
     final classType = "constructor";
     final ID = 3898999491;
 
@@ -426,7 +426,7 @@ class AllStickersNotModified {
 
 class AllStickers {
     static const CONSTRUCTOR_ID = 3451637435;
-    static const SUBCLASS_OF_ID = 3920753571;
+    static const SUBCLASS_OF_ID = 1166231593;
     final classType = "constructor";
     final ID = 3451637435;
 	BigInt hash;
@@ -448,7 +448,7 @@ List<dynamic> sets = [];len = reader.readInt();
 
 class AffectedMessages {
     static const CONSTRUCTOR_ID = 2228326789;
-    static const SUBCLASS_OF_ID = 3515066396;
+    static const SUBCLASS_OF_ID = 3469983854;
     final classType = "constructor";
     final ID = 2228326789;
 	int pts;
@@ -466,7 +466,7 @@ class AffectedMessages {
 
 class StickerSet {
     static const CONSTRUCTOR_ID = 3054118054;
-    static const SUBCLASS_OF_ID = 4289717157;
+    static const SUBCLASS_OF_ID = 2607827546;
     final classType = "constructor";
     final ID = 3054118054;
 	var set;
@@ -493,7 +493,7 @@ List<dynamic> documents = [];len = reader.readInt();
 
 class StickerSetNotModified {
     static const CONSTRUCTOR_ID = 3556320491;
-    static const SUBCLASS_OF_ID = 4289717157;
+    static const SUBCLASS_OF_ID = 2607827546;
     final classType = "constructor";
     final ID = 3556320491;
 
@@ -509,7 +509,7 @@ class StickerSetNotModified {
 
 class SavedGifsNotModified {
     static const CONSTRUCTOR_ID = 3892468898;
-    static const SUBCLASS_OF_ID = 1128343390;
+    static const SUBCLASS_OF_ID = 2794152437;
     final classType = "constructor";
     final ID = 3892468898;
 
@@ -525,7 +525,7 @@ class SavedGifsNotModified {
 
 class SavedGifs {
     static const CONSTRUCTOR_ID = 2225089037;
-    static const SUBCLASS_OF_ID = 1128343390;
+    static const SUBCLASS_OF_ID = 2794152437;
     final classType = "constructor";
     final ID = 2225089037;
 	BigInt hash;
@@ -547,7 +547,7 @@ List<dynamic> gifs = [];len = reader.readInt();
 
 class BotResults {
     static const CONSTRUCTOR_ID = 2491197512;
-    static const SUBCLASS_OF_ID = 2719514484;
+    static const SUBCLASS_OF_ID = 1054136777;
     final classType = "constructor";
     final ID = 2491197512;
 	bool gallery;
@@ -578,7 +578,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class BotCallbackAnswer {
     static const CONSTRUCTOR_ID = 911761060;
-    static const SUBCLASS_OF_ID = 56374108;
+    static const SUBCLASS_OF_ID = 1817039244;
     final classType = "constructor";
     final ID = 911761060;
 	bool alert;
@@ -600,7 +600,7 @@ class BotCallbackAnswer {
 
 class MessageEditData {
     static const CONSTRUCTOR_ID = 649453030;
-    static const SUBCLASS_OF_ID = 473402186;
+    static const SUBCLASS_OF_ID = 4215772317;
     final classType = "constructor";
     final ID = 649453030;
 	bool caption;
@@ -617,7 +617,7 @@ class MessageEditData {
 
 class PeerDialogs {
     static const CONSTRUCTOR_ID = 863093588;
-    static const SUBCLASS_OF_ID = 2010003433;
+    static const SUBCLASS_OF_ID = 986120498;
     final classType = "constructor";
     final ID = 863093588;
 	List<dynamic> dialogs;
@@ -654,7 +654,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class FeaturedStickersNotModified {
     static const CONSTRUCTOR_ID = 3336309862;
-    static const SUBCLASS_OF_ID = 874812118;
+    static const SUBCLASS_OF_ID = 638891810;
     final classType = "constructor";
     final ID = 3336309862;
 	int count;
@@ -671,7 +671,7 @@ class FeaturedStickersNotModified {
 
 class FeaturedStickers {
     static const CONSTRUCTOR_ID = 2227184400;
-    static const SUBCLASS_OF_ID = 874812118;
+    static const SUBCLASS_OF_ID = 638891810;
     final classType = "constructor";
     final ID = 2227184400;
 	BigInt hash;
@@ -699,7 +699,7 @@ List<BigInt> unread = [];len = reader.readInt();
 
 class RecentStickersNotModified {
     static const CONSTRUCTOR_ID = 186120336;
-    static const SUBCLASS_OF_ID = 1960026623;
+    static const SUBCLASS_OF_ID = 4151281283;
     final classType = "constructor";
     final ID = 186120336;
 
@@ -715,7 +715,7 @@ class RecentStickersNotModified {
 
 class RecentStickers {
     static const CONSTRUCTOR_ID = 2295561302;
-    static const SUBCLASS_OF_ID = 1960026623;
+    static const SUBCLASS_OF_ID = 4151281283;
     final classType = "constructor";
     final ID = 2295561302;
 	BigInt hash;
@@ -747,7 +747,7 @@ List<int> dates = [];len = reader.readInt();
 
 class ArchivedStickers {
     static const CONSTRUCTOR_ID = 1338747336;
-    static const SUBCLASS_OF_ID = 2027748770;
+    static const SUBCLASS_OF_ID = 1922488177;
     final classType = "constructor";
     final ID = 1338747336;
 	int count;
@@ -769,7 +769,7 @@ List<dynamic> sets = [];len = reader.readInt();
 
 class StickerSetInstallResultSuccess {
     static const CONSTRUCTOR_ID = 946083368;
-    static const SUBCLASS_OF_ID = 4061165591;
+    static const SUBCLASS_OF_ID = 1741373416;
     final classType = "constructor";
     final ID = 946083368;
 
@@ -785,7 +785,7 @@ class StickerSetInstallResultSuccess {
 
 class StickerSetInstallResultArchive {
     static const CONSTRUCTOR_ID = 904138920;
-    static const SUBCLASS_OF_ID = 4061165591;
+    static const SUBCLASS_OF_ID = 1741373416;
     final classType = "constructor";
     final ID = 904138920;
 	List<dynamic> sets;
@@ -806,7 +806,7 @@ List<dynamic> sets = [];len = reader.readInt();
 
 class HighScores {
     static const CONSTRUCTOR_ID = 2587622809;
-    static const SUBCLASS_OF_ID = 1997676406;
+    static const SUBCLASS_OF_ID = 1825412605;
     final classType = "constructor";
     final ID = 2587622809;
 	List<dynamic> scores;
@@ -832,7 +832,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class FavedStickersNotModified {
     static const CONSTRUCTOR_ID = 2660214483;
-    static const SUBCLASS_OF_ID = 3064120880;
+    static const SUBCLASS_OF_ID = 2389929913;
     final classType = "constructor";
     final ID = 2660214483;
 
@@ -848,7 +848,7 @@ class FavedStickersNotModified {
 
 class FavedStickers {
     static const CONSTRUCTOR_ID = 750063767;
-    static const SUBCLASS_OF_ID = 3064120880;
+    static const SUBCLASS_OF_ID = 2389929913;
     final classType = "constructor";
     final ID = 750063767;
 	BigInt hash;
@@ -875,7 +875,7 @@ List<dynamic> stickers = [];len = reader.readInt();
 
 class FoundStickerSetsNotModified {
     static const CONSTRUCTOR_ID = 223655517;
-    static const SUBCLASS_OF_ID = 273777525;
+    static const SUBCLASS_OF_ID = 68023137;
     final classType = "constructor";
     final ID = 223655517;
 
@@ -891,7 +891,7 @@ class FoundStickerSetsNotModified {
 
 class FoundStickerSets {
     static const CONSTRUCTOR_ID = 2331024850;
-    static const SUBCLASS_OF_ID = 273777525;
+    static const SUBCLASS_OF_ID = 68023137;
     final classType = "constructor";
     final ID = 2331024850;
 	BigInt hash;
@@ -913,7 +913,7 @@ List<dynamic> sets = [];len = reader.readInt();
 
 class SearchCounter {
     static const CONSTRUCTOR_ID = 3896830975;
-    static const SUBCLASS_OF_ID = 2434361292;
+    static const SUBCLASS_OF_ID = 3601317794;
     final classType = "constructor";
     final ID = 3896830975;
 	bool inexact;
@@ -932,7 +932,7 @@ class SearchCounter {
 
 class InactiveChats {
     static const CONSTRUCTOR_ID = 2837970629;
-    static const SUBCLASS_OF_ID = 1038564508;
+    static const SUBCLASS_OF_ID = 2348013524;
     final classType = "constructor";
     final ID = 2837970629;
 	List<int> dates;
@@ -963,7 +963,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class VotesList {
     static const CONSTRUCTOR_ID = 136574537;
-    static const SUBCLASS_OF_ID = 2611018865;
+    static const SUBCLASS_OF_ID = 3256457349;
     final classType = "constructor";
     final ID = 136574537;
 	int count;
@@ -991,7 +991,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class MessageViews {
     static const CONSTRUCTOR_ID = 3066361155;
-    static const SUBCLASS_OF_ID = 3826263707;
+    static const SUBCLASS_OF_ID = 2947935132;
     final classType = "constructor";
     final ID = 3066361155;
 	List<dynamic> views;
@@ -1022,7 +1022,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class DiscussionMessage {
     static const CONSTRUCTOR_ID = 2788431746;
-    static const SUBCLASS_OF_ID = 2108185594;
+    static const SUBCLASS_OF_ID = 1408820200;
     final classType = "constructor";
     final ID = 2788431746;
 	List<dynamic> messages;
@@ -1057,7 +1057,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class HistoryImport {
     static const CONSTRUCTOR_ID = 375566091;
-    static const SUBCLASS_OF_ID = 1857711112;
+    static const SUBCLASS_OF_ID = 2978723082;
     final classType = "constructor";
     final ID = 375566091;
 	BigInt id;
@@ -1074,7 +1074,7 @@ class HistoryImport {
 
 class HistoryImportParsed {
     static const CONSTRUCTOR_ID = 1578088377;
-    static const SUBCLASS_OF_ID = 1362416396;
+    static const SUBCLASS_OF_ID = 1538421259;
     final classType = "constructor";
     final ID = 1578088377;
 	bool pm;
@@ -1093,7 +1093,7 @@ class HistoryImportParsed {
 
 class AffectedFoundMessages {
     static const CONSTRUCTOR_ID = 4019011180;
-    static const SUBCLASS_OF_ID = 2733970328;
+    static const SUBCLASS_OF_ID = 4162282798;
     final classType = "constructor";
     final ID = 4019011180;
 	int pts;
@@ -1117,7 +1117,7 @@ List<int> messages = [];len = reader.readInt();
 
 class ExportedChatInvites {
     static const CONSTRUCTOR_ID = 3183881676;
-    static const SUBCLASS_OF_ID = 518433807;
+    static const SUBCLASS_OF_ID = 1614624881;
     final classType = "constructor";
     final ID = 3183881676;
 	int count;
@@ -1144,7 +1144,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ExportedChatInvite {
     static const CONSTRUCTOR_ID = 410107472;
-    static const SUBCLASS_OF_ID = 506624428;
+    static const SUBCLASS_OF_ID = 2195510474;
     final classType = "constructor";
     final ID = 410107472;
 	var invite;
@@ -1166,7 +1166,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ExportedChatInviteReplaced {
     static const CONSTRUCTOR_ID = 572915951;
-    static const SUBCLASS_OF_ID = 506624428;
+    static const SUBCLASS_OF_ID = 2195510474;
     final classType = "constructor";
     final ID = 572915951;
 	var invite;
@@ -1189,7 +1189,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ChatInviteImporters {
     static const CONSTRUCTOR_ID = 2176233482;
-    static const SUBCLASS_OF_ID = 4075978166;
+    static const SUBCLASS_OF_ID = 3653012134;
     final classType = "constructor";
     final ID = 2176233482;
 	int count;
@@ -1216,7 +1216,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ChatAdminsWithInvites {
     static const CONSTRUCTOR_ID = 3063640791;
-    static const SUBCLASS_OF_ID = 916941623;
+    static const SUBCLASS_OF_ID = 2405149995;
     final classType = "constructor";
     final ID = 3063640791;
 	List<dynamic> admins;
@@ -1242,7 +1242,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class CheckedHistoryImportPeer {
     static const CONSTRUCTOR_ID = 2723014423;
-    static const SUBCLASS_OF_ID = 1532784684;
+    static const SUBCLASS_OF_ID = 3091968823;
     final classType = "constructor";
     final ID = 2723014423;
 	String confirmText;
@@ -1259,7 +1259,7 @@ class CheckedHistoryImportPeer {
 
 class SponsoredMessages {
     static const CONSTRUCTOR_ID = 1705297877;
-    static const SUBCLASS_OF_ID = 3330472341;
+    static const SUBCLASS_OF_ID = 2134993376;
     final classType = "constructor";
     final ID = 1705297877;
 	List<dynamic> messages;
@@ -1290,7 +1290,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class SearchResultsCalendar {
     static const CONSTRUCTOR_ID = 343859772;
-    static const SUBCLASS_OF_ID = 4184050795;
+    static const SUBCLASS_OF_ID = 2462409743;
     final classType = "constructor";
     final ID = 343859772;
 	bool inexact;
@@ -1331,7 +1331,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class SearchResultsPositions {
     static const CONSTRUCTOR_ID = 1404185519;
-    static const SUBCLASS_OF_ID = 2202519078;
+    static const SUBCLASS_OF_ID = 3647172749;
     final classType = "constructor";
     final ID = 1404185519;
 	int count;
@@ -1353,7 +1353,7 @@ List<dynamic> positions = [];len = reader.readInt();
 
 class PeerSettings {
     static const CONSTRUCTOR_ID = 1753266509;
-    static const SUBCLASS_OF_ID = 2489866484;
+    static const SUBCLASS_OF_ID = 1705179041;
     final classType = "constructor";
     final ID = 1753266509;
 	var settings;
@@ -1380,7 +1380,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class MessageReactionsList {
     static const CONSTRUCTOR_ID = 834488621;
-    static const SUBCLASS_OF_ID = 449421661;
+    static const SUBCLASS_OF_ID = 1627186662;
     final classType = "constructor";
     final ID = 834488621;
 	int count;
@@ -1413,7 +1413,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class AvailableReactionsNotModified {
     static const CONSTRUCTOR_ID = 2668042583;
-    static const SUBCLASS_OF_ID = 2087463886;
+    static const SUBCLASS_OF_ID = 3827740034;
     final classType = "constructor";
     final ID = 2668042583;
 
@@ -1429,7 +1429,7 @@ class AvailableReactionsNotModified {
 
 class AvailableReactions {
     static const CONSTRUCTOR_ID = 1989032621;
-    static const SUBCLASS_OF_ID = 2087463886;
+    static const SUBCLASS_OF_ID = 3827740034;
     final classType = "constructor";
     final ID = 1989032621;
 	int hash;
@@ -1451,7 +1451,7 @@ List<dynamic> reactions = [];len = reader.readInt();
 
 class TranslateNoResult {
     static const CONSTRUCTOR_ID = 1741309751;
-    static const SUBCLASS_OF_ID = 4105722477;
+    static const SUBCLASS_OF_ID = 37897192;
     final classType = "constructor";
     final ID = 1741309751;
 
@@ -1467,7 +1467,7 @@ class TranslateNoResult {
 
 class TranslateResultText {
     static const CONSTRUCTOR_ID = 2719283152;
-    static const SUBCLASS_OF_ID = 4105722477;
+    static const SUBCLASS_OF_ID = 37897192;
     final classType = "constructor";
     final ID = 2719283152;
 	String text;
@@ -1484,7 +1484,7 @@ class TranslateResultText {
 
 class TranscribedAudio {
     static const CONSTRUCTOR_ID = 2473929810;
-    static const SUBCLASS_OF_ID = 1746578576;
+    static const SUBCLASS_OF_ID = 565332278;
     final classType = "constructor";
     final ID = 2473929810;
 	bool pending;

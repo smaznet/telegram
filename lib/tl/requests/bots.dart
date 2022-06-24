@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class SendCustomRequest {
     static const CONSTRUCTOR_ID = 2854709741;
-    static const SUBCLASS_OF_ID = 1992315082;
+    static const SUBCLASS_OF_ID = 2902676200;
     final classType = "request";
     final ID = 2854709741;
 	String customMethod;
@@ -24,7 +24,7 @@ class SendCustomRequest {
 
 class AnswerWebhookJSONQuery {
     static const CONSTRUCTOR_ID = 3860938573;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3860938573;
 	BigInt queryId;
@@ -45,7 +45,7 @@ class AnswerWebhookJSONQuery {
 
 class SetBotCommands {
     static const CONSTRUCTOR_ID = 85399130;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 85399130;
 	var scope;
@@ -71,7 +71,7 @@ List<dynamic> commands = [];len = reader.readInt();
 
 class ResetBotCommands {
     static const CONSTRUCTOR_ID = 1032708345;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1032708345;
 	var scope;
@@ -92,7 +92,7 @@ class ResetBotCommands {
 
 class GetBotCommands {
     static const CONSTRUCTOR_ID = 3813412310;
-    static const SUBCLASS_OF_ID = 565494953;
+    static const SUBCLASS_OF_ID = 4209579305;
     final classType = "request";
     final ID = 3813412310;
 	var scope;
@@ -113,7 +113,7 @@ class GetBotCommands {
 
 class SetBotMenuButton {
     static const CONSTRUCTOR_ID = 1157944655;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1157944655;
 	var userId;
@@ -134,7 +134,7 @@ class SetBotMenuButton {
 
 class GetBotMenuButton {
     static const CONSTRUCTOR_ID = 2623597352;
-    static const SUBCLASS_OF_ID = 577571731;
+    static const SUBCLASS_OF_ID = 1282522428;
     final classType = "request";
     final ID = 2623597352;
 	var userId;
@@ -154,7 +154,7 @@ class GetBotMenuButton {
 
 class SetBotBroadcastDefaultAdminRights {
     static const CONSTRUCTOR_ID = 2021942497;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2021942497;
 	var adminRights;
@@ -174,7 +174,7 @@ class SetBotBroadcastDefaultAdminRights {
 
 class SetBotGroupDefaultAdminRights {
     static const CONSTRUCTOR_ID = 2455685610;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2455685610;
 	var adminRights;

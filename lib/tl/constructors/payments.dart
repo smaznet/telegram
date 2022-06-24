@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class PaymentForm {
     static const CONSTRUCTOR_ID = 2954050359;
-    static const SUBCLASS_OF_ID = 2451093605;
+    static const SUBCLASS_OF_ID = 2689089305;
     final classType = "constructor";
     final ID = 2954050359;
 	bool canSaveCredentials;
@@ -38,7 +38,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class ValidatedRequestedInfo {
     static const CONSTRUCTOR_ID = 3510966403;
-    static const SUBCLASS_OF_ID = 3400500112;
+    static const SUBCLASS_OF_ID = 2407548087;
     final classType = "constructor";
     final ID = 3510966403;
 	String id;
@@ -60,7 +60,7 @@ List<dynamic> shippingOptions = [];len = reader.readInt();
 
 class PaymentResult {
     static const CONSTRUCTOR_ID = 1314881805;
-    static const SUBCLASS_OF_ID = 2215780944;
+    static const SUBCLASS_OF_ID = 2330028701;
     final classType = "constructor";
     final ID = 1314881805;
 	var updates;
@@ -77,7 +77,7 @@ class PaymentResult {
 
 class PaymentVerificationNeeded {
     static const CONSTRUCTOR_ID = 3628142905;
-    static const SUBCLASS_OF_ID = 2215780944;
+    static const SUBCLASS_OF_ID = 2330028701;
     final classType = "constructor";
     final ID = 3628142905;
 	String url;
@@ -94,7 +94,7 @@ class PaymentVerificationNeeded {
 
 class PaymentReceipt {
     static const CONSTRUCTOR_ID = 1891958275;
-    static const SUBCLASS_OF_ID = 490074591;
+    static const SUBCLASS_OF_ID = 1493210057;
     final classType = "constructor";
     final ID = 1891958275;
 	int date;
@@ -128,7 +128,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class SavedInfo {
     static const CONSTRUCTOR_ID = 4220511292;
-    static const SUBCLASS_OF_ID = 3726086227;
+    static const SUBCLASS_OF_ID = 2906452294;
     final classType = "constructor";
     final ID = 4220511292;
 	bool hasSavedCredentials;
@@ -146,7 +146,7 @@ class SavedInfo {
 
 class BankCardData {
     static const CONSTRUCTOR_ID = 1042605427;
-    static const SUBCLASS_OF_ID = 792015025;
+    static const SUBCLASS_OF_ID = 2356008587;
     final classType = "constructor";
     final ID = 1042605427;
 	String title;
@@ -168,7 +168,7 @@ List<dynamic> openUrls = [];len = reader.readInt();
 
 class ExportedInvoice {
     static const CONSTRUCTOR_ID = 2932919257;
-    static const SUBCLASS_OF_ID = 2563156734;
+    static const SUBCLASS_OF_ID = 907039794;
     final classType = "constructor";
     final ID = 2932919257;
 	String url;

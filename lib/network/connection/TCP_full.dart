@@ -22,8 +22,8 @@ class FullPacketCodec extends PacketCodec {
 
     toSend.addAll(readBufferFromBigInt(this._sendCounter, 4, signed: true));
     toSend.addAll(data);
-    toSend.addAll(readBufferFromBigInt(new Crc32Bzip2().convert(toSend), 4,
-        signed: true));
+    toSend.addAll(
+        readBufferFromBigInt(new Crc32Xz().convert(toSend), 4, signed: true));
 
     this._sendCounter += 1;
 
@@ -37,6 +37,7 @@ class FullPacketCodec extends PacketCodec {
    */
   Future<List<int>> readPacket(FutureSocket reader) async {
     final packetLenSeq = await reader.readExactly(8); // 4 and 4
+    print("Packet len seq: ${packetLenSeq.toString()}");
 // process.exit(0);
     if (packetLenSeq == false) {
       return [];
@@ -44,14 +45,14 @@ class FullPacketCodec extends PacketCodec {
     final int packetLen =
         readBigIntFromBuffer(packetLenSeq.sublist(0, 4), signed: true).toInt();
     final body = await reader.read(packetLen - 8);
-
+    print("Packet body: ${body.toString()}");
     final int checksum =
         readBigIntFromBuffer(body.sublist(body.length - 4), signed: false)
             .toInt();
 
     body.removeRange(body.length - 4, body.length);
     packetLenSeq.addAll(body);
-    final validChecksum = new Crc32Bzip2().convert(packetLenSeq);
+    final validChecksum = new Crc32Xz().convert(packetLenSeq);
     if (!(validChecksum == checksum)) {
       throw ("Invalid checksum (${checksum} when ${validChecksum} was expected). This packet should be skipped.");
     }

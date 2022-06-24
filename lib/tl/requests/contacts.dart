@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetContactIDs {
     static const CONSTRUCTOR_ID = 2061264541;
-    static const SUBCLASS_OF_ID = 2634394217;
+    static const SUBCLASS_OF_ID = 1344696591;
     final classType = "request";
     final ID = 2061264541;
 	BigInt hash;
@@ -29,7 +29,7 @@ final List<int> result = [];
 
 class GetStatuses {
     static const CONSTRUCTOR_ID = 3299038190;
-    static const SUBCLASS_OF_ID = 1426372378;
+    static const SUBCLASS_OF_ID = 3749797008;
     final classType = "request";
     final ID = 3299038190;
 
@@ -48,7 +48,7 @@ class GetStatuses {
 
 class GetContacts {
     static const CONSTRUCTOR_ID = 1574346258;
-    static const SUBCLASS_OF_ID = 409327542;
+    static const SUBCLASS_OF_ID = 951985654;
     final classType = "request";
     final ID = 1574346258;
 	BigInt hash;
@@ -68,7 +68,7 @@ class GetContacts {
 
 class ImportContacts {
     static const CONSTRUCTOR_ID = 746589157;
-    static const SUBCLASS_OF_ID = 3622042187;
+    static const SUBCLASS_OF_ID = 2171776403;
     final classType = "request";
     final ID = 746589157;
 	List<dynamic> contacts;
@@ -92,7 +92,7 @@ List<dynamic> contacts = [];len = reader.readInt();
 
 class DeleteContacts {
     static const CONSTRUCTOR_ID = 157945344;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 157945344;
 	List<dynamic> id;
@@ -116,7 +116,7 @@ List<dynamic> id = [];len = reader.readInt();
 
 class DeleteByPhones {
     static const CONSTRUCTOR_ID = 269745566;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 269745566;
 	List<String> phones;
@@ -140,7 +140,7 @@ List<String> phones = [];len = reader.readInt();
 
 class Block {
     static const CONSTRUCTOR_ID = 1758204945;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1758204945;
 	var id;
@@ -160,7 +160,7 @@ class Block {
 
 class Unblock {
     static const CONSTRUCTOR_ID = 3198573904;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3198573904;
 	var id;
@@ -180,7 +180,7 @@ class Unblock {
 
 class GetBlocked {
     static const CONSTRUCTOR_ID = 4118557967;
-    static const SUBCLASS_OF_ID = 3687220896;
+    static const SUBCLASS_OF_ID = 4290400079;
     final classType = "request";
     final ID = 4118557967;
 	int offset;
@@ -201,7 +201,7 @@ class GetBlocked {
 
 class Search {
     static const CONSTRUCTOR_ID = 301470424;
-    static const SUBCLASS_OF_ID = 2639130989;
+    static const SUBCLASS_OF_ID = 1132896995;
     final classType = "request";
     final ID = 301470424;
 	String q;
@@ -222,7 +222,7 @@ class Search {
 
 class ResolveUsername {
     static const CONSTRUCTOR_ID = 4181511075;
-    static const SUBCLASS_OF_ID = 2277333274;
+    static const SUBCLASS_OF_ID = 4033196968;
     final classType = "request";
     final ID = 4181511075;
 	String username;
@@ -242,7 +242,7 @@ class ResolveUsername {
 
 class GetTopPeers {
     static const CONSTRUCTOR_ID = 2536798390;
-    static const SUBCLASS_OF_ID = 3096014790;
+    static const SUBCLASS_OF_ID = 2666052488;
     final classType = "request";
     final ID = 2536798390;
 	bool correspondents;
@@ -272,7 +272,7 @@ class GetTopPeers {
 
 class ResetTopPeerRating {
     static const CONSTRUCTOR_ID = 451113900;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 451113900;
 	var category;
@@ -293,7 +293,7 @@ class ResetTopPeerRating {
 
 class ResetSaved {
     static const CONSTRUCTOR_ID = 2274703345;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2274703345;
 
@@ -312,7 +312,7 @@ class ResetSaved {
 
 class GetSaved {
     static const CONSTRUCTOR_ID = 2196890527;
-    static const SUBCLASS_OF_ID = 842333852;
+    static const SUBCLASS_OF_ID = 158718959;
     final classType = "request";
     final ID = 2196890527;
 
@@ -331,7 +331,7 @@ class GetSaved {
 
 class ToggleTopPeers {
     static const CONSTRUCTOR_ID = 2232729050;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2232729050;
 	bool enabled;
@@ -351,7 +351,7 @@ class ToggleTopPeers {
 
 class AddContact {
     static const CONSTRUCTOR_ID = 3908330448;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3908330448;
 	bool addPhonePrivacyException;
@@ -375,7 +375,7 @@ class AddContact {
 
 class AcceptContact {
     static const CONSTRUCTOR_ID = 4164002319;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 4164002319;
 	var id;
@@ -395,7 +395,7 @@ class AcceptContact {
 
 class GetLocated {
     static const CONSTRUCTOR_ID = 3544759364;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3544759364;
 	bool background;
@@ -417,7 +417,7 @@ class GetLocated {
 
 class BlockFromReplies {
     static const CONSTRUCTOR_ID = 698914348;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 698914348;
 	bool deleteMessage;
@@ -440,7 +440,7 @@ class BlockFromReplies {
 
 class ResolvePhone {
     static const CONSTRUCTOR_ID = 2331591492;
-    static const SUBCLASS_OF_ID = 2277333274;
+    static const SUBCLASS_OF_ID = 4033196968;
     final classType = "request";
     final ID = 2331591492;
 	String phone;

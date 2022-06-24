@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetState {
     static const CONSTRUCTOR_ID = 3990128682;
-    static const SUBCLASS_OF_ID = 3387548233;
+    static const SUBCLASS_OF_ID = 601823745;
     final classType = "request";
     final ID = 3990128682;
 
@@ -22,7 +22,7 @@ class GetState {
 
 class GetDifference {
     static const CONSTRUCTOR_ID = 630429265;
-    static const SUBCLASS_OF_ID = 651126040;
+    static const SUBCLASS_OF_ID = 541599860;
     final classType = "request";
     final ID = 630429265;
 	int pts;
@@ -45,7 +45,7 @@ class GetDifference {
 
 class GetChannelDifference {
     static const CONSTRUCTOR_ID = 51854712;
-    static const SUBCLASS_OF_ID = 1148408860;
+    static const SUBCLASS_OF_ID = 696872797;
     final classType = "request";
     final ID = 51854712;
 	bool force;

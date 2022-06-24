@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetLangPack {
     static const CONSTRUCTOR_ID = 4075959050;
-    static const SUBCLASS_OF_ID = 3792692057;
+    static const SUBCLASS_OF_ID = 1382427989;
     final classType = "request";
     final ID = 4075959050;
 	String langPack;
@@ -24,7 +24,7 @@ class GetLangPack {
 
 class GetStrings {
     static const CONSTRUCTOR_ID = 4025104387;
-    static const SUBCLASS_OF_ID = 3296314743;
+    static const SUBCLASS_OF_ID = 3350672701;
     final classType = "request";
     final ID = 4025104387;
 	String langPack;
@@ -50,7 +50,7 @@ List<String> keys = [];len = reader.readInt();
 
 class GetDifference {
     static const CONSTRUCTOR_ID = 3449309861;
-    static const SUBCLASS_OF_ID = 3792692057;
+    static const SUBCLASS_OF_ID = 1382427989;
     final classType = "request";
     final ID = 3449309861;
 	String langPack;
@@ -72,7 +72,7 @@ class GetDifference {
 
 class GetLanguages {
     static const CONSTRUCTOR_ID = 1120311183;
-    static const SUBCLASS_OF_ID = 795436287;
+    static const SUBCLASS_OF_ID = 671683273;
     final classType = "request";
     final ID = 1120311183;
 	String langPack;
@@ -92,7 +92,7 @@ class GetLanguages {
 
 class GetLanguage {
     static const CONSTRUCTOR_ID = 1784243458;
-    static const SUBCLASS_OF_ID = 3545314341;
+    static const SUBCLASS_OF_ID = 2880211383;
     final classType = "request";
     final ID = 1784243458;
 	String langPack;

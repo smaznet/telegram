@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetUsers {
     static const CONSTRUCTOR_ID = 227648840;
-    static const SUBCLASS_OF_ID = 2508577761;
+    static const SUBCLASS_OF_ID = 67557965;
     final classType = "request";
     final ID = 227648840;
 	List<dynamic> id;
@@ -27,7 +27,7 @@ List<dynamic> id = [];len = reader.readInt();
 
 class GetFullUser {
     static const CONSTRUCTOR_ID = 3054459160;
-    static const SUBCLASS_OF_ID = 926104839;
+    static const SUBCLASS_OF_ID = 2212470261;
     final classType = "request";
     final ID = 3054459160;
 	var id;
@@ -47,7 +47,7 @@ class GetFullUser {
 
 class SetSecureValueErrors {
     static const CONSTRUCTOR_ID = 2429064373;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2429064373;
 	var id;

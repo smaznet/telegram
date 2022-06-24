@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class GetMessages {
     static const CONSTRUCTOR_ID = 1673946374;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 1673946374;
 	List<dynamic> id;
@@ -27,7 +27,7 @@ List<dynamic> id = [];len = reader.readInt();
 
 class GetDialogs {
     static const CONSTRUCTOR_ID = 2700397391;
-    static const SUBCLASS_OF_ID = 3960369816;
+    static const SUBCLASS_OF_ID = 236671726;
     final classType = "request";
     final ID = 2700397391;
 	bool excludePinned;
@@ -53,7 +53,7 @@ class GetDialogs {
 
 class GetHistory {
     static const CONSTRUCTOR_ID = 1143203525;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 1143203525;
 	var peer;
@@ -80,7 +80,7 @@ class GetHistory {
 
 class Search {
     static const CONSTRUCTOR_ID = 2700978018;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 2700978018;
 	var peer;
@@ -112,7 +112,7 @@ class Search {
 
 class ReadHistory {
     static const CONSTRUCTOR_ID = 238054714;
-    static const SUBCLASS_OF_ID = 3515066396;
+    static const SUBCLASS_OF_ID = 3469983854;
     final classType = "request";
     final ID = 238054714;
 	var peer;
@@ -133,7 +133,7 @@ class ReadHistory {
 
 class DeleteHistory {
     static const CONSTRUCTOR_ID = 2962199082;
-    static const SUBCLASS_OF_ID = 2033342386;
+    static const SUBCLASS_OF_ID = 743031062;
     final classType = "request";
     final ID = 2962199082;
 	bool justClear;
@@ -158,7 +158,7 @@ class DeleteHistory {
 
 class DeleteMessages {
     static const CONSTRUCTOR_ID = 3851326930;
-    static const SUBCLASS_OF_ID = 3515066396;
+    static const SUBCLASS_OF_ID = 3469983854;
     final classType = "request";
     final ID = 3851326930;
 	bool revoke;
@@ -183,7 +183,7 @@ List<int> id = [];len = reader.readInt();
 
 class ReceivedMessages {
     static const CONSTRUCTOR_ID = 94983360;
-    static const SUBCLASS_OF_ID = 2491592195;
+    static const SUBCLASS_OF_ID = 2238052503;
     final classType = "request";
     final ID = 94983360;
 	int maxId;
@@ -203,7 +203,7 @@ class ReceivedMessages {
 
 class SetTyping {
     static const CONSTRUCTOR_ID = 1486110434;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1486110434;
 	var peer;
@@ -225,7 +225,7 @@ class SetTyping {
 
 class SendMessage {
     static const CONSTRUCTOR_ID = 228423076;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 228423076;
 	bool noWebpage;
@@ -261,7 +261,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class SendMedia {
     static const CONSTRUCTOR_ID = 3797940448;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3797940448;
 	bool silent;
@@ -297,7 +297,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class ForwardMessages {
     static const CONSTRUCTOR_ID = 3425708299;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3425708299;
 	bool silent;
@@ -336,7 +336,7 @@ List<BigInt> randomId = [];len = reader.readInt();
 
 class ReportSpam {
     static const CONSTRUCTOR_ID = 3474297563;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3474297563;
 	var peer;
@@ -356,7 +356,7 @@ class ReportSpam {
 
 class GetPeerSettings {
     static const CONSTRUCTOR_ID = 4024018594;
-    static const SUBCLASS_OF_ID = 2489866484;
+    static const SUBCLASS_OF_ID = 1705179041;
     final classType = "request";
     final ID = 4024018594;
 	var peer;
@@ -376,7 +376,7 @@ class GetPeerSettings {
 
 class Report {
     static const CONSTRUCTOR_ID = 2303961934;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2303961934;
 	var peer;
@@ -403,7 +403,7 @@ List<int> id = [];len = reader.readInt();
 
 class GetChats {
     static const CONSTRUCTOR_ID = 1240027791;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "request";
     final ID = 1240027791;
 	List<BigInt> id;
@@ -427,7 +427,7 @@ List<BigInt> id = [];len = reader.readInt();
 
 class GetFullChat {
     static const CONSTRUCTOR_ID = 2930772788;
-    static const SUBCLASS_OF_ID = 2713854326;
+    static const SUBCLASS_OF_ID = 576344329;
     final classType = "request";
     final ID = 2930772788;
 	BigInt chatId;
@@ -447,7 +447,7 @@ class GetFullChat {
 
 class EditChatTitle {
     static const CONSTRUCTOR_ID = 1937260541;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1937260541;
 	BigInt chatId;
@@ -468,7 +468,7 @@ class EditChatTitle {
 
 class EditChatPhoto {
     static const CONSTRUCTOR_ID = 903730804;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 903730804;
 	BigInt chatId;
@@ -489,7 +489,7 @@ class EditChatPhoto {
 
 class AddChatUser {
     static const CONSTRUCTOR_ID = 4064760803;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 4064760803;
 	BigInt chatId;
@@ -511,7 +511,7 @@ class AddChatUser {
 
 class DeleteChatUser {
     static const CONSTRUCTOR_ID = 2719505579;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2719505579;
 	bool revokeHistory;
@@ -533,7 +533,7 @@ class DeleteChatUser {
 
 class CreateChat {
     static const CONSTRUCTOR_ID = 164303470;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 164303470;
 	List<dynamic> users;
@@ -558,7 +558,7 @@ List<dynamic> users = [];len = reader.readInt();
 
 class GetDhConfig {
     static const CONSTRUCTOR_ID = 651135312;
-    static const SUBCLASS_OF_ID = 3503214613;
+    static const SUBCLASS_OF_ID = 3834178955;
     final classType = "request";
     final ID = 651135312;
 	int version;
@@ -579,7 +579,7 @@ class GetDhConfig {
 
 class RequestEncryption {
     static const CONSTRUCTOR_ID = 4132286275;
-    static const SUBCLASS_OF_ID = 1514338880;
+    static const SUBCLASS_OF_ID = 1831379834;
     final classType = "request";
     final ID = 4132286275;
 	var userId;
@@ -601,7 +601,7 @@ class RequestEncryption {
 
 class AcceptEncryption {
     static const CONSTRUCTOR_ID = 1035731989;
-    static const SUBCLASS_OF_ID = 1514338880;
+    static const SUBCLASS_OF_ID = 1831379834;
     final classType = "request";
     final ID = 1035731989;
 	var peer;
@@ -623,7 +623,7 @@ class AcceptEncryption {
 
 class DiscardEncryption {
     static const CONSTRUCTOR_ID = 4086541984;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4086541984;
 	bool deleteHistory;
@@ -644,7 +644,7 @@ class DiscardEncryption {
 
 class SetEncryptedTyping {
     static const CONSTRUCTOR_ID = 2031374829;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2031374829;
 	var peer;
@@ -665,7 +665,7 @@ class SetEncryptedTyping {
 
 class ReadEncryptedHistory {
     static const CONSTRUCTOR_ID = 2135648522;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2135648522;
 	var peer;
@@ -686,7 +686,7 @@ class ReadEncryptedHistory {
 
 class SendEncrypted {
     static const CONSTRUCTOR_ID = 1157265941;
-    static const SUBCLASS_OF_ID = 3879435338;
+    static const SUBCLASS_OF_ID = 3382591056;
     final classType = "request";
     final ID = 1157265941;
 	bool silent;
@@ -709,7 +709,7 @@ class SendEncrypted {
 
 class SendEncryptedFile {
     static const CONSTRUCTOR_ID = 1431914525;
-    static const SUBCLASS_OF_ID = 3879435338;
+    static const SUBCLASS_OF_ID = 3382591056;
     final classType = "request";
     final ID = 1431914525;
 	bool silent;
@@ -733,7 +733,7 @@ class SendEncryptedFile {
 
 class SendEncryptedService {
     static const CONSTRUCTOR_ID = 852769188;
-    static const SUBCLASS_OF_ID = 3879435338;
+    static const SUBCLASS_OF_ID = 3382591056;
     final classType = "request";
     final ID = 852769188;
 	var peer;
@@ -755,7 +755,7 @@ class SendEncryptedService {
 
 class ReceivedQueue {
     static const CONSTRUCTOR_ID = 1436924774;
-    static const SUBCLASS_OF_ID = 3827148722;
+    static const SUBCLASS_OF_ID = 2300109160;
     final classType = "request";
     final ID = 1436924774;
 	int maxQts;
@@ -781,7 +781,7 @@ final List<BigInt> result = [];
 
 class ReportEncryptedSpam {
     static const CONSTRUCTOR_ID = 1259113487;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1259113487;
 	var peer;
@@ -801,7 +801,7 @@ class ReportEncryptedSpam {
 
 class ReadMessageContents {
     static const CONSTRUCTOR_ID = 916930423;
-    static const SUBCLASS_OF_ID = 3515066396;
+    static const SUBCLASS_OF_ID = 3469983854;
     final classType = "request";
     final ID = 916930423;
 	List<int> id;
@@ -825,7 +825,7 @@ List<int> id = [];len = reader.readInt();
 
 class GetStickers {
     static const CONSTRUCTOR_ID = 3584414625;
-    static const SUBCLASS_OF_ID = 2755410095;
+    static const SUBCLASS_OF_ID = 3611015646;
     final classType = "request";
     final ID = 3584414625;
 	String emoticon;
@@ -846,7 +846,7 @@ class GetStickers {
 
 class GetAllStickers {
     static const CONSTRUCTOR_ID = 3097534888;
-    static const SUBCLASS_OF_ID = 3920753571;
+    static const SUBCLASS_OF_ID = 1166231593;
     final classType = "request";
     final ID = 3097534888;
 	BigInt hash;
@@ -866,7 +866,7 @@ class GetAllStickers {
 
 class GetWebPagePreview {
     static const CONSTRUCTOR_ID = 2338894028;
-    static const SUBCLASS_OF_ID = 1147845587;
+    static const SUBCLASS_OF_ID = 1198308914;
     final classType = "request";
     final ID = 2338894028;
 	String message;
@@ -891,7 +891,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class ExportChatInvite {
     static const CONSTRUCTOR_ID = 2687296981;
-    static const SUBCLASS_OF_ID = 3137848180;
+    static const SUBCLASS_OF_ID = 3027536472;
     final classType = "request";
     final ID = 2687296981;
 	bool legacyRevokePermanent;
@@ -916,7 +916,7 @@ class ExportChatInvite {
 
 class CheckChatInvite {
     static const CONSTRUCTOR_ID = 1051570619;
-    static const SUBCLASS_OF_ID = 2488640606;
+    static const SUBCLASS_OF_ID = 72750902;
     final classType = "request";
     final ID = 1051570619;
 	String hash;
@@ -936,7 +936,7 @@ class CheckChatInvite {
 
 class ImportChatInvite {
     static const CONSTRUCTOR_ID = 1817183516;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1817183516;
 	String hash;
@@ -956,7 +956,7 @@ class ImportChatInvite {
 
 class GetStickerSet {
     static const CONSTRUCTOR_ID = 3365989492;
-    static const SUBCLASS_OF_ID = 4289717157;
+    static const SUBCLASS_OF_ID = 2607827546;
     final classType = "request";
     final ID = 3365989492;
 	var stickerset;
@@ -977,7 +977,7 @@ class GetStickerSet {
 
 class InstallStickerSet {
     static const CONSTRUCTOR_ID = 3348096096;
-    static const SUBCLASS_OF_ID = 4061165591;
+    static const SUBCLASS_OF_ID = 1741373416;
     final classType = "request";
     final ID = 3348096096;
 	var stickerset;
@@ -998,7 +998,7 @@ class InstallStickerSet {
 
 class UninstallStickerSet {
     static const CONSTRUCTOR_ID = 4184757726;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4184757726;
 	var stickerset;
@@ -1018,7 +1018,7 @@ class UninstallStickerSet {
 
 class StartBot {
     static const CONSTRUCTOR_ID = 3873403768;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3873403768;
 	var bot;
@@ -1041,7 +1041,7 @@ class StartBot {
 
 class GetMessagesViews {
     static const CONSTRUCTOR_ID = 1468322785;
-    static const SUBCLASS_OF_ID = 3826263707;
+    static const SUBCLASS_OF_ID = 2947935132;
     final classType = "request";
     final ID = 1468322785;
 	var peer;
@@ -1067,7 +1067,7 @@ List<int> id = [];len = reader.readInt();
 
 class EditChatAdmin {
     static const CONSTRUCTOR_ID = 2824589762;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2824589762;
 	BigInt chatId;
@@ -1089,7 +1089,7 @@ class EditChatAdmin {
 
 class MigrateChat {
     static const CONSTRUCTOR_ID = 2726777625;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2726777625;
 	BigInt chatId;
@@ -1109,7 +1109,7 @@ class MigrateChat {
 
 class SearchGlobal {
     static const CONSTRUCTOR_ID = 1271290010;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 1271290010;
 	int folderId;
@@ -1137,7 +1137,7 @@ class SearchGlobal {
 
 class ReorderStickerSets {
     static const CONSTRUCTOR_ID = 2016638777;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2016638777;
 	bool masks;
@@ -1162,7 +1162,7 @@ List<BigInt> order = [];len = reader.readInt();
 
 class GetDocumentByHash {
     static const CONSTRUCTOR_ID = 2985428511;
-    static const SUBCLASS_OF_ID = 726754441;
+    static const SUBCLASS_OF_ID = 555739168;
     final classType = "request";
     final ID = 2985428511;
 	List<int> sha256;
@@ -1184,7 +1184,7 @@ class GetDocumentByHash {
 
 class GetSavedGifs {
     static const CONSTRUCTOR_ID = 1559270965;
-    static const SUBCLASS_OF_ID = 1128343390;
+    static const SUBCLASS_OF_ID = 2794152437;
     final classType = "request";
     final ID = 1559270965;
 	BigInt hash;
@@ -1204,7 +1204,7 @@ class GetSavedGifs {
 
 class SaveGif {
     static const CONSTRUCTOR_ID = 846868683;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 846868683;
 	var id;
@@ -1225,7 +1225,7 @@ class SaveGif {
 
 class GetInlineBotResults {
     static const CONSTRUCTOR_ID = 1364105629;
-    static const SUBCLASS_OF_ID = 2719514484;
+    static const SUBCLASS_OF_ID = 1054136777;
     final classType = "request";
     final ID = 1364105629;
 	var bot;
@@ -1249,7 +1249,7 @@ class GetInlineBotResults {
 
 class SetInlineBotResults {
     static const CONSTRUCTOR_ID = 3948847622;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3948847622;
 	bool gallery;
@@ -1279,7 +1279,7 @@ List<dynamic> results = [];len = reader.readInt();
 
 class SendInlineBotResult {
     static const CONSTRUCTOR_ID = 2057376407;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2057376407;
 	bool silent;
@@ -1309,7 +1309,7 @@ class SendInlineBotResult {
 
 class GetMessageEditData {
     static const CONSTRUCTOR_ID = 4255550774;
-    static const SUBCLASS_OF_ID = 473402186;
+    static const SUBCLASS_OF_ID = 4215772317;
     final classType = "request";
     final ID = 4255550774;
 	var peer;
@@ -1330,7 +1330,7 @@ class GetMessageEditData {
 
 class EditMessage {
     static const CONSTRUCTOR_ID = 1224152952;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1224152952;
 	bool noWebpage;
@@ -1361,7 +1361,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class EditInlineBotMessage {
     static const CONSTRUCTOR_ID = 2203418042;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2203418042;
 	bool noWebpage;
@@ -1390,7 +1390,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class GetBotCallbackAnswer {
     static const CONSTRUCTOR_ID = 2470627847;
-    static const SUBCLASS_OF_ID = 56374108;
+    static const SUBCLASS_OF_ID = 1817039244;
     final classType = "request";
     final ID = 2470627847;
 	bool game;
@@ -1414,7 +1414,7 @@ class GetBotCallbackAnswer {
 
 class SetBotCallbackAnswer {
     static const CONSTRUCTOR_ID = 3582923530;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3582923530;
 	bool alert;
@@ -1438,7 +1438,7 @@ class SetBotCallbackAnswer {
 
 class GetPeerDialogs {
     static const CONSTRUCTOR_ID = 3832593661;
-    static const SUBCLASS_OF_ID = 2010003433;
+    static const SUBCLASS_OF_ID = 986120498;
     final classType = "request";
     final ID = 3832593661;
 	List<dynamic> peers;
@@ -1462,7 +1462,7 @@ List<dynamic> peers = [];len = reader.readInt();
 
 class SaveDraft {
     static const CONSTRUCTOR_ID = 3157909835;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3157909835;
 	bool noWebpage;
@@ -1490,7 +1490,7 @@ List<dynamic> entities = [];len = reader.readInt();
 
 class GetAllDrafts {
     static const CONSTRUCTOR_ID = 1782549861;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1782549861;
 
@@ -1509,7 +1509,7 @@ class GetAllDrafts {
 
 class GetFeaturedStickers {
     static const CONSTRUCTOR_ID = 1685588756;
-    static const SUBCLASS_OF_ID = 874812118;
+    static const SUBCLASS_OF_ID = 638891810;
     final classType = "request";
     final ID = 1685588756;
 	BigInt hash;
@@ -1529,7 +1529,7 @@ class GetFeaturedStickers {
 
 class ReadFeaturedStickers {
     static const CONSTRUCTOR_ID = 1527873830;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1527873830;
 	List<BigInt> id;
@@ -1553,7 +1553,7 @@ List<BigInt> id = [];len = reader.readInt();
 
 class GetRecentStickers {
     static const CONSTRUCTOR_ID = 2645114939;
-    static const SUBCLASS_OF_ID = 1960026623;
+    static const SUBCLASS_OF_ID = 4151281283;
     final classType = "request";
     final ID = 2645114939;
 	bool attached;
@@ -1574,7 +1574,7 @@ class GetRecentStickers {
 
 class SaveRecentSticker {
     static const CONSTRUCTOR_ID = 958863608;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 958863608;
 	bool attached;
@@ -1596,7 +1596,7 @@ class SaveRecentSticker {
 
 class ClearRecentStickers {
     static const CONSTRUCTOR_ID = 2308530221;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2308530221;
 	bool attached;
@@ -1616,7 +1616,7 @@ class ClearRecentStickers {
 
 class GetArchivedStickers {
     static const CONSTRUCTOR_ID = 1475442322;
-    static const SUBCLASS_OF_ID = 2027748770;
+    static const SUBCLASS_OF_ID = 1922488177;
     final classType = "request";
     final ID = 1475442322;
 	bool masks;
@@ -1638,7 +1638,7 @@ class GetArchivedStickers {
 
 class GetMaskStickers {
     static const CONSTRUCTOR_ID = 1678738104;
-    static const SUBCLASS_OF_ID = 3920753571;
+    static const SUBCLASS_OF_ID = 1166231593;
     final classType = "request";
     final ID = 1678738104;
 	BigInt hash;
@@ -1658,7 +1658,7 @@ class GetMaskStickers {
 
 class GetAttachedStickers {
     static const CONSTRUCTOR_ID = 3428542412;
-    static const SUBCLASS_OF_ID = 377308633;
+    static const SUBCLASS_OF_ID = 3423756139;
     final classType = "request";
     final ID = 3428542412;
 	var media;
@@ -1678,7 +1678,7 @@ class GetAttachedStickers {
 
 class SetGameScore {
     static const CONSTRUCTOR_ID = 2398678208;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2398678208;
 	bool editMessage;
@@ -1703,7 +1703,7 @@ class SetGameScore {
 
 class SetInlineGameScore {
     static const CONSTRUCTOR_ID = 363700068;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 363700068;
 	bool editMessage;
@@ -1727,7 +1727,7 @@ class SetInlineGameScore {
 
 class GetGameHighScores {
     static const CONSTRUCTOR_ID = 3894568093;
-    static const SUBCLASS_OF_ID = 1997676406;
+    static const SUBCLASS_OF_ID = 1825412605;
     final classType = "request";
     final ID = 3894568093;
 	var peer;
@@ -1749,7 +1749,7 @@ class GetGameHighScores {
 
 class GetInlineGameHighScores {
     static const CONSTRUCTOR_ID = 258170395;
-    static const SUBCLASS_OF_ID = 1997676406;
+    static const SUBCLASS_OF_ID = 1825412605;
     final classType = "request";
     final ID = 258170395;
 	var id;
@@ -1770,7 +1770,7 @@ class GetInlineGameHighScores {
 
 class GetCommonChats {
     static const CONSTRUCTOR_ID = 3826032900;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "request";
     final ID = 3826032900;
 	var userId;
@@ -1792,7 +1792,7 @@ class GetCommonChats {
 
 class GetAllChats {
     static const CONSTRUCTOR_ID = 2271179966;
-    static const SUBCLASS_OF_ID = 944497778;
+    static const SUBCLASS_OF_ID = 2580925204;
     final classType = "request";
     final ID = 2271179966;
 	List<BigInt> exceptIds;
@@ -1816,7 +1816,7 @@ List<BigInt> exceptIds = [];len = reader.readInt();
 
 class GetWebPage {
     static const CONSTRUCTOR_ID = 852135825;
-    static const SUBCLASS_OF_ID = 993360889;
+    static const SUBCLASS_OF_ID = 1437168769;
     final classType = "request";
     final ID = 852135825;
 	String url;
@@ -1837,7 +1837,7 @@ class GetWebPage {
 
 class ToggleDialogPin {
     static const CONSTRUCTOR_ID = 2805064279;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2805064279;
 	bool pinned;
@@ -1858,7 +1858,7 @@ class ToggleDialogPin {
 
 class ReorderPinnedDialogs {
     static const CONSTRUCTOR_ID = 991616823;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 991616823;
 	bool force;
@@ -1884,7 +1884,7 @@ List<dynamic> order = [];len = reader.readInt();
 
 class GetPinnedDialogs {
     static const CONSTRUCTOR_ID = 3602468338;
-    static const SUBCLASS_OF_ID = 2010003433;
+    static const SUBCLASS_OF_ID = 986120498;
     final classType = "request";
     final ID = 3602468338;
 	int folderId;
@@ -1904,7 +1904,7 @@ class GetPinnedDialogs {
 
 class SetBotShippingResults {
     static const CONSTRUCTOR_ID = 3858133754;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3858133754;
 	BigInt queryId;
@@ -1930,7 +1930,7 @@ List<dynamic> shippingOptions = [];len = reader.readInt();
 
 class SetBotPrecheckoutResults {
     static const CONSTRUCTOR_ID = 163765653;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 163765653;
 	bool success;
@@ -1952,7 +1952,7 @@ class SetBotPrecheckoutResults {
 
 class UploadMedia {
     static const CONSTRUCTOR_ID = 1369162417;
-    static const SUBCLASS_OF_ID = 1147845587;
+    static const SUBCLASS_OF_ID = 1198308914;
     final classType = "request";
     final ID = 1369162417;
 	var peer;
@@ -1973,7 +1973,7 @@ class UploadMedia {
 
 class SendScreenshotNotification {
     static const CONSTRUCTOR_ID = 3380473888;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3380473888;
 	var peer;
@@ -1995,7 +1995,7 @@ class SendScreenshotNotification {
 
 class GetFavedStickers {
     static const CONSTRUCTOR_ID = 82946729;
-    static const SUBCLASS_OF_ID = 3064120880;
+    static const SUBCLASS_OF_ID = 2389929913;
     final classType = "request";
     final ID = 82946729;
 	BigInt hash;
@@ -2015,7 +2015,7 @@ class GetFavedStickers {
 
 class FaveSticker {
     static const CONSTRUCTOR_ID = 3120547163;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3120547163;
 	var id;
@@ -2036,7 +2036,7 @@ class FaveSticker {
 
 class GetUnreadMentions {
     static const CONSTRUCTOR_ID = 1180140658;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 1180140658;
 	var peer;
@@ -2061,7 +2061,7 @@ class GetUnreadMentions {
 
 class ReadMentions {
     static const CONSTRUCTOR_ID = 251759059;
-    static const SUBCLASS_OF_ID = 2033342386;
+    static const SUBCLASS_OF_ID = 743031062;
     final classType = "request";
     final ID = 251759059;
 	var peer;
@@ -2081,7 +2081,7 @@ class ReadMentions {
 
 class GetRecentLocations {
     static const CONSTRUCTOR_ID = 1881817312;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 1881817312;
 	var peer;
@@ -2103,7 +2103,7 @@ class GetRecentLocations {
 
 class SendMultiMedia {
     static const CONSTRUCTOR_ID = 4160951183;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 4160951183;
 	bool silent;
@@ -2135,7 +2135,7 @@ List<dynamic> multiMedia = [];len = reader.readInt();
 
 class UploadEncryptedFile {
     static const CONSTRUCTOR_ID = 1347929239;
-    static const SUBCLASS_OF_ID = 2930238869;
+    static const SUBCLASS_OF_ID = 2217371584;
     final classType = "request";
     final ID = 1347929239;
 	var peer;
@@ -2156,7 +2156,7 @@ class UploadEncryptedFile {
 
 class SearchStickerSets {
     static const CONSTRUCTOR_ID = 896555914;
-    static const SUBCLASS_OF_ID = 273777525;
+    static const SUBCLASS_OF_ID = 68023137;
     final classType = "request";
     final ID = 896555914;
 	bool excludeFeatured;
@@ -2178,7 +2178,7 @@ class SearchStickerSets {
 
 class GetSplitRanges {
     static const CONSTRUCTOR_ID = 486505992;
-    static const SUBCLASS_OF_ID = 3339707500;
+    static const SUBCLASS_OF_ID = 1537549572;
     final classType = "request";
     final ID = 486505992;
 
@@ -2197,7 +2197,7 @@ class GetSplitRanges {
 
 class MarkDialogUnread {
     static const CONSTRUCTOR_ID = 3263617423;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3263617423;
 	bool unread;
@@ -2218,7 +2218,7 @@ class MarkDialogUnread {
 
 class GetDialogUnreadMarks {
     static const CONSTRUCTOR_ID = 585256482;
-    static const SUBCLASS_OF_ID = 3553154710;
+    static const SUBCLASS_OF_ID = 3200666329;
     final classType = "request";
     final ID = 585256482;
 
@@ -2237,7 +2237,7 @@ class GetDialogUnreadMarks {
 
 class ClearAllDrafts {
     static const CONSTRUCTOR_ID = 2119757468;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2119757468;
 
@@ -2256,7 +2256,7 @@ class ClearAllDrafts {
 
 class UpdatePinnedMessage {
     static const CONSTRUCTOR_ID = 3534419948;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3534419948;
 	bool silent;
@@ -2280,7 +2280,7 @@ class UpdatePinnedMessage {
 
 class SendVote {
     static const CONSTRUCTOR_ID = 283795844;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 283795844;
 	var peer;
@@ -2306,7 +2306,7 @@ List<List<int>> options = [];len = reader.readInt();
 
 class GetPollResults {
     static const CONSTRUCTOR_ID = 1941660731;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1941660731;
 	var peer;
@@ -2327,7 +2327,7 @@ class GetPollResults {
 
 class GetOnlines {
     static const CONSTRUCTOR_ID = 1848369232;
-    static const SUBCLASS_OF_ID = 3629135536;
+    static const SUBCLASS_OF_ID = 2357301306;
     final classType = "request";
     final ID = 1848369232;
 	var peer;
@@ -2347,7 +2347,7 @@ class GetOnlines {
 
 class EditChatAbout {
     static const CONSTRUCTOR_ID = 3740665751;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3740665751;
 	var peer;
@@ -2368,7 +2368,7 @@ class EditChatAbout {
 
 class EditChatDefaultBannedRights {
     static const CONSTRUCTOR_ID = 2777049921;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2777049921;
 	var peer;
@@ -2389,7 +2389,7 @@ class EditChatDefaultBannedRights {
 
 class GetEmojiKeywords {
     static const CONSTRUCTOR_ID = 899735650;
-    static const SUBCLASS_OF_ID = 206597404;
+    static const SUBCLASS_OF_ID = 3531196018;
     final classType = "request";
     final ID = 899735650;
 	String langCode;
@@ -2409,7 +2409,7 @@ class GetEmojiKeywords {
 
 class GetEmojiKeywordsDifference {
     static const CONSTRUCTOR_ID = 352892591;
-    static const SUBCLASS_OF_ID = 206597404;
+    static const SUBCLASS_OF_ID = 3531196018;
     final classType = "request";
     final ID = 352892591;
 	String langCode;
@@ -2430,7 +2430,7 @@ class GetEmojiKeywordsDifference {
 
 class GetEmojiKeywordsLanguages {
     static const CONSTRUCTOR_ID = 1318675378;
-    static const SUBCLASS_OF_ID = 859526166;
+    static const SUBCLASS_OF_ID = 3885355911;
     final classType = "request";
     final ID = 1318675378;
 	List<String> langCodes;
@@ -2454,7 +2454,7 @@ List<String> langCodes = [];len = reader.readInt();
 
 class GetEmojiURL {
     static const CONSTRUCTOR_ID = 3585149990;
-    static const SUBCLASS_OF_ID = 900222764;
+    static const SUBCLASS_OF_ID = 530614809;
     final classType = "request";
     final ID = 3585149990;
 	String langCode;
@@ -2474,7 +2474,7 @@ class GetEmojiURL {
 
 class GetSearchCounters {
     static const CONSTRUCTOR_ID = 1932455680;
-    static const SUBCLASS_OF_ID = 879538210;
+    static const SUBCLASS_OF_ID = 1809726574;
     final classType = "request";
     final ID = 1932455680;
 	var peer;
@@ -2499,7 +2499,7 @@ List<dynamic> filters = [];len = reader.readInt();
 
 class RequestUrlAuth {
     static const CONSTRUCTOR_ID = 428848198;
-    static const SUBCLASS_OF_ID = 1059271450;
+    static const SUBCLASS_OF_ID = 2003159838;
     final classType = "request";
     final ID = 428848198;
 	var peer;
@@ -2522,7 +2522,7 @@ class RequestUrlAuth {
 
 class AcceptUrlAuth {
     static const CONSTRUCTOR_ID = 2972479781;
-    static const SUBCLASS_OF_ID = 1059271450;
+    static const SUBCLASS_OF_ID = 2003159838;
     final classType = "request";
     final ID = 2972479781;
 	bool writeAllowed;
@@ -2546,7 +2546,7 @@ class AcceptUrlAuth {
 
 class HidePeerSettingsBar {
     static const CONSTRUCTOR_ID = 1336717624;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1336717624;
 	var peer;
@@ -2566,7 +2566,7 @@ class HidePeerSettingsBar {
 
 class GetScheduledHistory {
     static const CONSTRUCTOR_ID = 4111889931;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 4111889931;
 	var peer;
@@ -2587,7 +2587,7 @@ class GetScheduledHistory {
 
 class GetScheduledMessages {
     static const CONSTRUCTOR_ID = 3183150180;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 3183150180;
 	var peer;
@@ -2612,7 +2612,7 @@ List<int> id = [];len = reader.readInt();
 
 class SendScheduledMessages {
     static const CONSTRUCTOR_ID = 3174597898;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3174597898;
 	var peer;
@@ -2637,7 +2637,7 @@ List<int> id = [];len = reader.readInt();
 
 class DeleteScheduledMessages {
     static const CONSTRUCTOR_ID = 1504586518;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 1504586518;
 	var peer;
@@ -2662,7 +2662,7 @@ List<int> id = [];len = reader.readInt();
 
 class GetPollVotes {
     static const CONSTRUCTOR_ID = 3094231054;
-    static const SUBCLASS_OF_ID = 2611018865;
+    static const SUBCLASS_OF_ID = 3256457349;
     final classType = "request";
     final ID = 3094231054;
 	var peer;
@@ -2686,7 +2686,7 @@ class GetPollVotes {
 
 class ToggleStickerSets {
     static const CONSTRUCTOR_ID = 3037016042;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3037016042;
 	bool uninstall;
@@ -2713,7 +2713,7 @@ List<dynamic> stickersets = [];len = reader.readInt();
 
 class GetDialogFilters {
     static const CONSTRUCTOR_ID = 4053719405;
-    static const SUBCLASS_OF_ID = 2440084528;
+    static const SUBCLASS_OF_ID = 1612507469;
     final classType = "request";
     final ID = 4053719405;
 
@@ -2732,7 +2732,7 @@ class GetDialogFilters {
 
 class GetSuggestedDialogFilters {
     static const CONSTRUCTOR_ID = 2728186924;
-    static const SUBCLASS_OF_ID = 4031965897;
+    static const SUBCLASS_OF_ID = 2066312249;
     final classType = "request";
     final ID = 2728186924;
 
@@ -2751,7 +2751,7 @@ class GetSuggestedDialogFilters {
 
 class UpdateDialogFilter {
     static const CONSTRUCTOR_ID = 450142282;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 450142282;
 	int id;
@@ -2772,7 +2772,7 @@ class UpdateDialogFilter {
 
 class UpdateDialogFiltersOrder {
     static const CONSTRUCTOR_ID = 3311649252;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3311649252;
 	List<int> order;
@@ -2796,7 +2796,7 @@ List<int> order = [];len = reader.readInt();
 
 class GetOldFeaturedStickers {
     static const CONSTRUCTOR_ID = 2127598753;
-    static const SUBCLASS_OF_ID = 874812118;
+    static const SUBCLASS_OF_ID = 638891810;
     final classType = "request";
     final ID = 2127598753;
 	int offset;
@@ -2818,7 +2818,7 @@ class GetOldFeaturedStickers {
 
 class GetReplies {
     static const CONSTRUCTOR_ID = 584962828;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 584962828;
 	var peer;
@@ -2846,7 +2846,7 @@ class GetReplies {
 
 class GetDiscussionMessage {
     static const CONSTRUCTOR_ID = 1147761405;
-    static const SUBCLASS_OF_ID = 2108185594;
+    static const SUBCLASS_OF_ID = 1408820200;
     final classType = "request";
     final ID = 1147761405;
 	var peer;
@@ -2867,7 +2867,7 @@ class GetDiscussionMessage {
 
 class ReadDiscussion {
     static const CONSTRUCTOR_ID = 4147227124;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 4147227124;
 	var peer;
@@ -2889,7 +2889,7 @@ class ReadDiscussion {
 
 class UnpinAllMessages {
     static const CONSTRUCTOR_ID = 4029004939;
-    static const SUBCLASS_OF_ID = 2033342386;
+    static const SUBCLASS_OF_ID = 743031062;
     final classType = "request";
     final ID = 4029004939;
 	var peer;
@@ -2909,7 +2909,7 @@ class UnpinAllMessages {
 
 class DeleteChat {
     static const CONSTRUCTOR_ID = 1540419152;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1540419152;
 	BigInt chatId;
@@ -2929,7 +2929,7 @@ class DeleteChat {
 
 class DeletePhoneCallHistory {
     static const CONSTRUCTOR_ID = 4190888969;
-    static const SUBCLASS_OF_ID = 2733970328;
+    static const SUBCLASS_OF_ID = 4162282798;
     final classType = "request";
     final ID = 4190888969;
 	bool revoke;
@@ -2949,7 +2949,7 @@ class DeletePhoneCallHistory {
 
 class CheckHistoryImport {
     static const CONSTRUCTOR_ID = 1140726259;
-    static const SUBCLASS_OF_ID = 1362416396;
+    static const SUBCLASS_OF_ID = 1538421259;
     final classType = "request";
     final ID = 1140726259;
 	String importHead;
@@ -2969,7 +2969,7 @@ class CheckHistoryImport {
 
 class InitHistoryImport {
     static const CONSTRUCTOR_ID = 873008187;
-    static const SUBCLASS_OF_ID = 1857711112;
+    static const SUBCLASS_OF_ID = 2978723082;
     final classType = "request";
     final ID = 873008187;
 	var peer;
@@ -2991,7 +2991,7 @@ class InitHistoryImport {
 
 class UploadImportedMedia {
     static const CONSTRUCTOR_ID = 713433234;
-    static const SUBCLASS_OF_ID = 1147845587;
+    static const SUBCLASS_OF_ID = 1198308914;
     final classType = "request";
     final ID = 713433234;
 	var peer;
@@ -3014,7 +3014,7 @@ class UploadImportedMedia {
 
 class StartHistoryImport {
     static const CONSTRUCTOR_ID = 3023958852;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3023958852;
 	var peer;
@@ -3035,7 +3035,7 @@ class StartHistoryImport {
 
 class GetExportedChatInvites {
     static const CONSTRUCTOR_ID = 2729812982;
-    static const SUBCLASS_OF_ID = 518433807;
+    static const SUBCLASS_OF_ID = 1614624881;
     final classType = "request";
     final ID = 2729812982;
 	bool revoked;
@@ -3060,7 +3060,7 @@ class GetExportedChatInvites {
 
 class GetExportedChatInvite {
     static const CONSTRUCTOR_ID = 1937010524;
-    static const SUBCLASS_OF_ID = 506624428;
+    static const SUBCLASS_OF_ID = 2195510474;
     final classType = "request";
     final ID = 1937010524;
 	var peer;
@@ -3081,7 +3081,7 @@ class GetExportedChatInvite {
 
 class EditExportedChatInvite {
     static const CONSTRUCTOR_ID = 3184144245;
-    static const SUBCLASS_OF_ID = 506624428;
+    static const SUBCLASS_OF_ID = 2195510474;
     final classType = "request";
     final ID = 3184144245;
 	bool revoked;
@@ -3107,7 +3107,7 @@ class EditExportedChatInvite {
 
 class DeleteRevokedExportedChatInvites {
     static const CONSTRUCTOR_ID = 1452833749;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 1452833749;
 	var peer;
@@ -3128,7 +3128,7 @@ class DeleteRevokedExportedChatInvites {
 
 class DeleteExportedChatInvite {
     static const CONSTRUCTOR_ID = 3563365419;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3563365419;
 	var peer;
@@ -3149,7 +3149,7 @@ class DeleteExportedChatInvite {
 
 class GetAdminsWithInvites {
     static const CONSTRUCTOR_ID = 958457583;
-    static const SUBCLASS_OF_ID = 916941623;
+    static const SUBCLASS_OF_ID = 2405149995;
     final classType = "request";
     final ID = 958457583;
 	var peer;
@@ -3169,7 +3169,7 @@ class GetAdminsWithInvites {
 
 class GetChatInviteImporters {
     static const CONSTRUCTOR_ID = 3741637966;
-    static const SUBCLASS_OF_ID = 4075978166;
+    static const SUBCLASS_OF_ID = 3653012134;
     final classType = "request";
     final ID = 3741637966;
 	bool requested;
@@ -3195,7 +3195,7 @@ class GetChatInviteImporters {
 
 class SetHistoryTTL {
     static const CONSTRUCTOR_ID = 3087949796;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3087949796;
 	var peer;
@@ -3216,7 +3216,7 @@ class SetHistoryTTL {
 
 class CheckHistoryImportPeer {
     static const CONSTRUCTOR_ID = 1573261059;
-    static const SUBCLASS_OF_ID = 1532784684;
+    static const SUBCLASS_OF_ID = 3091968823;
     final classType = "request";
     final ID = 1573261059;
 	var peer;
@@ -3236,7 +3236,7 @@ class CheckHistoryImportPeer {
 
 class SetChatTheme {
     static const CONSTRUCTOR_ID = 3862683967;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3862683967;
 	var peer;
@@ -3257,7 +3257,7 @@ class SetChatTheme {
 
 class GetMessageReadParticipants {
     static const CONSTRUCTOR_ID = 745510839;
-    static const SUBCLASS_OF_ID = 3827148722;
+    static const SUBCLASS_OF_ID = 2300109160;
     final classType = "request";
     final ID = 745510839;
 	var peer;
@@ -3284,7 +3284,7 @@ final List<BigInt> result = [];
 
 class GetSearchResultsCalendar {
     static const CONSTRUCTOR_ID = 1240514025;
-    static const SUBCLASS_OF_ID = 4184050795;
+    static const SUBCLASS_OF_ID = 2462409743;
     final classType = "request";
     final ID = 1240514025;
 	var peer;
@@ -3307,7 +3307,7 @@ class GetSearchResultsCalendar {
 
 class GetSearchResultsPositions {
     static const CONSTRUCTOR_ID = 1855292323;
-    static const SUBCLASS_OF_ID = 2202519078;
+    static const SUBCLASS_OF_ID = 3647172749;
     final classType = "request";
     final ID = 1855292323;
 	var peer;
@@ -3330,7 +3330,7 @@ class GetSearchResultsPositions {
 
 class HideChatJoinRequest {
     static const CONSTRUCTOR_ID = 2145904661;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2145904661;
 	bool approved;
@@ -3352,7 +3352,7 @@ class HideChatJoinRequest {
 
 class HideAllChatJoinRequests {
     static const CONSTRUCTOR_ID = 3766875370;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3766875370;
 	bool approved;
@@ -3374,7 +3374,7 @@ class HideAllChatJoinRequests {
 
 class ToggleNoForwards {
     static const CONSTRUCTOR_ID = 2971578274;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2971578274;
 	var peer;
@@ -3395,7 +3395,7 @@ class ToggleNoForwards {
 
 class SaveDefaultSendAs {
     static const CONSTRUCTOR_ID = 3439189910;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3439189910;
 	var peer;
@@ -3416,7 +3416,7 @@ class SaveDefaultSendAs {
 
 class SendReaction {
     static const CONSTRUCTOR_ID = 627641572;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 627641572;
 	bool big;
@@ -3439,7 +3439,7 @@ class SendReaction {
 
 class GetMessagesReactions {
     static const CONSTRUCTOR_ID = 2344259814;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 2344259814;
 	var peer;
@@ -3464,7 +3464,7 @@ List<int> id = [];len = reader.readInt();
 
 class GetMessageReactionsList {
     static const CONSTRUCTOR_ID = 3773721463;
-    static const SUBCLASS_OF_ID = 449421661;
+    static const SUBCLASS_OF_ID = 1627186662;
     final classType = "request";
     final ID = 3773721463;
 	var peer;
@@ -3488,7 +3488,7 @@ class GetMessageReactionsList {
 
 class SetChatAvailableReactions {
     static const CONSTRUCTOR_ID = 335875750;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 335875750;
 	var peer;
@@ -3513,7 +3513,7 @@ List<String> availableReactions = [];len = reader.readInt();
 
 class GetAvailableReactions {
     static const CONSTRUCTOR_ID = 417243308;
-    static const SUBCLASS_OF_ID = 2087463886;
+    static const SUBCLASS_OF_ID = 3827740034;
     final classType = "request";
     final ID = 417243308;
 	int hash;
@@ -3533,7 +3533,7 @@ class GetAvailableReactions {
 
 class SetDefaultReaction {
     static const CONSTRUCTOR_ID = 3646997716;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3646997716;
 	String reaction;
@@ -3553,7 +3553,7 @@ class SetDefaultReaction {
 
 class TranslateText {
     static const CONSTRUCTOR_ID = 617508334;
-    static const SUBCLASS_OF_ID = 4105722477;
+    static const SUBCLASS_OF_ID = 37897192;
     final classType = "request";
     final ID = 617508334;
 	var peer;
@@ -3577,7 +3577,7 @@ class TranslateText {
 
 class GetUnreadReactions {
     static const CONSTRUCTOR_ID = 3898322458;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 3898322458;
 	var peer;
@@ -3602,7 +3602,7 @@ class GetUnreadReactions {
 
 class ReadReactions {
     static const CONSTRUCTOR_ID = 2195870167;
-    static const SUBCLASS_OF_ID = 2033342386;
+    static const SUBCLASS_OF_ID = 743031062;
     final classType = "request";
     final ID = 2195870167;
 	var peer;
@@ -3622,7 +3622,7 @@ class ReadReactions {
 
 class SearchSentMedia {
     static const CONSTRUCTOR_ID = 276705696;
-    static const SUBCLASS_OF_ID = 303346483;
+    static const SUBCLASS_OF_ID = 3568569182;
     final classType = "request";
     final ID = 276705696;
 	String q;
@@ -3644,7 +3644,7 @@ class SearchSentMedia {
 
 class GetAttachMenuBots {
     static const CONSTRUCTOR_ID = 385663691;
-    static const SUBCLASS_OF_ID = 6576854;
+    static const SUBCLASS_OF_ID = 2217616346;
     final classType = "request";
     final ID = 385663691;
 	BigInt hash;
@@ -3664,7 +3664,7 @@ class GetAttachMenuBots {
 
 class GetAttachMenuBot {
     static const CONSTRUCTOR_ID = 1998676370;
-    static const SUBCLASS_OF_ID = 3071275098;
+    static const SUBCLASS_OF_ID = 3677587517;
     final classType = "request";
     final ID = 1998676370;
 	var bot;
@@ -3684,7 +3684,7 @@ class GetAttachMenuBot {
 
 class ToggleBotInAttachMenu {
     static const CONSTRUCTOR_ID = 451818415;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 451818415;
 	var bot;
@@ -3705,7 +3705,7 @@ class ToggleBotInAttachMenu {
 
 class RequestWebView {
     static const CONSTRUCTOR_ID = 2444318769;
-    static const SUBCLASS_OF_ID = 887985868;
+    static const SUBCLASS_OF_ID = 2479793990;
     final classType = "request";
     final ID = 2444318769;
 	bool fromBotMenu;
@@ -3733,7 +3733,7 @@ class RequestWebView {
 
 class ProlongWebView {
     static const CONSTRUCTOR_ID = 3932142798;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 3932142798;
 	bool silent;
@@ -3758,7 +3758,7 @@ class ProlongWebView {
 
 class RequestSimpleWebView {
     static const CONSTRUCTOR_ID = 1790652275;
-    static const SUBCLASS_OF_ID = 1301919609;
+    static const SUBCLASS_OF_ID = 367977435;
     final classType = "request";
     final ID = 1790652275;
 	var bot;
@@ -3780,7 +3780,7 @@ class RequestSimpleWebView {
 
 class SendWebViewResultMessage {
     static const CONSTRUCTOR_ID = 172168437;
-    static const SUBCLASS_OF_ID = 1856894090;
+    static const SUBCLASS_OF_ID = 1977914130;
     final classType = "request";
     final ID = 172168437;
 	String botQueryId;
@@ -3801,7 +3801,7 @@ class SendWebViewResultMessage {
 
 class SendWebViewData {
     static const CONSTRUCTOR_ID = 3691135688;
-    static const SUBCLASS_OF_ID = 4202248750;
+    static const SUBCLASS_OF_ID = 2331323052;
     final classType = "request";
     final ID = 3691135688;
 	var bot;
@@ -3824,7 +3824,7 @@ class SendWebViewData {
 
 class TranscribeAudio {
     static const CONSTRUCTOR_ID = 647928393;
-    static const SUBCLASS_OF_ID = 1746578576;
+    static const SUBCLASS_OF_ID = 565332278;
     final classType = "request";
     final ID = 647928393;
 	var peer;
@@ -3845,7 +3845,7 @@ class TranscribeAudio {
 
 class RateTranscribedAudio {
     static const CONSTRUCTOR_ID = 2132608815;
-    static const SUBCLASS_OF_ID = 1456026164;
+    static const SUBCLASS_OF_ID = 4122188204;
     final classType = "request";
     final ID = 2132608815;
 	var peer;

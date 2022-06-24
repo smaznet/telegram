@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:core';
-import 'dart:mirrors';
 import 'dart:typed_data';
 
 import '../tl/all_tl_objects.dart';
@@ -195,8 +194,8 @@ class BinaryReader {
         throw error;
       }
     }
-    var c = reflectClass(clazz);
-    return c.getField(Symbol('fromReader')).reflectee(this);
+
+    return clazz.call(this);
   }
 
   /**

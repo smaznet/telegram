@@ -3,7 +3,7 @@ import '../../extensions/binary_reader.dart';
 
 class File {
     static const CONSTRUCTOR_ID = 157948117;
-    static const SUBCLASS_OF_ID = 1357236314;
+    static const SUBCLASS_OF_ID = 1822152488;
     final classType = "constructor";
     final ID = 157948117;
 	var type;
@@ -22,7 +22,7 @@ class File {
 
 class FileCdnRedirect {
     static const CONSTRUCTOR_ID = 4052539972;
-    static const SUBCLASS_OF_ID = 1357236314;
+    static const SUBCLASS_OF_ID = 1822152488;
     final classType = "constructor";
     final ID = 4052539972;
 	int dcId;
@@ -47,7 +47,7 @@ List<dynamic> fileHashes = [];len = reader.readInt();
 
 class WebFile {
     static const CONSTRUCTOR_ID = 568808380;
-    static const SUBCLASS_OF_ID = 1148905190;
+    static const SUBCLASS_OF_ID = 1760657233;
     final classType = "constructor";
     final ID = 568808380;
 	int size;
@@ -68,7 +68,7 @@ class WebFile {
 
 class CdnFileReuploadNeeded {
     static const CONSTRUCTOR_ID = 4004045934;
-    static const SUBCLASS_OF_ID = 3785434404;
+    static const SUBCLASS_OF_ID = 4123851048;
     final classType = "constructor";
     final ID = 4004045934;
 	List<int> requestToken;
@@ -85,7 +85,7 @@ class CdnFileReuploadNeeded {
 
 class CdnFile {
     static const CONSTRUCTOR_ID = 2845821519;
-    static const SUBCLASS_OF_ID = 3785434404;
+    static const SUBCLASS_OF_ID = 4123851048;
     final classType = "constructor";
     final ID = 2845821519;
 	List<int> bytes;

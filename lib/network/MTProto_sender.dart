@@ -1,6 +1,9 @@
+import 'package:telegram/tl/tlobject.dart';
+
 import '../crypto/auth_key.dart';
 import '../errors/common.dart';
 import '../errors/error.dart';
+import '../errors/rpc_base_error.dart';
 import '../extensions/binary_reader.dart';
 import '../extensions/logger.dart';
 import '../extensions/message_packer.dart';
@@ -8,6 +11,7 @@ import '../tl/constructors/constructors.dart';
 import '../tl/constructors/upload.dart';
 import '../tl/core/GZIP_packed.dart';
 import '../tl/core/RPC_result.dart';
+import '../tl/core/TLMessage.dart';
 import '../tl/core/message_container.dart';
 import '../tl/requests/auth.dart';
 import '../utils.dart';
@@ -34,7 +38,7 @@ class MTProtoSender {
   Set<BigInt> _pendingAck = {};
   List _lastAcks = List.empty(growable: true);
   late MessagePacker _sendQueue;
-  Map<BigInt, dynamic> _pendingState = {};
+  Map<BigInt, RequestState> _pendingState = {};
   late MTProtoState _state;
   late Logger _log;
   late AuthKey? authKey;
@@ -211,7 +215,7 @@ class MTProtoSender {
 //CONTEST
     final state = new RequestState(request);
     this._sendQueue.append(state);
-    return state.future;
+    return state.completer.future;
 /*
         if (!Helpers.isArrayLike(request)) {
             final state = new RequestState(request)
@@ -347,7 +351,7 @@ class MTProtoSender {
 
   _recvLoop() async {
     var body;
-    var message;
+    TLMessage? message;
 
     while (this._userConnected && !this._reconnecting) {
 // this._log.debug('Receiving items from the network...');
@@ -365,8 +369,9 @@ class MTProtoSender {
       } catch (e, stackTrace) {
         if (e is TypeNotFoundError) {
 // Received object which we don't know how to deserialize
+          print(stackTrace);
           this._log.info(
-              'Type ${e.invalidConstructorId} not found, remaining data ${e.remaining}');
+              'Type ${e.invalidConstructorId} not found, remaining data ${e.remaining?.length}');
           continue;
         } else if (e is SecurityError) {
 // A step while decoding had the incorrect data. This message
@@ -428,7 +433,7 @@ class MTProtoSender {
    * @returns {Promise<void>}
    * @private
    */
-  _processMessage(message) async {
+  _processMessage(TLMessage message) async {
     this._pendingAck.add(message.msgId);
 // eslint-disable-next-line require-atomic-updates
     message.obj = await message.obj;
@@ -459,7 +464,7 @@ class MTProtoSender {
     final toPop = [];
 
     for (state in this._pendingState.values) {
-      if (state.containerId.equals(msgId)) {
+      if (state.containerId == msgId) {
         toPop.add(state.msgId);
       }
     }
@@ -490,52 +495,58 @@ class MTProtoSender {
    * @returns {Promise<void>}
    * @private
    */
-  _handleRPCResult(message) {
-    final RPCResult = message.obj;
-    if (RPCResult.error != null) {
-      print(RPCResult.error);
+  _handleRPCResult(TLMessage message) {
+    final RPCResult rpcResult = message.obj;
+    if (rpcResult.error != null) {
+      print("GOT ERR ${rpcResult.error}");
+      if (rpcResult.error is RPCError) {}
     }
-    final RequestState state = this._pendingState[RPCResult.reqMsgId];
+    final RequestState? state = this._pendingState[rpcResult.reqMsgId];
 
     if (state != null) {
-      this._pendingState.remove([RPCResult.reqMsgId]);
+      this._pendingState.remove([rpcResult.reqMsgId]);
     }
-    this._log.debug('Handling RPC result for message ${RPCResult.reqMsgId}');
+    this._log.debug('Handling RPC result for message ${rpcResult.reqMsgId}');
     if (state == null) {
 // TODO We should not get responses to things we never sent
 // However receiving a File() with empty bytes is "common".
 // See #658, #759 and #958. They seem to happen in a container
 // which contain the real response right after.
       try {
-        final BinaryReader reader = new BinaryReader(RPCResult.body);
+        final BinaryReader reader = new BinaryReader(rpcResult.body);
         if (!(reader.tgReadObject() is File)) {
           throw ('Not an upload.File');
         }
       } catch (e, stacktrace) {
-        print(e);
+        print("GOT ERR2");
+        print("${e} $stacktrace");
         this._log.error(e.toString());
         if (e is TypeNotFoundError) {
           this._log.info(
-              'Received response without parent request: ${RPCResult.body}');
+              'Received response without parent request: ${rpcResult.body}');
           return;
         } else {
+          print("GOT ERR3");
           print(stacktrace);
           throw e;
         }
       }
     }
 
-    if (RPCResult.error != null) {
+    if (rpcResult.error != null) {
+      print("toError");
 // eslint-disable-next-line new-cap
-      final error = RPCMessageToError(RPCResult.error, state.request);
+      final error = RPCMessageToError(rpcResult.error, state?.request);
+      print("Error is ${error}");
       this
           ._sendQueue
-          .append(new RequestState(new MsgsAck(msgIds: [state.msgId])));
-      state.future.completeError(error);
+          .append(new RequestState(new MsgsAck(msgIds: [state?.msgId])));
+      print("Appended");
+      state?.completer.completeError(error);
     } else {
-      final reader = new BinaryReader(RPCResult.body);
-      final read = state.request.readResult(reader);
-      state.future.complete(read);
+      final reader = new BinaryReader(rpcResult.body);
+      final read = state?.request.readResult(reader);
+      state?.completer.complete(read);
     }
   }
 
@@ -567,15 +578,16 @@ class MTProtoSender {
     await this._processMessage(message);
   }
 
-  _handleUpdate(message) async {
-    if (message.obj.SUBCLASS_OF_ID != 0x8af52aac) {
+  _handleUpdate(TLMessage message) async {
+    final update = message.obj as TLObject;
+    if (update.getSubId() != 0x8af52aac) {
 // crc32(b'Updates')
       this._log.warn(
           'Note: ${message.obj.runtimeType} is not an update, not dispatching it');
       return;
     }
     this._log.debug('Handling update ${message.obj.runtimeType}');
-    if (this._updateCallback) {
+    if (this._updateCallback != null) {
       this._updateCallback(message.obj);
     }
   }
@@ -596,7 +608,7 @@ class MTProtoSender {
 
 // Todo Check result
     if (state != null) {
-      state.future.complete(pong);
+      state.completer.complete(pong);
     }
   }
 
@@ -724,7 +736,7 @@ class MTProtoSender {
       final state = this._pendingState[msgId];
       if (state != null && state.request is LogOut) {
         this._pendingState.remove(msgId);
-        state.future.complete(true);
+        state.completer.complete(true);
       }
     }
   }
@@ -744,9 +756,9 @@ class MTProtoSender {
     this._log.debug('Handling future salts for message ${message.msgId}');
     final state = this._pendingState[message.msgId];
 
-    if (state) {
+    if (state != null) {
       this._pendingState.remove(message);
-      state.resolve(message.obj);
+      state.completer.complete(message.obj);
     }
   }
 

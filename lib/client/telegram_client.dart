@@ -1,6 +1,9 @@
 import 'dart:io' show Platform;
 import 'dart:math';
 
+import 'package:telegram/tl/base_request.dart';
+import 'package:telegram/tl/requests/auth.dart';
+
 import '../extensions/logger.dart';
 import '../network/MTProto_sender.dart';
 import '../network/connection/TCP_full.dart';
@@ -11,9 +14,9 @@ import '../tl/requests/help.dart';
 import '../tl/requests/requests.dart';
 import '../utils.dart';
 
-const int DEFAULT_DC_ID = 2;
-const String DEFAULT_IPV4_IP = '149.154.167.51';
-const String DEFAULT_IPV6_IP = '[2001:67c:4e8:f002::a]';
+const int DEFAULT_DC_ID = 4;
+const String DEFAULT_IPV4_IP = '149.154.167.91';
+const String DEFAULT_IPV6_IP = '[2001:67c:4e8:f004::a]';
 const int DEFAULT_PORT = 443;
 
 class TelegramClient {
@@ -22,7 +25,7 @@ class TelegramClient {
   var _initWith;
   int _connectionRetries = 10, _requestRetries = 10, _retryDelay = 5;
   final String apiHash;
-  late MTProtoSender _sender;
+  MTProtoSender? _sender;
   late Logger _log;
   late Type _connection;
   var _eventBuilders;
@@ -87,7 +90,7 @@ class TelegramClient {
     print("GOT Update ${update}");
     if (update is Updates || update is UpdatesCombined) {
       // TODO deal with entities
-      const entities = [];
+      final entities = List.empty(growable: true);
       for (final x in [...update.users, ...update.chats]) {
         entities.add(x);
       }
@@ -105,7 +108,7 @@ class TelegramClient {
   }
 
   _processUpdate({update, others, entities}) {
-    update._entities = entities ?? [];
+    // update._entities = entities ?? [];
     this._dispatchUpdate(
       update: update,
       others: others,
@@ -146,12 +149,12 @@ class TelegramClient {
     final connection = ConnectionTCPFull(this.session.serverAddress,
         this.session.port, this.session.dcId, this._log);
     if (!await this
-        ._sender
+        ._sender!
         .connect(connection, eventDispatch: this._dispatchUpdate)) {
       return;
     }
-    this.session.setAuthKey(this._sender.authKey, null);
-    await this._sender.send(this._initWith(
+    this.session.setAuthKey(this._sender!.authKey, null);
+    await this._sender!.send(this._initWith(
           new GetConfig(),
         ));
 
@@ -162,7 +165,7 @@ class TelegramClient {
 
   isConnected() {
     if (this._sender != null) {
-      if (this._sender.isConnected()) {
+      if (this._sender!.isConnected()) {
         return true;
       }
     }
@@ -178,7 +181,7 @@ class TelegramClient {
       // We don't care about the result we just want to send it every
       // 60 seconds so telegram doesn't stop the connection
       try {
-        this._sender.send(new Ping(
+        this._sender!.send(new Ping(
               pingId: BigInt.from(rnd),
             ));
       } catch (e) {}
@@ -196,5 +199,21 @@ class TelegramClient {
         }
       }*/
     }
+  }
+
+  Future invoke(BaseRequest request) async {
+    return this._sender!.send(request);
+  }
+
+  Future start({Future<String> Function()? botToken}) async {
+    if (!this.isConnected()) {
+      await this.connect();
+    }
+    var res = await this.invoke(ImportBotAuthorization(
+        flags: 0,
+        apiId: apiId,
+        apiHash: apiHash,
+        botAuthToken: await botToken!()));
+    print("GOT RES ${res}");
   }
 }

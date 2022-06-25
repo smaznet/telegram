@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'class_writer.dart';
@@ -152,7 +154,7 @@ writeFromReader(writer, name, argsConfig) {
 
   writer.write("static $name fromReader(BinaryReader reader) {");
   writer.write("\n");
-  writer.write("\tvar temp,len;");
+  writer.write("\tvar len;");
 
   final args = {};
   argsConfig.forEach((argName, arg) {
@@ -166,8 +168,9 @@ writeFromReader(writer, name, argsConfig) {
       }
       writer.write("var $argName;");
 
-      writer.write("if ((flags & " + (1 << arg['flagIndex']).toString());
-      writer.write(")==1){");
+      final num = 1 << arg['flagIndex'];
+      writer.write("if ((flags & " + (num).toString());
+      writer.write(") == ${num}){");
       if (!arg['isVector']) {
         writer.write("$argName = ");
       }
@@ -291,7 +294,7 @@ bool writeArgToBytes(ClassWriter writer, arg, Map<dynamic, dynamic> argsConfig,
 }
 
 writeGetBytes(ClassWriter writer, String name, argsConfig, constructorId) {
-  writer.write("\n\tList<int> getBytes(){");
+  writer.write("\n\t@override\n\tList<int> getBytes(){");
   final Map<int, List<dynamic>> repeatedArgs = {};
   argsConfig.forEach((argName, arg) {
     if (arg['isFlag']) {
@@ -314,6 +317,8 @@ writeGetBytes(ClassWriter writer, String name, argsConfig, constructorId) {
 }
 
 createClasses(classesType, params) {
+  int total = params.length;
+  int done = 0;
   for (final classParams in params) {
     final name = classParams['name'];
     final constructorId = classParams['constructorId'];
@@ -329,12 +334,24 @@ createClasses(classesType, params) {
       // append = "part of ${classesType == "requests" ? "request" : "constructor"};\n";
       append = "import '../../utils.dart';\n";
       append += "import '../../extensions/binary_reader.dart';\n\n";
+      if (classesType == "requests") {
+        append += "import '../base_request.dart';\n";
+      } else {
+        append += "import '../base_contructor.dart';\n";
+      }
       file.createSync(recursive: true);
     }
     ClassWriter writer = new ClassWriter(file: file);
     writer.write(append);
     //Declaring classes
-    writer.write("""class $name {\n""");
+    var extend = "";
+    if (classesType == "requests") {
+      extend = "extends BaseRequest ";
+    } else {
+      extend = "extends BaseConstructor ";
+    }
+
+    writer.write("""class $name $extend{\n""");
     writer.write("""    static const CONSTRUCTOR_ID = $constructorId;
     static const SUBCLASS_OF_ID = $subclassOfId;
     final classType = "${classesType.substring(0, classesType.length - 1)}";
@@ -348,7 +365,7 @@ createClasses(classesType, params) {
         return;
       }
       filtered.add("this.$key");
-      print("$key => ${value['isFlag']}");
+
       writer.write(
           """\t${getType(value['type'], value['isVector'], value["isFlag"])} $key;\n""");
     });
@@ -360,9 +377,30 @@ createClasses(classesType, params) {
     writeFromReader(writer, name, argsConfig);
     writeGetBytes(writer, name, argsConfig, constructorId);
     writeReadResults(writer, name, argsConfig, classesType, result);
+    writeSubAndCatGetter(writer, name, argsConfig);
     writer.write("\n\n");
     writer.write("}");
+    print("Progress ${++done}/$total");
   }
+}
+
+void writeSubAndCatGetter(
+    ClassWriter write, String name, Map<String, dynamic> argsConfig) {
+  write.write(""" @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+  @override
+  String toString() {
+    return '$name{ID: \$ID, ${argsConfig.keys.where((key) => !argsConfig[key]['flagIndicator']).map((key) => "$key: \$$key").join(", ")}}';
+  }
+  
+  """);
 }
 
 void writeReadResults(ClassWriter writer, String name,
@@ -373,14 +411,14 @@ void writeReadResults(ClassWriter writer, String name,
   final m = new RegExp(r'Vector<(int|long)>').firstMatch(result);
 
   if (m == null) {
-    writer.write("\n\treadResult(BinaryReader reader) {");
+    writer.write("\n\t@override\n\treadResult(BinaryReader reader) {");
     writer.write("\n\t");
     writer.write("return reader.tgReadObject();\n\t}");
     return;
   }
   final type = m.group(1);
   writer.write(
-      "\n\tList<${type == "int" ? "int" : "BigInt"}> readResult(BinaryReader reader) {");
+      "\n\t@override\n\tList<${type == "int" ? "int" : "BigInt"}> readResult(BinaryReader reader) {");
   writer.write("\n\t");
 
   writer.write("\nreader.readInt();");
@@ -397,9 +435,12 @@ void writeReadResults(ClassWriter writer, String name,
 getArgFromReader(ClassWriter writer, arg, argName, {end: true}) {
   if (arg['isVector']) {
     if (arg['useVectorId']) {
-      writer.write("reader.readInt();");
+      writer.write("var _vector${argName} = reader.readInt();");
+      writer.write(
+          "if(_vector${argName} != 481674261) throw Exception('Wrong vectorId');");
       writer.write("\n");
     }
+
     arg['isVector'] = false;
     writer.write("${getType(arg['type'], true)} $argName = [];");
     writer.write("len = reader.readInt();");
@@ -492,10 +533,29 @@ deleteDir(String path) {
   }
 }
 
-void main() {
+Future formatCode(String path) async {
+  var dartPath = Platform.executable;
+  var process = await Process.start(
+    dartPath,
+    ['format', "--fix", path],
+  );
+  Completer end = Completer();
+  process.stdout.listen((event) {
+    print(utf8.decode(event));
+  }).onDone(() {
+    end.complete();
+  });
+  return end.future;
+}
+
+void main() async {
   deleteDir('lib/tl/constructors');
   deleteDir('lib/tl/requests');
   deleteDir('lib/tl/all_tl_objects.dart');
-
+  print("${Directory.current}");
   buildApiFromTlSchema();
+
+  await formatCode('lib/tl/constructors');
+  await formatCode('lib/tl/requests');
+  await formatCode('lib/tl/all_tl_objects.dart');
 }

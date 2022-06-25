@@ -1,270 +1,693 @@
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
 
-class ContactsNotModified {
-    static const CONSTRUCTOR_ID = 3075189202;
-    static const SUBCLASS_OF_ID = 951985654;
-    final classType = "constructor";
-    final ID = 3075189202;
+import '../base_contructor.dart';
 
+class ContactsNotModified extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3075189202;
+  static const SUBCLASS_OF_ID = 951985654;
+  final classType = "constructor";
+  final ID = 3075189202;
 
-	ContactsNotModified();
+  ContactsNotModified();
 
-	static ContactsNotModified fromReader(BinaryReader reader) {
-	var temp,len;		return new ContactsNotModified();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3075189202,4),].expand((element) => element).toList();}
+  static ContactsNotModified fromReader(BinaryReader reader) {
+    var len;
+    return ContactsNotModified();
+  }
 
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3075189202, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ContactsNotModified{ID: $ID, }';
+  }
 }
 
-class Contacts {
-    static const CONSTRUCTOR_ID = 3941105218;
-    static const SUBCLASS_OF_ID = 951985654;
-    final classType = "constructor";
-    final ID = 3941105218;
-	List<dynamic> contacts;
-	int savedCount;
-	List<dynamic> users;
+class Contacts extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3941105218;
+  static const SUBCLASS_OF_ID = 951985654;
+  final classType = "constructor";
+  final ID = 3941105218;
+  List<dynamic> contacts;
+  int savedCount;
+  List<dynamic> users;
 
+  Contacts(
+      {required this.contacts, required this.savedCount, required this.users});
 
-	Contacts({required this.contacts, required this.savedCount, required this.users});
+  static Contacts fromReader(BinaryReader reader) {
+    var len;
+    var _vectorcontacts = reader.readInt();
+    if (_vectorcontacts != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> contacts = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      contacts.add(reader.tgReadObject());
+    }
+    var savedCount = reader.readInt();
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return Contacts(contacts: contacts, savedCount: savedCount, users: users);
+  }
 
-	static Contacts fromReader(BinaryReader reader) {
-	var temp,len;reader.readInt();
-List<dynamic> contacts = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		contacts.add(reader.tgReadObject());
-}var savedCount = reader.readInt();reader.readInt();
-List<dynamic> users = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		users.add(reader.tgReadObject());
-}		return new Contacts(contacts : contacts, savedCount : savedCount, users : users);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3941105218,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.contacts!.length,4,little:true,signed:true),this.contacts!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(this.savedCount,4,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3941105218, 4),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.contacts!.length, 4,
+          little: true, signed: true),
+      this
+          .contacts!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(this.savedCount, 4, little: true, signed: true),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'Contacts{ID: $ID, contacts: $contacts, savedCount: $savedCount, users: $users}';
+  }
 }
 
-class ImportedContacts {
-    static const CONSTRUCTOR_ID = 2010127419;
-    static const SUBCLASS_OF_ID = 2171776403;
-    final classType = "constructor";
-    final ID = 2010127419;
-	List<dynamic> imported;
-	List<dynamic> popularInvites;
-	List<BigInt> retryContacts;
-	List<dynamic> users;
+class ImportedContacts extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2010127419;
+  static const SUBCLASS_OF_ID = 2171776403;
+  final classType = "constructor";
+  final ID = 2010127419;
+  List<dynamic> imported;
+  List<dynamic> popularInvites;
+  List<BigInt> retryContacts;
+  List<dynamic> users;
 
+  ImportedContacts(
+      {required this.imported,
+      required this.popularInvites,
+      required this.retryContacts,
+      required this.users});
 
-	ImportedContacts({required this.imported, required this.popularInvites, required this.retryContacts, required this.users});
+  static ImportedContacts fromReader(BinaryReader reader) {
+    var len;
+    var _vectorimported = reader.readInt();
+    if (_vectorimported != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> imported = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      imported.add(reader.tgReadObject());
+    }
+    var _vectorpopularInvites = reader.readInt();
+    if (_vectorpopularInvites != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> popularInvites = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      popularInvites.add(reader.tgReadObject());
+    }
+    var _vectorretryContacts = reader.readInt();
+    if (_vectorretryContacts != 481674261) throw Exception('Wrong vectorId');
+    List<BigInt> retryContacts = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      retryContacts.add(reader.readLong());
+    }
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return ImportedContacts(
+        imported: imported,
+        popularInvites: popularInvites,
+        retryContacts: retryContacts,
+        users: users);
+  }
 
-	static ImportedContacts fromReader(BinaryReader reader) {
-	var temp,len;reader.readInt();
-List<dynamic> imported = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		imported.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> popularInvites = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		popularInvites.add(reader.tgReadObject());
-}reader.readInt();
-List<BigInt> retryContacts = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		retryContacts.add(reader.readLong());
-}reader.readInt();
-List<dynamic> users = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		users.add(reader.tgReadObject());
-}		return new ImportedContacts(imported : imported, popularInvites : popularInvites, retryContacts : retryContacts, users : users);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(2010127419,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.imported!.length,4,little:true,signed:true),this.imported!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.popularInvites!.length,4,little:true,signed:true),this.popularInvites!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.retryContacts!.length,4,little:true,signed:true),this.retryContacts!.map((x)=>readBufferFromBigInt(x,8,little:true,signed:true)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2010127419, 4),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.imported!.length, 4,
+          little: true, signed: true),
+      this
+          .imported!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.popularInvites!.length, 4,
+          little: true, signed: true),
+      this
+          .popularInvites!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.retryContacts!.length, 4,
+          little: true, signed: true),
+      this
+          .retryContacts!
+          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ImportedContacts{ID: $ID, imported: $imported, popularInvites: $popularInvites, retryContacts: $retryContacts, users: $users}';
+  }
 }
 
-class Blocked {
-    static const CONSTRUCTOR_ID = 182326673;
-    static const SUBCLASS_OF_ID = 4290400079;
-    final classType = "constructor";
-    final ID = 182326673;
-	List<dynamic> blocked;
-	List<dynamic> chats;
-	List<dynamic> users;
+class Blocked extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 182326673;
+  static const SUBCLASS_OF_ID = 4290400079;
+  final classType = "constructor";
+  final ID = 182326673;
+  List<dynamic> blocked;
+  List<dynamic> chats;
+  List<dynamic> users;
 
+  Blocked({required this.blocked, required this.chats, required this.users});
 
-	Blocked({required this.blocked, required this.chats, required this.users});
+  static Blocked fromReader(BinaryReader reader) {
+    var len;
+    var _vectorblocked = reader.readInt();
+    if (_vectorblocked != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> blocked = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      blocked.add(reader.tgReadObject());
+    }
+    var _vectorchats = reader.readInt();
+    if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> chats = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      chats.add(reader.tgReadObject());
+    }
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return Blocked(blocked: blocked, chats: chats, users: users);
+  }
 
-	static Blocked fromReader(BinaryReader reader) {
-	var temp,len;reader.readInt();
-List<dynamic> blocked = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		blocked.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> chats = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		chats.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> users = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		users.add(reader.tgReadObject());
-}		return new Blocked(blocked : blocked, chats : chats, users : users);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(182326673,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.blocked!.length,4,little:true,signed:true),this.blocked!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats!.length,4,little:true,signed:true),this.chats!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(182326673, 4),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.blocked!.length, 4, little: true, signed: true),
+      this
+          .blocked!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      this
+          .chats!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'Blocked{ID: $ID, blocked: $blocked, chats: $chats, users: $users}';
+  }
 }
 
-class BlockedSlice {
-    static const CONSTRUCTOR_ID = 3781575060;
-    static const SUBCLASS_OF_ID = 4290400079;
-    final classType = "constructor";
-    final ID = 3781575060;
-	int count;
-	List<dynamic> blocked;
-	List<dynamic> chats;
-	List<dynamic> users;
+class BlockedSlice extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3781575060;
+  static const SUBCLASS_OF_ID = 4290400079;
+  final classType = "constructor";
+  final ID = 3781575060;
+  int count;
+  List<dynamic> blocked;
+  List<dynamic> chats;
+  List<dynamic> users;
 
+  BlockedSlice(
+      {required this.count,
+      required this.blocked,
+      required this.chats,
+      required this.users});
 
-	BlockedSlice({required this.count, required this.blocked, required this.chats, required this.users});
+  static BlockedSlice fromReader(BinaryReader reader) {
+    var len;
+    var count = reader.readInt();
+    var _vectorblocked = reader.readInt();
+    if (_vectorblocked != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> blocked = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      blocked.add(reader.tgReadObject());
+    }
+    var _vectorchats = reader.readInt();
+    if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> chats = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      chats.add(reader.tgReadObject());
+    }
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return BlockedSlice(
+        count: count, blocked: blocked, chats: chats, users: users);
+  }
 
-	static BlockedSlice fromReader(BinaryReader reader) {
-	var temp,len;var count = reader.readInt();reader.readInt();
-List<dynamic> blocked = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		blocked.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> chats = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		chats.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> users = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		users.add(reader.tgReadObject());
-}		return new BlockedSlice(count : count, blocked : blocked, chats : chats, users : users);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3781575060,4),readBufferFromBigInt(this.count,4,little:true,signed:true),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.blocked!.length,4,little:true,signed:true),this.blocked!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats!.length,4,little:true,signed:true),this.chats!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3781575060, 4),
+      readBufferFromBigInt(this.count, 4, little: true, signed: true),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.blocked!.length, 4, little: true, signed: true),
+      this
+          .blocked!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      this
+          .chats!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'BlockedSlice{ID: $ID, count: $count, blocked: $blocked, chats: $chats, users: $users}';
+  }
 }
 
-class Found {
-    static const CONSTRUCTOR_ID = 3004386717;
-    static const SUBCLASS_OF_ID = 1132896995;
-    final classType = "constructor";
-    final ID = 3004386717;
-	List<dynamic> myResults;
-	List<dynamic> results;
-	List<dynamic> chats;
-	List<dynamic> users;
+class Found extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3004386717;
+  static const SUBCLASS_OF_ID = 1132896995;
+  final classType = "constructor";
+  final ID = 3004386717;
+  List<dynamic> myResults;
+  List<dynamic> results;
+  List<dynamic> chats;
+  List<dynamic> users;
 
+  Found(
+      {required this.myResults,
+      required this.results,
+      required this.chats,
+      required this.users});
 
-	Found({required this.myResults, required this.results, required this.chats, required this.users});
+  static Found fromReader(BinaryReader reader) {
+    var len;
+    var _vectormyResults = reader.readInt();
+    if (_vectormyResults != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> myResults = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      myResults.add(reader.tgReadObject());
+    }
+    var _vectorresults = reader.readInt();
+    if (_vectorresults != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> results = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      results.add(reader.tgReadObject());
+    }
+    var _vectorchats = reader.readInt();
+    if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> chats = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      chats.add(reader.tgReadObject());
+    }
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return Found(
+        myResults: myResults, results: results, chats: chats, users: users);
+  }
 
-	static Found fromReader(BinaryReader reader) {
-	var temp,len;reader.readInt();
-List<dynamic> myResults = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		myResults.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> results = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		results.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> chats = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		chats.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> users = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		users.add(reader.tgReadObject());
-}		return new Found(myResults : myResults, results : results, chats : chats, users : users);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3004386717,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.myResults!.length,4,little:true,signed:true),this.myResults!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.results!.length,4,little:true,signed:true),this.results!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats!.length,4,little:true,signed:true),this.chats!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3004386717, 4),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.myResults!.length, 4,
+          little: true, signed: true),
+      this
+          .myResults!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.results!.length, 4, little: true, signed: true),
+      this
+          .results!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      this
+          .chats!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'Found{ID: $ID, myResults: $myResults, results: $results, chats: $chats, users: $users}';
+  }
 }
 
-class ResolvedPeer {
-    static const CONSTRUCTOR_ID = 2131196633;
-    static const SUBCLASS_OF_ID = 4033196968;
-    final classType = "constructor";
-    final ID = 2131196633;
-	var peer;
-	List<dynamic> chats;
-	List<dynamic> users;
+class ResolvedPeer extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2131196633;
+  static const SUBCLASS_OF_ID = 4033196968;
+  final classType = "constructor";
+  final ID = 2131196633;
+  var peer;
+  List<dynamic> chats;
+  List<dynamic> users;
 
+  ResolvedPeer({required this.peer, required this.chats, required this.users});
 
-	ResolvedPeer({required this.peer, required this.chats, required this.users});
+  static ResolvedPeer fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    var _vectorchats = reader.readInt();
+    if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> chats = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      chats.add(reader.tgReadObject());
+    }
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return ResolvedPeer(peer: peer, chats: chats, users: users);
+  }
 
-	static ResolvedPeer fromReader(BinaryReader reader) {
-	var temp,len;var peer = reader.tgReadObject();reader.readInt();
-List<dynamic> chats = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		chats.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> users = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		users.add(reader.tgReadObject());
-}		return new ResolvedPeer(peer : peer, chats : chats, users : users);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(2131196633,4),(this.peer.getBytes() as List<int>),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats!.length,4,little:true,signed:true),this.chats!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2131196633, 4),
+      (this.peer.getBytes() as List<int>),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      this
+          .chats!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ResolvedPeer{ID: $ID, peer: $peer, chats: $chats, users: $users}';
+  }
 }
 
-class TopPeersNotModified {
-    static const CONSTRUCTOR_ID = 3727060725;
-    static const SUBCLASS_OF_ID = 2666052488;
-    final classType = "constructor";
-    final ID = 3727060725;
+class TopPeersNotModified extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3727060725;
+  static const SUBCLASS_OF_ID = 2666052488;
+  final classType = "constructor";
+  final ID = 3727060725;
 
+  TopPeersNotModified();
 
-	TopPeersNotModified();
+  static TopPeersNotModified fromReader(BinaryReader reader) {
+    var len;
+    return TopPeersNotModified();
+  }
 
-	static TopPeersNotModified fromReader(BinaryReader reader) {
-	var temp,len;		return new TopPeersNotModified();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3727060725,4),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3727060725, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'TopPeersNotModified{ID: $ID, }';
+  }
 }
 
-class TopPeers {
-    static const CONSTRUCTOR_ID = 1891070632;
-    static const SUBCLASS_OF_ID = 2666052488;
-    final classType = "constructor";
-    final ID = 1891070632;
-	List<dynamic> categories;
-	List<dynamic> chats;
-	List<dynamic> users;
+class TopPeers extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1891070632;
+  static const SUBCLASS_OF_ID = 2666052488;
+  final classType = "constructor";
+  final ID = 1891070632;
+  List<dynamic> categories;
+  List<dynamic> chats;
+  List<dynamic> users;
 
+  TopPeers(
+      {required this.categories, required this.chats, required this.users});
 
-	TopPeers({required this.categories, required this.chats, required this.users});
+  static TopPeers fromReader(BinaryReader reader) {
+    var len;
+    var _vectorcategories = reader.readInt();
+    if (_vectorcategories != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> categories = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      categories.add(reader.tgReadObject());
+    }
+    var _vectorchats = reader.readInt();
+    if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> chats = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      chats.add(reader.tgReadObject());
+    }
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return TopPeers(categories: categories, chats: chats, users: users);
+  }
 
-	static TopPeers fromReader(BinaryReader reader) {
-	var temp,len;reader.readInt();
-List<dynamic> categories = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		categories.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> chats = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		chats.add(reader.tgReadObject());
-}reader.readInt();
-List<dynamic> users = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		users.add(reader.tgReadObject());
-}		return new TopPeers(categories : categories, chats : chats, users : users);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1891070632,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.categories!.length,4,little:true,signed:true),this.categories!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.chats!.length,4,little:true,signed:true),this.chats!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.users!.length,4,little:true,signed:true),this.users!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1891070632, 4),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.categories!.length, 4,
+          little: true, signed: true),
+      this
+          .categories!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      this
+          .chats!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'TopPeers{ID: $ID, categories: $categories, chats: $chats, users: $users}';
+  }
 }
 
-class TopPeersDisabled {
-    static const CONSTRUCTOR_ID = 3039597469;
-    static const SUBCLASS_OF_ID = 2666052488;
-    final classType = "constructor";
-    final ID = 3039597469;
+class TopPeersDisabled extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3039597469;
+  static const SUBCLASS_OF_ID = 2666052488;
+  final classType = "constructor";
+  final ID = 3039597469;
 
+  TopPeersDisabled();
 
-	TopPeersDisabled();
+  static TopPeersDisabled fromReader(BinaryReader reader) {
+    var len;
+    return TopPeersDisabled();
+  }
 
-	static TopPeersDisabled fromReader(BinaryReader reader) {
-	var temp,len;		return new TopPeersDisabled();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3039597469,4),].expand((element) => element).toList();}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3039597469, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'TopPeersDisabled{ID: $ID, }';
+  }
 }

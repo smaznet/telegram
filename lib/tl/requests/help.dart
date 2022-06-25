@@ -1,465 +1,987 @@
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
 
-class GetConfig {
-    static const CONSTRUCTOR_ID = 3304659051;
-    static const SUBCLASS_OF_ID = 3542493770;
-    final classType = "request";
-    final ID = 3304659051;
+import '../base_request.dart';
 
+class GetConfig extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3304659051;
+  static const SUBCLASS_OF_ID = 3542493770;
+  final classType = "request";
+  final ID = 3304659051;
 
-	GetConfig();
+  GetConfig();
 
-	static GetConfig fromReader(BinaryReader reader) {
-	var temp,len;		return new GetConfig();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3304659051,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  static GetConfig fromReader(BinaryReader reader) {
+    var len;
+    return GetConfig();
+  }
 
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3304659051, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetConfig{ID: $ID, }';
+  }
 }
 
-class GetNearestDc {
-    static const CONSTRUCTOR_ID = 531836966;
-    static const SUBCLASS_OF_ID = 947323999;
-    final classType = "request";
-    final ID = 531836966;
+class GetNearestDc extends BaseRequest {
+  static const CONSTRUCTOR_ID = 531836966;
+  static const SUBCLASS_OF_ID = 947323999;
+  final classType = "request";
+  final ID = 531836966;
 
+  GetNearestDc();
 
-	GetNearestDc();
+  static GetNearestDc fromReader(BinaryReader reader) {
+    var len;
+    return GetNearestDc();
+  }
 
-	static GetNearestDc fromReader(BinaryReader reader) {
-	var temp,len;		return new GetNearestDc();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(531836966,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(531836966, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetNearestDc{ID: $ID, }';
+  }
 }
 
-class GetAppUpdate {
-    static const CONSTRUCTOR_ID = 1378703997;
-    static const SUBCLASS_OF_ID = 1486292638;
-    final classType = "request";
-    final ID = 1378703997;
-	String source;
+class GetAppUpdate extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1378703997;
+  static const SUBCLASS_OF_ID = 1486292638;
+  final classType = "request";
+  final ID = 1378703997;
+  String source;
 
+  GetAppUpdate({required this.source});
 
-	GetAppUpdate({required this.source});
+  static GetAppUpdate fromReader(BinaryReader reader) {
+    var len;
+    var source = reader.tgReadString();
+    return GetAppUpdate(source: source);
+  }
 
-	static GetAppUpdate fromReader(BinaryReader reader) {
-	var temp,len;var source = reader.tgReadString();		return new GetAppUpdate(source : source);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1378703997,4),serializeBytes(this.source),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1378703997, 4),
+      serializeBytes(this.source),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetAppUpdate{ID: $ID, source: $source}';
+  }
 }
 
-class GetInviteText {
-    static const CONSTRUCTOR_ID = 1295590211;
-    static const SUBCLASS_OF_ID = 3480267317;
-    final classType = "request";
-    final ID = 1295590211;
+class GetInviteText extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1295590211;
+  static const SUBCLASS_OF_ID = 3480267317;
+  final classType = "request";
+  final ID = 1295590211;
 
+  GetInviteText();
 
-	GetInviteText();
+  static GetInviteText fromReader(BinaryReader reader) {
+    var len;
+    return GetInviteText();
+  }
 
-	static GetInviteText fromReader(BinaryReader reader) {
-	var temp,len;		return new GetInviteText();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1295590211,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1295590211, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetInviteText{ID: $ID, }';
+  }
 }
 
-class GetSupport {
-    static const CONSTRUCTOR_ID = 2631862477;
-    static const SUBCLASS_OF_ID = 1901706475;
-    final classType = "request";
-    final ID = 2631862477;
+class GetSupport extends BaseRequest {
+  static const CONSTRUCTOR_ID = 2631862477;
+  static const SUBCLASS_OF_ID = 1901706475;
+  final classType = "request";
+  final ID = 2631862477;
 
+  GetSupport();
 
-	GetSupport();
+  static GetSupport fromReader(BinaryReader reader) {
+    var len;
+    return GetSupport();
+  }
 
-	static GetSupport fromReader(BinaryReader reader) {
-	var temp,len;		return new GetSupport();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(2631862477,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2631862477, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetSupport{ID: $ID, }';
+  }
 }
 
-class GetAppChangelog {
-    static const CONSTRUCTOR_ID = 2417028975;
-    static const SUBCLASS_OF_ID = 2331323052;
-    final classType = "request";
-    final ID = 2417028975;
-	String prevAppVersion;
+class GetAppChangelog extends BaseRequest {
+  static const CONSTRUCTOR_ID = 2417028975;
+  static const SUBCLASS_OF_ID = 2331323052;
+  final classType = "request";
+  final ID = 2417028975;
+  String prevAppVersion;
 
+  GetAppChangelog({required this.prevAppVersion});
 
-	GetAppChangelog({required this.prevAppVersion});
+  static GetAppChangelog fromReader(BinaryReader reader) {
+    var len;
+    var prevAppVersion = reader.tgReadString();
+    return GetAppChangelog(prevAppVersion: prevAppVersion);
+  }
 
-	static GetAppChangelog fromReader(BinaryReader reader) {
-	var temp,len;var prevAppVersion = reader.tgReadString();		return new GetAppChangelog(prevAppVersion : prevAppVersion);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(2417028975,4),serializeBytes(this.prevAppVersion),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2417028975, 4),
+      serializeBytes(this.prevAppVersion),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetAppChangelog{ID: $ID, prevAppVersion: $prevAppVersion}';
+  }
 }
 
-class SetBotUpdatesStatus {
-    static const CONSTRUCTOR_ID = 3961704397;
-    static const SUBCLASS_OF_ID = 4122188204;
-    final classType = "request";
-    final ID = 3961704397;
-	int pendingUpdatesCount;
-	String message;
+class SetBotUpdatesStatus extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3961704397;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 3961704397;
+  int pendingUpdatesCount;
+  String message;
 
+  SetBotUpdatesStatus(
+      {required this.pendingUpdatesCount, required this.message});
 
-	SetBotUpdatesStatus({required this.pendingUpdatesCount, required this.message});
+  static SetBotUpdatesStatus fromReader(BinaryReader reader) {
+    var len;
+    var pendingUpdatesCount = reader.readInt();
+    var message = reader.tgReadString();
+    return SetBotUpdatesStatus(
+        pendingUpdatesCount: pendingUpdatesCount, message: message);
+  }
 
-	static SetBotUpdatesStatus fromReader(BinaryReader reader) {
-	var temp,len;var pendingUpdatesCount = reader.readInt();var message = reader.tgReadString();		return new SetBotUpdatesStatus(pendingUpdatesCount : pendingUpdatesCount, message : message);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3961704397,4),readBufferFromBigInt(this.pendingUpdatesCount,4,little:true,signed:true),serializeBytes(this.message),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3961704397, 4),
+      readBufferFromBigInt(this.pendingUpdatesCount, 4,
+          little: true, signed: true),
+      serializeBytes(this.message),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SetBotUpdatesStatus{ID: $ID, pendingUpdatesCount: $pendingUpdatesCount, message: $message}';
+  }
 }
 
-class GetCdnConfig {
-    static const CONSTRUCTOR_ID = 1375900482;
-    static const SUBCLASS_OF_ID = 3973724540;
-    final classType = "request";
-    final ID = 1375900482;
+class GetCdnConfig extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1375900482;
+  static const SUBCLASS_OF_ID = 3973724540;
+  final classType = "request";
+  final ID = 1375900482;
 
+  GetCdnConfig();
 
-	GetCdnConfig();
+  static GetCdnConfig fromReader(BinaryReader reader) {
+    var len;
+    return GetCdnConfig();
+  }
 
-	static GetCdnConfig fromReader(BinaryReader reader) {
-	var temp,len;		return new GetCdnConfig();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1375900482,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1375900482, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetCdnConfig{ID: $ID, }';
+  }
 }
 
-class GetRecentMeUrls {
-    static const CONSTRUCTOR_ID = 1036054804;
-    static const SUBCLASS_OF_ID = 4067017847;
-    final classType = "request";
-    final ID = 1036054804;
-	String referer;
+class GetRecentMeUrls extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1036054804;
+  static const SUBCLASS_OF_ID = 4067017847;
+  final classType = "request";
+  final ID = 1036054804;
+  String referer;
 
+  GetRecentMeUrls({required this.referer});
 
-	GetRecentMeUrls({required this.referer});
+  static GetRecentMeUrls fromReader(BinaryReader reader) {
+    var len;
+    var referer = reader.tgReadString();
+    return GetRecentMeUrls(referer: referer);
+  }
 
-	static GetRecentMeUrls fromReader(BinaryReader reader) {
-	var temp,len;var referer = reader.tgReadString();		return new GetRecentMeUrls(referer : referer);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1036054804,4),serializeBytes(this.referer),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1036054804, 4),
+      serializeBytes(this.referer),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetRecentMeUrls{ID: $ID, referer: $referer}';
+  }
 }
 
-class GetTermsOfServiceUpdate {
-    static const CONSTRUCTOR_ID = 749019089;
-    static const SUBCLASS_OF_ID = 691808631;
-    final classType = "request";
-    final ID = 749019089;
+class GetTermsOfServiceUpdate extends BaseRequest {
+  static const CONSTRUCTOR_ID = 749019089;
+  static const SUBCLASS_OF_ID = 691808631;
+  final classType = "request";
+  final ID = 749019089;
 
+  GetTermsOfServiceUpdate();
 
-	GetTermsOfServiceUpdate();
+  static GetTermsOfServiceUpdate fromReader(BinaryReader reader) {
+    var len;
+    return GetTermsOfServiceUpdate();
+  }
 
-	static GetTermsOfServiceUpdate fromReader(BinaryReader reader) {
-	var temp,len;		return new GetTermsOfServiceUpdate();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(749019089,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(749019089, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetTermsOfServiceUpdate{ID: $ID, }';
+  }
 }
 
-class AcceptTermsOfService {
-    static const CONSTRUCTOR_ID = 4000511898;
-    static const SUBCLASS_OF_ID = 4122188204;
-    final classType = "request";
-    final ID = 4000511898;
-	var id;
+class AcceptTermsOfService extends BaseRequest {
+  static const CONSTRUCTOR_ID = 4000511898;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 4000511898;
+  var id;
 
+  AcceptTermsOfService({required this.id});
 
-	AcceptTermsOfService({required this.id});
+  static AcceptTermsOfService fromReader(BinaryReader reader) {
+    var len;
+    var id = reader.tgReadObject();
+    return AcceptTermsOfService(id: id);
+  }
 
-	static AcceptTermsOfService fromReader(BinaryReader reader) {
-	var temp,len;var id = reader.tgReadObject();		return new AcceptTermsOfService(id : id);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(4000511898,4),(this.id.getBytes() as List<int>),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(4000511898, 4),
+      (this.id.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AcceptTermsOfService{ID: $ID, id: $id}';
+  }
 }
 
-class GetDeepLinkInfo {
-    static const CONSTRUCTOR_ID = 1072547679;
-    static const SUBCLASS_OF_ID = 2555030584;
-    final classType = "request";
-    final ID = 1072547679;
-	String path;
+class GetDeepLinkInfo extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1072547679;
+  static const SUBCLASS_OF_ID = 2555030584;
+  final classType = "request";
+  final ID = 1072547679;
+  String path;
 
+  GetDeepLinkInfo({required this.path});
 
-	GetDeepLinkInfo({required this.path});
+  static GetDeepLinkInfo fromReader(BinaryReader reader) {
+    var len;
+    var path = reader.tgReadString();
+    return GetDeepLinkInfo(path: path);
+  }
 
-	static GetDeepLinkInfo fromReader(BinaryReader reader) {
-	var temp,len;var path = reader.tgReadString();		return new GetDeepLinkInfo(path : path);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1072547679,4),serializeBytes(this.path),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1072547679, 4),
+      serializeBytes(this.path),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetDeepLinkInfo{ID: $ID, path: $path}';
+  }
 }
 
-class GetAppConfig {
-    static const CONSTRUCTOR_ID = 2559656208;
-    static const SUBCLASS_OF_ID = 3952707507;
-    final classType = "request";
-    final ID = 2559656208;
+class GetAppConfig extends BaseRequest {
+  static const CONSTRUCTOR_ID = 2559656208;
+  static const SUBCLASS_OF_ID = 3952707507;
+  final classType = "request";
+  final ID = 2559656208;
 
+  GetAppConfig();
 
-	GetAppConfig();
+  static GetAppConfig fromReader(BinaryReader reader) {
+    var len;
+    return GetAppConfig();
+  }
 
-	static GetAppConfig fromReader(BinaryReader reader) {
-	var temp,len;		return new GetAppConfig();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(2559656208,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2559656208, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetAppConfig{ID: $ID, }';
+  }
 }
 
-class SaveAppLog {
-    static const CONSTRUCTOR_ID = 1862465352;
-    static const SUBCLASS_OF_ID = 4122188204;
-    final classType = "request";
-    final ID = 1862465352;
-	List<dynamic> events;
+class SaveAppLog extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1862465352;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 1862465352;
+  List<dynamic> events;
 
+  SaveAppLog({required this.events});
 
-	SaveAppLog({required this.events});
+  static SaveAppLog fromReader(BinaryReader reader) {
+    var len;
+    var _vectorevents = reader.readInt();
+    if (_vectorevents != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> events = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      events.add(reader.tgReadObject());
+    }
+    return SaveAppLog(events: events);
+  }
 
-	static SaveAppLog fromReader(BinaryReader reader) {
-	var temp,len;reader.readInt();
-List<dynamic> events = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		events.add(reader.tgReadObject());
-}		return new SaveAppLog(events : events);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1862465352,4),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.events!.length,4,little:true,signed:true),this.events!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1862465352, 4),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.events!.length, 4, little: true, signed: true),
+      this
+          .events!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SaveAppLog{ID: $ID, events: $events}';
+  }
 }
 
-class GetPassportConfig {
-    static const CONSTRUCTOR_ID = 3328290056;
-    static const SUBCLASS_OF_ID = 3328622765;
-    final classType = "request";
-    final ID = 3328290056;
-	int hash;
+class GetPassportConfig extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3328290056;
+  static const SUBCLASS_OF_ID = 3328622765;
+  final classType = "request";
+  final ID = 3328290056;
+  int hash;
 
+  GetPassportConfig({required this.hash});
 
-	GetPassportConfig({required this.hash});
+  static GetPassportConfig fromReader(BinaryReader reader) {
+    var len;
+    var hash = reader.readInt();
+    return GetPassportConfig(hash: hash);
+  }
 
-	static GetPassportConfig fromReader(BinaryReader reader) {
-	var temp,len;var hash = reader.readInt();		return new GetPassportConfig(hash : hash);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3328290056,4),readBufferFromBigInt(this.hash,4,little:true,signed:true),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3328290056, 4),
+      readBufferFromBigInt(this.hash, 4, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetPassportConfig{ID: $ID, hash: $hash}';
+  }
 }
 
-class GetSupportName {
-    static const CONSTRUCTOR_ID = 3546343212;
-    static const SUBCLASS_OF_ID = 2135996354;
-    final classType = "request";
-    final ID = 3546343212;
+class GetSupportName extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3546343212;
+  static const SUBCLASS_OF_ID = 2135996354;
+  final classType = "request";
+  final ID = 3546343212;
 
+  GetSupportName();
 
-	GetSupportName();
+  static GetSupportName fromReader(BinaryReader reader) {
+    var len;
+    return GetSupportName();
+  }
 
-	static GetSupportName fromReader(BinaryReader reader) {
-	var temp,len;		return new GetSupportName();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3546343212,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3546343212, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetSupportName{ID: $ID, }';
+  }
 }
 
-class GetUserInfo {
-    static const CONSTRUCTOR_ID = 59377875;
-    static const SUBCLASS_OF_ID = 1548998616;
-    final classType = "request";
-    final ID = 59377875;
-	var userId;
+class GetUserInfo extends BaseRequest {
+  static const CONSTRUCTOR_ID = 59377875;
+  static const SUBCLASS_OF_ID = 1548998616;
+  final classType = "request";
+  final ID = 59377875;
+  var userId;
 
+  GetUserInfo({required this.userId});
 
-	GetUserInfo({required this.userId});
+  static GetUserInfo fromReader(BinaryReader reader) {
+    var len;
+    var userId = reader.tgReadObject();
+    return GetUserInfo(userId: userId);
+  }
 
-	static GetUserInfo fromReader(BinaryReader reader) {
-	var temp,len;var userId = reader.tgReadObject();		return new GetUserInfo(userId : userId);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(59377875,4),(this.userId.getBytes() as List<int>),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(59377875, 4),
+      (this.userId.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetUserInfo{ID: $ID, userId: $userId}';
+  }
 }
 
-class EditUserInfo {
-    static const CONSTRUCTOR_ID = 1723407216;
-    static const SUBCLASS_OF_ID = 1548998616;
-    final classType = "request";
-    final ID = 1723407216;
-	var userId;
-	String message;
-	List<dynamic> entities;
+class EditUserInfo extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1723407216;
+  static const SUBCLASS_OF_ID = 1548998616;
+  final classType = "request";
+  final ID = 1723407216;
+  var userId;
+  String message;
+  List<dynamic> entities;
 
+  EditUserInfo(
+      {required this.userId, required this.message, required this.entities});
 
-	EditUserInfo({required this.userId, required this.message, required this.entities});
+  static EditUserInfo fromReader(BinaryReader reader) {
+    var len;
+    var userId = reader.tgReadObject();
+    var message = reader.tgReadString();
+    var _vectorentities = reader.readInt();
+    if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> entities = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      entities.add(reader.tgReadObject());
+    }
+    return EditUserInfo(userId: userId, message: message, entities: entities);
+  }
 
-	static EditUserInfo fromReader(BinaryReader reader) {
-	var temp,len;var userId = reader.tgReadObject();var message = reader.tgReadString();reader.readInt();
-List<dynamic> entities = [];len = reader.readInt();
-	for (var i=0;i<len;i++){
-		entities.add(reader.tgReadObject());
-}		return new EditUserInfo(userId : userId, message : message, entities : entities);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1723407216,4),(this.userId.getBytes() as List<int>),serializeBytes(this.message),readBufferFromBigInt(0x15c4b51c,4,little:false,signed:false),readBufferFromBigInt(this.entities!.length,4,little:true,signed:true),this.entities!.map((x)=>(x.getBytes() as List<int>)).expand((element) => element),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1723407216, 4),
+      (this.userId.getBytes() as List<int>),
+      serializeBytes(this.message),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.entities!.length, 4,
+          little: true, signed: true),
+      this
+          .entities!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'EditUserInfo{ID: $ID, userId: $userId, message: $message, entities: $entities}';
+  }
 }
 
-class GetPromoData {
-    static const CONSTRUCTOR_ID = 3231151137;
-    static const SUBCLASS_OF_ID = 2639877442;
-    final classType = "request";
-    final ID = 3231151137;
+class GetPromoData extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3231151137;
+  static const SUBCLASS_OF_ID = 2639877442;
+  final classType = "request";
+  final ID = 3231151137;
 
+  GetPromoData();
 
-	GetPromoData();
+  static GetPromoData fromReader(BinaryReader reader) {
+    var len;
+    return GetPromoData();
+  }
 
-	static GetPromoData fromReader(BinaryReader reader) {
-	var temp,len;		return new GetPromoData();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3231151137,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3231151137, 4),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetPromoData{ID: $ID, }';
+  }
 }
 
-class HidePromoData {
-    static const CONSTRUCTOR_ID = 505748629;
-    static const SUBCLASS_OF_ID = 4122188204;
-    final classType = "request";
-    final ID = 505748629;
-	var peer;
+class HidePromoData extends BaseRequest {
+  static const CONSTRUCTOR_ID = 505748629;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 505748629;
+  var peer;
 
+  HidePromoData({required this.peer});
 
-	HidePromoData({required this.peer});
+  static HidePromoData fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    return HidePromoData(peer: peer);
+  }
 
-	static HidePromoData fromReader(BinaryReader reader) {
-	var temp,len;var peer = reader.tgReadObject();		return new HidePromoData(peer : peer);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(505748629,4),(this.peer.getBytes() as List<int>),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(505748629, 4),
+      (this.peer.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'HidePromoData{ID: $ID, peer: $peer}';
+  }
 }
 
-class DismissSuggestion {
-    static const CONSTRUCTOR_ID = 4111317665;
-    static const SUBCLASS_OF_ID = 4122188204;
-    final classType = "request";
-    final ID = 4111317665;
-	var peer;
-	String suggestion;
+class DismissSuggestion extends BaseRequest {
+  static const CONSTRUCTOR_ID = 4111317665;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 4111317665;
+  var peer;
+  String suggestion;
 
+  DismissSuggestion({required this.peer, required this.suggestion});
 
-	DismissSuggestion({required this.peer, required this.suggestion});
+  static DismissSuggestion fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    var suggestion = reader.tgReadString();
+    return DismissSuggestion(peer: peer, suggestion: suggestion);
+  }
 
-	static DismissSuggestion fromReader(BinaryReader reader) {
-	var temp,len;var peer = reader.tgReadObject();var suggestion = reader.tgReadString();		return new DismissSuggestion(peer : peer, suggestion : suggestion);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(4111317665,4),(this.peer.getBytes() as List<int>),serializeBytes(this.suggestion),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(4111317665, 4),
+      (this.peer.getBytes() as List<int>),
+      serializeBytes(this.suggestion),
+    ].expand((element) => element).toList();
+  }
 
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'DismissSuggestion{ID: $ID, peer: $peer, suggestion: $suggestion}';
+  }
 }
 
-class GetCountriesList {
-    static const CONSTRUCTOR_ID = 1935116200;
-    static const SUBCLASS_OF_ID = 3929144968;
-    final classType = "request";
-    final ID = 1935116200;
-	String langCode;
-	int hash;
+class GetCountriesList extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1935116200;
+  static const SUBCLASS_OF_ID = 3929144968;
+  final classType = "request";
+  final ID = 1935116200;
+  String langCode;
+  int hash;
 
+  GetCountriesList({required this.langCode, required this.hash});
 
-	GetCountriesList({required this.langCode, required this.hash});
+  static GetCountriesList fromReader(BinaryReader reader) {
+    var len;
+    var langCode = reader.tgReadString();
+    var hash = reader.readInt();
+    return GetCountriesList(langCode: langCode, hash: hash);
+  }
 
-	static GetCountriesList fromReader(BinaryReader reader) {
-	var temp,len;var langCode = reader.tgReadString();var hash = reader.readInt();		return new GetCountriesList(langCode : langCode, hash : hash);
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(1935116200,4),serializeBytes(this.langCode),readBufferFromBigInt(this.hash,4,little:true,signed:true),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1935116200, 4),
+      serializeBytes(this.langCode),
+      readBufferFromBigInt(this.hash, 4, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
 
-}
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
 
-class GetPremiumPromo {
-    static const CONSTRUCTOR_ID = 3088815060;
-    static const SUBCLASS_OF_ID = 3381109560;
-    final classType = "request";
-    final ID = 3088815060;
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
 
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
 
-	GetPremiumPromo();
-
-	static GetPremiumPromo fromReader(BinaryReader reader) {
-	var temp,len;		return new GetPremiumPromo();
-	}
-	List<int> getBytes(){return [readBufferFromBigInt(3088815060,4),].expand((element) => element).toList();}
-	readResult(BinaryReader reader) {
-	return reader.tgReadObject();
-	}
-
+  @override
+  String toString() {
+    return 'GetCountriesList{ID: $ID, langCode: $langCode, hash: $hash}';
+  }
 }

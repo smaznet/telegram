@@ -2,7 +2,7 @@ import 'dart:async';
 
 class RequestState {
   var containerId, msgId, request, after, result, data;
-  late Completer future;
+  late Completer completer;
   RequestState(request, {after: null}) {
     this.containerId = null;
     this.msgId = null;
@@ -10,6 +10,6 @@ class RequestState {
     this.data = request.getBytes();
     this.after = after;
     this.result = null;
-    this.future = new Completer();
+    this.completer = new Completer();
   }
 }

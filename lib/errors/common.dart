@@ -17,7 +17,7 @@ class ReadCancelledError implements Exception {
  */
 class TypeNotFoundError implements Exception {
   int? invalidConstructorId;
-  int? remaining;
+  List<int>? remaining;
 
   TypeNotFoundError({this.invalidConstructorId, this.remaining});
 

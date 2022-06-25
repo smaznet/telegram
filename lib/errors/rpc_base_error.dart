@@ -1,3 +1,5 @@
+import 'package:telegram/tl/tlobject.dart';
+
 class RPCError implements Exception {
   int? code;
   String message;
@@ -12,7 +14,7 @@ class RPCError implements Exception {
 
   static _fmtRequest(request) {
 // TODO fix this
-    if (request) {
+    if (request is TLObject) {
       return '(caused by ${request.runtimeType})';
     } else {
       return '';

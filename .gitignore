@@ -34,6 +34,7 @@ doc/api/
 # User session
 *.session
 usermedia/
+tests
 
 # Quick tests should live in this file
 example.js

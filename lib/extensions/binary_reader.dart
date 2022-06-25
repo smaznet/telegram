@@ -2,15 +2,19 @@ import 'dart:convert';
 import 'dart:core';
 import 'dart:typed_data';
 
+import 'package:telegram/errors/common.dart';
+
 import '../tl/all_tl_objects.dart';
 import '../tl/core/core.dart';
 import '../utils.dart';
 
 class BinaryReader {
   final List<int> stream;
+  final ByteData _reader;
   int offset = 0;
 
-  BinaryReader(List<int> this.stream);
+  BinaryReader(List<int> this.stream)
+      : _reader = ByteData.view(Uint8List.fromList(stream).buffer);
 
   // region Reading
 
@@ -27,7 +31,7 @@ class BinaryReader {
    * Reads an integer (4 bytes or 32 bits) value.
    * @param signed {Boolean}
    */
-  int readInt({bool signed: true}) {
+  int readInt({bool signed = true}) {
     final res = readBigIntFromBuffer(
         this.stream.sublist(this.offset, this.offset + 4),
         signed: signed);
@@ -189,7 +193,10 @@ class BinaryReader {
         // If there was still no luck, give up
         this.seek(-4); // Go back
         final pos = this.tellPosition();
-        final error = new Error();
+        print("Not found constructor for ${constructorId}");
+        final error = new TypeNotFoundError(
+            invalidConstructorId: constructorId, remaining: this.read());
+
         this.setPosition(pos);
         throw error;
       }

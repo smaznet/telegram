@@ -350,7 +350,7 @@ class MessagesSlice extends BaseConstructor {
   static MessagesSlice fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final inexact = false;
+    final inexact = (flags & 2) == 2;
     var count = reader.readInt();
     var nextRate;
     if ((flags & 1) == 1) {
@@ -475,7 +475,7 @@ class ChannelMessages extends BaseConstructor {
   static ChannelMessages fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final inexact = false;
+    final inexact = (flags & 2) == 2;
     var pts = reader.readInt();
     var count = reader.readInt();
     var offsetIdOffset;
@@ -1432,7 +1432,7 @@ class BotResults extends BaseConstructor {
   static BotResults fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final gallery = false;
+    final gallery = (flags & 1) == 1;
     var queryId = reader.readLong();
     var nextOffset;
     if ((flags & 2) == 2) {
@@ -1542,9 +1542,9 @@ class BotCallbackAnswer extends BaseConstructor {
   static BotCallbackAnswer fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final alert = false;
-    final hasUrl = false;
-    final nativeUi = false;
+    final alert = (flags & 2) == 2;
+    final hasUrl = (flags & 8) == 8;
+    final nativeUi = (flags & 16) == 16;
     var message;
     if ((flags & 1) == 1) {
       message = reader.tgReadString();
@@ -1612,7 +1612,7 @@ class MessageEditData extends BaseConstructor {
   static MessageEditData fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final caption = false;
+    final caption = (flags & 1) == 1;
     return MessageEditData(caption: caption);
   }
 
@@ -2395,7 +2395,7 @@ class SearchCounter extends BaseConstructor {
   static SearchCounter fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final inexact = false;
+    final inexact = (flags & 2) == 2;
     var filter = reader.tgReadObject();
     var count = reader.readInt();
     return SearchCounter(inexact: inexact, filter: filter, count: count);
@@ -2860,8 +2860,8 @@ class HistoryImportParsed extends BaseConstructor {
   static HistoryImportParsed fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final pm = false;
-    final group = false;
+    final pm = (flags & 1) == 1;
+    final group = (flags & 2) == 2;
     var title;
     if ((flags & 4) == 4) {
       title = reader.tgReadString();
@@ -3424,7 +3424,7 @@ class SearchResultsCalendar extends BaseConstructor {
   static SearchResultsCalendar fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final inexact = false;
+    final inexact = (flags & 1) == 1;
     var count = reader.readInt();
     var minDate = reader.readInt();
     var minMsgId = reader.readInt();

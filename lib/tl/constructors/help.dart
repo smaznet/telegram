@@ -30,7 +30,7 @@ class AppUpdate extends BaseConstructor {
   static AppUpdate fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final canNotSkip = false;
+    final canNotSkip = (flags & 1) == 1;
     var id = reader.readInt();
     var version = reader.tgReadString();
     var text = reader.tgReadString();
@@ -255,7 +255,7 @@ class TermsOfService extends BaseConstructor {
   static TermsOfService fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final popup = false;
+    final popup = (flags & 1) == 1;
     var id = reader.tgReadObject();
     var text = reader.tgReadString();
     var _vectorentities = reader.readInt();
@@ -529,7 +529,7 @@ class DeepLinkInfo extends BaseConstructor {
   static DeepLinkInfo fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final updateApp = false;
+    final updateApp = (flags & 1) == 1;
     var message = reader.tgReadString();
     var entities;
     if ((flags & 2) == 2) {
@@ -865,7 +865,7 @@ class PromoData extends BaseConstructor {
   static PromoData fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final proxy = false;
+    final proxy = (flags & 1) == 1;
     var expires = reader.readInt();
     var peer = reader.tgReadObject();
     var _vectorchats = reader.readInt();
@@ -1066,7 +1066,7 @@ class Country extends BaseConstructor {
   static Country fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final hidden = false;
+    final hidden = (flags & 1) == 1;
     var iso2 = reader.tgReadString();
     var defaultName = reader.tgReadString();
     var name;

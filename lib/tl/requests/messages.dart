@@ -83,7 +83,7 @@ class GetDialogs extends BaseRequest {
   static GetDialogs fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final excludePinned = false;
+    final excludePinned = (flags & 1) == 1;
     var folderId;
     if ((flags & 2) == 2) {
       folderId = reader.readInt();
@@ -421,8 +421,8 @@ class DeleteHistory extends BaseRequest {
   static DeleteHistory fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final justClear = false;
-    final revoke = false;
+    final justClear = (flags & 1) == 1;
+    final revoke = (flags & 2) == 2;
     var peer = reader.tgReadObject();
     var maxId = reader.readInt();
     var minDate;
@@ -500,7 +500,7 @@ class DeleteMessages extends BaseRequest {
   static DeleteMessages fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final revoke = false;
+    final revoke = (flags & 1) == 1;
     var _vectorid = reader.readInt();
     if (_vectorid != 481674261) throw Exception('Wrong vectorId');
     List<int> id = [];
@@ -688,11 +688,11 @@ class SendMessage extends BaseRequest {
   static SendMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final noWebpage = false;
-    final silent = false;
-    final background = false;
-    final clearDraft = false;
-    final noforwards = false;
+    final noWebpage = (flags & 2) == 2;
+    final silent = (flags & 32) == 32;
+    final background = (flags & 64) == 64;
+    final clearDraft = (flags & 128) == 128;
+    final noforwards = (flags & 16384) == 16384;
     var peer = reader.tgReadObject();
     var replyToMsgId;
     if ((flags & 1) == 1) {
@@ -850,10 +850,10 @@ class SendMedia extends BaseRequest {
   static SendMedia fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final silent = false;
-    final background = false;
-    final clearDraft = false;
-    final noforwards = false;
+    final silent = (flags & 32) == 32;
+    final background = (flags & 64) == 64;
+    final clearDraft = (flags & 128) == 128;
+    final noforwards = (flags & 16384) == 16384;
     var peer = reader.tgReadObject();
     var replyToMsgId;
     if ((flags & 1) == 1) {
@@ -1011,12 +1011,12 @@ class ForwardMessages extends BaseRequest {
   static ForwardMessages fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final silent = false;
-    final background = false;
-    final withMyScore = false;
-    final dropAuthor = false;
-    final dropMediaCaptions = false;
-    final noforwards = false;
+    final silent = (flags & 32) == 32;
+    final background = (flags & 64) == 64;
+    final withMyScore = (flags & 256) == 256;
+    final dropAuthor = (flags & 2048) == 2048;
+    final dropMediaCaptions = (flags & 4096) == 4096;
+    final noforwards = (flags & 16384) == 16384;
     var fromPeer = reader.tgReadObject();
     var _vectorid = reader.readInt();
     if (_vectorid != 481674261) throw Exception('Wrong vectorId');
@@ -1532,7 +1532,7 @@ class DeleteChatUser extends BaseRequest {
   static DeleteChatUser fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final revokeHistory = false;
+    final revokeHistory = (flags & 1) == 1;
     var chatId = reader.readLong();
     var userId = reader.tgReadObject();
     return DeleteChatUser(
@@ -1790,7 +1790,7 @@ class DiscardEncryption extends BaseRequest {
   static DiscardEncryption fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final deleteHistory = false;
+    final deleteHistory = (flags & 1) == 1;
     var chatId = reader.readInt();
     return DiscardEncryption(deleteHistory: deleteHistory, chatId: chatId);
   }
@@ -1938,7 +1938,7 @@ class SendEncrypted extends BaseRequest {
   static SendEncrypted fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final silent = false;
+    final silent = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var randomId = reader.readLong();
     var data = reader.tgReadBytes();
@@ -1999,7 +1999,7 @@ class SendEncryptedFile extends BaseRequest {
   static SendEncryptedFile fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final silent = false;
+    final silent = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var randomId = reader.readLong();
     var data = reader.tgReadBytes();
@@ -2425,8 +2425,8 @@ class ExportChatInvite extends BaseRequest {
   static ExportChatInvite fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final legacyRevokePermanent = false;
-    final requestNeeded = false;
+    final legacyRevokePermanent = (flags & 4) == 4;
+    final requestNeeded = (flags & 8) == 8;
     var peer = reader.tgReadObject();
     var expireDate;
     if ((flags & 1) == 1) {
@@ -3051,7 +3051,7 @@ class ReorderStickerSets extends BaseRequest {
   static ReorderStickerSets fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final masks = false;
+    final masks = (flags & 1) == 1;
     var _vectororder = reader.readInt();
     if (_vectororder != 481674261) throw Exception('Wrong vectorId');
     List<BigInt> order = [];
@@ -3337,8 +3337,8 @@ class SetInlineBotResults extends BaseRequest {
   static SetInlineBotResults fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final gallery = false;
-    final private = false;
+    final gallery = (flags & 1) == 1;
+    final private = (flags & 2) == 2;
     var queryId = reader.readLong();
     var _vectorresults = reader.readInt();
     if (_vectorresults != 481674261) throw Exception('Wrong vectorId');
@@ -3450,10 +3450,10 @@ class SendInlineBotResult extends BaseRequest {
   static SendInlineBotResult fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final silent = false;
-    final background = false;
-    final clearDraft = false;
-    final hideVia = false;
+    final silent = (flags & 32) == 32;
+    final background = (flags & 64) == 64;
+    final clearDraft = (flags & 128) == 128;
+    final hideVia = (flags & 2048) == 2048;
     var peer = reader.tgReadObject();
     var replyToMsgId;
     if ((flags & 1) == 1) {
@@ -3614,7 +3614,7 @@ class EditMessage extends BaseRequest {
   static EditMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final noWebpage = false;
+    final noWebpage = (flags & 2) == 2;
     var peer = reader.tgReadObject();
     var id = reader.readInt();
     var message;
@@ -3750,7 +3750,7 @@ class EditInlineBotMessage extends BaseRequest {
   static EditInlineBotMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final noWebpage = false;
+    final noWebpage = (flags & 2) == 2;
     var id = reader.tgReadObject();
     var message;
     if ((flags & 2048) == 2048) {
@@ -3868,7 +3868,7 @@ class GetBotCallbackAnswer extends BaseRequest {
   static GetBotCallbackAnswer fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final game = false;
+    final game = (flags & 2) == 2;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var data;
@@ -3947,7 +3947,7 @@ class SetBotCallbackAnswer extends BaseRequest {
   static SetBotCallbackAnswer fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final alert = false;
+    final alert = (flags & 2) == 2;
     var queryId = reader.readLong();
     var message;
     if ((flags & 1) == 1) {
@@ -4085,7 +4085,7 @@ class SaveDraft extends BaseRequest {
   static SaveDraft fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final noWebpage = false;
+    final noWebpage = (flags & 2) == 2;
     var replyToMsgId;
     if ((flags & 1) == 1) {
       replyToMsgId = reader.readInt();
@@ -4315,7 +4315,7 @@ class GetRecentStickers extends BaseRequest {
   static GetRecentStickers fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final attached = false;
+    final attached = (flags & 1) == 1;
     var hash = reader.readLong();
     return GetRecentStickers(attached: attached, hash: hash);
   }
@@ -4365,7 +4365,7 @@ class SaveRecentSticker extends BaseRequest {
   static SaveRecentSticker fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final attached = false;
+    final attached = (flags & 1) == 1;
     var id = reader.tgReadObject();
     var unsave = reader.tgReadBool();
     return SaveRecentSticker(attached: attached, id: id, unsave: unsave);
@@ -4414,7 +4414,7 @@ class ClearRecentStickers extends BaseRequest {
   static ClearRecentStickers fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final attached = false;
+    final attached = (flags & 1) == 1;
     return ClearRecentStickers(attached: attached);
   }
 
@@ -4462,7 +4462,7 @@ class GetArchivedStickers extends BaseRequest {
   static GetArchivedStickers fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final masks = false;
+    final masks = (flags & 1) == 1;
     var offsetId = reader.readLong();
     var limit = reader.readInt();
     return GetArchivedStickers(masks: masks, offsetId: offsetId, limit: limit);
@@ -4610,8 +4610,8 @@ class SetGameScore extends BaseRequest {
   static SetGameScore fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final editMessage = false;
-    final force = false;
+    final editMessage = (flags & 1) == 1;
+    final force = (flags & 2) == 2;
     var peer = reader.tgReadObject();
     var id = reader.readInt();
     var userId = reader.tgReadObject();
@@ -4679,8 +4679,8 @@ class SetInlineGameScore extends BaseRequest {
   static SetInlineGameScore fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final editMessage = false;
-    final force = false;
+    final editMessage = (flags & 1) == 1;
+    final force = (flags & 2) == 2;
     var id = reader.tgReadObject();
     var userId = reader.tgReadObject();
     var score = reader.readInt();
@@ -4989,7 +4989,7 @@ class ToggleDialogPin extends BaseRequest {
   static ToggleDialogPin fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final pinned = false;
+    final pinned = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     return ToggleDialogPin(pinned: pinned, peer: peer);
   }
@@ -5039,7 +5039,7 @@ class ReorderPinnedDialogs extends BaseRequest {
   static ReorderPinnedDialogs fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final force = false;
+    final force = (flags & 1) == 1;
     var folderId = reader.readInt();
     var _vectororder = reader.readInt();
     if (_vectororder != 481674261) throw Exception('Wrong vectorId');
@@ -5231,7 +5231,7 @@ class SetBotPrecheckoutResults extends BaseRequest {
   static SetBotPrecheckoutResults fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final success = false;
+    final success = (flags & 2) == 2;
     var queryId = reader.readLong();
     var error;
     if ((flags & 1) == 1) {
@@ -5661,10 +5661,10 @@ class SendMultiMedia extends BaseRequest {
   static SendMultiMedia fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final silent = false;
-    final background = false;
-    final clearDraft = false;
-    final noforwards = false;
+    final silent = (flags & 32) == 32;
+    final background = (flags & 64) == 64;
+    final clearDraft = (flags & 128) == 128;
+    final noforwards = (flags & 16384) == 16384;
     var peer = reader.tgReadObject();
     var replyToMsgId;
     if ((flags & 1) == 1) {
@@ -5819,7 +5819,7 @@ class SearchStickerSets extends BaseRequest {
   static SearchStickerSets fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final excludeFeatured = false;
+    final excludeFeatured = (flags & 1) == 1;
     var q = reader.tgReadString();
     var hash = reader.readLong();
     return SearchStickerSets(
@@ -5911,7 +5911,7 @@ class MarkDialogUnread extends BaseRequest {
   static MarkDialogUnread fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final unread = false;
+    final unread = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     return MarkDialogUnread(unread: unread, peer: peer);
   }
@@ -6049,9 +6049,9 @@ class UpdatePinnedMessage extends BaseRequest {
   static UpdatePinnedMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final silent = false;
-    final unpin = false;
-    final pmOneside = false;
+    final silent = (flags & 1) == 1;
+    final unpin = (flags & 2) == 2;
+    final pmOneside = (flags & 4) == 4;
     var peer = reader.tgReadObject();
     var id = reader.readInt();
     return UpdatePinnedMessage(
@@ -6698,7 +6698,7 @@ class AcceptUrlAuth extends BaseRequest {
   static AcceptUrlAuth fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final writeAllowed = false;
+    final writeAllowed = (flags & 1) == 1;
     var peer;
     if ((flags & 2) == 2) {
       peer = reader.tgReadObject();
@@ -7140,9 +7140,9 @@ class ToggleStickerSets extends BaseRequest {
   static ToggleStickerSets fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final uninstall = false;
-    final archive = false;
-    final unarchive = false;
+    final uninstall = (flags & 1) == 1;
+    final archive = (flags & 2) == 2;
+    final unarchive = (flags & 4) == 4;
     var _vectorstickersets = reader.readInt();
     if (_vectorstickersets != 481674261) throw Exception('Wrong vectorId');
     List<dynamic> stickersets = [];
@@ -7723,7 +7723,7 @@ class DeletePhoneCallHistory extends BaseRequest {
   static DeletePhoneCallHistory fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final revoke = false;
+    final revoke = (flags & 1) == 1;
     return DeletePhoneCallHistory(revoke: revoke);
   }
 
@@ -7979,7 +7979,7 @@ class GetExportedChatInvites extends BaseRequest {
   static GetExportedChatInvites fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final revoked = false;
+    final revoked = (flags & 8) == 8;
     var peer = reader.tgReadObject();
     var adminId = reader.tgReadObject();
     var offsetDate;
@@ -8119,7 +8119,7 @@ class EditExportedChatInvite extends BaseRequest {
   static EditExportedChatInvite fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final revoked = false;
+    final revoked = (flags & 4) == 4;
     var peer = reader.tgReadObject();
     var link = reader.tgReadString();
     var expireDate;
@@ -8370,7 +8370,7 @@ class GetChatInviteImporters extends BaseRequest {
   static GetChatInviteImporters fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final requested = false;
+    final requested = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var link;
     if ((flags & 2) == 2) {
@@ -8758,7 +8758,7 @@ class HideChatJoinRequest extends BaseRequest {
   static HideChatJoinRequest fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final approved = false;
+    final approved = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var userId = reader.tgReadObject();
     return HideChatJoinRequest(approved: approved, peer: peer, userId: userId);
@@ -8810,7 +8810,7 @@ class HideAllChatJoinRequests extends BaseRequest {
   static HideAllChatJoinRequests fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final approved = false;
+    final approved = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var link;
     if ((flags & 2) == 2) {

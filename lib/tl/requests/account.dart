@@ -26,7 +26,7 @@ class RegisterDevice extends BaseRequest {
   static RegisterDevice fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final noMuted = false;
+    final noMuted = (flags & 1) == 1;
     var tokenType = reader.readInt();
     var token = reader.tgReadString();
     var appSandbox = reader.tgReadBool();
@@ -1997,12 +1997,12 @@ class InitTakeoutSession extends BaseRequest {
   static InitTakeoutSession fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final contacts = false;
-    final messageUsers = false;
-    final messageChats = false;
-    final messageMegagroups = false;
-    final messageChannels = false;
-    final files = false;
+    final contacts = (flags & 1) == 1;
+    final messageUsers = (flags & 2) == 2;
+    final messageChats = (flags & 4) == 4;
+    final messageMegagroups = (flags & 8) == 8;
+    final messageChannels = (flags & 16) == 16;
+    final files = (flags & 32) == 32;
     var fileMaxSize;
     if ((flags & 32) == 32) {
       fileMaxSize = reader.readInt();
@@ -2066,7 +2066,7 @@ class FinishTakeoutSession extends BaseRequest {
   static FinishTakeoutSession fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final success = false;
+    final success = (flags & 1) == 1;
     return FinishTakeoutSession(success: success);
   }
 
@@ -2323,7 +2323,7 @@ class GetNotifyExceptions extends BaseRequest {
   static GetNotifyExceptions fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final compareSound = false;
+    final compareSound = (flags & 2) == 2;
     var peer;
     if ((flags & 1) == 1) {
       peer = reader.tgReadObject();
@@ -2658,8 +2658,8 @@ class SaveAutoDownloadSettings extends BaseRequest {
   static SaveAutoDownloadSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final low = false;
-    final high = false;
+    final low = (flags & 1) == 1;
+    final high = (flags & 2) == 2;
     var settings = reader.tgReadObject();
     return SaveAutoDownloadSettings(low: low, high: high, settings: settings);
   }
@@ -3036,7 +3036,7 @@ class InstallTheme extends BaseRequest {
   static InstallTheme fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final dark = false;
+    final dark = (flags & 1) == 1;
     var theme;
     if ((flags & 2) == 2) {
       theme = reader.tgReadObject();
@@ -3211,7 +3211,7 @@ class SetContentSettings extends BaseRequest {
   static SetContentSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final sensitiveEnabled = false;
+    final sensitiveEnabled = (flags & 1) == 1;
     return SetContentSettings(sensitiveEnabled: sensitiveEnabled);
   }
 

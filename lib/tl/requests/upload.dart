@@ -75,8 +75,8 @@ class GetFile extends BaseRequest {
   static GetFile fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final precise = false;
-    final cdnSupported = false;
+    final precise = (flags & 1) == 1;
+    final cdnSupported = (flags & 2) == 2;
     var location = reader.tgReadObject();
     var offset = reader.readInt();
     var limit = reader.readInt();

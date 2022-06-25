@@ -98,7 +98,7 @@ class Authorization extends BaseConstructor {
   static Authorization fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final setupPasswordRequired = false;
+    final setupPasswordRequired = (flags & 2) == 2;
     var otherwiseReloginDays;
     if ((flags & 2) == 2) {
       otherwiseReloginDays = reader.readInt();

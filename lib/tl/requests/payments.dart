@@ -131,7 +131,7 @@ class ValidateRequestedInfo extends BaseRequest {
   static ValidateRequestedInfo fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final save = false;
+    final save = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var info = reader.tgReadObject();
@@ -331,8 +331,8 @@ class ClearSavedInfo extends BaseRequest {
   static ClearSavedInfo fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final credentials = false;
-    final info = false;
+    final credentials = (flags & 1) == 1;
+    final info = (flags & 2) == 2;
     return ClearSavedInfo(credentials: credentials, info: info);
   }
 

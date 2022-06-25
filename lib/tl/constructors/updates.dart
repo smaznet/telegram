@@ -406,7 +406,7 @@ class ChannelDifferenceEmpty extends BaseConstructor {
   static ChannelDifferenceEmpty fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final finalVar = false;
+    final finalVar = (flags & 1) == 1;
     var pts = reader.readInt();
     var timeout;
     if ((flags & 2) == 2) {
@@ -471,7 +471,7 @@ class ChannelDifferenceTooLong extends BaseConstructor {
   static ChannelDifferenceTooLong fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final finalVar = false;
+    final finalVar = (flags & 1) == 1;
     var timeout;
     if ((flags & 2) == 2) {
       timeout = reader.readInt();
@@ -583,7 +583,7 @@ class ChannelDifference extends BaseConstructor {
   static ChannelDifference fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final finalVar = false;
+    final finalVar = (flags & 1) == 1;
     var pts = reader.readInt();
     var timeout;
     if ((flags & 2) == 2) {

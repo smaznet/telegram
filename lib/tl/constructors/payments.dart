@@ -38,8 +38,8 @@ class PaymentForm extends BaseConstructor {
   static PaymentForm fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final canSaveCredentials = false;
-    final passwordMissing = false;
+    final canSaveCredentials = (flags & 4) == 4;
+    final passwordMissing = (flags & 8) == 8;
     var formId = reader.readLong();
     var botId = reader.readLong();
     var invoice = reader.tgReadObject();
@@ -466,7 +466,7 @@ class SavedInfo extends BaseConstructor {
   static SavedInfo fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final hasSavedCredentials = false;
+    final hasSavedCredentials = (flags & 2) == 2;
     var savedInfo;
     if ((flags & 1) == 1) {
       savedInfo = reader.tgReadObject();

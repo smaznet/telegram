@@ -159,16 +159,15 @@ writeFromReader(writer, name, argsConfig) {
   final args = {};
   argsConfig.forEach((argName, arg) {
     if (arg['isFlag']) {
+      final num = 1 << arg['flagIndex'];
       if (arg['type'] == 'true') {
         writer.write("final $argName = " +
-            (((args['flags'] != null ? 1 : 0) & 1 << arg['flagIndex']) == 1)
-                .toString() +
+            ("(flags & ${num})==${num}").toString() +
             ";");
         return;
       }
       writer.write("var $argName;");
 
-      final num = 1 << arg['flagIndex'];
       writer.write("if ((flags & " + (num).toString());
       writer.write(") == ${num}){");
       if (!arg['isVector']) {

@@ -135,7 +135,7 @@ class GetChannelDifference extends BaseRequest {
   static GetChannelDifference fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final force = false;
+    final force = (flags & 1) == 1;
     var channel = reader.tgReadObject();
     var filter = reader.tgReadObject();
     var pts = reader.readInt();

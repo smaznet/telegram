@@ -465,9 +465,9 @@ class CreateChannel extends BaseRequest {
   static CreateChannel fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final broadcast = false;
-    final megagroup = false;
-    final forImport = false;
+    final broadcast = (flags & 1) == 1;
+    final megagroup = (flags & 2) == 2;
+    final forImport = (flags & 8) == 8;
     var title = reader.tgReadString();
     var about = reader.tgReadString();
     var geoPoint;
@@ -988,8 +988,8 @@ class ExportMessageLink extends BaseRequest {
   static ExportMessageLink fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final grouped = false;
-    final thread = false;
+    final grouped = (flags & 1) == 1;
+    final thread = (flags & 2) == 2;
     var channel = reader.tgReadObject();
     var id = reader.readInt();
     return ExportMessageLink(
@@ -1088,8 +1088,8 @@ class GetAdminedPublicChannels extends BaseRequest {
   static GetAdminedPublicChannels fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final byLocation = false;
-    final checkLimit = false;
+    final byLocation = (flags & 1) == 1;
+    final checkLimit = (flags & 2) == 2;
     return GetAdminedPublicChannels(
         byLocation: byLocation, checkLimit: checkLimit);
   }

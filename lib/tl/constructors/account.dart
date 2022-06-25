@@ -174,9 +174,9 @@ class Password extends BaseConstructor {
   static Password fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final hasRecovery = false;
-    final hasSecureValues = false;
-    final hasPassword = false;
+    final hasRecovery = (flags & 1) == 1;
+    final hasSecureValues = (flags & 2) == 2;
+    final hasPassword = (flags & 4) == 4;
     var currentAlgo;
     if ((flags & 4) == 4) {
       currentAlgo = reader.tgReadObject();
@@ -994,8 +994,8 @@ class ContentSettings extends BaseConstructor {
   static ContentSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final sensitiveEnabled = false;
-    final sensitiveCanChange = false;
+    final sensitiveEnabled = (flags & 1) == 1;
+    final sensitiveCanChange = (flags & 2) == 2;
     return ContentSettings(
         sensitiveEnabled: sensitiveEnabled,
         sensitiveCanChange: sensitiveCanChange);

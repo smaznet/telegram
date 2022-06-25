@@ -30,8 +30,8 @@ class CreateStickerSet extends BaseRequest {
   static CreateStickerSet fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final masks = false;
-    final animated = false;
+    final masks = (flags & 1) == 1;
+    final animated = (flags & 2) == 2;
     var userId = reader.tgReadObject();
     var title = reader.tgReadString();
     var shortName = reader.tgReadString();

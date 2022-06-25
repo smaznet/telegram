@@ -897,8 +897,8 @@ class InputMediaUploadedDocument extends BaseConstructor {
   static InputMediaUploadedDocument fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final nosoundVideo = false;
-    final forceFile = false;
+    final nosoundVideo = (flags & 8) == 8;
+    final forceFile = (flags & 16) == 16;
     var file = reader.tgReadObject();
     var thumb;
     if ((flags & 4) == 4) {
@@ -1393,7 +1393,7 @@ class InputMediaGeoLive extends BaseConstructor {
   static InputMediaGeoLive fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final stopped = false;
+    final stopped = (flags & 1) == 1;
     var geoPoint = reader.tgReadObject();
     var heading;
     if ((flags & 4) == 4) {
@@ -2311,7 +2311,7 @@ class InputPeerPhotoFileLocation extends BaseConstructor {
   static InputPeerPhotoFileLocation fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final big = false;
+    final big = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var photoId = reader.readLong();
     return InputPeerPhotoFileLocation(big: big, peer: peer, photoId: photoId);
@@ -2690,21 +2690,21 @@ class User extends BaseConstructor {
   static User fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final self = false;
-    final contact = false;
-    final mutualContact = false;
-    final deleted = false;
-    final bot = false;
-    final botChatHistory = false;
-    final botNochats = false;
-    final verified = false;
-    final restricted = false;
-    final min = false;
-    final botInlineGeo = false;
-    final support = false;
-    final scam = false;
-    final applyMinPhoto = false;
-    final fake = false;
+    final self = (flags & 1024) == 1024;
+    final contact = (flags & 2048) == 2048;
+    final mutualContact = (flags & 4096) == 4096;
+    final deleted = (flags & 8192) == 8192;
+    final bot = (flags & 16384) == 16384;
+    final botChatHistory = (flags & 32768) == 32768;
+    final botNochats = (flags & 65536) == 65536;
+    final verified = (flags & 131072) == 131072;
+    final restricted = (flags & 262144) == 262144;
+    final min = (flags & 1048576) == 1048576;
+    final botInlineGeo = (flags & 2097152) == 2097152;
+    final support = (flags & 8388608) == 8388608;
+    final scam = (flags & 16777216) == 16777216;
+    final applyMinPhoto = (flags & 33554432) == 33554432;
+    final fake = (flags & 67108864) == 67108864;
     var id = reader.readLong();
     var accessHash;
     if ((flags & 1) == 1) {
@@ -2950,7 +2950,7 @@ class UserProfilePhoto extends BaseConstructor {
   static UserProfilePhoto fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final hasVideo = false;
+    final hasVideo = (flags & 1) == 1;
     var photoId = reader.readLong();
     var strippedThumb;
     if ((flags & 2) == 2) {
@@ -3301,13 +3301,13 @@ class Chat extends BaseConstructor {
   static Chat fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final creator = false;
-    final kicked = false;
-    final left = false;
-    final deactivated = false;
-    final callActive = false;
-    final callNotEmpty = false;
-    final noforwards = false;
+    final creator = (flags & 1) == 1;
+    final kicked = (flags & 2) == 2;
+    final left = (flags & 4) == 4;
+    final deactivated = (flags & 32) == 32;
+    final callActive = (flags & 8388608) == 8388608;
+    final callNotEmpty = (flags & 16777216) == 16777216;
+    final noforwards = (flags & 33554432) == 33554432;
     var id = reader.readLong();
     var title = reader.tgReadString();
     var photo = reader.tgReadObject();
@@ -3506,23 +3506,23 @@ class Channel extends BaseConstructor {
   static Channel fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final creator = false;
-    final left = false;
-    final broadcast = false;
-    final verified = false;
-    final megagroup = false;
-    final restricted = false;
-    final signatures = false;
-    final min = false;
-    final scam = false;
-    final hasLink = false;
-    final hasGeo = false;
-    final slowmodeEnabled = false;
-    final callActive = false;
-    final callNotEmpty = false;
-    final fake = false;
-    final gigagroup = false;
-    final noforwards = false;
+    final creator = (flags & 1) == 1;
+    final left = (flags & 4) == 4;
+    final broadcast = (flags & 32) == 32;
+    final verified = (flags & 128) == 128;
+    final megagroup = (flags & 256) == 256;
+    final restricted = (flags & 512) == 512;
+    final signatures = (flags & 2048) == 2048;
+    final min = (flags & 4096) == 4096;
+    final scam = (flags & 524288) == 524288;
+    final hasLink = (flags & 1048576) == 1048576;
+    final hasGeo = (flags & 2097152) == 2097152;
+    final slowmodeEnabled = (flags & 4194304) == 4194304;
+    final callActive = (flags & 8388608) == 8388608;
+    final callNotEmpty = (flags & 16777216) == 16777216;
+    final fake = (flags & 33554432) == 33554432;
+    final gigagroup = (flags & 67108864) == 67108864;
+    final noforwards = (flags & 134217728) == 134217728;
     var id = reader.readLong();
     var accessHash;
     if ((flags & 8192) == 8192) {
@@ -3701,8 +3701,8 @@ class ChannelForbidden extends BaseConstructor {
   static ChannelForbidden fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final broadcast = false;
-    final megagroup = false;
+    final broadcast = (flags & 32) == 32;
+    final megagroup = (flags & 256) == 256;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var title = reader.tgReadString();
@@ -3801,8 +3801,8 @@ class ChatFull extends BaseConstructor {
   static ChatFull fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final canSetUsername = false;
-    final hasScheduled = false;
+    final canSetUsername = (flags & 128) == 128;
+    final hasScheduled = (flags & 256) == 256;
     var id = reader.readLong();
     var about = reader.tgReadString();
     var participants = reader.tgReadObject();
@@ -4128,14 +4128,14 @@ class ChannelFull extends BaseConstructor {
   static ChannelFull fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final canViewParticipants = false;
-    final canSetUsername = false;
-    final canSetStickers = false;
-    final hiddenPrehistory = false;
-    final canSetLocation = false;
-    final hasScheduled = false;
-    final canViewStats = false;
-    final blocked = false;
+    final canViewParticipants = (flags & 8) == 8;
+    final canSetUsername = (flags & 64) == 64;
+    final canSetStickers = (flags & 128) == 128;
+    final hiddenPrehistory = (flags & 1024) == 1024;
+    final canSetLocation = (flags & 65536) == 65536;
+    final hasScheduled = (flags & 524288) == 524288;
+    final canViewStats = (flags & 1048576) == 1048576;
+    final blocked = (flags & 4194304) == 4194304;
     var id = reader.readLong();
     var about = reader.tgReadString();
     var participantsCount;
@@ -4879,7 +4879,7 @@ class ChatPhoto extends BaseConstructor {
   static ChatPhoto fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final hasVideo = false;
+    final hasVideo = (flags & 1) == 1;
     var photoId = reader.readLong();
     var strippedThumb;
     if ((flags & 2) == 2) {
@@ -5050,16 +5050,16 @@ class Message extends BaseConstructor {
   static Message fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final out = false;
-    final mentioned = false;
-    final mediaUnread = false;
-    final silent = false;
-    final post = false;
-    final fromScheduled = false;
-    final legacy = false;
-    final editHide = false;
-    final pinned = false;
-    final noforwards = false;
+    final out = (flags & 2) == 2;
+    final mentioned = (flags & 16) == 16;
+    final mediaUnread = (flags & 32) == 32;
+    final silent = (flags & 8192) == 8192;
+    final post = (flags & 16384) == 16384;
+    final fromScheduled = (flags & 262144) == 262144;
+    final legacy = (flags & 524288) == 524288;
+    final editHide = (flags & 2097152) == 2097152;
+    final pinned = (flags & 16777216) == 16777216;
+    final noforwards = (flags & 67108864) == 67108864;
     var id = reader.readInt();
     var fromId;
     if ((flags & 256) == 256) {
@@ -5365,12 +5365,12 @@ class MessageService extends BaseConstructor {
   static MessageService fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final out = false;
-    final mentioned = false;
-    final mediaUnread = false;
-    final silent = false;
-    final post = false;
-    final legacy = false;
+    final out = (flags & 2) == 2;
+    final mentioned = (flags & 16) == 16;
+    final mediaUnread = (flags & 32) == 32;
+    final silent = (flags & 8192) == 8192;
+    final post = (flags & 16384) == 16384;
+    final legacy = (flags & 524288) == 524288;
     var id = reader.readInt();
     var fromId;
     if ((flags & 256) == 256) {
@@ -5924,8 +5924,8 @@ class MessageMediaInvoice extends BaseConstructor {
   static MessageMediaInvoice fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final shippingAddressRequested = false;
-    final test = false;
+    final shippingAddressRequested = (flags & 2) == 2;
+    final test = (flags & 8) == 8;
     var title = reader.tgReadString();
     var description = reader.tgReadString();
     var photo;
@@ -6870,7 +6870,7 @@ class MessageActionPhoneCall extends BaseConstructor {
   static MessageActionPhoneCall fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final video = false;
+    final video = (flags & 4) == 4;
     var callId = reader.readLong();
     var reason;
     if ((flags & 1) == 1) {
@@ -7524,8 +7524,8 @@ class Dialog extends BaseConstructor {
   static Dialog fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final pinned = false;
-    final unreadMark = false;
+    final pinned = (flags & 4) == 4;
+    final unreadMark = (flags & 8) == 8;
     var peer = reader.tgReadObject();
     var topMessage = reader.readInt();
     var readInboxMaxId = reader.readInt();
@@ -7640,7 +7640,7 @@ class DialogFolder extends BaseConstructor {
   static DialogFolder fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final pinned = false;
+    final pinned = (flags & 4) == 4;
     var folder = reader.tgReadObject();
     var peer = reader.tgReadObject();
     var topMessage = reader.readInt();
@@ -7760,7 +7760,7 @@ class Photo extends BaseConstructor {
   static Photo fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final hasStickers = false;
+    final hasStickers = (flags & 1) == 1;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var fileReference = reader.tgReadBytes();
@@ -8604,15 +8604,15 @@ class PeerSettings extends BaseConstructor {
   static PeerSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final reportSpam = false;
-    final addContact = false;
-    final blockContact = false;
-    final shareContact = false;
-    final needContactsException = false;
-    final reportGeo = false;
-    final autoarchived = false;
-    final inviteMembers = false;
-    final requestChatBroadcast = false;
+    final reportSpam = (flags & 1) == 1;
+    final addContact = (flags & 2) == 2;
+    final blockContact = (flags & 4) == 4;
+    final shareContact = (flags & 8) == 8;
+    final needContactsException = (flags & 16) == 16;
+    final reportGeo = (flags & 32) == 32;
+    final autoarchived = (flags & 128) == 128;
+    final inviteMembers = (flags & 256) == 256;
+    final requestChatBroadcast = (flags & 1024) == 1024;
     var geoDistance;
     if ((flags & 64) == 64) {
       geoDistance = reader.readInt();
@@ -8717,10 +8717,10 @@ class WallPaper extends BaseConstructor {
     var len;
     var id = reader.readLong();
     final flags = reader.readInt();
-    final creator = false;
-    final defaultVar = false;
-    final pattern = false;
-    final dark = false;
+    final creator = (flags & 1) == 1;
+    final defaultVar = (flags & 2) == 2;
+    final pattern = (flags & 8) == 8;
+    final dark = (flags & 16) == 16;
     var accessHash = reader.readLong();
     var slug = reader.tgReadString();
     var document = reader.tgReadObject();
@@ -8795,8 +8795,8 @@ class WallPaperNoFile extends BaseConstructor {
     var len;
     var id = reader.readLong();
     final flags = reader.readInt();
-    final defaultVar = false;
-    final dark = false;
+    final defaultVar = (flags & 2) == 2;
+    final dark = (flags & 16) == 16;
     var settings;
     if ((flags & 4) == 4) {
       settings = reader.tgReadObject();
@@ -9172,12 +9172,12 @@ class UserFull extends BaseConstructor {
   static UserFull fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final blocked = false;
-    final phoneCallsAvailable = false;
-    final phoneCallsPrivate = false;
-    final canPinMessage = false;
-    final hasScheduled = false;
-    final videoCallsAvailable = false;
+    final blocked = (flags & 1) == 1;
+    final phoneCallsAvailable = (flags & 16) == 16;
+    final phoneCallsPrivate = (flags & 32) == 32;
+    final canPinMessage = (flags & 128) == 128;
+    final hasScheduled = (flags & 4096) == 4096;
+    final videoCallsAvailable = (flags & 8192) == 8192;
     var id = reader.readLong();
     var about;
     if ((flags & 2) == 2) {
@@ -9818,7 +9818,7 @@ class InputMessagesFilterPhoneCalls extends BaseConstructor {
   static InputMessagesFilterPhoneCalls fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final missed = false;
+    final missed = (flags & 1) == 1;
     return InputMessagesFilterPhoneCalls(missed: missed);
   }
 
@@ -10881,7 +10881,7 @@ class UpdateServiceNotification extends BaseConstructor {
   static UpdateServiceNotification fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final popup = false;
+    final popup = (flags & 1) == 1;
     var inboxDate;
     if ((flags & 2) == 2) {
       inboxDate = reader.readInt();
@@ -11707,7 +11707,7 @@ class UpdateStickerSetsOrder extends BaseConstructor {
   static UpdateStickerSetsOrder fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final masks = false;
+    final masks = (flags & 1) == 1;
     var _vectororder = reader.readInt();
     if (_vectororder != 481674261) throw Exception('Wrong vectorId');
     List<BigInt> order = [];
@@ -12545,7 +12545,7 @@ class UpdateDialogPinned extends BaseConstructor {
   static UpdateDialogPinned fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final pinned = false;
+    final pinned = (flags & 1) == 1;
     var folderId;
     if ((flags & 2) == 2) {
       folderId = reader.readInt();
@@ -13195,7 +13195,7 @@ class UpdateDialogUnreadMark extends BaseConstructor {
   static UpdateDialogUnreadMark fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final unread = false;
+    final unread = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     return UpdateDialogUnreadMark(unread: unread, peer: peer);
   }
@@ -14243,7 +14243,7 @@ class UpdatePinnedMessages extends BaseConstructor {
   static UpdatePinnedMessages fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final pinned = false;
+    final pinned = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var _vectormessages = reader.readInt();
     if (_vectormessages != 481674261) throw Exception('Wrong vectorId');
@@ -14317,7 +14317,7 @@ class UpdatePinnedChannelMessages extends BaseConstructor {
   static UpdatePinnedChannelMessages fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final pinned = false;
+    final pinned = (flags & 1) == 1;
     var channelId = reader.readLong();
     var _vectormessages = reader.readInt();
     if (_vectormessages != 481674261) throw Exception('Wrong vectorId');
@@ -14840,7 +14840,7 @@ class UpdateGroupCallConnection extends BaseConstructor {
   static UpdateGroupCallConnection fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final presentation = false;
+    final presentation = (flags & 1) == 1;
     var params = reader.tgReadObject();
     return UpdateGroupCallConnection(
         presentation: presentation, params: params);
@@ -15182,10 +15182,10 @@ class UpdateShortMessage extends BaseConstructor {
   static UpdateShortMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final out = false;
-    final mentioned = false;
-    final mediaUnread = false;
-    final silent = false;
+    final out = (flags & 2) == 2;
+    final mentioned = (flags & 16) == 16;
+    final mediaUnread = (flags & 32) == 32;
+    final silent = (flags & 8192) == 8192;
     var id = reader.readInt();
     var userId = reader.readLong();
     var message = reader.tgReadString();
@@ -15351,10 +15351,10 @@ class UpdateShortChatMessage extends BaseConstructor {
   static UpdateShortChatMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final out = false;
-    final mentioned = false;
-    final mediaUnread = false;
-    final silent = false;
+    final out = (flags & 2) == 2;
+    final mentioned = (flags & 16) == 16;
+    final mediaUnread = (flags & 32) == 32;
+    final silent = (flags & 8192) == 8192;
     var id = reader.readInt();
     var fromId = reader.readLong();
     var chatId = reader.readLong();
@@ -15738,7 +15738,7 @@ class UpdateShortSentMessage extends BaseConstructor {
   static UpdateShortSentMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final out = false;
+    final out = (flags & 2) == 2;
     var id = reader.readInt();
     var pts = reader.readInt();
     var ptsCount = reader.readInt();
@@ -15857,11 +15857,11 @@ class DcOption extends BaseConstructor {
   static DcOption fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final ipv6 = false;
-    final mediaOnly = false;
-    final tcpoOnly = false;
-    final cdn = false;
-    final static = false;
+    final ipv6 = (flags & 1) == 1;
+    final mediaOnly = (flags & 2) == 2;
+    final tcpoOnly = (flags & 4) == 4;
+    final cdn = (flags & 8) == 8;
+    final static = (flags & 16) == 16;
     var id = reader.readInt();
     var ipAddress = reader.tgReadString();
     var port = reader.readInt();
@@ -16026,13 +16026,13 @@ class Config extends BaseConstructor {
   static Config fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final phonecallsEnabled = false;
-    final defaultP2pContacts = false;
-    final preloadFeaturedStickers = false;
-    final ignorePhoneEntities = false;
-    final revokePmInbox = false;
-    final blockedMode = false;
-    final pfsEnabled = false;
+    final phonecallsEnabled = (flags & 2) == 2;
+    final defaultP2pContacts = (flags & 8) == 8;
+    final preloadFeaturedStickers = (flags & 16) == 16;
+    final ignorePhoneEntities = (flags & 32) == 32;
+    final revokePmInbox = (flags & 64) == 64;
+    final blockedMode = (flags & 256) == 256;
+    final pfsEnabled = (flags & 8192) == 8192;
     var date = reader.readInt();
     var expires = reader.readInt();
     var testMode = reader.tgReadBool();
@@ -16628,7 +16628,7 @@ class EncryptedChatDiscarded extends BaseConstructor {
   static EncryptedChatDiscarded fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final historyDeleted = false;
+    final historyDeleted = (flags & 1) == 1;
     var id = reader.readInt();
     return EncryptedChatDiscarded(historyDeleted: historyDeleted, id: id);
   }
@@ -19587,7 +19587,7 @@ class DocumentAttributeSticker extends BaseConstructor {
   static DocumentAttributeSticker fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final mask = false;
+    final mask = (flags & 2) == 2;
     var alt = reader.tgReadString();
     var stickerset = reader.tgReadObject();
     var maskCoords;
@@ -19652,8 +19652,8 @@ class DocumentAttributeVideo extends BaseConstructor {
   static DocumentAttributeVideo fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final roundMessage = false;
-    final supportsStreaming = false;
+    final roundMessage = (flags & 1) == 1;
+    final supportsStreaming = (flags & 2) == 2;
     var duration = reader.readInt();
     var w = reader.readInt();
     var h = reader.readInt();
@@ -19713,7 +19713,7 @@ class DocumentAttributeAudio extends BaseConstructor {
   static DocumentAttributeAudio fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final voice = false;
+    final voice = (flags & 1024) == 1024;
     var duration = reader.readInt();
     var title;
     if ((flags & 1) == 1) {
@@ -20347,11 +20347,11 @@ class Authorization extends BaseConstructor {
   static Authorization fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final current = false;
-    final officialApp = false;
-    final passwordPending = false;
-    final encryptedRequestsDisabled = false;
-    final callRequestsDisabled = false;
+    final current = (flags & 1) == 1;
+    final officialApp = (flags & 2) == 2;
+    final passwordPending = (flags & 4) == 4;
+    final encryptedRequestsDisabled = (flags & 8) == 8;
+    final callRequestsDisabled = (flags & 16) == 16;
     var hash = reader.readLong();
     var deviceModel = reader.tgReadString();
     var platform = reader.tgReadString();
@@ -20497,9 +20497,9 @@ class ChatInviteExported extends BaseConstructor {
   static ChatInviteExported fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final revoked = false;
-    final permanent = false;
-    final requestNeeded = false;
+    final revoked = (flags & 1) == 1;
+    final permanent = (flags & 32) == 32;
+    final requestNeeded = (flags & 64) == 64;
     var link = reader.tgReadString();
     var adminId = reader.readLong();
     var date = reader.readInt();
@@ -20683,11 +20683,11 @@ class ChatInvite extends BaseConstructor {
   static ChatInvite fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final channel = false;
-    final broadcast = false;
-    final public = false;
-    final megagroup = false;
-    final requestNeeded = false;
+    final channel = (flags & 1) == 1;
+    final broadcast = (flags & 2) == 2;
+    final public = (flags & 4) == 4;
+    final megagroup = (flags & 8) == 8;
+    final requestNeeded = (flags & 64) == 64;
     var title = reader.tgReadString();
     var about;
     if ((flags & 32) == 32) {
@@ -21076,11 +21076,11 @@ class StickerSet extends BaseConstructor {
   static StickerSet fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final archived = false;
-    final official = false;
-    final masks = false;
-    final animated = false;
-    final gifs = false;
+    final archived = (flags & 2) == 2;
+    final official = (flags & 4) == 4;
+    final masks = (flags & 8) == 8;
+    final animated = (flags & 32) == 32;
+    final gifs = (flags & 64) == 64;
     var installedDate;
     if ((flags & 1) == 1) {
       installedDate = reader.readInt();
@@ -21393,7 +21393,7 @@ class KeyboardButtonCallback extends BaseConstructor {
   static KeyboardButtonCallback fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final requiresPassword = false;
+    final requiresPassword = (flags & 1) == 1;
     var text = reader.tgReadString();
     var data = reader.tgReadBytes();
     return KeyboardButtonCallback(
@@ -21519,7 +21519,7 @@ class KeyboardButtonSwitchInline extends BaseConstructor {
   static KeyboardButtonSwitchInline fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final samePeer = false;
+    final samePeer = (flags & 1) == 1;
     var text = reader.tgReadString();
     var query = reader.tgReadString();
     return KeyboardButtonSwitchInline(
@@ -21715,7 +21715,7 @@ class InputKeyboardButtonUrlAuth extends BaseConstructor {
   static InputKeyboardButtonUrlAuth fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final requestWriteAccess = false;
+    final requestWriteAccess = (flags & 1) == 1;
     var text = reader.tgReadString();
     var fwdText;
     if ((flags & 2) == 2) {
@@ -21964,7 +21964,7 @@ class ReplyKeyboardHide extends BaseConstructor {
   static ReplyKeyboardHide fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final selective = false;
+    final selective = (flags & 4) == 4;
     return ReplyKeyboardHide(selective: selective);
   }
 
@@ -22009,8 +22009,8 @@ class ReplyKeyboardForceReply extends BaseConstructor {
   static ReplyKeyboardForceReply fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final singleUse = false;
-    final selective = false;
+    final singleUse = (flags & 2) == 2;
+    final selective = (flags & 4) == 4;
     var placeholder;
     if ((flags & 8) == 8) {
       placeholder = reader.tgReadString();
@@ -22071,9 +22071,9 @@ class ReplyKeyboardMarkup extends BaseConstructor {
   static ReplyKeyboardMarkup fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final resize = false;
-    final singleUse = false;
-    final selective = false;
+    final resize = (flags & 1) == 1;
+    final singleUse = (flags & 2) == 2;
+    final selective = (flags & 4) == 4;
     var _vectorrows = reader.readInt();
     if (_vectorrows != 481674261) throw Exception('Wrong vectorId');
     List<dynamic> rows = [];
@@ -23255,7 +23255,7 @@ class ChannelMessagesFilter extends BaseConstructor {
   static ChannelMessagesFilter fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final excludeNewMessages = false;
+    final excludeNewMessages = (flags & 2) == 2;
     var _vectorranges = reader.readInt();
     if (_vectorranges != 481674261) throw Exception('Wrong vectorId');
     List<dynamic> ranges = [];
@@ -23358,7 +23358,7 @@ class ChannelParticipantSelf extends BaseConstructor {
   static ChannelParticipantSelf fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final viaRequest = false;
+    final viaRequest = (flags & 1) == 1;
     var userId = reader.readLong();
     var inviterId = reader.readLong();
     var date = reader.readInt();
@@ -23479,8 +23479,8 @@ class ChannelParticipantAdmin extends BaseConstructor {
   static ChannelParticipantAdmin fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final canEdit = false;
-    final self = false;
+    final canEdit = (flags & 1) == 1;
+    final self = (flags & 2) == 2;
     var userId = reader.readLong();
     var inviterId;
     if ((flags & 2) == 2) {
@@ -23566,7 +23566,7 @@ class ChannelParticipantBanned extends BaseConstructor {
   static ChannelParticipantBanned fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final left = false;
+    final left = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var kickedBy = reader.readLong();
     var date = reader.readInt();
@@ -24070,7 +24070,7 @@ class InputBotInlineMessageText extends BaseConstructor {
   static InputBotInlineMessageText fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final noWebpage = false;
+    final noWebpage = (flags & 1) == 1;
     var message = reader.tgReadString();
     var entities;
     if ((flags & 2) == 2) {
@@ -24942,7 +24942,7 @@ class BotInlineMessageText extends BaseConstructor {
   static BotInlineMessageText fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final noWebpage = false;
+    final noWebpage = (flags & 1) == 1;
     var message = reader.tgReadString();
     var entities;
     if ((flags & 2) == 2) {
@@ -25292,8 +25292,8 @@ class BotInlineMessageMediaInvoice extends BaseConstructor {
   static BotInlineMessageMediaInvoice fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final shippingAddressRequested = false;
-    final test = false;
+    final shippingAddressRequested = (flags & 2) == 2;
+    final test = (flags & 8) == 8;
     var title = reader.tgReadString();
     var description = reader.tgReadString();
     var photo;
@@ -25656,7 +25656,7 @@ class MessageFwdHeader extends BaseConstructor {
   static MessageFwdHeader fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final imported = false;
+    final imported = (flags & 128) == 128;
     var fromId;
     if ((flags & 1) == 1) {
       fromId = reader.tgReadObject();
@@ -26373,7 +26373,7 @@ class DraftMessage extends BaseConstructor {
   static DraftMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final noWebpage = false;
+    final noWebpage = (flags & 2) == 2;
     var replyToMsgId;
     if ((flags & 1) == 1) {
       replyToMsgId = reader.readInt();
@@ -28185,8 +28185,8 @@ class PageBlockVideo extends BaseConstructor {
   static PageBlockVideo fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final autoplay = false;
-    final loop = false;
+    final autoplay = (flags & 1) == 1;
+    final loop = (flags & 2) == 2;
     var videoId = reader.readLong();
     var caption = reader.tgReadObject();
     return PageBlockVideo(
@@ -28285,8 +28285,8 @@ class PageBlockEmbed extends BaseConstructor {
   static PageBlockEmbed fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final fullWidth = false;
-    final allowScrolling = false;
+    final fullWidth = (flags & 1) == 1;
+    final allowScrolling = (flags & 8) == 8;
     var url;
     if ((flags & 2) == 2) {
       url = reader.tgReadString();
@@ -28703,8 +28703,8 @@ class PageBlockTable extends BaseConstructor {
   static PageBlockTable fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final bordered = false;
-    final striped = false;
+    final bordered = (flags & 1) == 1;
+    final striped = (flags & 2) == 2;
     var title = reader.tgReadObject();
     var _vectorrows = reader.readInt();
     if (_vectorrows != 481674261) throw Exception('Wrong vectorId');
@@ -28813,7 +28813,7 @@ class PageBlockDetails extends BaseConstructor {
   static PageBlockDetails fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final open = false;
+    final open = (flags & 1) == 1;
     var _vectorblocks = reader.readInt();
     if (_vectorblocks != 481674261) throw Exception('Wrong vectorId');
     List<dynamic> blocks = [];
@@ -29226,14 +29226,14 @@ class Invoice extends BaseConstructor {
   static Invoice fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final test = false;
-    final nameRequested = false;
-    final phoneRequested = false;
-    final emailRequested = false;
-    final shippingAddressRequested = false;
-    final flexible = false;
-    final phoneToProvider = false;
-    final emailToProvider = false;
+    final test = (flags & 1) == 1;
+    final nameRequested = (flags & 2) == 2;
+    final phoneRequested = (flags & 4) == 4;
+    final emailRequested = (flags & 8) == 8;
+    final shippingAddressRequested = (flags & 16) == 16;
+    final flexible = (flags & 32) == 32;
+    final phoneToProvider = (flags & 64) == 64;
+    final emailToProvider = (flags & 128) == 128;
     var currency = reader.tgReadString();
     var _vectorprices = reader.readInt();
     if (_vectorprices != 481674261) throw Exception('Wrong vectorId');
@@ -29929,7 +29929,7 @@ class InputPaymentCredentials extends BaseConstructor {
   static InputPaymentCredentials fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final save = false;
+    final save = (flags & 1) == 1;
     var data = reader.tgReadObject();
     return InputPaymentCredentials(save: save, data: data);
   }
@@ -30259,7 +30259,7 @@ class PhoneCallWaiting extends BaseConstructor {
   static PhoneCallWaiting fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final video = false;
+    final video = (flags & 64) == 64;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var date = reader.readInt();
@@ -30346,7 +30346,7 @@ class PhoneCallRequested extends BaseConstructor {
   static PhoneCallRequested fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final video = false;
+    final video = (flags & 64) == 64;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var date = reader.readInt();
@@ -30423,7 +30423,7 @@ class PhoneCallAccepted extends BaseConstructor {
   static PhoneCallAccepted fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final video = false;
+    final video = (flags & 64) == 64;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var date = reader.readInt();
@@ -30508,8 +30508,8 @@ class PhoneCall extends BaseConstructor {
   static PhoneCall fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final p2pAllowed = false;
-    final video = false;
+    final p2pAllowed = (flags & 32) == 32;
+    final video = (flags & 64) == 64;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var date = reader.readInt();
@@ -30604,9 +30604,9 @@ class PhoneCallDiscarded extends BaseConstructor {
   static PhoneCallDiscarded fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final needRating = false;
-    final needDebug = false;
-    final video = false;
+    final needRating = (flags & 4) == 4;
+    final needDebug = (flags & 8) == 8;
+    final video = (flags & 64) == 64;
     var id = reader.readLong();
     var reason;
     if ((flags & 1) == 1) {
@@ -30748,8 +30748,8 @@ class PhoneConnectionWebrtc extends BaseConstructor {
   static PhoneConnectionWebrtc fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final turn = false;
-    final stun = false;
+    final turn = (flags & 1) == 1;
+    final stun = (flags & 2) == 2;
     var id = reader.readLong();
     var ip = reader.tgReadString();
     var ipv6 = reader.tgReadString();
@@ -30818,8 +30818,8 @@ class PhoneCallProtocol extends BaseConstructor {
   static PhoneCallProtocol fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final udpP2p = false;
-    final udpReflector = false;
+    final udpP2p = (flags & 1) == 1;
+    final udpReflector = (flags & 2) == 2;
     var minLayer = reader.readInt();
     var maxLayer = reader.readInt();
     var _vectorlibraryVersions = reader.readInt();
@@ -31262,9 +31262,9 @@ class LangPackLanguage extends BaseConstructor {
   static LangPackLanguage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final official = false;
-    final rtl = false;
-    final beta = false;
+    final official = (flags & 1) == 1;
+    final rtl = (flags & 4) == 4;
+    final beta = (flags & 8) == 8;
     var name = reader.tgReadString();
     var nativeName = reader.tgReadString();
     var langCode = reader.tgReadString();
@@ -32962,23 +32962,23 @@ class ChannelAdminLogEventsFilter extends BaseConstructor {
   static ChannelAdminLogEventsFilter fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final join = false;
-    final leave = false;
-    final invite = false;
-    final ban = false;
-    final unban = false;
-    final kick = false;
-    final unkick = false;
-    final promote = false;
-    final demote = false;
-    final info = false;
-    final settings = false;
-    final pinned = false;
-    final edit = false;
-    final delete = false;
-    final groupCall = false;
-    final invites = false;
-    final send = false;
+    final join = (flags & 1) == 1;
+    final leave = (flags & 2) == 2;
+    final invite = (flags & 4) == 4;
+    final ban = (flags & 8) == 8;
+    final unban = (flags & 16) == 16;
+    final kick = (flags & 32) == 32;
+    final unkick = (flags & 64) == 64;
+    final promote = (flags & 128) == 128;
+    final demote = (flags & 256) == 256;
+    final info = (flags & 512) == 512;
+    final settings = (flags & 1024) == 1024;
+    final pinned = (flags & 2048) == 2048;
+    final edit = (flags & 4096) == 4096;
+    final delete = (flags & 8192) == 8192;
+    final groupCall = (flags & 16384) == 16384;
+    final invites = (flags & 32768) == 32768;
+    final send = (flags & 65536) == 65536;
     return ChannelAdminLogEventsFilter(
         join: join,
         leave: leave,
@@ -35907,9 +35907,9 @@ class SecureRequiredType extends BaseConstructor {
   static SecureRequiredType fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final nativeNames = false;
-    final selfieRequired = false;
-    final translationRequired = false;
+    final nativeNames = (flags & 1) == 1;
+    final selfieRequired = (flags & 2) == 2;
+    final translationRequired = (flags & 4) == 4;
     var type = reader.tgReadObject();
     return SecureRequiredType(
         nativeNames: nativeNames,
@@ -36367,11 +36367,11 @@ class PageTableCell extends BaseConstructor {
   static PageTableCell fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final header = false;
-    final alignCenter = false;
-    final alignRight = false;
-    final valignMiddle = false;
-    final valignBottom = false;
+    final header = (flags & 1) == 1;
+    final alignCenter = (flags & 8) == 8;
+    final alignRight = (flags & 16) == 16;
+    final valignMiddle = (flags & 32) == 32;
+    final valignBottom = (flags & 64) == 64;
     var text;
     if ((flags & 128) == 128) {
       text = reader.tgReadObject();
@@ -36858,9 +36858,9 @@ class Page extends BaseConstructor {
   static Page fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final part = false;
-    final rtl = false;
-    final v2 = false;
+    final part = (flags & 1) == 1;
+    final rtl = (flags & 2) == 2;
+    final v2 = (flags & 4) == 4;
     var url = reader.tgReadString();
     var _vectorblocks = reader.readInt();
     if (_vectorblocks != 481674261) throw Exception('Wrong vectorId');
@@ -37021,10 +37021,10 @@ class Poll extends BaseConstructor {
     var len;
     var id = reader.readLong();
     final flags = reader.readInt();
-    final closed = false;
-    final publicVoters = false;
-    final multipleChoice = false;
-    final quiz = false;
+    final closed = (flags & 1) == 1;
+    final publicVoters = (flags & 2) == 2;
+    final multipleChoice = (flags & 4) == 4;
+    final quiz = (flags & 8) == 8;
     var question = reader.tgReadString();
     var _vectoranswers = reader.readInt();
     if (_vectoranswers != 481674261) throw Exception('Wrong vectorId');
@@ -37120,8 +37120,8 @@ class PollAnswerVoters extends BaseConstructor {
   static PollAnswerVoters fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final chosen = false;
-    final correct = false;
+    final chosen = (flags & 1) == 1;
+    final correct = (flags & 2) == 2;
     var option = reader.tgReadBytes();
     var voters = reader.readInt();
     return PollAnswerVoters(
@@ -37177,7 +37177,7 @@ class PollResults extends BaseConstructor {
   static PollResults fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final min = false;
+    final min = (flags & 1) == 1;
     var results;
     if ((flags & 2) == 2) {
       var _vectorresults = reader.readInt();
@@ -37416,17 +37416,17 @@ class ChatAdminRights extends BaseConstructor {
   static ChatAdminRights fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final changeInfo = false;
-    final postMessages = false;
-    final editMessages = false;
-    final deleteMessages = false;
-    final banUsers = false;
-    final inviteUsers = false;
-    final pinMessages = false;
-    final addAdmins = false;
-    final anonymous = false;
-    final manageCall = false;
-    final other = false;
+    final changeInfo = (flags & 1) == 1;
+    final postMessages = (flags & 2) == 2;
+    final editMessages = (flags & 4) == 4;
+    final deleteMessages = (flags & 8) == 8;
+    final banUsers = (flags & 16) == 16;
+    final inviteUsers = (flags & 32) == 32;
+    final pinMessages = (flags & 128) == 128;
+    final addAdmins = (flags & 512) == 512;
+    final anonymous = (flags & 1024) == 1024;
+    final manageCall = (flags & 2048) == 2048;
+    final other = (flags & 4096) == 4096;
     return ChatAdminRights(
         changeInfo: changeInfo,
         postMessages: postMessages,
@@ -37502,18 +37502,18 @@ class ChatBannedRights extends BaseConstructor {
   static ChatBannedRights fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final viewMessages = false;
-    final sendMessages = false;
-    final sendMedia = false;
-    final sendStickers = false;
-    final sendGifs = false;
-    final sendGames = false;
-    final sendInline = false;
-    final embedLinks = false;
-    final sendPolls = false;
-    final changeInfo = false;
-    final inviteUsers = false;
-    final pinMessages = false;
+    final viewMessages = (flags & 1) == 1;
+    final sendMessages = (flags & 2) == 2;
+    final sendMedia = (flags & 4) == 4;
+    final sendStickers = (flags & 8) == 8;
+    final sendGifs = (flags & 16) == 16;
+    final sendGames = (flags & 32) == 32;
+    final sendInline = (flags & 64) == 64;
+    final embedLinks = (flags & 128) == 128;
+    final sendPolls = (flags & 256) == 256;
+    final changeInfo = (flags & 1024) == 1024;
+    final inviteUsers = (flags & 32768) == 32768;
+    final pinMessages = (flags & 131072) == 131072;
     var untilDate = reader.readInt();
     return ChatBannedRights(
         viewMessages: viewMessages,
@@ -37697,10 +37697,10 @@ class CodeSettings extends BaseConstructor {
   static CodeSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final allowFlashcall = false;
-    final currentNumber = false;
-    final allowAppHash = false;
-    final allowMissedCall = false;
+    final allowFlashcall = (flags & 1) == 1;
+    final currentNumber = (flags & 2) == 2;
+    final allowAppHash = (flags & 16) == 16;
+    final allowMissedCall = (flags & 32) == 32;
     var logoutTokens;
     if ((flags & 64) == 64) {
       var _vectorlogoutTokens = reader.readInt();
@@ -37783,8 +37783,8 @@ class WallPaperSettings extends BaseConstructor {
   static WallPaperSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final blur = false;
-    final motion = false;
+    final blur = (flags & 2) == 2;
+    final motion = (flags & 4) == 4;
     var backgroundColor;
     if ((flags & 1) == 1) {
       backgroundColor = reader.readInt();
@@ -37920,10 +37920,10 @@ class AutoDownloadSettings extends BaseConstructor {
   static AutoDownloadSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final disabled = false;
-    final videoPreloadLarge = false;
-    final audioPreloadNext = false;
-    final phonecallsLessData = false;
+    final disabled = (flags & 1) == 1;
+    final videoPreloadLarge = (flags & 2) == 2;
+    final audioPreloadNext = (flags & 4) == 4;
+    final phonecallsLessData = (flags & 8) == 8;
     var photoSizeMax = reader.readInt();
     var videoSizeMax = reader.readInt();
     var fileSizeMax = reader.readInt();
@@ -38245,9 +38245,9 @@ class Folder extends BaseConstructor {
   static Folder fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final autofillNewBroadcasts = false;
-    final autofillPublicGroups = false;
-    final autofillNewCorrespondents = false;
+    final autofillNewBroadcasts = (flags & 1) == 1;
+    final autofillPublicGroups = (flags & 2) == 2;
+    final autofillNewCorrespondents = (flags & 4) == 4;
     var id = reader.readInt();
     var title = reader.tgReadString();
     var photo;
@@ -38397,7 +38397,7 @@ class UrlAuthResultRequest extends BaseConstructor {
   static UrlAuthResultRequest fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final requestWriteAccess = false;
+    final requestWriteAccess = (flags & 1) == 1;
     var bot = reader.tgReadObject();
     var domain = reader.tgReadString();
     return UrlAuthResultRequest(
@@ -38828,9 +38828,9 @@ class Theme extends BaseConstructor {
   static Theme fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final creator = false;
-    final defaultVar = false;
-    final forChat = false;
+    final creator = (flags & 1) == 1;
+    final defaultVar = (flags & 2) == 2;
+    final forChat = (flags & 32) == 32;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var slug = reader.tgReadString();
@@ -39139,7 +39139,7 @@ class InputThemeSettings extends BaseConstructor {
   static InputThemeSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final messageColorsAnimated = false;
+    final messageColorsAnimated = (flags & 4) == 4;
     var baseTheme = reader.tgReadObject();
     var accentColor = reader.readInt();
     var outboxAccentColor;
@@ -39259,7 +39259,7 @@ class ThemeSettings extends BaseConstructor {
   static ThemeSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final messageColorsAnimated = false;
+    final messageColorsAnimated = (flags & 4) == 4;
     var baseTheme = reader.tgReadObject();
     var accentColor = reader.readInt();
     var outboxAccentColor;
@@ -39642,14 +39642,14 @@ class DialogFilter extends BaseConstructor {
   static DialogFilter fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final contacts = false;
-    final nonContacts = false;
-    final groups = false;
-    final broadcasts = false;
-    final bots = false;
-    final excludeMuted = false;
-    final excludeRead = false;
-    final excludeArchived = false;
+    final contacts = (flags & 1) == 1;
+    final nonContacts = (flags & 2) == 2;
+    final groups = (flags & 4) == 4;
+    final broadcasts = (flags & 8) == 8;
+    final bots = (flags & 16) == 16;
+    final excludeMuted = (flags & 2048) == 2048;
+    final excludeRead = (flags & 4096) == 4096;
+    final excludeArchived = (flags & 8192) == 8192;
     var id = reader.readInt();
     var title = reader.tgReadString();
     var emoticon;
@@ -40532,7 +40532,7 @@ class MessageReplies extends BaseConstructor {
   static MessageReplies fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final comments = false;
+    final comments = (flags & 1) == 1;
     var replies = reader.readInt();
     var repliesPts = reader.readInt();
     var recentRepliers;
@@ -40761,12 +40761,12 @@ class GroupCall extends BaseConstructor {
   static GroupCall fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final joinMuted = false;
-    final canChangeJoinMuted = false;
-    final joinDateAsc = false;
-    final scheduleStartSubscribed = false;
-    final canStartVideo = false;
-    final recordVideoActive = false;
+    final joinMuted = (flags & 2) == 2;
+    final canChangeJoinMuted = (flags & 4) == 4;
+    final joinDateAsc = (flags & 64) == 64;
+    final scheduleStartSubscribed = (flags & 256) == 256;
+    final canStartVideo = (flags & 512) == 512;
+    final recordVideoActive = (flags & 2048) == 2048;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var participantsCount = reader.readInt();
@@ -40970,16 +40970,16 @@ class GroupCallParticipant extends BaseConstructor {
   static GroupCallParticipant fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final muted = false;
-    final left = false;
-    final canSelfUnmute = false;
-    final justJoined = false;
-    final versioned = false;
-    final min = false;
-    final mutedByYou = false;
-    final volumeByAdmin = false;
-    final self = false;
-    final videoJoined = false;
+    final muted = (flags & 1) == 1;
+    final left = (flags & 2) == 2;
+    final canSelfUnmute = (flags & 4) == 4;
+    final justJoined = (flags & 16) == 16;
+    final versioned = (flags & 32) == 32;
+    final min = (flags & 256) == 256;
+    final mutedByYou = (flags & 512) == 512;
+    final volumeByAdmin = (flags & 1024) == 1024;
+    final self = (flags & 4096) == 4096;
+    final videoJoined = (flags & 32768) == 32768;
     var peer = reader.tgReadObject();
     var date = reader.readInt();
     var activeDate;
@@ -41299,7 +41299,7 @@ class ChatInviteImporter extends BaseConstructor {
   static ChatInviteImporter fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final requested = false;
+    final requested = (flags & 1) == 1;
     var userId = reader.readLong();
     var date = reader.readInt();
     var about;
@@ -41483,7 +41483,7 @@ class GroupCallParticipantVideo extends BaseConstructor {
   static GroupCallParticipantVideo fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final paused = false;
+    final paused = (flags & 1) == 1;
     var endpoint = reader.tgReadString();
     var _vectorsourceGroups = reader.readInt();
     if (_vectorsourceGroups != 481674261) throw Exception('Wrong vectorId');
@@ -42066,7 +42066,7 @@ class ReactionCount extends BaseConstructor {
   static ReactionCount fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final chosen = false;
+    final chosen = (flags & 1) == 1;
     var reaction = reader.tgReadString();
     var count = reader.readInt();
     return ReactionCount(chosen: chosen, reaction: reaction, count: count);
@@ -42117,8 +42117,8 @@ class MessageReactions extends BaseConstructor {
   static MessageReactions fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final min = false;
-    final canSeeList = false;
+    final min = (flags & 1) == 1;
+    final canSeeList = (flags & 4) == 4;
     var _vectorresults = reader.readInt();
     if (_vectorresults != 481674261) throw Exception('Wrong vectorId');
     List<dynamic> results = [];
@@ -42259,7 +42259,7 @@ class AvailableReaction extends BaseConstructor {
   static AvailableReaction fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final inactive = false;
+    final inactive = (flags & 1) == 1;
     var reaction = reader.tgReadString();
     var title = reader.tgReadString();
     var staticIcon = reader.tgReadObject();

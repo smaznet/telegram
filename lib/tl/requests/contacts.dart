@@ -560,14 +560,14 @@ class GetTopPeers extends BaseRequest {
   static GetTopPeers fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final correspondents = false;
-    final botsPm = false;
-    final botsInline = false;
-    final phoneCalls = false;
-    final forwardUsers = false;
-    final forwardChats = false;
-    final groups = false;
-    final channels = false;
+    final correspondents = (flags & 1) == 1;
+    final botsPm = (flags & 2) == 2;
+    final botsInline = (flags & 4) == 4;
+    final phoneCalls = (flags & 8) == 8;
+    final forwardUsers = (flags & 16) == 16;
+    final forwardChats = (flags & 32) == 32;
+    final groups = (flags & 1024) == 1024;
+    final channels = (flags & 32768) == 32768;
     var offset = reader.readInt();
     var limit = reader.readInt();
     var hash = reader.readLong();
@@ -811,7 +811,7 @@ class AddContact extends BaseRequest {
   static AddContact fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final addPhonePrivacyException = false;
+    final addPhonePrivacyException = (flags & 1) == 1;
     var id = reader.tgReadObject();
     var firstName = reader.tgReadString();
     var lastName = reader.tgReadString();
@@ -918,7 +918,7 @@ class GetLocated extends BaseRequest {
   static GetLocated fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final background = false;
+    final background = (flags & 2) == 2;
     var geoPoint = reader.tgReadObject();
     var selfExpires;
     if ((flags & 1) == 1) {
@@ -985,9 +985,9 @@ class BlockFromReplies extends BaseRequest {
   static BlockFromReplies fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final deleteMessage = false;
-    final deleteHistory = false;
-    final reportSpam = false;
+    final deleteMessage = (flags & 1) == 1;
+    final deleteHistory = (flags & 2) == 2;
+    final reportSpam = (flags & 4) == 4;
     var msgId = reader.readInt();
     return BlockFromReplies(
         deleteMessage: deleteMessage,

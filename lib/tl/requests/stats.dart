@@ -16,7 +16,7 @@ class GetBroadcastStats extends BaseRequest {
   static GetBroadcastStats fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final dark = false;
+    final dark = (flags & 1) == 1;
     var channel = reader.tgReadObject();
     return GetBroadcastStats(dark: dark, channel: channel);
   }
@@ -122,7 +122,7 @@ class GetMegagroupStats extends BaseRequest {
   static GetMegagroupStats fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final dark = false;
+    final dark = (flags & 1) == 1;
     var channel = reader.tgReadObject();
     return GetMegagroupStats(dark: dark, channel: channel);
   }
@@ -243,7 +243,7 @@ class GetMessageStats extends BaseRequest {
   static GetMessageStats fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final dark = false;
+    final dark = (flags & 1) == 1;
     var channel = reader.tgReadObject();
     var msgId = reader.readInt();
     return GetMessageStats(dark: dark, channel: channel, msgId: msgId);

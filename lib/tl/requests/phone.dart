@@ -65,7 +65,7 @@ class RequestCall extends BaseRequest {
   static RequestCall fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final video = false;
+    final video = (flags & 1) == 1;
     var userId = reader.tgReadObject();
     var randomId = reader.readInt();
     var gAHash = reader.tgReadBytes();
@@ -284,7 +284,7 @@ class DiscardCall extends BaseRequest {
   static DiscardCall fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final video = false;
+    final video = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var duration = reader.readInt();
     var reason = reader.tgReadObject();
@@ -349,7 +349,7 @@ class SetCallRating extends BaseRequest {
   static SetCallRating fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final userInitiative = false;
+    final userInitiative = (flags & 1) == 1;
     var peer = reader.tgReadObject();
     var rating = reader.readInt();
     var comment = reader.tgReadString();
@@ -589,8 +589,8 @@ class JoinGroupCall extends BaseRequest {
   static JoinGroupCall fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final muted = false;
-    final videoStopped = false;
+    final muted = (flags & 1) == 1;
+    final videoStopped = (flags & 4) == 4;
     var call = reader.tgReadObject();
     var joinAs = reader.tgReadObject();
     var inviteHash;
@@ -812,7 +812,7 @@ class ToggleGroupCallSettings extends BaseRequest {
   static ToggleGroupCallSettings fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final resetInviteHash = false;
+    final resetInviteHash = (flags & 2) == 2;
     var call = reader.tgReadObject();
     var joinMuted;
     if ((flags & 1) == 1) {
@@ -1075,8 +1075,8 @@ class ToggleGroupCallRecord extends BaseRequest {
   static ToggleGroupCallRecord fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final start = false;
-    final video = false;
+    final start = (flags & 1) == 1;
+    final video = (flags & 4) == 4;
     var call = reader.tgReadObject();
     var title;
     if ((flags & 2) == 2) {
@@ -1377,7 +1377,7 @@ class ExportGroupCallInvite extends BaseRequest {
   static ExportGroupCallInvite fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
-    final canSelfUnmute = false;
+    final canSelfUnmute = (flags & 1) == 1;
     var call = reader.tgReadObject();
     return ExportGroupCallInvite(canSelfUnmute: canSelfUnmute, call: call);
   }

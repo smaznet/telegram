@@ -2645,6 +2645,9 @@ class User extends BaseConstructor {
   bool? scam;
   bool? applyMinPhoto;
   bool? fake;
+  bool? botAttachMenu;
+  bool? premium;
+  bool? attachMenuEnabled;
   BigInt id;
   BigInt? accessHash;
   String? firstName;
@@ -2674,6 +2677,9 @@ class User extends BaseConstructor {
       required this.scam,
       required this.applyMinPhoto,
       required this.fake,
+      required this.botAttachMenu,
+      required this.premium,
+      required this.attachMenuEnabled,
       required this.id,
       required this.accessHash,
       required this.firstName,
@@ -2705,6 +2711,9 @@ class User extends BaseConstructor {
     final scam = (flags & 16777216) == 16777216;
     final applyMinPhoto = (flags & 33554432) == 33554432;
     final fake = (flags & 67108864) == 67108864;
+    final botAttachMenu = (flags & 134217728) == 134217728;
+    final premium = (flags & 268435456) == 268435456;
+    final attachMenuEnabled = (flags & 536870912) == 536870912;
     var id = reader.readLong();
     var accessHash;
     if ((flags & 1) == 1) {
@@ -2795,6 +2804,9 @@ class User extends BaseConstructor {
         scam: scam,
         applyMinPhoto: applyMinPhoto,
         fake: fake,
+        botAttachMenu: botAttachMenu,
+        premium: premium,
+        attachMenuEnabled: attachMenuEnabled,
         id: id,
         accessHash: accessHash,
         firstName: firstName,
@@ -2891,7 +2903,7 @@ class User extends BaseConstructor {
 
   @override
   String toString() {
-    return 'User{ID: $ID, self: $self, contact: $contact, mutualContact: $mutualContact, deleted: $deleted, bot: $bot, botChatHistory: $botChatHistory, botNochats: $botNochats, verified: $verified, restricted: $restricted, min: $min, botInlineGeo: $botInlineGeo, support: $support, scam: $scam, applyMinPhoto: $applyMinPhoto, fake: $fake, id: $id, accessHash: $accessHash, firstName: $firstName, lastName: $lastName, username: $username, phone: $phone, photo: $photo, status: $status, botInfoVersion: $botInfoVersion, restrictionReason: $restrictionReason, botInlinePlaceholder: $botInlinePlaceholder, langCode: $langCode}';
+    return 'User{ID: $ID, self: $self, contact: $contact, mutualContact: $mutualContact, deleted: $deleted, bot: $bot, botChatHistory: $botChatHistory, botNochats: $botNochats, verified: $verified, restricted: $restricted, min: $min, botInlineGeo: $botInlineGeo, support: $support, scam: $scam, applyMinPhoto: $applyMinPhoto, fake: $fake, botAttachMenu: $botAttachMenu, premium: $premium, attachMenuEnabled: $attachMenuEnabled, id: $id, accessHash: $accessHash, firstName: $firstName, lastName: $lastName, username: $username, phone: $phone, photo: $photo, status: $status, botInfoVersion: $botInfoVersion, restrictionReason: $restrictionReason, botInlinePlaceholder: $botInlinePlaceholder, langCode: $langCode}';
   }
 }
 
@@ -3264,7 +3276,6 @@ class Chat extends BaseConstructor {
   final classType = "constructor";
   final ID = 1103884886;
   bool? creator;
-  bool? kicked;
   bool? left;
   bool? deactivated;
   bool? callActive;
@@ -3282,7 +3293,6 @@ class Chat extends BaseConstructor {
 
   Chat(
       {required this.creator,
-      required this.kicked,
       required this.left,
       required this.deactivated,
       required this.callActive,
@@ -3302,7 +3312,6 @@ class Chat extends BaseConstructor {
     var len;
     final flags = reader.readInt();
     final creator = (flags & 1) == 1;
-    final kicked = (flags & 2) == 2;
     final left = (flags & 4) == 4;
     final deactivated = (flags & 32) == 32;
     final callActive = (flags & 8388608) == 8388608;
@@ -3334,7 +3343,6 @@ class Chat extends BaseConstructor {
     }
     return Chat(
         creator: creator,
-        kicked: kicked,
         left: left,
         deactivated: deactivated,
         callActive: callActive,
@@ -3393,7 +3401,7 @@ class Chat extends BaseConstructor {
 
   @override
   String toString() {
-    return 'Chat{ID: $ID, creator: $creator, kicked: $kicked, left: $left, deactivated: $deactivated, callActive: $callActive, callNotEmpty: $callNotEmpty, noforwards: $noforwards, id: $id, title: $title, photo: $photo, participantsCount: $participantsCount, date: $date, version: $version, migratedTo: $migratedTo, adminRights: $adminRights, defaultBannedRights: $defaultBannedRights}';
+    return 'Chat{ID: $ID, creator: $creator, left: $left, deactivated: $deactivated, callActive: $callActive, callNotEmpty: $callNotEmpty, noforwards: $noforwards, id: $id, title: $title, photo: $photo, participantsCount: $participantsCount, date: $date, version: $version, migratedTo: $migratedTo, adminRights: $adminRights, defaultBannedRights: $defaultBannedRights}';
   }
 }
 
@@ -3461,6 +3469,8 @@ class Channel extends BaseConstructor {
   bool? fake;
   bool? gigagroup;
   bool? noforwards;
+  bool? joinToSend;
+  bool? joinRequest;
   BigInt id;
   BigInt? accessHash;
   String title;
@@ -3491,6 +3501,8 @@ class Channel extends BaseConstructor {
       required this.fake,
       required this.gigagroup,
       required this.noforwards,
+      required this.joinToSend,
+      required this.joinRequest,
       required this.id,
       required this.accessHash,
       required this.title,
@@ -3523,6 +3535,8 @@ class Channel extends BaseConstructor {
     final fake = (flags & 33554432) == 33554432;
     final gigagroup = (flags & 67108864) == 67108864;
     final noforwards = (flags & 134217728) == 134217728;
+    final joinToSend = (flags & 268435456) == 268435456;
+    final joinRequest = (flags & 536870912) == 536870912;
     var id = reader.readLong();
     var accessHash;
     if ((flags & 8192) == 8192) {
@@ -3594,6 +3608,8 @@ class Channel extends BaseConstructor {
         fake: fake,
         gigagroup: gigagroup,
         noforwards: noforwards,
+        joinToSend: joinToSend,
+        joinRequest: joinRequest,
         id: id,
         accessHash: accessHash,
         title: title,
@@ -3674,7 +3690,7 @@ class Channel extends BaseConstructor {
 
   @override
   String toString() {
-    return 'Channel{ID: $ID, creator: $creator, left: $left, broadcast: $broadcast, verified: $verified, megagroup: $megagroup, restricted: $restricted, signatures: $signatures, min: $min, scam: $scam, hasLink: $hasLink, hasGeo: $hasGeo, slowmodeEnabled: $slowmodeEnabled, callActive: $callActive, callNotEmpty: $callNotEmpty, fake: $fake, gigagroup: $gigagroup, noforwards: $noforwards, id: $id, accessHash: $accessHash, title: $title, username: $username, photo: $photo, date: $date, restrictionReason: $restrictionReason, adminRights: $adminRights, bannedRights: $bannedRights, defaultBannedRights: $defaultBannedRights, participantsCount: $participantsCount}';
+    return 'Channel{ID: $ID, creator: $creator, left: $left, broadcast: $broadcast, verified: $verified, megagroup: $megagroup, restricted: $restricted, signatures: $signatures, min: $min, scam: $scam, hasLink: $hasLink, hasGeo: $hasGeo, slowmodeEnabled: $slowmodeEnabled, callActive: $callActive, callNotEmpty: $callNotEmpty, fake: $fake, gigagroup: $gigagroup, noforwards: $noforwards, joinToSend: $joinToSend, joinRequest: $joinRequest, id: $id, accessHash: $accessHash, title: $title, username: $username, photo: $photo, date: $date, restrictionReason: $restrictionReason, adminRights: $adminRights, bannedRights: $bannedRights, defaultBannedRights: $defaultBannedRights, participantsCount: $participantsCount}';
   }
 }
 
@@ -4032,10 +4048,10 @@ class ChatFull extends BaseConstructor {
 }
 
 class ChannelFull extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 3778821408;
+  static const CONSTRUCTOR_ID = 3932726809;
   static const SUBCLASS_OF_ID = 3566872215;
   final classType = "constructor";
-  final ID = 3778821408;
+  final ID = 3932726809;
   bool? canViewParticipants;
   bool? canSetUsername;
   bool? canSetStickers;
@@ -4044,6 +4060,7 @@ class ChannelFull extends BaseConstructor {
   bool? hasScheduled;
   bool? canViewStats;
   bool? blocked;
+  bool? canDeleteChannel;
   BigInt id;
   String about;
   int? participantsCount;
@@ -4089,6 +4106,7 @@ class ChannelFull extends BaseConstructor {
       required this.hasScheduled,
       required this.canViewStats,
       required this.blocked,
+      required this.canDeleteChannel,
       required this.id,
       required this.about,
       required this.participantsCount,
@@ -4136,6 +4154,8 @@ class ChannelFull extends BaseConstructor {
     final hasScheduled = (flags & 524288) == 524288;
     final canViewStats = (flags & 1048576) == 1048576;
     final blocked = (flags & 4194304) == 4194304;
+    final flags2 = reader.readInt();
+    final canDeleteChannel = (flags & 1) == 1;
     var id = reader.readLong();
     var about = reader.tgReadString();
     var participantsCount;
@@ -4337,6 +4357,7 @@ class ChannelFull extends BaseConstructor {
         hasScheduled: hasScheduled,
         canViewStats: canViewStats,
         blocked: blocked,
+        canDeleteChannel: canDeleteChannel,
         id: id,
         about: about,
         participantsCount: participantsCount,
@@ -4377,7 +4398,8 @@ class ChannelFull extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(3778821408, 4),
+      readBufferFromBigInt(3932726809, 4),
+      [0, 0, 0, 0],
       [0, 0, 0, 0],
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       serializeBytes(this.about),
@@ -4572,7 +4594,7 @@ class ChannelFull extends BaseConstructor {
 
   @override
   String toString() {
-    return 'ChannelFull{ID: $ID, canViewParticipants: $canViewParticipants, canSetUsername: $canSetUsername, canSetStickers: $canSetStickers, hiddenPrehistory: $hiddenPrehistory, canSetLocation: $canSetLocation, hasScheduled: $hasScheduled, canViewStats: $canViewStats, blocked: $blocked, id: $id, about: $about, participantsCount: $participantsCount, adminsCount: $adminsCount, kickedCount: $kickedCount, bannedCount: $bannedCount, onlineCount: $onlineCount, readInboxMaxId: $readInboxMaxId, readOutboxMaxId: $readOutboxMaxId, unreadCount: $unreadCount, chatPhoto: $chatPhoto, notifySettings: $notifySettings, exportedInvite: $exportedInvite, botInfo: $botInfo, migratedFromChatId: $migratedFromChatId, migratedFromMaxId: $migratedFromMaxId, pinnedMsgId: $pinnedMsgId, stickerset: $stickerset, availableMinId: $availableMinId, folderId: $folderId, linkedChatId: $linkedChatId, location: $location, slowmodeSeconds: $slowmodeSeconds, slowmodeNextSendDate: $slowmodeNextSendDate, statsDc: $statsDc, pts: $pts, call: $call, ttlPeriod: $ttlPeriod, pendingSuggestions: $pendingSuggestions, groupcallDefaultJoinAs: $groupcallDefaultJoinAs, themeEmoticon: $themeEmoticon, requestsPending: $requestsPending, recentRequesters: $recentRequesters, defaultSendAs: $defaultSendAs, availableReactions: $availableReactions}';
+    return 'ChannelFull{ID: $ID, canViewParticipants: $canViewParticipants, canSetUsername: $canSetUsername, canSetStickers: $canSetStickers, hiddenPrehistory: $hiddenPrehistory, canSetLocation: $canSetLocation, hasScheduled: $hasScheduled, canViewStats: $canViewStats, blocked: $blocked, canDeleteChannel: $canDeleteChannel, id: $id, about: $about, participantsCount: $participantsCount, adminsCount: $adminsCount, kickedCount: $kickedCount, bannedCount: $bannedCount, onlineCount: $onlineCount, readInboxMaxId: $readInboxMaxId, readOutboxMaxId: $readOutboxMaxId, unreadCount: $unreadCount, chatPhoto: $chatPhoto, notifySettings: $notifySettings, exportedInvite: $exportedInvite, botInfo: $botInfo, migratedFromChatId: $migratedFromChatId, migratedFromMaxId: $migratedFromMaxId, pinnedMsgId: $pinnedMsgId, stickerset: $stickerset, availableMinId: $availableMinId, folderId: $folderId, linkedChatId: $linkedChatId, location: $location, slowmodeSeconds: $slowmodeSeconds, slowmodeNextSendDate: $slowmodeNextSendDate, statsDc: $statsDc, pts: $pts, call: $call, ttlPeriod: $ttlPeriod, pendingSuggestions: $pendingSuggestions, groupcallDefaultJoinAs: $groupcallDefaultJoinAs, themeEmoticon: $themeEmoticon, requestsPending: $requestsPending, recentRequesters: $recentRequesters, defaultSendAs: $defaultSendAs, availableReactions: $availableReactions}';
   }
 }
 
@@ -5693,14 +5715,19 @@ class MessageMediaDocument extends BaseConstructor {
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 2628808919;
+  bool? nopremium;
   var document;
   int? ttlSeconds;
 
-  MessageMediaDocument({required this.document, required this.ttlSeconds});
+  MessageMediaDocument(
+      {required this.nopremium,
+      required this.document,
+      required this.ttlSeconds});
 
   static MessageMediaDocument fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
+    final nopremium = (flags & 8) == 8;
     var document;
     if ((flags & 1) == 1) {
       document = reader.tgReadObject();
@@ -5713,7 +5740,8 @@ class MessageMediaDocument extends BaseConstructor {
     } else {
       ttlSeconds = null;
     }
-    return MessageMediaDocument(document: document, ttlSeconds: ttlSeconds);
+    return MessageMediaDocument(
+        nopremium: nopremium, document: document, ttlSeconds: ttlSeconds);
   }
 
   @override
@@ -5747,7 +5775,7 @@ class MessageMediaDocument extends BaseConstructor {
 
   @override
   String toString() {
-    return 'MessageMediaDocument{ID: $ID, document: $document, ttlSeconds: $ttlSeconds}';
+    return 'MessageMediaDocument{ID: $ID, nopremium: $nopremium, document: $document, ttlSeconds: $ttlSeconds}';
   }
 }
 
@@ -6727,6 +6755,8 @@ class MessageActionPaymentSentMe extends BaseConstructor {
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 2402399015;
+  bool? recurringInit;
+  bool? recurringUsed;
   String currency;
   BigInt totalAmount;
   List<int> payload;
@@ -6735,7 +6765,9 @@ class MessageActionPaymentSentMe extends BaseConstructor {
   var charge;
 
   MessageActionPaymentSentMe(
-      {required this.currency,
+      {required this.recurringInit,
+      required this.recurringUsed,
+      required this.currency,
       required this.totalAmount,
       required this.payload,
       required this.info,
@@ -6745,6 +6777,8 @@ class MessageActionPaymentSentMe extends BaseConstructor {
   static MessageActionPaymentSentMe fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
+    final recurringInit = (flags & 4) == 4;
+    final recurringUsed = (flags & 8) == 8;
     var currency = reader.tgReadString();
     var totalAmount = reader.readLong();
     var payload = reader.tgReadBytes();
@@ -6762,6 +6796,8 @@ class MessageActionPaymentSentMe extends BaseConstructor {
     }
     var charge = reader.tgReadObject();
     return MessageActionPaymentSentMe(
+        recurringInit: recurringInit,
+        recurringUsed: recurringUsed,
         currency: currency,
         totalAmount: totalAmount,
         payload: payload,
@@ -6804,34 +6840,61 @@ class MessageActionPaymentSentMe extends BaseConstructor {
 
   @override
   String toString() {
-    return 'MessageActionPaymentSentMe{ID: $ID, currency: $currency, totalAmount: $totalAmount, payload: $payload, info: $info, shippingOptionId: $shippingOptionId, charge: $charge}';
+    return 'MessageActionPaymentSentMe{ID: $ID, recurringInit: $recurringInit, recurringUsed: $recurringUsed, currency: $currency, totalAmount: $totalAmount, payload: $payload, info: $info, shippingOptionId: $shippingOptionId, charge: $charge}';
   }
 }
 
 class MessageActionPaymentSent extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 1080663248;
+  static const CONSTRUCTOR_ID = 2518040406;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
-  final ID = 1080663248;
+  final ID = 2518040406;
+  bool? recurringInit;
+  bool? recurringUsed;
   String currency;
   BigInt totalAmount;
+  String? invoiceSlug;
 
-  MessageActionPaymentSent({required this.currency, required this.totalAmount});
+  MessageActionPaymentSent(
+      {required this.recurringInit,
+      required this.recurringUsed,
+      required this.currency,
+      required this.totalAmount,
+      required this.invoiceSlug});
 
   static MessageActionPaymentSent fromReader(BinaryReader reader) {
     var len;
+    final flags = reader.readInt();
+    final recurringInit = (flags & 4) == 4;
+    final recurringUsed = (flags & 8) == 8;
     var currency = reader.tgReadString();
     var totalAmount = reader.readLong();
+    var invoiceSlug;
+    if ((flags & 1) == 1) {
+      invoiceSlug = reader.tgReadString();
+    } else {
+      invoiceSlug = null;
+    }
     return MessageActionPaymentSent(
-        currency: currency, totalAmount: totalAmount);
+        recurringInit: recurringInit,
+        recurringUsed: recurringUsed,
+        currency: currency,
+        totalAmount: totalAmount,
+        invoiceSlug: invoiceSlug);
   }
 
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(1080663248, 4),
+      readBufferFromBigInt(2518040406, 4),
+      [0, 0, 0, 0],
       serializeBytes(this.currency),
       readBufferFromBigInt(this.totalAmount, 8, little: true, signed: true),
+      (this.invoiceSlug == null || this.invoiceSlug == false)
+          ? List<int>.empty()
+          : [serializeBytes(this.invoiceSlug)]
+              .expand((element) => element)
+              .toList(),
     ].expand((element) => element).toList();
   }
 
@@ -6847,7 +6910,7 @@ class MessageActionPaymentSent extends BaseConstructor {
 
   @override
   String toString() {
-    return 'MessageActionPaymentSent{ID: $ID, currency: $currency, totalAmount: $totalAmount}';
+    return 'MessageActionPaymentSent{ID: $ID, recurringInit: $recurringInit, recurringUsed: $recurringUsed, currency: $currency, totalAmount: $totalAmount, invoiceSlug: $invoiceSlug}';
   }
 }
 
@@ -7489,11 +7552,92 @@ class MessageActionChatJoinedByRequest extends BaseConstructor {
   }
 }
 
+class MessageActionWebViewDataSentMe extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1205698681;
+  static const SUBCLASS_OF_ID = 2256589094;
+  final classType = "constructor";
+  final ID = 1205698681;
+  String text;
+  String data;
+
+  MessageActionWebViewDataSentMe({required this.text, required this.data});
+
+  static MessageActionWebViewDataSentMe fromReader(BinaryReader reader) {
+    var len;
+    var text = reader.tgReadString();
+    var data = reader.tgReadString();
+    return MessageActionWebViewDataSentMe(text: text, data: data);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1205698681, 4),
+      serializeBytes(this.text),
+      serializeBytes(this.data),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'MessageActionWebViewDataSentMe{ID: $ID, text: $text, data: $data}';
+  }
+}
+
+class MessageActionWebViewDataSent extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3032714421;
+  static const SUBCLASS_OF_ID = 2256589094;
+  final classType = "constructor";
+  final ID = 3032714421;
+  String text;
+
+  MessageActionWebViewDataSent({required this.text});
+
+  static MessageActionWebViewDataSent fromReader(BinaryReader reader) {
+    var len;
+    var text = reader.tgReadString();
+    return MessageActionWebViewDataSent(text: text);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3032714421, 4),
+      serializeBytes(this.text),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'MessageActionWebViewDataSent{ID: $ID, text: $text}';
+  }
+}
+
 class Dialog extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 739712882;
+  static const CONSTRUCTOR_ID = 2834157813;
   static const SUBCLASS_OF_ID = 1120787796;
   final classType = "constructor";
-  final ID = 739712882;
+  final ID = 2834157813;
   bool? pinned;
   bool? unreadMark;
   var peer;
@@ -7502,6 +7646,7 @@ class Dialog extends BaseConstructor {
   int readOutboxMaxId;
   int unreadCount;
   int unreadMentionsCount;
+  int unreadReactionsCount;
   var notifySettings;
   int? pts;
   var draft;
@@ -7516,6 +7661,7 @@ class Dialog extends BaseConstructor {
       required this.readOutboxMaxId,
       required this.unreadCount,
       required this.unreadMentionsCount,
+      required this.unreadReactionsCount,
       required this.notifySettings,
       required this.pts,
       required this.draft,
@@ -7532,6 +7678,7 @@ class Dialog extends BaseConstructor {
     var readOutboxMaxId = reader.readInt();
     var unreadCount = reader.readInt();
     var unreadMentionsCount = reader.readInt();
+    var unreadReactionsCount = reader.readInt();
     var notifySettings = reader.tgReadObject();
     var pts;
     if ((flags & 1) == 1) {
@@ -7560,6 +7707,7 @@ class Dialog extends BaseConstructor {
         readOutboxMaxId: readOutboxMaxId,
         unreadCount: unreadCount,
         unreadMentionsCount: unreadMentionsCount,
+        unreadReactionsCount: unreadReactionsCount,
         notifySettings: notifySettings,
         pts: pts,
         draft: draft,
@@ -7569,7 +7717,7 @@ class Dialog extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(739712882, 4),
+      readBufferFromBigInt(2834157813, 4),
       [0, 0, 0, 0],
       (this.peer.getBytes() as List<int>),
       readBufferFromBigInt(this.topMessage, 4, little: true, signed: true),
@@ -7577,6 +7725,8 @@ class Dialog extends BaseConstructor {
       readBufferFromBigInt(this.readOutboxMaxId, 4, little: true, signed: true),
       readBufferFromBigInt(this.unreadCount, 4, little: true, signed: true),
       readBufferFromBigInt(this.unreadMentionsCount, 4,
+          little: true, signed: true),
+      readBufferFromBigInt(this.unreadReactionsCount, 4,
           little: true, signed: true),
       (this.notifySettings.getBytes() as List<int>),
       (this.pts == null || this.pts == false)
@@ -7609,7 +7759,7 @@ class Dialog extends BaseConstructor {
 
   @override
   String toString() {
-    return 'Dialog{ID: $ID, pinned: $pinned, unreadMark: $unreadMark, peer: $peer, topMessage: $topMessage, readInboxMaxId: $readInboxMaxId, readOutboxMaxId: $readOutboxMaxId, unreadCount: $unreadCount, unreadMentionsCount: $unreadMentionsCount, notifySettings: $notifySettings, pts: $pts, draft: $draft, folderId: $folderId}';
+    return 'Dialog{ID: $ID, pinned: $pinned, unreadMark: $unreadMark, peer: $peer, topMessage: $topMessage, readInboxMaxId: $readInboxMaxId, readOutboxMaxId: $readOutboxMaxId, unreadCount: $unreadCount, unreadMentionsCount: $unreadMentionsCount, unreadReactionsCount: $unreadReactionsCount, notifySettings: $notifySettings, pts: $pts, draft: $draft, folderId: $folderId}';
   }
 }
 
@@ -8384,14 +8534,14 @@ class InputNotifyBroadcasts extends BaseConstructor {
 }
 
 class InputPeerNotifySettings extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 2621249934;
+  static const CONSTRUCTOR_ID = 3743350827;
   static const SUBCLASS_OF_ID = 2430274317;
   final classType = "constructor";
-  final ID = 2621249934;
+  final ID = 3743350827;
   bool? showPreviews;
   bool? silent;
   int? muteUntil;
-  String? sound;
+  var sound;
 
   InputPeerNotifySettings(
       {required this.showPreviews,
@@ -8422,7 +8572,7 @@ class InputPeerNotifySettings extends BaseConstructor {
     }
     var sound;
     if ((flags & 8) == 8) {
-      sound = reader.tgReadString();
+      sound = reader.tgReadObject();
     } else {
       sound = null;
     }
@@ -8436,7 +8586,7 @@ class InputPeerNotifySettings extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(2621249934, 4),
+      readBufferFromBigInt(3743350827, 4),
       [0, 0, 0, 0],
       (this.showPreviews == null || this.showPreviews == false)
           ? List<int>.empty()
@@ -8456,7 +8606,9 @@ class InputPeerNotifySettings extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.sound == null || this.sound == false)
           ? List<int>.empty()
-          : [serializeBytes(this.sound)].expand((element) => element).toList(),
+          : [(this.sound.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
     ].expand((element) => element).toList();
   }
 
@@ -8477,20 +8629,24 @@ class InputPeerNotifySettings extends BaseConstructor {
 }
 
 class PeerNotifySettings extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 2941295904;
+  static const CONSTRUCTOR_ID = 2822439974;
   static const SUBCLASS_OF_ID = 3475030132;
   final classType = "constructor";
-  final ID = 2941295904;
+  final ID = 2822439974;
   bool? showPreviews;
   bool? silent;
   int? muteUntil;
-  String? sound;
+  var iosSound;
+  var androidSound;
+  var otherSound;
 
   PeerNotifySettings(
       {required this.showPreviews,
       required this.silent,
       required this.muteUntil,
-      required this.sound});
+      required this.iosSound,
+      required this.androidSound,
+      required this.otherSound});
 
   static PeerNotifySettings fromReader(BinaryReader reader) {
     var len;
@@ -8513,23 +8669,37 @@ class PeerNotifySettings extends BaseConstructor {
     } else {
       muteUntil = null;
     }
-    var sound;
+    var iosSound;
     if ((flags & 8) == 8) {
-      sound = reader.tgReadString();
+      iosSound = reader.tgReadObject();
     } else {
-      sound = null;
+      iosSound = null;
+    }
+    var androidSound;
+    if ((flags & 16) == 16) {
+      androidSound = reader.tgReadObject();
+    } else {
+      androidSound = null;
+    }
+    var otherSound;
+    if ((flags & 32) == 32) {
+      otherSound = reader.tgReadObject();
+    } else {
+      otherSound = null;
     }
     return PeerNotifySettings(
         showPreviews: showPreviews,
         silent: silent,
         muteUntil: muteUntil,
-        sound: sound);
+        iosSound: iosSound,
+        androidSound: androidSound,
+        otherSound: otherSound);
   }
 
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(2941295904, 4),
+      readBufferFromBigInt(2822439974, 4),
       [0, 0, 0, 0],
       (this.showPreviews == null || this.showPreviews == false)
           ? List<int>.empty()
@@ -8547,9 +8717,21 @@ class PeerNotifySettings extends BaseConstructor {
               readBufferFromBigInt(this.muteUntil, 4,
                   little: true, signed: true)
             ].expand((element) => element).toList(),
-      (this.sound == null || this.sound == false)
+      (this.iosSound == null || this.iosSound == false)
           ? List<int>.empty()
-          : [serializeBytes(this.sound)].expand((element) => element).toList(),
+          : [(this.iosSound.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+      (this.androidSound == null || this.androidSound == false)
+          ? List<int>.empty()
+          : [(this.androidSound.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+      (this.otherSound == null || this.otherSound == false)
+          ? List<int>.empty()
+          : [(this.otherSound.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
     ].expand((element) => element).toList();
   }
 
@@ -8565,7 +8747,7 @@ class PeerNotifySettings extends BaseConstructor {
 
   @override
   String toString() {
-    return 'PeerNotifySettings{ID: $ID, showPreviews: $showPreviews, silent: $silent, muteUntil: $muteUntil, sound: $sound}';
+    return 'PeerNotifySettings{ID: $ID, showPreviews: $showPreviews, silent: $silent, muteUntil: $muteUntil, iosSound: $iosSound, androidSound: $androidSound, otherSound: $otherSound}';
   }
 }
 
@@ -9125,11 +9307,83 @@ class InputReportReasonFake extends BaseConstructor {
   }
 }
 
+class InputReportReasonIllegalDrugs extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 177124030;
+  static const SUBCLASS_OF_ID = 2214706471;
+  final classType = "constructor";
+  final ID = 177124030;
+
+  InputReportReasonIllegalDrugs();
+
+  static InputReportReasonIllegalDrugs fromReader(BinaryReader reader) {
+    var len;
+    return InputReportReasonIllegalDrugs();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(177124030, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'InputReportReasonIllegalDrugs{ID: $ID, }';
+  }
+}
+
+class InputReportReasonPersonalDetails extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2663876157;
+  static const SUBCLASS_OF_ID = 2214706471;
+  final classType = "constructor";
+  final ID = 2663876157;
+
+  InputReportReasonPersonalDetails();
+
+  static InputReportReasonPersonalDetails fromReader(BinaryReader reader) {
+    var len;
+    return InputReportReasonPersonalDetails();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2663876157, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'InputReportReasonPersonalDetails{ID: $ID, }';
+  }
+}
+
 class UserFull extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 3476448545;
+  static const CONSTRUCTOR_ID = 2356341377;
   static const SUBCLASS_OF_ID = 524706233;
   final classType = "constructor";
-  final ID = 3476448545;
+  final ID = 2356341377;
   bool? blocked;
   bool? phoneCallsAvailable;
   bool? phoneCallsPrivate;
@@ -9148,6 +9402,8 @@ class UserFull extends BaseConstructor {
   int? ttlPeriod;
   String? themeEmoticon;
   String? privateForwardName;
+  var botGroupAdminRights;
+  var botBroadcastAdminRights;
 
   UserFull(
       {required this.blocked,
@@ -9167,7 +9423,9 @@ class UserFull extends BaseConstructor {
       required this.folderId,
       required this.ttlPeriod,
       required this.themeEmoticon,
-      required this.privateForwardName});
+      required this.privateForwardName,
+      required this.botGroupAdminRights,
+      required this.botBroadcastAdminRights});
 
   static UserFull fromReader(BinaryReader reader) {
     var len;
@@ -9230,6 +9488,18 @@ class UserFull extends BaseConstructor {
     } else {
       privateForwardName = null;
     }
+    var botGroupAdminRights;
+    if ((flags & 131072) == 131072) {
+      botGroupAdminRights = reader.tgReadObject();
+    } else {
+      botGroupAdminRights = null;
+    }
+    var botBroadcastAdminRights;
+    if ((flags & 262144) == 262144) {
+      botBroadcastAdminRights = reader.tgReadObject();
+    } else {
+      botBroadcastAdminRights = null;
+    }
     return UserFull(
         blocked: blocked,
         phoneCallsAvailable: phoneCallsAvailable,
@@ -9248,13 +9518,15 @@ class UserFull extends BaseConstructor {
         folderId: folderId,
         ttlPeriod: ttlPeriod,
         themeEmoticon: themeEmoticon,
-        privateForwardName: privateForwardName);
+        privateForwardName: privateForwardName,
+        botGroupAdminRights: botGroupAdminRights,
+        botBroadcastAdminRights: botBroadcastAdminRights);
   }
 
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(3476448545, 4),
+      readBufferFromBigInt(2356341377, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       (this.about == null || this.about == false)
@@ -9301,6 +9573,17 @@ class UserFull extends BaseConstructor {
           : [serializeBytes(this.privateForwardName)]
               .expand((element) => element)
               .toList(),
+      (this.botGroupAdminRights == null || this.botGroupAdminRights == false)
+          ? List<int>.empty()
+          : [(this.botGroupAdminRights.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+      (this.botBroadcastAdminRights == null ||
+              this.botBroadcastAdminRights == false)
+          ? List<int>.empty()
+          : [(this.botBroadcastAdminRights.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
     ].expand((element) => element).toList();
   }
 
@@ -9316,7 +9599,7 @@ class UserFull extends BaseConstructor {
 
   @override
   String toString() {
-    return 'UserFull{ID: $ID, blocked: $blocked, phoneCallsAvailable: $phoneCallsAvailable, phoneCallsPrivate: $phoneCallsPrivate, canPinMessage: $canPinMessage, hasScheduled: $hasScheduled, videoCallsAvailable: $videoCallsAvailable, id: $id, about: $about, settings: $settings, profilePhoto: $profilePhoto, notifySettings: $notifySettings, botInfo: $botInfo, pinnedMsgId: $pinnedMsgId, commonChatsCount: $commonChatsCount, folderId: $folderId, ttlPeriod: $ttlPeriod, themeEmoticon: $themeEmoticon, privateForwardName: $privateForwardName}';
+    return 'UserFull{ID: $ID, blocked: $blocked, phoneCallsAvailable: $phoneCallsAvailable, phoneCallsPrivate: $phoneCallsPrivate, canPinMessage: $canPinMessage, hasScheduled: $hasScheduled, videoCallsAvailable: $videoCallsAvailable, id: $id, about: $about, settings: $settings, profilePhoto: $profilePhoto, notifySettings: $notifySettings, botInfo: $botInfo, pinnedMsgId: $pinnedMsgId, commonChatsCount: $commonChatsCount, folderId: $folderId, ttlPeriod: $ttlPeriod, themeEmoticon: $themeEmoticon, privateForwardName: $privateForwardName, botGroupAdminRights: $botGroupAdminRights, botBroadcastAdminRights: $botBroadcastAdminRights}';
   }
 }
 
@@ -15105,6 +15388,221 @@ class UpdateMessageReactions extends BaseConstructor {
   }
 }
 
+class UpdateAttachMenuBots extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 397910539;
+  static const SUBCLASS_OF_ID = 2676568142;
+  final classType = "constructor";
+  final ID = 397910539;
+
+  UpdateAttachMenuBots();
+
+  static UpdateAttachMenuBots fromReader(BinaryReader reader) {
+    var len;
+    return UpdateAttachMenuBots();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(397910539, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'UpdateAttachMenuBots{ID: $ID, }';
+  }
+}
+
+class UpdateWebViewResultSent extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 361936797;
+  static const SUBCLASS_OF_ID = 2676568142;
+  final classType = "constructor";
+  final ID = 361936797;
+  BigInt queryId;
+
+  UpdateWebViewResultSent({required this.queryId});
+
+  static UpdateWebViewResultSent fromReader(BinaryReader reader) {
+    var len;
+    var queryId = reader.readLong();
+    return UpdateWebViewResultSent(queryId: queryId);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(361936797, 4),
+      readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'UpdateWebViewResultSent{ID: $ID, queryId: $queryId}';
+  }
+}
+
+class UpdateBotMenuButton extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 347625491;
+  static const SUBCLASS_OF_ID = 2676568142;
+  final classType = "constructor";
+  final ID = 347625491;
+  BigInt botId;
+  var button;
+
+  UpdateBotMenuButton({required this.botId, required this.button});
+
+  static UpdateBotMenuButton fromReader(BinaryReader reader) {
+    var len;
+    var botId = reader.readLong();
+    var button = reader.tgReadObject();
+    return UpdateBotMenuButton(botId: botId, button: button);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(347625491, 4),
+      readBufferFromBigInt(this.botId, 8, little: true, signed: true),
+      (this.button.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'UpdateBotMenuButton{ID: $ID, botId: $botId, button: $button}';
+  }
+}
+
+class UpdateSavedRingtones extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1960361625;
+  static const SUBCLASS_OF_ID = 2676568142;
+  final classType = "constructor";
+  final ID = 1960361625;
+
+  UpdateSavedRingtones();
+
+  static UpdateSavedRingtones fromReader(BinaryReader reader) {
+    var len;
+    return UpdateSavedRingtones();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1960361625, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'UpdateSavedRingtones{ID: $ID, }';
+  }
+}
+
+class UpdateTranscribedAudio extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 8703322;
+  static const SUBCLASS_OF_ID = 2676568142;
+  final classType = "constructor";
+  final ID = 8703322;
+  bool? pending;
+  var peer;
+  int msgId;
+  BigInt transcriptionId;
+  String text;
+
+  UpdateTranscribedAudio(
+      {required this.pending,
+      required this.peer,
+      required this.msgId,
+      required this.transcriptionId,
+      required this.text});
+
+  static UpdateTranscribedAudio fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    final pending = (flags & 1) == 1;
+    var peer = reader.tgReadObject();
+    var msgId = reader.readInt();
+    var transcriptionId = reader.readLong();
+    var text = reader.tgReadString();
+    return UpdateTranscribedAudio(
+        pending: pending,
+        peer: peer,
+        msgId: msgId,
+        transcriptionId: transcriptionId,
+        text: text);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(8703322, 4),
+      [0, 0, 0, 0],
+      (this.peer.getBytes() as List<int>),
+      readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
+      readBufferFromBigInt(this.transcriptionId, 8, little: true, signed: true),
+      serializeBytes(this.text),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'UpdateTranscribedAudio{ID: $ID, pending: $pending, peer: $peer, msgId: $msgId, transcriptionId: $transcriptionId, text: $text}';
+  }
+}
+
 class UpdatesTooLong extends BaseConstructor {
   static const CONSTRUCTOR_ID = 3809980286;
   static const SUBCLASS_OF_ID = 2331323052;
@@ -15838,6 +16336,7 @@ class DcOption extends BaseConstructor {
   bool? tcpoOnly;
   bool? cdn;
   bool? static;
+  bool? thisPortOnly;
   int id;
   String ipAddress;
   int port;
@@ -15849,6 +16348,7 @@ class DcOption extends BaseConstructor {
       required this.tcpoOnly,
       required this.cdn,
       required this.static,
+      required this.thisPortOnly,
       required this.id,
       required this.ipAddress,
       required this.port,
@@ -15862,6 +16362,7 @@ class DcOption extends BaseConstructor {
     final tcpoOnly = (flags & 4) == 4;
     final cdn = (flags & 8) == 8;
     final static = (flags & 16) == 16;
+    final thisPortOnly = (flags & 32) == 32;
     var id = reader.readInt();
     var ipAddress = reader.tgReadString();
     var port = reader.readInt();
@@ -15877,6 +16378,7 @@ class DcOption extends BaseConstructor {
         tcpoOnly: tcpoOnly,
         cdn: cdn,
         static: static,
+        thisPortOnly: thisPortOnly,
         id: id,
         ipAddress: ipAddress,
         port: port,
@@ -15909,7 +16411,7 @@ class DcOption extends BaseConstructor {
 
   @override
   String toString() {
-    return 'DcOption{ID: $ID, ipv6: $ipv6, mediaOnly: $mediaOnly, tcpoOnly: $tcpoOnly, cdn: $cdn, static: $static, id: $id, ipAddress: $ipAddress, port: $port, secret: $secret}';
+    return 'DcOption{ID: $ID, ipv6: $ipv6, mediaOnly: $mediaOnly, tcpoOnly: $tcpoOnly, cdn: $cdn, static: $static, thisPortOnly: $thisPortOnly, id: $id, ipAddress: $ipAddress, port: $port, secret: $secret}';
   }
 }
 
@@ -15925,6 +16427,7 @@ class Config extends BaseConstructor {
   bool? revokePmInbox;
   bool? blockedMode;
   bool? pfsEnabled;
+  bool? forceTryIpv6;
   int date;
   int expires;
   bool testMode;
@@ -15978,6 +16481,7 @@ class Config extends BaseConstructor {
       required this.revokePmInbox,
       required this.blockedMode,
       required this.pfsEnabled,
+      required this.forceTryIpv6,
       required this.date,
       required this.expires,
       required this.testMode,
@@ -16033,6 +16537,7 @@ class Config extends BaseConstructor {
     final revokePmInbox = (flags & 64) == 64;
     final blockedMode = (flags & 256) == 256;
     final pfsEnabled = (flags & 8192) == 8192;
+    final forceTryIpv6 = (flags & 16384) == 16384;
     var date = reader.readInt();
     var expires = reader.readInt();
     var testMode = reader.tgReadBool();
@@ -16136,6 +16641,7 @@ class Config extends BaseConstructor {
         revokePmInbox: revokePmInbox,
         blockedMode: blockedMode,
         pfsEnabled: pfsEnabled,
+        forceTryIpv6: forceTryIpv6,
         date: date,
         expires: expires,
         testMode: testMode,
@@ -16312,7 +16818,7 @@ class Config extends BaseConstructor {
 
   @override
   String toString() {
-    return 'Config{ID: $ID, phonecallsEnabled: $phonecallsEnabled, defaultP2pContacts: $defaultP2pContacts, preloadFeaturedStickers: $preloadFeaturedStickers, ignorePhoneEntities: $ignorePhoneEntities, revokePmInbox: $revokePmInbox, blockedMode: $blockedMode, pfsEnabled: $pfsEnabled, date: $date, expires: $expires, testMode: $testMode, thisDc: $thisDc, dcOptions: $dcOptions, dcTxtDomainName: $dcTxtDomainName, chatSizeMax: $chatSizeMax, megagroupSizeMax: $megagroupSizeMax, forwardedCountMax: $forwardedCountMax, onlineUpdatePeriodMs: $onlineUpdatePeriodMs, offlineBlurTimeoutMs: $offlineBlurTimeoutMs, offlineIdleTimeoutMs: $offlineIdleTimeoutMs, onlineCloudTimeoutMs: $onlineCloudTimeoutMs, notifyCloudDelayMs: $notifyCloudDelayMs, notifyDefaultDelayMs: $notifyDefaultDelayMs, pushChatPeriodMs: $pushChatPeriodMs, pushChatLimit: $pushChatLimit, savedGifsLimit: $savedGifsLimit, editTimeLimit: $editTimeLimit, revokeTimeLimit: $revokeTimeLimit, revokePmTimeLimit: $revokePmTimeLimit, ratingEDecay: $ratingEDecay, stickersRecentLimit: $stickersRecentLimit, stickersFavedLimit: $stickersFavedLimit, channelsReadMediaPeriod: $channelsReadMediaPeriod, tmpSessions: $tmpSessions, pinnedDialogsCountMax: $pinnedDialogsCountMax, pinnedInfolderCountMax: $pinnedInfolderCountMax, callReceiveTimeoutMs: $callReceiveTimeoutMs, callRingTimeoutMs: $callRingTimeoutMs, callConnectTimeoutMs: $callConnectTimeoutMs, callPacketTimeoutMs: $callPacketTimeoutMs, meUrlPrefix: $meUrlPrefix, autoupdateUrlPrefix: $autoupdateUrlPrefix, gifSearchUsername: $gifSearchUsername, venueSearchUsername: $venueSearchUsername, imgSearchUsername: $imgSearchUsername, staticMapsProvider: $staticMapsProvider, captionLengthMax: $captionLengthMax, messageLengthMax: $messageLengthMax, webfileDcId: $webfileDcId, suggestedLangCode: $suggestedLangCode, langPackVersion: $langPackVersion, baseLangPackVersion: $baseLangPackVersion}';
+    return 'Config{ID: $ID, phonecallsEnabled: $phonecallsEnabled, defaultP2pContacts: $defaultP2pContacts, preloadFeaturedStickers: $preloadFeaturedStickers, ignorePhoneEntities: $ignorePhoneEntities, revokePmInbox: $revokePmInbox, blockedMode: $blockedMode, pfsEnabled: $pfsEnabled, forceTryIpv6: $forceTryIpv6, date: $date, expires: $expires, testMode: $testMode, thisDc: $thisDc, dcOptions: $dcOptions, dcTxtDomainName: $dcTxtDomainName, chatSizeMax: $chatSizeMax, megagroupSizeMax: $megagroupSizeMax, forwardedCountMax: $forwardedCountMax, onlineUpdatePeriodMs: $onlineUpdatePeriodMs, offlineBlurTimeoutMs: $offlineBlurTimeoutMs, offlineIdleTimeoutMs: $offlineIdleTimeoutMs, onlineCloudTimeoutMs: $onlineCloudTimeoutMs, notifyCloudDelayMs: $notifyCloudDelayMs, notifyDefaultDelayMs: $notifyDefaultDelayMs, pushChatPeriodMs: $pushChatPeriodMs, pushChatLimit: $pushChatLimit, savedGifsLimit: $savedGifsLimit, editTimeLimit: $editTimeLimit, revokeTimeLimit: $revokeTimeLimit, revokePmTimeLimit: $revokePmTimeLimit, ratingEDecay: $ratingEDecay, stickersRecentLimit: $stickersRecentLimit, stickersFavedLimit: $stickersFavedLimit, channelsReadMediaPeriod: $channelsReadMediaPeriod, tmpSessions: $tmpSessions, pinnedDialogsCountMax: $pinnedDialogsCountMax, pinnedInfolderCountMax: $pinnedInfolderCountMax, callReceiveTimeoutMs: $callReceiveTimeoutMs, callRingTimeoutMs: $callRingTimeoutMs, callConnectTimeoutMs: $callConnectTimeoutMs, callPacketTimeoutMs: $callPacketTimeoutMs, meUrlPrefix: $meUrlPrefix, autoupdateUrlPrefix: $autoupdateUrlPrefix, gifSearchUsername: $gifSearchUsername, venueSearchUsername: $venueSearchUsername, imgSearchUsername: $imgSearchUsername, staticMapsProvider: $staticMapsProvider, captionLengthMax: $captionLengthMax, messageLengthMax: $messageLengthMax, webfileDcId: $webfileDcId, suggestedLangCode: $suggestedLangCode, langPackVersion: $langPackVersion, baseLangPackVersion: $baseLangPackVersion}';
   }
 }
 
@@ -16737,13 +17243,13 @@ class EncryptedFileEmpty extends BaseConstructor {
 }
 
 class EncryptedFile extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 1248893260;
+  static const CONSTRUCTOR_ID = 2818608344;
   static const SUBCLASS_OF_ID = 2217371584;
   final classType = "constructor";
-  final ID = 1248893260;
+  final ID = 2818608344;
   BigInt id;
   BigInt accessHash;
-  int size;
+  BigInt size;
   int dcId;
   int keyFingerprint;
 
@@ -16758,7 +17264,7 @@ class EncryptedFile extends BaseConstructor {
     var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
-    var size = reader.readInt();
+    var size = reader.readLong();
     var dcId = reader.readInt();
     var keyFingerprint = reader.readInt();
     return EncryptedFile(
@@ -16772,10 +17278,10 @@ class EncryptedFile extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(1248893260, 4),
+      readBufferFromBigInt(2818608344, 4),
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       readBufferFromBigInt(this.accessHash, 8, little: true, signed: true),
-      readBufferFromBigInt(this.size, 4, little: true, signed: true),
+      readBufferFromBigInt(this.size, 8, little: true, signed: true),
       readBufferFromBigInt(this.dcId, 4, little: true, signed: true),
       readBufferFromBigInt(this.keyFingerprint, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -17217,16 +17723,16 @@ class DocumentEmpty extends BaseConstructor {
 }
 
 class Document extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 512177195;
+  static const CONSTRUCTOR_ID = 2413085912;
   static const SUBCLASS_OF_ID = 555739168;
   final classType = "constructor";
-  final ID = 512177195;
+  final ID = 2413085912;
   BigInt id;
   BigInt accessHash;
   List<int> fileReference;
   int date;
   String mimeType;
-  int size;
+  BigInt size;
   List<dynamic>? thumbs;
   List<dynamic>? videoThumbs;
   int dcId;
@@ -17252,7 +17758,7 @@ class Document extends BaseConstructor {
     var fileReference = reader.tgReadBytes();
     var date = reader.readInt();
     var mimeType = reader.tgReadString();
-    var size = reader.readInt();
+    var size = reader.readLong();
     var thumbs;
     if ((flags & 1) == 1) {
       var _vectorthumbs = reader.readInt();
@@ -17301,14 +17807,14 @@ class Document extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(512177195, 4),
+      readBufferFromBigInt(2413085912, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       readBufferFromBigInt(this.accessHash, 8, little: true, signed: true),
       serializeBytes(this.fileReference),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       serializeBytes(this.mimeType),
-      readBufferFromBigInt(this.size, 4, little: true, signed: true),
+      readBufferFromBigInt(this.size, 8, little: true, signed: true),
       (this.thumbs == null || this.thumbs == false)
           ? List<int>.empty()
           : [
@@ -20613,6 +21119,42 @@ class ChatInviteExported extends BaseConstructor {
   }
 }
 
+class ChatInvitePublicJoinRequests extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3977280183;
+  static const SUBCLASS_OF_ID = 3027536472;
+  final classType = "constructor";
+  final ID = 3977280183;
+
+  ChatInvitePublicJoinRequests();
+
+  static ChatInvitePublicJoinRequests fromReader(BinaryReader reader) {
+    var len;
+    return ChatInvitePublicJoinRequests();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3977280183, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ChatInvitePublicJoinRequests{ID: $ID, }';
+  }
+}
+
 class ChatInviteAlready extends BaseConstructor {
   static const CONSTRUCTOR_ID = 1516793212;
   static const SUBCLASS_OF_ID = 72750902;
@@ -21044,7 +21586,7 @@ class StickerSet extends BaseConstructor {
   bool? official;
   bool? masks;
   bool? animated;
-  bool? gifs;
+  bool? videos;
   int? installedDate;
   BigInt id;
   BigInt accessHash;
@@ -21061,7 +21603,7 @@ class StickerSet extends BaseConstructor {
       required this.official,
       required this.masks,
       required this.animated,
-      required this.gifs,
+      required this.videos,
       required this.installedDate,
       required this.id,
       required this.accessHash,
@@ -21080,7 +21622,7 @@ class StickerSet extends BaseConstructor {
     final official = (flags & 4) == 4;
     final masks = (flags & 8) == 8;
     final animated = (flags & 32) == 32;
-    final gifs = (flags & 64) == 64;
+    final videos = (flags & 64) == 64;
     var installedDate;
     if ((flags & 1) == 1) {
       installedDate = reader.readInt();
@@ -21122,7 +21664,7 @@ class StickerSet extends BaseConstructor {
         official: official,
         masks: masks,
         animated: animated,
-        gifs: gifs,
+        videos: videos,
         installedDate: installedDate,
         id: id,
         accessHash: accessHash,
@@ -21190,7 +21732,7 @@ class StickerSet extends BaseConstructor {
 
   @override
   String toString() {
-    return 'StickerSet{ID: $ID, archived: $archived, official: $official, masks: $masks, animated: $animated, gifs: $gifs, installedDate: $installedDate, id: $id, accessHash: $accessHash, title: $title, shortName: $shortName, thumbs: $thumbs, thumbDcId: $thumbDcId, thumbVersion: $thumbVersion, count: $count, hash: $hash}';
+    return 'StickerSet{ID: $ID, archived: $archived, official: $official, masks: $masks, animated: $animated, videos: $videos, installedDate: $installedDate, id: $id, accessHash: $accessHash, title: $title, shortName: $shortName, thumbs: $thumbs, thumbDcId: $thumbDcId, thumbVersion: $thumbVersion, count: $count, hash: $hash}';
   }
 }
 
@@ -21237,47 +21779,120 @@ class BotCommand extends BaseConstructor {
 }
 
 class BotInfo extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 460632885;
+  static const CONSTRUCTOR_ID = 2402290519;
   static const SUBCLASS_OF_ID = 4059496923;
   final classType = "constructor";
-  final ID = 460632885;
-  BigInt userId;
-  String description;
-  List<dynamic> commands;
+  final ID = 2402290519;
+  BigInt? userId;
+  String? description;
+  var descriptionPhoto;
+  var descriptionDocument;
+  List<dynamic>? commands;
+  var menuButton;
 
   BotInfo(
       {required this.userId,
       required this.description,
-      required this.commands});
+      required this.descriptionPhoto,
+      required this.descriptionDocument,
+      required this.commands,
+      required this.menuButton});
 
   static BotInfo fromReader(BinaryReader reader) {
     var len;
-    var userId = reader.readLong();
-    var description = reader.tgReadString();
-    var _vectorcommands = reader.readInt();
-    if (_vectorcommands != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> commands = [];
-    len = reader.readInt();
-    for (var i = 0; i < len; i++) {
-      commands.add(reader.tgReadObject());
+    final flags = reader.readInt();
+    var userId;
+    if ((flags & 1) == 1) {
+      userId = reader.readLong();
+    } else {
+      userId = null;
+    }
+    var description;
+    if ((flags & 2) == 2) {
+      description = reader.tgReadString();
+    } else {
+      description = null;
+    }
+    var descriptionPhoto;
+    if ((flags & 16) == 16) {
+      descriptionPhoto = reader.tgReadObject();
+    } else {
+      descriptionPhoto = null;
+    }
+    var descriptionDocument;
+    if ((flags & 32) == 32) {
+      descriptionDocument = reader.tgReadObject();
+    } else {
+      descriptionDocument = null;
+    }
+    var commands;
+    if ((flags & 4) == 4) {
+      var _vectorcommands = reader.readInt();
+      if (_vectorcommands != 481674261) throw Exception('Wrong vectorId');
+      List<dynamic> commands = [];
+      len = reader.readInt();
+      for (var i = 0; i < len; i++) {
+        commands.add(reader.tgReadObject());
+      }
+    } else {
+      commands = null;
+    }
+    var menuButton;
+    if ((flags & 8) == 8) {
+      menuButton = reader.tgReadObject();
+    } else {
+      menuButton = null;
     }
     return BotInfo(
-        userId: userId, description: description, commands: commands);
+        userId: userId,
+        description: description,
+        descriptionPhoto: descriptionPhoto,
+        descriptionDocument: descriptionDocument,
+        commands: commands,
+        menuButton: menuButton);
   }
 
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(460632885, 4),
-      readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      serializeBytes(this.description),
-      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.commands!.length, 4,
-          little: true, signed: true),
-      this
-          .commands!
-          .map((x) => (x.getBytes() as List<int>))
-          .expand((element) => element),
+      readBufferFromBigInt(2402290519, 4),
+      [0, 0, 0, 0],
+      (this.userId == null || this.userId == false)
+          ? List<int>.empty()
+          : [readBufferFromBigInt(this.userId, 8, little: true, signed: true)]
+              .expand((element) => element)
+              .toList(),
+      (this.description == null || this.description == false)
+          ? List<int>.empty()
+          : [serializeBytes(this.description)]
+              .expand((element) => element)
+              .toList(),
+      (this.descriptionPhoto == null || this.descriptionPhoto == false)
+          ? List<int>.empty()
+          : [(this.descriptionPhoto.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+      (this.descriptionDocument == null || this.descriptionDocument == false)
+          ? List<int>.empty()
+          : [(this.descriptionDocument.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+      (this.commands == null || this.commands == false)
+          ? List<int>.empty()
+          : [
+              readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+              readBufferFromBigInt(this.commands!.length, 4,
+                  little: true, signed: true),
+              this
+                  .commands!
+                  .map((x) => (x.getBytes() as List<int>))
+                  .expand((element) => element)
+            ].expand((element) => element).toList(),
+      (this.menuButton == null || this.menuButton == false)
+          ? List<int>.empty()
+          : [(this.menuButton.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
     ].expand((element) => element).toList();
   }
 
@@ -21293,7 +21908,7 @@ class BotInfo extends BaseConstructor {
 
   @override
   String toString() {
-    return 'BotInfo{ID: $ID, userId: $userId, description: $description, commands: $commands}';
+    return 'BotInfo{ID: $ID, userId: $userId, description: $description, descriptionPhoto: $descriptionPhoto, descriptionDocument: $descriptionDocument, commands: $commands, menuButton: $menuButton}';
   }
 }
 
@@ -21899,6 +22514,90 @@ class KeyboardButtonUserProfile extends BaseConstructor {
   @override
   String toString() {
     return 'KeyboardButtonUserProfile{ID: $ID, text: $text, userId: $userId}';
+  }
+}
+
+class KeyboardButtonWebView extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 326529584;
+  static const SUBCLASS_OF_ID = 195916963;
+  final classType = "constructor";
+  final ID = 326529584;
+  String text;
+  String url;
+
+  KeyboardButtonWebView({required this.text, required this.url});
+
+  static KeyboardButtonWebView fromReader(BinaryReader reader) {
+    var len;
+    var text = reader.tgReadString();
+    var url = reader.tgReadString();
+    return KeyboardButtonWebView(text: text, url: url);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(326529584, 4),
+      serializeBytes(this.text),
+      serializeBytes(this.url),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'KeyboardButtonWebView{ID: $ID, text: $text, url: $url}';
+  }
+}
+
+class KeyboardButtonSimpleWebView extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2696958044;
+  static const SUBCLASS_OF_ID = 195916963;
+  final classType = "constructor";
+  final ID = 2696958044;
+  String text;
+  String url;
+
+  KeyboardButtonSimpleWebView({required this.text, required this.url});
+
+  static KeyboardButtonSimpleWebView fromReader(BinaryReader reader) {
+    var len;
+    var text = reader.tgReadString();
+    var url = reader.tgReadString();
+    return KeyboardButtonSimpleWebView(text: text, url: url);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2696958044, 4),
+      serializeBytes(this.text),
+      serializeBytes(this.url),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'KeyboardButtonSimpleWebView{ID: $ID, text: $text, url: $url}';
   }
 }
 
@@ -29192,10 +29891,10 @@ class LabeledPrice extends BaseConstructor {
 }
 
 class Invoice extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 215516896;
+  static const CONSTRUCTOR_ID = 1048946971;
   static const SUBCLASS_OF_ID = 1608003288;
   final classType = "constructor";
-  final ID = 215516896;
+  final ID = 1048946971;
   bool? test;
   bool? nameRequested;
   bool? phoneRequested;
@@ -29204,10 +29903,12 @@ class Invoice extends BaseConstructor {
   bool? flexible;
   bool? phoneToProvider;
   bool? emailToProvider;
+  bool? recurring;
   String currency;
   List<dynamic> prices;
   BigInt? maxTipAmount;
   List<BigInt>? suggestedTipAmounts;
+  String? recurringTermsUrl;
 
   Invoice(
       {required this.test,
@@ -29218,10 +29919,12 @@ class Invoice extends BaseConstructor {
       required this.flexible,
       required this.phoneToProvider,
       required this.emailToProvider,
+      required this.recurring,
       required this.currency,
       required this.prices,
       required this.maxTipAmount,
-      required this.suggestedTipAmounts});
+      required this.suggestedTipAmounts,
+      required this.recurringTermsUrl});
 
   static Invoice fromReader(BinaryReader reader) {
     var len;
@@ -29234,6 +29937,7 @@ class Invoice extends BaseConstructor {
     final flexible = (flags & 32) == 32;
     final phoneToProvider = (flags & 64) == 64;
     final emailToProvider = (flags & 128) == 128;
+    final recurring = (flags & 512) == 512;
     var currency = reader.tgReadString();
     var _vectorprices = reader.readInt();
     if (_vectorprices != 481674261) throw Exception('Wrong vectorId');
@@ -29261,6 +29965,12 @@ class Invoice extends BaseConstructor {
     } else {
       suggestedTipAmounts = null;
     }
+    var recurringTermsUrl;
+    if ((flags & 512) == 512) {
+      recurringTermsUrl = reader.tgReadString();
+    } else {
+      recurringTermsUrl = null;
+    }
     return Invoice(
         test: test,
         nameRequested: nameRequested,
@@ -29270,16 +29980,18 @@ class Invoice extends BaseConstructor {
         flexible: flexible,
         phoneToProvider: phoneToProvider,
         emailToProvider: emailToProvider,
+        recurring: recurring,
         currency: currency,
         prices: prices,
         maxTipAmount: maxTipAmount,
-        suggestedTipAmounts: suggestedTipAmounts);
+        suggestedTipAmounts: suggestedTipAmounts,
+        recurringTermsUrl: recurringTermsUrl);
   }
 
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(215516896, 4),
+      readBufferFromBigInt(1048946971, 4),
       [0, 0, 0, 0],
       serializeBytes(this.currency),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
@@ -29306,6 +30018,11 @@ class Invoice extends BaseConstructor {
                       readBufferFromBigInt(x, 8, little: true, signed: true))
                   .expand((element) => element)
             ].expand((element) => element).toList(),
+      (this.recurringTermsUrl == null || this.recurringTermsUrl == false)
+          ? List<int>.empty()
+          : [serializeBytes(this.recurringTermsUrl)]
+              .expand((element) => element)
+              .toList(),
     ].expand((element) => element).toList();
   }
 
@@ -29321,7 +30038,7 @@ class Invoice extends BaseConstructor {
 
   @override
   String toString() {
-    return 'Invoice{ID: $ID, test: $test, nameRequested: $nameRequested, phoneRequested: $phoneRequested, emailRequested: $emailRequested, shippingAddressRequested: $shippingAddressRequested, flexible: $flexible, phoneToProvider: $phoneToProvider, emailToProvider: $emailToProvider, currency: $currency, prices: $prices, maxTipAmount: $maxTipAmount, suggestedTipAmounts: $suggestedTipAmounts}';
+    return 'Invoice{ID: $ID, test: $test, nameRequested: $nameRequested, phoneRequested: $phoneRequested, emailRequested: $emailRequested, shippingAddressRequested: $shippingAddressRequested, flexible: $flexible, phoneToProvider: $phoneToProvider, emailToProvider: $emailToProvider, recurring: $recurring, currency: $currency, prices: $prices, maxTipAmount: $maxTipAmount, suggestedTipAmounts: $suggestedTipAmounts, recurringTermsUrl: $recurringTermsUrl}';
   }
 }
 
@@ -30665,10 +31382,11 @@ class PhoneCallDiscarded extends BaseConstructor {
 }
 
 class PhoneConnection extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 2639009728;
+  static const CONSTRUCTOR_ID = 2629903303;
   static const SUBCLASS_OF_ID = 2861425677;
   final classType = "constructor";
-  final ID = 2639009728;
+  final ID = 2629903303;
+  bool? tcp;
   BigInt id;
   String ip;
   String ipv6;
@@ -30676,7 +31394,8 @@ class PhoneConnection extends BaseConstructor {
   List<int> peerTag;
 
   PhoneConnection(
-      {required this.id,
+      {required this.tcp,
+      required this.id,
       required this.ip,
       required this.ipv6,
       required this.port,
@@ -30684,19 +31403,22 @@ class PhoneConnection extends BaseConstructor {
 
   static PhoneConnection fromReader(BinaryReader reader) {
     var len;
+    final flags = reader.readInt();
+    final tcp = (flags & 1) == 1;
     var id = reader.readLong();
     var ip = reader.tgReadString();
     var ipv6 = reader.tgReadString();
     var port = reader.readInt();
     var peerTag = reader.tgReadBytes();
     return PhoneConnection(
-        id: id, ip: ip, ipv6: ipv6, port: port, peerTag: peerTag);
+        tcp: tcp, id: id, ip: ip, ipv6: ipv6, port: port, peerTag: peerTag);
   }
 
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(2639009728, 4),
+      readBufferFromBigInt(2629903303, 4),
+      [0, 0, 0, 0],
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       serializeBytes(this.ip),
       serializeBytes(this.ipv6),
@@ -30717,7 +31439,7 @@ class PhoneConnection extends BaseConstructor {
 
   @override
   String toString() {
-    return 'PhoneConnection{ID: $ID, id: $id, ip: $ip, ipv6: $ipv6, port: $port, peerTag: $peerTag}';
+    return 'PhoneConnection{ID: $ID, tcp: $tcp, id: $id, ip: $ip, ipv6: $ipv6, port: $port, peerTag: $peerTag}';
   }
 }
 
@@ -33742,11 +34464,11 @@ class DialogPeerFolder extends BaseConstructor {
 }
 
 class FileHash extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 1648543603;
+  static const CONSTRUCTOR_ID = 4087022428;
   static const SUBCLASS_OF_ID = 3939776691;
   final classType = "constructor";
-  final ID = 1648543603;
-  int offset;
+  final ID = 4087022428;
+  BigInt offset;
   int limit;
   List<int> hash;
 
@@ -33754,7 +34476,7 @@ class FileHash extends BaseConstructor {
 
   static FileHash fromReader(BinaryReader reader) {
     var len;
-    var offset = reader.readInt();
+    var offset = reader.readLong();
     var limit = reader.readInt();
     var hash = reader.tgReadBytes();
     return FileHash(offset: offset, limit: limit, hash: hash);
@@ -33763,8 +34485,8 @@ class FileHash extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(1648543603, 4),
-      readBufferFromBigInt(this.offset, 4, little: true, signed: true),
+      readBufferFromBigInt(4087022428, 4),
+      readBufferFromBigInt(this.offset, 8, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
       serializeBytes(this.hash),
     ].expand((element) => element).toList();
@@ -33968,13 +34690,13 @@ class SecureFileEmpty extends BaseConstructor {
 }
 
 class SecureFile extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 3760683618;
+  static const CONSTRUCTOR_ID = 2097791614;
   static const SUBCLASS_OF_ID = 1572395975;
   final classType = "constructor";
-  final ID = 3760683618;
+  final ID = 2097791614;
   BigInt id;
   BigInt accessHash;
-  int size;
+  BigInt size;
   int dcId;
   int date;
   List<int> fileHash;
@@ -33993,7 +34715,7 @@ class SecureFile extends BaseConstructor {
     var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
-    var size = reader.readInt();
+    var size = reader.readLong();
     var dcId = reader.readInt();
     var date = reader.readInt();
     var fileHash = reader.tgReadBytes();
@@ -34011,10 +34733,10 @@ class SecureFile extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(3760683618, 4),
+      readBufferFromBigInt(2097791614, 4),
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       readBufferFromBigInt(this.accessHash, 8, little: true, signed: true),
-      readBufferFromBigInt(this.size, 4, little: true, signed: true),
+      readBufferFromBigInt(this.size, 8, little: true, signed: true),
       readBufferFromBigInt(this.dcId, 4, little: true, signed: true),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       serializeBytes(this.fileHash),
@@ -37894,17 +38616,17 @@ class WallPaperSettings extends BaseConstructor {
 }
 
 class AutoDownloadSettings extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 3762434803;
+  static const CONSTRUCTOR_ID = 2398796115;
   static const SUBCLASS_OF_ID = 1361582535;
   final classType = "constructor";
-  final ID = 3762434803;
+  final ID = 2398796115;
   bool? disabled;
   bool? videoPreloadLarge;
   bool? audioPreloadNext;
   bool? phonecallsLessData;
   int photoSizeMax;
-  int videoSizeMax;
-  int fileSizeMax;
+  BigInt videoSizeMax;
+  BigInt fileSizeMax;
   int videoUploadMaxbitrate;
 
   AutoDownloadSettings(
@@ -37925,8 +38647,8 @@ class AutoDownloadSettings extends BaseConstructor {
     final audioPreloadNext = (flags & 4) == 4;
     final phonecallsLessData = (flags & 8) == 8;
     var photoSizeMax = reader.readInt();
-    var videoSizeMax = reader.readInt();
-    var fileSizeMax = reader.readInt();
+    var videoSizeMax = reader.readLong();
+    var fileSizeMax = reader.readLong();
     var videoUploadMaxbitrate = reader.readInt();
     return AutoDownloadSettings(
         disabled: disabled,
@@ -37942,11 +38664,11 @@ class AutoDownloadSettings extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(3762434803, 4),
+      readBufferFromBigInt(2398796115, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.photoSizeMax, 4, little: true, signed: true),
-      readBufferFromBigInt(this.videoSizeMax, 4, little: true, signed: true),
-      readBufferFromBigInt(this.fileSizeMax, 4, little: true, signed: true),
+      readBufferFromBigInt(this.videoSizeMax, 8, little: true, signed: true),
+      readBufferFromBigInt(this.fileSizeMax, 8, little: true, signed: true),
       readBufferFromBigInt(this.videoUploadMaxbitrate, 4,
           little: true, signed: true),
     ].expand((element) => element).toList();
@@ -39748,6 +40470,42 @@ class DialogFilter extends BaseConstructor {
   }
 }
 
+class DialogFilterDefault extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 909284270;
+  static const SUBCLASS_OF_ID = 1764475991;
+  final classType = "constructor";
+  final ID = 909284270;
+
+  DialogFilterDefault();
+
+  static DialogFilterDefault fromReader(BinaryReader reader) {
+    var len;
+    return DialogFilterDefault();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(909284270, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'DialogFilterDefault{ID: $ID, }';
+  }
+}
+
 class DialogFilterSuggested extends BaseConstructor {
   static const CONSTRUCTOR_ID = 2004110666;
   static const SUBCLASS_OF_ID = 837673094;
@@ -40440,18 +41198,21 @@ class MessageReplyHeader extends BaseConstructor {
   static const SUBCLASS_OF_ID = 1531810151;
   final classType = "constructor";
   final ID = 2799007587;
+  bool? replyToScheduled;
   int replyToMsgId;
   var replyToPeerId;
   int? replyToTopId;
 
   MessageReplyHeader(
-      {required this.replyToMsgId,
+      {required this.replyToScheduled,
+      required this.replyToMsgId,
       required this.replyToPeerId,
       required this.replyToTopId});
 
   static MessageReplyHeader fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
+    final replyToScheduled = (flags & 4) == 4;
     var replyToMsgId = reader.readInt();
     var replyToPeerId;
     if ((flags & 1) == 1) {
@@ -40466,6 +41227,7 @@ class MessageReplyHeader extends BaseConstructor {
       replyToTopId = null;
     }
     return MessageReplyHeader(
+        replyToScheduled: replyToScheduled,
         replyToMsgId: replyToMsgId,
         replyToPeerId: replyToPeerId,
         replyToTopId: replyToTopId);
@@ -40503,7 +41265,7 @@ class MessageReplyHeader extends BaseConstructor {
 
   @override
   String toString() {
-    return 'MessageReplyHeader{ID: $ID, replyToMsgId: $replyToMsgId, replyToPeerId: $replyToPeerId, replyToTopId: $replyToTopId}';
+    return 'MessageReplyHeader{ID: $ID, replyToScheduled: $replyToScheduled, replyToMsgId: $replyToMsgId, replyToPeerId: $replyToPeerId, replyToTopId: $replyToTopId}';
   }
 }
 
@@ -40729,6 +41491,8 @@ class GroupCall extends BaseConstructor {
   bool? scheduleStartSubscribed;
   bool? canStartVideo;
   bool? recordVideoActive;
+  bool? rtmpStream;
+  bool? listenersHidden;
   BigInt id;
   BigInt accessHash;
   int participantsCount;
@@ -40747,6 +41511,8 @@ class GroupCall extends BaseConstructor {
       required this.scheduleStartSubscribed,
       required this.canStartVideo,
       required this.recordVideoActive,
+      required this.rtmpStream,
+      required this.listenersHidden,
       required this.id,
       required this.accessHash,
       required this.participantsCount,
@@ -40767,6 +41533,8 @@ class GroupCall extends BaseConstructor {
     final scheduleStartSubscribed = (flags & 256) == 256;
     final canStartVideo = (flags & 512) == 512;
     final recordVideoActive = (flags & 2048) == 2048;
+    final rtmpStream = (flags & 4096) == 4096;
+    final listenersHidden = (flags & 8192) == 8192;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var participantsCount = reader.readInt();
@@ -40809,6 +41577,8 @@ class GroupCall extends BaseConstructor {
         scheduleStartSubscribed: scheduleStartSubscribed,
         canStartVideo: canStartVideo,
         recordVideoActive: recordVideoActive,
+        rtmpStream: rtmpStream,
+        listenersHidden: listenersHidden,
         id: id,
         accessHash: accessHash,
         participantsCount: participantsCount,
@@ -40875,7 +41645,7 @@ class GroupCall extends BaseConstructor {
 
   @override
   String toString() {
-    return 'GroupCall{ID: $ID, joinMuted: $joinMuted, canChangeJoinMuted: $canChangeJoinMuted, joinDateAsc: $joinDateAsc, scheduleStartSubscribed: $scheduleStartSubscribed, canStartVideo: $canStartVideo, recordVideoActive: $recordVideoActive, id: $id, accessHash: $accessHash, participantsCount: $participantsCount, title: $title, streamDcId: $streamDcId, recordStartDate: $recordStartDate, scheduleDate: $scheduleDate, unmutedVideoCount: $unmutedVideoCount, unmutedVideoLimit: $unmutedVideoLimit, version: $version}';
+    return 'GroupCall{ID: $ID, joinMuted: $joinMuted, canChangeJoinMuted: $canChangeJoinMuted, joinDateAsc: $joinDateAsc, scheduleStartSubscribed: $scheduleStartSubscribed, canStartVideo: $canStartVideo, recordVideoActive: $recordVideoActive, rtmpStream: $rtmpStream, listenersHidden: $listenersHidden, id: $id, accessHash: $accessHash, participantsCount: $participantsCount, title: $title, streamDcId: $streamDcId, recordStartDate: $recordStartDate, scheduleDate: $scheduleDate, unmutedVideoCount: $unmutedVideoCount, unmutedVideoLimit: $unmutedVideoLimit, version: $version}';
   }
 }
 
@@ -41812,6 +42582,7 @@ class SponsoredMessage extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3780630582;
   final classType = "constructor";
   final ID = 981691896;
+  bool? recommended;
   List<int> randomId;
   var fromId;
   var chatInvite;
@@ -41822,7 +42593,8 @@ class SponsoredMessage extends BaseConstructor {
   List<dynamic>? entities;
 
   SponsoredMessage(
-      {required this.randomId,
+      {required this.recommended,
+      required this.randomId,
       required this.fromId,
       required this.chatInvite,
       required this.chatInviteHash,
@@ -41834,6 +42606,7 @@ class SponsoredMessage extends BaseConstructor {
   static SponsoredMessage fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
+    final recommended = (flags & 32) == 32;
     var randomId = reader.tgReadBytes();
     var fromId;
     if ((flags & 8) == 8) {
@@ -41879,6 +42652,7 @@ class SponsoredMessage extends BaseConstructor {
       entities = null;
     }
     return SponsoredMessage(
+        recommended: recommended,
         randomId: randomId,
         fromId: fromId,
         chatInvite: chatInvite,
@@ -41948,7 +42722,7 @@ class SponsoredMessage extends BaseConstructor {
 
   @override
   String toString() {
-    return 'SponsoredMessage{ID: $ID, randomId: $randomId, fromId: $fromId, chatInvite: $chatInvite, chatInviteHash: $chatInviteHash, channelPost: $channelPost, startParam: $startParam, message: $message, entities: $entities}';
+    return 'SponsoredMessage{ID: $ID, recommended: $recommended, randomId: $randomId, fromId: $fromId, chatInvite: $chatInvite, chatInviteHash: $chatInviteHash, channelPost: $channelPost, startParam: $startParam, message: $message, entities: $entities}';
   }
 }
 
@@ -42099,20 +42873,20 @@ class ReactionCount extends BaseConstructor {
 }
 
 class MessageReactions extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 142306870;
+  static const CONSTRUCTOR_ID = 1328256121;
   static const SUBCLASS_OF_ID = 2321221404;
   final classType = "constructor";
-  final ID = 142306870;
+  final ID = 1328256121;
   bool? min;
   bool? canSeeList;
   List<dynamic> results;
-  List<dynamic>? recentReactons;
+  List<dynamic>? recentReactions;
 
   MessageReactions(
       {required this.min,
       required this.canSeeList,
       required this.results,
-      required this.recentReactons});
+      required this.recentReactions});
 
   static MessageReactions fromReader(BinaryReader reader) {
     var len;
@@ -42126,29 +42900,30 @@ class MessageReactions extends BaseConstructor {
     for (var i = 0; i < len; i++) {
       results.add(reader.tgReadObject());
     }
-    var recentReactons;
+    var recentReactions;
     if ((flags & 2) == 2) {
-      var _vectorrecentReactons = reader.readInt();
-      if (_vectorrecentReactons != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> recentReactons = [];
+      var _vectorrecentReactions = reader.readInt();
+      if (_vectorrecentReactions != 481674261)
+        throw Exception('Wrong vectorId');
+      List<dynamic> recentReactions = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
-        recentReactons.add(reader.tgReadObject());
+        recentReactions.add(reader.tgReadObject());
       }
     } else {
-      recentReactons = null;
+      recentReactions = null;
     }
     return MessageReactions(
         min: min,
         canSeeList: canSeeList,
         results: results,
-        recentReactons: recentReactons);
+        recentReactions: recentReactions);
   }
 
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(142306870, 4),
+      readBufferFromBigInt(1328256121, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
       readBufferFromBigInt(this.results!.length, 4, little: true, signed: true),
@@ -42156,14 +42931,14 @@ class MessageReactions extends BaseConstructor {
           .results!
           .map((x) => (x.getBytes() as List<int>))
           .expand((element) => element),
-      (this.recentReactons == null || this.recentReactons == false)
+      (this.recentReactions == null || this.recentReactions == false)
           ? List<int>.empty()
           : [
               readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-              readBufferFromBigInt(this.recentReactons!.length, 4,
+              readBufferFromBigInt(this.recentReactions!.length, 4,
                   little: true, signed: true),
               this
-                  .recentReactons!
+                  .recentReactions!
                   .map((x) => (x.getBytes() as List<int>))
                   .expand((element) => element)
             ].expand((element) => element).toList(),
@@ -42182,49 +42957,7 @@ class MessageReactions extends BaseConstructor {
 
   @override
   String toString() {
-    return 'MessageReactions{ID: $ID, min: $min, canSeeList: $canSeeList, results: $results, recentReactons: $recentReactons}';
-  }
-}
-
-class MessageUserReaction extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 2468889850;
-  static const SUBCLASS_OF_ID = 1905515325;
-  final classType = "constructor";
-  final ID = 2468889850;
-  BigInt userId;
-  String reaction;
-
-  MessageUserReaction({required this.userId, required this.reaction});
-
-  static MessageUserReaction fromReader(BinaryReader reader) {
-    var len;
-    var userId = reader.readLong();
-    var reaction = reader.tgReadString();
-    return MessageUserReaction(userId: userId, reaction: reaction);
-  }
-
-  @override
-  List<int> getBytes() {
-    return [
-      readBufferFromBigInt(2468889850, 4),
-      readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      serializeBytes(this.reaction),
-    ].expand((element) => element).toList();
-  }
-
-  @override
-  int getConstId() {
-    return CONSTRUCTOR_ID;
-  }
-
-  @override
-  int getSubId() {
-    return SUBCLASS_OF_ID;
-  }
-
-  @override
-  String toString() {
-    return 'MessageUserReaction{ID: $ID, userId: $userId, reaction: $reaction}';
+    return 'MessageReactions{ID: $ID, min: $min, canSeeList: $canSeeList, results: $results, recentReactions: $recentReactions}';
   }
 }
 
@@ -42234,6 +42967,7 @@ class AvailableReaction extends BaseConstructor {
   final classType = "constructor";
   final ID = 3229084673;
   bool? inactive;
+  bool? premium;
   String reaction;
   String title;
   var staticIcon;
@@ -42246,6 +42980,7 @@ class AvailableReaction extends BaseConstructor {
 
   AvailableReaction(
       {required this.inactive,
+      required this.premium,
       required this.reaction,
       required this.title,
       required this.staticIcon,
@@ -42260,6 +42995,7 @@ class AvailableReaction extends BaseConstructor {
     var len;
     final flags = reader.readInt();
     final inactive = (flags & 1) == 1;
+    final premium = (flags & 4) == 4;
     var reaction = reader.tgReadString();
     var title = reader.tgReadString();
     var staticIcon = reader.tgReadObject();
@@ -42281,6 +43017,7 @@ class AvailableReaction extends BaseConstructor {
     }
     return AvailableReaction(
         inactive: inactive,
+        premium: premium,
         reaction: reaction,
         title: title,
         staticIcon: staticIcon,
@@ -42329,7 +43066,1124 @@ class AvailableReaction extends BaseConstructor {
 
   @override
   String toString() {
-    return 'AvailableReaction{ID: $ID, inactive: $inactive, reaction: $reaction, title: $title, staticIcon: $staticIcon, appearAnimation: $appearAnimation, selectAnimation: $selectAnimation, activateAnimation: $activateAnimation, effectAnimation: $effectAnimation, aroundAnimation: $aroundAnimation, centerIcon: $centerIcon}';
+    return 'AvailableReaction{ID: $ID, inactive: $inactive, premium: $premium, reaction: $reaction, title: $title, staticIcon: $staticIcon, appearAnimation: $appearAnimation, selectAnimation: $selectAnimation, activateAnimation: $activateAnimation, effectAnimation: $effectAnimation, aroundAnimation: $aroundAnimation, centerIcon: $centerIcon}';
+  }
+}
+
+class MessagePeerReaction extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1370914559;
+  static const SUBCLASS_OF_ID = 2943591077;
+  final classType = "constructor";
+  final ID = 1370914559;
+  bool? big;
+  bool? unread;
+  var peerId;
+  String reaction;
+
+  MessagePeerReaction(
+      {required this.big,
+      required this.unread,
+      required this.peerId,
+      required this.reaction});
+
+  static MessagePeerReaction fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    final big = (flags & 1) == 1;
+    final unread = (flags & 2) == 2;
+    var peerId = reader.tgReadObject();
+    var reaction = reader.tgReadString();
+    return MessagePeerReaction(
+        big: big, unread: unread, peerId: peerId, reaction: reaction);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1370914559, 4),
+      [0, 0, 0, 0],
+      (this.peerId.getBytes() as List<int>),
+      serializeBytes(this.reaction),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'MessagePeerReaction{ID: $ID, big: $big, unread: $unread, peerId: $peerId, reaction: $reaction}';
+  }
+}
+
+class GroupCallStreamChannel extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2162903215;
+  static const SUBCLASS_OF_ID = 3712266840;
+  final classType = "constructor";
+  final ID = 2162903215;
+  int channel;
+  int scale;
+  BigInt lastTimestampMs;
+
+  GroupCallStreamChannel(
+      {required this.channel,
+      required this.scale,
+      required this.lastTimestampMs});
+
+  static GroupCallStreamChannel fromReader(BinaryReader reader) {
+    var len;
+    var channel = reader.readInt();
+    var scale = reader.readInt();
+    var lastTimestampMs = reader.readLong();
+    return GroupCallStreamChannel(
+        channel: channel, scale: scale, lastTimestampMs: lastTimestampMs);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2162903215, 4),
+      readBufferFromBigInt(this.channel, 4, little: true, signed: true),
+      readBufferFromBigInt(this.scale, 4, little: true, signed: true),
+      readBufferFromBigInt(this.lastTimestampMs, 8, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GroupCallStreamChannel{ID: $ID, channel: $channel, scale: $scale, lastTimestampMs: $lastTimestampMs}';
+  }
+}
+
+class AttachMenuBotIconColor extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1165423600;
+  static const SUBCLASS_OF_ID = 3198471018;
+  final classType = "constructor";
+  final ID = 1165423600;
+  String name;
+  int color;
+
+  AttachMenuBotIconColor({required this.name, required this.color});
+
+  static AttachMenuBotIconColor fromReader(BinaryReader reader) {
+    var len;
+    var name = reader.tgReadString();
+    var color = reader.readInt();
+    return AttachMenuBotIconColor(name: name, color: color);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1165423600, 4),
+      serializeBytes(this.name),
+      readBufferFromBigInt(this.color, 4, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuBotIconColor{ID: $ID, name: $name, color: $color}';
+  }
+}
+
+class AttachMenuBotIcon extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2997303403;
+  static const SUBCLASS_OF_ID = 2152219989;
+  final classType = "constructor";
+  final ID = 2997303403;
+  String name;
+  var icon;
+  List<dynamic>? colors;
+
+  AttachMenuBotIcon(
+      {required this.name, required this.icon, required this.colors});
+
+  static AttachMenuBotIcon fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    var name = reader.tgReadString();
+    var icon = reader.tgReadObject();
+    var colors;
+    if ((flags & 1) == 1) {
+      var _vectorcolors = reader.readInt();
+      if (_vectorcolors != 481674261) throw Exception('Wrong vectorId');
+      List<dynamic> colors = [];
+      len = reader.readInt();
+      for (var i = 0; i < len; i++) {
+        colors.add(reader.tgReadObject());
+      }
+    } else {
+      colors = null;
+    }
+    return AttachMenuBotIcon(name: name, icon: icon, colors: colors);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2997303403, 4),
+      [0, 0, 0, 0],
+      serializeBytes(this.name),
+      (this.icon.getBytes() as List<int>),
+      (this.colors == null || this.colors == false)
+          ? List<int>.empty()
+          : [
+              readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+              readBufferFromBigInt(this.colors!.length, 4,
+                  little: true, signed: true),
+              this
+                  .colors!
+                  .map((x) => (x.getBytes() as List<int>))
+                  .expand((element) => element)
+            ].expand((element) => element).toList(),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuBotIcon{ID: $ID, name: $name, icon: $icon, colors: $colors}';
+  }
+}
+
+class AttachMenuBot extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3366595794;
+  static const SUBCLASS_OF_ID = 2668131398;
+  final classType = "constructor";
+  final ID = 3366595794;
+  bool? inactive;
+  bool? hasSettings;
+  BigInt botId;
+  String shortName;
+  List<dynamic> peerTypes;
+  List<dynamic> icons;
+
+  AttachMenuBot(
+      {required this.inactive,
+      required this.hasSettings,
+      required this.botId,
+      required this.shortName,
+      required this.peerTypes,
+      required this.icons});
+
+  static AttachMenuBot fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    final inactive = (flags & 1) == 1;
+    final hasSettings = (flags & 2) == 2;
+    var botId = reader.readLong();
+    var shortName = reader.tgReadString();
+    var _vectorpeerTypes = reader.readInt();
+    if (_vectorpeerTypes != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> peerTypes = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      peerTypes.add(reader.tgReadObject());
+    }
+    var _vectoricons = reader.readInt();
+    if (_vectoricons != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> icons = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      icons.add(reader.tgReadObject());
+    }
+    return AttachMenuBot(
+        inactive: inactive,
+        hasSettings: hasSettings,
+        botId: botId,
+        shortName: shortName,
+        peerTypes: peerTypes,
+        icons: icons);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3366595794, 4),
+      [0, 0, 0, 0],
+      readBufferFromBigInt(this.botId, 8, little: true, signed: true),
+      serializeBytes(this.shortName),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.peerTypes!.length, 4,
+          little: true, signed: true),
+      this
+          .peerTypes!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.icons!.length, 4, little: true, signed: true),
+      this
+          .icons!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuBot{ID: $ID, inactive: $inactive, hasSettings: $hasSettings, botId: $botId, shortName: $shortName, peerTypes: $peerTypes, icons: $icons}';
+  }
+}
+
+class AttachMenuBotsNotModified extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 4057500252;
+  static const SUBCLASS_OF_ID = 2217616346;
+  final classType = "constructor";
+  final ID = 4057500252;
+
+  AttachMenuBotsNotModified();
+
+  static AttachMenuBotsNotModified fromReader(BinaryReader reader) {
+    var len;
+    return AttachMenuBotsNotModified();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(4057500252, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuBotsNotModified{ID: $ID, }';
+  }
+}
+
+class AttachMenuBots extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1011024320;
+  static const SUBCLASS_OF_ID = 2217616346;
+  final classType = "constructor";
+  final ID = 1011024320;
+  BigInt hash;
+  List<dynamic> bots;
+  List<dynamic> users;
+
+  AttachMenuBots({required this.hash, required this.bots, required this.users});
+
+  static AttachMenuBots fromReader(BinaryReader reader) {
+    var len;
+    var hash = reader.readLong();
+    var _vectorbots = reader.readInt();
+    if (_vectorbots != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> bots = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      bots.add(reader.tgReadObject());
+    }
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return AttachMenuBots(hash: hash, bots: bots, users: users);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1011024320, 4),
+      readBufferFromBigInt(this.hash, 8, little: true, signed: true),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.bots!.length, 4, little: true, signed: true),
+      this
+          .bots!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuBots{ID: $ID, hash: $hash, bots: $bots, users: $users}';
+  }
+}
+
+class AttachMenuBotsBot extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2478794367;
+  static const SUBCLASS_OF_ID = 3677587517;
+  final classType = "constructor";
+  final ID = 2478794367;
+  var bot;
+  List<dynamic> users;
+
+  AttachMenuBotsBot({required this.bot, required this.users});
+
+  static AttachMenuBotsBot fromReader(BinaryReader reader) {
+    var len;
+    var bot = reader.tgReadObject();
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return AttachMenuBotsBot(bot: bot, users: users);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2478794367, 4),
+      (this.bot.getBytes() as List<int>),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuBotsBot{ID: $ID, bot: $bot, users: $users}';
+  }
+}
+
+class WebViewResultUrl extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 202659196;
+  static const SUBCLASS_OF_ID = 2479793990;
+  final classType = "constructor";
+  final ID = 202659196;
+  BigInt queryId;
+  String url;
+
+  WebViewResultUrl({required this.queryId, required this.url});
+
+  static WebViewResultUrl fromReader(BinaryReader reader) {
+    var len;
+    var queryId = reader.readLong();
+    var url = reader.tgReadString();
+    return WebViewResultUrl(queryId: queryId, url: url);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(202659196, 4),
+      readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
+      serializeBytes(this.url),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'WebViewResultUrl{ID: $ID, queryId: $queryId, url: $url}';
+  }
+}
+
+class SimpleWebViewResultUrl extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2284811963;
+  static const SUBCLASS_OF_ID = 367977435;
+  final classType = "constructor";
+  final ID = 2284811963;
+  String url;
+
+  SimpleWebViewResultUrl({required this.url});
+
+  static SimpleWebViewResultUrl fromReader(BinaryReader reader) {
+    var len;
+    var url = reader.tgReadString();
+    return SimpleWebViewResultUrl(url: url);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2284811963, 4),
+      serializeBytes(this.url),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SimpleWebViewResultUrl{ID: $ID, url: $url}';
+  }
+}
+
+class WebViewMessageSent extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 211046684;
+  static const SUBCLASS_OF_ID = 1977914130;
+  final classType = "constructor";
+  final ID = 211046684;
+  var msgId;
+
+  WebViewMessageSent({required this.msgId});
+
+  static WebViewMessageSent fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    var msgId;
+    if ((flags & 1) == 1) {
+      msgId = reader.tgReadObject();
+    } else {
+      msgId = null;
+    }
+    return WebViewMessageSent(msgId: msgId);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(211046684, 4),
+      [0, 0, 0, 0],
+      (this.msgId == null || this.msgId == false)
+          ? List<int>.empty()
+          : [(this.msgId.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'WebViewMessageSent{ID: $ID, msgId: $msgId}';
+  }
+}
+
+class BotMenuButtonDefault extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1966318984;
+  static const SUBCLASS_OF_ID = 1282522428;
+  final classType = "constructor";
+  final ID = 1966318984;
+
+  BotMenuButtonDefault();
+
+  static BotMenuButtonDefault fromReader(BinaryReader reader) {
+    var len;
+    return BotMenuButtonDefault();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1966318984, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'BotMenuButtonDefault{ID: $ID, }';
+  }
+}
+
+class BotMenuButtonCommands extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1113113093;
+  static const SUBCLASS_OF_ID = 1282522428;
+  final classType = "constructor";
+  final ID = 1113113093;
+
+  BotMenuButtonCommands();
+
+  static BotMenuButtonCommands fromReader(BinaryReader reader) {
+    var len;
+    return BotMenuButtonCommands();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1113113093, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'BotMenuButtonCommands{ID: $ID, }';
+  }
+}
+
+class BotMenuButton extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3350559974;
+  static const SUBCLASS_OF_ID = 1282522428;
+  final classType = "constructor";
+  final ID = 3350559974;
+  String text;
+  String url;
+
+  BotMenuButton({required this.text, required this.url});
+
+  static BotMenuButton fromReader(BinaryReader reader) {
+    var len;
+    var text = reader.tgReadString();
+    var url = reader.tgReadString();
+    return BotMenuButton(text: text, url: url);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3350559974, 4),
+      serializeBytes(this.text),
+      serializeBytes(this.url),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'BotMenuButton{ID: $ID, text: $text, url: $url}';
+  }
+}
+
+class NotificationSoundDefault extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2548612798;
+  static const SUBCLASS_OF_ID = 4076201307;
+  final classType = "constructor";
+  final ID = 2548612798;
+
+  NotificationSoundDefault();
+
+  static NotificationSoundDefault fromReader(BinaryReader reader) {
+    var len;
+    return NotificationSoundDefault();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2548612798, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'NotificationSoundDefault{ID: $ID, }';
+  }
+}
+
+class NotificationSoundNone extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 1863070943;
+  static const SUBCLASS_OF_ID = 4076201307;
+  final classType = "constructor";
+  final ID = 1863070943;
+
+  NotificationSoundNone();
+
+  static NotificationSoundNone fromReader(BinaryReader reader) {
+    var len;
+    return NotificationSoundNone();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1863070943, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'NotificationSoundNone{ID: $ID, }';
+  }
+}
+
+class NotificationSoundLocal extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2198575844;
+  static const SUBCLASS_OF_ID = 4076201307;
+  final classType = "constructor";
+  final ID = 2198575844;
+  String title;
+  String data;
+
+  NotificationSoundLocal({required this.title, required this.data});
+
+  static NotificationSoundLocal fromReader(BinaryReader reader) {
+    var len;
+    var title = reader.tgReadString();
+    var data = reader.tgReadString();
+    return NotificationSoundLocal(title: title, data: data);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2198575844, 4),
+      serializeBytes(this.title),
+      serializeBytes(this.data),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'NotificationSoundLocal{ID: $ID, title: $title, data: $data}';
+  }
+}
+
+class NotificationSoundRingtone extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 4285300809;
+  static const SUBCLASS_OF_ID = 4076201307;
+  final classType = "constructor";
+  final ID = 4285300809;
+  BigInt id;
+
+  NotificationSoundRingtone({required this.id});
+
+  static NotificationSoundRingtone fromReader(BinaryReader reader) {
+    var len;
+    var id = reader.readLong();
+    return NotificationSoundRingtone(id: id);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(4285300809, 4),
+      readBufferFromBigInt(this.id, 8, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'NotificationSoundRingtone{ID: $ID, id: $id}';
+  }
+}
+
+class AttachMenuPeerTypeSameBotPM extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2104224014;
+  static const SUBCLASS_OF_ID = 3520628432;
+  final classType = "constructor";
+  final ID = 2104224014;
+
+  AttachMenuPeerTypeSameBotPM();
+
+  static AttachMenuPeerTypeSameBotPM fromReader(BinaryReader reader) {
+    var len;
+    return AttachMenuPeerTypeSameBotPM();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2104224014, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuPeerTypeSameBotPM{ID: $ID, }';
+  }
+}
+
+class AttachMenuPeerTypeBotPM extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3274439194;
+  static const SUBCLASS_OF_ID = 3520628432;
+  final classType = "constructor";
+  final ID = 3274439194;
+
+  AttachMenuPeerTypeBotPM();
+
+  static AttachMenuPeerTypeBotPM fromReader(BinaryReader reader) {
+    var len;
+    return AttachMenuPeerTypeBotPM();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3274439194, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuPeerTypeBotPM{ID: $ID, }';
+  }
+}
+
+class AttachMenuPeerTypePM extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 4047950623;
+  static const SUBCLASS_OF_ID = 3520628432;
+  final classType = "constructor";
+  final ID = 4047950623;
+
+  AttachMenuPeerTypePM();
+
+  static AttachMenuPeerTypePM fromReader(BinaryReader reader) {
+    var len;
+    return AttachMenuPeerTypePM();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(4047950623, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuPeerTypePM{ID: $ID, }';
+  }
+}
+
+class AttachMenuPeerTypeChat extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 84480319;
+  static const SUBCLASS_OF_ID = 3520628432;
+  final classType = "constructor";
+  final ID = 84480319;
+
+  AttachMenuPeerTypeChat();
+
+  static AttachMenuPeerTypeChat fromReader(BinaryReader reader) {
+    var len;
+    return AttachMenuPeerTypeChat();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(84480319, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuPeerTypeChat{ID: $ID, }';
+  }
+}
+
+class AttachMenuPeerTypeBroadcast extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2080104188;
+  static const SUBCLASS_OF_ID = 3520628432;
+  final classType = "constructor";
+  final ID = 2080104188;
+
+  AttachMenuPeerTypeBroadcast();
+
+  static AttachMenuPeerTypeBroadcast fromReader(BinaryReader reader) {
+    var len;
+    return AttachMenuPeerTypeBroadcast();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2080104188, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'AttachMenuPeerTypeBroadcast{ID: $ID, }';
+  }
+}
+
+class InputInvoiceMessage extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3317000281;
+  static const SUBCLASS_OF_ID = 1919851518;
+  final classType = "constructor";
+  final ID = 3317000281;
+  var peer;
+  int msgId;
+
+  InputInvoiceMessage({required this.peer, required this.msgId});
+
+  static InputInvoiceMessage fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    var msgId = reader.readInt();
+    return InputInvoiceMessage(peer: peer, msgId: msgId);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3317000281, 4),
+      (this.peer.getBytes() as List<int>),
+      readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'InputInvoiceMessage{ID: $ID, peer: $peer, msgId: $msgId}';
+  }
+}
+
+class InputInvoiceSlug extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3274099439;
+  static const SUBCLASS_OF_ID = 1919851518;
+  final classType = "constructor";
+  final ID = 3274099439;
+  String slug;
+
+  InputInvoiceSlug({required this.slug});
+
+  static InputInvoiceSlug fromReader(BinaryReader reader) {
+    var len;
+    var slug = reader.tgReadString();
+    return InputInvoiceSlug(slug: slug);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3274099439, 4),
+      serializeBytes(this.slug),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'InputInvoiceSlug{ID: $ID, slug: $slug}';
   }
 }
 

@@ -1025,3 +1025,47 @@ class BlockFromReplies extends BaseRequest {
     return 'BlockFromReplies{ID: $ID, deleteMessage: $deleteMessage, deleteHistory: $deleteHistory, reportSpam: $reportSpam, msgId: $msgId}';
   }
 }
+
+class ResolvePhone extends BaseRequest {
+  static const CONSTRUCTOR_ID = 2331591492;
+  static const SUBCLASS_OF_ID = 4033196968;
+  final classType = "request";
+  final ID = 2331591492;
+  String phone;
+
+  ResolvePhone({required this.phone});
+
+  static ResolvePhone fromReader(BinaryReader reader) {
+    var len;
+    var phone = reader.tgReadString();
+    return ResolvePhone(phone: phone);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2331591492, 4),
+      serializeBytes(this.phone),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ResolvePhone{ID: $ID, phone: $phone}';
+  }
+}

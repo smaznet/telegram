@@ -10,6 +10,7 @@ class CreateStickerSet extends BaseRequest {
   final ID = 2418125671;
   bool? masks;
   bool? animated;
+  bool? videos;
   var userId;
   String title;
   String shortName;
@@ -20,6 +21,7 @@ class CreateStickerSet extends BaseRequest {
   CreateStickerSet(
       {required this.masks,
       required this.animated,
+      required this.videos,
       required this.userId,
       required this.title,
       required this.shortName,
@@ -32,6 +34,7 @@ class CreateStickerSet extends BaseRequest {
     final flags = reader.readInt();
     final masks = (flags & 1) == 1;
     final animated = (flags & 2) == 2;
+    final videos = (flags & 16) == 16;
     var userId = reader.tgReadObject();
     var title = reader.tgReadString();
     var shortName = reader.tgReadString();
@@ -57,6 +60,7 @@ class CreateStickerSet extends BaseRequest {
     return CreateStickerSet(
         masks: masks,
         animated: animated,
+        videos: videos,
         userId: userId,
         title: title,
         shortName: shortName,
@@ -110,7 +114,7 @@ class CreateStickerSet extends BaseRequest {
 
   @override
   String toString() {
-    return 'CreateStickerSet{ID: $ID, masks: $masks, animated: $animated, userId: $userId, title: $title, shortName: $shortName, thumb: $thumb, stickers: $stickers, software: $software}';
+    return 'CreateStickerSet{ID: $ID, masks: $masks, animated: $animated, videos: $videos, userId: $userId, title: $title, shortName: $shortName, thumb: $thumb, stickers: $stickers, software: $software}';
   }
 }
 

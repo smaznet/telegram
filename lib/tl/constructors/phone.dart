@@ -367,3 +367,96 @@ class ExportedGroupCallInvite extends BaseConstructor {
     return 'ExportedGroupCallInvite{ID: $ID, link: $link}';
   }
 }
+
+class GroupCallStreamChannels extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3504636594;
+  static const SUBCLASS_OF_ID = 2438448612;
+  final classType = "constructor";
+  final ID = 3504636594;
+  List<dynamic> channels;
+
+  GroupCallStreamChannels({required this.channels});
+
+  static GroupCallStreamChannels fromReader(BinaryReader reader) {
+    var len;
+    var _vectorchannels = reader.readInt();
+    if (_vectorchannels != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> channels = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      channels.add(reader.tgReadObject());
+    }
+    return GroupCallStreamChannels(channels: channels);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3504636594, 4),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.channels!.length, 4,
+          little: true, signed: true),
+      this
+          .channels!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GroupCallStreamChannels{ID: $ID, channels: $channels}';
+  }
+}
+
+class GroupCallStreamRtmpUrl extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 767505458;
+  static const SUBCLASS_OF_ID = 3522500043;
+  final classType = "constructor";
+  final ID = 767505458;
+  String url;
+  String key;
+
+  GroupCallStreamRtmpUrl({required this.url, required this.key});
+
+  static GroupCallStreamRtmpUrl fromReader(BinaryReader reader) {
+    var len;
+    var url = reader.tgReadString();
+    var key = reader.tgReadString();
+    return GroupCallStreamRtmpUrl(url: url, key: key);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(767505458, 4),
+      serializeBytes(this.url),
+      serializeBytes(this.key),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GroupCallStreamRtmpUrl{ID: $ID, url: $url, key: $key}';
+  }
+}

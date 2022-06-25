@@ -1216,6 +1216,123 @@ class CountriesList extends BaseConstructor {
   }
 }
 
+class PremiumPromo extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2320448553;
+  static const SUBCLASS_OF_ID = 3381109560;
+  final classType = "constructor";
+  final ID = 2320448553;
+  String statusText;
+  List<dynamic> statusEntities;
+  List<String> videoSections;
+  List<dynamic> videos;
+  String currency;
+  BigInt monthlyAmount;
+  List<dynamic> users;
+
+  PremiumPromo(
+      {required this.statusText,
+      required this.statusEntities,
+      required this.videoSections,
+      required this.videos,
+      required this.currency,
+      required this.monthlyAmount,
+      required this.users});
+
+  static PremiumPromo fromReader(BinaryReader reader) {
+    var len;
+    var statusText = reader.tgReadString();
+    var _vectorstatusEntities = reader.readInt();
+    if (_vectorstatusEntities != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> statusEntities = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      statusEntities.add(reader.tgReadObject());
+    }
+    var _vectorvideoSections = reader.readInt();
+    if (_vectorvideoSections != 481674261) throw Exception('Wrong vectorId');
+    List<String> videoSections = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      videoSections.add(reader.tgReadString());
+    }
+    var _vectorvideos = reader.readInt();
+    if (_vectorvideos != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> videos = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      videos.add(reader.tgReadObject());
+    }
+    var currency = reader.tgReadString();
+    var monthlyAmount = reader.readLong();
+    var _vectorusers = reader.readInt();
+    if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> users = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      users.add(reader.tgReadObject());
+    }
+    return PremiumPromo(
+        statusText: statusText,
+        statusEntities: statusEntities,
+        videoSections: videoSections,
+        videos: videos,
+        currency: currency,
+        monthlyAmount: monthlyAmount,
+        users: users);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2320448553, 4),
+      serializeBytes(this.statusText),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.statusEntities!.length, 4,
+          little: true, signed: true),
+      this
+          .statusEntities!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.videoSections!.length, 4,
+          little: true, signed: true),
+      this
+          .videoSections!
+          .map((x) => serializeBytes(x))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.videos!.length, 4, little: true, signed: true),
+      this
+          .videos!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      serializeBytes(this.currency),
+      readBufferFromBigInt(this.monthlyAmount, 8, little: true, signed: true),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      this
+          .users!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'PremiumPromo{ID: $ID, statusText: $statusText, statusEntities: $statusEntities, videoSections: $videoSections, videos: $videos, currency: $currency, monthlyAmount: $monthlyAmount, users: $users}';
+  }
+}
+
 class ConfigSimple extends BaseConstructor {
   static const CONSTRUCTOR_ID = 1515793004;
   static const SUBCLASS_OF_ID = 689453764;

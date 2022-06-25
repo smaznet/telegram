@@ -491,13 +491,15 @@ class CreateGroupCall extends BaseRequest {
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 1221445336;
+  bool? rtmpStream;
   var peer;
   int randomId;
   String? title;
   int? scheduleDate;
 
   CreateGroupCall(
-      {required this.peer,
+      {required this.rtmpStream,
+      required this.peer,
       required this.randomId,
       required this.title,
       required this.scheduleDate});
@@ -505,6 +507,7 @@ class CreateGroupCall extends BaseRequest {
   static CreateGroupCall fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
+    final rtmpStream = (flags & 4) == 4;
     var peer = reader.tgReadObject();
     var randomId = reader.readInt();
     var title;
@@ -520,6 +523,7 @@ class CreateGroupCall extends BaseRequest {
       scheduleDate = null;
     }
     return CreateGroupCall(
+        rtmpStream: rtmpStream,
         peer: peer,
         randomId: randomId,
         title: title,
@@ -562,7 +566,7 @@ class CreateGroupCall extends BaseRequest {
 
   @override
   String toString() {
-    return 'CreateGroupCall{ID: $ID, peer: $peer, randomId: $randomId, title: $title, scheduleDate: $scheduleDate}';
+    return 'CreateGroupCall{ID: $ID, rtmpStream: $rtmpStream, peer: $peer, randomId: $randomId, title: $title, scheduleDate: $scheduleDate}';
   }
 }
 
@@ -1639,5 +1643,143 @@ class LeaveGroupCallPresentation extends BaseRequest {
   @override
   String toString() {
     return 'LeaveGroupCallPresentation{ID: $ID, call: $call}';
+  }
+}
+
+class GetGroupCallStreamChannels extends BaseRequest {
+  static const CONSTRUCTOR_ID = 447879488;
+  static const SUBCLASS_OF_ID = 2438448612;
+  final classType = "request";
+  final ID = 447879488;
+  var call;
+
+  GetGroupCallStreamChannels({required this.call});
+
+  static GetGroupCallStreamChannels fromReader(BinaryReader reader) {
+    var len;
+    var call = reader.tgReadObject();
+    return GetGroupCallStreamChannels(call: call);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(447879488, 4),
+      (this.call.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetGroupCallStreamChannels{ID: $ID, call: $call}';
+  }
+}
+
+class GetGroupCallStreamRtmpUrl extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3736316863;
+  static const SUBCLASS_OF_ID = 3522500043;
+  final classType = "request";
+  final ID = 3736316863;
+  var peer;
+  bool revoke;
+
+  GetGroupCallStreamRtmpUrl({required this.peer, required this.revoke});
+
+  static GetGroupCallStreamRtmpUrl fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    var revoke = reader.tgReadBool();
+    return GetGroupCallStreamRtmpUrl(peer: peer, revoke: revoke);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3736316863, 4),
+      (this.peer.getBytes() as List<int>),
+      [this.revoke == true ? 0xb5757299 : 0x379779bc],
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetGroupCallStreamRtmpUrl{ID: $ID, peer: $peer, revoke: $revoke}';
+  }
+}
+
+class SaveCallLog extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1092913030;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 1092913030;
+  var peer;
+  var file;
+
+  SaveCallLog({required this.peer, required this.file});
+
+  static SaveCallLog fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    var file = reader.tgReadObject();
+    return SaveCallLog(peer: peer, file: file);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1092913030, 4),
+      (this.peer.getBytes() as List<int>),
+      (this.file.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SaveCallLog{ID: $ID, peer: $peer, file: $file}';
   }
 }

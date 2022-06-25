@@ -3098,12 +3098,12 @@ class ReorderStickerSets extends BaseRequest {
 }
 
 class GetDocumentByHash extends BaseRequest {
-  static const CONSTRUCTOR_ID = 864953444;
+  static const CONSTRUCTOR_ID = 2985428511;
   static const SUBCLASS_OF_ID = 555739168;
   final classType = "request";
-  final ID = 864953444;
+  final ID = 2985428511;
   List<int> sha256;
-  int size;
+  BigInt size;
   String mimeType;
 
   GetDocumentByHash(
@@ -3112,7 +3112,7 @@ class GetDocumentByHash extends BaseRequest {
   static GetDocumentByHash fromReader(BinaryReader reader) {
     var len;
     var sha256 = reader.tgReadBytes();
-    var size = reader.readInt();
+    var size = reader.readLong();
     var mimeType = reader.tgReadString();
     return GetDocumentByHash(sha256: sha256, size: size, mimeType: mimeType);
   }
@@ -3120,9 +3120,9 @@ class GetDocumentByHash extends BaseRequest {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(864953444, 4),
+      readBufferFromBigInt(2985428511, 4),
       serializeBytes(this.sha256),
-      readBufferFromBigInt(this.size, 4, little: true, signed: true),
+      readBufferFromBigInt(this.size, 8, little: true, signed: true),
       serializeBytes(this.mimeType),
     ].expand((element) => element).toList();
   }
@@ -8953,16 +8953,21 @@ class SendReaction extends BaseRequest {
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 627641572;
+  bool? big;
   var peer;
   int msgId;
   String? reaction;
 
   SendReaction(
-      {required this.peer, required this.msgId, required this.reaction});
+      {required this.big,
+      required this.peer,
+      required this.msgId,
+      required this.reaction});
 
   static SendReaction fromReader(BinaryReader reader) {
     var len;
     final flags = reader.readInt();
+    final big = (flags & 2) == 2;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var reaction;
@@ -8971,7 +8976,7 @@ class SendReaction extends BaseRequest {
     } else {
       reaction = null;
     }
-    return SendReaction(peer: peer, msgId: msgId, reaction: reaction);
+    return SendReaction(big: big, peer: peer, msgId: msgId, reaction: reaction);
   }
 
   @override
@@ -9006,7 +9011,7 @@ class SendReaction extends BaseRequest {
 
   @override
   String toString() {
-    return 'SendReaction{ID: $ID, peer: $peer, msgId: $msgId, reaction: $reaction}';
+    return 'SendReaction{ID: $ID, big: $big, peer: $peer, msgId: $msgId, reaction: $reaction}';
   }
 }
 
@@ -9397,5 +9402,798 @@ class TranslateText extends BaseRequest {
   @override
   String toString() {
     return 'TranslateText{ID: $ID, peer: $peer, msgId: $msgId, text: $text, fromLang: $fromLang, toLang: $toLang}';
+  }
+}
+
+class GetUnreadReactions extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3898322458;
+  static const SUBCLASS_OF_ID = 3568569182;
+  final classType = "request";
+  final ID = 3898322458;
+  var peer;
+  int offsetId;
+  int addOffset;
+  int limit;
+  int maxId;
+  int minId;
+
+  GetUnreadReactions(
+      {required this.peer,
+      required this.offsetId,
+      required this.addOffset,
+      required this.limit,
+      required this.maxId,
+      required this.minId});
+
+  static GetUnreadReactions fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    var offsetId = reader.readInt();
+    var addOffset = reader.readInt();
+    var limit = reader.readInt();
+    var maxId = reader.readInt();
+    var minId = reader.readInt();
+    return GetUnreadReactions(
+        peer: peer,
+        offsetId: offsetId,
+        addOffset: addOffset,
+        limit: limit,
+        maxId: maxId,
+        minId: minId);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3898322458, 4),
+      (this.peer.getBytes() as List<int>),
+      readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
+      readBufferFromBigInt(this.addOffset, 4, little: true, signed: true),
+      readBufferFromBigInt(this.limit, 4, little: true, signed: true),
+      readBufferFromBigInt(this.maxId, 4, little: true, signed: true),
+      readBufferFromBigInt(this.minId, 4, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetUnreadReactions{ID: $ID, peer: $peer, offsetId: $offsetId, addOffset: $addOffset, limit: $limit, maxId: $maxId, minId: $minId}';
+  }
+}
+
+class ReadReactions extends BaseRequest {
+  static const CONSTRUCTOR_ID = 2195870167;
+  static const SUBCLASS_OF_ID = 743031062;
+  final classType = "request";
+  final ID = 2195870167;
+  var peer;
+
+  ReadReactions({required this.peer});
+
+  static ReadReactions fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    return ReadReactions(peer: peer);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2195870167, 4),
+      (this.peer.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ReadReactions{ID: $ID, peer: $peer}';
+  }
+}
+
+class SearchSentMedia extends BaseRequest {
+  static const CONSTRUCTOR_ID = 276705696;
+  static const SUBCLASS_OF_ID = 3568569182;
+  final classType = "request";
+  final ID = 276705696;
+  String q;
+  var filter;
+  int limit;
+
+  SearchSentMedia({required this.q, required this.filter, required this.limit});
+
+  static SearchSentMedia fromReader(BinaryReader reader) {
+    var len;
+    var q = reader.tgReadString();
+    var filter = reader.tgReadObject();
+    var limit = reader.readInt();
+    return SearchSentMedia(q: q, filter: filter, limit: limit);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(276705696, 4),
+      serializeBytes(this.q),
+      (this.filter.getBytes() as List<int>),
+      readBufferFromBigInt(this.limit, 4, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SearchSentMedia{ID: $ID, q: $q, filter: $filter, limit: $limit}';
+  }
+}
+
+class GetAttachMenuBots extends BaseRequest {
+  static const CONSTRUCTOR_ID = 385663691;
+  static const SUBCLASS_OF_ID = 2217616346;
+  final classType = "request";
+  final ID = 385663691;
+  BigInt hash;
+
+  GetAttachMenuBots({required this.hash});
+
+  static GetAttachMenuBots fromReader(BinaryReader reader) {
+    var len;
+    var hash = reader.readLong();
+    return GetAttachMenuBots(hash: hash);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(385663691, 4),
+      readBufferFromBigInt(this.hash, 8, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetAttachMenuBots{ID: $ID, hash: $hash}';
+  }
+}
+
+class GetAttachMenuBot extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1998676370;
+  static const SUBCLASS_OF_ID = 3677587517;
+  final classType = "request";
+  final ID = 1998676370;
+  var bot;
+
+  GetAttachMenuBot({required this.bot});
+
+  static GetAttachMenuBot fromReader(BinaryReader reader) {
+    var len;
+    var bot = reader.tgReadObject();
+    return GetAttachMenuBot(bot: bot);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1998676370, 4),
+      (this.bot.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetAttachMenuBot{ID: $ID, bot: $bot}';
+  }
+}
+
+class ToggleBotInAttachMenu extends BaseRequest {
+  static const CONSTRUCTOR_ID = 451818415;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 451818415;
+  var bot;
+  bool enabled;
+
+  ToggleBotInAttachMenu({required this.bot, required this.enabled});
+
+  static ToggleBotInAttachMenu fromReader(BinaryReader reader) {
+    var len;
+    var bot = reader.tgReadObject();
+    var enabled = reader.tgReadBool();
+    return ToggleBotInAttachMenu(bot: bot, enabled: enabled);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(451818415, 4),
+      (this.bot.getBytes() as List<int>),
+      [this.enabled == true ? 0xb5757299 : 0x379779bc],
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ToggleBotInAttachMenu{ID: $ID, bot: $bot, enabled: $enabled}';
+  }
+}
+
+class RequestWebView extends BaseRequest {
+  static const CONSTRUCTOR_ID = 2444318769;
+  static const SUBCLASS_OF_ID = 2479793990;
+  final classType = "request";
+  final ID = 2444318769;
+  bool? fromBotMenu;
+  bool? silent;
+  var peer;
+  var bot;
+  String? url;
+  String? startParam;
+  var themeParams;
+  int? replyToMsgId;
+  var sendAs;
+
+  RequestWebView(
+      {required this.fromBotMenu,
+      required this.silent,
+      required this.peer,
+      required this.bot,
+      required this.url,
+      required this.startParam,
+      required this.themeParams,
+      required this.replyToMsgId,
+      required this.sendAs});
+
+  static RequestWebView fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    final fromBotMenu = (flags & 16) == 16;
+    final silent = (flags & 32) == 32;
+    var peer = reader.tgReadObject();
+    var bot = reader.tgReadObject();
+    var url;
+    if ((flags & 2) == 2) {
+      url = reader.tgReadString();
+    } else {
+      url = null;
+    }
+    var startParam;
+    if ((flags & 8) == 8) {
+      startParam = reader.tgReadString();
+    } else {
+      startParam = null;
+    }
+    var themeParams;
+    if ((flags & 4) == 4) {
+      themeParams = reader.tgReadObject();
+    } else {
+      themeParams = null;
+    }
+    var replyToMsgId;
+    if ((flags & 1) == 1) {
+      replyToMsgId = reader.readInt();
+    } else {
+      replyToMsgId = null;
+    }
+    var sendAs;
+    if ((flags & 8192) == 8192) {
+      sendAs = reader.tgReadObject();
+    } else {
+      sendAs = null;
+    }
+    return RequestWebView(
+        fromBotMenu: fromBotMenu,
+        silent: silent,
+        peer: peer,
+        bot: bot,
+        url: url,
+        startParam: startParam,
+        themeParams: themeParams,
+        replyToMsgId: replyToMsgId,
+        sendAs: sendAs);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2444318769, 4),
+      [0, 0, 0, 0],
+      (this.peer.getBytes() as List<int>),
+      (this.bot.getBytes() as List<int>),
+      (this.url == null || this.url == false)
+          ? List<int>.empty()
+          : [serializeBytes(this.url)].expand((element) => element).toList(),
+      (this.startParam == null || this.startParam == false)
+          ? List<int>.empty()
+          : [serializeBytes(this.startParam)]
+              .expand((element) => element)
+              .toList(),
+      (this.themeParams == null || this.themeParams == false)
+          ? List<int>.empty()
+          : [(this.themeParams.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+      (this.replyToMsgId == null || this.replyToMsgId == false)
+          ? List<int>.empty()
+          : [
+              readBufferFromBigInt(this.replyToMsgId, 4,
+                  little: true, signed: true)
+            ].expand((element) => element).toList(),
+      (this.sendAs == null || this.sendAs == false)
+          ? List<int>.empty()
+          : [(this.sendAs.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'RequestWebView{ID: $ID, fromBotMenu: $fromBotMenu, silent: $silent, peer: $peer, bot: $bot, url: $url, startParam: $startParam, themeParams: $themeParams, replyToMsgId: $replyToMsgId, sendAs: $sendAs}';
+  }
+}
+
+class ProlongWebView extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3932142798;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 3932142798;
+  bool? silent;
+  var peer;
+  var bot;
+  BigInt queryId;
+  int? replyToMsgId;
+  var sendAs;
+
+  ProlongWebView(
+      {required this.silent,
+      required this.peer,
+      required this.bot,
+      required this.queryId,
+      required this.replyToMsgId,
+      required this.sendAs});
+
+  static ProlongWebView fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    final silent = (flags & 32) == 32;
+    var peer = reader.tgReadObject();
+    var bot = reader.tgReadObject();
+    var queryId = reader.readLong();
+    var replyToMsgId;
+    if ((flags & 1) == 1) {
+      replyToMsgId = reader.readInt();
+    } else {
+      replyToMsgId = null;
+    }
+    var sendAs;
+    if ((flags & 8192) == 8192) {
+      sendAs = reader.tgReadObject();
+    } else {
+      sendAs = null;
+    }
+    return ProlongWebView(
+        silent: silent,
+        peer: peer,
+        bot: bot,
+        queryId: queryId,
+        replyToMsgId: replyToMsgId,
+        sendAs: sendAs);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3932142798, 4),
+      [0, 0, 0, 0],
+      (this.peer.getBytes() as List<int>),
+      (this.bot.getBytes() as List<int>),
+      readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
+      (this.replyToMsgId == null || this.replyToMsgId == false)
+          ? List<int>.empty()
+          : [
+              readBufferFromBigInt(this.replyToMsgId, 4,
+                  little: true, signed: true)
+            ].expand((element) => element).toList(),
+      (this.sendAs == null || this.sendAs == false)
+          ? List<int>.empty()
+          : [(this.sendAs.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ProlongWebView{ID: $ID, silent: $silent, peer: $peer, bot: $bot, queryId: $queryId, replyToMsgId: $replyToMsgId, sendAs: $sendAs}';
+  }
+}
+
+class RequestSimpleWebView extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1790652275;
+  static const SUBCLASS_OF_ID = 367977435;
+  final classType = "request";
+  final ID = 1790652275;
+  var bot;
+  String url;
+  var themeParams;
+
+  RequestSimpleWebView(
+      {required this.bot, required this.url, required this.themeParams});
+
+  static RequestSimpleWebView fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    var bot = reader.tgReadObject();
+    var url = reader.tgReadString();
+    var themeParams;
+    if ((flags & 1) == 1) {
+      themeParams = reader.tgReadObject();
+    } else {
+      themeParams = null;
+    }
+    return RequestSimpleWebView(bot: bot, url: url, themeParams: themeParams);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1790652275, 4),
+      [0, 0, 0, 0],
+      (this.bot.getBytes() as List<int>),
+      serializeBytes(this.url),
+      (this.themeParams == null || this.themeParams == false)
+          ? List<int>.empty()
+          : [(this.themeParams.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'RequestSimpleWebView{ID: $ID, bot: $bot, url: $url, themeParams: $themeParams}';
+  }
+}
+
+class SendWebViewResultMessage extends BaseRequest {
+  static const CONSTRUCTOR_ID = 172168437;
+  static const SUBCLASS_OF_ID = 1977914130;
+  final classType = "request";
+  final ID = 172168437;
+  String botQueryId;
+  var result;
+
+  SendWebViewResultMessage({required this.botQueryId, required this.result});
+
+  static SendWebViewResultMessage fromReader(BinaryReader reader) {
+    var len;
+    var botQueryId = reader.tgReadString();
+    var result = reader.tgReadObject();
+    return SendWebViewResultMessage(botQueryId: botQueryId, result: result);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(172168437, 4),
+      serializeBytes(this.botQueryId),
+      (this.result.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SendWebViewResultMessage{ID: $ID, botQueryId: $botQueryId, result: $result}';
+  }
+}
+
+class SendWebViewData extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3691135688;
+  static const SUBCLASS_OF_ID = 2331323052;
+  final classType = "request";
+  final ID = 3691135688;
+  var bot;
+  BigInt randomId;
+  String buttonText;
+  String data;
+
+  SendWebViewData(
+      {required this.bot,
+      required this.randomId,
+      required this.buttonText,
+      required this.data});
+
+  static SendWebViewData fromReader(BinaryReader reader) {
+    var len;
+    var bot = reader.tgReadObject();
+    var randomId = reader.readLong();
+    var buttonText = reader.tgReadString();
+    var data = reader.tgReadString();
+    return SendWebViewData(
+        bot: bot, randomId: randomId, buttonText: buttonText, data: data);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3691135688, 4),
+      (this.bot.getBytes() as List<int>),
+      readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
+      serializeBytes(this.buttonText),
+      serializeBytes(this.data),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SendWebViewData{ID: $ID, bot: $bot, randomId: $randomId, buttonText: $buttonText, data: $data}';
+  }
+}
+
+class TranscribeAudio extends BaseRequest {
+  static const CONSTRUCTOR_ID = 647928393;
+  static const SUBCLASS_OF_ID = 565332278;
+  final classType = "request";
+  final ID = 647928393;
+  var peer;
+  int msgId;
+
+  TranscribeAudio({required this.peer, required this.msgId});
+
+  static TranscribeAudio fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    var msgId = reader.readInt();
+    return TranscribeAudio(peer: peer, msgId: msgId);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(647928393, 4),
+      (this.peer.getBytes() as List<int>),
+      readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'TranscribeAudio{ID: $ID, peer: $peer, msgId: $msgId}';
+  }
+}
+
+class RateTranscribedAudio extends BaseRequest {
+  static const CONSTRUCTOR_ID = 2132608815;
+  static const SUBCLASS_OF_ID = 4122188204;
+  final classType = "request";
+  final ID = 2132608815;
+  var peer;
+  int msgId;
+  BigInt transcriptionId;
+  bool good;
+
+  RateTranscribedAudio(
+      {required this.peer,
+      required this.msgId,
+      required this.transcriptionId,
+      required this.good});
+
+  static RateTranscribedAudio fromReader(BinaryReader reader) {
+    var len;
+    var peer = reader.tgReadObject();
+    var msgId = reader.readInt();
+    var transcriptionId = reader.readLong();
+    var good = reader.tgReadBool();
+    return RateTranscribedAudio(
+        peer: peer, msgId: msgId, transcriptionId: transcriptionId, good: good);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2132608815, 4),
+      (this.peer.getBytes() as List<int>),
+      readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
+      readBufferFromBigInt(this.transcriptionId, 8, little: true, signed: true),
+      [this.good == true ? 0xb5757299 : 0x379779bc],
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'RateTranscribedAudio{ID: $ID, peer: $peer, msgId: $msgId, transcriptionId: $transcriptionId, good: $good}';
   }
 }

@@ -985,3 +985,44 @@ class GetCountriesList extends BaseRequest {
     return 'GetCountriesList{ID: $ID, langCode: $langCode, hash: $hash}';
   }
 }
+
+class GetPremiumPromo extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3088815060;
+  static const SUBCLASS_OF_ID = 3381109560;
+  final classType = "request";
+  final ID = 3088815060;
+
+  GetPremiumPromo();
+
+  static GetPremiumPromo fromReader(BinaryReader reader) {
+    var len;
+    return GetPremiumPromo();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3088815060, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetPremiumPromo{ID: $ID, }';
+  }
+}

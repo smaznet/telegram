@@ -1973,17 +1973,17 @@ class VerifyEmail extends BaseRequest {
 }
 
 class InitTakeoutSession extends BaseRequest {
-  static const CONSTRUCTOR_ID = 4032514052;
+  static const CONSTRUCTOR_ID = 2398350000;
   static const SUBCLASS_OF_ID = 2218704517;
   final classType = "request";
-  final ID = 4032514052;
+  final ID = 2398350000;
   bool? contacts;
   bool? messageUsers;
   bool? messageChats;
   bool? messageMegagroups;
   bool? messageChannels;
   bool? files;
-  int? fileMaxSize;
+  BigInt? fileMaxSize;
 
   InitTakeoutSession(
       {required this.contacts,
@@ -2005,7 +2005,7 @@ class InitTakeoutSession extends BaseRequest {
     final files = (flags & 32) == 32;
     var fileMaxSize;
     if ((flags & 32) == 32) {
-      fileMaxSize = reader.readInt();
+      fileMaxSize = reader.readLong();
     } else {
       fileMaxSize = null;
     }
@@ -2022,12 +2022,12 @@ class InitTakeoutSession extends BaseRequest {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(4032514052, 4),
+      readBufferFromBigInt(2398350000, 4),
       [0, 0, 0, 0],
       (this.fileMaxSize == null || this.fileMaxSize == false)
           ? List<int>.empty()
           : [
-              readBufferFromBigInt(this.fileMaxSize, 4,
+              readBufferFromBigInt(this.fileMaxSize, 8,
                   little: true, signed: true)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -3729,5 +3729,147 @@ class ChangeAuthorizationSettings extends BaseRequest {
   @override
   String toString() {
     return 'ChangeAuthorizationSettings{ID: $ID, hash: $hash, encryptedRequestsDisabled: $encryptedRequestsDisabled, callRequestsDisabled: $callRequestsDisabled}';
+  }
+}
+
+class GetSavedRingtones extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3784319624;
+  static const SUBCLASS_OF_ID = 666683742;
+  final classType = "request";
+  final ID = 3784319624;
+  BigInt hash;
+
+  GetSavedRingtones({required this.hash});
+
+  static GetSavedRingtones fromReader(BinaryReader reader) {
+    var len;
+    var hash = reader.readLong();
+    return GetSavedRingtones(hash: hash);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3784319624, 4),
+      readBufferFromBigInt(this.hash, 8, little: true, signed: true),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'GetSavedRingtones{ID: $ID, hash: $hash}';
+  }
+}
+
+class SaveRingtone extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1038768899;
+  static const SUBCLASS_OF_ID = 2984412196;
+  final classType = "request";
+  final ID = 1038768899;
+  var id;
+  bool unsave;
+
+  SaveRingtone({required this.id, required this.unsave});
+
+  static SaveRingtone fromReader(BinaryReader reader) {
+    var len;
+    var id = reader.tgReadObject();
+    var unsave = reader.tgReadBool();
+    return SaveRingtone(id: id, unsave: unsave);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1038768899, 4),
+      (this.id.getBytes() as List<int>),
+      [this.unsave == true ? 0xb5757299 : 0x379779bc],
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SaveRingtone{ID: $ID, id: $id, unsave: $unsave}';
+  }
+}
+
+class UploadRingtone extends BaseRequest {
+  static const CONSTRUCTOR_ID = 2199552930;
+  static const SUBCLASS_OF_ID = 555739168;
+  final classType = "request";
+  final ID = 2199552930;
+  var file;
+  String fileName;
+  String mimeType;
+
+  UploadRingtone(
+      {required this.file, required this.fileName, required this.mimeType});
+
+  static UploadRingtone fromReader(BinaryReader reader) {
+    var len;
+    var file = reader.tgReadObject();
+    var fileName = reader.tgReadString();
+    var mimeType = reader.tgReadString();
+    return UploadRingtone(file: file, fileName: fileName, mimeType: mimeType);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2199552930, 4),
+      (this.file.getBytes() as List<int>),
+      serializeBytes(this.fileName),
+      serializeBytes(this.mimeType),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'UploadRingtone{ID: $ID, file: $file, fileName: $fileName, mimeType: $mimeType}';
   }
 }

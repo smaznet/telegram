@@ -4,14 +4,17 @@ import '../../extensions/binary_reader.dart';
 import '../base_contructor.dart';
 
 class PaymentForm extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 378828315;
+  static const CONSTRUCTOR_ID = 2954050359;
   static const SUBCLASS_OF_ID = 2689089305;
   final classType = "constructor";
-  final ID = 378828315;
+  final ID = 2954050359;
   bool? canSaveCredentials;
   bool? passwordMissing;
   BigInt formId;
   BigInt botId;
+  String title;
+  String description;
+  var photo;
   var invoice;
   BigInt providerId;
   String url;
@@ -26,6 +29,9 @@ class PaymentForm extends BaseConstructor {
       required this.passwordMissing,
       required this.formId,
       required this.botId,
+      required this.title,
+      required this.description,
+      required this.photo,
       required this.invoice,
       required this.providerId,
       required this.url,
@@ -42,6 +48,14 @@ class PaymentForm extends BaseConstructor {
     final passwordMissing = (flags & 8) == 8;
     var formId = reader.readLong();
     var botId = reader.readLong();
+    var title = reader.tgReadString();
+    var description = reader.tgReadString();
+    var photo;
+    if ((flags & 32) == 32) {
+      photo = reader.tgReadObject();
+    } else {
+      photo = null;
+    }
     var invoice = reader.tgReadObject();
     var providerId = reader.readLong();
     var url = reader.tgReadString();
@@ -81,6 +95,9 @@ class PaymentForm extends BaseConstructor {
         passwordMissing: passwordMissing,
         formId: formId,
         botId: botId,
+        title: title,
+        description: description,
+        photo: photo,
         invoice: invoice,
         providerId: providerId,
         url: url,
@@ -94,10 +111,17 @@ class PaymentForm extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(378828315, 4),
+      readBufferFromBigInt(2954050359, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.formId, 8, little: true, signed: true),
       readBufferFromBigInt(this.botId, 8, little: true, signed: true),
+      serializeBytes(this.title),
+      serializeBytes(this.description),
+      (this.photo == null || this.photo == false)
+          ? List<int>.empty()
+          : [(this.photo.getBytes() as List<int>)]
+              .expand((element) => element)
+              .toList(),
       (this.invoice.getBytes() as List<int>),
       readBufferFromBigInt(this.providerId, 8, little: true, signed: true),
       serializeBytes(this.url),
@@ -142,7 +166,7 @@ class PaymentForm extends BaseConstructor {
 
   @override
   String toString() {
-    return 'PaymentForm{ID: $ID, canSaveCredentials: $canSaveCredentials, passwordMissing: $passwordMissing, formId: $formId, botId: $botId, invoice: $invoice, providerId: $providerId, url: $url, nativeProvider: $nativeProvider, nativeParams: $nativeParams, savedInfo: $savedInfo, savedCredentials: $savedCredentials, users: $users}';
+    return 'PaymentForm{ID: $ID, canSaveCredentials: $canSaveCredentials, passwordMissing: $passwordMissing, formId: $formId, botId: $botId, title: $title, description: $description, photo: $photo, invoice: $invoice, providerId: $providerId, url: $url, nativeProvider: $nativeProvider, nativeParams: $nativeParams, savedInfo: $savedInfo, savedCredentials: $savedCredentials, users: $users}';
   }
 }
 
@@ -557,5 +581,44 @@ class BankCardData extends BaseConstructor {
   @override
   String toString() {
     return 'BankCardData{ID: $ID, title: $title, openUrls: $openUrls}';
+  }
+}
+
+class ExportedInvoice extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2932919257;
+  static const SUBCLASS_OF_ID = 907039794;
+  final classType = "constructor";
+  final ID = 2932919257;
+  String url;
+
+  ExportedInvoice({required this.url});
+
+  static ExportedInvoice fromReader(BinaryReader reader) {
+    var len;
+    var url = reader.tgReadString();
+    return ExportedInvoice(url: url);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2932919257, 4),
+      serializeBytes(this.url),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ExportedInvoice{ID: $ID, url: $url}';
   }
 }

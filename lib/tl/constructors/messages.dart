@@ -3655,18 +3655,20 @@ class PeerSettings extends BaseConstructor {
 }
 
 class MessageReactionsList extends BaseConstructor {
-  static const CONSTRUCTOR_ID = 2741408316;
+  static const CONSTRUCTOR_ID = 834488621;
   static const SUBCLASS_OF_ID = 1627186662;
   final classType = "constructor";
-  final ID = 2741408316;
+  final ID = 834488621;
   int count;
   List<dynamic> reactions;
+  List<dynamic> chats;
   List<dynamic> users;
   String? nextOffset;
 
   MessageReactionsList(
       {required this.count,
       required this.reactions,
+      required this.chats,
       required this.users,
       required this.nextOffset});
 
@@ -3680,6 +3682,13 @@ class MessageReactionsList extends BaseConstructor {
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       reactions.add(reader.tgReadObject());
+    }
+    var _vectorchats = reader.readInt();
+    if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> chats = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
@@ -3697,6 +3706,7 @@ class MessageReactionsList extends BaseConstructor {
     return MessageReactionsList(
         count: count,
         reactions: reactions,
+        chats: chats,
         users: users,
         nextOffset: nextOffset);
   }
@@ -3704,7 +3714,7 @@ class MessageReactionsList extends BaseConstructor {
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(2741408316, 4),
+      readBufferFromBigInt(834488621, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.count, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
@@ -3712,6 +3722,12 @@ class MessageReactionsList extends BaseConstructor {
           little: true, signed: true),
       this
           .reactions!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      this
+          .chats!
           .map((x) => (x.getBytes() as List<int>))
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
@@ -3740,7 +3756,7 @@ class MessageReactionsList extends BaseConstructor {
 
   @override
   String toString() {
-    return 'MessageReactionsList{ID: $ID, count: $count, reactions: $reactions, users: $users, nextOffset: $nextOffset}';
+    return 'MessageReactionsList{ID: $ID, count: $count, reactions: $reactions, chats: $chats, users: $users, nextOffset: $nextOffset}';
   }
 }
 
@@ -3906,5 +3922,55 @@ class TranslateResultText extends BaseConstructor {
   @override
   String toString() {
     return 'TranslateResultText{ID: $ID, text: $text}';
+  }
+}
+
+class TranscribedAudio extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 2473929810;
+  static const SUBCLASS_OF_ID = 565332278;
+  final classType = "constructor";
+  final ID = 2473929810;
+  bool? pending;
+  BigInt transcriptionId;
+  String text;
+
+  TranscribedAudio(
+      {required this.pending,
+      required this.transcriptionId,
+      required this.text});
+
+  static TranscribedAudio fromReader(BinaryReader reader) {
+    var len;
+    final flags = reader.readInt();
+    final pending = (flags & 1) == 1;
+    var transcriptionId = reader.readLong();
+    var text = reader.tgReadString();
+    return TranscribedAudio(
+        pending: pending, transcriptionId: transcriptionId, text: text);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(2473929810, 4),
+      [0, 0, 0, 0],
+      readBufferFromBigInt(this.transcriptionId, 8, little: true, signed: true),
+      serializeBytes(this.text),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'TranscribedAudio{ID: $ID, pending: $pending, transcriptionId: $transcriptionId, text: $text}';
   }
 }

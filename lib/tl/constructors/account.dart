@@ -1138,3 +1138,168 @@ class ResetPasswordOk extends BaseConstructor {
     return 'ResetPasswordOk{ID: $ID, }';
   }
 }
+
+class SavedRingtonesNotModified extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 4227262641;
+  static const SUBCLASS_OF_ID = 666683742;
+  final classType = "constructor";
+  final ID = 4227262641;
+
+  SavedRingtonesNotModified();
+
+  static SavedRingtonesNotModified fromReader(BinaryReader reader) {
+    var len;
+    return SavedRingtonesNotModified();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(4227262641, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SavedRingtonesNotModified{ID: $ID, }';
+  }
+}
+
+class SavedRingtones extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3253284037;
+  static const SUBCLASS_OF_ID = 666683742;
+  final classType = "constructor";
+  final ID = 3253284037;
+  BigInt hash;
+  List<dynamic> ringtones;
+
+  SavedRingtones({required this.hash, required this.ringtones});
+
+  static SavedRingtones fromReader(BinaryReader reader) {
+    var len;
+    var hash = reader.readLong();
+    var _vectorringtones = reader.readInt();
+    if (_vectorringtones != 481674261) throw Exception('Wrong vectorId');
+    List<dynamic> ringtones = [];
+    len = reader.readInt();
+    for (var i = 0; i < len; i++) {
+      ringtones.add(reader.tgReadObject());
+    }
+    return SavedRingtones(hash: hash, ringtones: ringtones);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3253284037, 4),
+      readBufferFromBigInt(this.hash, 8, little: true, signed: true),
+      readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
+      readBufferFromBigInt(this.ringtones!.length, 4,
+          little: true, signed: true),
+      this
+          .ringtones!
+          .map((x) => (x.getBytes() as List<int>))
+          .expand((element) => element),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SavedRingtones{ID: $ID, hash: $hash, ringtones: $ringtones}';
+  }
+}
+
+class SavedRingtone extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 3072737133;
+  static const SUBCLASS_OF_ID = 2984412196;
+  final classType = "constructor";
+  final ID = 3072737133;
+
+  SavedRingtone();
+
+  static SavedRingtone fromReader(BinaryReader reader) {
+    var len;
+    return SavedRingtone();
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3072737133, 4),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SavedRingtone{ID: $ID, }';
+  }
+}
+
+class SavedRingtoneConverted extends BaseConstructor {
+  static const CONSTRUCTOR_ID = 523271863;
+  static const SUBCLASS_OF_ID = 2984412196;
+  final classType = "constructor";
+  final ID = 523271863;
+  var document;
+
+  SavedRingtoneConverted({required this.document});
+
+  static SavedRingtoneConverted fromReader(BinaryReader reader) {
+    var len;
+    var document = reader.tgReadObject();
+    return SavedRingtoneConverted(document: document);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(523271863, 4),
+      (this.document.getBytes() as List<int>),
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'SavedRingtoneConverted{ID: $ID, document: $document}';
+  }
+}

@@ -1391,26 +1391,32 @@ class ReadMessageContents extends BaseRequest {
 }
 
 class DeleteHistory extends BaseRequest {
-  static const CONSTRUCTOR_ID = 2939592002;
-  static const SUBCLASS_OF_ID = 4122188204;
+  static const CONSTRUCTOR_ID = 2611648071;
+  static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
-  final ID = 2939592002;
+  final ID = 2611648071;
+  bool? forEveryone;
   var channel;
   int maxId;
 
-  DeleteHistory({required this.channel, required this.maxId});
+  DeleteHistory(
+      {required this.forEveryone, required this.channel, required this.maxId});
 
   static DeleteHistory fromReader(BinaryReader reader) {
     var len;
+    final flags = reader.readInt();
+    final forEveryone = (flags & 1) == 1;
     var channel = reader.tgReadObject();
     var maxId = reader.readInt();
-    return DeleteHistory(channel: channel, maxId: maxId);
+    return DeleteHistory(
+        forEveryone: forEveryone, channel: channel, maxId: maxId);
   }
 
   @override
   List<int> getBytes() {
     return [
-      readBufferFromBigInt(2939592002, 4),
+      readBufferFromBigInt(2611648071, 4),
+      [0, 0, 0, 0],
       (this.channel.getBytes() as List<int>),
       readBufferFromBigInt(this.maxId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -1433,7 +1439,7 @@ class DeleteHistory extends BaseRequest {
 
   @override
   String toString() {
-    return 'DeleteHistory{ID: $ID, channel: $channel, maxId: $maxId}';
+    return 'DeleteHistory{ID: $ID, forEveryone: $forEveryone, channel: $channel, maxId: $maxId}';
   }
 }
 
@@ -2029,5 +2035,99 @@ class DeleteParticipantHistory extends BaseRequest {
   @override
   String toString() {
     return 'DeleteParticipantHistory{ID: $ID, channel: $channel, participant: $participant}';
+  }
+}
+
+class ToggleJoinToSend extends BaseRequest {
+  static const CONSTRUCTOR_ID = 3838547328;
+  static const SUBCLASS_OF_ID = 2331323052;
+  final classType = "request";
+  final ID = 3838547328;
+  var channel;
+  bool enabled;
+
+  ToggleJoinToSend({required this.channel, required this.enabled});
+
+  static ToggleJoinToSend fromReader(BinaryReader reader) {
+    var len;
+    var channel = reader.tgReadObject();
+    var enabled = reader.tgReadBool();
+    return ToggleJoinToSend(channel: channel, enabled: enabled);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(3838547328, 4),
+      (this.channel.getBytes() as List<int>),
+      [this.enabled == true ? 0xb5757299 : 0x379779bc],
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ToggleJoinToSend{ID: $ID, channel: $channel, enabled: $enabled}';
+  }
+}
+
+class ToggleJoinRequest extends BaseRequest {
+  static const CONSTRUCTOR_ID = 1277789622;
+  static const SUBCLASS_OF_ID = 2331323052;
+  final classType = "request";
+  final ID = 1277789622;
+  var channel;
+  bool enabled;
+
+  ToggleJoinRequest({required this.channel, required this.enabled});
+
+  static ToggleJoinRequest fromReader(BinaryReader reader) {
+    var len;
+    var channel = reader.tgReadObject();
+    var enabled = reader.tgReadBool();
+    return ToggleJoinRequest(channel: channel, enabled: enabled);
+  }
+
+  @override
+  List<int> getBytes() {
+    return [
+      readBufferFromBigInt(1277789622, 4),
+      (this.channel.getBytes() as List<int>),
+      [this.enabled == true ? 0xb5757299 : 0x379779bc],
+    ].expand((element) => element).toList();
+  }
+
+  @override
+  readResult(BinaryReader reader) {
+    return reader.tgReadObject();
+  }
+
+  @override
+  int getConstId() {
+    return CONSTRUCTOR_ID;
+  }
+
+  @override
+  int getSubId() {
+    return SUBCLASS_OF_ID;
+  }
+
+  @override
+  String toString() {
+    return 'ToggleJoinRequest{ID: $ID, channel: $channel, enabled: $enabled}';
   }
 }

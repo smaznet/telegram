@@ -1,14 +1,17 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/messages.dart' as messages_ns;
+import '../constructors/constructors.dart';
 
-class GetMessages extends BaseRequest {
+class GetMessages extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1673946374;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 1673946374;
-  List<dynamic> id;
+  List<InputMessageBase> id;
 
   GetMessages({required this.id});
 
@@ -16,7 +19,7 @@ class GetMessages extends BaseRequest {
     var len;
     var _vectorid = reader.readInt();
     if (_vectorid != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> id = [];
+    List<InputMessageBase> id = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       id.add(reader.tgReadObject());
@@ -29,17 +32,16 @@ class GetMessages extends BaseRequest {
     return [
       readBufferFromBigInt(1673946374, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => (x.getBytes() as List<int>))
+          .id.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -58,7 +60,7 @@ class GetMessages extends BaseRequest {
   }
 }
 
-class GetDialogs extends BaseRequest {
+class GetDialogs extends BaseRequest<messages_ns.DialogsBase, dynamic> {
   static const CONSTRUCTOR_ID = 2700397391;
   static const SUBCLASS_OF_ID = 236671726;
   final classType = "request";
@@ -67,13 +69,13 @@ class GetDialogs extends BaseRequest {
   int? folderId;
   int offsetDate;
   int offsetId;
-  var offsetPeer;
+  InputPeerBase offsetPeer;
   int limit;
   BigInt hash;
 
   GetDialogs(
-      {required this.excludePinned,
-      required this.folderId,
+      {this.excludePinned,
+      this.folderId,
       required this.offsetDate,
       required this.offsetId,
       required this.offsetPeer,
@@ -81,7 +83,6 @@ class GetDialogs extends BaseRequest {
       required this.hash});
 
   static GetDialogs fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final excludePinned = (flags & 1) == 1;
     var folderId;
@@ -117,7 +118,7 @@ class GetDialogs extends BaseRequest {
               .toList(),
       readBufferFromBigInt(this.offsetDate, 4, little: true, signed: true),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
-      (this.offsetPeer.getBytes() as List<int>),
+      (this.offsetPeer.getBytes()),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
       readBufferFromBigInt(this.hash, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -125,7 +126,7 @@ class GetDialogs extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.DialogsBase, dynamic>();
   }
 
   @override
@@ -144,12 +145,12 @@ class GetDialogs extends BaseRequest {
   }
 }
 
-class GetHistory extends BaseRequest {
+class GetHistory extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1143203525;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 1143203525;
-  var peer;
+  InputPeerBase peer;
   int offsetId;
   int offsetDate;
   int addOffset;
@@ -169,7 +170,6 @@ class GetHistory extends BaseRequest {
       required this.hash});
 
   static GetHistory fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var offsetId = reader.readInt();
     var offsetDate = reader.readInt();
@@ -193,7 +193,7 @@ class GetHistory extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1143203525, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
       readBufferFromBigInt(this.offsetDate, 4, little: true, signed: true),
       readBufferFromBigInt(this.addOffset, 4, little: true, signed: true),
@@ -206,7 +206,7 @@ class GetHistory extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -225,16 +225,16 @@ class GetHistory extends BaseRequest {
   }
 }
 
-class Search extends BaseRequest {
+class Search extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2700978018;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 2700978018;
-  var peer;
+  InputPeerBase peer;
   String q;
-  var fromId;
+  InputPeerBase? fromId;
   int? topMsgId;
-  var filter;
+  MessagesFilterBase filter;
   int minDate;
   int maxDate;
   int offsetId;
@@ -247,8 +247,8 @@ class Search extends BaseRequest {
   Search(
       {required this.peer,
       required this.q,
-      required this.fromId,
-      required this.topMsgId,
+      this.fromId,
+      this.topMsgId,
       required this.filter,
       required this.minDate,
       required this.maxDate,
@@ -260,7 +260,6 @@ class Search extends BaseRequest {
       required this.hash});
 
   static Search fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var peer = reader.tgReadObject();
     var q = reader.tgReadString();
@@ -306,11 +305,11 @@ class Search extends BaseRequest {
     return [
       readBufferFromBigInt(2700978018, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       serializeBytes(this.q),
       (this.fromId == null || this.fromId == false)
           ? List<int>.empty()
-          : [(this.fromId.getBytes() as List<int>)]
+          : [(this.fromId!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.topMsgId == null || this.topMsgId == false)
@@ -318,7 +317,7 @@ class Search extends BaseRequest {
           : [readBufferFromBigInt(this.topMsgId, 4, little: true, signed: true)]
               .expand((element) => element)
               .toList(),
-      (this.filter.getBytes() as List<int>),
+      (this.filter.getBytes()),
       readBufferFromBigInt(this.minDate, 4, little: true, signed: true),
       readBufferFromBigInt(this.maxDate, 4, little: true, signed: true),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
@@ -332,7 +331,7 @@ class Search extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -351,18 +350,17 @@ class Search extends BaseRequest {
   }
 }
 
-class ReadHistory extends BaseRequest {
+class ReadHistory extends BaseRequest<messages_ns.AffectedMessages, dynamic> {
   static const CONSTRUCTOR_ID = 238054714;
   static const SUBCLASS_OF_ID = 3469983854;
   final classType = "request";
   final ID = 238054714;
-  var peer;
+  InputPeerBase peer;
   int maxId;
 
   ReadHistory({required this.peer, required this.maxId});
 
   static ReadHistory fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var maxId = reader.readInt();
     return ReadHistory(peer: peer, maxId: maxId);
@@ -372,14 +370,14 @@ class ReadHistory extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(238054714, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.maxId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AffectedMessages, dynamic>();
   }
 
   @override
@@ -398,28 +396,27 @@ class ReadHistory extends BaseRequest {
   }
 }
 
-class DeleteHistory extends BaseRequest {
+class DeleteHistory extends BaseRequest<messages_ns.AffectedHistory, dynamic> {
   static const CONSTRUCTOR_ID = 2962199082;
   static const SUBCLASS_OF_ID = 743031062;
   final classType = "request";
   final ID = 2962199082;
   bool? justClear;
   bool? revoke;
-  var peer;
+  InputPeerBase peer;
   int maxId;
   int? minDate;
   int? maxDate;
 
   DeleteHistory(
-      {required this.justClear,
-      required this.revoke,
+      {this.justClear,
+      this.revoke,
       required this.peer,
       required this.maxId,
-      required this.minDate,
-      required this.maxDate});
+      this.minDate,
+      this.maxDate});
 
   static DeleteHistory fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final justClear = (flags & 1) == 1;
     final revoke = (flags & 2) == 2;
@@ -451,7 +448,7 @@ class DeleteHistory extends BaseRequest {
     return [
       readBufferFromBigInt(2962199082, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.maxId, 4, little: true, signed: true),
       (this.minDate == null || this.minDate == false)
           ? List<int>.empty()
@@ -468,7 +465,7 @@ class DeleteHistory extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AffectedHistory, dynamic>();
   }
 
   @override
@@ -487,7 +484,8 @@ class DeleteHistory extends BaseRequest {
   }
 }
 
-class DeleteMessages extends BaseRequest {
+class DeleteMessages
+    extends BaseRequest<messages_ns.AffectedMessages, dynamic> {
   static const CONSTRUCTOR_ID = 3851326930;
   static const SUBCLASS_OF_ID = 3469983854;
   final classType = "request";
@@ -495,7 +493,7 @@ class DeleteMessages extends BaseRequest {
   bool? revoke;
   List<int> id;
 
-  DeleteMessages({required this.revoke, required this.id});
+  DeleteMessages({this.revoke, required this.id});
 
   static DeleteMessages fromReader(BinaryReader reader) {
     var len;
@@ -517,17 +515,16 @@ class DeleteMessages extends BaseRequest {
       readBufferFromBigInt(3851326930, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AffectedMessages, dynamic>();
   }
 
   @override
@@ -546,7 +543,8 @@ class DeleteMessages extends BaseRequest {
   }
 }
 
-class ReceivedMessages extends BaseRequest {
+class ReceivedMessages
+    extends BaseRequest<List<ReceivedNotifyMessage>, ReceivedNotifyMessage> {
   static const CONSTRUCTOR_ID = 94983360;
   static const SUBCLASS_OF_ID = 2238052503;
   final classType = "request";
@@ -556,7 +554,6 @@ class ReceivedMessages extends BaseRequest {
   ReceivedMessages({required this.maxId});
 
   static ReceivedMessages fromReader(BinaryReader reader) {
-    var len;
     var maxId = reader.readInt();
     return ReceivedMessages(maxId: maxId);
   }
@@ -571,7 +568,8 @@ class ReceivedMessages extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader
+        .tgReadObject<List<ReceivedNotifyMessage>, ReceivedNotifyMessage>();
   }
 
   @override
@@ -590,19 +588,18 @@ class ReceivedMessages extends BaseRequest {
   }
 }
 
-class SetTyping extends BaseRequest {
+class SetTyping extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1486110434;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 1486110434;
-  var peer;
+  InputPeerBase peer;
   int? topMsgId;
-  var action;
+  SendMessageActionBase action;
 
-  SetTyping({required this.peer, required this.topMsgId, required this.action});
+  SetTyping({required this.peer, this.topMsgId, required this.action});
 
   static SetTyping fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var peer = reader.tgReadObject();
     var topMsgId;
@@ -620,19 +617,19 @@ class SetTyping extends BaseRequest {
     return [
       readBufferFromBigInt(1486110434, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.topMsgId == null || this.topMsgId == false)
           ? List<int>.empty()
           : [readBufferFromBigInt(this.topMsgId, 4, little: true, signed: true)]
               .expand((element) => element)
               .toList(),
-      (this.action.getBytes() as List<int>),
+      (this.action.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -651,7 +648,7 @@ class SetTyping extends BaseRequest {
   }
 }
 
-class SendMessage extends BaseRequest {
+class SendMessage extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 228423076;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -661,29 +658,29 @@ class SendMessage extends BaseRequest {
   bool? background;
   bool? clearDraft;
   bool? noforwards;
-  var peer;
+  InputPeerBase peer;
   int? replyToMsgId;
   String message;
   BigInt randomId;
-  var replyMarkup;
-  List<dynamic>? entities;
+  ReplyMarkupBase? replyMarkup;
+  List<MessageEntityBase>? entities;
   int? scheduleDate;
-  var sendAs;
+  InputPeerBase? sendAs;
 
   SendMessage(
-      {required this.noWebpage,
-      required this.silent,
-      required this.background,
-      required this.clearDraft,
-      required this.noforwards,
+      {this.noWebpage,
+      this.silent,
+      this.background,
+      this.clearDraft,
+      this.noforwards,
       required this.peer,
-      required this.replyToMsgId,
+      this.replyToMsgId,
       required this.message,
       required this.randomId,
-      required this.replyMarkup,
-      required this.entities,
-      required this.scheduleDate,
-      required this.sendAs});
+      this.replyMarkup,
+      this.entities,
+      this.scheduleDate,
+      this.sendAs});
 
   static SendMessage fromReader(BinaryReader reader) {
     var len;
@@ -712,7 +709,7 @@ class SendMessage extends BaseRequest {
     if ((flags & 8) == 8) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -753,7 +750,7 @@ class SendMessage extends BaseRequest {
     return [
       readBufferFromBigInt(228423076, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.replyToMsgId == null || this.replyToMsgId == false)
           ? List<int>.empty()
           : [
@@ -764,7 +761,7 @@ class SendMessage extends BaseRequest {
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.entities == null || this.entities == false)
@@ -775,7 +772,7 @@ class SendMessage extends BaseRequest {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.scheduleDate == null || this.scheduleDate == false)
@@ -786,7 +783,7 @@ class SendMessage extends BaseRequest {
             ].expand((element) => element).toList(),
       (this.sendAs == null || this.sendAs == false)
           ? List<int>.empty()
-          : [(this.sendAs.getBytes() as List<int>)]
+          : [(this.sendAs!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -794,7 +791,7 @@ class SendMessage extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -813,7 +810,7 @@ class SendMessage extends BaseRequest {
   }
 }
 
-class SendMedia extends BaseRequest {
+class SendMedia extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3797940448;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -822,30 +819,30 @@ class SendMedia extends BaseRequest {
   bool? background;
   bool? clearDraft;
   bool? noforwards;
-  var peer;
+  InputPeerBase peer;
   int? replyToMsgId;
-  var media;
+  InputMediaBase media;
   String message;
   BigInt randomId;
-  var replyMarkup;
-  List<dynamic>? entities;
+  ReplyMarkupBase? replyMarkup;
+  List<MessageEntityBase>? entities;
   int? scheduleDate;
-  var sendAs;
+  InputPeerBase? sendAs;
 
   SendMedia(
-      {required this.silent,
-      required this.background,
-      required this.clearDraft,
-      required this.noforwards,
+      {this.silent,
+      this.background,
+      this.clearDraft,
+      this.noforwards,
       required this.peer,
-      required this.replyToMsgId,
+      this.replyToMsgId,
       required this.media,
       required this.message,
       required this.randomId,
-      required this.replyMarkup,
-      required this.entities,
-      required this.scheduleDate,
-      required this.sendAs});
+      this.replyMarkup,
+      this.entities,
+      this.scheduleDate,
+      this.sendAs});
 
   static SendMedia fromReader(BinaryReader reader) {
     var len;
@@ -874,7 +871,7 @@ class SendMedia extends BaseRequest {
     if ((flags & 8) == 8) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -915,19 +912,19 @@ class SendMedia extends BaseRequest {
     return [
       readBufferFromBigInt(3797940448, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.replyToMsgId == null || this.replyToMsgId == false)
           ? List<int>.empty()
           : [
               readBufferFromBigInt(this.replyToMsgId, 4,
                   little: true, signed: true)
             ].expand((element) => element).toList(),
-      (this.media.getBytes() as List<int>),
+      (this.media.getBytes()),
       serializeBytes(this.message),
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.entities == null || this.entities == false)
@@ -938,7 +935,7 @@ class SendMedia extends BaseRequest {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.scheduleDate == null || this.scheduleDate == false)
@@ -949,7 +946,7 @@ class SendMedia extends BaseRequest {
             ].expand((element) => element).toList(),
       (this.sendAs == null || this.sendAs == false)
           ? List<int>.empty()
-          : [(this.sendAs.getBytes() as List<int>)]
+          : [(this.sendAs!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -957,7 +954,7 @@ class SendMedia extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -976,7 +973,7 @@ class SendMedia extends BaseRequest {
   }
 }
 
-class ForwardMessages extends BaseRequest {
+class ForwardMessages extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3425708299;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -987,26 +984,26 @@ class ForwardMessages extends BaseRequest {
   bool? dropAuthor;
   bool? dropMediaCaptions;
   bool? noforwards;
-  var fromPeer;
+  InputPeerBase fromPeer;
   List<int> id;
   List<BigInt> randomId;
-  var toPeer;
+  InputPeerBase toPeer;
   int? scheduleDate;
-  var sendAs;
+  InputPeerBase? sendAs;
 
   ForwardMessages(
-      {required this.silent,
-      required this.background,
-      required this.withMyScore,
-      required this.dropAuthor,
-      required this.dropMediaCaptions,
-      required this.noforwards,
+      {this.silent,
+      this.background,
+      this.withMyScore,
+      this.dropAuthor,
+      this.dropMediaCaptions,
+      this.noforwards,
       required this.fromPeer,
       required this.id,
       required this.randomId,
       required this.toPeer,
-      required this.scheduleDate,
-      required this.sendAs});
+      this.scheduleDate,
+      this.sendAs});
 
   static ForwardMessages fromReader(BinaryReader reader) {
     var len;
@@ -1065,21 +1062,19 @@ class ForwardMessages extends BaseRequest {
     return [
       readBufferFromBigInt(3425708299, 4),
       [0, 0, 0, 0],
-      (this.fromPeer.getBytes() as List<int>),
+      (this.fromPeer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.randomId!.length, 4,
+      readBufferFromBigInt(this.randomId.length, 4,
           little: true, signed: true),
       this
-          .randomId!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .randomId.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
-      (this.toPeer.getBytes() as List<int>),
+      (this.toPeer.getBytes()),
       (this.scheduleDate == null || this.scheduleDate == false)
           ? List<int>.empty()
           : [
@@ -1088,7 +1083,7 @@ class ForwardMessages extends BaseRequest {
             ].expand((element) => element).toList(),
       (this.sendAs == null || this.sendAs == false)
           ? List<int>.empty()
-          : [(this.sendAs.getBytes() as List<int>)]
+          : [(this.sendAs!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -1096,7 +1091,7 @@ class ForwardMessages extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -1115,17 +1110,16 @@ class ForwardMessages extends BaseRequest {
   }
 }
 
-class ReportSpam extends BaseRequest {
+class ReportSpam extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3474297563;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3474297563;
-  var peer;
+  InputPeerBase peer;
 
   ReportSpam({required this.peer});
 
   static ReportSpam fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return ReportSpam(peer: peer);
   }
@@ -1134,13 +1128,13 @@ class ReportSpam extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3474297563, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1159,17 +1153,16 @@ class ReportSpam extends BaseRequest {
   }
 }
 
-class GetPeerSettings extends BaseRequest {
+class GetPeerSettings extends BaseRequest<messages_ns.PeerSettings, dynamic> {
   static const CONSTRUCTOR_ID = 4024018594;
   static const SUBCLASS_OF_ID = 1705179041;
   final classType = "request";
   final ID = 4024018594;
-  var peer;
+  InputPeerBase peer;
 
   GetPeerSettings({required this.peer});
 
   static GetPeerSettings fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return GetPeerSettings(peer: peer);
   }
@@ -1178,13 +1171,13 @@ class GetPeerSettings extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4024018594, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.PeerSettings, dynamic>();
   }
 
   @override
@@ -1203,14 +1196,14 @@ class GetPeerSettings extends BaseRequest {
   }
 }
 
-class Report extends BaseRequest {
+class Report extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2303961934;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2303961934;
-  var peer;
+  InputPeerBase peer;
   List<int> id;
-  var reason;
+  ReportReasonBase reason;
   String message;
 
   Report(
@@ -1238,21 +1231,20 @@ class Report extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2303961934, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
-      (this.reason.getBytes() as List<int>),
+      (this.reason.getBytes()),
       serializeBytes(this.message),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1271,7 +1263,7 @@ class Report extends BaseRequest {
   }
 }
 
-class GetChats extends BaseRequest {
+class GetChats extends BaseRequest<messages_ns.ChatsBase, dynamic> {
   static const CONSTRUCTOR_ID = 1240027791;
   static const SUBCLASS_OF_ID = 2580925204;
   final classType = "request";
@@ -1297,17 +1289,16 @@ class GetChats extends BaseRequest {
     return [
       readBufferFromBigInt(1240027791, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ChatsBase, dynamic>();
   }
 
   @override
@@ -1326,7 +1317,7 @@ class GetChats extends BaseRequest {
   }
 }
 
-class GetFullChat extends BaseRequest {
+class GetFullChat extends BaseRequest<messages_ns.ChatFull, dynamic> {
   static const CONSTRUCTOR_ID = 2930772788;
   static const SUBCLASS_OF_ID = 576344329;
   final classType = "request";
@@ -1336,7 +1327,6 @@ class GetFullChat extends BaseRequest {
   GetFullChat({required this.chatId});
 
   static GetFullChat fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     return GetFullChat(chatId: chatId);
   }
@@ -1351,7 +1341,7 @@ class GetFullChat extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ChatFull, dynamic>();
   }
 
   @override
@@ -1370,7 +1360,7 @@ class GetFullChat extends BaseRequest {
   }
 }
 
-class EditChatTitle extends BaseRequest {
+class EditChatTitle extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1937260541;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -1381,7 +1371,6 @@ class EditChatTitle extends BaseRequest {
   EditChatTitle({required this.chatId, required this.title});
 
   static EditChatTitle fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var title = reader.tgReadString();
     return EditChatTitle(chatId: chatId, title: title);
@@ -1398,7 +1387,7 @@ class EditChatTitle extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -1417,18 +1406,17 @@ class EditChatTitle extends BaseRequest {
   }
 }
 
-class EditChatPhoto extends BaseRequest {
+class EditChatPhoto extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 903730804;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 903730804;
   BigInt chatId;
-  var photo;
+  InputChatPhotoBase photo;
 
   EditChatPhoto({required this.chatId, required this.photo});
 
   static EditChatPhoto fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var photo = reader.tgReadObject();
     return EditChatPhoto(chatId: chatId, photo: photo);
@@ -1439,13 +1427,13 @@ class EditChatPhoto extends BaseRequest {
     return [
       readBufferFromBigInt(903730804, 4),
       readBufferFromBigInt(this.chatId, 8, little: true, signed: true),
-      (this.photo.getBytes() as List<int>),
+      (this.photo.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -1464,20 +1452,19 @@ class EditChatPhoto extends BaseRequest {
   }
 }
 
-class AddChatUser extends BaseRequest {
+class AddChatUser extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 4064760803;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 4064760803;
   BigInt chatId;
-  var userId;
+  InputUserBase userId;
   int fwdLimit;
 
   AddChatUser(
       {required this.chatId, required this.userId, required this.fwdLimit});
 
   static AddChatUser fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var userId = reader.tgReadObject();
     var fwdLimit = reader.readInt();
@@ -1489,14 +1476,14 @@ class AddChatUser extends BaseRequest {
     return [
       readBufferFromBigInt(4064760803, 4),
       readBufferFromBigInt(this.chatId, 8, little: true, signed: true),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
       readBufferFromBigInt(this.fwdLimit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -1515,22 +1502,19 @@ class AddChatUser extends BaseRequest {
   }
 }
 
-class DeleteChatUser extends BaseRequest {
+class DeleteChatUser extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2719505579;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 2719505579;
   bool? revokeHistory;
   BigInt chatId;
-  var userId;
+  InputUserBase userId;
 
   DeleteChatUser(
-      {required this.revokeHistory,
-      required this.chatId,
-      required this.userId});
+      {this.revokeHistory, required this.chatId, required this.userId});
 
   static DeleteChatUser fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final revokeHistory = (flags & 1) == 1;
     var chatId = reader.readLong();
@@ -1545,13 +1529,13 @@ class DeleteChatUser extends BaseRequest {
       readBufferFromBigInt(2719505579, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.chatId, 8, little: true, signed: true),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -1570,12 +1554,12 @@ class DeleteChatUser extends BaseRequest {
   }
 }
 
-class CreateChat extends BaseRequest {
+class CreateChat extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 164303470;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 164303470;
-  List<dynamic> users;
+  List<InputUserBase> users;
   String title;
 
   CreateChat({required this.users, required this.title});
@@ -1584,7 +1568,7 @@ class CreateChat extends BaseRequest {
     var len;
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<InputUserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -1598,10 +1582,9 @@ class CreateChat extends BaseRequest {
     return [
       readBufferFromBigInt(164303470, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
       serializeBytes(this.title),
     ].expand((element) => element).toList();
@@ -1609,7 +1592,7 @@ class CreateChat extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -1628,7 +1611,7 @@ class CreateChat extends BaseRequest {
   }
 }
 
-class GetDhConfig extends BaseRequest {
+class GetDhConfig extends BaseRequest<messages_ns.DhConfigBase, dynamic> {
   static const CONSTRUCTOR_ID = 651135312;
   static const SUBCLASS_OF_ID = 3834178955;
   final classType = "request";
@@ -1639,7 +1622,6 @@ class GetDhConfig extends BaseRequest {
   GetDhConfig({required this.version, required this.randomLength});
 
   static GetDhConfig fromReader(BinaryReader reader) {
-    var len;
     var version = reader.readInt();
     var randomLength = reader.readInt();
     return GetDhConfig(version: version, randomLength: randomLength);
@@ -1656,7 +1638,7 @@ class GetDhConfig extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.DhConfigBase, dynamic>();
   }
 
   @override
@@ -1675,12 +1657,12 @@ class GetDhConfig extends BaseRequest {
   }
 }
 
-class RequestEncryption extends BaseRequest {
+class RequestEncryption extends BaseRequest<EncryptedChatBase, dynamic> {
   static const CONSTRUCTOR_ID = 4132286275;
   static const SUBCLASS_OF_ID = 1831379834;
   final classType = "request";
   final ID = 4132286275;
-  var userId;
+  InputUserBase userId;
   int randomId;
   List<int> gA;
 
@@ -1688,7 +1670,6 @@ class RequestEncryption extends BaseRequest {
       {required this.userId, required this.randomId, required this.gA});
 
   static RequestEncryption fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.tgReadObject();
     var randomId = reader.readInt();
     var gA = reader.tgReadBytes();
@@ -1699,7 +1680,7 @@ class RequestEncryption extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4132286275, 4),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
       readBufferFromBigInt(this.randomId, 4, little: true, signed: true),
       serializeBytes(this.gA),
     ].expand((element) => element).toList();
@@ -1707,7 +1688,7 @@ class RequestEncryption extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<EncryptedChatBase, dynamic>();
   }
 
   @override
@@ -1726,12 +1707,12 @@ class RequestEncryption extends BaseRequest {
   }
 }
 
-class AcceptEncryption extends BaseRequest {
+class AcceptEncryption extends BaseRequest<EncryptedChatBase, dynamic> {
   static const CONSTRUCTOR_ID = 1035731989;
   static const SUBCLASS_OF_ID = 1831379834;
   final classType = "request";
   final ID = 1035731989;
-  var peer;
+  InputEncryptedChat peer;
   List<int> gB;
   BigInt keyFingerprint;
 
@@ -1739,7 +1720,6 @@ class AcceptEncryption extends BaseRequest {
       {required this.peer, required this.gB, required this.keyFingerprint});
 
   static AcceptEncryption fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var gB = reader.tgReadBytes();
     var keyFingerprint = reader.readLong();
@@ -1750,7 +1730,7 @@ class AcceptEncryption extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1035731989, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       serializeBytes(this.gB),
       readBufferFromBigInt(this.keyFingerprint, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -1758,7 +1738,7 @@ class AcceptEncryption extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<EncryptedChatBase, dynamic>();
   }
 
   @override
@@ -1777,7 +1757,7 @@ class AcceptEncryption extends BaseRequest {
   }
 }
 
-class DiscardEncryption extends BaseRequest {
+class DiscardEncryption extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 4086541984;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -1785,10 +1765,9 @@ class DiscardEncryption extends BaseRequest {
   bool? deleteHistory;
   int chatId;
 
-  DiscardEncryption({required this.deleteHistory, required this.chatId});
+  DiscardEncryption({this.deleteHistory, required this.chatId});
 
   static DiscardEncryption fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final deleteHistory = (flags & 1) == 1;
     var chatId = reader.readInt();
@@ -1806,7 +1785,7 @@ class DiscardEncryption extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1825,18 +1804,17 @@ class DiscardEncryption extends BaseRequest {
   }
 }
 
-class SetEncryptedTyping extends BaseRequest {
+class SetEncryptedTyping extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2031374829;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2031374829;
-  var peer;
+  InputEncryptedChat peer;
   bool typing;
 
   SetEncryptedTyping({required this.peer, required this.typing});
 
   static SetEncryptedTyping fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var typing = reader.tgReadBool();
     return SetEncryptedTyping(peer: peer, typing: typing);
@@ -1846,14 +1824,14 @@ class SetEncryptedTyping extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2031374829, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       [this.typing == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1872,18 +1850,17 @@ class SetEncryptedTyping extends BaseRequest {
   }
 }
 
-class ReadEncryptedHistory extends BaseRequest {
+class ReadEncryptedHistory extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2135648522;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2135648522;
-  var peer;
+  InputEncryptedChat peer;
   int maxDate;
 
   ReadEncryptedHistory({required this.peer, required this.maxDate});
 
   static ReadEncryptedHistory fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var maxDate = reader.readInt();
     return ReadEncryptedHistory(peer: peer, maxDate: maxDate);
@@ -1893,14 +1870,14 @@ class ReadEncryptedHistory extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2135648522, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.maxDate, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1919,24 +1896,24 @@ class ReadEncryptedHistory extends BaseRequest {
   }
 }
 
-class SendEncrypted extends BaseRequest {
+class SendEncrypted
+    extends BaseRequest<messages_ns.SentEncryptedMessageBase, dynamic> {
   static const CONSTRUCTOR_ID = 1157265941;
   static const SUBCLASS_OF_ID = 3382591056;
   final classType = "request";
   final ID = 1157265941;
   bool? silent;
-  var peer;
+  InputEncryptedChat peer;
   BigInt randomId;
   List<int> data;
 
   SendEncrypted(
-      {required this.silent,
+      {this.silent,
       required this.peer,
       required this.randomId,
       required this.data});
 
   static SendEncrypted fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final silent = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -1951,7 +1928,7 @@ class SendEncrypted extends BaseRequest {
     return [
       readBufferFromBigInt(1157265941, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
       serializeBytes(this.data),
     ].expand((element) => element).toList();
@@ -1959,7 +1936,7 @@ class SendEncrypted extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.SentEncryptedMessageBase, dynamic>();
   }
 
   @override
@@ -1978,26 +1955,26 @@ class SendEncrypted extends BaseRequest {
   }
 }
 
-class SendEncryptedFile extends BaseRequest {
+class SendEncryptedFile
+    extends BaseRequest<messages_ns.SentEncryptedMessageBase, dynamic> {
   static const CONSTRUCTOR_ID = 1431914525;
   static const SUBCLASS_OF_ID = 3382591056;
   final classType = "request";
   final ID = 1431914525;
   bool? silent;
-  var peer;
+  InputEncryptedChat peer;
   BigInt randomId;
   List<int> data;
-  var file;
+  InputEncryptedFileBase file;
 
   SendEncryptedFile(
-      {required this.silent,
+      {this.silent,
       required this.peer,
       required this.randomId,
       required this.data,
       required this.file});
 
   static SendEncryptedFile fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final silent = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -2013,16 +1990,16 @@ class SendEncryptedFile extends BaseRequest {
     return [
       readBufferFromBigInt(1431914525, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
       serializeBytes(this.data),
-      (this.file.getBytes() as List<int>),
+      (this.file.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.SentEncryptedMessageBase, dynamic>();
   }
 
   @override
@@ -2041,12 +2018,13 @@ class SendEncryptedFile extends BaseRequest {
   }
 }
 
-class SendEncryptedService extends BaseRequest {
+class SendEncryptedService
+    extends BaseRequest<messages_ns.SentEncryptedMessageBase, dynamic> {
   static const CONSTRUCTOR_ID = 852769188;
   static const SUBCLASS_OF_ID = 3382591056;
   final classType = "request";
   final ID = 852769188;
-  var peer;
+  InputEncryptedChat peer;
   BigInt randomId;
   List<int> data;
 
@@ -2054,7 +2032,6 @@ class SendEncryptedService extends BaseRequest {
       {required this.peer, required this.randomId, required this.data});
 
   static SendEncryptedService fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var randomId = reader.readLong();
     var data = reader.tgReadBytes();
@@ -2065,7 +2042,7 @@ class SendEncryptedService extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(852769188, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
       serializeBytes(this.data),
     ].expand((element) => element).toList();
@@ -2073,7 +2050,7 @@ class SendEncryptedService extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.SentEncryptedMessageBase, dynamic>();
   }
 
   @override
@@ -2092,7 +2069,7 @@ class SendEncryptedService extends BaseRequest {
   }
 }
 
-class ReceivedQueue extends BaseRequest {
+class ReceivedQueue extends BaseRequest<List<BigInt>, BigInt> {
   static const CONSTRUCTOR_ID = 1436924774;
   static const SUBCLASS_OF_ID = 2300109160;
   final classType = "request";
@@ -2102,7 +2079,6 @@ class ReceivedQueue extends BaseRequest {
   ReceivedQueue({required this.maxQts});
 
   static ReceivedQueue fromReader(BinaryReader reader) {
-    var len;
     var maxQts = reader.readInt();
     return ReceivedQueue(maxQts: maxQts);
   }
@@ -2142,17 +2118,16 @@ class ReceivedQueue extends BaseRequest {
   }
 }
 
-class ReportEncryptedSpam extends BaseRequest {
+class ReportEncryptedSpam extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1259113487;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 1259113487;
-  var peer;
+  InputEncryptedChat peer;
 
   ReportEncryptedSpam({required this.peer});
 
   static ReportEncryptedSpam fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return ReportEncryptedSpam(peer: peer);
   }
@@ -2161,13 +2136,13 @@ class ReportEncryptedSpam extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1259113487, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2186,7 +2161,8 @@ class ReportEncryptedSpam extends BaseRequest {
   }
 }
 
-class ReadMessageContents extends BaseRequest {
+class ReadMessageContents
+    extends BaseRequest<messages_ns.AffectedMessages, dynamic> {
   static const CONSTRUCTOR_ID = 916930423;
   static const SUBCLASS_OF_ID = 3469983854;
   final classType = "request";
@@ -2212,17 +2188,16 @@ class ReadMessageContents extends BaseRequest {
     return [
       readBufferFromBigInt(916930423, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AffectedMessages, dynamic>();
   }
 
   @override
@@ -2241,7 +2216,7 @@ class ReadMessageContents extends BaseRequest {
   }
 }
 
-class GetStickers extends BaseRequest {
+class GetStickers extends BaseRequest<messages_ns.StickersBase, dynamic> {
   static const CONSTRUCTOR_ID = 3584414625;
   static const SUBCLASS_OF_ID = 3611015646;
   final classType = "request";
@@ -2252,7 +2227,6 @@ class GetStickers extends BaseRequest {
   GetStickers({required this.emoticon, required this.hash});
 
   static GetStickers fromReader(BinaryReader reader) {
-    var len;
     var emoticon = reader.tgReadString();
     var hash = reader.readLong();
     return GetStickers(emoticon: emoticon, hash: hash);
@@ -2269,7 +2243,7 @@ class GetStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.StickersBase, dynamic>();
   }
 
   @override
@@ -2288,7 +2262,7 @@ class GetStickers extends BaseRequest {
   }
 }
 
-class GetAllStickers extends BaseRequest {
+class GetAllStickers extends BaseRequest<messages_ns.AllStickersBase, dynamic> {
   static const CONSTRUCTOR_ID = 3097534888;
   static const SUBCLASS_OF_ID = 1166231593;
   final classType = "request";
@@ -2298,7 +2272,6 @@ class GetAllStickers extends BaseRequest {
   GetAllStickers({required this.hash});
 
   static GetAllStickers fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetAllStickers(hash: hash);
   }
@@ -2313,7 +2286,7 @@ class GetAllStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AllStickersBase, dynamic>();
   }
 
   @override
@@ -2332,15 +2305,15 @@ class GetAllStickers extends BaseRequest {
   }
 }
 
-class GetWebPagePreview extends BaseRequest {
+class GetWebPagePreview extends BaseRequest<MessageMediaBase, dynamic> {
   static const CONSTRUCTOR_ID = 2338894028;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "request";
   final ID = 2338894028;
   String message;
-  List<dynamic>? entities;
+  List<MessageEntityBase>? entities;
 
-  GetWebPagePreview({required this.message, required this.entities});
+  GetWebPagePreview({required this.message, this.entities});
 
   static GetWebPagePreview fromReader(BinaryReader reader) {
     var len;
@@ -2350,7 +2323,7 @@ class GetWebPagePreview extends BaseRequest {
     if ((flags & 8) == 8) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -2375,7 +2348,7 @@ class GetWebPagePreview extends BaseRequest {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -2383,7 +2356,7 @@ class GetWebPagePreview extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<MessageMediaBase, dynamic>();
   }
 
   @override
@@ -2402,28 +2375,27 @@ class GetWebPagePreview extends BaseRequest {
   }
 }
 
-class ExportChatInvite extends BaseRequest {
+class ExportChatInvite extends BaseRequest<ExportedChatInviteBase, dynamic> {
   static const CONSTRUCTOR_ID = 2687296981;
   static const SUBCLASS_OF_ID = 3027536472;
   final classType = "request";
   final ID = 2687296981;
   bool? legacyRevokePermanent;
   bool? requestNeeded;
-  var peer;
+  InputPeerBase peer;
   int? expireDate;
   int? usageLimit;
   String? title;
 
   ExportChatInvite(
-      {required this.legacyRevokePermanent,
-      required this.requestNeeded,
+      {this.legacyRevokePermanent,
+      this.requestNeeded,
       required this.peer,
-      required this.expireDate,
-      required this.usageLimit,
-      required this.title});
+      this.expireDate,
+      this.usageLimit,
+      this.title});
 
   static ExportChatInvite fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final legacyRevokePermanent = (flags & 4) == 4;
     final requestNeeded = (flags & 8) == 8;
@@ -2460,7 +2432,7 @@ class ExportChatInvite extends BaseRequest {
     return [
       readBufferFromBigInt(2687296981, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.expireDate == null || this.expireDate == false)
           ? List<int>.empty()
           : [
@@ -2481,7 +2453,7 @@ class ExportChatInvite extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<ExportedChatInviteBase, dynamic>();
   }
 
   @override
@@ -2500,7 +2472,7 @@ class ExportChatInvite extends BaseRequest {
   }
 }
 
-class CheckChatInvite extends BaseRequest {
+class CheckChatInvite extends BaseRequest<ChatInviteBase, dynamic> {
   static const CONSTRUCTOR_ID = 1051570619;
   static const SUBCLASS_OF_ID = 72750902;
   final classType = "request";
@@ -2510,7 +2482,6 @@ class CheckChatInvite extends BaseRequest {
   CheckChatInvite({required this.hash});
 
   static CheckChatInvite fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.tgReadString();
     return CheckChatInvite(hash: hash);
   }
@@ -2525,7 +2496,7 @@ class CheckChatInvite extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<ChatInviteBase, dynamic>();
   }
 
   @override
@@ -2544,7 +2515,7 @@ class CheckChatInvite extends BaseRequest {
   }
 }
 
-class ImportChatInvite extends BaseRequest {
+class ImportChatInvite extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1817183516;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -2554,7 +2525,6 @@ class ImportChatInvite extends BaseRequest {
   ImportChatInvite({required this.hash});
 
   static ImportChatInvite fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.tgReadString();
     return ImportChatInvite(hash: hash);
   }
@@ -2569,7 +2539,7 @@ class ImportChatInvite extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -2588,18 +2558,17 @@ class ImportChatInvite extends BaseRequest {
   }
 }
 
-class GetStickerSet extends BaseRequest {
+class GetStickerSet extends BaseRequest<messages_ns.StickerSetBase, dynamic> {
   static const CONSTRUCTOR_ID = 3365989492;
   static const SUBCLASS_OF_ID = 2607827546;
   final classType = "request";
   final ID = 3365989492;
-  var stickerset;
+  InputStickerSetBase stickerset;
   int hash;
 
   GetStickerSet({required this.stickerset, required this.hash});
 
   static GetStickerSet fromReader(BinaryReader reader) {
-    var len;
     var stickerset = reader.tgReadObject();
     var hash = reader.readInt();
     return GetStickerSet(stickerset: stickerset, hash: hash);
@@ -2609,14 +2578,14 @@ class GetStickerSet extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3365989492, 4),
-      (this.stickerset.getBytes() as List<int>),
+      (this.stickerset.getBytes()),
       readBufferFromBigInt(this.hash, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.StickerSetBase, dynamic>();
   }
 
   @override
@@ -2635,18 +2604,18 @@ class GetStickerSet extends BaseRequest {
   }
 }
 
-class InstallStickerSet extends BaseRequest {
+class InstallStickerSet
+    extends BaseRequest<messages_ns.StickerSetInstallResultBase, dynamic> {
   static const CONSTRUCTOR_ID = 3348096096;
   static const SUBCLASS_OF_ID = 1741373416;
   final classType = "request";
   final ID = 3348096096;
-  var stickerset;
+  InputStickerSetBase stickerset;
   bool archived;
 
   InstallStickerSet({required this.stickerset, required this.archived});
 
   static InstallStickerSet fromReader(BinaryReader reader) {
-    var len;
     var stickerset = reader.tgReadObject();
     var archived = reader.tgReadBool();
     return InstallStickerSet(stickerset: stickerset, archived: archived);
@@ -2656,14 +2625,15 @@ class InstallStickerSet extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3348096096, 4),
-      (this.stickerset.getBytes() as List<int>),
+      (this.stickerset.getBytes()),
       [this.archived == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader
+        .tgReadObject<messages_ns.StickerSetInstallResultBase, dynamic>();
   }
 
   @override
@@ -2682,17 +2652,16 @@ class InstallStickerSet extends BaseRequest {
   }
 }
 
-class UninstallStickerSet extends BaseRequest {
+class UninstallStickerSet extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 4184757726;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 4184757726;
-  var stickerset;
+  InputStickerSetBase stickerset;
 
   UninstallStickerSet({required this.stickerset});
 
   static UninstallStickerSet fromReader(BinaryReader reader) {
-    var len;
     var stickerset = reader.tgReadObject();
     return UninstallStickerSet(stickerset: stickerset);
   }
@@ -2701,13 +2670,13 @@ class UninstallStickerSet extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4184757726, 4),
-      (this.stickerset.getBytes() as List<int>),
+      (this.stickerset.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2726,13 +2695,13 @@ class UninstallStickerSet extends BaseRequest {
   }
 }
 
-class StartBot extends BaseRequest {
+class StartBot extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3873403768;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 3873403768;
-  var bot;
-  var peer;
+  InputUserBase bot;
+  InputPeerBase peer;
   BigInt randomId;
   String startParam;
 
@@ -2743,7 +2712,6 @@ class StartBot extends BaseRequest {
       required this.startParam});
 
   static StartBot fromReader(BinaryReader reader) {
-    var len;
     var bot = reader.tgReadObject();
     var peer = reader.tgReadObject();
     var randomId = reader.readLong();
@@ -2756,8 +2724,8 @@ class StartBot extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3873403768, 4),
-      (this.bot.getBytes() as List<int>),
-      (this.peer.getBytes() as List<int>),
+      (this.bot.getBytes()),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
       serializeBytes(this.startParam),
     ].expand((element) => element).toList();
@@ -2765,7 +2733,7 @@ class StartBot extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -2784,12 +2752,12 @@ class StartBot extends BaseRequest {
   }
 }
 
-class GetMessagesViews extends BaseRequest {
+class GetMessagesViews extends BaseRequest<messages_ns.MessageViews, dynamic> {
   static const CONSTRUCTOR_ID = 1468322785;
   static const SUBCLASS_OF_ID = 2947935132;
   final classType = "request";
   final ID = 1468322785;
-  var peer;
+  InputPeerBase peer;
   List<int> id;
   bool increment;
 
@@ -2814,12 +2782,11 @@ class GetMessagesViews extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1468322785, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
       [this.increment == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
@@ -2827,7 +2794,7 @@ class GetMessagesViews extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessageViews, dynamic>();
   }
 
   @override
@@ -2846,20 +2813,19 @@ class GetMessagesViews extends BaseRequest {
   }
 }
 
-class EditChatAdmin extends BaseRequest {
+class EditChatAdmin extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2824589762;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2824589762;
   BigInt chatId;
-  var userId;
+  InputUserBase userId;
   bool isAdmin;
 
   EditChatAdmin(
       {required this.chatId, required this.userId, required this.isAdmin});
 
   static EditChatAdmin fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var userId = reader.tgReadObject();
     var isAdmin = reader.tgReadBool();
@@ -2871,14 +2837,14 @@ class EditChatAdmin extends BaseRequest {
     return [
       readBufferFromBigInt(2824589762, 4),
       readBufferFromBigInt(this.chatId, 8, little: true, signed: true),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
       [this.isAdmin == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2897,7 +2863,7 @@ class EditChatAdmin extends BaseRequest {
   }
 }
 
-class MigrateChat extends BaseRequest {
+class MigrateChat extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2726777625;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -2907,7 +2873,6 @@ class MigrateChat extends BaseRequest {
   MigrateChat({required this.chatId});
 
   static MigrateChat fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     return MigrateChat(chatId: chatId);
   }
@@ -2922,7 +2887,7 @@ class MigrateChat extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -2941,23 +2906,23 @@ class MigrateChat extends BaseRequest {
   }
 }
 
-class SearchGlobal extends BaseRequest {
+class SearchGlobal extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1271290010;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 1271290010;
   int? folderId;
   String q;
-  var filter;
+  MessagesFilterBase filter;
   int minDate;
   int maxDate;
   int offsetRate;
-  var offsetPeer;
+  InputPeerBase offsetPeer;
   int offsetId;
   int limit;
 
   SearchGlobal(
-      {required this.folderId,
+      {this.folderId,
       required this.q,
       required this.filter,
       required this.minDate,
@@ -2968,7 +2933,6 @@ class SearchGlobal extends BaseRequest {
       required this.limit});
 
   static SearchGlobal fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var folderId;
     if ((flags & 1) == 1) {
@@ -3007,11 +2971,11 @@ class SearchGlobal extends BaseRequest {
               .expand((element) => element)
               .toList(),
       serializeBytes(this.q),
-      (this.filter.getBytes() as List<int>),
+      (this.filter.getBytes()),
       readBufferFromBigInt(this.minDate, 4, little: true, signed: true),
       readBufferFromBigInt(this.maxDate, 4, little: true, signed: true),
       readBufferFromBigInt(this.offsetRate, 4, little: true, signed: true),
-      (this.offsetPeer.getBytes() as List<int>),
+      (this.offsetPeer.getBytes()),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -3019,7 +2983,7 @@ class SearchGlobal extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -3038,7 +3002,7 @@ class SearchGlobal extends BaseRequest {
   }
 }
 
-class ReorderStickerSets extends BaseRequest {
+class ReorderStickerSets extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2016638777;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -3046,7 +3010,7 @@ class ReorderStickerSets extends BaseRequest {
   bool? masks;
   List<BigInt> order;
 
-  ReorderStickerSets({required this.masks, required this.order});
+  ReorderStickerSets({this.masks, required this.order});
 
   static ReorderStickerSets fromReader(BinaryReader reader) {
     var len;
@@ -3068,17 +3032,16 @@ class ReorderStickerSets extends BaseRequest {
       readBufferFromBigInt(2016638777, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.order!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.order.length, 4, little: true, signed: true),
       this
-          .order!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .order.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3097,7 +3060,7 @@ class ReorderStickerSets extends BaseRequest {
   }
 }
 
-class GetDocumentByHash extends BaseRequest {
+class GetDocumentByHash extends BaseRequest<DocumentBase, dynamic> {
   static const CONSTRUCTOR_ID = 2985428511;
   static const SUBCLASS_OF_ID = 555739168;
   final classType = "request";
@@ -3110,7 +3073,6 @@ class GetDocumentByHash extends BaseRequest {
       {required this.sha256, required this.size, required this.mimeType});
 
   static GetDocumentByHash fromReader(BinaryReader reader) {
-    var len;
     var sha256 = reader.tgReadBytes();
     var size = reader.readLong();
     var mimeType = reader.tgReadString();
@@ -3129,7 +3091,7 @@ class GetDocumentByHash extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<DocumentBase, dynamic>();
   }
 
   @override
@@ -3148,7 +3110,7 @@ class GetDocumentByHash extends BaseRequest {
   }
 }
 
-class GetSavedGifs extends BaseRequest {
+class GetSavedGifs extends BaseRequest<messages_ns.SavedGifsBase, dynamic> {
   static const CONSTRUCTOR_ID = 1559270965;
   static const SUBCLASS_OF_ID = 2794152437;
   final classType = "request";
@@ -3158,7 +3120,6 @@ class GetSavedGifs extends BaseRequest {
   GetSavedGifs({required this.hash});
 
   static GetSavedGifs fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetSavedGifs(hash: hash);
   }
@@ -3173,7 +3134,7 @@ class GetSavedGifs extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.SavedGifsBase, dynamic>();
   }
 
   @override
@@ -3192,18 +3153,17 @@ class GetSavedGifs extends BaseRequest {
   }
 }
 
-class SaveGif extends BaseRequest {
+class SaveGif extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 846868683;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 846868683;
-  var id;
+  InputDocumentBase id;
   bool unsave;
 
   SaveGif({required this.id, required this.unsave});
 
   static SaveGif fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     var unsave = reader.tgReadBool();
     return SaveGif(id: id, unsave: unsave);
@@ -3213,14 +3173,14 @@ class SaveGif extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(846868683, 4),
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
       [this.unsave == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3239,26 +3199,25 @@ class SaveGif extends BaseRequest {
   }
 }
 
-class GetInlineBotResults extends BaseRequest {
+class GetInlineBotResults extends BaseRequest<messages_ns.BotResults, dynamic> {
   static const CONSTRUCTOR_ID = 1364105629;
   static const SUBCLASS_OF_ID = 1054136777;
   final classType = "request";
   final ID = 1364105629;
-  var bot;
-  var peer;
-  var geoPoint;
+  InputUserBase bot;
+  InputPeerBase peer;
+  InputGeoPointBase? geoPoint;
   String query;
   String offset;
 
   GetInlineBotResults(
       {required this.bot,
       required this.peer,
-      required this.geoPoint,
+      this.geoPoint,
       required this.query,
       required this.offset});
 
   static GetInlineBotResults fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var bot = reader.tgReadObject();
     var peer = reader.tgReadObject();
@@ -3279,11 +3238,11 @@ class GetInlineBotResults extends BaseRequest {
     return [
       readBufferFromBigInt(1364105629, 4),
       [0, 0, 0, 0],
-      (this.bot.getBytes() as List<int>),
-      (this.peer.getBytes() as List<int>),
+      (this.bot.getBytes()),
+      (this.peer.getBytes()),
       (this.geoPoint == null || this.geoPoint == false)
           ? List<int>.empty()
-          : [(this.geoPoint.getBytes() as List<int>)]
+          : [(this.geoPoint!.getBytes())]
               .expand((element) => element)
               .toList(),
       serializeBytes(this.query),
@@ -3293,7 +3252,7 @@ class GetInlineBotResults extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.BotResults, dynamic>();
   }
 
   @override
@@ -3312,7 +3271,7 @@ class GetInlineBotResults extends BaseRequest {
   }
 }
 
-class SetInlineBotResults extends BaseRequest {
+class SetInlineBotResults extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3948847622;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -3320,19 +3279,19 @@ class SetInlineBotResults extends BaseRequest {
   bool? gallery;
   bool? private;
   BigInt queryId;
-  List<dynamic> results;
+  List<InputBotInlineResultBase> results;
   int cacheTime;
   String? nextOffset;
-  var switchPm;
+  InlineBotSwitchPM? switchPm;
 
   SetInlineBotResults(
-      {required this.gallery,
-      required this.private,
+      {this.gallery,
+      this.private,
       required this.queryId,
       required this.results,
       required this.cacheTime,
-      required this.nextOffset,
-      required this.switchPm});
+      this.nextOffset,
+      this.switchPm});
 
   static SetInlineBotResults fromReader(BinaryReader reader) {
     var len;
@@ -3342,7 +3301,7 @@ class SetInlineBotResults extends BaseRequest {
     var queryId = reader.readLong();
     var _vectorresults = reader.readInt();
     if (_vectorresults != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> results = [];
+    List<InputBotInlineResultBase> results = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       results.add(reader.tgReadObject());
@@ -3377,10 +3336,9 @@ class SetInlineBotResults extends BaseRequest {
       [0, 0, 0, 0],
       readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.results!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.results.length, 4, little: true, signed: true),
       this
-          .results!
-          .map((x) => (x.getBytes() as List<int>))
+          .results.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.cacheTime, 4, little: true, signed: true),
       (this.nextOffset == null || this.nextOffset == false)
@@ -3390,7 +3348,7 @@ class SetInlineBotResults extends BaseRequest {
               .toList(),
       (this.switchPm == null || this.switchPm == false)
           ? List<int>.empty()
-          : [(this.switchPm.getBytes() as List<int>)]
+          : [(this.switchPm!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -3398,7 +3356,7 @@ class SetInlineBotResults extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3417,7 +3375,7 @@ class SetInlineBotResults extends BaseRequest {
   }
 }
 
-class SendInlineBotResult extends BaseRequest {
+class SendInlineBotResult extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2057376407;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -3426,29 +3384,28 @@ class SendInlineBotResult extends BaseRequest {
   bool? background;
   bool? clearDraft;
   bool? hideVia;
-  var peer;
+  InputPeerBase peer;
   int? replyToMsgId;
   BigInt randomId;
   BigInt queryId;
   String id;
   int? scheduleDate;
-  var sendAs;
+  InputPeerBase? sendAs;
 
   SendInlineBotResult(
-      {required this.silent,
-      required this.background,
-      required this.clearDraft,
-      required this.hideVia,
+      {this.silent,
+      this.background,
+      this.clearDraft,
+      this.hideVia,
       required this.peer,
-      required this.replyToMsgId,
+      this.replyToMsgId,
       required this.randomId,
       required this.queryId,
       required this.id,
-      required this.scheduleDate,
-      required this.sendAs});
+      this.scheduleDate,
+      this.sendAs});
 
   static SendInlineBotResult fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final silent = (flags & 32) == 32;
     final background = (flags & 64) == 64;
@@ -3495,7 +3452,7 @@ class SendInlineBotResult extends BaseRequest {
     return [
       readBufferFromBigInt(2057376407, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.replyToMsgId == null || this.replyToMsgId == false)
           ? List<int>.empty()
           : [
@@ -3513,7 +3470,7 @@ class SendInlineBotResult extends BaseRequest {
             ].expand((element) => element).toList(),
       (this.sendAs == null || this.sendAs == false)
           ? List<int>.empty()
-          : [(this.sendAs.getBytes() as List<int>)]
+          : [(this.sendAs!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -3521,7 +3478,7 @@ class SendInlineBotResult extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -3540,18 +3497,18 @@ class SendInlineBotResult extends BaseRequest {
   }
 }
 
-class GetMessageEditData extends BaseRequest {
+class GetMessageEditData
+    extends BaseRequest<messages_ns.MessageEditData, dynamic> {
   static const CONSTRUCTOR_ID = 4255550774;
   static const SUBCLASS_OF_ID = 4215772317;
   final classType = "request";
   final ID = 4255550774;
-  var peer;
+  InputPeerBase peer;
   int id;
 
   GetMessageEditData({required this.peer, required this.id});
 
   static GetMessageEditData fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var id = reader.readInt();
     return GetMessageEditData(peer: peer, id: id);
@@ -3561,14 +3518,14 @@ class GetMessageEditData extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4255550774, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessageEditData, dynamic>();
   }
 
   @override
@@ -3587,29 +3544,29 @@ class GetMessageEditData extends BaseRequest {
   }
 }
 
-class EditMessage extends BaseRequest {
+class EditMessage extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1224152952;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 1224152952;
   bool? noWebpage;
-  var peer;
+  InputPeerBase peer;
   int id;
   String? message;
-  var media;
-  var replyMarkup;
-  List<dynamic>? entities;
+  InputMediaBase? media;
+  ReplyMarkupBase? replyMarkup;
+  List<MessageEntityBase>? entities;
   int? scheduleDate;
 
   EditMessage(
-      {required this.noWebpage,
+      {this.noWebpage,
       required this.peer,
       required this.id,
-      required this.message,
-      required this.media,
-      required this.replyMarkup,
-      required this.entities,
-      required this.scheduleDate});
+      this.message,
+      this.media,
+      this.replyMarkup,
+      this.entities,
+      this.scheduleDate});
 
   static EditMessage fromReader(BinaryReader reader) {
     var len;
@@ -3639,7 +3596,7 @@ class EditMessage extends BaseRequest {
     if ((flags & 8) == 8) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -3669,7 +3626,7 @@ class EditMessage extends BaseRequest {
     return [
       readBufferFromBigInt(1224152952, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
       (this.message == null || this.message == false)
           ? List<int>.empty()
@@ -3678,12 +3635,12 @@ class EditMessage extends BaseRequest {
               .toList(),
       (this.media == null || this.media == false)
           ? List<int>.empty()
-          : [(this.media.getBytes() as List<int>)]
+          : [(this.media!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.entities == null || this.entities == false)
@@ -3694,7 +3651,7 @@ class EditMessage extends BaseRequest {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.scheduleDate == null || this.scheduleDate == false)
@@ -3708,7 +3665,7 @@ class EditMessage extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -3727,25 +3684,25 @@ class EditMessage extends BaseRequest {
   }
 }
 
-class EditInlineBotMessage extends BaseRequest {
+class EditInlineBotMessage extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2203418042;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2203418042;
   bool? noWebpage;
-  var id;
+  InputBotInlineMessageIDBase id;
   String? message;
-  var media;
-  var replyMarkup;
-  List<dynamic>? entities;
+  InputMediaBase? media;
+  ReplyMarkupBase? replyMarkup;
+  List<MessageEntityBase>? entities;
 
   EditInlineBotMessage(
-      {required this.noWebpage,
+      {this.noWebpage,
       required this.id,
-      required this.message,
-      required this.media,
-      required this.replyMarkup,
-      required this.entities});
+      this.message,
+      this.media,
+      this.replyMarkup,
+      this.entities});
 
   static EditInlineBotMessage fromReader(BinaryReader reader) {
     var len;
@@ -3774,7 +3731,7 @@ class EditInlineBotMessage extends BaseRequest {
     if ((flags & 8) == 8) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -3796,7 +3753,7 @@ class EditInlineBotMessage extends BaseRequest {
     return [
       readBufferFromBigInt(2203418042, 4),
       [0, 0, 0, 0],
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
       (this.message == null || this.message == false)
           ? List<int>.empty()
           : [serializeBytes(this.message)]
@@ -3804,12 +3761,12 @@ class EditInlineBotMessage extends BaseRequest {
               .toList(),
       (this.media == null || this.media == false)
           ? List<int>.empty()
-          : [(this.media.getBytes() as List<int>)]
+          : [(this.media!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.entities == null || this.entities == false)
@@ -3820,7 +3777,7 @@ class EditInlineBotMessage extends BaseRequest {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -3828,7 +3785,7 @@ class EditInlineBotMessage extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3847,26 +3804,26 @@ class EditInlineBotMessage extends BaseRequest {
   }
 }
 
-class GetBotCallbackAnswer extends BaseRequest {
+class GetBotCallbackAnswer
+    extends BaseRequest<messages_ns.BotCallbackAnswer, dynamic> {
   static const CONSTRUCTOR_ID = 2470627847;
   static const SUBCLASS_OF_ID = 1817039244;
   final classType = "request";
   final ID = 2470627847;
   bool? game;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   List<int>? data;
-  var password;
+  InputCheckPasswordSRPBase? password;
 
   GetBotCallbackAnswer(
-      {required this.game,
+      {this.game,
       required this.peer,
       required this.msgId,
-      required this.data,
-      required this.password});
+      this.data,
+      this.password});
 
   static GetBotCallbackAnswer fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final game = (flags & 2) == 2;
     var peer = reader.tgReadObject();
@@ -3892,14 +3849,14 @@ class GetBotCallbackAnswer extends BaseRequest {
     return [
       readBufferFromBigInt(2470627847, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       (this.data == null || this.data == false)
           ? List<int>.empty()
           : [serializeBytes(this.data)].expand((element) => element).toList(),
       (this.password == null || this.password == false)
           ? List<int>.empty()
-          : [(this.password.getBytes() as List<int>)]
+          : [(this.password!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -3907,7 +3864,7 @@ class GetBotCallbackAnswer extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.BotCallbackAnswer, dynamic>();
   }
 
   @override
@@ -3926,7 +3883,7 @@ class GetBotCallbackAnswer extends BaseRequest {
   }
 }
 
-class SetBotCallbackAnswer extends BaseRequest {
+class SetBotCallbackAnswer extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3582923530;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -3938,14 +3895,13 @@ class SetBotCallbackAnswer extends BaseRequest {
   int cacheTime;
 
   SetBotCallbackAnswer(
-      {required this.alert,
+      {this.alert,
       required this.queryId,
-      required this.message,
-      required this.url,
+      this.message,
+      this.url,
       required this.cacheTime});
 
   static SetBotCallbackAnswer fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final alert = (flags & 2) == 2;
     var queryId = reader.readLong();
@@ -3990,7 +3946,7 @@ class SetBotCallbackAnswer extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -4009,12 +3965,12 @@ class SetBotCallbackAnswer extends BaseRequest {
   }
 }
 
-class GetPeerDialogs extends BaseRequest {
+class GetPeerDialogs extends BaseRequest<messages_ns.PeerDialogs, dynamic> {
   static const CONSTRUCTOR_ID = 3832593661;
   static const SUBCLASS_OF_ID = 986120498;
   final classType = "request";
   final ID = 3832593661;
-  List<dynamic> peers;
+  List<InputDialogPeerBase> peers;
 
   GetPeerDialogs({required this.peers});
 
@@ -4022,7 +3978,7 @@ class GetPeerDialogs extends BaseRequest {
     var len;
     var _vectorpeers = reader.readInt();
     if (_vectorpeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> peers = [];
+    List<InputDialogPeerBase> peers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       peers.add(reader.tgReadObject());
@@ -4035,17 +3991,16 @@ class GetPeerDialogs extends BaseRequest {
     return [
       readBufferFromBigInt(3832593661, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.peers!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.peers.length, 4, little: true, signed: true),
       this
-          .peers!
-          .map((x) => (x.getBytes() as List<int>))
+          .peers.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.PeerDialogs, dynamic>();
   }
 
   @override
@@ -4064,23 +4019,23 @@ class GetPeerDialogs extends BaseRequest {
   }
 }
 
-class SaveDraft extends BaseRequest {
+class SaveDraft extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3157909835;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3157909835;
   bool? noWebpage;
   int? replyToMsgId;
-  var peer;
+  InputPeerBase peer;
   String message;
-  List<dynamic>? entities;
+  List<MessageEntityBase>? entities;
 
   SaveDraft(
-      {required this.noWebpage,
-      required this.replyToMsgId,
+      {this.noWebpage,
+      this.replyToMsgId,
       required this.peer,
       required this.message,
-      required this.entities});
+      this.entities});
 
   static SaveDraft fromReader(BinaryReader reader) {
     var len;
@@ -4098,7 +4053,7 @@ class SaveDraft extends BaseRequest {
     if ((flags & 8) == 8) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -4125,7 +4080,7 @@ class SaveDraft extends BaseRequest {
               readBufferFromBigInt(this.replyToMsgId, 4,
                   little: true, signed: true)
             ].expand((element) => element).toList(),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       serializeBytes(this.message),
       (this.entities == null || this.entities == false)
           ? List<int>.empty()
@@ -4135,7 +4090,7 @@ class SaveDraft extends BaseRequest {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -4143,7 +4098,7 @@ class SaveDraft extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -4162,7 +4117,7 @@ class SaveDraft extends BaseRequest {
   }
 }
 
-class GetAllDrafts extends BaseRequest {
+class GetAllDrafts extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1782549861;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -4171,7 +4126,6 @@ class GetAllDrafts extends BaseRequest {
   GetAllDrafts();
 
   static GetAllDrafts fromReader(BinaryReader reader) {
-    var len;
     return GetAllDrafts();
   }
 
@@ -4184,7 +4138,7 @@ class GetAllDrafts extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -4203,7 +4157,8 @@ class GetAllDrafts extends BaseRequest {
   }
 }
 
-class GetFeaturedStickers extends BaseRequest {
+class GetFeaturedStickers
+    extends BaseRequest<messages_ns.FeaturedStickersBase, dynamic> {
   static const CONSTRUCTOR_ID = 1685588756;
   static const SUBCLASS_OF_ID = 638891810;
   final classType = "request";
@@ -4213,7 +4168,6 @@ class GetFeaturedStickers extends BaseRequest {
   GetFeaturedStickers({required this.hash});
 
   static GetFeaturedStickers fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetFeaturedStickers(hash: hash);
   }
@@ -4228,7 +4182,7 @@ class GetFeaturedStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.FeaturedStickersBase, dynamic>();
   }
 
   @override
@@ -4247,7 +4201,7 @@ class GetFeaturedStickers extends BaseRequest {
   }
 }
 
-class ReadFeaturedStickers extends BaseRequest {
+class ReadFeaturedStickers extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1527873830;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -4273,17 +4227,16 @@ class ReadFeaturedStickers extends BaseRequest {
     return [
       readBufferFromBigInt(1527873830, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -4302,7 +4255,8 @@ class ReadFeaturedStickers extends BaseRequest {
   }
 }
 
-class GetRecentStickers extends BaseRequest {
+class GetRecentStickers
+    extends BaseRequest<messages_ns.RecentStickersBase, dynamic> {
   static const CONSTRUCTOR_ID = 2645114939;
   static const SUBCLASS_OF_ID = 4151281283;
   final classType = "request";
@@ -4310,10 +4264,9 @@ class GetRecentStickers extends BaseRequest {
   bool? attached;
   BigInt hash;
 
-  GetRecentStickers({required this.attached, required this.hash});
+  GetRecentStickers({this.attached, required this.hash});
 
   static GetRecentStickers fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final attached = (flags & 1) == 1;
     var hash = reader.readLong();
@@ -4331,7 +4284,7 @@ class GetRecentStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.RecentStickersBase, dynamic>();
   }
 
   @override
@@ -4350,20 +4303,18 @@ class GetRecentStickers extends BaseRequest {
   }
 }
 
-class SaveRecentSticker extends BaseRequest {
+class SaveRecentSticker extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 958863608;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 958863608;
   bool? attached;
-  var id;
+  InputDocumentBase id;
   bool unsave;
 
-  SaveRecentSticker(
-      {required this.attached, required this.id, required this.unsave});
+  SaveRecentSticker({this.attached, required this.id, required this.unsave});
 
   static SaveRecentSticker fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final attached = (flags & 1) == 1;
     var id = reader.tgReadObject();
@@ -4376,14 +4327,14 @@ class SaveRecentSticker extends BaseRequest {
     return [
       readBufferFromBigInt(958863608, 4),
       [0, 0, 0, 0],
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
       [this.unsave == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -4402,17 +4353,16 @@ class SaveRecentSticker extends BaseRequest {
   }
 }
 
-class ClearRecentStickers extends BaseRequest {
+class ClearRecentStickers extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2308530221;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2308530221;
   bool? attached;
 
-  ClearRecentStickers({required this.attached});
+  ClearRecentStickers({this.attached});
 
   static ClearRecentStickers fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final attached = (flags & 1) == 1;
     return ClearRecentStickers(attached: attached);
@@ -4428,7 +4378,7 @@ class ClearRecentStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -4447,7 +4397,8 @@ class ClearRecentStickers extends BaseRequest {
   }
 }
 
-class GetArchivedStickers extends BaseRequest {
+class GetArchivedStickers
+    extends BaseRequest<messages_ns.ArchivedStickers, dynamic> {
   static const CONSTRUCTOR_ID = 1475442322;
   static const SUBCLASS_OF_ID = 1922488177;
   final classType = "request";
@@ -4457,10 +4408,9 @@ class GetArchivedStickers extends BaseRequest {
   int limit;
 
   GetArchivedStickers(
-      {required this.masks, required this.offsetId, required this.limit});
+      {this.masks, required this.offsetId, required this.limit});
 
   static GetArchivedStickers fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final masks = (flags & 1) == 1;
     var offsetId = reader.readLong();
@@ -4480,7 +4430,7 @@ class GetArchivedStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ArchivedStickers, dynamic>();
   }
 
   @override
@@ -4499,7 +4449,8 @@ class GetArchivedStickers extends BaseRequest {
   }
 }
 
-class GetMaskStickers extends BaseRequest {
+class GetMaskStickers
+    extends BaseRequest<messages_ns.AllStickersBase, dynamic> {
   static const CONSTRUCTOR_ID = 1678738104;
   static const SUBCLASS_OF_ID = 1166231593;
   final classType = "request";
@@ -4509,7 +4460,6 @@ class GetMaskStickers extends BaseRequest {
   GetMaskStickers({required this.hash});
 
   static GetMaskStickers fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetMaskStickers(hash: hash);
   }
@@ -4524,7 +4474,7 @@ class GetMaskStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AllStickersBase, dynamic>();
   }
 
   @override
@@ -4543,17 +4493,17 @@ class GetMaskStickers extends BaseRequest {
   }
 }
 
-class GetAttachedStickers extends BaseRequest {
+class GetAttachedStickers
+    extends BaseRequest<List<StickerSetCoveredBase>, StickerSetCoveredBase> {
   static const CONSTRUCTOR_ID = 3428542412;
   static const SUBCLASS_OF_ID = 3423756139;
   final classType = "request";
   final ID = 3428542412;
-  var media;
+  InputStickeredMediaBase media;
 
   GetAttachedStickers({required this.media});
 
   static GetAttachedStickers fromReader(BinaryReader reader) {
-    var len;
     var media = reader.tgReadObject();
     return GetAttachedStickers(media: media);
   }
@@ -4562,13 +4512,14 @@ class GetAttachedStickers extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3428542412, 4),
-      (this.media.getBytes() as List<int>),
+      (this.media.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader
+        .tgReadObject<List<StickerSetCoveredBase>, StickerSetCoveredBase>();
   }
 
   @override
@@ -4587,28 +4538,27 @@ class GetAttachedStickers extends BaseRequest {
   }
 }
 
-class SetGameScore extends BaseRequest {
+class SetGameScore extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2398678208;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 2398678208;
   bool? editMessage;
   bool? force;
-  var peer;
+  InputPeerBase peer;
   int id;
-  var userId;
+  InputUserBase userId;
   int score;
 
   SetGameScore(
-      {required this.editMessage,
-      required this.force,
+      {this.editMessage,
+      this.force,
       required this.peer,
       required this.id,
       required this.userId,
       required this.score});
 
   static SetGameScore fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final editMessage = (flags & 1) == 1;
     final force = (flags & 2) == 2;
@@ -4630,16 +4580,16 @@ class SetGameScore extends BaseRequest {
     return [
       readBufferFromBigInt(2398678208, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
       readBufferFromBigInt(this.score, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -4658,26 +4608,25 @@ class SetGameScore extends BaseRequest {
   }
 }
 
-class SetInlineGameScore extends BaseRequest {
+class SetInlineGameScore extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 363700068;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 363700068;
   bool? editMessage;
   bool? force;
-  var id;
-  var userId;
+  InputBotInlineMessageIDBase id;
+  InputUserBase userId;
   int score;
 
   SetInlineGameScore(
-      {required this.editMessage,
-      required this.force,
+      {this.editMessage,
+      this.force,
       required this.id,
       required this.userId,
       required this.score});
 
   static SetInlineGameScore fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final editMessage = (flags & 1) == 1;
     final force = (flags & 2) == 2;
@@ -4697,15 +4646,15 @@ class SetInlineGameScore extends BaseRequest {
     return [
       readBufferFromBigInt(363700068, 4),
       [0, 0, 0, 0],
-      (this.id.getBytes() as List<int>),
-      (this.userId.getBytes() as List<int>),
+      (this.id.getBytes()),
+      (this.userId.getBytes()),
       readBufferFromBigInt(this.score, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -4724,20 +4673,19 @@ class SetInlineGameScore extends BaseRequest {
   }
 }
 
-class GetGameHighScores extends BaseRequest {
+class GetGameHighScores extends BaseRequest<messages_ns.HighScores, dynamic> {
   static const CONSTRUCTOR_ID = 3894568093;
   static const SUBCLASS_OF_ID = 1825412605;
   final classType = "request";
   final ID = 3894568093;
-  var peer;
+  InputPeerBase peer;
   int id;
-  var userId;
+  InputUserBase userId;
 
   GetGameHighScores(
       {required this.peer, required this.id, required this.userId});
 
   static GetGameHighScores fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var id = reader.readInt();
     var userId = reader.tgReadObject();
@@ -4748,15 +4696,15 @@ class GetGameHighScores extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3894568093, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.HighScores, dynamic>();
   }
 
   @override
@@ -4775,18 +4723,18 @@ class GetGameHighScores extends BaseRequest {
   }
 }
 
-class GetInlineGameHighScores extends BaseRequest {
+class GetInlineGameHighScores
+    extends BaseRequest<messages_ns.HighScores, dynamic> {
   static const CONSTRUCTOR_ID = 258170395;
   static const SUBCLASS_OF_ID = 1825412605;
   final classType = "request";
   final ID = 258170395;
-  var id;
-  var userId;
+  InputBotInlineMessageIDBase id;
+  InputUserBase userId;
 
   GetInlineGameHighScores({required this.id, required this.userId});
 
   static GetInlineGameHighScores fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     var userId = reader.tgReadObject();
     return GetInlineGameHighScores(id: id, userId: userId);
@@ -4796,14 +4744,14 @@ class GetInlineGameHighScores extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(258170395, 4),
-      (this.id.getBytes() as List<int>),
-      (this.userId.getBytes() as List<int>),
+      (this.id.getBytes()),
+      (this.userId.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.HighScores, dynamic>();
   }
 
   @override
@@ -4822,12 +4770,12 @@ class GetInlineGameHighScores extends BaseRequest {
   }
 }
 
-class GetCommonChats extends BaseRequest {
+class GetCommonChats extends BaseRequest<messages_ns.ChatsBase, dynamic> {
   static const CONSTRUCTOR_ID = 3826032900;
   static const SUBCLASS_OF_ID = 2580925204;
   final classType = "request";
   final ID = 3826032900;
-  var userId;
+  InputUserBase userId;
   BigInt maxId;
   int limit;
 
@@ -4835,7 +4783,6 @@ class GetCommonChats extends BaseRequest {
       {required this.userId, required this.maxId, required this.limit});
 
   static GetCommonChats fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.tgReadObject();
     var maxId = reader.readLong();
     var limit = reader.readInt();
@@ -4846,7 +4793,7 @@ class GetCommonChats extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3826032900, 4),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
       readBufferFromBigInt(this.maxId, 8, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -4854,7 +4801,7 @@ class GetCommonChats extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ChatsBase, dynamic>();
   }
 
   @override
@@ -4873,7 +4820,7 @@ class GetCommonChats extends BaseRequest {
   }
 }
 
-class GetAllChats extends BaseRequest {
+class GetAllChats extends BaseRequest<messages_ns.ChatsBase, dynamic> {
   static const CONSTRUCTOR_ID = 2271179966;
   static const SUBCLASS_OF_ID = 2580925204;
   final classType = "request";
@@ -4899,18 +4846,17 @@ class GetAllChats extends BaseRequest {
     return [
       readBufferFromBigInt(2271179966, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.exceptIds!.length, 4,
+      readBufferFromBigInt(this.exceptIds.length, 4,
           little: true, signed: true),
       this
-          .exceptIds!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .exceptIds.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ChatsBase, dynamic>();
   }
 
   @override
@@ -4929,7 +4875,7 @@ class GetAllChats extends BaseRequest {
   }
 }
 
-class GetWebPage extends BaseRequest {
+class GetWebPage extends BaseRequest<WebPageBase, dynamic> {
   static const CONSTRUCTOR_ID = 852135825;
   static const SUBCLASS_OF_ID = 1437168769;
   final classType = "request";
@@ -4940,7 +4886,6 @@ class GetWebPage extends BaseRequest {
   GetWebPage({required this.url, required this.hash});
 
   static GetWebPage fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     var hash = reader.readInt();
     return GetWebPage(url: url, hash: hash);
@@ -4957,7 +4902,7 @@ class GetWebPage extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<WebPageBase, dynamic>();
   }
 
   @override
@@ -4976,18 +4921,17 @@ class GetWebPage extends BaseRequest {
   }
 }
 
-class ToggleDialogPin extends BaseRequest {
+class ToggleDialogPin extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2805064279;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2805064279;
   bool? pinned;
-  var peer;
+  InputDialogPeerBase peer;
 
-  ToggleDialogPin({required this.pinned, required this.peer});
+  ToggleDialogPin({this.pinned, required this.peer});
 
   static ToggleDialogPin fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final pinned = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -4999,13 +4943,13 @@ class ToggleDialogPin extends BaseRequest {
     return [
       readBufferFromBigInt(2805064279, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -5024,17 +4968,17 @@ class ToggleDialogPin extends BaseRequest {
   }
 }
 
-class ReorderPinnedDialogs extends BaseRequest {
+class ReorderPinnedDialogs extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 991616823;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 991616823;
   bool? force;
   int folderId;
-  List<dynamic> order;
+  List<InputDialogPeerBase> order;
 
   ReorderPinnedDialogs(
-      {required this.force, required this.folderId, required this.order});
+      {this.force, required this.folderId, required this.order});
 
   static ReorderPinnedDialogs fromReader(BinaryReader reader) {
     var len;
@@ -5043,7 +4987,7 @@ class ReorderPinnedDialogs extends BaseRequest {
     var folderId = reader.readInt();
     var _vectororder = reader.readInt();
     if (_vectororder != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> order = [];
+    List<InputDialogPeerBase> order = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       order.add(reader.tgReadObject());
@@ -5058,17 +5002,16 @@ class ReorderPinnedDialogs extends BaseRequest {
       [0, 0, 0, 0],
       readBufferFromBigInt(this.folderId, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.order!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.order.length, 4, little: true, signed: true),
       this
-          .order!
-          .map((x) => (x.getBytes() as List<int>))
+          .order.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -5087,7 +5030,7 @@ class ReorderPinnedDialogs extends BaseRequest {
   }
 }
 
-class GetPinnedDialogs extends BaseRequest {
+class GetPinnedDialogs extends BaseRequest<messages_ns.PeerDialogs, dynamic> {
   static const CONSTRUCTOR_ID = 3602468338;
   static const SUBCLASS_OF_ID = 986120498;
   final classType = "request";
@@ -5097,7 +5040,6 @@ class GetPinnedDialogs extends BaseRequest {
   GetPinnedDialogs({required this.folderId});
 
   static GetPinnedDialogs fromReader(BinaryReader reader) {
-    var len;
     var folderId = reader.readInt();
     return GetPinnedDialogs(folderId: folderId);
   }
@@ -5112,7 +5054,7 @@ class GetPinnedDialogs extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.PeerDialogs, dynamic>();
   }
 
   @override
@@ -5131,19 +5073,17 @@ class GetPinnedDialogs extends BaseRequest {
   }
 }
 
-class SetBotShippingResults extends BaseRequest {
+class SetBotShippingResults extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3858133754;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3858133754;
   BigInt queryId;
   String? error;
-  List<dynamic>? shippingOptions;
+  List<ShippingOption>? shippingOptions;
 
   SetBotShippingResults(
-      {required this.queryId,
-      required this.error,
-      required this.shippingOptions});
+      {required this.queryId, this.error, this.shippingOptions});
 
   static SetBotShippingResults fromReader(BinaryReader reader) {
     var len;
@@ -5160,7 +5100,7 @@ class SetBotShippingResults extends BaseRequest {
       var _vectorshippingOptions = reader.readInt();
       if (_vectorshippingOptions != 481674261)
         throw Exception('Wrong vectorId');
-      List<dynamic> shippingOptions = [];
+      List<ShippingOption> shippingOptions = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         shippingOptions.add(reader.tgReadObject());
@@ -5189,7 +5129,7 @@ class SetBotShippingResults extends BaseRequest {
                   little: true, signed: true),
               this
                   .shippingOptions!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -5197,7 +5137,7 @@ class SetBotShippingResults extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -5216,7 +5156,7 @@ class SetBotShippingResults extends BaseRequest {
   }
 }
 
-class SetBotPrecheckoutResults extends BaseRequest {
+class SetBotPrecheckoutResults extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 163765653;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -5225,11 +5165,9 @@ class SetBotPrecheckoutResults extends BaseRequest {
   BigInt queryId;
   String? error;
 
-  SetBotPrecheckoutResults(
-      {required this.success, required this.queryId, required this.error});
+  SetBotPrecheckoutResults({this.success, required this.queryId, this.error});
 
   static SetBotPrecheckoutResults fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final success = (flags & 2) == 2;
     var queryId = reader.readLong();
@@ -5257,7 +5195,7 @@ class SetBotPrecheckoutResults extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -5276,18 +5214,17 @@ class SetBotPrecheckoutResults extends BaseRequest {
   }
 }
 
-class UploadMedia extends BaseRequest {
+class UploadMedia extends BaseRequest<MessageMediaBase, dynamic> {
   static const CONSTRUCTOR_ID = 1369162417;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "request";
   final ID = 1369162417;
-  var peer;
-  var media;
+  InputPeerBase peer;
+  InputMediaBase media;
 
   UploadMedia({required this.peer, required this.media});
 
   static UploadMedia fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var media = reader.tgReadObject();
     return UploadMedia(peer: peer, media: media);
@@ -5297,14 +5234,14 @@ class UploadMedia extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1369162417, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.media.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.media.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<MessageMediaBase, dynamic>();
   }
 
   @override
@@ -5323,12 +5260,12 @@ class UploadMedia extends BaseRequest {
   }
 }
 
-class SendScreenshotNotification extends BaseRequest {
+class SendScreenshotNotification extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3380473888;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 3380473888;
-  var peer;
+  InputPeerBase peer;
   int replyToMsgId;
   BigInt randomId;
 
@@ -5336,7 +5273,6 @@ class SendScreenshotNotification extends BaseRequest {
       {required this.peer, required this.replyToMsgId, required this.randomId});
 
   static SendScreenshotNotification fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var replyToMsgId = reader.readInt();
     var randomId = reader.readLong();
@@ -5348,7 +5284,7 @@ class SendScreenshotNotification extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3380473888, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.replyToMsgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -5356,7 +5292,7 @@ class SendScreenshotNotification extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -5375,7 +5311,8 @@ class SendScreenshotNotification extends BaseRequest {
   }
 }
 
-class GetFavedStickers extends BaseRequest {
+class GetFavedStickers
+    extends BaseRequest<messages_ns.FavedStickersBase, dynamic> {
   static const CONSTRUCTOR_ID = 82946729;
   static const SUBCLASS_OF_ID = 2389929913;
   final classType = "request";
@@ -5385,7 +5322,6 @@ class GetFavedStickers extends BaseRequest {
   GetFavedStickers({required this.hash});
 
   static GetFavedStickers fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetFavedStickers(hash: hash);
   }
@@ -5400,7 +5336,7 @@ class GetFavedStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.FavedStickersBase, dynamic>();
   }
 
   @override
@@ -5419,18 +5355,17 @@ class GetFavedStickers extends BaseRequest {
   }
 }
 
-class FaveSticker extends BaseRequest {
+class FaveSticker extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3120547163;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3120547163;
-  var id;
+  InputDocumentBase id;
   bool unfave;
 
   FaveSticker({required this.id, required this.unfave});
 
   static FaveSticker fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     var unfave = reader.tgReadBool();
     return FaveSticker(id: id, unfave: unfave);
@@ -5440,14 +5375,14 @@ class FaveSticker extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3120547163, 4),
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
       [this.unfave == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -5466,12 +5401,12 @@ class FaveSticker extends BaseRequest {
   }
 }
 
-class GetUnreadMentions extends BaseRequest {
+class GetUnreadMentions extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1180140658;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 1180140658;
-  var peer;
+  InputPeerBase peer;
   int offsetId;
   int addOffset;
   int limit;
@@ -5487,7 +5422,6 @@ class GetUnreadMentions extends BaseRequest {
       required this.minId});
 
   static GetUnreadMentions fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var offsetId = reader.readInt();
     var addOffset = reader.readInt();
@@ -5507,7 +5441,7 @@ class GetUnreadMentions extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1180140658, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
       readBufferFromBigInt(this.addOffset, 4, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
@@ -5518,7 +5452,7 @@ class GetUnreadMentions extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -5537,17 +5471,16 @@ class GetUnreadMentions extends BaseRequest {
   }
 }
 
-class ReadMentions extends BaseRequest {
+class ReadMentions extends BaseRequest<messages_ns.AffectedHistory, dynamic> {
   static const CONSTRUCTOR_ID = 251759059;
   static const SUBCLASS_OF_ID = 743031062;
   final classType = "request";
   final ID = 251759059;
-  var peer;
+  InputPeerBase peer;
 
   ReadMentions({required this.peer});
 
   static ReadMentions fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return ReadMentions(peer: peer);
   }
@@ -5556,13 +5489,13 @@ class ReadMentions extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(251759059, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AffectedHistory, dynamic>();
   }
 
   @override
@@ -5581,12 +5514,13 @@ class ReadMentions extends BaseRequest {
   }
 }
 
-class GetRecentLocations extends BaseRequest {
+class GetRecentLocations
+    extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1881817312;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 1881817312;
-  var peer;
+  InputPeerBase peer;
   int limit;
   BigInt hash;
 
@@ -5594,7 +5528,6 @@ class GetRecentLocations extends BaseRequest {
       {required this.peer, required this.limit, required this.hash});
 
   static GetRecentLocations fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var limit = reader.readInt();
     var hash = reader.readLong();
@@ -5605,7 +5538,7 @@ class GetRecentLocations extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1881817312, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
       readBufferFromBigInt(this.hash, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -5613,7 +5546,7 @@ class GetRecentLocations extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -5632,7 +5565,7 @@ class GetRecentLocations extends BaseRequest {
   }
 }
 
-class SendMultiMedia extends BaseRequest {
+class SendMultiMedia extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 4160951183;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -5641,22 +5574,22 @@ class SendMultiMedia extends BaseRequest {
   bool? background;
   bool? clearDraft;
   bool? noforwards;
-  var peer;
+  InputPeerBase peer;
   int? replyToMsgId;
-  List<dynamic> multiMedia;
+  List<InputSingleMedia> multiMedia;
   int? scheduleDate;
-  var sendAs;
+  InputPeerBase? sendAs;
 
   SendMultiMedia(
-      {required this.silent,
-      required this.background,
-      required this.clearDraft,
-      required this.noforwards,
+      {this.silent,
+      this.background,
+      this.clearDraft,
+      this.noforwards,
       required this.peer,
-      required this.replyToMsgId,
+      this.replyToMsgId,
       required this.multiMedia,
-      required this.scheduleDate,
-      required this.sendAs});
+      this.scheduleDate,
+      this.sendAs});
 
   static SendMultiMedia fromReader(BinaryReader reader) {
     var len;
@@ -5674,7 +5607,7 @@ class SendMultiMedia extends BaseRequest {
     }
     var _vectormultiMedia = reader.readInt();
     if (_vectormultiMedia != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> multiMedia = [];
+    List<InputSingleMedia> multiMedia = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       multiMedia.add(reader.tgReadObject());
@@ -5708,7 +5641,7 @@ class SendMultiMedia extends BaseRequest {
     return [
       readBufferFromBigInt(4160951183, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.replyToMsgId == null || this.replyToMsgId == false)
           ? List<int>.empty()
           : [
@@ -5716,11 +5649,10 @@ class SendMultiMedia extends BaseRequest {
                   little: true, signed: true)
             ].expand((element) => element).toList(),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.multiMedia!.length, 4,
+      readBufferFromBigInt(this.multiMedia.length, 4,
           little: true, signed: true),
       this
-          .multiMedia!
-          .map((x) => (x.getBytes() as List<int>))
+          .multiMedia.map((x) => x.getBytes())
           .expand((element) => element),
       (this.scheduleDate == null || this.scheduleDate == false)
           ? List<int>.empty()
@@ -5730,7 +5662,7 @@ class SendMultiMedia extends BaseRequest {
             ].expand((element) => element).toList(),
       (this.sendAs == null || this.sendAs == false)
           ? List<int>.empty()
-          : [(this.sendAs.getBytes() as List<int>)]
+          : [(this.sendAs!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -5738,7 +5670,7 @@ class SendMultiMedia extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -5757,18 +5689,17 @@ class SendMultiMedia extends BaseRequest {
   }
 }
 
-class UploadEncryptedFile extends BaseRequest {
+class UploadEncryptedFile extends BaseRequest<EncryptedFileBase, dynamic> {
   static const CONSTRUCTOR_ID = 1347929239;
   static const SUBCLASS_OF_ID = 2217371584;
   final classType = "request";
   final ID = 1347929239;
-  var peer;
-  var file;
+  InputEncryptedChat peer;
+  InputEncryptedFileBase file;
 
   UploadEncryptedFile({required this.peer, required this.file});
 
   static UploadEncryptedFile fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var file = reader.tgReadObject();
     return UploadEncryptedFile(peer: peer, file: file);
@@ -5778,14 +5709,14 @@ class UploadEncryptedFile extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1347929239, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.file.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.file.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<EncryptedFileBase, dynamic>();
   }
 
   @override
@@ -5804,7 +5735,8 @@ class UploadEncryptedFile extends BaseRequest {
   }
 }
 
-class SearchStickerSets extends BaseRequest {
+class SearchStickerSets
+    extends BaseRequest<messages_ns.FoundStickerSetsBase, dynamic> {
   static const CONSTRUCTOR_ID = 896555914;
   static const SUBCLASS_OF_ID = 68023137;
   final classType = "request";
@@ -5814,10 +5746,9 @@ class SearchStickerSets extends BaseRequest {
   BigInt hash;
 
   SearchStickerSets(
-      {required this.excludeFeatured, required this.q, required this.hash});
+      {this.excludeFeatured, required this.q, required this.hash});
 
   static SearchStickerSets fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final excludeFeatured = (flags & 1) == 1;
     var q = reader.tgReadString();
@@ -5838,7 +5769,7 @@ class SearchStickerSets extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.FoundStickerSetsBase, dynamic>();
   }
 
   @override
@@ -5857,7 +5788,7 @@ class SearchStickerSets extends BaseRequest {
   }
 }
 
-class GetSplitRanges extends BaseRequest {
+class GetSplitRanges extends BaseRequest<List<MessageRange>, MessageRange> {
   static const CONSTRUCTOR_ID = 486505992;
   static const SUBCLASS_OF_ID = 1537549572;
   final classType = "request";
@@ -5866,7 +5797,6 @@ class GetSplitRanges extends BaseRequest {
   GetSplitRanges();
 
   static GetSplitRanges fromReader(BinaryReader reader) {
-    var len;
     return GetSplitRanges();
   }
 
@@ -5879,7 +5809,7 @@ class GetSplitRanges extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<MessageRange>, MessageRange>();
   }
 
   @override
@@ -5898,18 +5828,17 @@ class GetSplitRanges extends BaseRequest {
   }
 }
 
-class MarkDialogUnread extends BaseRequest {
+class MarkDialogUnread extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3263617423;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3263617423;
   bool? unread;
-  var peer;
+  InputDialogPeerBase peer;
 
-  MarkDialogUnread({required this.unread, required this.peer});
+  MarkDialogUnread({this.unread, required this.peer});
 
   static MarkDialogUnread fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final unread = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -5921,13 +5850,13 @@ class MarkDialogUnread extends BaseRequest {
     return [
       readBufferFromBigInt(3263617423, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -5946,7 +5875,8 @@ class MarkDialogUnread extends BaseRequest {
   }
 }
 
-class GetDialogUnreadMarks extends BaseRequest {
+class GetDialogUnreadMarks
+    extends BaseRequest<List<DialogPeerBase>, DialogPeerBase> {
   static const CONSTRUCTOR_ID = 585256482;
   static const SUBCLASS_OF_ID = 3200666329;
   final classType = "request";
@@ -5955,7 +5885,6 @@ class GetDialogUnreadMarks extends BaseRequest {
   GetDialogUnreadMarks();
 
   static GetDialogUnreadMarks fromReader(BinaryReader reader) {
-    var len;
     return GetDialogUnreadMarks();
   }
 
@@ -5968,7 +5897,7 @@ class GetDialogUnreadMarks extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<DialogPeerBase>, DialogPeerBase>();
   }
 
   @override
@@ -5987,7 +5916,7 @@ class GetDialogUnreadMarks extends BaseRequest {
   }
 }
 
-class ClearAllDrafts extends BaseRequest {
+class ClearAllDrafts extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2119757468;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -5996,7 +5925,6 @@ class ClearAllDrafts extends BaseRequest {
   ClearAllDrafts();
 
   static ClearAllDrafts fromReader(BinaryReader reader) {
-    var len;
     return ClearAllDrafts();
   }
 
@@ -6009,7 +5937,7 @@ class ClearAllDrafts extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -6028,7 +5956,7 @@ class ClearAllDrafts extends BaseRequest {
   }
 }
 
-class UpdatePinnedMessage extends BaseRequest {
+class UpdatePinnedMessage extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3534419948;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -6036,18 +5964,17 @@ class UpdatePinnedMessage extends BaseRequest {
   bool? silent;
   bool? unpin;
   bool? pmOneside;
-  var peer;
+  InputPeerBase peer;
   int id;
 
   UpdatePinnedMessage(
-      {required this.silent,
-      required this.unpin,
-      required this.pmOneside,
+      {this.silent,
+      this.unpin,
+      this.pmOneside,
       required this.peer,
       required this.id});
 
   static UpdatePinnedMessage fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final silent = (flags & 1) == 1;
     final unpin = (flags & 2) == 2;
@@ -6063,14 +5990,14 @@ class UpdatePinnedMessage extends BaseRequest {
     return [
       readBufferFromBigInt(3534419948, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -6089,12 +6016,12 @@ class UpdatePinnedMessage extends BaseRequest {
   }
 }
 
-class SendVote extends BaseRequest {
+class SendVote extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 283795844;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 283795844;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   List<List<int>> options;
 
@@ -6118,17 +6045,17 @@ class SendVote extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(283795844, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.options!.length, 4, little: true, signed: true),
-      this.options!.map((x) => serializeBytes(x)).expand((element) => element),
+      readBufferFromBigInt(this.options.length, 4, little: true, signed: true),
+      this.options.map((x) => serializeBytes(x)).expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -6147,18 +6074,17 @@ class SendVote extends BaseRequest {
   }
 }
 
-class GetPollResults extends BaseRequest {
+class GetPollResults extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1941660731;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 1941660731;
-  var peer;
+  InputPeerBase peer;
   int msgId;
 
   GetPollResults({required this.peer, required this.msgId});
 
   static GetPollResults fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     return GetPollResults(peer: peer, msgId: msgId);
@@ -6168,14 +6094,14 @@ class GetPollResults extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1941660731, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -6194,17 +6120,16 @@ class GetPollResults extends BaseRequest {
   }
 }
 
-class GetOnlines extends BaseRequest {
+class GetOnlines extends BaseRequest<ChatOnlines, dynamic> {
   static const CONSTRUCTOR_ID = 1848369232;
   static const SUBCLASS_OF_ID = 2357301306;
   final classType = "request";
   final ID = 1848369232;
-  var peer;
+  InputPeerBase peer;
 
   GetOnlines({required this.peer});
 
   static GetOnlines fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return GetOnlines(peer: peer);
   }
@@ -6213,13 +6138,13 @@ class GetOnlines extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1848369232, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<ChatOnlines, dynamic>();
   }
 
   @override
@@ -6238,18 +6163,17 @@ class GetOnlines extends BaseRequest {
   }
 }
 
-class EditChatAbout extends BaseRequest {
+class EditChatAbout extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3740665751;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3740665751;
-  var peer;
+  InputPeerBase peer;
   String about;
 
   EditChatAbout({required this.peer, required this.about});
 
   static EditChatAbout fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var about = reader.tgReadString();
     return EditChatAbout(peer: peer, about: about);
@@ -6259,14 +6183,14 @@ class EditChatAbout extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3740665751, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       serializeBytes(this.about),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -6285,18 +6209,17 @@ class EditChatAbout extends BaseRequest {
   }
 }
 
-class EditChatDefaultBannedRights extends BaseRequest {
+class EditChatDefaultBannedRights extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2777049921;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 2777049921;
-  var peer;
-  var bannedRights;
+  InputPeerBase peer;
+  ChatBannedRights bannedRights;
 
   EditChatDefaultBannedRights({required this.peer, required this.bannedRights});
 
   static EditChatDefaultBannedRights fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var bannedRights = reader.tgReadObject();
     return EditChatDefaultBannedRights(peer: peer, bannedRights: bannedRights);
@@ -6306,14 +6229,14 @@ class EditChatDefaultBannedRights extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2777049921, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.bannedRights.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.bannedRights.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -6332,7 +6255,7 @@ class EditChatDefaultBannedRights extends BaseRequest {
   }
 }
 
-class GetEmojiKeywords extends BaseRequest {
+class GetEmojiKeywords extends BaseRequest<EmojiKeywordsDifference, dynamic> {
   static const CONSTRUCTOR_ID = 899735650;
   static const SUBCLASS_OF_ID = 3531196018;
   final classType = "request";
@@ -6342,7 +6265,6 @@ class GetEmojiKeywords extends BaseRequest {
   GetEmojiKeywords({required this.langCode});
 
   static GetEmojiKeywords fromReader(BinaryReader reader) {
-    var len;
     var langCode = reader.tgReadString();
     return GetEmojiKeywords(langCode: langCode);
   }
@@ -6357,7 +6279,7 @@ class GetEmojiKeywords extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<EmojiKeywordsDifference, dynamic>();
   }
 
   @override
@@ -6376,7 +6298,8 @@ class GetEmojiKeywords extends BaseRequest {
   }
 }
 
-class GetEmojiKeywordsDifference extends BaseRequest {
+class GetEmojiKeywordsDifference
+    extends BaseRequest<EmojiKeywordsDifference, dynamic> {
   static const CONSTRUCTOR_ID = 352892591;
   static const SUBCLASS_OF_ID = 3531196018;
   final classType = "request";
@@ -6388,7 +6311,6 @@ class GetEmojiKeywordsDifference extends BaseRequest {
       {required this.langCode, required this.fromVersion});
 
   static GetEmojiKeywordsDifference fromReader(BinaryReader reader) {
-    var len;
     var langCode = reader.tgReadString();
     var fromVersion = reader.readInt();
     return GetEmojiKeywordsDifference(
@@ -6406,7 +6328,7 @@ class GetEmojiKeywordsDifference extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<EmojiKeywordsDifference, dynamic>();
   }
 
   @override
@@ -6425,7 +6347,8 @@ class GetEmojiKeywordsDifference extends BaseRequest {
   }
 }
 
-class GetEmojiKeywordsLanguages extends BaseRequest {
+class GetEmojiKeywordsLanguages
+    extends BaseRequest<List<EmojiLanguage>, EmojiLanguage> {
   static const CONSTRUCTOR_ID = 1318675378;
   static const SUBCLASS_OF_ID = 3885355911;
   final classType = "request";
@@ -6451,18 +6374,17 @@ class GetEmojiKeywordsLanguages extends BaseRequest {
     return [
       readBufferFromBigInt(1318675378, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.langCodes!.length, 4,
+      readBufferFromBigInt(this.langCodes.length, 4,
           little: true, signed: true),
       this
-          .langCodes!
-          .map((x) => serializeBytes(x))
+          .langCodes.map((x) => serializeBytes(x))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<EmojiLanguage>, EmojiLanguage>();
   }
 
   @override
@@ -6481,7 +6403,7 @@ class GetEmojiKeywordsLanguages extends BaseRequest {
   }
 }
 
-class GetEmojiURL extends BaseRequest {
+class GetEmojiURL extends BaseRequest<EmojiURL, dynamic> {
   static const CONSTRUCTOR_ID = 3585149990;
   static const SUBCLASS_OF_ID = 530614809;
   final classType = "request";
@@ -6491,7 +6413,6 @@ class GetEmojiURL extends BaseRequest {
   GetEmojiURL({required this.langCode});
 
   static GetEmojiURL fromReader(BinaryReader reader) {
-    var len;
     var langCode = reader.tgReadString();
     return GetEmojiURL(langCode: langCode);
   }
@@ -6506,7 +6427,7 @@ class GetEmojiURL extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<EmojiURL, dynamic>();
   }
 
   @override
@@ -6525,13 +6446,14 @@ class GetEmojiURL extends BaseRequest {
   }
 }
 
-class GetSearchCounters extends BaseRequest {
+class GetSearchCounters extends BaseRequest<List<messages_ns.SearchCounter>,
+    messages_ns.SearchCounter> {
   static const CONSTRUCTOR_ID = 1932455680;
   static const SUBCLASS_OF_ID = 1809726574;
   final classType = "request";
   final ID = 1932455680;
-  var peer;
-  List<dynamic> filters;
+  InputPeerBase peer;
+  List<MessagesFilterBase> filters;
 
   GetSearchCounters({required this.peer, required this.filters});
 
@@ -6540,7 +6462,7 @@ class GetSearchCounters extends BaseRequest {
     var peer = reader.tgReadObject();
     var _vectorfilters = reader.readInt();
     if (_vectorfilters != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> filters = [];
+    List<MessagesFilterBase> filters = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       filters.add(reader.tgReadObject());
@@ -6552,19 +6474,19 @@ class GetSearchCounters extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1932455680, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.filters!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.filters.length, 4, little: true, signed: true),
       this
-          .filters!
-          .map((x) => (x.getBytes() as List<int>))
+          .filters.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<messages_ns.SearchCounter>,
+        messages_ns.SearchCounter>();
   }
 
   @override
@@ -6583,24 +6505,19 @@ class GetSearchCounters extends BaseRequest {
   }
 }
 
-class RequestUrlAuth extends BaseRequest {
+class RequestUrlAuth extends BaseRequest<UrlAuthResultBase, dynamic> {
   static const CONSTRUCTOR_ID = 428848198;
   static const SUBCLASS_OF_ID = 2003159838;
   final classType = "request";
   final ID = 428848198;
-  var peer;
+  InputPeerBase? peer;
   int? msgId;
   int? buttonId;
   String? url;
 
-  RequestUrlAuth(
-      {required this.peer,
-      required this.msgId,
-      required this.buttonId,
-      required this.url});
+  RequestUrlAuth({this.peer, this.msgId, this.buttonId, this.url});
 
   static RequestUrlAuth fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var peer;
     if ((flags & 2) == 2) {
@@ -6637,7 +6554,7 @@ class RequestUrlAuth extends BaseRequest {
       [0, 0, 0, 0],
       (this.peer == null || this.peer == false)
           ? List<int>.empty()
-          : [(this.peer.getBytes() as List<int>)]
+          : [(this.peer!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.msgId == null || this.msgId == false)
@@ -6658,7 +6575,7 @@ class RequestUrlAuth extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UrlAuthResultBase, dynamic>();
   }
 
   @override
@@ -6677,26 +6594,21 @@ class RequestUrlAuth extends BaseRequest {
   }
 }
 
-class AcceptUrlAuth extends BaseRequest {
+class AcceptUrlAuth extends BaseRequest<UrlAuthResultBase, dynamic> {
   static const CONSTRUCTOR_ID = 2972479781;
   static const SUBCLASS_OF_ID = 2003159838;
   final classType = "request";
   final ID = 2972479781;
   bool? writeAllowed;
-  var peer;
+  InputPeerBase? peer;
   int? msgId;
   int? buttonId;
   String? url;
 
   AcceptUrlAuth(
-      {required this.writeAllowed,
-      required this.peer,
-      required this.msgId,
-      required this.buttonId,
-      required this.url});
+      {this.writeAllowed, this.peer, this.msgId, this.buttonId, this.url});
 
   static AcceptUrlAuth fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final writeAllowed = (flags & 1) == 1;
     var peer;
@@ -6738,7 +6650,7 @@ class AcceptUrlAuth extends BaseRequest {
       [0, 0, 0, 0],
       (this.peer == null || this.peer == false)
           ? List<int>.empty()
-          : [(this.peer.getBytes() as List<int>)]
+          : [(this.peer!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.msgId == null || this.msgId == false)
@@ -6759,7 +6671,7 @@ class AcceptUrlAuth extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UrlAuthResultBase, dynamic>();
   }
 
   @override
@@ -6778,17 +6690,16 @@ class AcceptUrlAuth extends BaseRequest {
   }
 }
 
-class HidePeerSettingsBar extends BaseRequest {
+class HidePeerSettingsBar extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1336717624;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 1336717624;
-  var peer;
+  InputPeerBase peer;
 
   HidePeerSettingsBar({required this.peer});
 
   static HidePeerSettingsBar fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return HidePeerSettingsBar(peer: peer);
   }
@@ -6797,13 +6708,13 @@ class HidePeerSettingsBar extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1336717624, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -6822,18 +6733,18 @@ class HidePeerSettingsBar extends BaseRequest {
   }
 }
 
-class GetScheduledHistory extends BaseRequest {
+class GetScheduledHistory
+    extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 4111889931;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 4111889931;
-  var peer;
+  InputPeerBase peer;
   BigInt hash;
 
   GetScheduledHistory({required this.peer, required this.hash});
 
   static GetScheduledHistory fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var hash = reader.readLong();
     return GetScheduledHistory(peer: peer, hash: hash);
@@ -6843,14 +6754,14 @@ class GetScheduledHistory extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4111889931, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.hash, 8, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -6869,12 +6780,13 @@ class GetScheduledHistory extends BaseRequest {
   }
 }
 
-class GetScheduledMessages extends BaseRequest {
+class GetScheduledMessages
+    extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3183150180;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 3183150180;
-  var peer;
+  InputPeerBase peer;
   List<int> id;
 
   GetScheduledMessages({required this.peer, required this.id});
@@ -6896,19 +6808,18 @@ class GetScheduledMessages extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3183150180, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -6927,12 +6838,12 @@ class GetScheduledMessages extends BaseRequest {
   }
 }
 
-class SendScheduledMessages extends BaseRequest {
+class SendScheduledMessages extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3174597898;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 3174597898;
-  var peer;
+  InputPeerBase peer;
   List<int> id;
 
   SendScheduledMessages({required this.peer, required this.id});
@@ -6954,19 +6865,18 @@ class SendScheduledMessages extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3174597898, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -6985,12 +6895,12 @@ class SendScheduledMessages extends BaseRequest {
   }
 }
 
-class DeleteScheduledMessages extends BaseRequest {
+class DeleteScheduledMessages extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1504586518;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 1504586518;
-  var peer;
+  InputPeerBase peer;
   List<int> id;
 
   DeleteScheduledMessages({required this.peer, required this.id});
@@ -7012,19 +6922,18 @@ class DeleteScheduledMessages extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1504586518, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -7043,12 +6952,12 @@ class DeleteScheduledMessages extends BaseRequest {
   }
 }
 
-class GetPollVotes extends BaseRequest {
+class GetPollVotes extends BaseRequest<messages_ns.VotesList, dynamic> {
   static const CONSTRUCTOR_ID = 3094231054;
   static const SUBCLASS_OF_ID = 3256457349;
   final classType = "request";
   final ID = 3094231054;
-  var peer;
+  InputPeerBase peer;
   int id;
   List<int>? option;
   String? offset;
@@ -7057,12 +6966,11 @@ class GetPollVotes extends BaseRequest {
   GetPollVotes(
       {required this.peer,
       required this.id,
-      required this.option,
-      required this.offset,
+      this.option,
+      this.offset,
       required this.limit});
 
   static GetPollVotes fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var peer = reader.tgReadObject();
     var id = reader.readInt();
@@ -7088,7 +6996,7 @@ class GetPollVotes extends BaseRequest {
     return [
       readBufferFromBigInt(3094231054, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
       (this.option == null || this.option == false)
           ? List<int>.empty()
@@ -7102,7 +7010,7 @@ class GetPollVotes extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.VotesList, dynamic>();
   }
 
   @override
@@ -7121,7 +7029,7 @@ class GetPollVotes extends BaseRequest {
   }
 }
 
-class ToggleStickerSets extends BaseRequest {
+class ToggleStickerSets extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3037016042;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -7129,12 +7037,12 @@ class ToggleStickerSets extends BaseRequest {
   bool? uninstall;
   bool? archive;
   bool? unarchive;
-  List<dynamic> stickersets;
+  List<InputStickerSetBase> stickersets;
 
   ToggleStickerSets(
-      {required this.uninstall,
-      required this.archive,
-      required this.unarchive,
+      {this.uninstall,
+      this.archive,
+      this.unarchive,
       required this.stickersets});
 
   static ToggleStickerSets fromReader(BinaryReader reader) {
@@ -7145,7 +7053,7 @@ class ToggleStickerSets extends BaseRequest {
     final unarchive = (flags & 4) == 4;
     var _vectorstickersets = reader.readInt();
     if (_vectorstickersets != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> stickersets = [];
+    List<InputStickerSetBase> stickersets = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       stickersets.add(reader.tgReadObject());
@@ -7163,18 +7071,17 @@ class ToggleStickerSets extends BaseRequest {
       readBufferFromBigInt(3037016042, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.stickersets!.length, 4,
+      readBufferFromBigInt(this.stickersets.length, 4,
           little: true, signed: true),
       this
-          .stickersets!
-          .map((x) => (x.getBytes() as List<int>))
+          .stickersets.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -7193,7 +7100,8 @@ class ToggleStickerSets extends BaseRequest {
   }
 }
 
-class GetDialogFilters extends BaseRequest {
+class GetDialogFilters
+    extends BaseRequest<List<DialogFilterBase>, DialogFilterBase> {
   static const CONSTRUCTOR_ID = 4053719405;
   static const SUBCLASS_OF_ID = 1612507469;
   final classType = "request";
@@ -7202,7 +7110,6 @@ class GetDialogFilters extends BaseRequest {
   GetDialogFilters();
 
   static GetDialogFilters fromReader(BinaryReader reader) {
-    var len;
     return GetDialogFilters();
   }
 
@@ -7215,7 +7122,7 @@ class GetDialogFilters extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<DialogFilterBase>, DialogFilterBase>();
   }
 
   @override
@@ -7234,7 +7141,8 @@ class GetDialogFilters extends BaseRequest {
   }
 }
 
-class GetSuggestedDialogFilters extends BaseRequest {
+class GetSuggestedDialogFilters
+    extends BaseRequest<List<DialogFilterSuggested>, DialogFilterSuggested> {
   static const CONSTRUCTOR_ID = 2728186924;
   static const SUBCLASS_OF_ID = 2066312249;
   final classType = "request";
@@ -7243,7 +7151,6 @@ class GetSuggestedDialogFilters extends BaseRequest {
   GetSuggestedDialogFilters();
 
   static GetSuggestedDialogFilters fromReader(BinaryReader reader) {
-    var len;
     return GetSuggestedDialogFilters();
   }
 
@@ -7256,7 +7163,8 @@ class GetSuggestedDialogFilters extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader
+        .tgReadObject<List<DialogFilterSuggested>, DialogFilterSuggested>();
   }
 
   @override
@@ -7275,18 +7183,17 @@ class GetSuggestedDialogFilters extends BaseRequest {
   }
 }
 
-class UpdateDialogFilter extends BaseRequest {
+class UpdateDialogFilter extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 450142282;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 450142282;
   int id;
-  var filter;
+  DialogFilterBase? filter;
 
-  UpdateDialogFilter({required this.id, required this.filter});
+  UpdateDialogFilter({required this.id, this.filter});
 
   static UpdateDialogFilter fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.readInt();
     var filter;
@@ -7306,7 +7213,7 @@ class UpdateDialogFilter extends BaseRequest {
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
       (this.filter == null || this.filter == false)
           ? List<int>.empty()
-          : [(this.filter.getBytes() as List<int>)]
+          : [(this.filter!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -7314,7 +7221,7 @@ class UpdateDialogFilter extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -7333,7 +7240,7 @@ class UpdateDialogFilter extends BaseRequest {
   }
 }
 
-class UpdateDialogFiltersOrder extends BaseRequest {
+class UpdateDialogFiltersOrder extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3311649252;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -7359,17 +7266,16 @@ class UpdateDialogFiltersOrder extends BaseRequest {
     return [
       readBufferFromBigInt(3311649252, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.order!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.order.length, 4, little: true, signed: true),
       this
-          .order!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .order.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -7388,7 +7294,8 @@ class UpdateDialogFiltersOrder extends BaseRequest {
   }
 }
 
-class GetOldFeaturedStickers extends BaseRequest {
+class GetOldFeaturedStickers
+    extends BaseRequest<messages_ns.FeaturedStickersBase, dynamic> {
   static const CONSTRUCTOR_ID = 2127598753;
   static const SUBCLASS_OF_ID = 638891810;
   final classType = "request";
@@ -7401,7 +7308,6 @@ class GetOldFeaturedStickers extends BaseRequest {
       {required this.offset, required this.limit, required this.hash});
 
   static GetOldFeaturedStickers fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var limit = reader.readInt();
     var hash = reader.readLong();
@@ -7420,7 +7326,7 @@ class GetOldFeaturedStickers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.FeaturedStickersBase, dynamic>();
   }
 
   @override
@@ -7439,12 +7345,12 @@ class GetOldFeaturedStickers extends BaseRequest {
   }
 }
 
-class GetReplies extends BaseRequest {
+class GetReplies extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 584962828;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 584962828;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   int offsetId;
   int offsetDate;
@@ -7466,7 +7372,6 @@ class GetReplies extends BaseRequest {
       required this.hash});
 
   static GetReplies fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var offsetId = reader.readInt();
@@ -7492,7 +7397,7 @@ class GetReplies extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(584962828, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
       readBufferFromBigInt(this.offsetDate, 4, little: true, signed: true),
@@ -7506,7 +7411,7 @@ class GetReplies extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -7525,18 +7430,18 @@ class GetReplies extends BaseRequest {
   }
 }
 
-class GetDiscussionMessage extends BaseRequest {
+class GetDiscussionMessage
+    extends BaseRequest<messages_ns.DiscussionMessage, dynamic> {
   static const CONSTRUCTOR_ID = 1147761405;
   static const SUBCLASS_OF_ID = 1408820200;
   final classType = "request";
   final ID = 1147761405;
-  var peer;
+  InputPeerBase peer;
   int msgId;
 
   GetDiscussionMessage({required this.peer, required this.msgId});
 
   static GetDiscussionMessage fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     return GetDiscussionMessage(peer: peer, msgId: msgId);
@@ -7546,14 +7451,14 @@ class GetDiscussionMessage extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1147761405, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.DiscussionMessage, dynamic>();
   }
 
   @override
@@ -7572,12 +7477,12 @@ class GetDiscussionMessage extends BaseRequest {
   }
 }
 
-class ReadDiscussion extends BaseRequest {
+class ReadDiscussion extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 4147227124;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 4147227124;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   int readMaxId;
 
@@ -7585,7 +7490,6 @@ class ReadDiscussion extends BaseRequest {
       {required this.peer, required this.msgId, required this.readMaxId});
 
   static ReadDiscussion fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var readMaxId = reader.readInt();
@@ -7596,7 +7500,7 @@ class ReadDiscussion extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4147227124, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.readMaxId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -7604,7 +7508,7 @@ class ReadDiscussion extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -7623,17 +7527,17 @@ class ReadDiscussion extends BaseRequest {
   }
 }
 
-class UnpinAllMessages extends BaseRequest {
+class UnpinAllMessages
+    extends BaseRequest<messages_ns.AffectedHistory, dynamic> {
   static const CONSTRUCTOR_ID = 4029004939;
   static const SUBCLASS_OF_ID = 743031062;
   final classType = "request";
   final ID = 4029004939;
-  var peer;
+  InputPeerBase peer;
 
   UnpinAllMessages({required this.peer});
 
   static UnpinAllMessages fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return UnpinAllMessages(peer: peer);
   }
@@ -7642,13 +7546,13 @@ class UnpinAllMessages extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4029004939, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AffectedHistory, dynamic>();
   }
 
   @override
@@ -7667,7 +7571,7 @@ class UnpinAllMessages extends BaseRequest {
   }
 }
 
-class DeleteChat extends BaseRequest {
+class DeleteChat extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1540419152;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -7677,7 +7581,6 @@ class DeleteChat extends BaseRequest {
   DeleteChat({required this.chatId});
 
   static DeleteChat fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     return DeleteChat(chatId: chatId);
   }
@@ -7692,7 +7595,7 @@ class DeleteChat extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -7711,17 +7614,17 @@ class DeleteChat extends BaseRequest {
   }
 }
 
-class DeletePhoneCallHistory extends BaseRequest {
+class DeletePhoneCallHistory
+    extends BaseRequest<messages_ns.AffectedFoundMessages, dynamic> {
   static const CONSTRUCTOR_ID = 4190888969;
   static const SUBCLASS_OF_ID = 4162282798;
   final classType = "request";
   final ID = 4190888969;
   bool? revoke;
 
-  DeletePhoneCallHistory({required this.revoke});
+  DeletePhoneCallHistory({this.revoke});
 
   static DeletePhoneCallHistory fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final revoke = (flags & 1) == 1;
     return DeletePhoneCallHistory(revoke: revoke);
@@ -7737,7 +7640,7 @@ class DeletePhoneCallHistory extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AffectedFoundMessages, dynamic>();
   }
 
   @override
@@ -7756,7 +7659,8 @@ class DeletePhoneCallHistory extends BaseRequest {
   }
 }
 
-class CheckHistoryImport extends BaseRequest {
+class CheckHistoryImport
+    extends BaseRequest<messages_ns.HistoryImportParsed, dynamic> {
   static const CONSTRUCTOR_ID = 1140726259;
   static const SUBCLASS_OF_ID = 1538421259;
   final classType = "request";
@@ -7766,7 +7670,6 @@ class CheckHistoryImport extends BaseRequest {
   CheckHistoryImport({required this.importHead});
 
   static CheckHistoryImport fromReader(BinaryReader reader) {
-    var len;
     var importHead = reader.tgReadString();
     return CheckHistoryImport(importHead: importHead);
   }
@@ -7781,7 +7684,7 @@ class CheckHistoryImport extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.HistoryImportParsed, dynamic>();
   }
 
   @override
@@ -7800,20 +7703,20 @@ class CheckHistoryImport extends BaseRequest {
   }
 }
 
-class InitHistoryImport extends BaseRequest {
+class InitHistoryImport
+    extends BaseRequest<messages_ns.HistoryImport, dynamic> {
   static const CONSTRUCTOR_ID = 873008187;
   static const SUBCLASS_OF_ID = 2978723082;
   final classType = "request";
   final ID = 873008187;
-  var peer;
-  var file;
+  InputPeerBase peer;
+  InputFileBase file;
   int mediaCount;
 
   InitHistoryImport(
       {required this.peer, required this.file, required this.mediaCount});
 
   static InitHistoryImport fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var file = reader.tgReadObject();
     var mediaCount = reader.readInt();
@@ -7824,15 +7727,15 @@ class InitHistoryImport extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(873008187, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.file.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.file.getBytes()),
       readBufferFromBigInt(this.mediaCount, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.HistoryImport, dynamic>();
   }
 
   @override
@@ -7851,15 +7754,15 @@ class InitHistoryImport extends BaseRequest {
   }
 }
 
-class UploadImportedMedia extends BaseRequest {
+class UploadImportedMedia extends BaseRequest<MessageMediaBase, dynamic> {
   static const CONSTRUCTOR_ID = 713433234;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "request";
   final ID = 713433234;
-  var peer;
+  InputPeerBase peer;
   BigInt importId;
   String fileName;
-  var media;
+  InputMediaBase media;
 
   UploadImportedMedia(
       {required this.peer,
@@ -7868,7 +7771,6 @@ class UploadImportedMedia extends BaseRequest {
       required this.media});
 
   static UploadImportedMedia fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var importId = reader.readLong();
     var fileName = reader.tgReadString();
@@ -7881,16 +7783,16 @@ class UploadImportedMedia extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(713433234, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.importId, 8, little: true, signed: true),
       serializeBytes(this.fileName),
-      (this.media.getBytes() as List<int>),
+      (this.media.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<MessageMediaBase, dynamic>();
   }
 
   @override
@@ -7909,18 +7811,17 @@ class UploadImportedMedia extends BaseRequest {
   }
 }
 
-class StartHistoryImport extends BaseRequest {
+class StartHistoryImport extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3023958852;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3023958852;
-  var peer;
+  InputPeerBase peer;
   BigInt importId;
 
   StartHistoryImport({required this.peer, required this.importId});
 
   static StartHistoryImport fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var importId = reader.readLong();
     return StartHistoryImport(peer: peer, importId: importId);
@@ -7930,14 +7831,14 @@ class StartHistoryImport extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3023958852, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.importId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -7956,28 +7857,28 @@ class StartHistoryImport extends BaseRequest {
   }
 }
 
-class GetExportedChatInvites extends BaseRequest {
+class GetExportedChatInvites
+    extends BaseRequest<messages_ns.ExportedChatInvites, dynamic> {
   static const CONSTRUCTOR_ID = 2729812982;
   static const SUBCLASS_OF_ID = 1614624881;
   final classType = "request";
   final ID = 2729812982;
   bool? revoked;
-  var peer;
-  var adminId;
+  InputPeerBase peer;
+  InputUserBase adminId;
   int? offsetDate;
   String? offsetLink;
   int limit;
 
   GetExportedChatInvites(
-      {required this.revoked,
+      {this.revoked,
       required this.peer,
       required this.adminId,
-      required this.offsetDate,
-      required this.offsetLink,
+      this.offsetDate,
+      this.offsetLink,
       required this.limit});
 
   static GetExportedChatInvites fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final revoked = (flags & 8) == 8;
     var peer = reader.tgReadObject();
@@ -8009,8 +7910,8 @@ class GetExportedChatInvites extends BaseRequest {
     return [
       readBufferFromBigInt(2729812982, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
-      (this.adminId.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.adminId.getBytes()),
       (this.offsetDate == null || this.offsetDate == false)
           ? List<int>.empty()
           : [
@@ -8028,7 +7929,7 @@ class GetExportedChatInvites extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ExportedChatInvites, dynamic>();
   }
 
   @override
@@ -8047,18 +7948,18 @@ class GetExportedChatInvites extends BaseRequest {
   }
 }
 
-class GetExportedChatInvite extends BaseRequest {
+class GetExportedChatInvite
+    extends BaseRequest<messages_ns.ExportedChatInviteBase, dynamic> {
   static const CONSTRUCTOR_ID = 1937010524;
   static const SUBCLASS_OF_ID = 2195510474;
   final classType = "request";
   final ID = 1937010524;
-  var peer;
+  InputPeerBase peer;
   String link;
 
   GetExportedChatInvite({required this.peer, required this.link});
 
   static GetExportedChatInvite fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var link = reader.tgReadString();
     return GetExportedChatInvite(peer: peer, link: link);
@@ -8068,14 +7969,14 @@ class GetExportedChatInvite extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1937010524, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       serializeBytes(this.link),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ExportedChatInviteBase, dynamic>();
   }
 
   @override
@@ -8094,13 +7995,14 @@ class GetExportedChatInvite extends BaseRequest {
   }
 }
 
-class EditExportedChatInvite extends BaseRequest {
+class EditExportedChatInvite
+    extends BaseRequest<messages_ns.ExportedChatInviteBase, dynamic> {
   static const CONSTRUCTOR_ID = 3184144245;
   static const SUBCLASS_OF_ID = 2195510474;
   final classType = "request";
   final ID = 3184144245;
   bool? revoked;
-  var peer;
+  InputPeerBase peer;
   String link;
   int? expireDate;
   int? usageLimit;
@@ -8108,16 +8010,15 @@ class EditExportedChatInvite extends BaseRequest {
   String? title;
 
   EditExportedChatInvite(
-      {required this.revoked,
+      {this.revoked,
       required this.peer,
       required this.link,
-      required this.expireDate,
-      required this.usageLimit,
-      required this.requestNeeded,
-      required this.title});
+      this.expireDate,
+      this.usageLimit,
+      this.requestNeeded,
+      this.title});
 
   static EditExportedChatInvite fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final revoked = (flags & 4) == 4;
     var peer = reader.tgReadObject();
@@ -8161,7 +8062,7 @@ class EditExportedChatInvite extends BaseRequest {
     return [
       readBufferFromBigInt(3184144245, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       serializeBytes(this.link),
       (this.expireDate == null || this.expireDate == false)
           ? List<int>.empty()
@@ -8188,7 +8089,7 @@ class EditExportedChatInvite extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ExportedChatInviteBase, dynamic>();
   }
 
   @override
@@ -8207,18 +8108,17 @@ class EditExportedChatInvite extends BaseRequest {
   }
 }
 
-class DeleteRevokedExportedChatInvites extends BaseRequest {
+class DeleteRevokedExportedChatInvites extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1452833749;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 1452833749;
-  var peer;
-  var adminId;
+  InputPeerBase peer;
+  InputUserBase adminId;
 
   DeleteRevokedExportedChatInvites({required this.peer, required this.adminId});
 
   static DeleteRevokedExportedChatInvites fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var adminId = reader.tgReadObject();
     return DeleteRevokedExportedChatInvites(peer: peer, adminId: adminId);
@@ -8228,14 +8128,14 @@ class DeleteRevokedExportedChatInvites extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1452833749, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.adminId.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.adminId.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -8254,18 +8154,17 @@ class DeleteRevokedExportedChatInvites extends BaseRequest {
   }
 }
 
-class DeleteExportedChatInvite extends BaseRequest {
+class DeleteExportedChatInvite extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3563365419;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3563365419;
-  var peer;
+  InputPeerBase peer;
   String link;
 
   DeleteExportedChatInvite({required this.peer, required this.link});
 
   static DeleteExportedChatInvite fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var link = reader.tgReadString();
     return DeleteExportedChatInvite(peer: peer, link: link);
@@ -8275,14 +8174,14 @@ class DeleteExportedChatInvite extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3563365419, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       serializeBytes(this.link),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -8301,17 +8200,17 @@ class DeleteExportedChatInvite extends BaseRequest {
   }
 }
 
-class GetAdminsWithInvites extends BaseRequest {
+class GetAdminsWithInvites
+    extends BaseRequest<messages_ns.ChatAdminsWithInvites, dynamic> {
   static const CONSTRUCTOR_ID = 958457583;
   static const SUBCLASS_OF_ID = 2405149995;
   final classType = "request";
   final ID = 958457583;
-  var peer;
+  InputPeerBase peer;
 
   GetAdminsWithInvites({required this.peer});
 
   static GetAdminsWithInvites fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return GetAdminsWithInvites(peer: peer);
   }
@@ -8320,13 +8219,13 @@ class GetAdminsWithInvites extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(958457583, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ChatAdminsWithInvites, dynamic>();
   }
 
   @override
@@ -8345,30 +8244,30 @@ class GetAdminsWithInvites extends BaseRequest {
   }
 }
 
-class GetChatInviteImporters extends BaseRequest {
+class GetChatInviteImporters
+    extends BaseRequest<messages_ns.ChatInviteImporters, dynamic> {
   static const CONSTRUCTOR_ID = 3741637966;
   static const SUBCLASS_OF_ID = 3653012134;
   final classType = "request";
   final ID = 3741637966;
   bool? requested;
-  var peer;
+  InputPeerBase peer;
   String? link;
   String? q;
   int offsetDate;
-  var offsetUser;
+  InputUserBase offsetUser;
   int limit;
 
   GetChatInviteImporters(
-      {required this.requested,
+      {this.requested,
       required this.peer,
-      required this.link,
-      required this.q,
+      this.link,
+      this.q,
       required this.offsetDate,
       required this.offsetUser,
       required this.limit});
 
   static GetChatInviteImporters fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final requested = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -8402,7 +8301,7 @@ class GetChatInviteImporters extends BaseRequest {
     return [
       readBufferFromBigInt(3741637966, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.link == null || this.link == false)
           ? List<int>.empty()
           : [serializeBytes(this.link)].expand((element) => element).toList(),
@@ -8410,14 +8309,14 @@ class GetChatInviteImporters extends BaseRequest {
           ? List<int>.empty()
           : [serializeBytes(this.q)].expand((element) => element).toList(),
       readBufferFromBigInt(this.offsetDate, 4, little: true, signed: true),
-      (this.offsetUser.getBytes() as List<int>),
+      (this.offsetUser.getBytes()),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.ChatInviteImporters, dynamic>();
   }
 
   @override
@@ -8436,18 +8335,17 @@ class GetChatInviteImporters extends BaseRequest {
   }
 }
 
-class SetHistoryTTL extends BaseRequest {
+class SetHistoryTTL extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3087949796;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 3087949796;
-  var peer;
+  InputPeerBase peer;
   int period;
 
   SetHistoryTTL({required this.peer, required this.period});
 
   static SetHistoryTTL fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var period = reader.readInt();
     return SetHistoryTTL(peer: peer, period: period);
@@ -8457,14 +8355,14 @@ class SetHistoryTTL extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3087949796, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.period, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -8483,17 +8381,17 @@ class SetHistoryTTL extends BaseRequest {
   }
 }
 
-class CheckHistoryImportPeer extends BaseRequest {
+class CheckHistoryImportPeer
+    extends BaseRequest<messages_ns.CheckedHistoryImportPeer, dynamic> {
   static const CONSTRUCTOR_ID = 1573261059;
   static const SUBCLASS_OF_ID = 3091968823;
   final classType = "request";
   final ID = 1573261059;
-  var peer;
+  InputPeerBase peer;
 
   CheckHistoryImportPeer({required this.peer});
 
   static CheckHistoryImportPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return CheckHistoryImportPeer(peer: peer);
   }
@@ -8502,13 +8400,13 @@ class CheckHistoryImportPeer extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1573261059, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.CheckedHistoryImportPeer, dynamic>();
   }
 
   @override
@@ -8527,18 +8425,17 @@ class CheckHistoryImportPeer extends BaseRequest {
   }
 }
 
-class SetChatTheme extends BaseRequest {
+class SetChatTheme extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3862683967;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 3862683967;
-  var peer;
+  InputPeerBase peer;
   String emoticon;
 
   SetChatTheme({required this.peer, required this.emoticon});
 
   static SetChatTheme fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var emoticon = reader.tgReadString();
     return SetChatTheme(peer: peer, emoticon: emoticon);
@@ -8548,14 +8445,14 @@ class SetChatTheme extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3862683967, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       serializeBytes(this.emoticon),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -8574,18 +8471,17 @@ class SetChatTheme extends BaseRequest {
   }
 }
 
-class GetMessageReadParticipants extends BaseRequest {
+class GetMessageReadParticipants extends BaseRequest<List<BigInt>, BigInt> {
   static const CONSTRUCTOR_ID = 745510839;
   static const SUBCLASS_OF_ID = 2300109160;
   final classType = "request";
   final ID = 745510839;
-  var peer;
+  InputPeerBase peer;
   int msgId;
 
   GetMessageReadParticipants({required this.peer, required this.msgId});
 
   static GetMessageReadParticipants fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     return GetMessageReadParticipants(peer: peer, msgId: msgId);
@@ -8595,7 +8491,7 @@ class GetMessageReadParticipants extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(745510839, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -8627,13 +8523,14 @@ class GetMessageReadParticipants extends BaseRequest {
   }
 }
 
-class GetSearchResultsCalendar extends BaseRequest {
+class GetSearchResultsCalendar
+    extends BaseRequest<messages_ns.SearchResultsCalendar, dynamic> {
   static const CONSTRUCTOR_ID = 1240514025;
   static const SUBCLASS_OF_ID = 2462409743;
   final classType = "request";
   final ID = 1240514025;
-  var peer;
-  var filter;
+  InputPeerBase peer;
+  MessagesFilterBase filter;
   int offsetId;
   int offsetDate;
 
@@ -8644,7 +8541,6 @@ class GetSearchResultsCalendar extends BaseRequest {
       required this.offsetDate});
 
   static GetSearchResultsCalendar fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var filter = reader.tgReadObject();
     var offsetId = reader.readInt();
@@ -8657,8 +8553,8 @@ class GetSearchResultsCalendar extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1240514025, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.filter.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.filter.getBytes()),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
       readBufferFromBigInt(this.offsetDate, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -8666,7 +8562,7 @@ class GetSearchResultsCalendar extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.SearchResultsCalendar, dynamic>();
   }
 
   @override
@@ -8685,13 +8581,14 @@ class GetSearchResultsCalendar extends BaseRequest {
   }
 }
 
-class GetSearchResultsPositions extends BaseRequest {
+class GetSearchResultsPositions
+    extends BaseRequest<messages_ns.SearchResultsPositions, dynamic> {
   static const CONSTRUCTOR_ID = 1855292323;
   static const SUBCLASS_OF_ID = 3647172749;
   final classType = "request";
   final ID = 1855292323;
-  var peer;
-  var filter;
+  InputPeerBase peer;
+  MessagesFilterBase filter;
   int offsetId;
   int limit;
 
@@ -8702,7 +8599,6 @@ class GetSearchResultsPositions extends BaseRequest {
       required this.limit});
 
   static GetSearchResultsPositions fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var filter = reader.tgReadObject();
     var offsetId = reader.readInt();
@@ -8715,8 +8611,8 @@ class GetSearchResultsPositions extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1855292323, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.filter.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.filter.getBytes()),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -8724,7 +8620,7 @@ class GetSearchResultsPositions extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.SearchResultsPositions, dynamic>();
   }
 
   @override
@@ -8743,20 +8639,19 @@ class GetSearchResultsPositions extends BaseRequest {
   }
 }
 
-class HideChatJoinRequest extends BaseRequest {
+class HideChatJoinRequest extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2145904661;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 2145904661;
   bool? approved;
-  var peer;
-  var userId;
+  InputPeerBase peer;
+  InputUserBase userId;
 
   HideChatJoinRequest(
-      {required this.approved, required this.peer, required this.userId});
+      {this.approved, required this.peer, required this.userId});
 
   static HideChatJoinRequest fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final approved = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -8769,14 +8664,14 @@ class HideChatJoinRequest extends BaseRequest {
     return [
       readBufferFromBigInt(2145904661, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
-      (this.userId.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.userId.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -8795,20 +8690,18 @@ class HideChatJoinRequest extends BaseRequest {
   }
 }
 
-class HideAllChatJoinRequests extends BaseRequest {
+class HideAllChatJoinRequests extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3766875370;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 3766875370;
   bool? approved;
-  var peer;
+  InputPeerBase peer;
   String? link;
 
-  HideAllChatJoinRequests(
-      {required this.approved, required this.peer, required this.link});
+  HideAllChatJoinRequests({this.approved, required this.peer, this.link});
 
   static HideAllChatJoinRequests fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final approved = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -8826,7 +8719,7 @@ class HideAllChatJoinRequests extends BaseRequest {
     return [
       readBufferFromBigInt(3766875370, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.link == null || this.link == false)
           ? List<int>.empty()
           : [serializeBytes(this.link)].expand((element) => element).toList(),
@@ -8835,7 +8728,7 @@ class HideAllChatJoinRequests extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -8854,18 +8747,17 @@ class HideAllChatJoinRequests extends BaseRequest {
   }
 }
 
-class ToggleNoForwards extends BaseRequest {
+class ToggleNoForwards extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2971578274;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 2971578274;
-  var peer;
+  InputPeerBase peer;
   bool enabled;
 
   ToggleNoForwards({required this.peer, required this.enabled});
 
   static ToggleNoForwards fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var enabled = reader.tgReadBool();
     return ToggleNoForwards(peer: peer, enabled: enabled);
@@ -8875,14 +8767,14 @@ class ToggleNoForwards extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2971578274, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       [this.enabled == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -8901,18 +8793,17 @@ class ToggleNoForwards extends BaseRequest {
   }
 }
 
-class SaveDefaultSendAs extends BaseRequest {
+class SaveDefaultSendAs extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3439189910;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3439189910;
-  var peer;
-  var sendAs;
+  InputPeerBase peer;
+  InputPeerBase sendAs;
 
   SaveDefaultSendAs({required this.peer, required this.sendAs});
 
   static SaveDefaultSendAs fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var sendAs = reader.tgReadObject();
     return SaveDefaultSendAs(peer: peer, sendAs: sendAs);
@@ -8922,14 +8813,14 @@ class SaveDefaultSendAs extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3439189910, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.sendAs.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.sendAs.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -8948,24 +8839,20 @@ class SaveDefaultSendAs extends BaseRequest {
   }
 }
 
-class SendReaction extends BaseRequest {
+class SendReaction extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 627641572;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 627641572;
   bool? big;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   String? reaction;
 
   SendReaction(
-      {required this.big,
-      required this.peer,
-      required this.msgId,
-      required this.reaction});
+      {this.big, required this.peer, required this.msgId, this.reaction});
 
   static SendReaction fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final big = (flags & 2) == 2;
     var peer = reader.tgReadObject();
@@ -8984,7 +8871,7 @@ class SendReaction extends BaseRequest {
     return [
       readBufferFromBigInt(627641572, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       (this.reaction == null || this.reaction == false)
           ? List<int>.empty()
@@ -8996,7 +8883,7 @@ class SendReaction extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -9015,12 +8902,12 @@ class SendReaction extends BaseRequest {
   }
 }
 
-class GetMessagesReactions extends BaseRequest {
+class GetMessagesReactions extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 2344259814;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 2344259814;
-  var peer;
+  InputPeerBase peer;
   List<int> id;
 
   GetMessagesReactions({required this.peer, required this.id});
@@ -9042,19 +8929,18 @@ class GetMessagesReactions extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2344259814, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .id.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -9073,12 +8959,13 @@ class GetMessagesReactions extends BaseRequest {
   }
 }
 
-class GetMessageReactionsList extends BaseRequest {
+class GetMessageReactionsList
+    extends BaseRequest<messages_ns.MessageReactionsList, dynamic> {
   static const CONSTRUCTOR_ID = 3773721463;
   static const SUBCLASS_OF_ID = 1627186662;
   final classType = "request";
   final ID = 3773721463;
-  var peer;
+  InputPeerBase peer;
   int id;
   String? reaction;
   String? offset;
@@ -9087,12 +8974,11 @@ class GetMessageReactionsList extends BaseRequest {
   GetMessageReactionsList(
       {required this.peer,
       required this.id,
-      required this.reaction,
-      required this.offset,
+      this.reaction,
+      this.offset,
       required this.limit});
 
   static GetMessageReactionsList fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var peer = reader.tgReadObject();
     var id = reader.readInt();
@@ -9118,7 +9004,7 @@ class GetMessageReactionsList extends BaseRequest {
     return [
       readBufferFromBigInt(3773721463, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
       (this.reaction == null || this.reaction == false)
           ? List<int>.empty()
@@ -9134,7 +9020,7 @@ class GetMessageReactionsList extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessageReactionsList, dynamic>();
   }
 
   @override
@@ -9153,12 +9039,12 @@ class GetMessageReactionsList extends BaseRequest {
   }
 }
 
-class SetChatAvailableReactions extends BaseRequest {
+class SetChatAvailableReactions extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 335875750;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 335875750;
-  var peer;
+  InputPeerBase peer;
   List<String> availableReactions;
 
   SetChatAvailableReactions(
@@ -9183,20 +9069,19 @@ class SetChatAvailableReactions extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(335875750, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.availableReactions!.length, 4,
+      readBufferFromBigInt(this.availableReactions.length, 4,
           little: true, signed: true),
       this
-          .availableReactions!
-          .map((x) => serializeBytes(x))
+          .availableReactions.map((x) => serializeBytes(x))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -9215,7 +9100,8 @@ class SetChatAvailableReactions extends BaseRequest {
   }
 }
 
-class GetAvailableReactions extends BaseRequest {
+class GetAvailableReactions
+    extends BaseRequest<messages_ns.AvailableReactionsBase, dynamic> {
   static const CONSTRUCTOR_ID = 417243308;
   static const SUBCLASS_OF_ID = 3827740034;
   final classType = "request";
@@ -9225,7 +9111,6 @@ class GetAvailableReactions extends BaseRequest {
   GetAvailableReactions({required this.hash});
 
   static GetAvailableReactions fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readInt();
     return GetAvailableReactions(hash: hash);
   }
@@ -9240,7 +9125,7 @@ class GetAvailableReactions extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AvailableReactionsBase, dynamic>();
   }
 
   @override
@@ -9259,7 +9144,7 @@ class GetAvailableReactions extends BaseRequest {
   }
 }
 
-class SetDefaultReaction extends BaseRequest {
+class SetDefaultReaction extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3646997716;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -9269,7 +9154,6 @@ class SetDefaultReaction extends BaseRequest {
   SetDefaultReaction({required this.reaction});
 
   static SetDefaultReaction fromReader(BinaryReader reader) {
-    var len;
     var reaction = reader.tgReadString();
     return SetDefaultReaction(reaction: reaction);
   }
@@ -9284,7 +9168,7 @@ class SetDefaultReaction extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -9303,26 +9187,22 @@ class SetDefaultReaction extends BaseRequest {
   }
 }
 
-class TranslateText extends BaseRequest {
+class TranslateText
+    extends BaseRequest<messages_ns.TranslatedTextBase, dynamic> {
   static const CONSTRUCTOR_ID = 617508334;
   static const SUBCLASS_OF_ID = 37897192;
   final classType = "request";
   final ID = 617508334;
-  var peer;
+  InputPeerBase? peer;
   int? msgId;
   String? text;
   String? fromLang;
   String toLang;
 
   TranslateText(
-      {required this.peer,
-      required this.msgId,
-      required this.text,
-      required this.fromLang,
-      required this.toLang});
+      {this.peer, this.msgId, this.text, this.fromLang, required this.toLang});
 
   static TranslateText fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var peer;
     if ((flags & 1) == 1) {
@@ -9364,7 +9244,7 @@ class TranslateText extends BaseRequest {
       [0, 0, 0, 0],
       (this.peer == null || this.peer == false)
           ? List<int>.empty()
-          : [(this.peer.getBytes() as List<int>)]
+          : [(this.peer!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.msgId == null || this.msgId == false)
@@ -9386,7 +9266,7 @@ class TranslateText extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.TranslatedTextBase, dynamic>();
   }
 
   @override
@@ -9405,12 +9285,13 @@ class TranslateText extends BaseRequest {
   }
 }
 
-class GetUnreadReactions extends BaseRequest {
+class GetUnreadReactions
+    extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3898322458;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 3898322458;
-  var peer;
+  InputPeerBase peer;
   int offsetId;
   int addOffset;
   int limit;
@@ -9426,7 +9307,6 @@ class GetUnreadReactions extends BaseRequest {
       required this.minId});
 
   static GetUnreadReactions fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var offsetId = reader.readInt();
     var addOffset = reader.readInt();
@@ -9446,7 +9326,7 @@ class GetUnreadReactions extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3898322458, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
       readBufferFromBigInt(this.addOffset, 4, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
@@ -9457,7 +9337,7 @@ class GetUnreadReactions extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -9476,17 +9356,16 @@ class GetUnreadReactions extends BaseRequest {
   }
 }
 
-class ReadReactions extends BaseRequest {
+class ReadReactions extends BaseRequest<messages_ns.AffectedHistory, dynamic> {
   static const CONSTRUCTOR_ID = 2195870167;
   static const SUBCLASS_OF_ID = 743031062;
   final classType = "request";
   final ID = 2195870167;
-  var peer;
+  InputPeerBase peer;
 
   ReadReactions({required this.peer});
 
   static ReadReactions fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return ReadReactions(peer: peer);
   }
@@ -9495,13 +9374,13 @@ class ReadReactions extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2195870167, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.AffectedHistory, dynamic>();
   }
 
   @override
@@ -9520,19 +9399,18 @@ class ReadReactions extends BaseRequest {
   }
 }
 
-class SearchSentMedia extends BaseRequest {
+class SearchSentMedia extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 276705696;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 276705696;
   String q;
-  var filter;
+  MessagesFilterBase filter;
   int limit;
 
   SearchSentMedia({required this.q, required this.filter, required this.limit});
 
   static SearchSentMedia fromReader(BinaryReader reader) {
-    var len;
     var q = reader.tgReadString();
     var filter = reader.tgReadObject();
     var limit = reader.readInt();
@@ -9544,14 +9422,14 @@ class SearchSentMedia extends BaseRequest {
     return [
       readBufferFromBigInt(276705696, 4),
       serializeBytes(this.q),
-      (this.filter.getBytes() as List<int>),
+      (this.filter.getBytes()),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -9570,7 +9448,7 @@ class SearchSentMedia extends BaseRequest {
   }
 }
 
-class GetAttachMenuBots extends BaseRequest {
+class GetAttachMenuBots extends BaseRequest<AttachMenuBotsBase, dynamic> {
   static const CONSTRUCTOR_ID = 385663691;
   static const SUBCLASS_OF_ID = 2217616346;
   final classType = "request";
@@ -9580,7 +9458,6 @@ class GetAttachMenuBots extends BaseRequest {
   GetAttachMenuBots({required this.hash});
 
   static GetAttachMenuBots fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetAttachMenuBots(hash: hash);
   }
@@ -9595,7 +9472,7 @@ class GetAttachMenuBots extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<AttachMenuBotsBase, dynamic>();
   }
 
   @override
@@ -9614,17 +9491,16 @@ class GetAttachMenuBots extends BaseRequest {
   }
 }
 
-class GetAttachMenuBot extends BaseRequest {
+class GetAttachMenuBot extends BaseRequest<AttachMenuBotsBot, dynamic> {
   static const CONSTRUCTOR_ID = 1998676370;
   static const SUBCLASS_OF_ID = 3677587517;
   final classType = "request";
   final ID = 1998676370;
-  var bot;
+  InputUserBase bot;
 
   GetAttachMenuBot({required this.bot});
 
   static GetAttachMenuBot fromReader(BinaryReader reader) {
-    var len;
     var bot = reader.tgReadObject();
     return GetAttachMenuBot(bot: bot);
   }
@@ -9633,13 +9509,13 @@ class GetAttachMenuBot extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1998676370, 4),
-      (this.bot.getBytes() as List<int>),
+      (this.bot.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<AttachMenuBotsBot, dynamic>();
   }
 
   @override
@@ -9658,18 +9534,17 @@ class GetAttachMenuBot extends BaseRequest {
   }
 }
 
-class ToggleBotInAttachMenu extends BaseRequest {
+class ToggleBotInAttachMenu extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 451818415;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 451818415;
-  var bot;
+  InputUserBase bot;
   bool enabled;
 
   ToggleBotInAttachMenu({required this.bot, required this.enabled});
 
   static ToggleBotInAttachMenu fromReader(BinaryReader reader) {
-    var len;
     var bot = reader.tgReadObject();
     var enabled = reader.tgReadBool();
     return ToggleBotInAttachMenu(bot: bot, enabled: enabled);
@@ -9679,14 +9554,14 @@ class ToggleBotInAttachMenu extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(451818415, 4),
-      (this.bot.getBytes() as List<int>),
+      (this.bot.getBytes()),
       [this.enabled == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -9705,34 +9580,33 @@ class ToggleBotInAttachMenu extends BaseRequest {
   }
 }
 
-class RequestWebView extends BaseRequest {
+class RequestWebView extends BaseRequest<WebViewResultBase, dynamic> {
   static const CONSTRUCTOR_ID = 2444318769;
   static const SUBCLASS_OF_ID = 2479793990;
   final classType = "request";
   final ID = 2444318769;
   bool? fromBotMenu;
   bool? silent;
-  var peer;
-  var bot;
+  InputPeerBase peer;
+  InputUserBase bot;
   String? url;
   String? startParam;
-  var themeParams;
+  DataJSON? themeParams;
   int? replyToMsgId;
-  var sendAs;
+  InputPeerBase? sendAs;
 
   RequestWebView(
-      {required this.fromBotMenu,
-      required this.silent,
+      {this.fromBotMenu,
+      this.silent,
       required this.peer,
       required this.bot,
-      required this.url,
-      required this.startParam,
-      required this.themeParams,
-      required this.replyToMsgId,
-      required this.sendAs});
+      this.url,
+      this.startParam,
+      this.themeParams,
+      this.replyToMsgId,
+      this.sendAs});
 
   static RequestWebView fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final fromBotMenu = (flags & 16) == 16;
     final silent = (flags & 32) == 32;
@@ -9785,8 +9659,8 @@ class RequestWebView extends BaseRequest {
     return [
       readBufferFromBigInt(2444318769, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
-      (this.bot.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.bot.getBytes()),
       (this.url == null || this.url == false)
           ? List<int>.empty()
           : [serializeBytes(this.url)].expand((element) => element).toList(),
@@ -9797,7 +9671,7 @@ class RequestWebView extends BaseRequest {
               .toList(),
       (this.themeParams == null || this.themeParams == false)
           ? List<int>.empty()
-          : [(this.themeParams.getBytes() as List<int>)]
+          : [(this.themeParams!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.replyToMsgId == null || this.replyToMsgId == false)
@@ -9808,7 +9682,7 @@ class RequestWebView extends BaseRequest {
             ].expand((element) => element).toList(),
       (this.sendAs == null || this.sendAs == false)
           ? List<int>.empty()
-          : [(this.sendAs.getBytes() as List<int>)]
+          : [(this.sendAs!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -9816,7 +9690,7 @@ class RequestWebView extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<WebViewResultBase, dynamic>();
   }
 
   @override
@@ -9835,28 +9709,27 @@ class RequestWebView extends BaseRequest {
   }
 }
 
-class ProlongWebView extends BaseRequest {
+class ProlongWebView extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3932142798;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3932142798;
   bool? silent;
-  var peer;
-  var bot;
+  InputPeerBase peer;
+  InputUserBase bot;
   BigInt queryId;
   int? replyToMsgId;
-  var sendAs;
+  InputPeerBase? sendAs;
 
   ProlongWebView(
-      {required this.silent,
+      {this.silent,
       required this.peer,
       required this.bot,
       required this.queryId,
-      required this.replyToMsgId,
-      required this.sendAs});
+      this.replyToMsgId,
+      this.sendAs});
 
   static ProlongWebView fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final silent = (flags & 32) == 32;
     var peer = reader.tgReadObject();
@@ -9888,8 +9761,8 @@ class ProlongWebView extends BaseRequest {
     return [
       readBufferFromBigInt(3932142798, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
-      (this.bot.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.bot.getBytes()),
       readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
       (this.replyToMsgId == null || this.replyToMsgId == false)
           ? List<int>.empty()
@@ -9899,7 +9772,7 @@ class ProlongWebView extends BaseRequest {
             ].expand((element) => element).toList(),
       (this.sendAs == null || this.sendAs == false)
           ? List<int>.empty()
-          : [(this.sendAs.getBytes() as List<int>)]
+          : [(this.sendAs!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -9907,7 +9780,7 @@ class ProlongWebView extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -9926,20 +9799,20 @@ class ProlongWebView extends BaseRequest {
   }
 }
 
-class RequestSimpleWebView extends BaseRequest {
+class RequestSimpleWebView
+    extends BaseRequest<SimpleWebViewResultBase, dynamic> {
   static const CONSTRUCTOR_ID = 1790652275;
   static const SUBCLASS_OF_ID = 367977435;
   final classType = "request";
   final ID = 1790652275;
-  var bot;
+  InputUserBase bot;
   String url;
-  var themeParams;
+  DataJSON? themeParams;
 
   RequestSimpleWebView(
-      {required this.bot, required this.url, required this.themeParams});
+      {required this.bot, required this.url, this.themeParams});
 
   static RequestSimpleWebView fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var bot = reader.tgReadObject();
     var url = reader.tgReadString();
@@ -9957,11 +9830,11 @@ class RequestSimpleWebView extends BaseRequest {
     return [
       readBufferFromBigInt(1790652275, 4),
       [0, 0, 0, 0],
-      (this.bot.getBytes() as List<int>),
+      (this.bot.getBytes()),
       serializeBytes(this.url),
       (this.themeParams == null || this.themeParams == false)
           ? List<int>.empty()
-          : [(this.themeParams.getBytes() as List<int>)]
+          : [(this.themeParams!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -9969,7 +9842,7 @@ class RequestSimpleWebView extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<SimpleWebViewResultBase, dynamic>();
   }
 
   @override
@@ -9988,18 +9861,18 @@ class RequestSimpleWebView extends BaseRequest {
   }
 }
 
-class SendWebViewResultMessage extends BaseRequest {
+class SendWebViewResultMessage
+    extends BaseRequest<WebViewMessageSent, dynamic> {
   static const CONSTRUCTOR_ID = 172168437;
   static const SUBCLASS_OF_ID = 1977914130;
   final classType = "request";
   final ID = 172168437;
   String botQueryId;
-  var result;
+  InputBotInlineResultBase result;
 
   SendWebViewResultMessage({required this.botQueryId, required this.result});
 
   static SendWebViewResultMessage fromReader(BinaryReader reader) {
-    var len;
     var botQueryId = reader.tgReadString();
     var result = reader.tgReadObject();
     return SendWebViewResultMessage(botQueryId: botQueryId, result: result);
@@ -10010,13 +9883,13 @@ class SendWebViewResultMessage extends BaseRequest {
     return [
       readBufferFromBigInt(172168437, 4),
       serializeBytes(this.botQueryId),
-      (this.result.getBytes() as List<int>),
+      (this.result.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<WebViewMessageSent, dynamic>();
   }
 
   @override
@@ -10035,12 +9908,12 @@ class SendWebViewResultMessage extends BaseRequest {
   }
 }
 
-class SendWebViewData extends BaseRequest {
+class SendWebViewData extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3691135688;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 3691135688;
-  var bot;
+  InputUserBase bot;
   BigInt randomId;
   String buttonText;
   String data;
@@ -10052,7 +9925,6 @@ class SendWebViewData extends BaseRequest {
       required this.data});
 
   static SendWebViewData fromReader(BinaryReader reader) {
-    var len;
     var bot = reader.tgReadObject();
     var randomId = reader.readLong();
     var buttonText = reader.tgReadString();
@@ -10065,7 +9937,7 @@ class SendWebViewData extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3691135688, 4),
-      (this.bot.getBytes() as List<int>),
+      (this.bot.getBytes()),
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
       serializeBytes(this.buttonText),
       serializeBytes(this.data),
@@ -10074,7 +9946,7 @@ class SendWebViewData extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -10093,18 +9965,18 @@ class SendWebViewData extends BaseRequest {
   }
 }
 
-class TranscribeAudio extends BaseRequest {
+class TranscribeAudio
+    extends BaseRequest<messages_ns.TranscribedAudio, dynamic> {
   static const CONSTRUCTOR_ID = 647928393;
   static const SUBCLASS_OF_ID = 565332278;
   final classType = "request";
   final ID = 647928393;
-  var peer;
+  InputPeerBase peer;
   int msgId;
 
   TranscribeAudio({required this.peer, required this.msgId});
 
   static TranscribeAudio fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     return TranscribeAudio(peer: peer, msgId: msgId);
@@ -10114,14 +9986,14 @@ class TranscribeAudio extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(647928393, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.TranscribedAudio, dynamic>();
   }
 
   @override
@@ -10140,12 +10012,12 @@ class TranscribeAudio extends BaseRequest {
   }
 }
 
-class RateTranscribedAudio extends BaseRequest {
+class RateTranscribedAudio extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2132608815;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2132608815;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   BigInt transcriptionId;
   bool good;
@@ -10157,7 +10029,6 @@ class RateTranscribedAudio extends BaseRequest {
       required this.good});
 
   static RateTranscribedAudio fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var transcriptionId = reader.readLong();
@@ -10170,7 +10041,7 @@ class RateTranscribedAudio extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2132608815, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.transcriptionId, 8, little: true, signed: true),
       [this.good == true ? 0xb5757299 : 0x379779bc],
@@ -10179,7 +10050,7 @@ class RateTranscribedAudio extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override

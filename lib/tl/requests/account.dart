@@ -1,9 +1,13 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/constructors.dart';
+import '../constructors/account.dart' as account_ns;
+import '../constructors/auth.dart' as auth_ns;
 
-class RegisterDevice extends BaseRequest {
+class RegisterDevice extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3968205178;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -16,7 +20,7 @@ class RegisterDevice extends BaseRequest {
   List<BigInt> otherUids;
 
   RegisterDevice(
-      {required this.noMuted,
+      {this.noMuted,
       required this.tokenType,
       required this.token,
       required this.appSandbox,
@@ -57,18 +61,17 @@ class RegisterDevice extends BaseRequest {
       [this.appSandbox == true ? 0xb5757299 : 0x379779bc],
       serializeBytes(this.secret),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.otherUids!.length, 4,
+      readBufferFromBigInt(this.otherUids.length, 4,
           little: true, signed: true),
       this
-          .otherUids!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .otherUids.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -87,7 +90,7 @@ class RegisterDevice extends BaseRequest {
   }
 }
 
-class UnregisterDevice extends BaseRequest {
+class UnregisterDevice extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1779249670;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -121,18 +124,17 @@ class UnregisterDevice extends BaseRequest {
       readBufferFromBigInt(this.tokenType, 4, little: true, signed: true),
       serializeBytes(this.token),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.otherUids!.length, 4,
+      readBufferFromBigInt(this.otherUids.length, 4,
           little: true, signed: true),
       this
-          .otherUids!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .otherUids.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -151,18 +153,17 @@ class UnregisterDevice extends BaseRequest {
   }
 }
 
-class UpdateNotifySettings extends BaseRequest {
+class UpdateNotifySettings extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2227067795;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2227067795;
-  var peer;
-  var settings;
+  InputNotifyPeerBase peer;
+  InputPeerNotifySettings settings;
 
   UpdateNotifySettings({required this.peer, required this.settings});
 
   static UpdateNotifySettings fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var settings = reader.tgReadObject();
     return UpdateNotifySettings(peer: peer, settings: settings);
@@ -172,14 +173,14 @@ class UpdateNotifySettings extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2227067795, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.settings.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -198,17 +199,16 @@ class UpdateNotifySettings extends BaseRequest {
   }
 }
 
-class GetNotifySettings extends BaseRequest {
+class GetNotifySettings extends BaseRequest<PeerNotifySettings, dynamic> {
   static const CONSTRUCTOR_ID = 313765169;
   static const SUBCLASS_OF_ID = 3475030132;
   final classType = "request";
   final ID = 313765169;
-  var peer;
+  InputNotifyPeerBase peer;
 
   GetNotifySettings({required this.peer});
 
   static GetNotifySettings fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return GetNotifySettings(peer: peer);
   }
@@ -217,13 +217,13 @@ class GetNotifySettings extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(313765169, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<PeerNotifySettings, dynamic>();
   }
 
   @override
@@ -242,7 +242,7 @@ class GetNotifySettings extends BaseRequest {
   }
 }
 
-class ResetNotifySettings extends BaseRequest {
+class ResetNotifySettings extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3682473799;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -251,7 +251,6 @@ class ResetNotifySettings extends BaseRequest {
   ResetNotifySettings();
 
   static ResetNotifySettings fromReader(BinaryReader reader) {
-    var len;
     return ResetNotifySettings();
   }
 
@@ -264,7 +263,7 @@ class ResetNotifySettings extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -283,7 +282,7 @@ class ResetNotifySettings extends BaseRequest {
   }
 }
 
-class UpdateProfile extends BaseRequest {
+class UpdateProfile extends BaseRequest<UserBase, dynamic> {
   static const CONSTRUCTOR_ID = 2018596725;
   static const SUBCLASS_OF_ID = 765557111;
   final classType = "request";
@@ -292,11 +291,9 @@ class UpdateProfile extends BaseRequest {
   String? lastName;
   String? about;
 
-  UpdateProfile(
-      {required this.firstName, required this.lastName, required this.about});
+  UpdateProfile({this.firstName, this.lastName, this.about});
 
   static UpdateProfile fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var firstName;
     if ((flags & 1) == 1) {
@@ -343,7 +340,7 @@ class UpdateProfile extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UserBase, dynamic>();
   }
 
   @override
@@ -362,7 +359,7 @@ class UpdateProfile extends BaseRequest {
   }
 }
 
-class UpdateStatus extends BaseRequest {
+class UpdateStatus extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1713919532;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -372,7 +369,6 @@ class UpdateStatus extends BaseRequest {
   UpdateStatus({required this.offline});
 
   static UpdateStatus fromReader(BinaryReader reader) {
-    var len;
     var offline = reader.tgReadBool();
     return UpdateStatus(offline: offline);
   }
@@ -387,7 +383,7 @@ class UpdateStatus extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -406,7 +402,7 @@ class UpdateStatus extends BaseRequest {
   }
 }
 
-class GetWallPapers extends BaseRequest {
+class GetWallPapers extends BaseRequest<account_ns.WallPapersBase, dynamic> {
   static const CONSTRUCTOR_ID = 127302966;
   static const SUBCLASS_OF_ID = 2730838269;
   final classType = "request";
@@ -416,7 +412,6 @@ class GetWallPapers extends BaseRequest {
   GetWallPapers({required this.hash});
 
   static GetWallPapers fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetWallPapers(hash: hash);
   }
@@ -431,7 +426,7 @@ class GetWallPapers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.WallPapersBase, dynamic>();
   }
 
   @override
@@ -450,19 +445,18 @@ class GetWallPapers extends BaseRequest {
   }
 }
 
-class ReportPeer extends BaseRequest {
+class ReportPeer extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3317316998;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3317316998;
-  var peer;
-  var reason;
+  InputPeerBase peer;
+  ReportReasonBase reason;
   String message;
 
   ReportPeer({required this.peer, required this.reason, required this.message});
 
   static ReportPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var reason = reader.tgReadObject();
     var message = reader.tgReadString();
@@ -473,15 +467,15 @@ class ReportPeer extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3317316998, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.reason.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.reason.getBytes()),
       serializeBytes(this.message),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -500,7 +494,7 @@ class ReportPeer extends BaseRequest {
   }
 }
 
-class CheckUsername extends BaseRequest {
+class CheckUsername extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 655677548;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -510,7 +504,6 @@ class CheckUsername extends BaseRequest {
   CheckUsername({required this.username});
 
   static CheckUsername fromReader(BinaryReader reader) {
-    var len;
     var username = reader.tgReadString();
     return CheckUsername(username: username);
   }
@@ -525,7 +518,7 @@ class CheckUsername extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -544,7 +537,7 @@ class CheckUsername extends BaseRequest {
   }
 }
 
-class UpdateUsername extends BaseRequest {
+class UpdateUsername extends BaseRequest<UserBase, dynamic> {
   static const CONSTRUCTOR_ID = 1040964988;
   static const SUBCLASS_OF_ID = 765557111;
   final classType = "request";
@@ -554,7 +547,6 @@ class UpdateUsername extends BaseRequest {
   UpdateUsername({required this.username});
 
   static UpdateUsername fromReader(BinaryReader reader) {
-    var len;
     var username = reader.tgReadString();
     return UpdateUsername(username: username);
   }
@@ -569,7 +561,7 @@ class UpdateUsername extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UserBase, dynamic>();
   }
 
   @override
@@ -588,17 +580,16 @@ class UpdateUsername extends BaseRequest {
   }
 }
 
-class GetPrivacy extends BaseRequest {
+class GetPrivacy extends BaseRequest<account_ns.PrivacyRules, dynamic> {
   static const CONSTRUCTOR_ID = 3671837008;
   static const SUBCLASS_OF_ID = 3042622082;
   final classType = "request";
   final ID = 3671837008;
-  var key;
+  InputPrivacyKeyBase key;
 
   GetPrivacy({required this.key});
 
   static GetPrivacy fromReader(BinaryReader reader) {
-    var len;
     var key = reader.tgReadObject();
     return GetPrivacy(key: key);
   }
@@ -607,13 +598,13 @@ class GetPrivacy extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3671837008, 4),
-      (this.key.getBytes() as List<int>),
+      (this.key.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.PrivacyRules, dynamic>();
   }
 
   @override
@@ -632,13 +623,13 @@ class GetPrivacy extends BaseRequest {
   }
 }
 
-class SetPrivacy extends BaseRequest {
+class SetPrivacy extends BaseRequest<account_ns.PrivacyRules, dynamic> {
   static const CONSTRUCTOR_ID = 3388480744;
   static const SUBCLASS_OF_ID = 3042622082;
   final classType = "request";
   final ID = 3388480744;
-  var key;
-  List<dynamic> rules;
+  InputPrivacyKeyBase key;
+  List<InputPrivacyRuleBase> rules;
 
   SetPrivacy({required this.key, required this.rules});
 
@@ -647,7 +638,7 @@ class SetPrivacy extends BaseRequest {
     var key = reader.tgReadObject();
     var _vectorrules = reader.readInt();
     if (_vectorrules != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> rules = [];
+    List<InputPrivacyRuleBase> rules = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       rules.add(reader.tgReadObject());
@@ -659,19 +650,18 @@ class SetPrivacy extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3388480744, 4),
-      (this.key.getBytes() as List<int>),
+      (this.key.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.rules!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.rules.length, 4, little: true, signed: true),
       this
-          .rules!
-          .map((x) => (x.getBytes() as List<int>))
+          .rules.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.PrivacyRules, dynamic>();
   }
 
   @override
@@ -690,7 +680,7 @@ class SetPrivacy extends BaseRequest {
   }
 }
 
-class DeleteAccount extends BaseRequest {
+class DeleteAccount extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1099779595;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -700,7 +690,6 @@ class DeleteAccount extends BaseRequest {
   DeleteAccount({required this.reason});
 
   static DeleteAccount fromReader(BinaryReader reader) {
-    var len;
     var reason = reader.tgReadString();
     return DeleteAccount(reason: reason);
   }
@@ -715,7 +704,7 @@ class DeleteAccount extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -734,7 +723,7 @@ class DeleteAccount extends BaseRequest {
   }
 }
 
-class GetAccountTTL extends BaseRequest {
+class GetAccountTTL extends BaseRequest<AccountDaysTTL, dynamic> {
   static const CONSTRUCTOR_ID = 150761757;
   static const SUBCLASS_OF_ID = 3131284872;
   final classType = "request";
@@ -743,7 +732,6 @@ class GetAccountTTL extends BaseRequest {
   GetAccountTTL();
 
   static GetAccountTTL fromReader(BinaryReader reader) {
-    var len;
     return GetAccountTTL();
   }
 
@@ -756,7 +744,7 @@ class GetAccountTTL extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<AccountDaysTTL, dynamic>();
   }
 
   @override
@@ -775,17 +763,16 @@ class GetAccountTTL extends BaseRequest {
   }
 }
 
-class SetAccountTTL extends BaseRequest {
+class SetAccountTTL extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 608323678;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 608323678;
-  var ttl;
+  AccountDaysTTL ttl;
 
   SetAccountTTL({required this.ttl});
 
   static SetAccountTTL fromReader(BinaryReader reader) {
-    var len;
     var ttl = reader.tgReadObject();
     return SetAccountTTL(ttl: ttl);
   }
@@ -794,13 +781,13 @@ class SetAccountTTL extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(608323678, 4),
-      (this.ttl.getBytes() as List<int>),
+      (this.ttl.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -819,18 +806,17 @@ class SetAccountTTL extends BaseRequest {
   }
 }
 
-class SendChangePhoneCode extends BaseRequest {
+class SendChangePhoneCode extends BaseRequest<auth_ns.SentCode, dynamic> {
   static const CONSTRUCTOR_ID = 2186758885;
   static const SUBCLASS_OF_ID = 1827172481;
   final classType = "request";
   final ID = 2186758885;
   String phoneNumber;
-  var settings;
+  CodeSettings settings;
 
   SendChangePhoneCode({required this.phoneNumber, required this.settings});
 
   static SendChangePhoneCode fromReader(BinaryReader reader) {
-    var len;
     var phoneNumber = reader.tgReadString();
     var settings = reader.tgReadObject();
     return SendChangePhoneCode(phoneNumber: phoneNumber, settings: settings);
@@ -841,13 +827,13 @@ class SendChangePhoneCode extends BaseRequest {
     return [
       readBufferFromBigInt(2186758885, 4),
       serializeBytes(this.phoneNumber),
-      (this.settings.getBytes() as List<int>),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<auth_ns.SentCode, dynamic>();
   }
 
   @override
@@ -866,7 +852,7 @@ class SendChangePhoneCode extends BaseRequest {
   }
 }
 
-class ChangePhone extends BaseRequest {
+class ChangePhone extends BaseRequest<UserBase, dynamic> {
   static const CONSTRUCTOR_ID = 1891839707;
   static const SUBCLASS_OF_ID = 765557111;
   final classType = "request";
@@ -881,7 +867,6 @@ class ChangePhone extends BaseRequest {
       required this.phoneCode});
 
   static ChangePhone fromReader(BinaryReader reader) {
-    var len;
     var phoneNumber = reader.tgReadString();
     var phoneCodeHash = reader.tgReadString();
     var phoneCode = reader.tgReadString();
@@ -903,7 +888,7 @@ class ChangePhone extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UserBase, dynamic>();
   }
 
   @override
@@ -922,7 +907,7 @@ class ChangePhone extends BaseRequest {
   }
 }
 
-class UpdateDeviceLocked extends BaseRequest {
+class UpdateDeviceLocked extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 954152242;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -932,7 +917,6 @@ class UpdateDeviceLocked extends BaseRequest {
   UpdateDeviceLocked({required this.period});
 
   static UpdateDeviceLocked fromReader(BinaryReader reader) {
-    var len;
     var period = reader.readInt();
     return UpdateDeviceLocked(period: period);
   }
@@ -947,7 +931,7 @@ class UpdateDeviceLocked extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -966,7 +950,8 @@ class UpdateDeviceLocked extends BaseRequest {
   }
 }
 
-class GetAuthorizations extends BaseRequest {
+class GetAuthorizations
+    extends BaseRequest<account_ns.Authorizations, dynamic> {
   static const CONSTRUCTOR_ID = 3810574680;
   static const SUBCLASS_OF_ID = 200663295;
   final classType = "request";
@@ -975,7 +960,6 @@ class GetAuthorizations extends BaseRequest {
   GetAuthorizations();
 
   static GetAuthorizations fromReader(BinaryReader reader) {
-    var len;
     return GetAuthorizations();
   }
 
@@ -988,7 +972,7 @@ class GetAuthorizations extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.Authorizations, dynamic>();
   }
 
   @override
@@ -1007,7 +991,7 @@ class GetAuthorizations extends BaseRequest {
   }
 }
 
-class ResetAuthorization extends BaseRequest {
+class ResetAuthorization extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3749180348;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -1017,7 +1001,6 @@ class ResetAuthorization extends BaseRequest {
   ResetAuthorization({required this.hash});
 
   static ResetAuthorization fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return ResetAuthorization(hash: hash);
   }
@@ -1032,7 +1015,7 @@ class ResetAuthorization extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1051,7 +1034,7 @@ class ResetAuthorization extends BaseRequest {
   }
 }
 
-class GetPassword extends BaseRequest {
+class GetPassword extends BaseRequest<account_ns.Password, dynamic> {
   static const CONSTRUCTOR_ID = 1418342645;
   static const SUBCLASS_OF_ID = 1403130275;
   final classType = "request";
@@ -1060,7 +1043,6 @@ class GetPassword extends BaseRequest {
   GetPassword();
 
   static GetPassword fromReader(BinaryReader reader) {
-    var len;
     return GetPassword();
   }
 
@@ -1073,7 +1055,7 @@ class GetPassword extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.Password, dynamic>();
   }
 
   @override
@@ -1092,17 +1074,17 @@ class GetPassword extends BaseRequest {
   }
 }
 
-class GetPasswordSettings extends BaseRequest {
+class GetPasswordSettings
+    extends BaseRequest<account_ns.PasswordSettings, dynamic> {
   static const CONSTRUCTOR_ID = 2631199481;
   static const SUBCLASS_OF_ID = 3527389304;
   final classType = "request";
   final ID = 2631199481;
-  var password;
+  InputCheckPasswordSRPBase password;
 
   GetPasswordSettings({required this.password});
 
   static GetPasswordSettings fromReader(BinaryReader reader) {
-    var len;
     var password = reader.tgReadObject();
     return GetPasswordSettings(password: password);
   }
@@ -1111,13 +1093,13 @@ class GetPasswordSettings extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2631199481, 4),
-      (this.password.getBytes() as List<int>),
+      (this.password.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.PasswordSettings, dynamic>();
   }
 
   @override
@@ -1136,18 +1118,17 @@ class GetPasswordSettings extends BaseRequest {
   }
 }
 
-class UpdatePasswordSettings extends BaseRequest {
+class UpdatePasswordSettings extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2778402863;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 2778402863;
-  var password;
-  var newSettings;
+  InputCheckPasswordSRPBase password;
+  account_ns.PasswordInputSettings newSettings;
 
   UpdatePasswordSettings({required this.password, required this.newSettings});
 
   static UpdatePasswordSettings fromReader(BinaryReader reader) {
-    var len;
     var password = reader.tgReadObject();
     var newSettings = reader.tgReadObject();
     return UpdatePasswordSettings(password: password, newSettings: newSettings);
@@ -1157,14 +1138,14 @@ class UpdatePasswordSettings extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2778402863, 4),
-      (this.password.getBytes() as List<int>),
-      (this.newSettings.getBytes() as List<int>),
+      (this.password.getBytes()),
+      (this.newSettings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1183,18 +1164,17 @@ class UpdatePasswordSettings extends BaseRequest {
   }
 }
 
-class SendConfirmPhoneCode extends BaseRequest {
+class SendConfirmPhoneCode extends BaseRequest<auth_ns.SentCode, dynamic> {
   static const CONSTRUCTOR_ID = 457157256;
   static const SUBCLASS_OF_ID = 1827172481;
   final classType = "request";
   final ID = 457157256;
   String hash;
-  var settings;
+  CodeSettings settings;
 
   SendConfirmPhoneCode({required this.hash, required this.settings});
 
   static SendConfirmPhoneCode fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.tgReadString();
     var settings = reader.tgReadObject();
     return SendConfirmPhoneCode(hash: hash, settings: settings);
@@ -1205,13 +1185,13 @@ class SendConfirmPhoneCode extends BaseRequest {
     return [
       readBufferFromBigInt(457157256, 4),
       serializeBytes(this.hash),
-      (this.settings.getBytes() as List<int>),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<auth_ns.SentCode, dynamic>();
   }
 
   @override
@@ -1230,7 +1210,7 @@ class SendConfirmPhoneCode extends BaseRequest {
   }
 }
 
-class ConfirmPhone extends BaseRequest {
+class ConfirmPhone extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1596029123;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -1241,7 +1221,6 @@ class ConfirmPhone extends BaseRequest {
   ConfirmPhone({required this.phoneCodeHash, required this.phoneCode});
 
   static ConfirmPhone fromReader(BinaryReader reader) {
-    var len;
     var phoneCodeHash = reader.tgReadString();
     var phoneCode = reader.tgReadString();
     return ConfirmPhone(phoneCodeHash: phoneCodeHash, phoneCode: phoneCode);
@@ -1258,7 +1237,7 @@ class ConfirmPhone extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1277,18 +1256,17 @@ class ConfirmPhone extends BaseRequest {
   }
 }
 
-class GetTmpPassword extends BaseRequest {
+class GetTmpPassword extends BaseRequest<account_ns.TmpPassword, dynamic> {
   static const CONSTRUCTOR_ID = 1151208273;
   static const SUBCLASS_OF_ID = 2959382829;
   final classType = "request";
   final ID = 1151208273;
-  var password;
+  InputCheckPasswordSRPBase password;
   int period;
 
   GetTmpPassword({required this.password, required this.period});
 
   static GetTmpPassword fromReader(BinaryReader reader) {
-    var len;
     var password = reader.tgReadObject();
     var period = reader.readInt();
     return GetTmpPassword(password: password, period: period);
@@ -1298,14 +1276,14 @@ class GetTmpPassword extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1151208273, 4),
-      (this.password.getBytes() as List<int>),
+      (this.password.getBytes()),
       readBufferFromBigInt(this.period, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.TmpPassword, dynamic>();
   }
 
   @override
@@ -1324,7 +1302,8 @@ class GetTmpPassword extends BaseRequest {
   }
 }
 
-class GetWebAuthorizations extends BaseRequest {
+class GetWebAuthorizations
+    extends BaseRequest<account_ns.WebAuthorizations, dynamic> {
   static const CONSTRUCTOR_ID = 405695855;
   static const SUBCLASS_OF_ID = 2587253554;
   final classType = "request";
@@ -1333,7 +1312,6 @@ class GetWebAuthorizations extends BaseRequest {
   GetWebAuthorizations();
 
   static GetWebAuthorizations fromReader(BinaryReader reader) {
-    var len;
     return GetWebAuthorizations();
   }
 
@@ -1346,7 +1324,7 @@ class GetWebAuthorizations extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.WebAuthorizations, dynamic>();
   }
 
   @override
@@ -1365,7 +1343,7 @@ class GetWebAuthorizations extends BaseRequest {
   }
 }
 
-class ResetWebAuthorization extends BaseRequest {
+class ResetWebAuthorization extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 755087855;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -1375,7 +1353,6 @@ class ResetWebAuthorization extends BaseRequest {
   ResetWebAuthorization({required this.hash});
 
   static ResetWebAuthorization fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return ResetWebAuthorization(hash: hash);
   }
@@ -1390,7 +1367,7 @@ class ResetWebAuthorization extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1409,7 +1386,7 @@ class ResetWebAuthorization extends BaseRequest {
   }
 }
 
-class ResetWebAuthorizations extends BaseRequest {
+class ResetWebAuthorizations extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1747789204;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -1418,7 +1395,6 @@ class ResetWebAuthorizations extends BaseRequest {
   ResetWebAuthorizations();
 
   static ResetWebAuthorizations fromReader(BinaryReader reader) {
-    var len;
     return ResetWebAuthorizations();
   }
 
@@ -1431,7 +1407,7 @@ class ResetWebAuthorizations extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1450,7 +1426,7 @@ class ResetWebAuthorizations extends BaseRequest {
   }
 }
 
-class GetAllSecureValues extends BaseRequest {
+class GetAllSecureValues extends BaseRequest<List<SecureValue>, SecureValue> {
   static const CONSTRUCTOR_ID = 2995305597;
   static const SUBCLASS_OF_ID = 3895345441;
   final classType = "request";
@@ -1459,7 +1435,6 @@ class GetAllSecureValues extends BaseRequest {
   GetAllSecureValues();
 
   static GetAllSecureValues fromReader(BinaryReader reader) {
-    var len;
     return GetAllSecureValues();
   }
 
@@ -1472,7 +1447,7 @@ class GetAllSecureValues extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<SecureValue>, SecureValue>();
   }
 
   @override
@@ -1491,12 +1466,12 @@ class GetAllSecureValues extends BaseRequest {
   }
 }
 
-class GetSecureValue extends BaseRequest {
+class GetSecureValue extends BaseRequest<List<SecureValue>, SecureValue> {
   static const CONSTRUCTOR_ID = 1936088002;
   static const SUBCLASS_OF_ID = 3895345441;
   final classType = "request";
   final ID = 1936088002;
-  List<dynamic> types;
+  List<SecureValueTypeBase> types;
 
   GetSecureValue({required this.types});
 
@@ -1504,7 +1479,7 @@ class GetSecureValue extends BaseRequest {
     var len;
     var _vectortypes = reader.readInt();
     if (_vectortypes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> types = [];
+    List<SecureValueTypeBase> types = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       types.add(reader.tgReadObject());
@@ -1517,17 +1492,16 @@ class GetSecureValue extends BaseRequest {
     return [
       readBufferFromBigInt(1936088002, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.types!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.types.length, 4, little: true, signed: true),
       this
-          .types!
-          .map((x) => (x.getBytes() as List<int>))
+          .types.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<SecureValue>, SecureValue>();
   }
 
   @override
@@ -1546,18 +1520,17 @@ class GetSecureValue extends BaseRequest {
   }
 }
 
-class SaveSecureValue extends BaseRequest {
+class SaveSecureValue extends BaseRequest<SecureValue, dynamic> {
   static const CONSTRUCTOR_ID = 2308956957;
   static const SUBCLASS_OF_ID = 85014702;
   final classType = "request";
   final ID = 2308956957;
-  var value;
+  InputSecureValue value;
   BigInt secureSecretId;
 
   SaveSecureValue({required this.value, required this.secureSecretId});
 
   static SaveSecureValue fromReader(BinaryReader reader) {
-    var len;
     var value = reader.tgReadObject();
     var secureSecretId = reader.readLong();
     return SaveSecureValue(value: value, secureSecretId: secureSecretId);
@@ -1567,14 +1540,14 @@ class SaveSecureValue extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2308956957, 4),
-      (this.value.getBytes() as List<int>),
+      (this.value.getBytes()),
       readBufferFromBigInt(this.secureSecretId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<SecureValue, dynamic>();
   }
 
   @override
@@ -1593,12 +1566,12 @@ class SaveSecureValue extends BaseRequest {
   }
 }
 
-class DeleteSecureValue extends BaseRequest {
+class DeleteSecureValue extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3095444555;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3095444555;
-  List<dynamic> types;
+  List<SecureValueTypeBase> types;
 
   DeleteSecureValue({required this.types});
 
@@ -1606,7 +1579,7 @@ class DeleteSecureValue extends BaseRequest {
     var len;
     var _vectortypes = reader.readInt();
     if (_vectortypes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> types = [];
+    List<SecureValueTypeBase> types = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       types.add(reader.tgReadObject());
@@ -1619,17 +1592,16 @@ class DeleteSecureValue extends BaseRequest {
     return [
       readBufferFromBigInt(3095444555, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.types!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.types.length, 4, little: true, signed: true),
       this
-          .types!
-          .map((x) => (x.getBytes() as List<int>))
+          .types.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1648,7 +1620,8 @@ class DeleteSecureValue extends BaseRequest {
   }
 }
 
-class GetAuthorizationForm extends BaseRequest {
+class GetAuthorizationForm
+    extends BaseRequest<account_ns.AuthorizationForm, dynamic> {
   static const CONSTRUCTOR_ID = 2838059386;
   static const SUBCLASS_OF_ID = 2013567636;
   final classType = "request";
@@ -1661,7 +1634,6 @@ class GetAuthorizationForm extends BaseRequest {
       {required this.botId, required this.scope, required this.publicKey});
 
   static GetAuthorizationForm fromReader(BinaryReader reader) {
-    var len;
     var botId = reader.readLong();
     var scope = reader.tgReadString();
     var publicKey = reader.tgReadString();
@@ -1681,7 +1653,7 @@ class GetAuthorizationForm extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.AuthorizationForm, dynamic>();
   }
 
   @override
@@ -1700,7 +1672,7 @@ class GetAuthorizationForm extends BaseRequest {
   }
 }
 
-class AcceptAuthorization extends BaseRequest {
+class AcceptAuthorization extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 4092415091;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -1708,8 +1680,8 @@ class AcceptAuthorization extends BaseRequest {
   BigInt botId;
   String scope;
   String publicKey;
-  List<dynamic> valueHashes;
-  var credentials;
+  List<SecureValueHash> valueHashes;
+  SecureCredentialsEncrypted credentials;
 
   AcceptAuthorization(
       {required this.botId,
@@ -1725,7 +1697,7 @@ class AcceptAuthorization extends BaseRequest {
     var publicKey = reader.tgReadString();
     var _vectorvalueHashes = reader.readInt();
     if (_vectorvalueHashes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> valueHashes = [];
+    List<SecureValueHash> valueHashes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       valueHashes.add(reader.tgReadObject());
@@ -1747,19 +1719,18 @@ class AcceptAuthorization extends BaseRequest {
       serializeBytes(this.scope),
       serializeBytes(this.publicKey),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.valueHashes!.length, 4,
+      readBufferFromBigInt(this.valueHashes.length, 4,
           little: true, signed: true),
       this
-          .valueHashes!
-          .map((x) => (x.getBytes() as List<int>))
+          .valueHashes.map((x) => x.getBytes())
           .expand((element) => element),
-      (this.credentials.getBytes() as List<int>),
+      (this.credentials.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1778,18 +1749,17 @@ class AcceptAuthorization extends BaseRequest {
   }
 }
 
-class SendVerifyPhoneCode extends BaseRequest {
+class SendVerifyPhoneCode extends BaseRequest<auth_ns.SentCode, dynamic> {
   static const CONSTRUCTOR_ID = 2778945273;
   static const SUBCLASS_OF_ID = 1827172481;
   final classType = "request";
   final ID = 2778945273;
   String phoneNumber;
-  var settings;
+  CodeSettings settings;
 
   SendVerifyPhoneCode({required this.phoneNumber, required this.settings});
 
   static SendVerifyPhoneCode fromReader(BinaryReader reader) {
-    var len;
     var phoneNumber = reader.tgReadString();
     var settings = reader.tgReadObject();
     return SendVerifyPhoneCode(phoneNumber: phoneNumber, settings: settings);
@@ -1800,13 +1770,13 @@ class SendVerifyPhoneCode extends BaseRequest {
     return [
       readBufferFromBigInt(2778945273, 4),
       serializeBytes(this.phoneNumber),
-      (this.settings.getBytes() as List<int>),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<auth_ns.SentCode, dynamic>();
   }
 
   @override
@@ -1825,7 +1795,7 @@ class SendVerifyPhoneCode extends BaseRequest {
   }
 }
 
-class VerifyPhone extends BaseRequest {
+class VerifyPhone extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1305716726;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -1840,7 +1810,6 @@ class VerifyPhone extends BaseRequest {
       required this.phoneCode});
 
   static VerifyPhone fromReader(BinaryReader reader) {
-    var len;
     var phoneNumber = reader.tgReadString();
     var phoneCodeHash = reader.tgReadString();
     var phoneCode = reader.tgReadString();
@@ -1862,7 +1831,7 @@ class VerifyPhone extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1881,7 +1850,8 @@ class VerifyPhone extends BaseRequest {
   }
 }
 
-class SendVerifyEmailCode extends BaseRequest {
+class SendVerifyEmailCode
+    extends BaseRequest<account_ns.SentEmailCode, dynamic> {
   static const CONSTRUCTOR_ID = 1880182943;
   static const SUBCLASS_OF_ID = 1777582190;
   final classType = "request";
@@ -1891,7 +1861,6 @@ class SendVerifyEmailCode extends BaseRequest {
   SendVerifyEmailCode({required this.email});
 
   static SendVerifyEmailCode fromReader(BinaryReader reader) {
-    var len;
     var email = reader.tgReadString();
     return SendVerifyEmailCode(email: email);
   }
@@ -1906,7 +1875,7 @@ class SendVerifyEmailCode extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.SentEmailCode, dynamic>();
   }
 
   @override
@@ -1925,7 +1894,7 @@ class SendVerifyEmailCode extends BaseRequest {
   }
 }
 
-class VerifyEmail extends BaseRequest {
+class VerifyEmail extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3971627483;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -1936,7 +1905,6 @@ class VerifyEmail extends BaseRequest {
   VerifyEmail({required this.email, required this.code});
 
   static VerifyEmail fromReader(BinaryReader reader) {
-    var len;
     var email = reader.tgReadString();
     var code = reader.tgReadString();
     return VerifyEmail(email: email, code: code);
@@ -1953,7 +1921,7 @@ class VerifyEmail extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -1972,7 +1940,7 @@ class VerifyEmail extends BaseRequest {
   }
 }
 
-class InitTakeoutSession extends BaseRequest {
+class InitTakeoutSession extends BaseRequest<account_ns.Takeout, dynamic> {
   static const CONSTRUCTOR_ID = 2398350000;
   static const SUBCLASS_OF_ID = 2218704517;
   final classType = "request";
@@ -1986,16 +1954,15 @@ class InitTakeoutSession extends BaseRequest {
   BigInt? fileMaxSize;
 
   InitTakeoutSession(
-      {required this.contacts,
-      required this.messageUsers,
-      required this.messageChats,
-      required this.messageMegagroups,
-      required this.messageChannels,
-      required this.files,
-      required this.fileMaxSize});
+      {this.contacts,
+      this.messageUsers,
+      this.messageChats,
+      this.messageMegagroups,
+      this.messageChannels,
+      this.files,
+      this.fileMaxSize});
 
   static InitTakeoutSession fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final contacts = (flags & 1) == 1;
     final messageUsers = (flags & 2) == 2;
@@ -2035,7 +2002,7 @@ class InitTakeoutSession extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.Takeout, dynamic>();
   }
 
   @override
@@ -2054,17 +2021,16 @@ class InitTakeoutSession extends BaseRequest {
   }
 }
 
-class FinishTakeoutSession extends BaseRequest {
+class FinishTakeoutSession extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 489050862;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 489050862;
   bool? success;
 
-  FinishTakeoutSession({required this.success});
+  FinishTakeoutSession({this.success});
 
   static FinishTakeoutSession fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final success = (flags & 1) == 1;
     return FinishTakeoutSession(success: success);
@@ -2080,7 +2046,7 @@ class FinishTakeoutSession extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2099,7 +2065,7 @@ class FinishTakeoutSession extends BaseRequest {
   }
 }
 
-class ConfirmPasswordEmail extends BaseRequest {
+class ConfirmPasswordEmail extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2413762848;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -2109,7 +2075,6 @@ class ConfirmPasswordEmail extends BaseRequest {
   ConfirmPasswordEmail({required this.code});
 
   static ConfirmPasswordEmail fromReader(BinaryReader reader) {
-    var len;
     var code = reader.tgReadString();
     return ConfirmPasswordEmail(code: code);
   }
@@ -2124,7 +2089,7 @@ class ConfirmPasswordEmail extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2143,7 +2108,7 @@ class ConfirmPasswordEmail extends BaseRequest {
   }
 }
 
-class ResendPasswordEmail extends BaseRequest {
+class ResendPasswordEmail extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2055154197;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -2152,7 +2117,6 @@ class ResendPasswordEmail extends BaseRequest {
   ResendPasswordEmail();
 
   static ResendPasswordEmail fromReader(BinaryReader reader) {
-    var len;
     return ResendPasswordEmail();
   }
 
@@ -2165,7 +2129,7 @@ class ResendPasswordEmail extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2184,7 +2148,7 @@ class ResendPasswordEmail extends BaseRequest {
   }
 }
 
-class CancelPasswordEmail extends BaseRequest {
+class CancelPasswordEmail extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3251361206;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -2193,7 +2157,6 @@ class CancelPasswordEmail extends BaseRequest {
   CancelPasswordEmail();
 
   static CancelPasswordEmail fromReader(BinaryReader reader) {
-    var len;
     return CancelPasswordEmail();
   }
 
@@ -2206,7 +2169,7 @@ class CancelPasswordEmail extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2225,7 +2188,7 @@ class CancelPasswordEmail extends BaseRequest {
   }
 }
 
-class GetContactSignUpNotification extends BaseRequest {
+class GetContactSignUpNotification extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2668087080;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -2234,7 +2197,6 @@ class GetContactSignUpNotification extends BaseRequest {
   GetContactSignUpNotification();
 
   static GetContactSignUpNotification fromReader(BinaryReader reader) {
-    var len;
     return GetContactSignUpNotification();
   }
 
@@ -2247,7 +2209,7 @@ class GetContactSignUpNotification extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2266,7 +2228,7 @@ class GetContactSignUpNotification extends BaseRequest {
   }
 }
 
-class SetContactSignUpNotification extends BaseRequest {
+class SetContactSignUpNotification extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3488890721;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -2276,7 +2238,6 @@ class SetContactSignUpNotification extends BaseRequest {
   SetContactSignUpNotification({required this.silent});
 
   static SetContactSignUpNotification fromReader(BinaryReader reader) {
-    var len;
     var silent = reader.tgReadBool();
     return SetContactSignUpNotification(silent: silent);
   }
@@ -2291,7 +2252,7 @@ class SetContactSignUpNotification extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2310,18 +2271,17 @@ class SetContactSignUpNotification extends BaseRequest {
   }
 }
 
-class GetNotifyExceptions extends BaseRequest {
+class GetNotifyExceptions extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1398240377;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 1398240377;
   bool? compareSound;
-  var peer;
+  InputNotifyPeerBase? peer;
 
-  GetNotifyExceptions({required this.compareSound, required this.peer});
+  GetNotifyExceptions({this.compareSound, this.peer});
 
   static GetNotifyExceptions fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final compareSound = (flags & 2) == 2;
     var peer;
@@ -2340,7 +2300,7 @@ class GetNotifyExceptions extends BaseRequest {
       [0, 0, 0, 0],
       (this.peer == null || this.peer == false)
           ? List<int>.empty()
-          : [(this.peer.getBytes() as List<int>)]
+          : [(this.peer!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -2348,7 +2308,7 @@ class GetNotifyExceptions extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -2367,17 +2327,16 @@ class GetNotifyExceptions extends BaseRequest {
   }
 }
 
-class GetWallPaper extends BaseRequest {
+class GetWallPaper extends BaseRequest<WallPaperBase, dynamic> {
   static const CONSTRUCTOR_ID = 4237155306;
   static const SUBCLASS_OF_ID = 2527250827;
   final classType = "request";
   final ID = 4237155306;
-  var wallpaper;
+  InputWallPaperBase wallpaper;
 
   GetWallPaper({required this.wallpaper});
 
   static GetWallPaper fromReader(BinaryReader reader) {
-    var len;
     var wallpaper = reader.tgReadObject();
     return GetWallPaper(wallpaper: wallpaper);
   }
@@ -2386,13 +2345,13 @@ class GetWallPaper extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4237155306, 4),
-      (this.wallpaper.getBytes() as List<int>),
+      (this.wallpaper.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<WallPaperBase, dynamic>();
   }
 
   @override
@@ -2411,20 +2370,19 @@ class GetWallPaper extends BaseRequest {
   }
 }
 
-class UploadWallPaper extends BaseRequest {
+class UploadWallPaper extends BaseRequest<WallPaperBase, dynamic> {
   static const CONSTRUCTOR_ID = 3716494945;
   static const SUBCLASS_OF_ID = 2527250827;
   final classType = "request";
   final ID = 3716494945;
-  var file;
+  InputFileBase file;
   String mimeType;
-  var settings;
+  WallPaperSettings settings;
 
   UploadWallPaper(
       {required this.file, required this.mimeType, required this.settings});
 
   static UploadWallPaper fromReader(BinaryReader reader) {
-    var len;
     var file = reader.tgReadObject();
     var mimeType = reader.tgReadString();
     var settings = reader.tgReadObject();
@@ -2435,15 +2393,15 @@ class UploadWallPaper extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3716494945, 4),
-      (this.file.getBytes() as List<int>),
+      (this.file.getBytes()),
       serializeBytes(this.mimeType),
-      (this.settings.getBytes() as List<int>),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<WallPaperBase, dynamic>();
   }
 
   @override
@@ -2462,20 +2420,19 @@ class UploadWallPaper extends BaseRequest {
   }
 }
 
-class SaveWallPaper extends BaseRequest {
+class SaveWallPaper extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1817860919;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 1817860919;
-  var wallpaper;
+  InputWallPaperBase wallpaper;
   bool unsave;
-  var settings;
+  WallPaperSettings settings;
 
   SaveWallPaper(
       {required this.wallpaper, required this.unsave, required this.settings});
 
   static SaveWallPaper fromReader(BinaryReader reader) {
-    var len;
     var wallpaper = reader.tgReadObject();
     var unsave = reader.tgReadBool();
     var settings = reader.tgReadObject();
@@ -2487,15 +2444,15 @@ class SaveWallPaper extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1817860919, 4),
-      (this.wallpaper.getBytes() as List<int>),
+      (this.wallpaper.getBytes()),
       [this.unsave == true ? 0xb5757299 : 0x379779bc],
-      (this.settings.getBytes() as List<int>),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2514,18 +2471,17 @@ class SaveWallPaper extends BaseRequest {
   }
 }
 
-class InstallWallPaper extends BaseRequest {
+class InstallWallPaper extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 4276967273;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 4276967273;
-  var wallpaper;
-  var settings;
+  InputWallPaperBase wallpaper;
+  WallPaperSettings settings;
 
   InstallWallPaper({required this.wallpaper, required this.settings});
 
   static InstallWallPaper fromReader(BinaryReader reader) {
-    var len;
     var wallpaper = reader.tgReadObject();
     var settings = reader.tgReadObject();
     return InstallWallPaper(wallpaper: wallpaper, settings: settings);
@@ -2535,14 +2491,14 @@ class InstallWallPaper extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4276967273, 4),
-      (this.wallpaper.getBytes() as List<int>),
-      (this.settings.getBytes() as List<int>),
+      (this.wallpaper.getBytes()),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2561,7 +2517,7 @@ class InstallWallPaper extends BaseRequest {
   }
 }
 
-class ResetWallPapers extends BaseRequest {
+class ResetWallPapers extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3141244932;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -2570,7 +2526,6 @@ class ResetWallPapers extends BaseRequest {
   ResetWallPapers();
 
   static ResetWallPapers fromReader(BinaryReader reader) {
-    var len;
     return ResetWallPapers();
   }
 
@@ -2583,7 +2538,7 @@ class ResetWallPapers extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2602,7 +2557,8 @@ class ResetWallPapers extends BaseRequest {
   }
 }
 
-class GetAutoDownloadSettings extends BaseRequest {
+class GetAutoDownloadSettings
+    extends BaseRequest<account_ns.AutoDownloadSettings, dynamic> {
   static const CONSTRUCTOR_ID = 1457130303;
   static const SUBCLASS_OF_ID = 800610593;
   final classType = "request";
@@ -2611,7 +2567,6 @@ class GetAutoDownloadSettings extends BaseRequest {
   GetAutoDownloadSettings();
 
   static GetAutoDownloadSettings fromReader(BinaryReader reader) {
-    var len;
     return GetAutoDownloadSettings();
   }
 
@@ -2624,7 +2579,7 @@ class GetAutoDownloadSettings extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.AutoDownloadSettings, dynamic>();
   }
 
   @override
@@ -2643,20 +2598,18 @@ class GetAutoDownloadSettings extends BaseRequest {
   }
 }
 
-class SaveAutoDownloadSettings extends BaseRequest {
+class SaveAutoDownloadSettings extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1995661875;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 1995661875;
   bool? low;
   bool? high;
-  var settings;
+  AutoDownloadSettings settings;
 
-  SaveAutoDownloadSettings(
-      {required this.low, required this.high, required this.settings});
+  SaveAutoDownloadSettings({this.low, this.high, required this.settings});
 
   static SaveAutoDownloadSettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final low = (flags & 1) == 1;
     final high = (flags & 2) == 2;
@@ -2669,13 +2622,13 @@ class SaveAutoDownloadSettings extends BaseRequest {
     return [
       readBufferFromBigInt(1995661875, 4),
       [0, 0, 0, 0],
-      (this.settings.getBytes() as List<int>),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -2694,24 +2647,23 @@ class SaveAutoDownloadSettings extends BaseRequest {
   }
 }
 
-class UploadTheme extends BaseRequest {
+class UploadTheme extends BaseRequest<DocumentBase, dynamic> {
   static const CONSTRUCTOR_ID = 473805619;
   static const SUBCLASS_OF_ID = 555739168;
   final classType = "request";
   final ID = 473805619;
-  var file;
-  var thumb;
+  InputFileBase file;
+  InputFileBase? thumb;
   String fileName;
   String mimeType;
 
   UploadTheme(
       {required this.file,
-      required this.thumb,
+      this.thumb,
       required this.fileName,
       required this.mimeType});
 
   static UploadTheme fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var file = reader.tgReadObject();
     var thumb;
@@ -2731,10 +2683,10 @@ class UploadTheme extends BaseRequest {
     return [
       readBufferFromBigInt(473805619, 4),
       [0, 0, 0, 0],
-      (this.file.getBytes() as List<int>),
+      (this.file.getBytes()),
       (this.thumb == null || this.thumb == false)
           ? List<int>.empty()
-          : [(this.thumb.getBytes() as List<int>)]
+          : [(this.thumb!.getBytes())]
               .expand((element) => element)
               .toList(),
       serializeBytes(this.fileName),
@@ -2744,7 +2696,7 @@ class UploadTheme extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<DocumentBase, dynamic>();
   }
 
   @override
@@ -2763,21 +2715,18 @@ class UploadTheme extends BaseRequest {
   }
 }
 
-class CreateTheme extends BaseRequest {
+class CreateTheme extends BaseRequest<Theme, dynamic> {
   static const CONSTRUCTOR_ID = 1697530880;
   static const SUBCLASS_OF_ID = 1454688268;
   final classType = "request";
   final ID = 1697530880;
   String slug;
   String title;
-  var document;
-  List<dynamic>? settings;
+  InputDocumentBase? document;
+  List<InputThemeSettings>? settings;
 
   CreateTheme(
-      {required this.slug,
-      required this.title,
-      required this.document,
-      required this.settings});
+      {required this.slug, required this.title, this.document, this.settings});
 
   static CreateTheme fromReader(BinaryReader reader) {
     var len;
@@ -2794,7 +2743,7 @@ class CreateTheme extends BaseRequest {
     if ((flags & 8) == 8) {
       var _vectorsettings = reader.readInt();
       if (_vectorsettings != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> settings = [];
+      List<InputThemeSettings> settings = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         settings.add(reader.tgReadObject());
@@ -2815,7 +2764,7 @@ class CreateTheme extends BaseRequest {
       serializeBytes(this.title),
       (this.document == null || this.document == false)
           ? List<int>.empty()
-          : [(this.document.getBytes() as List<int>)]
+          : [(this.document!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.settings == null || this.settings == false)
@@ -2826,7 +2775,7 @@ class CreateTheme extends BaseRequest {
                   little: true, signed: true),
               this
                   .settings!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -2834,7 +2783,7 @@ class CreateTheme extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<Theme, dynamic>();
   }
 
   @override
@@ -2853,25 +2802,25 @@ class CreateTheme extends BaseRequest {
   }
 }
 
-class UpdateTheme extends BaseRequest {
+class UpdateTheme extends BaseRequest<Theme, dynamic> {
   static const CONSTRUCTOR_ID = 737414348;
   static const SUBCLASS_OF_ID = 1454688268;
   final classType = "request";
   final ID = 737414348;
   String format;
-  var theme;
+  InputThemeBase theme;
   String? slug;
   String? title;
-  var document;
-  List<dynamic>? settings;
+  InputDocumentBase? document;
+  List<InputThemeSettings>? settings;
 
   UpdateTheme(
       {required this.format,
       required this.theme,
-      required this.slug,
-      required this.title,
-      required this.document,
-      required this.settings});
+      this.slug,
+      this.title,
+      this.document,
+      this.settings});
 
   static UpdateTheme fromReader(BinaryReader reader) {
     var len;
@@ -2900,7 +2849,7 @@ class UpdateTheme extends BaseRequest {
     if ((flags & 8) == 8) {
       var _vectorsettings = reader.readInt();
       if (_vectorsettings != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> settings = [];
+      List<InputThemeSettings> settings = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         settings.add(reader.tgReadObject());
@@ -2923,7 +2872,7 @@ class UpdateTheme extends BaseRequest {
       readBufferFromBigInt(737414348, 4),
       [0, 0, 0, 0],
       serializeBytes(this.format),
-      (this.theme.getBytes() as List<int>),
+      (this.theme.getBytes()),
       (this.slug == null || this.slug == false)
           ? List<int>.empty()
           : [serializeBytes(this.slug)].expand((element) => element).toList(),
@@ -2932,7 +2881,7 @@ class UpdateTheme extends BaseRequest {
           : [serializeBytes(this.title)].expand((element) => element).toList(),
       (this.document == null || this.document == false)
           ? List<int>.empty()
-          : [(this.document.getBytes() as List<int>)]
+          : [(this.document!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.settings == null || this.settings == false)
@@ -2943,7 +2892,7 @@ class UpdateTheme extends BaseRequest {
                   little: true, signed: true),
               this
                   .settings!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -2951,7 +2900,7 @@ class UpdateTheme extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<Theme, dynamic>();
   }
 
   @override
@@ -2970,18 +2919,17 @@ class UpdateTheme extends BaseRequest {
   }
 }
 
-class SaveTheme extends BaseRequest {
+class SaveTheme extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 4065792108;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 4065792108;
-  var theme;
+  InputThemeBase theme;
   bool unsave;
 
   SaveTheme({required this.theme, required this.unsave});
 
   static SaveTheme fromReader(BinaryReader reader) {
-    var len;
     var theme = reader.tgReadObject();
     var unsave = reader.tgReadBool();
     return SaveTheme(theme: theme, unsave: unsave);
@@ -2991,14 +2939,14 @@ class SaveTheme extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4065792108, 4),
-      (this.theme.getBytes() as List<int>),
+      (this.theme.getBytes()),
       [this.unsave == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3017,24 +2965,19 @@ class SaveTheme extends BaseRequest {
   }
 }
 
-class InstallTheme extends BaseRequest {
+class InstallTheme extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3341269819;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3341269819;
   bool? dark;
-  var theme;
+  InputThemeBase? theme;
   String? format;
-  var baseTheme;
+  BaseThemeBase? baseTheme;
 
-  InstallTheme(
-      {required this.dark,
-      required this.theme,
-      required this.format,
-      required this.baseTheme});
+  InstallTheme({this.dark, this.theme, this.format, this.baseTheme});
 
   static InstallTheme fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final dark = (flags & 1) == 1;
     var theme;
@@ -3066,7 +3009,7 @@ class InstallTheme extends BaseRequest {
       [0, 0, 0, 0],
       (this.theme == null || this.theme == false)
           ? List<int>.empty()
-          : [(this.theme.getBytes() as List<int>)]
+          : [(this.theme!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.format == null || this.format == false)
@@ -3074,7 +3017,7 @@ class InstallTheme extends BaseRequest {
           : [serializeBytes(this.format)].expand((element) => element).toList(),
       (this.baseTheme == null || this.baseTheme == false)
           ? List<int>.empty()
-          : [(this.baseTheme.getBytes() as List<int>)]
+          : [(this.baseTheme!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -3082,7 +3025,7 @@ class InstallTheme extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3101,20 +3044,19 @@ class InstallTheme extends BaseRequest {
   }
 }
 
-class GetTheme extends BaseRequest {
+class GetTheme extends BaseRequest<Theme, dynamic> {
   static const CONSTRUCTOR_ID = 2375906347;
   static const SUBCLASS_OF_ID = 1454688268;
   final classType = "request";
   final ID = 2375906347;
   String format;
-  var theme;
+  InputThemeBase theme;
   BigInt documentId;
 
   GetTheme(
       {required this.format, required this.theme, required this.documentId});
 
   static GetTheme fromReader(BinaryReader reader) {
-    var len;
     var format = reader.tgReadString();
     var theme = reader.tgReadObject();
     var documentId = reader.readLong();
@@ -3126,14 +3068,14 @@ class GetTheme extends BaseRequest {
     return [
       readBufferFromBigInt(2375906347, 4),
       serializeBytes(this.format),
-      (this.theme.getBytes() as List<int>),
+      (this.theme.getBytes()),
       readBufferFromBigInt(this.documentId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<Theme, dynamic>();
   }
 
   @override
@@ -3152,7 +3094,7 @@ class GetTheme extends BaseRequest {
   }
 }
 
-class GetThemes extends BaseRequest {
+class GetThemes extends BaseRequest<account_ns.ThemesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1913054296;
   static const SUBCLASS_OF_ID = 2143625732;
   final classType = "request";
@@ -3163,7 +3105,6 @@ class GetThemes extends BaseRequest {
   GetThemes({required this.format, required this.hash});
 
   static GetThemes fromReader(BinaryReader reader) {
-    var len;
     var format = reader.tgReadString();
     var hash = reader.readLong();
     return GetThemes(format: format, hash: hash);
@@ -3180,7 +3121,7 @@ class GetThemes extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.ThemesBase, dynamic>();
   }
 
   @override
@@ -3199,17 +3140,16 @@ class GetThemes extends BaseRequest {
   }
 }
 
-class SetContentSettings extends BaseRequest {
+class SetContentSettings extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3044323691;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 3044323691;
   bool? sensitiveEnabled;
 
-  SetContentSettings({required this.sensitiveEnabled});
+  SetContentSettings({this.sensitiveEnabled});
 
   static SetContentSettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final sensitiveEnabled = (flags & 1) == 1;
     return SetContentSettings(sensitiveEnabled: sensitiveEnabled);
@@ -3225,7 +3165,7 @@ class SetContentSettings extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3244,7 +3184,8 @@ class SetContentSettings extends BaseRequest {
   }
 }
 
-class GetContentSettings extends BaseRequest {
+class GetContentSettings
+    extends BaseRequest<account_ns.ContentSettings, dynamic> {
   static const CONSTRUCTOR_ID = 2342210990;
   static const SUBCLASS_OF_ID = 2923427985;
   final classType = "request";
@@ -3253,7 +3194,6 @@ class GetContentSettings extends BaseRequest {
   GetContentSettings();
 
   static GetContentSettings fromReader(BinaryReader reader) {
-    var len;
     return GetContentSettings();
   }
 
@@ -3266,7 +3206,7 @@ class GetContentSettings extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.ContentSettings, dynamic>();
   }
 
   @override
@@ -3285,12 +3225,13 @@ class GetContentSettings extends BaseRequest {
   }
 }
 
-class GetMultiWallPapers extends BaseRequest {
+class GetMultiWallPapers
+    extends BaseRequest<List<WallPaperBase>, WallPaperBase> {
   static const CONSTRUCTOR_ID = 1705865692;
   static const SUBCLASS_OF_ID = 2395165315;
   final classType = "request";
   final ID = 1705865692;
-  List<dynamic> wallpapers;
+  List<InputWallPaperBase> wallpapers;
 
   GetMultiWallPapers({required this.wallpapers});
 
@@ -3298,7 +3239,7 @@ class GetMultiWallPapers extends BaseRequest {
     var len;
     var _vectorwallpapers = reader.readInt();
     if (_vectorwallpapers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> wallpapers = [];
+    List<InputWallPaperBase> wallpapers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       wallpapers.add(reader.tgReadObject());
@@ -3311,18 +3252,17 @@ class GetMultiWallPapers extends BaseRequest {
     return [
       readBufferFromBigInt(1705865692, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.wallpapers!.length, 4,
+      readBufferFromBigInt(this.wallpapers.length, 4,
           little: true, signed: true),
       this
-          .wallpapers!
-          .map((x) => (x.getBytes() as List<int>))
+          .wallpapers.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<WallPaperBase>, WallPaperBase>();
   }
 
   @override
@@ -3341,7 +3281,8 @@ class GetMultiWallPapers extends BaseRequest {
   }
 }
 
-class GetGlobalPrivacySettings extends BaseRequest {
+class GetGlobalPrivacySettings
+    extends BaseRequest<GlobalPrivacySettings, dynamic> {
   static const CONSTRUCTOR_ID = 3945483510;
   static const SUBCLASS_OF_ID = 3373160304;
   final classType = "request";
@@ -3350,7 +3291,6 @@ class GetGlobalPrivacySettings extends BaseRequest {
   GetGlobalPrivacySettings();
 
   static GetGlobalPrivacySettings fromReader(BinaryReader reader) {
-    var len;
     return GetGlobalPrivacySettings();
   }
 
@@ -3363,7 +3303,7 @@ class GetGlobalPrivacySettings extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<GlobalPrivacySettings, dynamic>();
   }
 
   @override
@@ -3382,17 +3322,17 @@ class GetGlobalPrivacySettings extends BaseRequest {
   }
 }
 
-class SetGlobalPrivacySettings extends BaseRequest {
+class SetGlobalPrivacySettings
+    extends BaseRequest<GlobalPrivacySettings, dynamic> {
   static const CONSTRUCTOR_ID = 517647042;
   static const SUBCLASS_OF_ID = 3373160304;
   final classType = "request";
   final ID = 517647042;
-  var settings;
+  GlobalPrivacySettings settings;
 
   SetGlobalPrivacySettings({required this.settings});
 
   static SetGlobalPrivacySettings fromReader(BinaryReader reader) {
-    var len;
     var settings = reader.tgReadObject();
     return SetGlobalPrivacySettings(settings: settings);
   }
@@ -3401,13 +3341,13 @@ class SetGlobalPrivacySettings extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(517647042, 4),
-      (this.settings.getBytes() as List<int>),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<GlobalPrivacySettings, dynamic>();
   }
 
   @override
@@ -3426,14 +3366,14 @@ class SetGlobalPrivacySettings extends BaseRequest {
   }
 }
 
-class ReportProfilePhoto extends BaseRequest {
+class ReportProfilePhoto extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 4203529973;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
   final ID = 4203529973;
-  var peer;
-  var photoId;
-  var reason;
+  InputPeerBase peer;
+  InputPhotoBase photoId;
+  ReportReasonBase reason;
   String message;
 
   ReportProfilePhoto(
@@ -3443,7 +3383,6 @@ class ReportProfilePhoto extends BaseRequest {
       required this.message});
 
   static ReportProfilePhoto fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var photoId = reader.tgReadObject();
     var reason = reader.tgReadObject();
@@ -3456,16 +3395,16 @@ class ReportProfilePhoto extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4203529973, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.photoId.getBytes() as List<int>),
-      (this.reason.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.photoId.getBytes()),
+      (this.reason.getBytes()),
       serializeBytes(this.message),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3484,7 +3423,8 @@ class ReportProfilePhoto extends BaseRequest {
   }
 }
 
-class ResetPassword extends BaseRequest {
+class ResetPassword
+    extends BaseRequest<account_ns.ResetPasswordResultBase, dynamic> {
   static const CONSTRUCTOR_ID = 2466827803;
   static const SUBCLASS_OF_ID = 1230009366;
   final classType = "request";
@@ -3493,7 +3433,6 @@ class ResetPassword extends BaseRequest {
   ResetPassword();
 
   static ResetPassword fromReader(BinaryReader reader) {
-    var len;
     return ResetPassword();
   }
 
@@ -3506,7 +3445,7 @@ class ResetPassword extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.ResetPasswordResultBase, dynamic>();
   }
 
   @override
@@ -3525,7 +3464,7 @@ class ResetPassword extends BaseRequest {
   }
 }
 
-class DeclinePasswordReset extends BaseRequest {
+class DeclinePasswordReset extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1284770294;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -3534,7 +3473,6 @@ class DeclinePasswordReset extends BaseRequest {
   DeclinePasswordReset();
 
   static DeclinePasswordReset fromReader(BinaryReader reader) {
-    var len;
     return DeclinePasswordReset();
   }
 
@@ -3547,7 +3485,7 @@ class DeclinePasswordReset extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3566,7 +3504,7 @@ class DeclinePasswordReset extends BaseRequest {
   }
 }
 
-class GetChatThemes extends BaseRequest {
+class GetChatThemes extends BaseRequest<account_ns.ThemesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3594051209;
   static const SUBCLASS_OF_ID = 2143625732;
   final classType = "request";
@@ -3576,7 +3514,6 @@ class GetChatThemes extends BaseRequest {
   GetChatThemes({required this.hash});
 
   static GetChatThemes fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetChatThemes(hash: hash);
   }
@@ -3591,7 +3528,7 @@ class GetChatThemes extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.ThemesBase, dynamic>();
   }
 
   @override
@@ -3610,7 +3547,7 @@ class GetChatThemes extends BaseRequest {
   }
 }
 
-class SetAuthorizationTTL extends BaseRequest {
+class SetAuthorizationTTL extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3213466272;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -3620,7 +3557,6 @@ class SetAuthorizationTTL extends BaseRequest {
   SetAuthorizationTTL({required this.authorizationTtlDays});
 
   static SetAuthorizationTTL fromReader(BinaryReader reader) {
-    var len;
     var authorizationTtlDays = reader.readInt();
     return SetAuthorizationTTL(authorizationTtlDays: authorizationTtlDays);
   }
@@ -3636,7 +3572,7 @@ class SetAuthorizationTTL extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3655,7 +3591,7 @@ class SetAuthorizationTTL extends BaseRequest {
   }
 }
 
-class ChangeAuthorizationSettings extends BaseRequest {
+class ChangeAuthorizationSettings extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 1089766498;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -3666,11 +3602,10 @@ class ChangeAuthorizationSettings extends BaseRequest {
 
   ChangeAuthorizationSettings(
       {required this.hash,
-      required this.encryptedRequestsDisabled,
-      required this.callRequestsDisabled});
+      this.encryptedRequestsDisabled,
+      this.callRequestsDisabled});
 
   static ChangeAuthorizationSettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var hash = reader.readLong();
     var encryptedRequestsDisabled;
@@ -3713,7 +3648,7 @@ class ChangeAuthorizationSettings extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -3732,7 +3667,8 @@ class ChangeAuthorizationSettings extends BaseRequest {
   }
 }
 
-class GetSavedRingtones extends BaseRequest {
+class GetSavedRingtones
+    extends BaseRequest<account_ns.SavedRingtonesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3784319624;
   static const SUBCLASS_OF_ID = 666683742;
   final classType = "request";
@@ -3742,7 +3678,6 @@ class GetSavedRingtones extends BaseRequest {
   GetSavedRingtones({required this.hash});
 
   static GetSavedRingtones fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     return GetSavedRingtones(hash: hash);
   }
@@ -3757,7 +3692,7 @@ class GetSavedRingtones extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.SavedRingtonesBase, dynamic>();
   }
 
   @override
@@ -3776,18 +3711,17 @@ class GetSavedRingtones extends BaseRequest {
   }
 }
 
-class SaveRingtone extends BaseRequest {
+class SaveRingtone extends BaseRequest<account_ns.SavedRingtoneBase, dynamic> {
   static const CONSTRUCTOR_ID = 1038768899;
   static const SUBCLASS_OF_ID = 2984412196;
   final classType = "request";
   final ID = 1038768899;
-  var id;
+  InputDocumentBase id;
   bool unsave;
 
   SaveRingtone({required this.id, required this.unsave});
 
   static SaveRingtone fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     var unsave = reader.tgReadBool();
     return SaveRingtone(id: id, unsave: unsave);
@@ -3797,14 +3731,14 @@ class SaveRingtone extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1038768899, 4),
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
       [this.unsave == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<account_ns.SavedRingtoneBase, dynamic>();
   }
 
   @override
@@ -3823,12 +3757,12 @@ class SaveRingtone extends BaseRequest {
   }
 }
 
-class UploadRingtone extends BaseRequest {
+class UploadRingtone extends BaseRequest<DocumentBase, dynamic> {
   static const CONSTRUCTOR_ID = 2199552930;
   static const SUBCLASS_OF_ID = 555739168;
   final classType = "request";
   final ID = 2199552930;
-  var file;
+  InputFileBase file;
   String fileName;
   String mimeType;
 
@@ -3836,7 +3770,6 @@ class UploadRingtone extends BaseRequest {
       {required this.file, required this.fileName, required this.mimeType});
 
   static UploadRingtone fromReader(BinaryReader reader) {
-    var len;
     var file = reader.tgReadObject();
     var fileName = reader.tgReadString();
     var mimeType = reader.tgReadString();
@@ -3847,7 +3780,7 @@ class UploadRingtone extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2199552930, 4),
-      (this.file.getBytes() as List<int>),
+      (this.file.getBytes()),
       serializeBytes(this.fileName),
       serializeBytes(this.mimeType),
     ].expand((element) => element).toList();
@@ -3855,7 +3788,7 @@ class UploadRingtone extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<DocumentBase, dynamic>();
   }
 
   @override

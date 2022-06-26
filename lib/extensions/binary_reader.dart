@@ -10,11 +10,10 @@ import '../utils.dart';
 
 class BinaryReader {
   final List<int> stream;
-  final ByteData _reader;
+
   int offset = 0;
 
-  BinaryReader(List<int> this.stream)
-      : _reader = ByteData.view(Uint8List.fromList(stream).buffer);
+  BinaryReader(List<int> this.stream);
 
   // region Reading
 
@@ -161,7 +160,16 @@ class BinaryReader {
   /**
    * Reads a Telegram object.
    */
-  dynamic tgReadObject() {
+  X tgReadArray<X>() {
+    final length = this.readInt();
+    final result = List.empty(growable: true);
+    for (int i = 0; i < length; i++) {
+      result.add(this.tgReadObject());
+    }
+    return result as X;
+  }
+
+  T tgReadObject<T, K>() {
     final constructorId = this.readInt(signed: false);
     var clazz = tlobjects[constructorId];
 
@@ -173,18 +181,18 @@ class BinaryReader {
       final value = constructorId;
       if (value == 0x997275b5) {
         // boolTrue
-        return true;
+        return true as T;
       } else if (value == 0xbc799737) {
         // boolFalse
-        return false;
+        return false as T;
       } else if (value == 0x1cb5c415) {
         // Vector
-        final temp = [];
+        final temp = List<K>.empty(growable: true);
         final length = this.readInt();
         for (var i = 0; i < length; i++) {
           temp.add(this.tgReadObject());
         }
-        return temp;
+        return temp as T;
       }
 
       clazz = coreObjects[constructorId];

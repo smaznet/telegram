@@ -6,6 +6,7 @@ import '../../utils.dart';
 class GZIPPacked {
   static const CONSTRUCTOR_ID = 0x3072cfa1;
   static const classType = 'constructor';
+  var ID = 0x3072cfa1;
   List<int> data;
   GZIPPacked(this.data);
 

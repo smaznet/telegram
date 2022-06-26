@@ -1,9 +1,14 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
+import '../constructors/constructors.dart';
+import '../constructors/help.dart' as help_ns;
 
-class AppUpdate extends BaseConstructor {
+abstract class AppUpdateBase extends BaseConstructor {}
+
+class AppUpdate extends AppUpdateBase {
   static const CONSTRUCTOR_ID = 3434860080;
   static const SUBCLASS_OF_ID = 1486292638;
   final classType = "constructor";
@@ -12,20 +17,20 @@ class AppUpdate extends BaseConstructor {
   int id;
   String version;
   String text;
-  List<dynamic> entities;
-  var document;
+  List<MessageEntityBase> entities;
+  DocumentBase? document;
   String? url;
-  var sticker;
+  DocumentBase? sticker;
 
   AppUpdate(
-      {required this.canNotSkip,
+      {this.canNotSkip,
       required this.id,
       required this.version,
       required this.text,
       required this.entities,
-      required this.document,
-      required this.url,
-      required this.sticker});
+      this.document,
+      this.url,
+      this.sticker});
 
   static AppUpdate fromReader(BinaryReader reader) {
     var len;
@@ -36,7 +41,7 @@ class AppUpdate extends BaseConstructor {
     var text = reader.tgReadString();
     var _vectorentities = reader.readInt();
     if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> entities = [];
+    List<MessageEntityBase> entities = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       entities.add(reader.tgReadObject());
@@ -79,15 +84,14 @@ class AppUpdate extends BaseConstructor {
       serializeBytes(this.version),
       serializeBytes(this.text),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.entities!.length, 4,
+      readBufferFromBigInt(this.entities.length, 4,
           little: true, signed: true),
       this
-          .entities!
-          .map((x) => (x.getBytes() as List<int>))
+          .entities.map((x) => x.getBytes())
           .expand((element) => element),
       (this.document == null || this.document == false)
           ? List<int>.empty()
-          : [(this.document.getBytes() as List<int>)]
+          : [(this.document!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.url == null || this.url == false)
@@ -95,7 +99,7 @@ class AppUpdate extends BaseConstructor {
           : [serializeBytes(this.url)].expand((element) => element).toList(),
       (this.sticker == null || this.sticker == false)
           ? List<int>.empty()
-          : [(this.sticker.getBytes() as List<int>)]
+          : [(this.sticker!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -117,7 +121,7 @@ class AppUpdate extends BaseConstructor {
   }
 }
 
-class NoAppUpdate extends BaseConstructor {
+class NoAppUpdate extends AppUpdateBase {
   static const CONSTRUCTOR_ID = 3294258486;
   static const SUBCLASS_OF_ID = 1486292638;
   final classType = "constructor";
@@ -126,7 +130,6 @@ class NoAppUpdate extends BaseConstructor {
   NoAppUpdate();
 
   static NoAppUpdate fromReader(BinaryReader reader) {
-    var len;
     return NoAppUpdate();
   }
 
@@ -163,7 +166,6 @@ class InviteText extends BaseConstructor {
   InviteText({required this.message});
 
   static InviteText fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadString();
     return InviteText(message: message);
   }
@@ -198,12 +200,11 @@ class Support extends BaseConstructor {
   final classType = "constructor";
   final ID = 398898678;
   String phoneNumber;
-  var user;
+  UserBase user;
 
   Support({required this.phoneNumber, required this.user});
 
   static Support fromReader(BinaryReader reader) {
-    var len;
     var phoneNumber = reader.tgReadString();
     var user = reader.tgReadObject();
     return Support(phoneNumber: phoneNumber, user: user);
@@ -214,7 +215,7 @@ class Support extends BaseConstructor {
     return [
       readBufferFromBigInt(398898678, 4),
       serializeBytes(this.phoneNumber),
-      (this.user.getBytes() as List<int>),
+      (this.user.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -240,17 +241,17 @@ class TermsOfService extends BaseConstructor {
   final classType = "constructor";
   final ID = 2013922064;
   bool? popup;
-  var id;
+  DataJSON id;
   String text;
-  List<dynamic> entities;
+  List<MessageEntityBase> entities;
   int? minAgeConfirm;
 
   TermsOfService(
-      {required this.popup,
+      {this.popup,
       required this.id,
       required this.text,
       required this.entities,
-      required this.minAgeConfirm});
+      this.minAgeConfirm});
 
   static TermsOfService fromReader(BinaryReader reader) {
     var len;
@@ -260,7 +261,7 @@ class TermsOfService extends BaseConstructor {
     var text = reader.tgReadString();
     var _vectorentities = reader.readInt();
     if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> entities = [];
+    List<MessageEntityBase> entities = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       entities.add(reader.tgReadObject());
@@ -284,14 +285,13 @@ class TermsOfService extends BaseConstructor {
     return [
       readBufferFromBigInt(2013922064, 4),
       [0, 0, 0, 0],
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
       serializeBytes(this.text),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.entities!.length, 4,
+      readBufferFromBigInt(this.entities.length, 4,
           little: true, signed: true),
       this
-          .entities!
-          .map((x) => (x.getBytes() as List<int>))
+          .entities.map((x) => x.getBytes())
           .expand((element) => element),
       (this.minAgeConfirm == null || this.minAgeConfirm == false)
           ? List<int>.empty()
@@ -323,9 +323,9 @@ class RecentMeUrls extends BaseConstructor {
   static const SUBCLASS_OF_ID = 4067017847;
   final classType = "constructor";
   final ID = 235081943;
-  List<dynamic> urls;
-  List<dynamic> chats;
-  List<dynamic> users;
+  List<RecentMeUrlBase> urls;
+  List<ChatBase> chats;
+  List<UserBase> users;
 
   RecentMeUrls({required this.urls, required this.chats, required this.users});
 
@@ -333,21 +333,21 @@ class RecentMeUrls extends BaseConstructor {
     var len;
     var _vectorurls = reader.readInt();
     if (_vectorurls != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> urls = [];
+    List<RecentMeUrlBase> urls = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       urls.add(reader.tgReadObject());
     }
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -360,22 +360,19 @@ class RecentMeUrls extends BaseConstructor {
     return [
       readBufferFromBigInt(235081943, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.urls!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.urls.length, 4, little: true, signed: true),
       this
-          .urls!
-          .map((x) => (x.getBytes() as List<int>))
+          .urls.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -396,7 +393,9 @@ class RecentMeUrls extends BaseConstructor {
   }
 }
 
-class TermsOfServiceUpdateEmpty extends BaseConstructor {
+abstract class TermsOfServiceUpdateBase extends BaseConstructor {}
+
+class TermsOfServiceUpdateEmpty extends TermsOfServiceUpdateBase {
   static const CONSTRUCTOR_ID = 3811614591;
   static const SUBCLASS_OF_ID = 691808631;
   final classType = "constructor";
@@ -406,7 +405,6 @@ class TermsOfServiceUpdateEmpty extends BaseConstructor {
   TermsOfServiceUpdateEmpty({required this.expires});
 
   static TermsOfServiceUpdateEmpty fromReader(BinaryReader reader) {
-    var len;
     var expires = reader.readInt();
     return TermsOfServiceUpdateEmpty(expires: expires);
   }
@@ -435,18 +433,17 @@ class TermsOfServiceUpdateEmpty extends BaseConstructor {
   }
 }
 
-class TermsOfServiceUpdate extends BaseConstructor {
+class TermsOfServiceUpdate extends TermsOfServiceUpdateBase {
   static const CONSTRUCTOR_ID = 686618977;
   static const SUBCLASS_OF_ID = 691808631;
   final classType = "constructor";
   final ID = 686618977;
   int expires;
-  var termsOfService;
+  help_ns.TermsOfService termsOfService;
 
   TermsOfServiceUpdate({required this.expires, required this.termsOfService});
 
   static TermsOfServiceUpdate fromReader(BinaryReader reader) {
-    var len;
     var expires = reader.readInt();
     var termsOfService = reader.tgReadObject();
     return TermsOfServiceUpdate(
@@ -458,7 +455,7 @@ class TermsOfServiceUpdate extends BaseConstructor {
     return [
       readBufferFromBigInt(686618977, 4),
       readBufferFromBigInt(this.expires, 4, little: true, signed: true),
-      (this.termsOfService.getBytes() as List<int>),
+      (this.termsOfService.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -478,7 +475,9 @@ class TermsOfServiceUpdate extends BaseConstructor {
   }
 }
 
-class DeepLinkInfoEmpty extends BaseConstructor {
+abstract class DeepLinkInfoBase extends BaseConstructor {}
+
+class DeepLinkInfoEmpty extends DeepLinkInfoBase {
   static const CONSTRUCTOR_ID = 1722786150;
   static const SUBCLASS_OF_ID = 2555030584;
   final classType = "constructor";
@@ -487,7 +486,6 @@ class DeepLinkInfoEmpty extends BaseConstructor {
   DeepLinkInfoEmpty();
 
   static DeepLinkInfoEmpty fromReader(BinaryReader reader) {
-    var len;
     return DeepLinkInfoEmpty();
   }
 
@@ -514,17 +512,16 @@ class DeepLinkInfoEmpty extends BaseConstructor {
   }
 }
 
-class DeepLinkInfo extends BaseConstructor {
+class DeepLinkInfo extends DeepLinkInfoBase {
   static const CONSTRUCTOR_ID = 1783556146;
   static const SUBCLASS_OF_ID = 2555030584;
   final classType = "constructor";
   final ID = 1783556146;
   bool? updateApp;
   String message;
-  List<dynamic>? entities;
+  List<MessageEntityBase>? entities;
 
-  DeepLinkInfo(
-      {required this.updateApp, required this.message, required this.entities});
+  DeepLinkInfo({this.updateApp, required this.message, this.entities});
 
   static DeepLinkInfo fromReader(BinaryReader reader) {
     var len;
@@ -535,7 +532,7 @@ class DeepLinkInfo extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -561,7 +558,7 @@ class DeepLinkInfo extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -583,7 +580,9 @@ class DeepLinkInfo extends BaseConstructor {
   }
 }
 
-class PassportConfigNotModified extends BaseConstructor {
+abstract class PassportConfigBase extends BaseConstructor {}
+
+class PassportConfigNotModified extends PassportConfigBase {
   static const CONSTRUCTOR_ID = 3216634967;
   static const SUBCLASS_OF_ID = 3328622765;
   final classType = "constructor";
@@ -592,7 +591,6 @@ class PassportConfigNotModified extends BaseConstructor {
   PassportConfigNotModified();
 
   static PassportConfigNotModified fromReader(BinaryReader reader) {
-    var len;
     return PassportConfigNotModified();
   }
 
@@ -619,18 +617,17 @@ class PassportConfigNotModified extends BaseConstructor {
   }
 }
 
-class PassportConfig extends BaseConstructor {
+class PassportConfig extends PassportConfigBase {
   static const CONSTRUCTOR_ID = 2694370991;
   static const SUBCLASS_OF_ID = 3328622765;
   final classType = "constructor";
   final ID = 2694370991;
   int hash;
-  var countriesLangs;
+  DataJSON countriesLangs;
 
   PassportConfig({required this.hash, required this.countriesLangs});
 
   static PassportConfig fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readInt();
     var countriesLangs = reader.tgReadObject();
     return PassportConfig(hash: hash, countriesLangs: countriesLangs);
@@ -641,7 +638,7 @@ class PassportConfig extends BaseConstructor {
     return [
       readBufferFromBigInt(2694370991, 4),
       readBufferFromBigInt(this.hash, 4, little: true, signed: true),
-      (this.countriesLangs.getBytes() as List<int>),
+      (this.countriesLangs.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -671,7 +668,6 @@ class SupportName extends BaseConstructor {
   SupportName({required this.name});
 
   static SupportName fromReader(BinaryReader reader) {
-    var len;
     var name = reader.tgReadString();
     return SupportName(name: name);
   }
@@ -700,7 +696,9 @@ class SupportName extends BaseConstructor {
   }
 }
 
-class UserInfoEmpty extends BaseConstructor {
+abstract class UserInfoBase extends BaseConstructor {}
+
+class UserInfoEmpty extends UserInfoBase {
   static const CONSTRUCTOR_ID = 4088278765;
   static const SUBCLASS_OF_ID = 1548998616;
   final classType = "constructor";
@@ -709,7 +707,6 @@ class UserInfoEmpty extends BaseConstructor {
   UserInfoEmpty();
 
   static UserInfoEmpty fromReader(BinaryReader reader) {
-    var len;
     return UserInfoEmpty();
   }
 
@@ -736,13 +733,13 @@ class UserInfoEmpty extends BaseConstructor {
   }
 }
 
-class UserInfo extends BaseConstructor {
+class UserInfo extends UserInfoBase {
   static const CONSTRUCTOR_ID = 32192344;
   static const SUBCLASS_OF_ID = 1548998616;
   final classType = "constructor";
   final ID = 32192344;
   String message;
-  List<dynamic> entities;
+  List<MessageEntityBase> entities;
   String author;
   int date;
 
@@ -757,7 +754,7 @@ class UserInfo extends BaseConstructor {
     var message = reader.tgReadString();
     var _vectorentities = reader.readInt();
     if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> entities = [];
+    List<MessageEntityBase> entities = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       entities.add(reader.tgReadObject());
@@ -774,11 +771,10 @@ class UserInfo extends BaseConstructor {
       readBufferFromBigInt(32192344, 4),
       serializeBytes(this.message),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.entities!.length, 4,
+      readBufferFromBigInt(this.entities.length, 4,
           little: true, signed: true),
       this
-          .entities!
-          .map((x) => (x.getBytes() as List<int>))
+          .entities.map((x) => x.getBytes())
           .expand((element) => element),
       serializeBytes(this.author),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
@@ -801,7 +797,9 @@ class UserInfo extends BaseConstructor {
   }
 }
 
-class PromoDataEmpty extends BaseConstructor {
+abstract class PromoDataBase extends BaseConstructor {}
+
+class PromoDataEmpty extends PromoDataBase {
   static const CONSTRUCTOR_ID = 2566302837;
   static const SUBCLASS_OF_ID = 2639877442;
   final classType = "constructor";
@@ -811,7 +809,6 @@ class PromoDataEmpty extends BaseConstructor {
   PromoDataEmpty({required this.expires});
 
   static PromoDataEmpty fromReader(BinaryReader reader) {
-    var len;
     var expires = reader.readInt();
     return PromoDataEmpty(expires: expires);
   }
@@ -840,27 +837,27 @@ class PromoDataEmpty extends BaseConstructor {
   }
 }
 
-class PromoData extends BaseConstructor {
+class PromoData extends PromoDataBase {
   static const CONSTRUCTOR_ID = 2352576831;
   static const SUBCLASS_OF_ID = 2639877442;
   final classType = "constructor";
   final ID = 2352576831;
   bool? proxy;
   int expires;
-  var peer;
-  List<dynamic> chats;
-  List<dynamic> users;
+  PeerBase peer;
+  List<ChatBase> chats;
+  List<UserBase> users;
   String? psaType;
   String? psaMessage;
 
   PromoData(
-      {required this.proxy,
+      {this.proxy,
       required this.expires,
       required this.peer,
       required this.chats,
       required this.users,
-      required this.psaType,
-      required this.psaMessage});
+      this.psaType,
+      this.psaMessage});
 
   static PromoData fromReader(BinaryReader reader) {
     var len;
@@ -870,14 +867,14 @@ class PromoData extends BaseConstructor {
     var peer = reader.tgReadObject();
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -910,18 +907,16 @@ class PromoData extends BaseConstructor {
       readBufferFromBigInt(2352576831, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.expires, 4, little: true, signed: true),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
       (this.psaType == null || this.psaType == false)
           ? List<int>.empty()
@@ -961,10 +956,7 @@ class CountryCode extends BaseConstructor {
   List<String>? prefixes;
   List<String>? patterns;
 
-  CountryCode(
-      {required this.countryCode,
-      required this.prefixes,
-      required this.patterns});
+  CountryCode({required this.countryCode, this.prefixes, this.patterns});
 
   static CountryCode fromReader(BinaryReader reader) {
     var len;
@@ -1054,13 +1046,13 @@ class Country extends BaseConstructor {
   String iso2;
   String defaultName;
   String? name;
-  List<dynamic> countryCodes;
+  List<help_ns.CountryCode> countryCodes;
 
   Country(
-      {required this.hidden,
+      {this.hidden,
       required this.iso2,
       required this.defaultName,
-      required this.name,
+      this.name,
       required this.countryCodes});
 
   static Country fromReader(BinaryReader reader) {
@@ -1077,7 +1069,7 @@ class Country extends BaseConstructor {
     }
     var _vectorcountryCodes = reader.readInt();
     if (_vectorcountryCodes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> countryCodes = [];
+    List<help_ns.CountryCode> countryCodes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       countryCodes.add(reader.tgReadObject());
@@ -1101,11 +1093,10 @@ class Country extends BaseConstructor {
           ? List<int>.empty()
           : [serializeBytes(this.name)].expand((element) => element).toList(),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.countryCodes!.length, 4,
+      readBufferFromBigInt(this.countryCodes.length, 4,
           little: true, signed: true),
       this
-          .countryCodes!
-          .map((x) => (x.getBytes() as List<int>))
+          .countryCodes.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -1126,7 +1117,9 @@ class Country extends BaseConstructor {
   }
 }
 
-class CountriesListNotModified extends BaseConstructor {
+abstract class CountriesListBase extends BaseConstructor {}
+
+class CountriesListNotModified extends CountriesListBase {
   static const CONSTRUCTOR_ID = 2479628082;
   static const SUBCLASS_OF_ID = 3929144968;
   final classType = "constructor";
@@ -1135,7 +1128,6 @@ class CountriesListNotModified extends BaseConstructor {
   CountriesListNotModified();
 
   static CountriesListNotModified fromReader(BinaryReader reader) {
-    var len;
     return CountriesListNotModified();
   }
 
@@ -1162,12 +1154,12 @@ class CountriesListNotModified extends BaseConstructor {
   }
 }
 
-class CountriesList extends BaseConstructor {
+class CountriesList extends CountriesListBase {
   static const CONSTRUCTOR_ID = 2278585758;
   static const SUBCLASS_OF_ID = 3929144968;
   final classType = "constructor";
   final ID = 2278585758;
-  List<dynamic> countries;
+  List<help_ns.Country> countries;
   int hash;
 
   CountriesList({required this.countries, required this.hash});
@@ -1176,7 +1168,7 @@ class CountriesList extends BaseConstructor {
     var len;
     var _vectorcountries = reader.readInt();
     if (_vectorcountries != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> countries = [];
+    List<help_ns.Country> countries = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       countries.add(reader.tgReadObject());
@@ -1190,11 +1182,10 @@ class CountriesList extends BaseConstructor {
     return [
       readBufferFromBigInt(2278585758, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.countries!.length, 4,
+      readBufferFromBigInt(this.countries.length, 4,
           little: true, signed: true),
       this
-          .countries!
-          .map((x) => (x.getBytes() as List<int>))
+          .countries.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.hash, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -1222,12 +1213,12 @@ class PremiumPromo extends BaseConstructor {
   final classType = "constructor";
   final ID = 2320448553;
   String statusText;
-  List<dynamic> statusEntities;
+  List<MessageEntityBase> statusEntities;
   List<String> videoSections;
-  List<dynamic> videos;
+  List<DocumentBase> videos;
   String currency;
   BigInt monthlyAmount;
-  List<dynamic> users;
+  List<UserBase> users;
 
   PremiumPromo(
       {required this.statusText,
@@ -1243,7 +1234,7 @@ class PremiumPromo extends BaseConstructor {
     var statusText = reader.tgReadString();
     var _vectorstatusEntities = reader.readInt();
     if (_vectorstatusEntities != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> statusEntities = [];
+    List<MessageEntityBase> statusEntities = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       statusEntities.add(reader.tgReadObject());
@@ -1257,7 +1248,7 @@ class PremiumPromo extends BaseConstructor {
     }
     var _vectorvideos = reader.readInt();
     if (_vectorvideos != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> videos = [];
+    List<DocumentBase> videos = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       videos.add(reader.tgReadObject());
@@ -1266,7 +1257,7 @@ class PremiumPromo extends BaseConstructor {
     var monthlyAmount = reader.readLong();
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -1287,32 +1278,28 @@ class PremiumPromo extends BaseConstructor {
       readBufferFromBigInt(2320448553, 4),
       serializeBytes(this.statusText),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.statusEntities!.length, 4,
+      readBufferFromBigInt(this.statusEntities.length, 4,
           little: true, signed: true),
       this
-          .statusEntities!
-          .map((x) => (x.getBytes() as List<int>))
+          .statusEntities.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.videoSections!.length, 4,
+      readBufferFromBigInt(this.videoSections.length, 4,
           little: true, signed: true),
       this
-          .videoSections!
-          .map((x) => serializeBytes(x))
+          .videoSections.map((x) => serializeBytes(x))
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.videos!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.videos.length, 4, little: true, signed: true),
       this
-          .videos!
-          .map((x) => (x.getBytes() as List<int>))
+          .videos.map((x) => x.getBytes())
           .expand((element) => element),
       serializeBytes(this.currency),
       readBufferFromBigInt(this.monthlyAmount, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -1340,7 +1327,7 @@ class ConfigSimple extends BaseConstructor {
   final ID = 1515793004;
   int date;
   int expires;
-  List<dynamic> rules;
+  List<AccessPointRule> rules;
 
   ConfigSimple(
       {required this.date, required this.expires, required this.rules});
@@ -1349,7 +1336,7 @@ class ConfigSimple extends BaseConstructor {
     var len;
     var date = reader.readInt();
     var expires = reader.readInt();
-    List<dynamic> rules = [];
+    List<AccessPointRule> rules = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       rules.add(reader.tgReadObject());
@@ -1363,10 +1350,9 @@ class ConfigSimple extends BaseConstructor {
       readBufferFromBigInt(1515793004, 4),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(this.expires, 4, little: true, signed: true),
-      readBufferFromBigInt(this.rules!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.rules.length, 4, little: true, signed: true),
       this
-          .rules!
-          .map((x) => (x.getBytes() as List<int>))
+          .rules.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }

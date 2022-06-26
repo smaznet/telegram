@@ -1,19 +1,21 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/photos.dart' as photos_ns;
+import '../constructors/constructors.dart';
 
-class UpdateProfilePhoto extends BaseRequest {
+class UpdateProfilePhoto extends BaseRequest<photos_ns.Photo, dynamic> {
   static const CONSTRUCTOR_ID = 1926525996;
   static const SUBCLASS_OF_ID = 3264396580;
   final classType = "request";
   final ID = 1926525996;
-  var id;
+  InputPhotoBase id;
 
   UpdateProfilePhoto({required this.id});
 
   static UpdateProfilePhoto fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     return UpdateProfilePhoto(id: id);
   }
@@ -22,13 +24,13 @@ class UpdateProfilePhoto extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1926525996, 4),
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<photos_ns.Photo, dynamic>();
   }
 
   @override
@@ -47,20 +49,18 @@ class UpdateProfilePhoto extends BaseRequest {
   }
 }
 
-class UploadProfilePhoto extends BaseRequest {
+class UploadProfilePhoto extends BaseRequest<photos_ns.Photo, dynamic> {
   static const CONSTRUCTOR_ID = 2314407785;
   static const SUBCLASS_OF_ID = 3264396580;
   final classType = "request";
   final ID = 2314407785;
-  var file;
-  var video;
+  InputFileBase? file;
+  InputFileBase? video;
   double? videoStartTs;
 
-  UploadProfilePhoto(
-      {required this.file, required this.video, required this.videoStartTs});
+  UploadProfilePhoto({this.file, this.video, this.videoStartTs});
 
   static UploadProfilePhoto fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var file;
     if ((flags & 1) == 1) {
@@ -91,12 +91,12 @@ class UploadProfilePhoto extends BaseRequest {
       [0, 0, 0, 0],
       (this.file == null || this.file == false)
           ? List<int>.empty()
-          : [(this.file.getBytes() as List<int>)]
+          : [(this.file!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.video == null || this.video == false)
           ? List<int>.empty()
-          : [(this.video.getBytes() as List<int>)]
+          : [(this.video!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.videoStartTs == null || this.videoStartTs == false)
@@ -109,7 +109,7 @@ class UploadProfilePhoto extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<photos_ns.Photo, dynamic>();
   }
 
   @override
@@ -128,12 +128,12 @@ class UploadProfilePhoto extends BaseRequest {
   }
 }
 
-class DeletePhotos extends BaseRequest {
+class DeletePhotos extends BaseRequest<List<BigInt>, BigInt> {
   static const CONSTRUCTOR_ID = 2278522671;
   static const SUBCLASS_OF_ID = 2300109160;
   final classType = "request";
   final ID = 2278522671;
-  List<dynamic> id;
+  List<InputPhotoBase> id;
 
   DeletePhotos({required this.id});
 
@@ -141,7 +141,7 @@ class DeletePhotos extends BaseRequest {
     var len;
     var _vectorid = reader.readInt();
     if (_vectorid != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> id = [];
+    List<InputPhotoBase> id = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       id.add(reader.tgReadObject());
@@ -154,10 +154,9 @@ class DeletePhotos extends BaseRequest {
     return [
       readBufferFromBigInt(2278522671, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.id!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.id.length, 4, little: true, signed: true),
       this
-          .id!
-          .map((x) => (x.getBytes() as List<int>))
+          .id.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -189,12 +188,12 @@ class DeletePhotos extends BaseRequest {
   }
 }
 
-class GetUserPhotos extends BaseRequest {
+class GetUserPhotos extends BaseRequest<photos_ns.PhotosBase, dynamic> {
   static const CONSTRUCTOR_ID = 2446144168;
   static const SUBCLASS_OF_ID = 667924839;
   final classType = "request";
   final ID = 2446144168;
-  var userId;
+  InputUserBase userId;
   int offset;
   BigInt maxId;
   int limit;
@@ -206,7 +205,6 @@ class GetUserPhotos extends BaseRequest {
       required this.limit});
 
   static GetUserPhotos fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.tgReadObject();
     var offset = reader.readInt();
     var maxId = reader.readLong();
@@ -219,7 +217,7 @@ class GetUserPhotos extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2446144168, 4),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
       readBufferFromBigInt(this.offset, 4, little: true, signed: true),
       readBufferFromBigInt(this.maxId, 8, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
@@ -228,7 +226,7 @@ class GetUserPhotos extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<photos_ns.PhotosBase, dynamic>();
   }
 
   @override

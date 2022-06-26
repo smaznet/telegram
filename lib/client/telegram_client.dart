@@ -28,7 +28,8 @@ class TelegramClient {
   MTProtoSender? _sender;
   late Logger _log;
   late Type _connection;
-  var _eventBuilders;
+  List<Function(UpdateBase update, List entities)> _eventBuilders =
+      List.empty(growable: true);
 
   TelegramClient(session,
       {required this.apiId,
@@ -87,7 +88,6 @@ class TelegramClient {
     //this.session.processEntities(update)
     // this._entityCache.add(update)
 
-    print("GOT Update ${update}");
     if (update is Updates || update is UpdatesCombined) {
       // TODO deal with entities
       final entities = List.empty(growable: true);
@@ -109,26 +109,23 @@ class TelegramClient {
 
   _processUpdate({update, others, entities}) {
     // update._entities = entities ?? [];
-    this._dispatchUpdate(
-      update: update,
-      others: others,
-    );
+    this._dispatchUpdate(update: update, others: others, entities: entities);
   }
 
   _dispatchUpdate({
     update: null,
     others: null,
     channelId: null,
+    entities: null,
     ptsDate: null,
   }) async {
     for (final ev in this._eventBuilders) {
-      var builder = ev['builder'];
-      var callback = ev['callback'];
-      final event = builder.build(update);
-      if (event) {
-        await callback(event);
-      }
+      await ev(update, entities);
     }
+  }
+
+  addEventListener(Function(UpdateBase update, List entities) listener) {
+    this._eventBuilders.add(listener);
   }
 
   connect() async {
@@ -201,8 +198,30 @@ class TelegramClient {
     }
   }
 
-  Future invoke(BaseRequest request) async {
-    return this._sender!.send(request);
+  Future<MTProtoSender> getSender(int dcId) async {
+    if (this.session.dcId == dcId) {
+      return this._sender!;
+    } else {
+      MTProtoSender sender = MTProtoSender(
+        this.session.getAuthKey(dcId),
+        dcId: this.session.dcId,
+        retries: this._connectionRetries,
+        delay: this._retryDelay,
+      );
+      final connection = ConnectionTCPFull(
+        this.session.serverAddress,
+        this.session.port,
+        this.session.dcId,
+        this._log,
+      );
+      await sender.connect(connection);
+      return sender;
+    }
+  }
+
+  Future<T> invoke<T, X>(BaseRequest<T, X> request,
+      {MTProtoSender? sender}) async {
+    return (sender ?? this._sender!).send(request);
   }
 
   Future start({Future<String> Function()? botToken}) async {

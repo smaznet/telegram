@@ -1,20 +1,22 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/payments.dart' as payments_ns;
+import '../constructors/constructors.dart';
 
-class GetPaymentForm extends BaseRequest {
+class GetPaymentForm extends BaseRequest<payments_ns.PaymentForm, dynamic> {
   static const CONSTRUCTOR_ID = 924093883;
   static const SUBCLASS_OF_ID = 2689089305;
   final classType = "request";
   final ID = 924093883;
-  var invoice;
-  var themeParams;
+  InputInvoiceBase invoice;
+  DataJSON? themeParams;
 
-  GetPaymentForm({required this.invoice, required this.themeParams});
+  GetPaymentForm({required this.invoice, this.themeParams});
 
   static GetPaymentForm fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var invoice = reader.tgReadObject();
     var themeParams;
@@ -31,10 +33,10 @@ class GetPaymentForm extends BaseRequest {
     return [
       readBufferFromBigInt(924093883, 4),
       [0, 0, 0, 0],
-      (this.invoice.getBytes() as List<int>),
+      (this.invoice.getBytes()),
       (this.themeParams == null || this.themeParams == false)
           ? List<int>.empty()
-          : [(this.themeParams.getBytes() as List<int>)]
+          : [(this.themeParams!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -42,7 +44,7 @@ class GetPaymentForm extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<payments_ns.PaymentForm, dynamic>();
   }
 
   @override
@@ -61,18 +63,18 @@ class GetPaymentForm extends BaseRequest {
   }
 }
 
-class GetPaymentReceipt extends BaseRequest {
+class GetPaymentReceipt
+    extends BaseRequest<payments_ns.PaymentReceipt, dynamic> {
   static const CONSTRUCTOR_ID = 611897804;
   static const SUBCLASS_OF_ID = 1493210057;
   final classType = "request";
   final ID = 611897804;
-  var peer;
+  InputPeerBase peer;
   int msgId;
 
   GetPaymentReceipt({required this.peer, required this.msgId});
 
   static GetPaymentReceipt fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     return GetPaymentReceipt(peer: peer, msgId: msgId);
@@ -82,14 +84,14 @@ class GetPaymentReceipt extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(611897804, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<payments_ns.PaymentReceipt, dynamic>();
   }
 
   @override
@@ -108,20 +110,19 @@ class GetPaymentReceipt extends BaseRequest {
   }
 }
 
-class ValidateRequestedInfo extends BaseRequest {
+class ValidateRequestedInfo
+    extends BaseRequest<payments_ns.ValidatedRequestedInfo, dynamic> {
   static const CONSTRUCTOR_ID = 3066622251;
   static const SUBCLASS_OF_ID = 2407548087;
   final classType = "request";
   final ID = 3066622251;
   bool? save;
-  var invoice;
-  var info;
+  InputInvoiceBase invoice;
+  PaymentRequestedInfo info;
 
-  ValidateRequestedInfo(
-      {required this.save, required this.invoice, required this.info});
+  ValidateRequestedInfo({this.save, required this.invoice, required this.info});
 
   static ValidateRequestedInfo fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final save = (flags & 1) == 1;
     var invoice = reader.tgReadObject();
@@ -134,14 +135,14 @@ class ValidateRequestedInfo extends BaseRequest {
     return [
       readBufferFromBigInt(3066622251, 4),
       [0, 0, 0, 0],
-      (this.invoice.getBytes() as List<int>),
-      (this.info.getBytes() as List<int>),
+      (this.invoice.getBytes()),
+      (this.info.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<payments_ns.ValidatedRequestedInfo, dynamic>();
   }
 
   @override
@@ -160,28 +161,28 @@ class ValidateRequestedInfo extends BaseRequest {
   }
 }
 
-class SendPaymentForm extends BaseRequest {
+class SendPaymentForm
+    extends BaseRequest<payments_ns.PaymentResultBase, dynamic> {
   static const CONSTRUCTOR_ID = 755192367;
   static const SUBCLASS_OF_ID = 2330028701;
   final classType = "request";
   final ID = 755192367;
   BigInt formId;
-  var invoice;
+  InputInvoiceBase invoice;
   String? requestedInfoId;
   String? shippingOptionId;
-  var credentials;
+  InputPaymentCredentialsBase credentials;
   BigInt? tipAmount;
 
   SendPaymentForm(
       {required this.formId,
       required this.invoice,
-      required this.requestedInfoId,
-      required this.shippingOptionId,
+      this.requestedInfoId,
+      this.shippingOptionId,
       required this.credentials,
-      required this.tipAmount});
+      this.tipAmount});
 
   static SendPaymentForm fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var formId = reader.readLong();
     var invoice = reader.tgReadObject();
@@ -219,7 +220,7 @@ class SendPaymentForm extends BaseRequest {
       readBufferFromBigInt(755192367, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.formId, 8, little: true, signed: true),
-      (this.invoice.getBytes() as List<int>),
+      (this.invoice.getBytes()),
       (this.requestedInfoId == null || this.requestedInfoId == false)
           ? List<int>.empty()
           : [serializeBytes(this.requestedInfoId)]
@@ -230,7 +231,7 @@ class SendPaymentForm extends BaseRequest {
           : [serializeBytes(this.shippingOptionId)]
               .expand((element) => element)
               .toList(),
-      (this.credentials.getBytes() as List<int>),
+      (this.credentials.getBytes()),
       (this.tipAmount == null || this.tipAmount == false)
           ? List<int>.empty()
           : [
@@ -242,7 +243,7 @@ class SendPaymentForm extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<payments_ns.PaymentResultBase, dynamic>();
   }
 
   @override
@@ -261,7 +262,7 @@ class SendPaymentForm extends BaseRequest {
   }
 }
 
-class GetSavedInfo extends BaseRequest {
+class GetSavedInfo extends BaseRequest<payments_ns.SavedInfo, dynamic> {
   static const CONSTRUCTOR_ID = 578650699;
   static const SUBCLASS_OF_ID = 2906452294;
   final classType = "request";
@@ -270,7 +271,6 @@ class GetSavedInfo extends BaseRequest {
   GetSavedInfo();
 
   static GetSavedInfo fromReader(BinaryReader reader) {
-    var len;
     return GetSavedInfo();
   }
 
@@ -283,7 +283,7 @@ class GetSavedInfo extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<payments_ns.SavedInfo, dynamic>();
   }
 
   @override
@@ -302,7 +302,7 @@ class GetSavedInfo extends BaseRequest {
   }
 }
 
-class ClearSavedInfo extends BaseRequest {
+class ClearSavedInfo extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3627905217;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -310,10 +310,9 @@ class ClearSavedInfo extends BaseRequest {
   bool? credentials;
   bool? info;
 
-  ClearSavedInfo({required this.credentials, required this.info});
+  ClearSavedInfo({this.credentials, this.info});
 
   static ClearSavedInfo fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final credentials = (flags & 1) == 1;
     final info = (flags & 2) == 2;
@@ -330,7 +329,7 @@ class ClearSavedInfo extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -349,7 +348,7 @@ class ClearSavedInfo extends BaseRequest {
   }
 }
 
-class GetBankCardData extends BaseRequest {
+class GetBankCardData extends BaseRequest<payments_ns.BankCardData, dynamic> {
   static const CONSTRUCTOR_ID = 779736953;
   static const SUBCLASS_OF_ID = 2356008587;
   final classType = "request";
@@ -359,7 +358,6 @@ class GetBankCardData extends BaseRequest {
   GetBankCardData({required this.number});
 
   static GetBankCardData fromReader(BinaryReader reader) {
-    var len;
     var number = reader.tgReadString();
     return GetBankCardData(number: number);
   }
@@ -374,7 +372,7 @@ class GetBankCardData extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<payments_ns.BankCardData, dynamic>();
   }
 
   @override
@@ -393,17 +391,16 @@ class GetBankCardData extends BaseRequest {
   }
 }
 
-class ExportInvoice extends BaseRequest {
+class ExportInvoice extends BaseRequest<payments_ns.ExportedInvoice, dynamic> {
   static const CONSTRUCTOR_ID = 261206117;
   static const SUBCLASS_OF_ID = 907039794;
   final classType = "request";
   final ID = 261206117;
-  var invoiceMedia;
+  InputMediaBase invoiceMedia;
 
   ExportInvoice({required this.invoiceMedia});
 
   static ExportInvoice fromReader(BinaryReader reader) {
-    var len;
     var invoiceMedia = reader.tgReadObject();
     return ExportInvoice(invoiceMedia: invoiceMedia);
   }
@@ -412,13 +409,13 @@ class ExportInvoice extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(261206117, 4),
-      (this.invoiceMedia.getBytes() as List<int>),
+      (this.invoiceMedia.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<payments_ns.ExportedInvoice, dynamic>();
   }
 
   @override
@@ -437,7 +434,7 @@ class ExportInvoice extends BaseRequest {
   }
 }
 
-class AssignAppStoreTransaction extends BaseRequest {
+class AssignAppStoreTransaction extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 267129798;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -447,12 +444,9 @@ class AssignAppStoreTransaction extends BaseRequest {
   List<int> receipt;
 
   AssignAppStoreTransaction(
-      {required this.restore,
-      required this.transactionId,
-      required this.receipt});
+      {this.restore, required this.transactionId, required this.receipt});
 
   static AssignAppStoreTransaction fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final restore = (flags & 1) == 1;
     var transactionId = reader.tgReadString();
@@ -473,7 +467,7 @@ class AssignAppStoreTransaction extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -492,7 +486,7 @@ class AssignAppStoreTransaction extends BaseRequest {
   }
 }
 
-class AssignPlayMarketTransaction extends BaseRequest {
+class AssignPlayMarketTransaction extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1336560365;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -502,7 +496,6 @@ class AssignPlayMarketTransaction extends BaseRequest {
   AssignPlayMarketTransaction({required this.purchaseToken});
 
   static AssignPlayMarketTransaction fromReader(BinaryReader reader) {
-    var len;
     var purchaseToken = reader.tgReadString();
     return AssignPlayMarketTransaction(purchaseToken: purchaseToken);
   }
@@ -517,7 +510,7 @@ class AssignPlayMarketTransaction extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -536,7 +529,7 @@ class AssignPlayMarketTransaction extends BaseRequest {
   }
 }
 
-class RestorePlayMarketReceipt extends BaseRequest {
+class RestorePlayMarketReceipt extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 3513049962;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -546,7 +539,6 @@ class RestorePlayMarketReceipt extends BaseRequest {
   RestorePlayMarketReceipt({required this.receipt});
 
   static RestorePlayMarketReceipt fromReader(BinaryReader reader) {
-    var len;
     var receipt = reader.tgReadBytes();
     return RestorePlayMarketReceipt(receipt: receipt);
   }
@@ -561,7 +553,7 @@ class RestorePlayMarketReceipt extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -580,7 +572,7 @@ class RestorePlayMarketReceipt extends BaseRequest {
   }
 }
 
-class CanPurchasePremium extends BaseRequest {
+class CanPurchasePremium extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 2859110600;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -589,7 +581,6 @@ class CanPurchasePremium extends BaseRequest {
   CanPurchasePremium();
 
   static CanPurchasePremium fromReader(BinaryReader reader) {
-    var len;
     return CanPurchasePremium();
   }
 
@@ -602,7 +593,7 @@ class CanPurchasePremium extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -621,14 +612,14 @@ class CanPurchasePremium extends BaseRequest {
   }
 }
 
-class RequestRecurringPayment extends BaseRequest {
+class RequestRecurringPayment extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 342791565;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 342791565;
-  var userId;
+  InputUserBase userId;
   String recurringInitCharge;
-  var invoiceMedia;
+  InputMediaBase invoiceMedia;
 
   RequestRecurringPayment(
       {required this.userId,
@@ -636,7 +627,6 @@ class RequestRecurringPayment extends BaseRequest {
       required this.invoiceMedia});
 
   static RequestRecurringPayment fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.tgReadObject();
     var recurringInitCharge = reader.tgReadString();
     var invoiceMedia = reader.tgReadObject();
@@ -650,15 +640,15 @@ class RequestRecurringPayment extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(342791565, 4),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
       serializeBytes(this.recurringInitCharge),
-      (this.invoiceMedia.getBytes() as List<int>),
+      (this.invoiceMedia.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override

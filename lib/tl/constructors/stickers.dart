@@ -1,6 +1,7 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
 
 class SuggestedShortName extends BaseConstructor {
@@ -13,7 +14,6 @@ class SuggestedShortName extends BaseConstructor {
   SuggestedShortName({required this.shortName});
 
   static SuggestedShortName fromReader(BinaryReader reader) {
-    var len;
     var shortName = reader.tgReadString();
     return SuggestedShortName(shortName: shortName);
   }

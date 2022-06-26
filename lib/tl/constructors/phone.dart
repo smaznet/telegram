@@ -1,15 +1,17 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
+import '../constructors/constructors.dart';
 
 class PhoneCall extends BaseConstructor {
   static const CONSTRUCTOR_ID = 3968000320;
   static const SUBCLASS_OF_ID = 3565878863;
   final classType = "constructor";
   final ID = 3968000320;
-  var phoneCall;
-  List<dynamic> users;
+  PhoneCallBase phoneCall;
+  List<UserBase> users;
 
   PhoneCall({required this.phoneCall, required this.users});
 
@@ -18,7 +20,7 @@ class PhoneCall extends BaseConstructor {
     var phoneCall = reader.tgReadObject();
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -30,12 +32,11 @@ class PhoneCall extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3968000320, 4),
-      (this.phoneCall.getBytes() as List<int>),
+      (this.phoneCall.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -61,11 +62,11 @@ class GroupCall extends BaseConstructor {
   static const SUBCLASS_OF_ID = 809572030;
   final classType = "constructor";
   final ID = 2658302637;
-  var call;
-  List<dynamic> participants;
+  GroupCallBase call;
+  List<GroupCallParticipant> participants;
   String participantsNextOffset;
-  List<dynamic> chats;
-  List<dynamic> users;
+  List<ChatBase> chats;
+  List<UserBase> users;
 
   GroupCall(
       {required this.call,
@@ -79,7 +80,7 @@ class GroupCall extends BaseConstructor {
     var call = reader.tgReadObject();
     var _vectorparticipants = reader.readInt();
     if (_vectorparticipants != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> participants = [];
+    List<GroupCallParticipant> participants = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       participants.add(reader.tgReadObject());
@@ -87,14 +88,14 @@ class GroupCall extends BaseConstructor {
     var participantsNextOffset = reader.tgReadString();
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -111,26 +112,23 @@ class GroupCall extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2658302637, 4),
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.participants!.length, 4,
+      readBufferFromBigInt(this.participants.length, 4,
           little: true, signed: true),
       this
-          .participants!
-          .map((x) => (x.getBytes() as List<int>))
+          .participants.map((x) => x.getBytes())
           .expand((element) => element),
       serializeBytes(this.participantsNextOffset),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -157,10 +155,10 @@ class GroupParticipants extends BaseConstructor {
   final classType = "constructor";
   final ID = 4101460406;
   int count;
-  List<dynamic> participants;
+  List<GroupCallParticipant> participants;
   String nextOffset;
-  List<dynamic> chats;
-  List<dynamic> users;
+  List<ChatBase> chats;
+  List<UserBase> users;
   int version;
 
   GroupParticipants(
@@ -176,7 +174,7 @@ class GroupParticipants extends BaseConstructor {
     var count = reader.readInt();
     var _vectorparticipants = reader.readInt();
     if (_vectorparticipants != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> participants = [];
+    List<GroupCallParticipant> participants = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       participants.add(reader.tgReadObject());
@@ -184,14 +182,14 @@ class GroupParticipants extends BaseConstructor {
     var nextOffset = reader.tgReadString();
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -212,24 +210,21 @@ class GroupParticipants extends BaseConstructor {
       readBufferFromBigInt(4101460406, 4),
       readBufferFromBigInt(this.count, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.participants!.length, 4,
+      readBufferFromBigInt(this.participants.length, 4,
           little: true, signed: true),
       this
-          .participants!
-          .map((x) => (x.getBytes() as List<int>))
+          .participants.map((x) => x.getBytes())
           .expand((element) => element),
       serializeBytes(this.nextOffset),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.version, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -256,9 +251,9 @@ class JoinAsPeers extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3031920891;
   final classType = "constructor";
   final ID = 2951045695;
-  List<dynamic> peers;
-  List<dynamic> chats;
-  List<dynamic> users;
+  List<PeerBase> peers;
+  List<ChatBase> chats;
+  List<UserBase> users;
 
   JoinAsPeers({required this.peers, required this.chats, required this.users});
 
@@ -266,21 +261,21 @@ class JoinAsPeers extends BaseConstructor {
     var len;
     var _vectorpeers = reader.readInt();
     if (_vectorpeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> peers = [];
+    List<PeerBase> peers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       peers.add(reader.tgReadObject());
     }
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -293,22 +288,19 @@ class JoinAsPeers extends BaseConstructor {
     return [
       readBufferFromBigInt(2951045695, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.peers!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.peers.length, 4, little: true, signed: true),
       this
-          .peers!
-          .map((x) => (x.getBytes() as List<int>))
+          .peers.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -339,7 +331,6 @@ class ExportedGroupCallInvite extends BaseConstructor {
   ExportedGroupCallInvite({required this.link});
 
   static ExportedGroupCallInvite fromReader(BinaryReader reader) {
-    var len;
     var link = reader.tgReadString();
     return ExportedGroupCallInvite(link: link);
   }
@@ -373,7 +364,7 @@ class GroupCallStreamChannels extends BaseConstructor {
   static const SUBCLASS_OF_ID = 2438448612;
   final classType = "constructor";
   final ID = 3504636594;
-  List<dynamic> channels;
+  List<GroupCallStreamChannel> channels;
 
   GroupCallStreamChannels({required this.channels});
 
@@ -381,7 +372,7 @@ class GroupCallStreamChannels extends BaseConstructor {
     var len;
     var _vectorchannels = reader.readInt();
     if (_vectorchannels != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> channels = [];
+    List<GroupCallStreamChannel> channels = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       channels.add(reader.tgReadObject());
@@ -394,11 +385,10 @@ class GroupCallStreamChannels extends BaseConstructor {
     return [
       readBufferFromBigInt(3504636594, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.channels!.length, 4,
+      readBufferFromBigInt(this.channels.length, 4,
           little: true, signed: true),
       this
-          .channels!
-          .map((x) => (x.getBytes() as List<int>))
+          .channels.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -430,7 +420,6 @@ class GroupCallStreamRtmpUrl extends BaseConstructor {
   GroupCallStreamRtmpUrl({required this.url, required this.key});
 
   static GroupCallStreamRtmpUrl fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     var key = reader.tgReadString();
     return GroupCallStreamRtmpUrl(url: url, key: key);

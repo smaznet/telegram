@@ -1,9 +1,14 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/messages.dart' as messages_ns;
+import '../constructors/constructors.dart';
+import '../constructors/stickers.dart' as stickers_ns;
 
-class CreateStickerSet extends BaseRequest {
+class CreateStickerSet
+    extends BaseRequest<messages_ns.StickerSetBase, dynamic> {
   static const CONSTRUCTOR_ID = 2418125671;
   static const SUBCLASS_OF_ID = 2607827546;
   final classType = "request";
@@ -11,23 +16,23 @@ class CreateStickerSet extends BaseRequest {
   bool? masks;
   bool? animated;
   bool? videos;
-  var userId;
+  InputUserBase userId;
   String title;
   String shortName;
-  var thumb;
-  List<dynamic> stickers;
+  InputDocumentBase? thumb;
+  List<InputStickerSetItem> stickers;
   String? software;
 
   CreateStickerSet(
-      {required this.masks,
-      required this.animated,
-      required this.videos,
+      {this.masks,
+      this.animated,
+      this.videos,
       required this.userId,
       required this.title,
       required this.shortName,
-      required this.thumb,
+      this.thumb,
       required this.stickers,
-      required this.software});
+      this.software});
 
   static CreateStickerSet fromReader(BinaryReader reader) {
     var len;
@@ -46,7 +51,7 @@ class CreateStickerSet extends BaseRequest {
     }
     var _vectorstickers = reader.readInt();
     if (_vectorstickers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> stickers = [];
+    List<InputStickerSetItem> stickers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       stickers.add(reader.tgReadObject());
@@ -74,20 +79,19 @@ class CreateStickerSet extends BaseRequest {
     return [
       readBufferFromBigInt(2418125671, 4),
       [0, 0, 0, 0],
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
       serializeBytes(this.title),
       serializeBytes(this.shortName),
       (this.thumb == null || this.thumb == false)
           ? List<int>.empty()
-          : [(this.thumb.getBytes() as List<int>)]
+          : [(this.thumb!.getBytes())]
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.stickers!.length, 4,
+      readBufferFromBigInt(this.stickers.length, 4,
           little: true, signed: true),
       this
-          .stickers!
-          .map((x) => (x.getBytes() as List<int>))
+          .stickers.map((x) => x.getBytes())
           .expand((element) => element),
       (this.software == null || this.software == false)
           ? List<int>.empty()
@@ -99,7 +103,7 @@ class CreateStickerSet extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.StickerSetBase, dynamic>();
   }
 
   @override
@@ -118,17 +122,17 @@ class CreateStickerSet extends BaseRequest {
   }
 }
 
-class RemoveStickerFromSet extends BaseRequest {
+class RemoveStickerFromSet
+    extends BaseRequest<messages_ns.StickerSetBase, dynamic> {
   static const CONSTRUCTOR_ID = 4151709521;
   static const SUBCLASS_OF_ID = 2607827546;
   final classType = "request";
   final ID = 4151709521;
-  var sticker;
+  InputDocumentBase sticker;
 
   RemoveStickerFromSet({required this.sticker});
 
   static RemoveStickerFromSet fromReader(BinaryReader reader) {
-    var len;
     var sticker = reader.tgReadObject();
     return RemoveStickerFromSet(sticker: sticker);
   }
@@ -137,13 +141,13 @@ class RemoveStickerFromSet extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4151709521, 4),
-      (this.sticker.getBytes() as List<int>),
+      (this.sticker.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.StickerSetBase, dynamic>();
   }
 
   @override
@@ -162,18 +166,18 @@ class RemoveStickerFromSet extends BaseRequest {
   }
 }
 
-class ChangeStickerPosition extends BaseRequest {
+class ChangeStickerPosition
+    extends BaseRequest<messages_ns.StickerSetBase, dynamic> {
   static const CONSTRUCTOR_ID = 4290172106;
   static const SUBCLASS_OF_ID = 2607827546;
   final classType = "request";
   final ID = 4290172106;
-  var sticker;
+  InputDocumentBase sticker;
   int position;
 
   ChangeStickerPosition({required this.sticker, required this.position});
 
   static ChangeStickerPosition fromReader(BinaryReader reader) {
-    var len;
     var sticker = reader.tgReadObject();
     var position = reader.readInt();
     return ChangeStickerPosition(sticker: sticker, position: position);
@@ -183,14 +187,14 @@ class ChangeStickerPosition extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4290172106, 4),
-      (this.sticker.getBytes() as List<int>),
+      (this.sticker.getBytes()),
       readBufferFromBigInt(this.position, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.StickerSetBase, dynamic>();
   }
 
   @override
@@ -209,18 +213,17 @@ class ChangeStickerPosition extends BaseRequest {
   }
 }
 
-class AddStickerToSet extends BaseRequest {
+class AddStickerToSet extends BaseRequest<messages_ns.StickerSetBase, dynamic> {
   static const CONSTRUCTOR_ID = 2253651646;
   static const SUBCLASS_OF_ID = 2607827546;
   final classType = "request";
   final ID = 2253651646;
-  var stickerset;
-  var sticker;
+  InputStickerSetBase stickerset;
+  InputStickerSetItem sticker;
 
   AddStickerToSet({required this.stickerset, required this.sticker});
 
   static AddStickerToSet fromReader(BinaryReader reader) {
-    var len;
     var stickerset = reader.tgReadObject();
     var sticker = reader.tgReadObject();
     return AddStickerToSet(stickerset: stickerset, sticker: sticker);
@@ -230,14 +233,14 @@ class AddStickerToSet extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2253651646, 4),
-      (this.stickerset.getBytes() as List<int>),
-      (this.sticker.getBytes() as List<int>),
+      (this.stickerset.getBytes()),
+      (this.sticker.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.StickerSetBase, dynamic>();
   }
 
   @override
@@ -256,18 +259,18 @@ class AddStickerToSet extends BaseRequest {
   }
 }
 
-class SetStickerSetThumb extends BaseRequest {
+class SetStickerSetThumb
+    extends BaseRequest<messages_ns.StickerSetBase, dynamic> {
   static const CONSTRUCTOR_ID = 2587250224;
   static const SUBCLASS_OF_ID = 2607827546;
   final classType = "request";
   final ID = 2587250224;
-  var stickerset;
-  var thumb;
+  InputStickerSetBase stickerset;
+  InputDocumentBase thumb;
 
   SetStickerSetThumb({required this.stickerset, required this.thumb});
 
   static SetStickerSetThumb fromReader(BinaryReader reader) {
-    var len;
     var stickerset = reader.tgReadObject();
     var thumb = reader.tgReadObject();
     return SetStickerSetThumb(stickerset: stickerset, thumb: thumb);
@@ -277,14 +280,14 @@ class SetStickerSetThumb extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2587250224, 4),
-      (this.stickerset.getBytes() as List<int>),
-      (this.thumb.getBytes() as List<int>),
+      (this.stickerset.getBytes()),
+      (this.thumb.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.StickerSetBase, dynamic>();
   }
 
   @override
@@ -303,7 +306,7 @@ class SetStickerSetThumb extends BaseRequest {
   }
 }
 
-class CheckShortName extends BaseRequest {
+class CheckShortName extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 676017721;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -313,7 +316,6 @@ class CheckShortName extends BaseRequest {
   CheckShortName({required this.shortName});
 
   static CheckShortName fromReader(BinaryReader reader) {
-    var len;
     var shortName = reader.tgReadString();
     return CheckShortName(shortName: shortName);
   }
@@ -328,7 +330,7 @@ class CheckShortName extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -347,7 +349,8 @@ class CheckShortName extends BaseRequest {
   }
 }
 
-class SuggestShortName extends BaseRequest {
+class SuggestShortName
+    extends BaseRequest<stickers_ns.SuggestedShortName, dynamic> {
   static const CONSTRUCTOR_ID = 1303364867;
   static const SUBCLASS_OF_ID = 3293203233;
   final classType = "request";
@@ -357,7 +360,6 @@ class SuggestShortName extends BaseRequest {
   SuggestShortName({required this.title});
 
   static SuggestShortName fromReader(BinaryReader reader) {
-    var len;
     var title = reader.tgReadString();
     return SuggestShortName(title: title);
   }
@@ -372,7 +374,7 @@ class SuggestShortName extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<stickers_ns.SuggestedShortName, dynamic>();
   }
 
   @override

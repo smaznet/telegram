@@ -1,9 +1,13 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
+import '../constructors/messages.dart' as messages_ns;
 
-class InputPeerEmpty extends BaseConstructor {
+abstract class InputPeerBase extends BaseConstructor {}
+
+class InputPeerEmpty extends InputPeerBase {
   static const CONSTRUCTOR_ID = 2134579434;
   static const SUBCLASS_OF_ID = 3374092470;
   final classType = "constructor";
@@ -12,7 +16,6 @@ class InputPeerEmpty extends BaseConstructor {
   InputPeerEmpty();
 
   static InputPeerEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputPeerEmpty();
   }
 
@@ -39,7 +42,7 @@ class InputPeerEmpty extends BaseConstructor {
   }
 }
 
-class InputPeerSelf extends BaseConstructor {
+class InputPeerSelf extends InputPeerBase {
   static const CONSTRUCTOR_ID = 2107670217;
   static const SUBCLASS_OF_ID = 3374092470;
   final classType = "constructor";
@@ -48,7 +51,6 @@ class InputPeerSelf extends BaseConstructor {
   InputPeerSelf();
 
   static InputPeerSelf fromReader(BinaryReader reader) {
-    var len;
     return InputPeerSelf();
   }
 
@@ -75,7 +77,7 @@ class InputPeerSelf extends BaseConstructor {
   }
 }
 
-class InputPeerChat extends BaseConstructor {
+class InputPeerChat extends InputPeerBase {
   static const CONSTRUCTOR_ID = 900291769;
   static const SUBCLASS_OF_ID = 3374092470;
   final classType = "constructor";
@@ -85,7 +87,6 @@ class InputPeerChat extends BaseConstructor {
   InputPeerChat({required this.chatId});
 
   static InputPeerChat fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     return InputPeerChat(chatId: chatId);
   }
@@ -114,7 +115,7 @@ class InputPeerChat extends BaseConstructor {
   }
 }
 
-class InputPeerUser extends BaseConstructor {
+class InputPeerUser extends InputPeerBase {
   static const CONSTRUCTOR_ID = 3723011404;
   static const SUBCLASS_OF_ID = 3374092470;
   final classType = "constructor";
@@ -125,7 +126,6 @@ class InputPeerUser extends BaseConstructor {
   InputPeerUser({required this.userId, required this.accessHash});
 
   static InputPeerUser fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var accessHash = reader.readLong();
     return InputPeerUser(userId: userId, accessHash: accessHash);
@@ -156,7 +156,7 @@ class InputPeerUser extends BaseConstructor {
   }
 }
 
-class InputPeerChannel extends BaseConstructor {
+class InputPeerChannel extends InputPeerBase {
   static const CONSTRUCTOR_ID = 666680316;
   static const SUBCLASS_OF_ID = 3374092470;
   final classType = "constructor";
@@ -167,7 +167,6 @@ class InputPeerChannel extends BaseConstructor {
   InputPeerChannel({required this.channelId, required this.accessHash});
 
   static InputPeerChannel fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     var accessHash = reader.readLong();
     return InputPeerChannel(channelId: channelId, accessHash: accessHash);
@@ -198,12 +197,12 @@ class InputPeerChannel extends BaseConstructor {
   }
 }
 
-class InputPeerUserFromMessage extends BaseConstructor {
+class InputPeerUserFromMessage extends InputPeerBase {
   static const CONSTRUCTOR_ID = 2826635804;
   static const SUBCLASS_OF_ID = 3374092470;
   final classType = "constructor";
   final ID = 2826635804;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   BigInt userId;
 
@@ -211,7 +210,6 @@ class InputPeerUserFromMessage extends BaseConstructor {
       {required this.peer, required this.msgId, required this.userId});
 
   static InputPeerUserFromMessage fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var userId = reader.readLong();
@@ -222,7 +220,7 @@ class InputPeerUserFromMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2826635804, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -244,12 +242,12 @@ class InputPeerUserFromMessage extends BaseConstructor {
   }
 }
 
-class InputPeerChannelFromMessage extends BaseConstructor {
+class InputPeerChannelFromMessage extends InputPeerBase {
   static const CONSTRUCTOR_ID = 3173648448;
   static const SUBCLASS_OF_ID = 3374092470;
   final classType = "constructor";
   final ID = 3173648448;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   BigInt channelId;
 
@@ -257,7 +255,6 @@ class InputPeerChannelFromMessage extends BaseConstructor {
       {required this.peer, required this.msgId, required this.channelId});
 
   static InputPeerChannelFromMessage fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var channelId = reader.readLong();
@@ -269,7 +266,7 @@ class InputPeerChannelFromMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3173648448, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.channelId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -291,7 +288,9 @@ class InputPeerChannelFromMessage extends BaseConstructor {
   }
 }
 
-class InputUserEmpty extends BaseConstructor {
+abstract class InputUserBase extends BaseConstructor {}
+
+class InputUserEmpty extends InputUserBase {
   static const CONSTRUCTOR_ID = 3112732367;
   static const SUBCLASS_OF_ID = 3865689926;
   final classType = "constructor";
@@ -300,7 +299,6 @@ class InputUserEmpty extends BaseConstructor {
   InputUserEmpty();
 
   static InputUserEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputUserEmpty();
   }
 
@@ -327,7 +325,7 @@ class InputUserEmpty extends BaseConstructor {
   }
 }
 
-class InputUserSelf extends BaseConstructor {
+class InputUserSelf extends InputUserBase {
   static const CONSTRUCTOR_ID = 4156666175;
   static const SUBCLASS_OF_ID = 3865689926;
   final classType = "constructor";
@@ -336,7 +334,6 @@ class InputUserSelf extends BaseConstructor {
   InputUserSelf();
 
   static InputUserSelf fromReader(BinaryReader reader) {
-    var len;
     return InputUserSelf();
   }
 
@@ -363,7 +360,7 @@ class InputUserSelf extends BaseConstructor {
   }
 }
 
-class InputUser extends BaseConstructor {
+class InputUser extends InputUserBase {
   static const CONSTRUCTOR_ID = 4061223110;
   static const SUBCLASS_OF_ID = 3865689926;
   final classType = "constructor";
@@ -374,7 +371,6 @@ class InputUser extends BaseConstructor {
   InputUser({required this.userId, required this.accessHash});
 
   static InputUser fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var accessHash = reader.readLong();
     return InputUser(userId: userId, accessHash: accessHash);
@@ -405,12 +401,12 @@ class InputUser extends BaseConstructor {
   }
 }
 
-class InputUserFromMessage extends BaseConstructor {
+class InputUserFromMessage extends InputUserBase {
   static const CONSTRUCTOR_ID = 497305826;
   static const SUBCLASS_OF_ID = 3865689926;
   final classType = "constructor";
   final ID = 497305826;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   BigInt userId;
 
@@ -418,7 +414,6 @@ class InputUserFromMessage extends BaseConstructor {
       {required this.peer, required this.msgId, required this.userId});
 
   static InputUserFromMessage fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var userId = reader.readLong();
@@ -429,7 +424,7 @@ class InputUserFromMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(497305826, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -451,7 +446,9 @@ class InputUserFromMessage extends BaseConstructor {
   }
 }
 
-class InputPhoneContact extends BaseConstructor {
+abstract class InputContactBase extends BaseConstructor {}
+
+class InputPhoneContact extends InputContactBase {
   static const CONSTRUCTOR_ID = 4086478836;
   static const SUBCLASS_OF_ID = 2926144130;
   final classType = "constructor";
@@ -468,7 +465,6 @@ class InputPhoneContact extends BaseConstructor {
       required this.lastName});
 
   static InputPhoneContact fromReader(BinaryReader reader) {
-    var len;
     var clientId = reader.readLong();
     var phone = reader.tgReadString();
     var firstName = reader.tgReadString();
@@ -507,7 +503,9 @@ class InputPhoneContact extends BaseConstructor {
   }
 }
 
-class InputFile extends BaseConstructor {
+abstract class InputFileBase extends BaseConstructor {}
+
+class InputFile extends InputFileBase {
   static const CONSTRUCTOR_ID = 4113560191;
   static const SUBCLASS_OF_ID = 3882180383;
   final classType = "constructor";
@@ -524,7 +522,6 @@ class InputFile extends BaseConstructor {
       required this.md5Checksum});
 
   static InputFile fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var parts = reader.readInt();
     var name = reader.tgReadString();
@@ -560,7 +557,7 @@ class InputFile extends BaseConstructor {
   }
 }
 
-class InputFileBig extends BaseConstructor {
+class InputFileBig extends InputFileBase {
   static const CONSTRUCTOR_ID = 4199484341;
   static const SUBCLASS_OF_ID = 3882180383;
   final classType = "constructor";
@@ -572,7 +569,6 @@ class InputFileBig extends BaseConstructor {
   InputFileBig({required this.id, required this.parts, required this.name});
 
   static InputFileBig fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var parts = reader.readInt();
     var name = reader.tgReadString();
@@ -605,7 +601,9 @@ class InputFileBig extends BaseConstructor {
   }
 }
 
-class InputMediaEmpty extends BaseConstructor {
+abstract class InputMediaBase extends BaseConstructor {}
+
+class InputMediaEmpty extends InputMediaBase {
   static const CONSTRUCTOR_ID = 2523198847;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
@@ -614,7 +612,6 @@ class InputMediaEmpty extends BaseConstructor {
   InputMediaEmpty();
 
   static InputMediaEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputMediaEmpty();
   }
 
@@ -641,17 +638,16 @@ class InputMediaEmpty extends BaseConstructor {
   }
 }
 
-class InputMediaUploadedPhoto extends BaseConstructor {
+class InputMediaUploadedPhoto extends InputMediaBase {
   static const CONSTRUCTOR_ID = 505969924;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 505969924;
-  var file;
-  List<dynamic>? stickers;
+  InputFileBase file;
+  List<InputDocumentBase>? stickers;
   int? ttlSeconds;
 
-  InputMediaUploadedPhoto(
-      {required this.file, required this.stickers, required this.ttlSeconds});
+  InputMediaUploadedPhoto({required this.file, this.stickers, this.ttlSeconds});
 
   static InputMediaUploadedPhoto fromReader(BinaryReader reader) {
     var len;
@@ -661,7 +657,7 @@ class InputMediaUploadedPhoto extends BaseConstructor {
     if ((flags & 1) == 1) {
       var _vectorstickers = reader.readInt();
       if (_vectorstickers != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> stickers = [];
+      List<InputDocumentBase> stickers = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         stickers.add(reader.tgReadObject());
@@ -684,7 +680,7 @@ class InputMediaUploadedPhoto extends BaseConstructor {
     return [
       readBufferFromBigInt(505969924, 4),
       [0, 0, 0, 0],
-      (this.file.getBytes() as List<int>),
+      (this.file.getBytes()),
       (this.stickers == null || this.stickers == false)
           ? List<int>.empty()
           : [
@@ -693,7 +689,7 @@ class InputMediaUploadedPhoto extends BaseConstructor {
                   little: true, signed: true),
               this
                   .stickers!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.ttlSeconds == null || this.ttlSeconds == false)
@@ -721,18 +717,17 @@ class InputMediaUploadedPhoto extends BaseConstructor {
   }
 }
 
-class InputMediaPhoto extends BaseConstructor {
+class InputMediaPhoto extends InputMediaBase {
   static const CONSTRUCTOR_ID = 3015312949;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 3015312949;
-  var id;
+  InputPhotoBase id;
   int? ttlSeconds;
 
-  InputMediaPhoto({required this.id, required this.ttlSeconds});
+  InputMediaPhoto({required this.id, this.ttlSeconds});
 
   static InputMediaPhoto fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.tgReadObject();
     var ttlSeconds;
@@ -749,7 +744,7 @@ class InputMediaPhoto extends BaseConstructor {
     return [
       readBufferFromBigInt(3015312949, 4),
       [0, 0, 0, 0],
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
       (this.ttlSeconds == null || this.ttlSeconds == false)
           ? List<int>.empty()
           : [
@@ -775,17 +770,16 @@ class InputMediaPhoto extends BaseConstructor {
   }
 }
 
-class InputMediaGeoPoint extends BaseConstructor {
+class InputMediaGeoPoint extends InputMediaBase {
   static const CONSTRUCTOR_ID = 4190388548;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 4190388548;
-  var geoPoint;
+  InputGeoPointBase geoPoint;
 
   InputMediaGeoPoint({required this.geoPoint});
 
   static InputMediaGeoPoint fromReader(BinaryReader reader) {
-    var len;
     var geoPoint = reader.tgReadObject();
     return InputMediaGeoPoint(geoPoint: geoPoint);
   }
@@ -794,7 +788,7 @@ class InputMediaGeoPoint extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4190388548, 4),
-      (this.geoPoint.getBytes() as List<int>),
+      (this.geoPoint.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -814,7 +808,7 @@ class InputMediaGeoPoint extends BaseConstructor {
   }
 }
 
-class InputMediaContact extends BaseConstructor {
+class InputMediaContact extends InputMediaBase {
   static const CONSTRUCTOR_ID = 4171988475;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
@@ -831,7 +825,6 @@ class InputMediaContact extends BaseConstructor {
       required this.vcard});
 
   static InputMediaContact fromReader(BinaryReader reader) {
-    var len;
     var phoneNumber = reader.tgReadString();
     var firstName = reader.tgReadString();
     var lastName = reader.tgReadString();
@@ -870,29 +863,29 @@ class InputMediaContact extends BaseConstructor {
   }
 }
 
-class InputMediaUploadedDocument extends BaseConstructor {
+class InputMediaUploadedDocument extends InputMediaBase {
   static const CONSTRUCTOR_ID = 1530447553;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 1530447553;
   bool? nosoundVideo;
   bool? forceFile;
-  var file;
-  var thumb;
+  InputFileBase file;
+  InputFileBase? thumb;
   String mimeType;
-  List<dynamic> attributes;
-  List<dynamic>? stickers;
+  List<DocumentAttributeBase> attributes;
+  List<InputDocumentBase>? stickers;
   int? ttlSeconds;
 
   InputMediaUploadedDocument(
-      {required this.nosoundVideo,
-      required this.forceFile,
+      {this.nosoundVideo,
+      this.forceFile,
       required this.file,
-      required this.thumb,
+      this.thumb,
       required this.mimeType,
       required this.attributes,
-      required this.stickers,
-      required this.ttlSeconds});
+      this.stickers,
+      this.ttlSeconds});
 
   static InputMediaUploadedDocument fromReader(BinaryReader reader) {
     var len;
@@ -909,7 +902,7 @@ class InputMediaUploadedDocument extends BaseConstructor {
     var mimeType = reader.tgReadString();
     var _vectorattributes = reader.readInt();
     if (_vectorattributes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> attributes = [];
+    List<DocumentAttributeBase> attributes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       attributes.add(reader.tgReadObject());
@@ -918,7 +911,7 @@ class InputMediaUploadedDocument extends BaseConstructor {
     if ((flags & 1) == 1) {
       var _vectorstickers = reader.readInt();
       if (_vectorstickers != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> stickers = [];
+      List<InputDocumentBase> stickers = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         stickers.add(reader.tgReadObject());
@@ -948,19 +941,18 @@ class InputMediaUploadedDocument extends BaseConstructor {
     return [
       readBufferFromBigInt(1530447553, 4),
       [0, 0, 0, 0],
-      (this.file.getBytes() as List<int>),
+      (this.file.getBytes()),
       (this.thumb == null || this.thumb == false)
           ? List<int>.empty()
-          : [(this.thumb.getBytes() as List<int>)]
+          : [(this.thumb!.getBytes())]
               .expand((element) => element)
               .toList(),
       serializeBytes(this.mimeType),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.attributes!.length, 4,
+      readBufferFromBigInt(this.attributes.length, 4,
           little: true, signed: true),
       this
-          .attributes!
-          .map((x) => (x.getBytes() as List<int>))
+          .attributes.map((x) => x.getBytes())
           .expand((element) => element),
       (this.stickers == null || this.stickers == false)
           ? List<int>.empty()
@@ -970,7 +962,7 @@ class InputMediaUploadedDocument extends BaseConstructor {
                   little: true, signed: true),
               this
                   .stickers!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.ttlSeconds == null || this.ttlSeconds == false)
@@ -998,20 +990,18 @@ class InputMediaUploadedDocument extends BaseConstructor {
   }
 }
 
-class InputMediaDocument extends BaseConstructor {
+class InputMediaDocument extends InputMediaBase {
   static const CONSTRUCTOR_ID = 860303448;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 860303448;
-  var id;
+  InputDocumentBase id;
   int? ttlSeconds;
   String? query;
 
-  InputMediaDocument(
-      {required this.id, required this.ttlSeconds, required this.query});
+  InputMediaDocument({required this.id, this.ttlSeconds, this.query});
 
   static InputMediaDocument fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.tgReadObject();
     var ttlSeconds;
@@ -1034,7 +1024,7 @@ class InputMediaDocument extends BaseConstructor {
     return [
       readBufferFromBigInt(860303448, 4),
       [0, 0, 0, 0],
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
       (this.ttlSeconds == null || this.ttlSeconds == false)
           ? List<int>.empty()
           : [
@@ -1063,12 +1053,12 @@ class InputMediaDocument extends BaseConstructor {
   }
 }
 
-class InputMediaVenue extends BaseConstructor {
+class InputMediaVenue extends InputMediaBase {
   static const CONSTRUCTOR_ID = 3242007569;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 3242007569;
-  var geoPoint;
+  InputGeoPointBase geoPoint;
   String title;
   String address;
   String provider;
@@ -1084,7 +1074,6 @@ class InputMediaVenue extends BaseConstructor {
       required this.venueType});
 
   static InputMediaVenue fromReader(BinaryReader reader) {
-    var len;
     var geoPoint = reader.tgReadObject();
     var title = reader.tgReadString();
     var address = reader.tgReadString();
@@ -1104,7 +1093,7 @@ class InputMediaVenue extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3242007569, 4),
-      (this.geoPoint.getBytes() as List<int>),
+      (this.geoPoint.getBytes()),
       serializeBytes(this.title),
       serializeBytes(this.address),
       serializeBytes(this.provider),
@@ -1129,7 +1118,7 @@ class InputMediaVenue extends BaseConstructor {
   }
 }
 
-class InputMediaPhotoExternal extends BaseConstructor {
+class InputMediaPhotoExternal extends InputMediaBase {
   static const CONSTRUCTOR_ID = 3854302746;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
@@ -1137,10 +1126,9 @@ class InputMediaPhotoExternal extends BaseConstructor {
   String url;
   int? ttlSeconds;
 
-  InputMediaPhotoExternal({required this.url, required this.ttlSeconds});
+  InputMediaPhotoExternal({required this.url, this.ttlSeconds});
 
   static InputMediaPhotoExternal fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var url = reader.tgReadString();
     var ttlSeconds;
@@ -1183,7 +1171,7 @@ class InputMediaPhotoExternal extends BaseConstructor {
   }
 }
 
-class InputMediaDocumentExternal extends BaseConstructor {
+class InputMediaDocumentExternal extends InputMediaBase {
   static const CONSTRUCTOR_ID = 4216511641;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
@@ -1191,10 +1179,9 @@ class InputMediaDocumentExternal extends BaseConstructor {
   String url;
   int? ttlSeconds;
 
-  InputMediaDocumentExternal({required this.url, required this.ttlSeconds});
+  InputMediaDocumentExternal({required this.url, this.ttlSeconds});
 
   static InputMediaDocumentExternal fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var url = reader.tgReadString();
     var ttlSeconds;
@@ -1237,17 +1224,16 @@ class InputMediaDocumentExternal extends BaseConstructor {
   }
 }
 
-class InputMediaGame extends BaseConstructor {
+class InputMediaGame extends InputMediaBase {
   static const CONSTRUCTOR_ID = 3544138739;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 3544138739;
-  var id;
+  InputGameBase id;
 
   InputMediaGame({required this.id});
 
   static InputMediaGame fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     return InputMediaGame(id: id);
   }
@@ -1256,7 +1242,7 @@ class InputMediaGame extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3544138739, 4),
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -1276,32 +1262,31 @@ class InputMediaGame extends BaseConstructor {
   }
 }
 
-class InputMediaInvoice extends BaseConstructor {
+class InputMediaInvoice extends InputMediaBase {
   static const CONSTRUCTOR_ID = 3648624756;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 3648624756;
   String title;
   String description;
-  var photo;
-  var invoice;
+  InputWebDocument? photo;
+  Invoice invoice;
   List<int> payload;
   String provider;
-  var providerData;
+  DataJSON providerData;
   String? startParam;
 
   InputMediaInvoice(
       {required this.title,
       required this.description,
-      required this.photo,
+      this.photo,
       required this.invoice,
       required this.payload,
       required this.provider,
       required this.providerData,
-      required this.startParam});
+      this.startParam});
 
   static InputMediaInvoice fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var title = reader.tgReadString();
     var description = reader.tgReadString();
@@ -1341,13 +1326,13 @@ class InputMediaInvoice extends BaseConstructor {
       serializeBytes(this.description),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.invoice.getBytes() as List<int>),
+      (this.invoice.getBytes()),
       serializeBytes(this.payload),
       serializeBytes(this.provider),
-      (this.providerData.getBytes() as List<int>),
+      (this.providerData.getBytes()),
       (this.startParam == null || this.startParam == false)
           ? List<int>.empty()
           : [serializeBytes(this.startParam)]
@@ -1372,26 +1357,25 @@ class InputMediaInvoice extends BaseConstructor {
   }
 }
 
-class InputMediaGeoLive extends BaseConstructor {
+class InputMediaGeoLive extends InputMediaBase {
   static const CONSTRUCTOR_ID = 2535434307;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 2535434307;
   bool? stopped;
-  var geoPoint;
+  InputGeoPointBase geoPoint;
   int? heading;
   int? period;
   int? proximityNotificationRadius;
 
   InputMediaGeoLive(
-      {required this.stopped,
+      {this.stopped,
       required this.geoPoint,
-      required this.heading,
-      required this.period,
-      required this.proximityNotificationRadius});
+      this.heading,
+      this.period,
+      this.proximityNotificationRadius});
 
   static InputMediaGeoLive fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final stopped = (flags & 1) == 1;
     var geoPoint = reader.tgReadObject();
@@ -1426,7 +1410,7 @@ class InputMediaGeoLive extends BaseConstructor {
     return [
       readBufferFromBigInt(2535434307, 4),
       [0, 0, 0, 0],
-      (this.geoPoint.getBytes() as List<int>),
+      (this.geoPoint.getBytes()),
       (this.heading == null || this.heading == false)
           ? List<int>.empty()
           : [readBufferFromBigInt(this.heading, 4, little: true, signed: true)]
@@ -1463,21 +1447,21 @@ class InputMediaGeoLive extends BaseConstructor {
   }
 }
 
-class InputMediaPoll extends BaseConstructor {
+class InputMediaPoll extends InputMediaBase {
   static const CONSTRUCTOR_ID = 261416433;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
   final ID = 261416433;
-  var poll;
+  Poll poll;
   List<List<int>>? correctAnswers;
   String? solution;
-  List<dynamic>? solutionEntities;
+  List<MessageEntityBase>? solutionEntities;
 
   InputMediaPoll(
       {required this.poll,
-      required this.correctAnswers,
-      required this.solution,
-      required this.solutionEntities});
+      this.correctAnswers,
+      this.solution,
+      this.solutionEntities});
 
   static InputMediaPoll fromReader(BinaryReader reader) {
     var len;
@@ -1506,7 +1490,7 @@ class InputMediaPoll extends BaseConstructor {
       var _vectorsolutionEntities = reader.readInt();
       if (_vectorsolutionEntities != 481674261)
         throw Exception('Wrong vectorId');
-      List<dynamic> solutionEntities = [];
+      List<MessageEntityBase> solutionEntities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         solutionEntities.add(reader.tgReadObject());
@@ -1526,7 +1510,7 @@ class InputMediaPoll extends BaseConstructor {
     return [
       readBufferFromBigInt(261416433, 4),
       [0, 0, 0, 0],
-      (this.poll.getBytes() as List<int>),
+      (this.poll.getBytes()),
       (this.correctAnswers == null || this.correctAnswers == false)
           ? List<int>.empty()
           : [
@@ -1551,7 +1535,7 @@ class InputMediaPoll extends BaseConstructor {
                   little: true, signed: true),
               this
                   .solutionEntities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -1573,7 +1557,7 @@ class InputMediaPoll extends BaseConstructor {
   }
 }
 
-class InputMediaDice extends BaseConstructor {
+class InputMediaDice extends InputMediaBase {
   static const CONSTRUCTOR_ID = 3866083195;
   static const SUBCLASS_OF_ID = 4210575092;
   final classType = "constructor";
@@ -1583,7 +1567,6 @@ class InputMediaDice extends BaseConstructor {
   InputMediaDice({required this.emoticon});
 
   static InputMediaDice fromReader(BinaryReader reader) {
-    var len;
     var emoticon = reader.tgReadString();
     return InputMediaDice(emoticon: emoticon);
   }
@@ -1612,7 +1595,9 @@ class InputMediaDice extends BaseConstructor {
   }
 }
 
-class InputChatPhotoEmpty extends BaseConstructor {
+abstract class InputChatPhotoBase extends BaseConstructor {}
+
+class InputChatPhotoEmpty extends InputChatPhotoBase {
   static const CONSTRUCTOR_ID = 480546647;
   static const SUBCLASS_OF_ID = 3572182388;
   final classType = "constructor";
@@ -1621,7 +1606,6 @@ class InputChatPhotoEmpty extends BaseConstructor {
   InputChatPhotoEmpty();
 
   static InputChatPhotoEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputChatPhotoEmpty();
   }
 
@@ -1648,20 +1632,18 @@ class InputChatPhotoEmpty extends BaseConstructor {
   }
 }
 
-class InputChatUploadedPhoto extends BaseConstructor {
+class InputChatUploadedPhoto extends InputChatPhotoBase {
   static const CONSTRUCTOR_ID = 3326243406;
   static const SUBCLASS_OF_ID = 3572182388;
   final classType = "constructor";
   final ID = 3326243406;
-  var file;
-  var video;
+  InputFileBase? file;
+  InputFileBase? video;
   double? videoStartTs;
 
-  InputChatUploadedPhoto(
-      {required this.file, required this.video, required this.videoStartTs});
+  InputChatUploadedPhoto({this.file, this.video, this.videoStartTs});
 
   static InputChatUploadedPhoto fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var file;
     if ((flags & 1) == 1) {
@@ -1692,12 +1674,12 @@ class InputChatUploadedPhoto extends BaseConstructor {
       [0, 0, 0, 0],
       (this.file == null || this.file == false)
           ? List<int>.empty()
-          : [(this.file.getBytes() as List<int>)]
+          : [(this.file!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.video == null || this.video == false)
           ? List<int>.empty()
-          : [(this.video.getBytes() as List<int>)]
+          : [(this.video!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.videoStartTs == null || this.videoStartTs == false)
@@ -1724,17 +1706,16 @@ class InputChatUploadedPhoto extends BaseConstructor {
   }
 }
 
-class InputChatPhoto extends BaseConstructor {
+class InputChatPhoto extends InputChatPhotoBase {
   static const CONSTRUCTOR_ID = 2303962423;
   static const SUBCLASS_OF_ID = 3572182388;
   final classType = "constructor";
   final ID = 2303962423;
-  var id;
+  InputPhotoBase id;
 
   InputChatPhoto({required this.id});
 
   static InputChatPhoto fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     return InputChatPhoto(id: id);
   }
@@ -1743,7 +1724,7 @@ class InputChatPhoto extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2303962423, 4),
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -1763,7 +1744,9 @@ class InputChatPhoto extends BaseConstructor {
   }
 }
 
-class InputGeoPointEmpty extends BaseConstructor {
+abstract class InputGeoPointBase extends BaseConstructor {}
+
+class InputGeoPointEmpty extends InputGeoPointBase {
   static const CONSTRUCTOR_ID = 3837862870;
   static const SUBCLASS_OF_ID = 70308389;
   final classType = "constructor";
@@ -1772,7 +1755,6 @@ class InputGeoPointEmpty extends BaseConstructor {
   InputGeoPointEmpty();
 
   static InputGeoPointEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputGeoPointEmpty();
   }
 
@@ -1799,7 +1781,7 @@ class InputGeoPointEmpty extends BaseConstructor {
   }
 }
 
-class InputGeoPoint extends BaseConstructor {
+class InputGeoPoint extends InputGeoPointBase {
   static const CONSTRUCTOR_ID = 1210199983;
   static const SUBCLASS_OF_ID = 70308389;
   final classType = "constructor";
@@ -1808,11 +1790,9 @@ class InputGeoPoint extends BaseConstructor {
   double long;
   int? accuracyRadius;
 
-  InputGeoPoint(
-      {required this.lat, required this.long, required this.accuracyRadius});
+  InputGeoPoint({required this.lat, required this.long, this.accuracyRadius});
 
   static InputGeoPoint fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var lat = reader.readDouble();
     var long = reader.readDouble();
@@ -1857,7 +1837,9 @@ class InputGeoPoint extends BaseConstructor {
   }
 }
 
-class InputPhotoEmpty extends BaseConstructor {
+abstract class InputPhotoBase extends BaseConstructor {}
+
+class InputPhotoEmpty extends InputPhotoBase {
   static const CONSTRUCTOR_ID = 483901197;
   static const SUBCLASS_OF_ID = 2221106144;
   final classType = "constructor";
@@ -1866,7 +1848,6 @@ class InputPhotoEmpty extends BaseConstructor {
   InputPhotoEmpty();
 
   static InputPhotoEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputPhotoEmpty();
   }
 
@@ -1893,7 +1874,7 @@ class InputPhotoEmpty extends BaseConstructor {
   }
 }
 
-class InputPhoto extends BaseConstructor {
+class InputPhoto extends InputPhotoBase {
   static const CONSTRUCTOR_ID = 1001634122;
   static const SUBCLASS_OF_ID = 2221106144;
   final classType = "constructor";
@@ -1908,7 +1889,6 @@ class InputPhoto extends BaseConstructor {
       required this.fileReference});
 
   static InputPhoto fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var fileReference = reader.tgReadBytes();
@@ -1942,7 +1922,9 @@ class InputPhoto extends BaseConstructor {
   }
 }
 
-class InputFileLocation extends BaseConstructor {
+abstract class InputFileLocationBase extends BaseConstructor {}
+
+class InputFileLocation extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 3755650017;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
@@ -1959,7 +1941,6 @@ class InputFileLocation extends BaseConstructor {
       required this.fileReference});
 
   static InputFileLocation fromReader(BinaryReader reader) {
-    var len;
     var volumeId = reader.readLong();
     var localId = reader.readInt();
     var secret = reader.readLong();
@@ -1998,7 +1979,7 @@ class InputFileLocation extends BaseConstructor {
   }
 }
 
-class InputEncryptedFileLocation extends BaseConstructor {
+class InputEncryptedFileLocation extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 4112735573;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
@@ -2009,7 +1990,6 @@ class InputEncryptedFileLocation extends BaseConstructor {
   InputEncryptedFileLocation({required this.id, required this.accessHash});
 
   static InputEncryptedFileLocation fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputEncryptedFileLocation(id: id, accessHash: accessHash);
@@ -2040,7 +2020,7 @@ class InputEncryptedFileLocation extends BaseConstructor {
   }
 }
 
-class InputDocumentFileLocation extends BaseConstructor {
+class InputDocumentFileLocation extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 3134223748;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
@@ -2057,7 +2037,6 @@ class InputDocumentFileLocation extends BaseConstructor {
       required this.thumbSize});
 
   static InputDocumentFileLocation fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var fileReference = reader.tgReadBytes();
@@ -2096,7 +2075,7 @@ class InputDocumentFileLocation extends BaseConstructor {
   }
 }
 
-class InputSecureFileLocation extends BaseConstructor {
+class InputSecureFileLocation extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 3418877480;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
@@ -2107,7 +2086,6 @@ class InputSecureFileLocation extends BaseConstructor {
   InputSecureFileLocation({required this.id, required this.accessHash});
 
   static InputSecureFileLocation fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputSecureFileLocation(id: id, accessHash: accessHash);
@@ -2138,7 +2116,7 @@ class InputSecureFileLocation extends BaseConstructor {
   }
 }
 
-class InputTakeoutFileLocation extends BaseConstructor {
+class InputTakeoutFileLocation extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 700340377;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
@@ -2147,7 +2125,6 @@ class InputTakeoutFileLocation extends BaseConstructor {
   InputTakeoutFileLocation();
 
   static InputTakeoutFileLocation fromReader(BinaryReader reader) {
-    var len;
     return InputTakeoutFileLocation();
   }
 
@@ -2174,7 +2151,7 @@ class InputTakeoutFileLocation extends BaseConstructor {
   }
 }
 
-class InputPhotoFileLocation extends BaseConstructor {
+class InputPhotoFileLocation extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 1075322878;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
@@ -2191,7 +2168,6 @@ class InputPhotoFileLocation extends BaseConstructor {
       required this.thumbSize});
 
   static InputPhotoFileLocation fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var fileReference = reader.tgReadBytes();
@@ -2230,7 +2206,7 @@ class InputPhotoFileLocation extends BaseConstructor {
   }
 }
 
-class InputPhotoLegacyFileLocation extends BaseConstructor {
+class InputPhotoLegacyFileLocation extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 3627312883;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
@@ -2251,7 +2227,6 @@ class InputPhotoLegacyFileLocation extends BaseConstructor {
       required this.secret});
 
   static InputPhotoLegacyFileLocation fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var fileReference = reader.tgReadBytes();
@@ -2296,20 +2271,19 @@ class InputPhotoLegacyFileLocation extends BaseConstructor {
   }
 }
 
-class InputPeerPhotoFileLocation extends BaseConstructor {
+class InputPeerPhotoFileLocation extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 925204121;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
   final ID = 925204121;
   bool? big;
-  var peer;
+  InputPeerBase peer;
   BigInt photoId;
 
   InputPeerPhotoFileLocation(
-      {required this.big, required this.peer, required this.photoId});
+      {this.big, required this.peer, required this.photoId});
 
   static InputPeerPhotoFileLocation fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final big = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -2322,7 +2296,7 @@ class InputPeerPhotoFileLocation extends BaseConstructor {
     return [
       readBufferFromBigInt(925204121, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.photoId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -2343,18 +2317,17 @@ class InputPeerPhotoFileLocation extends BaseConstructor {
   }
 }
 
-class InputStickerSetThumb extends BaseConstructor {
+class InputStickerSetThumb extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 2642736091;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
   final ID = 2642736091;
-  var stickerset;
+  InputStickerSetBase stickerset;
   int thumbVersion;
 
   InputStickerSetThumb({required this.stickerset, required this.thumbVersion});
 
   static InputStickerSetThumb fromReader(BinaryReader reader) {
-    var len;
     var stickerset = reader.tgReadObject();
     var thumbVersion = reader.readInt();
     return InputStickerSetThumb(
@@ -2365,7 +2338,7 @@ class InputStickerSetThumb extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2642736091, 4),
-      (this.stickerset.getBytes() as List<int>),
+      (this.stickerset.getBytes()),
       readBufferFromBigInt(this.thumbVersion, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -2386,12 +2359,12 @@ class InputStickerSetThumb extends BaseConstructor {
   }
 }
 
-class InputGroupCallStream extends BaseConstructor {
+class InputGroupCallStream extends InputFileLocationBase {
   static const CONSTRUCTOR_ID = 93890858;
   static const SUBCLASS_OF_ID = 354669666;
   final classType = "constructor";
   final ID = 93890858;
-  var call;
+  InputGroupCall call;
   BigInt timeMs;
   int scale;
   int? videoChannel;
@@ -2401,11 +2374,10 @@ class InputGroupCallStream extends BaseConstructor {
       {required this.call,
       required this.timeMs,
       required this.scale,
-      required this.videoChannel,
-      required this.videoQuality});
+      this.videoChannel,
+      this.videoQuality});
 
   static InputGroupCallStream fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var call = reader.tgReadObject();
     var timeMs = reader.readLong();
@@ -2435,7 +2407,7 @@ class InputGroupCallStream extends BaseConstructor {
     return [
       readBufferFromBigInt(93890858, 4),
       [0, 0, 0, 0],
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
       readBufferFromBigInt(this.timeMs, 8, little: true, signed: true),
       readBufferFromBigInt(this.scale, 4, little: true, signed: true),
       (this.videoChannel == null || this.videoChannel == false)
@@ -2469,7 +2441,9 @@ class InputGroupCallStream extends BaseConstructor {
   }
 }
 
-class PeerUser extends BaseConstructor {
+abstract class PeerBase extends BaseConstructor {}
+
+class PeerUser extends PeerBase {
   static const CONSTRUCTOR_ID = 1498486562;
   static const SUBCLASS_OF_ID = 47470215;
   final classType = "constructor";
@@ -2479,7 +2453,6 @@ class PeerUser extends BaseConstructor {
   PeerUser({required this.userId});
 
   static PeerUser fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     return PeerUser(userId: userId);
   }
@@ -2508,7 +2481,7 @@ class PeerUser extends BaseConstructor {
   }
 }
 
-class PeerChat extends BaseConstructor {
+class PeerChat extends PeerBase {
   static const CONSTRUCTOR_ID = 918946202;
   static const SUBCLASS_OF_ID = 47470215;
   final classType = "constructor";
@@ -2518,7 +2491,6 @@ class PeerChat extends BaseConstructor {
   PeerChat({required this.chatId});
 
   static PeerChat fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     return PeerChat(chatId: chatId);
   }
@@ -2547,7 +2519,7 @@ class PeerChat extends BaseConstructor {
   }
 }
 
-class PeerChannel extends BaseConstructor {
+class PeerChannel extends PeerBase {
   static const CONSTRUCTOR_ID = 2728736542;
   static const SUBCLASS_OF_ID = 47470215;
   final classType = "constructor";
@@ -2557,7 +2529,6 @@ class PeerChannel extends BaseConstructor {
   PeerChannel({required this.channelId});
 
   static PeerChannel fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     return PeerChannel(channelId: channelId);
   }
@@ -2586,7 +2557,9 @@ class PeerChannel extends BaseConstructor {
   }
 }
 
-class UserEmpty extends BaseConstructor {
+abstract class UserBase extends BaseConstructor {}
+
+class UserEmpty extends UserBase {
   static const CONSTRUCTOR_ID = 3552332666;
   static const SUBCLASS_OF_ID = 765557111;
   final classType = "constructor";
@@ -2596,7 +2569,6 @@ class UserEmpty extends BaseConstructor {
   UserEmpty({required this.id});
 
   static UserEmpty fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     return UserEmpty(id: id);
   }
@@ -2625,7 +2597,7 @@ class UserEmpty extends BaseConstructor {
   }
 }
 
-class User extends BaseConstructor {
+class User extends UserBase {
   static const CONSTRUCTOR_ID = 1073147056;
   static const SUBCLASS_OF_ID = 765557111;
   final classType = "constructor";
@@ -2654,44 +2626,44 @@ class User extends BaseConstructor {
   String? lastName;
   String? username;
   String? phone;
-  var photo;
-  var status;
+  UserProfilePhotoBase? photo;
+  UserStatusBase? status;
   int? botInfoVersion;
-  List<dynamic>? restrictionReason;
+  List<RestrictionReason>? restrictionReason;
   String? botInlinePlaceholder;
   String? langCode;
 
   User(
-      {required this.self,
-      required this.contact,
-      required this.mutualContact,
-      required this.deleted,
-      required this.bot,
-      required this.botChatHistory,
-      required this.botNochats,
-      required this.verified,
-      required this.restricted,
-      required this.min,
-      required this.botInlineGeo,
-      required this.support,
-      required this.scam,
-      required this.applyMinPhoto,
-      required this.fake,
-      required this.botAttachMenu,
-      required this.premium,
-      required this.attachMenuEnabled,
+      {this.self,
+      this.contact,
+      this.mutualContact,
+      this.deleted,
+      this.bot,
+      this.botChatHistory,
+      this.botNochats,
+      this.verified,
+      this.restricted,
+      this.min,
+      this.botInlineGeo,
+      this.support,
+      this.scam,
+      this.applyMinPhoto,
+      this.fake,
+      this.botAttachMenu,
+      this.premium,
+      this.attachMenuEnabled,
       required this.id,
-      required this.accessHash,
-      required this.firstName,
-      required this.lastName,
-      required this.username,
-      required this.phone,
-      required this.photo,
-      required this.status,
-      required this.botInfoVersion,
-      required this.restrictionReason,
-      required this.botInlinePlaceholder,
-      required this.langCode});
+      this.accessHash,
+      this.firstName,
+      this.lastName,
+      this.username,
+      this.phone,
+      this.photo,
+      this.status,
+      this.botInfoVersion,
+      this.restrictionReason,
+      this.botInlinePlaceholder,
+      this.langCode});
 
   static User fromReader(BinaryReader reader) {
     var len;
@@ -2768,7 +2740,7 @@ class User extends BaseConstructor {
       var _vectorrestrictionReason = reader.readInt();
       if (_vectorrestrictionReason != 481674261)
         throw Exception('Wrong vectorId');
-      List<dynamic> restrictionReason = [];
+      List<RestrictionReason> restrictionReason = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         restrictionReason.add(reader.tgReadObject());
@@ -2853,12 +2825,12 @@ class User extends BaseConstructor {
           : [serializeBytes(this.phone)].expand((element) => element).toList(),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.status == null || this.status == false)
           ? List<int>.empty()
-          : [(this.status.getBytes() as List<int>)]
+          : [(this.status!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.botInfoVersion == null || this.botInfoVersion == false)
@@ -2875,7 +2847,7 @@ class User extends BaseConstructor {
                   little: true, signed: true),
               this
                   .restrictionReason!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.botInlinePlaceholder == null || this.botInlinePlaceholder == false)
@@ -2907,7 +2879,9 @@ class User extends BaseConstructor {
   }
 }
 
-class UserProfilePhotoEmpty extends BaseConstructor {
+abstract class UserProfilePhotoBase extends BaseConstructor {}
+
+class UserProfilePhotoEmpty extends UserProfilePhotoBase {
   static const CONSTRUCTOR_ID = 1326562017;
   static const SUBCLASS_OF_ID = 3325267837;
   final classType = "constructor";
@@ -2916,7 +2890,6 @@ class UserProfilePhotoEmpty extends BaseConstructor {
   UserProfilePhotoEmpty();
 
   static UserProfilePhotoEmpty fromReader(BinaryReader reader) {
-    var len;
     return UserProfilePhotoEmpty();
   }
 
@@ -2943,7 +2916,7 @@ class UserProfilePhotoEmpty extends BaseConstructor {
   }
 }
 
-class UserProfilePhoto extends BaseConstructor {
+class UserProfilePhoto extends UserProfilePhotoBase {
   static const CONSTRUCTOR_ID = 2194798342;
   static const SUBCLASS_OF_ID = 3325267837;
   final classType = "constructor";
@@ -2954,13 +2927,12 @@ class UserProfilePhoto extends BaseConstructor {
   int dcId;
 
   UserProfilePhoto(
-      {required this.hasVideo,
+      {this.hasVideo,
       required this.photoId,
-      required this.strippedThumb,
+      this.strippedThumb,
       required this.dcId});
 
   static UserProfilePhoto fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final hasVideo = (flags & 1) == 1;
     var photoId = reader.readLong();
@@ -3009,7 +2981,9 @@ class UserProfilePhoto extends BaseConstructor {
   }
 }
 
-class UserStatusEmpty extends BaseConstructor {
+abstract class UserStatusBase extends BaseConstructor {}
+
+class UserStatusEmpty extends UserStatusBase {
   static const CONSTRUCTOR_ID = 164646985;
   static const SUBCLASS_OF_ID = 1527477310;
   final classType = "constructor";
@@ -3018,7 +2992,6 @@ class UserStatusEmpty extends BaseConstructor {
   UserStatusEmpty();
 
   static UserStatusEmpty fromReader(BinaryReader reader) {
-    var len;
     return UserStatusEmpty();
   }
 
@@ -3045,7 +3018,7 @@ class UserStatusEmpty extends BaseConstructor {
   }
 }
 
-class UserStatusOnline extends BaseConstructor {
+class UserStatusOnline extends UserStatusBase {
   static const CONSTRUCTOR_ID = 3988339017;
   static const SUBCLASS_OF_ID = 1527477310;
   final classType = "constructor";
@@ -3055,7 +3028,6 @@ class UserStatusOnline extends BaseConstructor {
   UserStatusOnline({required this.expires});
 
   static UserStatusOnline fromReader(BinaryReader reader) {
-    var len;
     var expires = reader.readInt();
     return UserStatusOnline(expires: expires);
   }
@@ -3084,7 +3056,7 @@ class UserStatusOnline extends BaseConstructor {
   }
 }
 
-class UserStatusOffline extends BaseConstructor {
+class UserStatusOffline extends UserStatusBase {
   static const CONSTRUCTOR_ID = 9203775;
   static const SUBCLASS_OF_ID = 1527477310;
   final classType = "constructor";
@@ -3094,7 +3066,6 @@ class UserStatusOffline extends BaseConstructor {
   UserStatusOffline({required this.wasOnline});
 
   static UserStatusOffline fromReader(BinaryReader reader) {
-    var len;
     var wasOnline = reader.readInt();
     return UserStatusOffline(wasOnline: wasOnline);
   }
@@ -3123,7 +3094,7 @@ class UserStatusOffline extends BaseConstructor {
   }
 }
 
-class UserStatusRecently extends BaseConstructor {
+class UserStatusRecently extends UserStatusBase {
   static const CONSTRUCTOR_ID = 3798942449;
   static const SUBCLASS_OF_ID = 1527477310;
   final classType = "constructor";
@@ -3132,7 +3103,6 @@ class UserStatusRecently extends BaseConstructor {
   UserStatusRecently();
 
   static UserStatusRecently fromReader(BinaryReader reader) {
-    var len;
     return UserStatusRecently();
   }
 
@@ -3159,7 +3129,7 @@ class UserStatusRecently extends BaseConstructor {
   }
 }
 
-class UserStatusLastWeek extends BaseConstructor {
+class UserStatusLastWeek extends UserStatusBase {
   static const CONSTRUCTOR_ID = 129960444;
   static const SUBCLASS_OF_ID = 1527477310;
   final classType = "constructor";
@@ -3168,7 +3138,6 @@ class UserStatusLastWeek extends BaseConstructor {
   UserStatusLastWeek();
 
   static UserStatusLastWeek fromReader(BinaryReader reader) {
-    var len;
     return UserStatusLastWeek();
   }
 
@@ -3195,7 +3164,7 @@ class UserStatusLastWeek extends BaseConstructor {
   }
 }
 
-class UserStatusLastMonth extends BaseConstructor {
+class UserStatusLastMonth extends UserStatusBase {
   static const CONSTRUCTOR_ID = 2011940674;
   static const SUBCLASS_OF_ID = 1527477310;
   final classType = "constructor";
@@ -3204,7 +3173,6 @@ class UserStatusLastMonth extends BaseConstructor {
   UserStatusLastMonth();
 
   static UserStatusLastMonth fromReader(BinaryReader reader) {
-    var len;
     return UserStatusLastMonth();
   }
 
@@ -3231,7 +3199,9 @@ class UserStatusLastMonth extends BaseConstructor {
   }
 }
 
-class ChatEmpty extends BaseConstructor {
+abstract class ChatBase extends BaseConstructor {}
+
+class ChatEmpty extends ChatBase {
   static const CONSTRUCTOR_ID = 693512293;
   static const SUBCLASS_OF_ID = 3316604308;
   final classType = "constructor";
@@ -3241,7 +3211,6 @@ class ChatEmpty extends BaseConstructor {
   ChatEmpty({required this.id});
 
   static ChatEmpty fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     return ChatEmpty(id: id);
   }
@@ -3270,7 +3239,7 @@ class ChatEmpty extends BaseConstructor {
   }
 }
 
-class Chat extends BaseConstructor {
+class Chat extends ChatBase {
   static const CONSTRUCTOR_ID = 1103884886;
   static const SUBCLASS_OF_ID = 3316604308;
   final classType = "constructor";
@@ -3283,33 +3252,32 @@ class Chat extends BaseConstructor {
   bool? noforwards;
   BigInt id;
   String title;
-  var photo;
+  ChatPhotoBase photo;
   int participantsCount;
   int date;
   int version;
-  var migratedTo;
-  var adminRights;
-  var defaultBannedRights;
+  InputChannelBase? migratedTo;
+  ChatAdminRights? adminRights;
+  ChatBannedRights? defaultBannedRights;
 
   Chat(
-      {required this.creator,
-      required this.left,
-      required this.deactivated,
-      required this.callActive,
-      required this.callNotEmpty,
-      required this.noforwards,
+      {this.creator,
+      this.left,
+      this.deactivated,
+      this.callActive,
+      this.callNotEmpty,
+      this.noforwards,
       required this.id,
       required this.title,
       required this.photo,
       required this.participantsCount,
       required this.date,
       required this.version,
-      required this.migratedTo,
-      required this.adminRights,
-      required this.defaultBannedRights});
+      this.migratedTo,
+      this.adminRights,
+      this.defaultBannedRights});
 
   static Chat fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final creator = (flags & 1) == 1;
     final left = (flags & 4) == 4;
@@ -3366,24 +3334,24 @@ class Chat extends BaseConstructor {
       [0, 0, 0, 0],
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       serializeBytes(this.title),
-      (this.photo.getBytes() as List<int>),
+      (this.photo.getBytes()),
       readBufferFromBigInt(this.participantsCount, 4,
           little: true, signed: true),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(this.version, 4, little: true, signed: true),
       (this.migratedTo == null || this.migratedTo == false)
           ? List<int>.empty()
-          : [(this.migratedTo.getBytes() as List<int>)]
+          : [(this.migratedTo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.adminRights == null || this.adminRights == false)
           ? List<int>.empty()
-          : [(this.adminRights.getBytes() as List<int>)]
+          : [(this.adminRights!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.defaultBannedRights == null || this.defaultBannedRights == false)
           ? List<int>.empty()
-          : [(this.defaultBannedRights.getBytes() as List<int>)]
+          : [(this.defaultBannedRights!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -3405,7 +3373,7 @@ class Chat extends BaseConstructor {
   }
 }
 
-class ChatForbidden extends BaseConstructor {
+class ChatForbidden extends ChatBase {
   static const CONSTRUCTOR_ID = 1704108455;
   static const SUBCLASS_OF_ID = 3316604308;
   final classType = "constructor";
@@ -3416,7 +3384,6 @@ class ChatForbidden extends BaseConstructor {
   ChatForbidden({required this.id, required this.title});
 
   static ChatForbidden fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var title = reader.tgReadString();
     return ChatForbidden(id: id, title: title);
@@ -3447,7 +3414,7 @@ class ChatForbidden extends BaseConstructor {
   }
 }
 
-class Channel extends BaseConstructor {
+class Channel extends ChatBase {
   static const CONSTRUCTOR_ID = 2187439201;
   static const SUBCLASS_OF_ID = 3316604308;
   final classType = "constructor";
@@ -3475,45 +3442,45 @@ class Channel extends BaseConstructor {
   BigInt? accessHash;
   String title;
   String? username;
-  var photo;
+  ChatPhotoBase photo;
   int date;
-  List<dynamic>? restrictionReason;
-  var adminRights;
-  var bannedRights;
-  var defaultBannedRights;
+  List<RestrictionReason>? restrictionReason;
+  ChatAdminRights? adminRights;
+  ChatBannedRights? bannedRights;
+  ChatBannedRights? defaultBannedRights;
   int? participantsCount;
 
   Channel(
-      {required this.creator,
-      required this.left,
-      required this.broadcast,
-      required this.verified,
-      required this.megagroup,
-      required this.restricted,
-      required this.signatures,
-      required this.min,
-      required this.scam,
-      required this.hasLink,
-      required this.hasGeo,
-      required this.slowmodeEnabled,
-      required this.callActive,
-      required this.callNotEmpty,
-      required this.fake,
-      required this.gigagroup,
-      required this.noforwards,
-      required this.joinToSend,
-      required this.joinRequest,
+      {this.creator,
+      this.left,
+      this.broadcast,
+      this.verified,
+      this.megagroup,
+      this.restricted,
+      this.signatures,
+      this.min,
+      this.scam,
+      this.hasLink,
+      this.hasGeo,
+      this.slowmodeEnabled,
+      this.callActive,
+      this.callNotEmpty,
+      this.fake,
+      this.gigagroup,
+      this.noforwards,
+      this.joinToSend,
+      this.joinRequest,
       required this.id,
-      required this.accessHash,
+      this.accessHash,
       required this.title,
-      required this.username,
+      this.username,
       required this.photo,
       required this.date,
-      required this.restrictionReason,
-      required this.adminRights,
-      required this.bannedRights,
-      required this.defaultBannedRights,
-      required this.participantsCount});
+      this.restrictionReason,
+      this.adminRights,
+      this.bannedRights,
+      this.defaultBannedRights,
+      this.participantsCount});
 
   static Channel fromReader(BinaryReader reader) {
     var len;
@@ -3558,7 +3525,7 @@ class Channel extends BaseConstructor {
       var _vectorrestrictionReason = reader.readInt();
       if (_vectorrestrictionReason != 481674261)
         throw Exception('Wrong vectorId');
-      List<dynamic> restrictionReason = [];
+      List<RestrictionReason> restrictionReason = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         restrictionReason.add(reader.tgReadObject());
@@ -3641,7 +3608,7 @@ class Channel extends BaseConstructor {
           : [serializeBytes(this.username)]
               .expand((element) => element)
               .toList(),
-      (this.photo.getBytes() as List<int>),
+      (this.photo.getBytes()),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       (this.restrictionReason == null || this.restrictionReason == false)
           ? List<int>.empty()
@@ -3651,22 +3618,22 @@ class Channel extends BaseConstructor {
                   little: true, signed: true),
               this
                   .restrictionReason!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.adminRights == null || this.adminRights == false)
           ? List<int>.empty()
-          : [(this.adminRights.getBytes() as List<int>)]
+          : [(this.adminRights!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.bannedRights == null || this.bannedRights == false)
           ? List<int>.empty()
-          : [(this.bannedRights.getBytes() as List<int>)]
+          : [(this.bannedRights!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.defaultBannedRights == null || this.defaultBannedRights == false)
           ? List<int>.empty()
-          : [(this.defaultBannedRights.getBytes() as List<int>)]
+          : [(this.defaultBannedRights!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.participantsCount == null || this.participantsCount == false)
@@ -3694,7 +3661,7 @@ class Channel extends BaseConstructor {
   }
 }
 
-class ChannelForbidden extends BaseConstructor {
+class ChannelForbidden extends ChatBase {
   static const CONSTRUCTOR_ID = 399807445;
   static const SUBCLASS_OF_ID = 3316604308;
   final classType = "constructor";
@@ -3707,15 +3674,14 @@ class ChannelForbidden extends BaseConstructor {
   int? untilDate;
 
   ChannelForbidden(
-      {required this.broadcast,
-      required this.megagroup,
+      {this.broadcast,
+      this.megagroup,
       required this.id,
       required this.accessHash,
       required this.title,
-      required this.untilDate});
+      this.untilDate});
 
   static ChannelForbidden fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final broadcast = (flags & 32) == 32;
     final megagroup = (flags & 256) == 256;
@@ -3770,7 +3736,9 @@ class ChannelForbidden extends BaseConstructor {
   }
 }
 
-class ChatFull extends BaseConstructor {
+abstract class ChatFullBase extends BaseConstructor {}
+
+class ChatFull extends ChatFullBase {
   static const CONSTRUCTOR_ID = 3515802150;
   static const SUBCLASS_OF_ID = 3566872215;
   final classType = "constructor";
@@ -3779,40 +3747,40 @@ class ChatFull extends BaseConstructor {
   bool? hasScheduled;
   BigInt id;
   String about;
-  var participants;
-  var chatPhoto;
-  var notifySettings;
-  var exportedInvite;
-  List<dynamic>? botInfo;
+  ChatParticipantsBase participants;
+  PhotoBase? chatPhoto;
+  PeerNotifySettings notifySettings;
+  ExportedChatInviteBase? exportedInvite;
+  List<BotInfo>? botInfo;
   int? pinnedMsgId;
   int? folderId;
-  var call;
+  InputGroupCall? call;
   int? ttlPeriod;
-  var groupcallDefaultJoinAs;
+  PeerBase? groupcallDefaultJoinAs;
   String? themeEmoticon;
   int? requestsPending;
   List<BigInt>? recentRequesters;
   List<String>? availableReactions;
 
   ChatFull(
-      {required this.canSetUsername,
-      required this.hasScheduled,
+      {this.canSetUsername,
+      this.hasScheduled,
       required this.id,
       required this.about,
       required this.participants,
-      required this.chatPhoto,
+      this.chatPhoto,
       required this.notifySettings,
-      required this.exportedInvite,
-      required this.botInfo,
-      required this.pinnedMsgId,
-      required this.folderId,
-      required this.call,
-      required this.ttlPeriod,
-      required this.groupcallDefaultJoinAs,
-      required this.themeEmoticon,
-      required this.requestsPending,
-      required this.recentRequesters,
-      required this.availableReactions});
+      this.exportedInvite,
+      this.botInfo,
+      this.pinnedMsgId,
+      this.folderId,
+      this.call,
+      this.ttlPeriod,
+      this.groupcallDefaultJoinAs,
+      this.themeEmoticon,
+      this.requestsPending,
+      this.recentRequesters,
+      this.availableReactions});
 
   static ChatFull fromReader(BinaryReader reader) {
     var len;
@@ -3839,7 +3807,7 @@ class ChatFull extends BaseConstructor {
     if ((flags & 8) == 8) {
       var _vectorbotInfo = reader.readInt();
       if (_vectorbotInfo != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> botInfo = [];
+      List<BotInfo> botInfo = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         botInfo.add(reader.tgReadObject());
@@ -3943,16 +3911,16 @@ class ChatFull extends BaseConstructor {
       [0, 0, 0, 0],
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       serializeBytes(this.about),
-      (this.participants.getBytes() as List<int>),
+      (this.participants.getBytes()),
       (this.chatPhoto == null || this.chatPhoto == false)
           ? List<int>.empty()
-          : [(this.chatPhoto.getBytes() as List<int>)]
+          : [(this.chatPhoto!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.notifySettings.getBytes() as List<int>),
+      (this.notifySettings.getBytes()),
       (this.exportedInvite == null || this.exportedInvite == false)
           ? List<int>.empty()
-          : [(this.exportedInvite.getBytes() as List<int>)]
+          : [(this.exportedInvite!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.botInfo == null || this.botInfo == false)
@@ -3963,7 +3931,7 @@ class ChatFull extends BaseConstructor {
                   little: true, signed: true),
               this
                   .botInfo!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.pinnedMsgId == null || this.pinnedMsgId == false)
@@ -3979,7 +3947,7 @@ class ChatFull extends BaseConstructor {
               .toList(),
       (this.call == null || this.call == false)
           ? List<int>.empty()
-          : [(this.call.getBytes() as List<int>)]
+          : [(this.call!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.ttlPeriod == null || this.ttlPeriod == false)
@@ -3991,7 +3959,7 @@ class ChatFull extends BaseConstructor {
       (this.groupcallDefaultJoinAs == null ||
               this.groupcallDefaultJoinAs == false)
           ? List<int>.empty()
-          : [(this.groupcallDefaultJoinAs.getBytes() as List<int>)]
+          : [(this.groupcallDefaultJoinAs!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.themeEmoticon == null || this.themeEmoticon == false)
@@ -4047,7 +4015,7 @@ class ChatFull extends BaseConstructor {
   }
 }
 
-class ChannelFull extends BaseConstructor {
+class ChannelFull extends ChatFullBase {
   static const CONSTRUCTOR_ID = 3932726809;
   static const SUBCLASS_OF_ID = 3566872215;
   final classType = "constructor";
@@ -4071,77 +4039,77 @@ class ChannelFull extends BaseConstructor {
   int readInboxMaxId;
   int readOutboxMaxId;
   int unreadCount;
-  var chatPhoto;
-  var notifySettings;
-  var exportedInvite;
-  List<dynamic> botInfo;
+  PhotoBase chatPhoto;
+  PeerNotifySettings notifySettings;
+  ExportedChatInviteBase? exportedInvite;
+  List<BotInfo> botInfo;
   BigInt? migratedFromChatId;
   int? migratedFromMaxId;
   int? pinnedMsgId;
-  var stickerset;
+  StickerSet? stickerset;
   int? availableMinId;
   int? folderId;
   BigInt? linkedChatId;
-  var location;
+  ChannelLocationBase? location;
   int? slowmodeSeconds;
   int? slowmodeNextSendDate;
   int? statsDc;
   int pts;
-  var call;
+  InputGroupCall? call;
   int? ttlPeriod;
   List<String>? pendingSuggestions;
-  var groupcallDefaultJoinAs;
+  PeerBase? groupcallDefaultJoinAs;
   String? themeEmoticon;
   int? requestsPending;
   List<BigInt>? recentRequesters;
-  var defaultSendAs;
+  PeerBase? defaultSendAs;
   List<String>? availableReactions;
 
   ChannelFull(
-      {required this.canViewParticipants,
-      required this.canSetUsername,
-      required this.canSetStickers,
-      required this.hiddenPrehistory,
-      required this.canSetLocation,
-      required this.hasScheduled,
-      required this.canViewStats,
-      required this.blocked,
-      required this.canDeleteChannel,
+      {this.canViewParticipants,
+      this.canSetUsername,
+      this.canSetStickers,
+      this.hiddenPrehistory,
+      this.canSetLocation,
+      this.hasScheduled,
+      this.canViewStats,
+      this.blocked,
+      this.canDeleteChannel,
       required this.id,
       required this.about,
-      required this.participantsCount,
-      required this.adminsCount,
-      required this.kickedCount,
-      required this.bannedCount,
-      required this.onlineCount,
+      this.participantsCount,
+      this.adminsCount,
+      this.kickedCount,
+      this.bannedCount,
+      this.onlineCount,
       required this.readInboxMaxId,
       required this.readOutboxMaxId,
       required this.unreadCount,
       required this.chatPhoto,
       required this.notifySettings,
-      required this.exportedInvite,
+      this.exportedInvite,
       required this.botInfo,
-      required this.migratedFromChatId,
-      required this.migratedFromMaxId,
-      required this.pinnedMsgId,
-      required this.stickerset,
-      required this.availableMinId,
-      required this.folderId,
-      required this.linkedChatId,
-      required this.location,
-      required this.slowmodeSeconds,
-      required this.slowmodeNextSendDate,
-      required this.statsDc,
+      this.migratedFromChatId,
+      this.migratedFromMaxId,
+      this.pinnedMsgId,
+      this.stickerset,
+      this.availableMinId,
+      this.folderId,
+      this.linkedChatId,
+      this.location,
+      this.slowmodeSeconds,
+      this.slowmodeNextSendDate,
+      this.statsDc,
       required this.pts,
-      required this.call,
-      required this.ttlPeriod,
-      required this.pendingSuggestions,
-      required this.groupcallDefaultJoinAs,
-      required this.themeEmoticon,
-      required this.requestsPending,
-      required this.recentRequesters,
-      required this.defaultSendAs,
-      required this.availableReactions});
+      this.call,
+      this.ttlPeriod,
+      this.pendingSuggestions,
+      this.groupcallDefaultJoinAs,
+      this.themeEmoticon,
+      this.requestsPending,
+      this.recentRequesters,
+      this.defaultSendAs,
+      this.availableReactions});
 
   static ChannelFull fromReader(BinaryReader reader) {
     var len;
@@ -4201,7 +4169,7 @@ class ChannelFull extends BaseConstructor {
     }
     var _vectorbotInfo = reader.readInt();
     if (_vectorbotInfo != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> botInfo = [];
+    List<BotInfo> botInfo = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       botInfo.add(reader.tgReadObject());
@@ -4436,18 +4404,17 @@ class ChannelFull extends BaseConstructor {
       readBufferFromBigInt(this.readInboxMaxId, 4, little: true, signed: true),
       readBufferFromBigInt(this.readOutboxMaxId, 4, little: true, signed: true),
       readBufferFromBigInt(this.unreadCount, 4, little: true, signed: true),
-      (this.chatPhoto.getBytes() as List<int>),
-      (this.notifySettings.getBytes() as List<int>),
+      (this.chatPhoto.getBytes()),
+      (this.notifySettings.getBytes()),
       (this.exportedInvite == null || this.exportedInvite == false)
           ? List<int>.empty()
-          : [(this.exportedInvite.getBytes() as List<int>)]
+          : [(this.exportedInvite!.getBytes())]
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.botInfo!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.botInfo.length, 4, little: true, signed: true),
       this
-          .botInfo!
-          .map((x) => (x.getBytes() as List<int>))
+          .botInfo.map((x) => x.getBytes())
           .expand((element) => element),
       (this.migratedFromChatId == null || this.migratedFromChatId == false)
           ? List<int>.empty()
@@ -4469,7 +4436,7 @@ class ChannelFull extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.stickerset == null || this.stickerset == false)
           ? List<int>.empty()
-          : [(this.stickerset.getBytes() as List<int>)]
+          : [(this.stickerset!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.availableMinId == null || this.availableMinId == false)
@@ -4491,7 +4458,7 @@ class ChannelFull extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.location == null || this.location == false)
           ? List<int>.empty()
-          : [(this.location.getBytes() as List<int>)]
+          : [(this.location!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.slowmodeSeconds == null || this.slowmodeSeconds == false)
@@ -4514,7 +4481,7 @@ class ChannelFull extends BaseConstructor {
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       (this.call == null || this.call == false)
           ? List<int>.empty()
-          : [(this.call.getBytes() as List<int>)]
+          : [(this.call!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.ttlPeriod == null || this.ttlPeriod == false)
@@ -4537,7 +4504,7 @@ class ChannelFull extends BaseConstructor {
       (this.groupcallDefaultJoinAs == null ||
               this.groupcallDefaultJoinAs == false)
           ? List<int>.empty()
-          : [(this.groupcallDefaultJoinAs.getBytes() as List<int>)]
+          : [(this.groupcallDefaultJoinAs!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.themeEmoticon == null || this.themeEmoticon == false)
@@ -4565,7 +4532,7 @@ class ChannelFull extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.defaultSendAs == null || this.defaultSendAs == false)
           ? List<int>.empty()
-          : [(this.defaultSendAs.getBytes() as List<int>)]
+          : [(this.defaultSendAs!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.availableReactions == null || this.availableReactions == false)
@@ -4598,7 +4565,9 @@ class ChannelFull extends BaseConstructor {
   }
 }
 
-class ChatParticipant extends BaseConstructor {
+abstract class ChatParticipantBase extends BaseConstructor {}
+
+class ChatParticipant extends ChatParticipantBase {
   static const CONSTRUCTOR_ID = 3224190983;
   static const SUBCLASS_OF_ID = 2105307014;
   final classType = "constructor";
@@ -4611,7 +4580,6 @@ class ChatParticipant extends BaseConstructor {
       {required this.userId, required this.inviterId, required this.date});
 
   static ChatParticipant fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var inviterId = reader.readLong();
     var date = reader.readInt();
@@ -4644,7 +4612,7 @@ class ChatParticipant extends BaseConstructor {
   }
 }
 
-class ChatParticipantCreator extends BaseConstructor {
+class ChatParticipantCreator extends ChatParticipantBase {
   static const CONSTRUCTOR_ID = 3832270564;
   static const SUBCLASS_OF_ID = 2105307014;
   final classType = "constructor";
@@ -4654,7 +4622,6 @@ class ChatParticipantCreator extends BaseConstructor {
   ChatParticipantCreator({required this.userId});
 
   static ChatParticipantCreator fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     return ChatParticipantCreator(userId: userId);
   }
@@ -4683,7 +4650,7 @@ class ChatParticipantCreator extends BaseConstructor {
   }
 }
 
-class ChatParticipantAdmin extends BaseConstructor {
+class ChatParticipantAdmin extends ChatParticipantBase {
   static const CONSTRUCTOR_ID = 2694004571;
   static const SUBCLASS_OF_ID = 2105307014;
   final classType = "constructor";
@@ -4696,7 +4663,6 @@ class ChatParticipantAdmin extends BaseConstructor {
       {required this.userId, required this.inviterId, required this.date});
 
   static ChatParticipantAdmin fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var inviterId = reader.readLong();
     var date = reader.readInt();
@@ -4730,19 +4696,19 @@ class ChatParticipantAdmin extends BaseConstructor {
   }
 }
 
-class ChatParticipantsForbidden extends BaseConstructor {
+abstract class ChatParticipantsBase extends BaseConstructor {}
+
+class ChatParticipantsForbidden extends ChatParticipantsBase {
   static const CONSTRUCTOR_ID = 2271466465;
   static const SUBCLASS_OF_ID = 531142001;
   final classType = "constructor";
   final ID = 2271466465;
   BigInt chatId;
-  var selfParticipant;
+  ChatParticipantBase? selfParticipant;
 
-  ChatParticipantsForbidden(
-      {required this.chatId, required this.selfParticipant});
+  ChatParticipantsForbidden({required this.chatId, this.selfParticipant});
 
   static ChatParticipantsForbidden fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var chatId = reader.readLong();
     var selfParticipant;
@@ -4763,7 +4729,7 @@ class ChatParticipantsForbidden extends BaseConstructor {
       readBufferFromBigInt(this.chatId, 8, little: true, signed: true),
       (this.selfParticipant == null || this.selfParticipant == false)
           ? List<int>.empty()
-          : [(this.selfParticipant.getBytes() as List<int>)]
+          : [(this.selfParticipant!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -4785,13 +4751,13 @@ class ChatParticipantsForbidden extends BaseConstructor {
   }
 }
 
-class ChatParticipants extends BaseConstructor {
+class ChatParticipants extends ChatParticipantsBase {
   static const CONSTRUCTOR_ID = 1018991608;
   static const SUBCLASS_OF_ID = 531142001;
   final classType = "constructor";
   final ID = 1018991608;
   BigInt chatId;
-  List<dynamic> participants;
+  List<ChatParticipantBase> participants;
   int version;
 
   ChatParticipants(
@@ -4804,7 +4770,7 @@ class ChatParticipants extends BaseConstructor {
     var chatId = reader.readLong();
     var _vectorparticipants = reader.readInt();
     if (_vectorparticipants != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> participants = [];
+    List<ChatParticipantBase> participants = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       participants.add(reader.tgReadObject());
@@ -4820,11 +4786,10 @@ class ChatParticipants extends BaseConstructor {
       readBufferFromBigInt(1018991608, 4),
       readBufferFromBigInt(this.chatId, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.participants!.length, 4,
+      readBufferFromBigInt(this.participants.length, 4,
           little: true, signed: true),
       this
-          .participants!
-          .map((x) => (x.getBytes() as List<int>))
+          .participants.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.version, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -4846,7 +4811,9 @@ class ChatParticipants extends BaseConstructor {
   }
 }
 
-class ChatPhotoEmpty extends BaseConstructor {
+abstract class ChatPhotoBase extends BaseConstructor {}
+
+class ChatPhotoEmpty extends ChatPhotoBase {
   static const CONSTRUCTOR_ID = 935395612;
   static const SUBCLASS_OF_ID = 2889794789;
   final classType = "constructor";
@@ -4855,7 +4822,6 @@ class ChatPhotoEmpty extends BaseConstructor {
   ChatPhotoEmpty();
 
   static ChatPhotoEmpty fromReader(BinaryReader reader) {
-    var len;
     return ChatPhotoEmpty();
   }
 
@@ -4882,7 +4848,7 @@ class ChatPhotoEmpty extends BaseConstructor {
   }
 }
 
-class ChatPhoto extends BaseConstructor {
+class ChatPhoto extends ChatPhotoBase {
   static const CONSTRUCTOR_ID = 476978193;
   static const SUBCLASS_OF_ID = 2889794789;
   final classType = "constructor";
@@ -4893,13 +4859,12 @@ class ChatPhoto extends BaseConstructor {
   int dcId;
 
   ChatPhoto(
-      {required this.hasVideo,
+      {this.hasVideo,
       required this.photoId,
-      required this.strippedThumb,
+      this.strippedThumb,
       required this.dcId});
 
   static ChatPhoto fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final hasVideo = (flags & 1) == 1;
     var photoId = reader.readLong();
@@ -4948,18 +4913,19 @@ class ChatPhoto extends BaseConstructor {
   }
 }
 
-class MessageEmpty extends BaseConstructor {
+abstract class MessageBase extends BaseConstructor {}
+
+class MessageEmpty extends MessageBase {
   static const CONSTRUCTOR_ID = 2426849924;
   static const SUBCLASS_OF_ID = 2030045667;
   final classType = "constructor";
   final ID = 2426849924;
   int id;
-  var peerId;
+  PeerBase? peerId;
 
-  MessageEmpty({required this.id, required this.peerId});
+  MessageEmpty({required this.id, this.peerId});
 
   static MessageEmpty fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.readInt();
     var peerId;
@@ -4979,7 +4945,7 @@ class MessageEmpty extends BaseConstructor {
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
       (this.peerId == null || this.peerId == false)
           ? List<int>.empty()
-          : [(this.peerId.getBytes() as List<int>)]
+          : [(this.peerId!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -5001,7 +4967,7 @@ class MessageEmpty extends BaseConstructor {
   }
 }
 
-class Message extends BaseConstructor {
+class Message extends MessageBase {
   static const CONSTRUCTOR_ID = 940666592;
   static const SUBCLASS_OF_ID = 2030045667;
   final classType = "constructor";
@@ -5017,57 +4983,57 @@ class Message extends BaseConstructor {
   bool? pinned;
   bool? noforwards;
   int id;
-  var fromId;
-  var peerId;
-  var fwdFrom;
+  PeerBase? fromId;
+  PeerBase peerId;
+  MessageFwdHeader? fwdFrom;
   BigInt? viaBotId;
-  var replyTo;
+  MessageReplyHeader? replyTo;
   int date;
   String message;
-  var media;
-  var replyMarkup;
-  List<dynamic>? entities;
+  MessageMediaBase? media;
+  ReplyMarkupBase? replyMarkup;
+  List<MessageEntityBase>? entities;
   int? views;
   int? forwards;
-  var replies;
+  MessageReplies? replies;
   int? editDate;
   String? postAuthor;
   BigInt? groupedId;
-  var reactions;
-  List<dynamic>? restrictionReason;
+  MessageReactions? reactions;
+  List<RestrictionReason>? restrictionReason;
   int? ttlPeriod;
 
   Message(
-      {required this.out,
-      required this.mentioned,
-      required this.mediaUnread,
-      required this.silent,
-      required this.post,
-      required this.fromScheduled,
-      required this.legacy,
-      required this.editHide,
-      required this.pinned,
-      required this.noforwards,
+      {this.out,
+      this.mentioned,
+      this.mediaUnread,
+      this.silent,
+      this.post,
+      this.fromScheduled,
+      this.legacy,
+      this.editHide,
+      this.pinned,
+      this.noforwards,
       required this.id,
-      required this.fromId,
+      this.fromId,
       required this.peerId,
-      required this.fwdFrom,
-      required this.viaBotId,
-      required this.replyTo,
+      this.fwdFrom,
+      this.viaBotId,
+      this.replyTo,
       required this.date,
       required this.message,
-      required this.media,
-      required this.replyMarkup,
-      required this.entities,
-      required this.views,
-      required this.forwards,
-      required this.replies,
-      required this.editDate,
-      required this.postAuthor,
-      required this.groupedId,
-      required this.reactions,
-      required this.restrictionReason,
-      required this.ttlPeriod});
+      this.media,
+      this.replyMarkup,
+      this.entities,
+      this.views,
+      this.forwards,
+      this.replies,
+      this.editDate,
+      this.postAuthor,
+      this.groupedId,
+      this.reactions,
+      this.restrictionReason,
+      this.ttlPeriod});
 
   static Message fromReader(BinaryReader reader) {
     var len;
@@ -5126,7 +5092,7 @@ class Message extends BaseConstructor {
     if ((flags & 128) == 128) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -5181,7 +5147,7 @@ class Message extends BaseConstructor {
       var _vectorrestrictionReason = reader.readInt();
       if (_vectorrestrictionReason != 481674261)
         throw Exception('Wrong vectorId');
-      List<dynamic> restrictionReason = [];
+      List<RestrictionReason> restrictionReason = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         restrictionReason.add(reader.tgReadObject());
@@ -5236,13 +5202,13 @@ class Message extends BaseConstructor {
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
       (this.fromId == null || this.fromId == false)
           ? List<int>.empty()
-          : [(this.fromId.getBytes() as List<int>)]
+          : [(this.fromId!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.peerId.getBytes() as List<int>),
+      (this.peerId.getBytes()),
       (this.fwdFrom == null || this.fwdFrom == false)
           ? List<int>.empty()
-          : [(this.fwdFrom.getBytes() as List<int>)]
+          : [(this.fwdFrom!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.viaBotId == null || this.viaBotId == false)
@@ -5252,19 +5218,19 @@ class Message extends BaseConstructor {
               .toList(),
       (this.replyTo == null || this.replyTo == false)
           ? List<int>.empty()
-          : [(this.replyTo.getBytes() as List<int>)]
+          : [(this.replyTo!.getBytes())]
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       serializeBytes(this.message),
       (this.media == null || this.media == false)
           ? List<int>.empty()
-          : [(this.media.getBytes() as List<int>)]
+          : [(this.media!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.entities == null || this.entities == false)
@@ -5275,7 +5241,7 @@ class Message extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.views == null || this.views == false)
@@ -5290,7 +5256,7 @@ class Message extends BaseConstructor {
               .toList(),
       (this.replies == null || this.replies == false)
           ? List<int>.empty()
-          : [(this.replies.getBytes() as List<int>)]
+          : [(this.replies!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.editDate == null || this.editDate == false)
@@ -5311,7 +5277,7 @@ class Message extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.reactions == null || this.reactions == false)
           ? List<int>.empty()
-          : [(this.reactions.getBytes() as List<int>)]
+          : [(this.reactions!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.restrictionReason == null || this.restrictionReason == false)
@@ -5322,7 +5288,7 @@ class Message extends BaseConstructor {
                   little: true, signed: true),
               this
                   .restrictionReason!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.ttlPeriod == null || this.ttlPeriod == false)
@@ -5350,7 +5316,7 @@ class Message extends BaseConstructor {
   }
 }
 
-class MessageService extends BaseConstructor {
+class MessageService extends MessageBase {
   static const CONSTRUCTOR_ID = 721967202;
   static const SUBCLASS_OF_ID = 2030045667;
   final classType = "constructor";
@@ -5362,30 +5328,29 @@ class MessageService extends BaseConstructor {
   bool? post;
   bool? legacy;
   int id;
-  var fromId;
-  var peerId;
-  var replyTo;
+  PeerBase? fromId;
+  PeerBase peerId;
+  MessageReplyHeader? replyTo;
   int date;
-  var action;
+  MessageActionBase action;
   int? ttlPeriod;
 
   MessageService(
-      {required this.out,
-      required this.mentioned,
-      required this.mediaUnread,
-      required this.silent,
-      required this.post,
-      required this.legacy,
+      {this.out,
+      this.mentioned,
+      this.mediaUnread,
+      this.silent,
+      this.post,
+      this.legacy,
       required this.id,
-      required this.fromId,
+      this.fromId,
       required this.peerId,
-      required this.replyTo,
+      this.replyTo,
       required this.date,
       required this.action,
-      required this.ttlPeriod});
+      this.ttlPeriod});
 
   static MessageService fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final out = (flags & 2) == 2;
     final mentioned = (flags & 16) == 16;
@@ -5439,17 +5404,17 @@ class MessageService extends BaseConstructor {
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
       (this.fromId == null || this.fromId == false)
           ? List<int>.empty()
-          : [(this.fromId.getBytes() as List<int>)]
+          : [(this.fromId!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.peerId.getBytes() as List<int>),
+      (this.peerId.getBytes()),
       (this.replyTo == null || this.replyTo == false)
           ? List<int>.empty()
-          : [(this.replyTo.getBytes() as List<int>)]
+          : [(this.replyTo!.getBytes())]
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
-      (this.action.getBytes() as List<int>),
+      (this.action.getBytes()),
       (this.ttlPeriod == null || this.ttlPeriod == false)
           ? List<int>.empty()
           : [
@@ -5475,7 +5440,9 @@ class MessageService extends BaseConstructor {
   }
 }
 
-class MessageMediaEmpty extends BaseConstructor {
+abstract class MessageMediaBase extends BaseConstructor {}
+
+class MessageMediaEmpty extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 1038967584;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
@@ -5484,7 +5451,6 @@ class MessageMediaEmpty extends BaseConstructor {
   MessageMediaEmpty();
 
   static MessageMediaEmpty fromReader(BinaryReader reader) {
-    var len;
     return MessageMediaEmpty();
   }
 
@@ -5511,18 +5477,17 @@ class MessageMediaEmpty extends BaseConstructor {
   }
 }
 
-class MessageMediaPhoto extends BaseConstructor {
+class MessageMediaPhoto extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 1766936791;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 1766936791;
-  var photo;
+  PhotoBase? photo;
   int? ttlSeconds;
 
-  MessageMediaPhoto({required this.photo, required this.ttlSeconds});
+  MessageMediaPhoto({this.photo, this.ttlSeconds});
 
   static MessageMediaPhoto fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var photo;
     if ((flags & 1) == 1) {
@@ -5546,7 +5511,7 @@ class MessageMediaPhoto extends BaseConstructor {
       [0, 0, 0, 0],
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.ttlSeconds == null || this.ttlSeconds == false)
@@ -5574,17 +5539,16 @@ class MessageMediaPhoto extends BaseConstructor {
   }
 }
 
-class MessageMediaGeo extends BaseConstructor {
+class MessageMediaGeo extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 1457575028;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 1457575028;
-  var geo;
+  GeoPointBase geo;
 
   MessageMediaGeo({required this.geo});
 
   static MessageMediaGeo fromReader(BinaryReader reader) {
-    var len;
     var geo = reader.tgReadObject();
     return MessageMediaGeo(geo: geo);
   }
@@ -5593,7 +5557,7 @@ class MessageMediaGeo extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1457575028, 4),
-      (this.geo.getBytes() as List<int>),
+      (this.geo.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -5613,7 +5577,7 @@ class MessageMediaGeo extends BaseConstructor {
   }
 }
 
-class MessageMediaContact extends BaseConstructor {
+class MessageMediaContact extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 1882335561;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
@@ -5632,7 +5596,6 @@ class MessageMediaContact extends BaseConstructor {
       required this.userId});
 
   static MessageMediaContact fromReader(BinaryReader reader) {
-    var len;
     var phoneNumber = reader.tgReadString();
     var firstName = reader.tgReadString();
     var lastName = reader.tgReadString();
@@ -5674,7 +5637,7 @@ class MessageMediaContact extends BaseConstructor {
   }
 }
 
-class MessageMediaUnsupported extends BaseConstructor {
+class MessageMediaUnsupported extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 2676290718;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
@@ -5683,7 +5646,6 @@ class MessageMediaUnsupported extends BaseConstructor {
   MessageMediaUnsupported();
 
   static MessageMediaUnsupported fromReader(BinaryReader reader) {
-    var len;
     return MessageMediaUnsupported();
   }
 
@@ -5710,22 +5672,18 @@ class MessageMediaUnsupported extends BaseConstructor {
   }
 }
 
-class MessageMediaDocument extends BaseConstructor {
+class MessageMediaDocument extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 2628808919;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 2628808919;
   bool? nopremium;
-  var document;
+  DocumentBase? document;
   int? ttlSeconds;
 
-  MessageMediaDocument(
-      {required this.nopremium,
-      required this.document,
-      required this.ttlSeconds});
+  MessageMediaDocument({this.nopremium, this.document, this.ttlSeconds});
 
   static MessageMediaDocument fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final nopremium = (flags & 8) == 8;
     var document;
@@ -5751,7 +5709,7 @@ class MessageMediaDocument extends BaseConstructor {
       [0, 0, 0, 0],
       (this.document == null || this.document == false)
           ? List<int>.empty()
-          : [(this.document.getBytes() as List<int>)]
+          : [(this.document!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.ttlSeconds == null || this.ttlSeconds == false)
@@ -5779,17 +5737,16 @@ class MessageMediaDocument extends BaseConstructor {
   }
 }
 
-class MessageMediaWebPage extends BaseConstructor {
+class MessageMediaWebPage extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 2737690112;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 2737690112;
-  var webpage;
+  WebPageBase webpage;
 
   MessageMediaWebPage({required this.webpage});
 
   static MessageMediaWebPage fromReader(BinaryReader reader) {
-    var len;
     var webpage = reader.tgReadObject();
     return MessageMediaWebPage(webpage: webpage);
   }
@@ -5798,7 +5755,7 @@ class MessageMediaWebPage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2737690112, 4),
-      (this.webpage.getBytes() as List<int>),
+      (this.webpage.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -5818,12 +5775,12 @@ class MessageMediaWebPage extends BaseConstructor {
   }
 }
 
-class MessageMediaVenue extends BaseConstructor {
+class MessageMediaVenue extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 784356159;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 784356159;
-  var geo;
+  GeoPointBase geo;
   String title;
   String address;
   String provider;
@@ -5839,7 +5796,6 @@ class MessageMediaVenue extends BaseConstructor {
       required this.venueType});
 
   static MessageMediaVenue fromReader(BinaryReader reader) {
-    var len;
     var geo = reader.tgReadObject();
     var title = reader.tgReadString();
     var address = reader.tgReadString();
@@ -5859,7 +5815,7 @@ class MessageMediaVenue extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(784356159, 4),
-      (this.geo.getBytes() as List<int>),
+      (this.geo.getBytes()),
       serializeBytes(this.title),
       serializeBytes(this.address),
       serializeBytes(this.provider),
@@ -5884,17 +5840,16 @@ class MessageMediaVenue extends BaseConstructor {
   }
 }
 
-class MessageMediaGame extends BaseConstructor {
+class MessageMediaGame extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 4256272392;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 4256272392;
-  var game;
+  Game game;
 
   MessageMediaGame({required this.game});
 
   static MessageMediaGame fromReader(BinaryReader reader) {
-    var len;
     var game = reader.tgReadObject();
     return MessageMediaGame(game: game);
   }
@@ -5903,7 +5858,7 @@ class MessageMediaGame extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4256272392, 4),
-      (this.game.getBytes() as List<int>),
+      (this.game.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -5923,7 +5878,7 @@ class MessageMediaGame extends BaseConstructor {
   }
 }
 
-class MessageMediaInvoice extends BaseConstructor {
+class MessageMediaInvoice extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 2220168007;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
@@ -5932,25 +5887,24 @@ class MessageMediaInvoice extends BaseConstructor {
   bool? test;
   String title;
   String description;
-  var photo;
+  WebDocumentBase? photo;
   int? receiptMsgId;
   String currency;
   BigInt totalAmount;
   String startParam;
 
   MessageMediaInvoice(
-      {required this.shippingAddressRequested,
-      required this.test,
+      {this.shippingAddressRequested,
+      this.test,
       required this.title,
       required this.description,
-      required this.photo,
-      required this.receiptMsgId,
+      this.photo,
+      this.receiptMsgId,
       required this.currency,
       required this.totalAmount,
       required this.startParam});
 
   static MessageMediaInvoice fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final shippingAddressRequested = (flags & 2) == 2;
     final test = (flags & 8) == 8;
@@ -5992,7 +5946,7 @@ class MessageMediaInvoice extends BaseConstructor {
       serializeBytes(this.description),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.receiptMsgId == null || this.receiptMsgId == false)
@@ -6023,24 +5977,23 @@ class MessageMediaInvoice extends BaseConstructor {
   }
 }
 
-class MessageMediaGeoLive extends BaseConstructor {
+class MessageMediaGeoLive extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 3108030054;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 3108030054;
-  var geo;
+  GeoPointBase geo;
   int? heading;
   int period;
   int? proximityNotificationRadius;
 
   MessageMediaGeoLive(
       {required this.geo,
-      required this.heading,
+      this.heading,
       required this.period,
-      required this.proximityNotificationRadius});
+      this.proximityNotificationRadius});
 
   static MessageMediaGeoLive fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var geo = reader.tgReadObject();
     var heading;
@@ -6068,7 +6021,7 @@ class MessageMediaGeoLive extends BaseConstructor {
     return [
       readBufferFromBigInt(3108030054, 4),
       [0, 0, 0, 0],
-      (this.geo.getBytes() as List<int>),
+      (this.geo.getBytes()),
       (this.heading == null || this.heading == false)
           ? List<int>.empty()
           : [readBufferFromBigInt(this.heading, 4, little: true, signed: true)]
@@ -6101,18 +6054,17 @@ class MessageMediaGeoLive extends BaseConstructor {
   }
 }
 
-class MessageMediaPoll extends BaseConstructor {
+class MessageMediaPoll extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 1272375192;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
   final ID = 1272375192;
-  var poll;
-  var results;
+  Poll poll;
+  PollResults results;
 
   MessageMediaPoll({required this.poll, required this.results});
 
   static MessageMediaPoll fromReader(BinaryReader reader) {
-    var len;
     var poll = reader.tgReadObject();
     var results = reader.tgReadObject();
     return MessageMediaPoll(poll: poll, results: results);
@@ -6122,8 +6074,8 @@ class MessageMediaPoll extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1272375192, 4),
-      (this.poll.getBytes() as List<int>),
-      (this.results.getBytes() as List<int>),
+      (this.poll.getBytes()),
+      (this.results.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -6143,7 +6095,7 @@ class MessageMediaPoll extends BaseConstructor {
   }
 }
 
-class MessageMediaDice extends BaseConstructor {
+class MessageMediaDice extends MessageMediaBase {
   static const CONSTRUCTOR_ID = 1065280907;
   static const SUBCLASS_OF_ID = 1198308914;
   final classType = "constructor";
@@ -6154,7 +6106,6 @@ class MessageMediaDice extends BaseConstructor {
   MessageMediaDice({required this.value, required this.emoticon});
 
   static MessageMediaDice fromReader(BinaryReader reader) {
-    var len;
     var value = reader.readInt();
     var emoticon = reader.tgReadString();
     return MessageMediaDice(value: value, emoticon: emoticon);
@@ -6185,7 +6136,9 @@ class MessageMediaDice extends BaseConstructor {
   }
 }
 
-class MessageActionEmpty extends BaseConstructor {
+abstract class MessageActionBase extends BaseConstructor {}
+
+class MessageActionEmpty extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3064919984;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6194,7 +6147,6 @@ class MessageActionEmpty extends BaseConstructor {
   MessageActionEmpty();
 
   static MessageActionEmpty fromReader(BinaryReader reader) {
-    var len;
     return MessageActionEmpty();
   }
 
@@ -6221,7 +6173,7 @@ class MessageActionEmpty extends BaseConstructor {
   }
 }
 
-class MessageActionChatCreate extends BaseConstructor {
+class MessageActionChatCreate extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3175599021;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6250,10 +6202,9 @@ class MessageActionChatCreate extends BaseConstructor {
       readBufferFromBigInt(3175599021, 4),
       serializeBytes(this.title),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .users.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -6274,7 +6225,7 @@ class MessageActionChatCreate extends BaseConstructor {
   }
 }
 
-class MessageActionChatEditTitle extends BaseConstructor {
+class MessageActionChatEditTitle extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3047280218;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6284,7 +6235,6 @@ class MessageActionChatEditTitle extends BaseConstructor {
   MessageActionChatEditTitle({required this.title});
 
   static MessageActionChatEditTitle fromReader(BinaryReader reader) {
-    var len;
     var title = reader.tgReadString();
     return MessageActionChatEditTitle(title: title);
   }
@@ -6313,17 +6263,16 @@ class MessageActionChatEditTitle extends BaseConstructor {
   }
 }
 
-class MessageActionChatEditPhoto extends BaseConstructor {
+class MessageActionChatEditPhoto extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2144015272;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 2144015272;
-  var photo;
+  PhotoBase photo;
 
   MessageActionChatEditPhoto({required this.photo});
 
   static MessageActionChatEditPhoto fromReader(BinaryReader reader) {
-    var len;
     var photo = reader.tgReadObject();
     return MessageActionChatEditPhoto(photo: photo);
   }
@@ -6332,7 +6281,7 @@ class MessageActionChatEditPhoto extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2144015272, 4),
-      (this.photo.getBytes() as List<int>),
+      (this.photo.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -6352,7 +6301,7 @@ class MessageActionChatEditPhoto extends BaseConstructor {
   }
 }
 
-class MessageActionChatDeletePhoto extends BaseConstructor {
+class MessageActionChatDeletePhoto extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2514746351;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6361,7 +6310,6 @@ class MessageActionChatDeletePhoto extends BaseConstructor {
   MessageActionChatDeletePhoto();
 
   static MessageActionChatDeletePhoto fromReader(BinaryReader reader) {
-    var len;
     return MessageActionChatDeletePhoto();
   }
 
@@ -6388,7 +6336,7 @@ class MessageActionChatDeletePhoto extends BaseConstructor {
   }
 }
 
-class MessageActionChatAddUser extends BaseConstructor {
+class MessageActionChatAddUser extends MessageActionBase {
   static const CONSTRUCTOR_ID = 365886720;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6414,10 +6362,9 @@ class MessageActionChatAddUser extends BaseConstructor {
     return [
       readBufferFromBigInt(365886720, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .users.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -6438,7 +6385,7 @@ class MessageActionChatAddUser extends BaseConstructor {
   }
 }
 
-class MessageActionChatDeleteUser extends BaseConstructor {
+class MessageActionChatDeleteUser extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2755604684;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6448,7 +6395,6 @@ class MessageActionChatDeleteUser extends BaseConstructor {
   MessageActionChatDeleteUser({required this.userId});
 
   static MessageActionChatDeleteUser fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     return MessageActionChatDeleteUser(userId: userId);
   }
@@ -6477,7 +6423,7 @@ class MessageActionChatDeleteUser extends BaseConstructor {
   }
 }
 
-class MessageActionChatJoinedByLink extends BaseConstructor {
+class MessageActionChatJoinedByLink extends MessageActionBase {
   static const CONSTRUCTOR_ID = 51520707;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6487,7 +6433,6 @@ class MessageActionChatJoinedByLink extends BaseConstructor {
   MessageActionChatJoinedByLink({required this.inviterId});
 
   static MessageActionChatJoinedByLink fromReader(BinaryReader reader) {
-    var len;
     var inviterId = reader.readLong();
     return MessageActionChatJoinedByLink(inviterId: inviterId);
   }
@@ -6516,7 +6461,7 @@ class MessageActionChatJoinedByLink extends BaseConstructor {
   }
 }
 
-class MessageActionChannelCreate extends BaseConstructor {
+class MessageActionChannelCreate extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2513611922;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6526,7 +6471,6 @@ class MessageActionChannelCreate extends BaseConstructor {
   MessageActionChannelCreate({required this.title});
 
   static MessageActionChannelCreate fromReader(BinaryReader reader) {
-    var len;
     var title = reader.tgReadString();
     return MessageActionChannelCreate(title: title);
   }
@@ -6555,7 +6499,7 @@ class MessageActionChannelCreate extends BaseConstructor {
   }
 }
 
-class MessageActionChatMigrateTo extends BaseConstructor {
+class MessageActionChatMigrateTo extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3775102866;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6565,7 +6509,6 @@ class MessageActionChatMigrateTo extends BaseConstructor {
   MessageActionChatMigrateTo({required this.channelId});
 
   static MessageActionChatMigrateTo fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     return MessageActionChatMigrateTo(channelId: channelId);
   }
@@ -6594,7 +6537,7 @@ class MessageActionChatMigrateTo extends BaseConstructor {
   }
 }
 
-class MessageActionChannelMigrateFrom extends BaseConstructor {
+class MessageActionChannelMigrateFrom extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3929622761;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6605,7 +6548,6 @@ class MessageActionChannelMigrateFrom extends BaseConstructor {
   MessageActionChannelMigrateFrom({required this.title, required this.chatId});
 
   static MessageActionChannelMigrateFrom fromReader(BinaryReader reader) {
-    var len;
     var title = reader.tgReadString();
     var chatId = reader.readLong();
     return MessageActionChannelMigrateFrom(title: title, chatId: chatId);
@@ -6636,7 +6578,7 @@ class MessageActionChannelMigrateFrom extends BaseConstructor {
   }
 }
 
-class MessageActionPinMessage extends BaseConstructor {
+class MessageActionPinMessage extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2495428845;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6645,7 +6587,6 @@ class MessageActionPinMessage extends BaseConstructor {
   MessageActionPinMessage();
 
   static MessageActionPinMessage fromReader(BinaryReader reader) {
-    var len;
     return MessageActionPinMessage();
   }
 
@@ -6672,7 +6613,7 @@ class MessageActionPinMessage extends BaseConstructor {
   }
 }
 
-class MessageActionHistoryClear extends BaseConstructor {
+class MessageActionHistoryClear extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2679813636;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6681,7 +6622,6 @@ class MessageActionHistoryClear extends BaseConstructor {
   MessageActionHistoryClear();
 
   static MessageActionHistoryClear fromReader(BinaryReader reader) {
-    var len;
     return MessageActionHistoryClear();
   }
 
@@ -6708,7 +6648,7 @@ class MessageActionHistoryClear extends BaseConstructor {
   }
 }
 
-class MessageActionGameScore extends BaseConstructor {
+class MessageActionGameScore extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2460428406;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6719,7 +6659,6 @@ class MessageActionGameScore extends BaseConstructor {
   MessageActionGameScore({required this.gameId, required this.score});
 
   static MessageActionGameScore fromReader(BinaryReader reader) {
-    var len;
     var gameId = reader.readLong();
     var score = reader.readInt();
     return MessageActionGameScore(gameId: gameId, score: score);
@@ -6750,7 +6689,7 @@ class MessageActionGameScore extends BaseConstructor {
   }
 }
 
-class MessageActionPaymentSentMe extends BaseConstructor {
+class MessageActionPaymentSentMe extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2402399015;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6760,22 +6699,21 @@ class MessageActionPaymentSentMe extends BaseConstructor {
   String currency;
   BigInt totalAmount;
   List<int> payload;
-  var info;
+  PaymentRequestedInfo? info;
   String? shippingOptionId;
-  var charge;
+  PaymentCharge charge;
 
   MessageActionPaymentSentMe(
-      {required this.recurringInit,
-      required this.recurringUsed,
+      {this.recurringInit,
+      this.recurringUsed,
       required this.currency,
       required this.totalAmount,
       required this.payload,
-      required this.info,
-      required this.shippingOptionId,
+      this.info,
+      this.shippingOptionId,
       required this.charge});
 
   static MessageActionPaymentSentMe fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final recurringInit = (flags & 4) == 4;
     final recurringUsed = (flags & 8) == 8;
@@ -6816,7 +6754,7 @@ class MessageActionPaymentSentMe extends BaseConstructor {
       serializeBytes(this.payload),
       (this.info == null || this.info == false)
           ? List<int>.empty()
-          : [(this.info.getBytes() as List<int>)]
+          : [(this.info!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.shippingOptionId == null || this.shippingOptionId == false)
@@ -6824,7 +6762,7 @@ class MessageActionPaymentSentMe extends BaseConstructor {
           : [serializeBytes(this.shippingOptionId)]
               .expand((element) => element)
               .toList(),
-      (this.charge.getBytes() as List<int>),
+      (this.charge.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -6844,7 +6782,7 @@ class MessageActionPaymentSentMe extends BaseConstructor {
   }
 }
 
-class MessageActionPaymentSent extends BaseConstructor {
+class MessageActionPaymentSent extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2518040406;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6856,14 +6794,13 @@ class MessageActionPaymentSent extends BaseConstructor {
   String? invoiceSlug;
 
   MessageActionPaymentSent(
-      {required this.recurringInit,
-      required this.recurringUsed,
+      {this.recurringInit,
+      this.recurringUsed,
       required this.currency,
       required this.totalAmount,
-      required this.invoiceSlug});
+      this.invoiceSlug});
 
   static MessageActionPaymentSent fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final recurringInit = (flags & 4) == 4;
     final recurringUsed = (flags & 8) == 8;
@@ -6914,24 +6851,20 @@ class MessageActionPaymentSent extends BaseConstructor {
   }
 }
 
-class MessageActionPhoneCall extends BaseConstructor {
+class MessageActionPhoneCall extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2162236031;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 2162236031;
   bool? video;
   BigInt callId;
-  var reason;
+  PhoneCallDiscardReasonBase? reason;
   int? duration;
 
   MessageActionPhoneCall(
-      {required this.video,
-      required this.callId,
-      required this.reason,
-      required this.duration});
+      {this.video, required this.callId, this.reason, this.duration});
 
   static MessageActionPhoneCall fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final video = (flags & 4) == 4;
     var callId = reader.readLong();
@@ -6959,7 +6892,7 @@ class MessageActionPhoneCall extends BaseConstructor {
       readBufferFromBigInt(this.callId, 8, little: true, signed: true),
       (this.reason == null || this.reason == false)
           ? List<int>.empty()
-          : [(this.reason.getBytes() as List<int>)]
+          : [(this.reason!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.duration == null || this.duration == false)
@@ -6986,7 +6919,7 @@ class MessageActionPhoneCall extends BaseConstructor {
   }
 }
 
-class MessageActionScreenshotTaken extends BaseConstructor {
+class MessageActionScreenshotTaken extends MessageActionBase {
   static const CONSTRUCTOR_ID = 1200788123;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -6995,7 +6928,6 @@ class MessageActionScreenshotTaken extends BaseConstructor {
   MessageActionScreenshotTaken();
 
   static MessageActionScreenshotTaken fromReader(BinaryReader reader) {
-    var len;
     return MessageActionScreenshotTaken();
   }
 
@@ -7022,7 +6954,7 @@ class MessageActionScreenshotTaken extends BaseConstructor {
   }
 }
 
-class MessageActionCustomAction extends BaseConstructor {
+class MessageActionCustomAction extends MessageActionBase {
   static const CONSTRUCTOR_ID = 4209418070;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -7032,7 +6964,6 @@ class MessageActionCustomAction extends BaseConstructor {
   MessageActionCustomAction({required this.message});
 
   static MessageActionCustomAction fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadString();
     return MessageActionCustomAction(message: message);
   }
@@ -7061,7 +6992,7 @@ class MessageActionCustomAction extends BaseConstructor {
   }
 }
 
-class MessageActionBotAllowed extends BaseConstructor {
+class MessageActionBotAllowed extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2884218878;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -7071,7 +7002,6 @@ class MessageActionBotAllowed extends BaseConstructor {
   MessageActionBotAllowed({required this.domain});
 
   static MessageActionBotAllowed fromReader(BinaryReader reader) {
-    var len;
     var domain = reader.tgReadString();
     return MessageActionBotAllowed(domain: domain);
   }
@@ -7100,13 +7030,13 @@ class MessageActionBotAllowed extends BaseConstructor {
   }
 }
 
-class MessageActionSecureValuesSentMe extends BaseConstructor {
+class MessageActionSecureValuesSentMe extends MessageActionBase {
   static const CONSTRUCTOR_ID = 455635795;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 455635795;
-  List<dynamic> values;
-  var credentials;
+  List<SecureValue> values;
+  SecureCredentialsEncrypted credentials;
 
   MessageActionSecureValuesSentMe(
       {required this.values, required this.credentials});
@@ -7115,7 +7045,7 @@ class MessageActionSecureValuesSentMe extends BaseConstructor {
     var len;
     var _vectorvalues = reader.readInt();
     if (_vectorvalues != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> values = [];
+    List<SecureValue> values = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       values.add(reader.tgReadObject());
@@ -7130,12 +7060,11 @@ class MessageActionSecureValuesSentMe extends BaseConstructor {
     return [
       readBufferFromBigInt(455635795, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.values!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.values.length, 4, little: true, signed: true),
       this
-          .values!
-          .map((x) => (x.getBytes() as List<int>))
+          .values.map((x) => x.getBytes())
           .expand((element) => element),
-      (this.credentials.getBytes() as List<int>),
+      (this.credentials.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -7155,12 +7084,12 @@ class MessageActionSecureValuesSentMe extends BaseConstructor {
   }
 }
 
-class MessageActionSecureValuesSent extends BaseConstructor {
+class MessageActionSecureValuesSent extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3646710100;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 3646710100;
-  List<dynamic> types;
+  List<SecureValueTypeBase> types;
 
   MessageActionSecureValuesSent({required this.types});
 
@@ -7168,7 +7097,7 @@ class MessageActionSecureValuesSent extends BaseConstructor {
     var len;
     var _vectortypes = reader.readInt();
     if (_vectortypes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> types = [];
+    List<SecureValueTypeBase> types = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       types.add(reader.tgReadObject());
@@ -7181,10 +7110,9 @@ class MessageActionSecureValuesSent extends BaseConstructor {
     return [
       readBufferFromBigInt(3646710100, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.types!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.types.length, 4, little: true, signed: true),
       this
-          .types!
-          .map((x) => (x.getBytes() as List<int>))
+          .types.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -7205,7 +7133,7 @@ class MessageActionSecureValuesSent extends BaseConstructor {
   }
 }
 
-class MessageActionContactSignUp extends BaseConstructor {
+class MessageActionContactSignUp extends MessageActionBase {
   static const CONSTRUCTOR_ID = 4092747638;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -7214,7 +7142,6 @@ class MessageActionContactSignUp extends BaseConstructor {
   MessageActionContactSignUp();
 
   static MessageActionContactSignUp fromReader(BinaryReader reader) {
-    var len;
     return MessageActionContactSignUp();
   }
 
@@ -7241,20 +7168,19 @@ class MessageActionContactSignUp extends BaseConstructor {
   }
 }
 
-class MessageActionGeoProximityReached extends BaseConstructor {
+class MessageActionGeoProximityReached extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2564871831;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 2564871831;
-  var fromId;
-  var toId;
+  PeerBase fromId;
+  PeerBase toId;
   int distance;
 
   MessageActionGeoProximityReached(
       {required this.fromId, required this.toId, required this.distance});
 
   static MessageActionGeoProximityReached fromReader(BinaryReader reader) {
-    var len;
     var fromId = reader.tgReadObject();
     var toId = reader.tgReadObject();
     var distance = reader.readInt();
@@ -7266,8 +7192,8 @@ class MessageActionGeoProximityReached extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2564871831, 4),
-      (this.fromId.getBytes() as List<int>),
-      (this.toId.getBytes() as List<int>),
+      (this.fromId.getBytes()),
+      (this.toId.getBytes()),
       readBufferFromBigInt(this.distance, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -7288,18 +7214,17 @@ class MessageActionGeoProximityReached extends BaseConstructor {
   }
 }
 
-class MessageActionGroupCall extends BaseConstructor {
+class MessageActionGroupCall extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2047704898;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 2047704898;
-  var call;
+  InputGroupCall call;
   int? duration;
 
-  MessageActionGroupCall({required this.call, required this.duration});
+  MessageActionGroupCall({required this.call, this.duration});
 
   static MessageActionGroupCall fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var call = reader.tgReadObject();
     var duration;
@@ -7316,7 +7241,7 @@ class MessageActionGroupCall extends BaseConstructor {
     return [
       readBufferFromBigInt(2047704898, 4),
       [0, 0, 0, 0],
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
       (this.duration == null || this.duration == false)
           ? List<int>.empty()
           : [readBufferFromBigInt(this.duration, 4, little: true, signed: true)]
@@ -7341,12 +7266,12 @@ class MessageActionGroupCall extends BaseConstructor {
   }
 }
 
-class MessageActionInviteToGroupCall extends BaseConstructor {
+class MessageActionInviteToGroupCall extends MessageActionBase {
   static const CONSTRUCTOR_ID = 1345295095;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 1345295095;
-  var call;
+  InputGroupCall call;
   List<BigInt> users;
 
   MessageActionInviteToGroupCall({required this.call, required this.users});
@@ -7368,12 +7293,11 @@ class MessageActionInviteToGroupCall extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1345295095, 4),
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .users.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -7394,7 +7318,7 @@ class MessageActionInviteToGroupCall extends BaseConstructor {
   }
 }
 
-class MessageActionSetMessagesTTL extends BaseConstructor {
+class MessageActionSetMessagesTTL extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2853895165;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -7404,7 +7328,6 @@ class MessageActionSetMessagesTTL extends BaseConstructor {
   MessageActionSetMessagesTTL({required this.period});
 
   static MessageActionSetMessagesTTL fromReader(BinaryReader reader) {
-    var len;
     var period = reader.readInt();
     return MessageActionSetMessagesTTL(period: period);
   }
@@ -7433,19 +7356,18 @@ class MessageActionSetMessagesTTL extends BaseConstructor {
   }
 }
 
-class MessageActionGroupCallScheduled extends BaseConstructor {
+class MessageActionGroupCallScheduled extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3013637729;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
   final ID = 3013637729;
-  var call;
+  InputGroupCall call;
   int scheduleDate;
 
   MessageActionGroupCallScheduled(
       {required this.call, required this.scheduleDate});
 
   static MessageActionGroupCallScheduled fromReader(BinaryReader reader) {
-    var len;
     var call = reader.tgReadObject();
     var scheduleDate = reader.readInt();
     return MessageActionGroupCallScheduled(
@@ -7456,7 +7378,7 @@ class MessageActionGroupCallScheduled extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3013637729, 4),
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
       readBufferFromBigInt(this.scheduleDate, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -7477,7 +7399,7 @@ class MessageActionGroupCallScheduled extends BaseConstructor {
   }
 }
 
-class MessageActionSetChatTheme extends BaseConstructor {
+class MessageActionSetChatTheme extends MessageActionBase {
   static const CONSTRUCTOR_ID = 2860016453;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -7487,7 +7409,6 @@ class MessageActionSetChatTheme extends BaseConstructor {
   MessageActionSetChatTheme({required this.emoticon});
 
   static MessageActionSetChatTheme fromReader(BinaryReader reader) {
-    var len;
     var emoticon = reader.tgReadString();
     return MessageActionSetChatTheme(emoticon: emoticon);
   }
@@ -7516,7 +7437,7 @@ class MessageActionSetChatTheme extends BaseConstructor {
   }
 }
 
-class MessageActionChatJoinedByRequest extends BaseConstructor {
+class MessageActionChatJoinedByRequest extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3955008459;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -7525,7 +7446,6 @@ class MessageActionChatJoinedByRequest extends BaseConstructor {
   MessageActionChatJoinedByRequest();
 
   static MessageActionChatJoinedByRequest fromReader(BinaryReader reader) {
-    var len;
     return MessageActionChatJoinedByRequest();
   }
 
@@ -7552,7 +7472,7 @@ class MessageActionChatJoinedByRequest extends BaseConstructor {
   }
 }
 
-class MessageActionWebViewDataSentMe extends BaseConstructor {
+class MessageActionWebViewDataSentMe extends MessageActionBase {
   static const CONSTRUCTOR_ID = 1205698681;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -7563,7 +7483,6 @@ class MessageActionWebViewDataSentMe extends BaseConstructor {
   MessageActionWebViewDataSentMe({required this.text, required this.data});
 
   static MessageActionWebViewDataSentMe fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var data = reader.tgReadString();
     return MessageActionWebViewDataSentMe(text: text, data: data);
@@ -7594,7 +7513,7 @@ class MessageActionWebViewDataSentMe extends BaseConstructor {
   }
 }
 
-class MessageActionWebViewDataSent extends BaseConstructor {
+class MessageActionWebViewDataSent extends MessageActionBase {
   static const CONSTRUCTOR_ID = 3032714421;
   static const SUBCLASS_OF_ID = 2256589094;
   final classType = "constructor";
@@ -7604,7 +7523,6 @@ class MessageActionWebViewDataSent extends BaseConstructor {
   MessageActionWebViewDataSent({required this.text});
 
   static MessageActionWebViewDataSent fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     return MessageActionWebViewDataSent(text: text);
   }
@@ -7633,28 +7551,30 @@ class MessageActionWebViewDataSent extends BaseConstructor {
   }
 }
 
-class Dialog extends BaseConstructor {
+abstract class DialogBase extends BaseConstructor {}
+
+class Dialog extends DialogBase {
   static const CONSTRUCTOR_ID = 2834157813;
   static const SUBCLASS_OF_ID = 1120787796;
   final classType = "constructor";
   final ID = 2834157813;
   bool? pinned;
   bool? unreadMark;
-  var peer;
+  PeerBase peer;
   int topMessage;
   int readInboxMaxId;
   int readOutboxMaxId;
   int unreadCount;
   int unreadMentionsCount;
   int unreadReactionsCount;
-  var notifySettings;
+  PeerNotifySettings notifySettings;
   int? pts;
-  var draft;
+  DraftMessageBase? draft;
   int? folderId;
 
   Dialog(
-      {required this.pinned,
-      required this.unreadMark,
+      {this.pinned,
+      this.unreadMark,
       required this.peer,
       required this.topMessage,
       required this.readInboxMaxId,
@@ -7663,12 +7583,11 @@ class Dialog extends BaseConstructor {
       required this.unreadMentionsCount,
       required this.unreadReactionsCount,
       required this.notifySettings,
-      required this.pts,
-      required this.draft,
-      required this.folderId});
+      this.pts,
+      this.draft,
+      this.folderId});
 
   static Dialog fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final pinned = (flags & 4) == 4;
     final unreadMark = (flags & 8) == 8;
@@ -7719,7 +7638,7 @@ class Dialog extends BaseConstructor {
     return [
       readBufferFromBigInt(2834157813, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.topMessage, 4, little: true, signed: true),
       readBufferFromBigInt(this.readInboxMaxId, 4, little: true, signed: true),
       readBufferFromBigInt(this.readOutboxMaxId, 4, little: true, signed: true),
@@ -7728,7 +7647,7 @@ class Dialog extends BaseConstructor {
           little: true, signed: true),
       readBufferFromBigInt(this.unreadReactionsCount, 4,
           little: true, signed: true),
-      (this.notifySettings.getBytes() as List<int>),
+      (this.notifySettings.getBytes()),
       (this.pts == null || this.pts == false)
           ? List<int>.empty()
           : [readBufferFromBigInt(this.pts, 4, little: true, signed: true)]
@@ -7736,7 +7655,7 @@ class Dialog extends BaseConstructor {
               .toList(),
       (this.draft == null || this.draft == false)
           ? List<int>.empty()
-          : [(this.draft.getBytes() as List<int>)]
+          : [(this.draft!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.folderId == null || this.folderId == false)
@@ -7763,14 +7682,14 @@ class Dialog extends BaseConstructor {
   }
 }
 
-class DialogFolder extends BaseConstructor {
+class DialogFolder extends DialogBase {
   static const CONSTRUCTOR_ID = 1908216652;
   static const SUBCLASS_OF_ID = 1120787796;
   final classType = "constructor";
   final ID = 1908216652;
   bool? pinned;
-  var folder;
-  var peer;
+  Folder folder;
+  PeerBase peer;
   int topMessage;
   int unreadMutedPeersCount;
   int unreadUnmutedPeersCount;
@@ -7778,7 +7697,7 @@ class DialogFolder extends BaseConstructor {
   int unreadUnmutedMessagesCount;
 
   DialogFolder(
-      {required this.pinned,
+      {this.pinned,
       required this.folder,
       required this.peer,
       required this.topMessage,
@@ -7788,7 +7707,6 @@ class DialogFolder extends BaseConstructor {
       required this.unreadUnmutedMessagesCount});
 
   static DialogFolder fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final pinned = (flags & 4) == 4;
     var folder = reader.tgReadObject();
@@ -7814,8 +7732,8 @@ class DialogFolder extends BaseConstructor {
     return [
       readBufferFromBigInt(1908216652, 4),
       [0, 0, 0, 0],
-      (this.folder.getBytes() as List<int>),
-      (this.peer.getBytes() as List<int>),
+      (this.folder.getBytes()),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.topMessage, 4, little: true, signed: true),
       readBufferFromBigInt(this.unreadMutedPeersCount, 4,
           little: true, signed: true),
@@ -7844,7 +7762,9 @@ class DialogFolder extends BaseConstructor {
   }
 }
 
-class PhotoEmpty extends BaseConstructor {
+abstract class PhotoBase extends BaseConstructor {}
+
+class PhotoEmpty extends PhotoBase {
   static const CONSTRUCTOR_ID = 590459437;
   static const SUBCLASS_OF_ID = 3581324060;
   final classType = "constructor";
@@ -7854,7 +7774,6 @@ class PhotoEmpty extends BaseConstructor {
   PhotoEmpty({required this.id});
 
   static PhotoEmpty fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     return PhotoEmpty(id: id);
   }
@@ -7883,7 +7802,7 @@ class PhotoEmpty extends BaseConstructor {
   }
 }
 
-class Photo extends BaseConstructor {
+class Photo extends PhotoBase {
   static const CONSTRUCTOR_ID = 4212750949;
   static const SUBCLASS_OF_ID = 3581324060;
   final classType = "constructor";
@@ -7893,18 +7812,18 @@ class Photo extends BaseConstructor {
   BigInt accessHash;
   List<int> fileReference;
   int date;
-  List<dynamic> sizes;
-  List<dynamic>? videoSizes;
+  List<PhotoSizeBase> sizes;
+  List<VideoSize>? videoSizes;
   int dcId;
 
   Photo(
-      {required this.hasStickers,
+      {this.hasStickers,
       required this.id,
       required this.accessHash,
       required this.fileReference,
       required this.date,
       required this.sizes,
-      required this.videoSizes,
+      this.videoSizes,
       required this.dcId});
 
   static Photo fromReader(BinaryReader reader) {
@@ -7917,7 +7836,7 @@ class Photo extends BaseConstructor {
     var date = reader.readInt();
     var _vectorsizes = reader.readInt();
     if (_vectorsizes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> sizes = [];
+    List<PhotoSizeBase> sizes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       sizes.add(reader.tgReadObject());
@@ -7926,7 +7845,7 @@ class Photo extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorvideoSizes = reader.readInt();
       if (_vectorvideoSizes != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> videoSizes = [];
+      List<VideoSize> videoSizes = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         videoSizes.add(reader.tgReadObject());
@@ -7956,10 +7875,9 @@ class Photo extends BaseConstructor {
       serializeBytes(this.fileReference),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.sizes!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.sizes.length, 4, little: true, signed: true),
       this
-          .sizes!
-          .map((x) => (x.getBytes() as List<int>))
+          .sizes.map((x) => x.getBytes())
           .expand((element) => element),
       (this.videoSizes == null || this.videoSizes == false)
           ? List<int>.empty()
@@ -7969,7 +7887,7 @@ class Photo extends BaseConstructor {
                   little: true, signed: true),
               this
                   .videoSizes!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       readBufferFromBigInt(this.dcId, 4, little: true, signed: true),
@@ -7992,7 +7910,9 @@ class Photo extends BaseConstructor {
   }
 }
 
-class PhotoSizeEmpty extends BaseConstructor {
+abstract class PhotoSizeBase extends BaseConstructor {}
+
+class PhotoSizeEmpty extends PhotoSizeBase {
   static const CONSTRUCTOR_ID = 236446268;
   static const SUBCLASS_OF_ID = 399256025;
   final classType = "constructor";
@@ -8002,7 +7922,6 @@ class PhotoSizeEmpty extends BaseConstructor {
   PhotoSizeEmpty({required this.type});
 
   static PhotoSizeEmpty fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadString();
     return PhotoSizeEmpty(type: type);
   }
@@ -8031,7 +7950,7 @@ class PhotoSizeEmpty extends BaseConstructor {
   }
 }
 
-class PhotoSize extends BaseConstructor {
+class PhotoSize extends PhotoSizeBase {
   static const CONSTRUCTOR_ID = 1976012384;
   static const SUBCLASS_OF_ID = 399256025;
   final classType = "constructor";
@@ -8048,7 +7967,6 @@ class PhotoSize extends BaseConstructor {
       required this.size});
 
   static PhotoSize fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadString();
     var w = reader.readInt();
     var h = reader.readInt();
@@ -8083,7 +8001,7 @@ class PhotoSize extends BaseConstructor {
   }
 }
 
-class PhotoCachedSize extends BaseConstructor {
+class PhotoCachedSize extends PhotoSizeBase {
   static const CONSTRUCTOR_ID = 35527382;
   static const SUBCLASS_OF_ID = 399256025;
   final classType = "constructor";
@@ -8100,7 +8018,6 @@ class PhotoCachedSize extends BaseConstructor {
       required this.bytes});
 
   static PhotoCachedSize fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadString();
     var w = reader.readInt();
     var h = reader.readInt();
@@ -8135,7 +8052,7 @@ class PhotoCachedSize extends BaseConstructor {
   }
 }
 
-class PhotoStrippedSize extends BaseConstructor {
+class PhotoStrippedSize extends PhotoSizeBase {
   static const CONSTRUCTOR_ID = 3769678894;
   static const SUBCLASS_OF_ID = 399256025;
   final classType = "constructor";
@@ -8146,7 +8063,6 @@ class PhotoStrippedSize extends BaseConstructor {
   PhotoStrippedSize({required this.type, required this.bytes});
 
   static PhotoStrippedSize fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadString();
     var bytes = reader.tgReadBytes();
     return PhotoStrippedSize(type: type, bytes: bytes);
@@ -8177,7 +8093,7 @@ class PhotoStrippedSize extends BaseConstructor {
   }
 }
 
-class PhotoSizeProgressive extends BaseConstructor {
+class PhotoSizeProgressive extends PhotoSizeBase {
   static const CONSTRUCTOR_ID = 4198431637;
   static const SUBCLASS_OF_ID = 399256025;
   final classType = "constructor";
@@ -8216,10 +8132,9 @@ class PhotoSizeProgressive extends BaseConstructor {
       readBufferFromBigInt(this.w, 4, little: true, signed: true),
       readBufferFromBigInt(this.h, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.sizes!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.sizes.length, 4, little: true, signed: true),
       this
-          .sizes!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .sizes.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -8240,7 +8155,7 @@ class PhotoSizeProgressive extends BaseConstructor {
   }
 }
 
-class PhotoPathSize extends BaseConstructor {
+class PhotoPathSize extends PhotoSizeBase {
   static const CONSTRUCTOR_ID = 3626061121;
   static const SUBCLASS_OF_ID = 399256025;
   final classType = "constructor";
@@ -8251,7 +8166,6 @@ class PhotoPathSize extends BaseConstructor {
   PhotoPathSize({required this.type, required this.bytes});
 
   static PhotoPathSize fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadString();
     var bytes = reader.tgReadBytes();
     return PhotoPathSize(type: type, bytes: bytes);
@@ -8282,7 +8196,9 @@ class PhotoPathSize extends BaseConstructor {
   }
 }
 
-class GeoPointEmpty extends BaseConstructor {
+abstract class GeoPointBase extends BaseConstructor {}
+
+class GeoPointEmpty extends GeoPointBase {
   static const CONSTRUCTOR_ID = 286776671;
   static const SUBCLASS_OF_ID = 3591430509;
   final classType = "constructor";
@@ -8291,7 +8207,6 @@ class GeoPointEmpty extends BaseConstructor {
   GeoPointEmpty();
 
   static GeoPointEmpty fromReader(BinaryReader reader) {
-    var len;
     return GeoPointEmpty();
   }
 
@@ -8318,7 +8233,7 @@ class GeoPointEmpty extends BaseConstructor {
   }
 }
 
-class GeoPoint extends BaseConstructor {
+class GeoPoint extends GeoPointBase {
   static const CONSTRUCTOR_ID = 2997024355;
   static const SUBCLASS_OF_ID = 3591430509;
   final classType = "constructor";
@@ -8332,10 +8247,9 @@ class GeoPoint extends BaseConstructor {
       {required this.long,
       required this.lat,
       required this.accessHash,
-      required this.accuracyRadius});
+      this.accuracyRadius});
 
   static GeoPoint fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var long = reader.readDouble();
     var lat = reader.readDouble();
@@ -8386,17 +8300,18 @@ class GeoPoint extends BaseConstructor {
   }
 }
 
-class InputNotifyPeer extends BaseConstructor {
+abstract class InputNotifyPeerBase extends BaseConstructor {}
+
+class InputNotifyPeer extends InputNotifyPeerBase {
   static const CONSTRUCTOR_ID = 3099351820;
   static const SUBCLASS_OF_ID = 1486362133;
   final classType = "constructor";
   final ID = 3099351820;
-  var peer;
+  InputPeerBase peer;
 
   InputNotifyPeer({required this.peer});
 
   static InputNotifyPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return InputNotifyPeer(peer: peer);
   }
@@ -8405,7 +8320,7 @@ class InputNotifyPeer extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3099351820, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -8425,7 +8340,7 @@ class InputNotifyPeer extends BaseConstructor {
   }
 }
 
-class InputNotifyUsers extends BaseConstructor {
+class InputNotifyUsers extends InputNotifyPeerBase {
   static const CONSTRUCTOR_ID = 423314455;
   static const SUBCLASS_OF_ID = 1486362133;
   final classType = "constructor";
@@ -8434,7 +8349,6 @@ class InputNotifyUsers extends BaseConstructor {
   InputNotifyUsers();
 
   static InputNotifyUsers fromReader(BinaryReader reader) {
-    var len;
     return InputNotifyUsers();
   }
 
@@ -8461,7 +8375,7 @@ class InputNotifyUsers extends BaseConstructor {
   }
 }
 
-class InputNotifyChats extends BaseConstructor {
+class InputNotifyChats extends InputNotifyPeerBase {
   static const CONSTRUCTOR_ID = 1251338318;
   static const SUBCLASS_OF_ID = 1486362133;
   final classType = "constructor";
@@ -8470,7 +8384,6 @@ class InputNotifyChats extends BaseConstructor {
   InputNotifyChats();
 
   static InputNotifyChats fromReader(BinaryReader reader) {
-    var len;
     return InputNotifyChats();
   }
 
@@ -8497,7 +8410,7 @@ class InputNotifyChats extends BaseConstructor {
   }
 }
 
-class InputNotifyBroadcasts extends BaseConstructor {
+class InputNotifyBroadcasts extends InputNotifyPeerBase {
   static const CONSTRUCTOR_ID = 2983951486;
   static const SUBCLASS_OF_ID = 1486362133;
   final classType = "constructor";
@@ -8506,7 +8419,6 @@ class InputNotifyBroadcasts extends BaseConstructor {
   InputNotifyBroadcasts();
 
   static InputNotifyBroadcasts fromReader(BinaryReader reader) {
-    var len;
     return InputNotifyBroadcasts();
   }
 
@@ -8541,16 +8453,12 @@ class InputPeerNotifySettings extends BaseConstructor {
   bool? showPreviews;
   bool? silent;
   int? muteUntil;
-  var sound;
+  NotificationSoundBase? sound;
 
   InputPeerNotifySettings(
-      {required this.showPreviews,
-      required this.silent,
-      required this.muteUntil,
-      required this.sound});
+      {this.showPreviews, this.silent, this.muteUntil, this.sound});
 
   static InputPeerNotifySettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var showPreviews;
     if ((flags & 1) == 1) {
@@ -8606,7 +8514,7 @@ class InputPeerNotifySettings extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.sound == null || this.sound == false)
           ? List<int>.empty()
-          : [(this.sound.getBytes() as List<int>)]
+          : [(this.sound!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -8636,20 +8544,19 @@ class PeerNotifySettings extends BaseConstructor {
   bool? showPreviews;
   bool? silent;
   int? muteUntil;
-  var iosSound;
-  var androidSound;
-  var otherSound;
+  NotificationSoundBase? iosSound;
+  NotificationSoundBase? androidSound;
+  NotificationSoundBase? otherSound;
 
   PeerNotifySettings(
-      {required this.showPreviews,
-      required this.silent,
-      required this.muteUntil,
-      required this.iosSound,
-      required this.androidSound,
-      required this.otherSound});
+      {this.showPreviews,
+      this.silent,
+      this.muteUntil,
+      this.iosSound,
+      this.androidSound,
+      this.otherSound});
 
   static PeerNotifySettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var showPreviews;
     if ((flags & 1) == 1) {
@@ -8719,17 +8626,17 @@ class PeerNotifySettings extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.iosSound == null || this.iosSound == false)
           ? List<int>.empty()
-          : [(this.iosSound.getBytes() as List<int>)]
+          : [(this.iosSound!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.androidSound == null || this.androidSound == false)
           ? List<int>.empty()
-          : [(this.androidSound.getBytes() as List<int>)]
+          : [(this.androidSound!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.otherSound == null || this.otherSound == false)
           ? List<int>.empty()
-          : [(this.otherSound.getBytes() as List<int>)]
+          : [(this.otherSound!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -8770,21 +8677,20 @@ class PeerSettings extends BaseConstructor {
   int? requestChatDate;
 
   PeerSettings(
-      {required this.reportSpam,
-      required this.addContact,
-      required this.blockContact,
-      required this.shareContact,
-      required this.needContactsException,
-      required this.reportGeo,
-      required this.autoarchived,
-      required this.inviteMembers,
-      required this.requestChatBroadcast,
-      required this.geoDistance,
-      required this.requestChatTitle,
-      required this.requestChatDate});
+      {this.reportSpam,
+      this.addContact,
+      this.blockContact,
+      this.shareContact,
+      this.needContactsException,
+      this.reportGeo,
+      this.autoarchived,
+      this.inviteMembers,
+      this.requestChatBroadcast,
+      this.geoDistance,
+      this.requestChatTitle,
+      this.requestChatDate});
 
   static PeerSettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final reportSpam = (flags & 1) == 1;
     final addContact = (flags & 2) == 2;
@@ -8869,7 +8775,9 @@ class PeerSettings extends BaseConstructor {
   }
 }
 
-class WallPaper extends BaseConstructor {
+abstract class WallPaperBase extends BaseConstructor {}
+
+class WallPaper extends WallPaperBase {
   static const CONSTRUCTOR_ID = 2755118061;
   static const SUBCLASS_OF_ID = 2527250827;
   final classType = "constructor";
@@ -8881,22 +8789,21 @@ class WallPaper extends BaseConstructor {
   bool? dark;
   BigInt accessHash;
   String slug;
-  var document;
-  var settings;
+  DocumentBase document;
+  WallPaperSettings? settings;
 
   WallPaper(
       {required this.id,
-      required this.creator,
-      required this.defaultVar,
-      required this.pattern,
-      required this.dark,
+      this.creator,
+      this.defaultVar,
+      this.pattern,
+      this.dark,
       required this.accessHash,
       required this.slug,
       required this.document,
-      required this.settings});
+      this.settings});
 
   static WallPaper fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     final flags = reader.readInt();
     final creator = (flags & 1) == 1;
@@ -8932,10 +8839,10 @@ class WallPaper extends BaseConstructor {
       [0, 0, 0, 0],
       readBufferFromBigInt(this.accessHash, 8, little: true, signed: true),
       serializeBytes(this.slug),
-      (this.document.getBytes() as List<int>),
+      (this.document.getBytes()),
       (this.settings == null || this.settings == false)
           ? List<int>.empty()
-          : [(this.settings.getBytes() as List<int>)]
+          : [(this.settings!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -8957,7 +8864,7 @@ class WallPaper extends BaseConstructor {
   }
 }
 
-class WallPaperNoFile extends BaseConstructor {
+class WallPaperNoFile extends WallPaperBase {
   static const CONSTRUCTOR_ID = 3766501654;
   static const SUBCLASS_OF_ID = 2527250827;
   final classType = "constructor";
@@ -8965,16 +8872,12 @@ class WallPaperNoFile extends BaseConstructor {
   BigInt id;
   bool? defaultVar;
   bool? dark;
-  var settings;
+  WallPaperSettings? settings;
 
   WallPaperNoFile(
-      {required this.id,
-      required this.defaultVar,
-      required this.dark,
-      required this.settings});
+      {required this.id, this.defaultVar, this.dark, this.settings});
 
   static WallPaperNoFile fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     final flags = reader.readInt();
     final defaultVar = (flags & 2) == 2;
@@ -8997,7 +8900,7 @@ class WallPaperNoFile extends BaseConstructor {
       [0, 0, 0, 0],
       (this.settings == null || this.settings == false)
           ? List<int>.empty()
-          : [(this.settings.getBytes() as List<int>)]
+          : [(this.settings!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -9019,7 +8922,9 @@ class WallPaperNoFile extends BaseConstructor {
   }
 }
 
-class InputReportReasonSpam extends BaseConstructor {
+abstract class ReportReasonBase extends BaseConstructor {}
+
+class InputReportReasonSpam extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 1490799288;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9028,7 +8933,6 @@ class InputReportReasonSpam extends BaseConstructor {
   InputReportReasonSpam();
 
   static InputReportReasonSpam fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonSpam();
   }
 
@@ -9055,7 +8959,7 @@ class InputReportReasonSpam extends BaseConstructor {
   }
 }
 
-class InputReportReasonViolence extends BaseConstructor {
+class InputReportReasonViolence extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 505595789;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9064,7 +8968,6 @@ class InputReportReasonViolence extends BaseConstructor {
   InputReportReasonViolence();
 
   static InputReportReasonViolence fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonViolence();
   }
 
@@ -9091,7 +8994,7 @@ class InputReportReasonViolence extends BaseConstructor {
   }
 }
 
-class InputReportReasonPornography extends BaseConstructor {
+class InputReportReasonPornography extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 777640226;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9100,7 +9003,6 @@ class InputReportReasonPornography extends BaseConstructor {
   InputReportReasonPornography();
 
   static InputReportReasonPornography fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonPornography();
   }
 
@@ -9127,7 +9029,7 @@ class InputReportReasonPornography extends BaseConstructor {
   }
 }
 
-class InputReportReasonChildAbuse extends BaseConstructor {
+class InputReportReasonChildAbuse extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 2918469347;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9136,7 +9038,6 @@ class InputReportReasonChildAbuse extends BaseConstructor {
   InputReportReasonChildAbuse();
 
   static InputReportReasonChildAbuse fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonChildAbuse();
   }
 
@@ -9163,7 +9064,7 @@ class InputReportReasonChildAbuse extends BaseConstructor {
   }
 }
 
-class InputReportReasonOther extends BaseConstructor {
+class InputReportReasonOther extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 3252986545;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9172,7 +9073,6 @@ class InputReportReasonOther extends BaseConstructor {
   InputReportReasonOther();
 
   static InputReportReasonOther fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonOther();
   }
 
@@ -9199,7 +9099,7 @@ class InputReportReasonOther extends BaseConstructor {
   }
 }
 
-class InputReportReasonCopyright extends BaseConstructor {
+class InputReportReasonCopyright extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 2609510714;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9208,7 +9108,6 @@ class InputReportReasonCopyright extends BaseConstructor {
   InputReportReasonCopyright();
 
   static InputReportReasonCopyright fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonCopyright();
   }
 
@@ -9235,7 +9134,7 @@ class InputReportReasonCopyright extends BaseConstructor {
   }
 }
 
-class InputReportReasonGeoIrrelevant extends BaseConstructor {
+class InputReportReasonGeoIrrelevant extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 3688169197;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9244,7 +9143,6 @@ class InputReportReasonGeoIrrelevant extends BaseConstructor {
   InputReportReasonGeoIrrelevant();
 
   static InputReportReasonGeoIrrelevant fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonGeoIrrelevant();
   }
 
@@ -9271,7 +9169,7 @@ class InputReportReasonGeoIrrelevant extends BaseConstructor {
   }
 }
 
-class InputReportReasonFake extends BaseConstructor {
+class InputReportReasonFake extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 4124956391;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9280,7 +9178,6 @@ class InputReportReasonFake extends BaseConstructor {
   InputReportReasonFake();
 
   static InputReportReasonFake fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonFake();
   }
 
@@ -9307,7 +9204,7 @@ class InputReportReasonFake extends BaseConstructor {
   }
 }
 
-class InputReportReasonIllegalDrugs extends BaseConstructor {
+class InputReportReasonIllegalDrugs extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 177124030;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9316,7 +9213,6 @@ class InputReportReasonIllegalDrugs extends BaseConstructor {
   InputReportReasonIllegalDrugs();
 
   static InputReportReasonIllegalDrugs fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonIllegalDrugs();
   }
 
@@ -9343,7 +9239,7 @@ class InputReportReasonIllegalDrugs extends BaseConstructor {
   }
 }
 
-class InputReportReasonPersonalDetails extends BaseConstructor {
+class InputReportReasonPersonalDetails extends ReportReasonBase {
   static const CONSTRUCTOR_ID = 2663876157;
   static const SUBCLASS_OF_ID = 2214706471;
   final classType = "constructor";
@@ -9352,7 +9248,6 @@ class InputReportReasonPersonalDetails extends BaseConstructor {
   InputReportReasonPersonalDetails();
 
   static InputReportReasonPersonalDetails fromReader(BinaryReader reader) {
-    var len;
     return InputReportReasonPersonalDetails();
   }
 
@@ -9392,43 +9287,42 @@ class UserFull extends BaseConstructor {
   bool? videoCallsAvailable;
   BigInt id;
   String? about;
-  var settings;
-  var profilePhoto;
-  var notifySettings;
-  var botInfo;
+  PeerSettings settings;
+  PhotoBase? profilePhoto;
+  PeerNotifySettings notifySettings;
+  BotInfo? botInfo;
   int? pinnedMsgId;
   int commonChatsCount;
   int? folderId;
   int? ttlPeriod;
   String? themeEmoticon;
   String? privateForwardName;
-  var botGroupAdminRights;
-  var botBroadcastAdminRights;
+  ChatAdminRights? botGroupAdminRights;
+  ChatAdminRights? botBroadcastAdminRights;
 
   UserFull(
-      {required this.blocked,
-      required this.phoneCallsAvailable,
-      required this.phoneCallsPrivate,
-      required this.canPinMessage,
-      required this.hasScheduled,
-      required this.videoCallsAvailable,
+      {this.blocked,
+      this.phoneCallsAvailable,
+      this.phoneCallsPrivate,
+      this.canPinMessage,
+      this.hasScheduled,
+      this.videoCallsAvailable,
       required this.id,
-      required this.about,
+      this.about,
       required this.settings,
-      required this.profilePhoto,
+      this.profilePhoto,
       required this.notifySettings,
-      required this.botInfo,
-      required this.pinnedMsgId,
+      this.botInfo,
+      this.pinnedMsgId,
       required this.commonChatsCount,
-      required this.folderId,
-      required this.ttlPeriod,
-      required this.themeEmoticon,
-      required this.privateForwardName,
-      required this.botGroupAdminRights,
-      required this.botBroadcastAdminRights});
+      this.folderId,
+      this.ttlPeriod,
+      this.themeEmoticon,
+      this.privateForwardName,
+      this.botGroupAdminRights,
+      this.botBroadcastAdminRights});
 
   static UserFull fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final blocked = (flags & 1) == 1;
     final phoneCallsAvailable = (flags & 16) == 16;
@@ -9532,16 +9426,16 @@ class UserFull extends BaseConstructor {
       (this.about == null || this.about == false)
           ? List<int>.empty()
           : [serializeBytes(this.about)].expand((element) => element).toList(),
-      (this.settings.getBytes() as List<int>),
+      (this.settings.getBytes()),
       (this.profilePhoto == null || this.profilePhoto == false)
           ? List<int>.empty()
-          : [(this.profilePhoto.getBytes() as List<int>)]
+          : [(this.profilePhoto!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.notifySettings.getBytes() as List<int>),
+      (this.notifySettings.getBytes()),
       (this.botInfo == null || this.botInfo == false)
           ? List<int>.empty()
-          : [(this.botInfo.getBytes() as List<int>)]
+          : [(this.botInfo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.pinnedMsgId == null || this.pinnedMsgId == false)
@@ -9575,13 +9469,13 @@ class UserFull extends BaseConstructor {
               .toList(),
       (this.botGroupAdminRights == null || this.botGroupAdminRights == false)
           ? List<int>.empty()
-          : [(this.botGroupAdminRights.getBytes() as List<int>)]
+          : [(this.botGroupAdminRights!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.botBroadcastAdminRights == null ||
               this.botBroadcastAdminRights == false)
           ? List<int>.empty()
-          : [(this.botBroadcastAdminRights.getBytes() as List<int>)]
+          : [(this.botBroadcastAdminRights!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -9614,7 +9508,6 @@ class Contact extends BaseConstructor {
   Contact({required this.userId, required this.mutual});
 
   static Contact fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var mutual = reader.tgReadBool();
     return Contact(userId: userId, mutual: mutual);
@@ -9656,7 +9549,6 @@ class ImportedContact extends BaseConstructor {
   ImportedContact({required this.userId, required this.clientId});
 
   static ImportedContact fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var clientId = reader.readLong();
     return ImportedContact(userId: userId, clientId: clientId);
@@ -9693,12 +9585,11 @@ class ContactStatus extends BaseConstructor {
   final classType = "constructor";
   final ID = 383348795;
   BigInt userId;
-  var status;
+  UserStatusBase status;
 
   ContactStatus({required this.userId, required this.status});
 
   static ContactStatus fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var status = reader.tgReadObject();
     return ContactStatus(userId: userId, status: status);
@@ -9709,7 +9600,7 @@ class ContactStatus extends BaseConstructor {
     return [
       readBufferFromBigInt(383348795, 4),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      (this.status.getBytes() as List<int>),
+      (this.status.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -9729,7 +9620,9 @@ class ContactStatus extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterEmpty extends BaseConstructor {
+abstract class MessagesFilterBase extends BaseConstructor {}
+
+class InputMessagesFilterEmpty extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 1474492012;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -9738,7 +9631,6 @@ class InputMessagesFilterEmpty extends BaseConstructor {
   InputMessagesFilterEmpty();
 
   static InputMessagesFilterEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterEmpty();
   }
 
@@ -9765,7 +9657,7 @@ class InputMessagesFilterEmpty extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterPhotos extends BaseConstructor {
+class InputMessagesFilterPhotos extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 2517214492;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -9774,7 +9666,6 @@ class InputMessagesFilterPhotos extends BaseConstructor {
   InputMessagesFilterPhotos();
 
   static InputMessagesFilterPhotos fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterPhotos();
   }
 
@@ -9801,7 +9692,7 @@ class InputMessagesFilterPhotos extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterVideo extends BaseConstructor {
+class InputMessagesFilterVideo extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 2680163941;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -9810,7 +9701,6 @@ class InputMessagesFilterVideo extends BaseConstructor {
   InputMessagesFilterVideo();
 
   static InputMessagesFilterVideo fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterVideo();
   }
 
@@ -9837,7 +9727,7 @@ class InputMessagesFilterVideo extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterPhotoVideo extends BaseConstructor {
+class InputMessagesFilterPhotoVideo extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 1458172132;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -9846,7 +9736,6 @@ class InputMessagesFilterPhotoVideo extends BaseConstructor {
   InputMessagesFilterPhotoVideo();
 
   static InputMessagesFilterPhotoVideo fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterPhotoVideo();
   }
 
@@ -9873,7 +9762,7 @@ class InputMessagesFilterPhotoVideo extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterDocument extends BaseConstructor {
+class InputMessagesFilterDocument extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 2665345416;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -9882,7 +9771,6 @@ class InputMessagesFilterDocument extends BaseConstructor {
   InputMessagesFilterDocument();
 
   static InputMessagesFilterDocument fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterDocument();
   }
 
@@ -9909,7 +9797,7 @@ class InputMessagesFilterDocument extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterUrl extends BaseConstructor {
+class InputMessagesFilterUrl extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 2129714567;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -9918,7 +9806,6 @@ class InputMessagesFilterUrl extends BaseConstructor {
   InputMessagesFilterUrl();
 
   static InputMessagesFilterUrl fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterUrl();
   }
 
@@ -9945,7 +9832,7 @@ class InputMessagesFilterUrl extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterGif extends BaseConstructor {
+class InputMessagesFilterGif extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 4291323271;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -9954,7 +9841,6 @@ class InputMessagesFilterGif extends BaseConstructor {
   InputMessagesFilterGif();
 
   static InputMessagesFilterGif fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterGif();
   }
 
@@ -9981,7 +9867,7 @@ class InputMessagesFilterGif extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterVoice extends BaseConstructor {
+class InputMessagesFilterVoice extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 1358283666;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -9990,7 +9876,6 @@ class InputMessagesFilterVoice extends BaseConstructor {
   InputMessagesFilterVoice();
 
   static InputMessagesFilterVoice fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterVoice();
   }
 
@@ -10017,7 +9902,7 @@ class InputMessagesFilterVoice extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterMusic extends BaseConstructor {
+class InputMessagesFilterMusic extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 928101534;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -10026,7 +9911,6 @@ class InputMessagesFilterMusic extends BaseConstructor {
   InputMessagesFilterMusic();
 
   static InputMessagesFilterMusic fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterMusic();
   }
 
@@ -10053,7 +9937,7 @@ class InputMessagesFilterMusic extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterChatPhotos extends BaseConstructor {
+class InputMessagesFilterChatPhotos extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 975236280;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -10062,7 +9946,6 @@ class InputMessagesFilterChatPhotos extends BaseConstructor {
   InputMessagesFilterChatPhotos();
 
   static InputMessagesFilterChatPhotos fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterChatPhotos();
   }
 
@@ -10089,17 +9972,16 @@ class InputMessagesFilterChatPhotos extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterPhoneCalls extends BaseConstructor {
+class InputMessagesFilterPhoneCalls extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 2160695144;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
   final ID = 2160695144;
   bool? missed;
 
-  InputMessagesFilterPhoneCalls({required this.missed});
+  InputMessagesFilterPhoneCalls({this.missed});
 
   static InputMessagesFilterPhoneCalls fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final missed = (flags & 1) == 1;
     return InputMessagesFilterPhoneCalls(missed: missed);
@@ -10129,7 +10011,7 @@ class InputMessagesFilterPhoneCalls extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterRoundVoice extends BaseConstructor {
+class InputMessagesFilterRoundVoice extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 2054952868;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -10138,7 +10020,6 @@ class InputMessagesFilterRoundVoice extends BaseConstructor {
   InputMessagesFilterRoundVoice();
 
   static InputMessagesFilterRoundVoice fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterRoundVoice();
   }
 
@@ -10165,7 +10046,7 @@ class InputMessagesFilterRoundVoice extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterRoundVideo extends BaseConstructor {
+class InputMessagesFilterRoundVideo extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 3041516115;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -10174,7 +10055,6 @@ class InputMessagesFilterRoundVideo extends BaseConstructor {
   InputMessagesFilterRoundVideo();
 
   static InputMessagesFilterRoundVideo fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterRoundVideo();
   }
 
@@ -10201,7 +10081,7 @@ class InputMessagesFilterRoundVideo extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterMyMentions extends BaseConstructor {
+class InputMessagesFilterMyMentions extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 3254314650;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -10210,7 +10090,6 @@ class InputMessagesFilterMyMentions extends BaseConstructor {
   InputMessagesFilterMyMentions();
 
   static InputMessagesFilterMyMentions fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterMyMentions();
   }
 
@@ -10237,7 +10116,7 @@ class InputMessagesFilterMyMentions extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterGeo extends BaseConstructor {
+class InputMessagesFilterGeo extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 3875695885;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -10246,7 +10125,6 @@ class InputMessagesFilterGeo extends BaseConstructor {
   InputMessagesFilterGeo();
 
   static InputMessagesFilterGeo fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterGeo();
   }
 
@@ -10273,7 +10151,7 @@ class InputMessagesFilterGeo extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterContacts extends BaseConstructor {
+class InputMessagesFilterContacts extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 3764575107;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -10282,7 +10160,6 @@ class InputMessagesFilterContacts extends BaseConstructor {
   InputMessagesFilterContacts();
 
   static InputMessagesFilterContacts fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterContacts();
   }
 
@@ -10309,7 +10186,7 @@ class InputMessagesFilterContacts extends BaseConstructor {
   }
 }
 
-class InputMessagesFilterPinned extends BaseConstructor {
+class InputMessagesFilterPinned extends MessagesFilterBase {
   static const CONSTRUCTOR_ID = 464520273;
   static const SUBCLASS_OF_ID = 2318855188;
   final classType = "constructor";
@@ -10318,7 +10195,6 @@ class InputMessagesFilterPinned extends BaseConstructor {
   InputMessagesFilterPinned();
 
   static InputMessagesFilterPinned fromReader(BinaryReader reader) {
-    var len;
     return InputMessagesFilterPinned();
   }
 
@@ -10345,12 +10221,14 @@ class InputMessagesFilterPinned extends BaseConstructor {
   }
 }
 
-class UpdateNewMessage extends BaseConstructor {
+abstract class UpdateBase extends BaseConstructor {}
+
+class UpdateNewMessage extends UpdateBase {
   static const CONSTRUCTOR_ID = 522914557;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 522914557;
-  var message;
+  MessageBase message;
   int pts;
   int ptsCount;
 
@@ -10358,7 +10236,6 @@ class UpdateNewMessage extends BaseConstructor {
       {required this.message, required this.pts, required this.ptsCount});
 
   static UpdateNewMessage fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     var pts = reader.readInt();
     var ptsCount = reader.readInt();
@@ -10369,7 +10246,7 @@ class UpdateNewMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(522914557, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -10391,7 +10268,7 @@ class UpdateNewMessage extends BaseConstructor {
   }
 }
 
-class UpdateMessageID extends BaseConstructor {
+class UpdateMessageID extends UpdateBase {
   static const CONSTRUCTOR_ID = 1318109142;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -10402,7 +10279,6 @@ class UpdateMessageID extends BaseConstructor {
   UpdateMessageID({required this.id, required this.randomId});
 
   static UpdateMessageID fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readInt();
     var randomId = reader.readLong();
     return UpdateMessageID(id: id, randomId: randomId);
@@ -10433,7 +10309,7 @@ class UpdateMessageID extends BaseConstructor {
   }
 }
 
-class UpdateDeleteMessages extends BaseConstructor {
+class UpdateDeleteMessages extends UpdateBase {
   static const CONSTRUCTOR_ID = 2718806245;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -10465,11 +10341,10 @@ class UpdateDeleteMessages extends BaseConstructor {
     return [
       readBufferFromBigInt(2718806245, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.messages!.length, 4,
+      readBufferFromBigInt(this.messages.length, 4,
           little: true, signed: true),
       this
-          .messages!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .messages.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
@@ -10492,18 +10367,17 @@ class UpdateDeleteMessages extends BaseConstructor {
   }
 }
 
-class UpdateUserTyping extends BaseConstructor {
+class UpdateUserTyping extends UpdateBase {
   static const CONSTRUCTOR_ID = 3223225727;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3223225727;
   BigInt userId;
-  var action;
+  SendMessageActionBase action;
 
   UpdateUserTyping({required this.userId, required this.action});
 
   static UpdateUserTyping fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var action = reader.tgReadObject();
     return UpdateUserTyping(userId: userId, action: action);
@@ -10514,7 +10388,7 @@ class UpdateUserTyping extends BaseConstructor {
     return [
       readBufferFromBigInt(3223225727, 4),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      (this.action.getBytes() as List<int>),
+      (this.action.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -10534,20 +10408,19 @@ class UpdateUserTyping extends BaseConstructor {
   }
 }
 
-class UpdateChatUserTyping extends BaseConstructor {
+class UpdateChatUserTyping extends UpdateBase {
   static const CONSTRUCTOR_ID = 2202565360;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2202565360;
   BigInt chatId;
-  var fromId;
-  var action;
+  PeerBase fromId;
+  SendMessageActionBase action;
 
   UpdateChatUserTyping(
       {required this.chatId, required this.fromId, required this.action});
 
   static UpdateChatUserTyping fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var fromId = reader.tgReadObject();
     var action = reader.tgReadObject();
@@ -10559,8 +10432,8 @@ class UpdateChatUserTyping extends BaseConstructor {
     return [
       readBufferFromBigInt(2202565360, 4),
       readBufferFromBigInt(this.chatId, 8, little: true, signed: true),
-      (this.fromId.getBytes() as List<int>),
-      (this.action.getBytes() as List<int>),
+      (this.fromId.getBytes()),
+      (this.action.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -10580,17 +10453,16 @@ class UpdateChatUserTyping extends BaseConstructor {
   }
 }
 
-class UpdateChatParticipants extends BaseConstructor {
+class UpdateChatParticipants extends UpdateBase {
   static const CONSTRUCTOR_ID = 125178264;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 125178264;
-  var participants;
+  ChatParticipantsBase participants;
 
   UpdateChatParticipants({required this.participants});
 
   static UpdateChatParticipants fromReader(BinaryReader reader) {
-    var len;
     var participants = reader.tgReadObject();
     return UpdateChatParticipants(participants: participants);
   }
@@ -10599,7 +10471,7 @@ class UpdateChatParticipants extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(125178264, 4),
-      (this.participants.getBytes() as List<int>),
+      (this.participants.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -10619,18 +10491,17 @@ class UpdateChatParticipants extends BaseConstructor {
   }
 }
 
-class UpdateUserStatus extends BaseConstructor {
+class UpdateUserStatus extends UpdateBase {
   static const CONSTRUCTOR_ID = 3854432478;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3854432478;
   BigInt userId;
-  var status;
+  UserStatusBase status;
 
   UpdateUserStatus({required this.userId, required this.status});
 
   static UpdateUserStatus fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var status = reader.tgReadObject();
     return UpdateUserStatus(userId: userId, status: status);
@@ -10641,7 +10512,7 @@ class UpdateUserStatus extends BaseConstructor {
     return [
       readBufferFromBigInt(3854432478, 4),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      (this.status.getBytes() as List<int>),
+      (this.status.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -10661,7 +10532,7 @@ class UpdateUserStatus extends BaseConstructor {
   }
 }
 
-class UpdateUserName extends BaseConstructor {
+class UpdateUserName extends UpdateBase {
   static const CONSTRUCTOR_ID = 3287417568;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -10678,7 +10549,6 @@ class UpdateUserName extends BaseConstructor {
       required this.username});
 
   static UpdateUserName fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var firstName = reader.tgReadString();
     var lastName = reader.tgReadString();
@@ -10717,14 +10587,14 @@ class UpdateUserName extends BaseConstructor {
   }
 }
 
-class UpdateUserPhoto extends BaseConstructor {
+class UpdateUserPhoto extends UpdateBase {
   static const CONSTRUCTOR_ID = 4062676620;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 4062676620;
   BigInt userId;
   int date;
-  var photo;
+  UserProfilePhotoBase photo;
   bool previous;
 
   UpdateUserPhoto(
@@ -10734,7 +10604,6 @@ class UpdateUserPhoto extends BaseConstructor {
       required this.previous});
 
   static UpdateUserPhoto fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var date = reader.readInt();
     var photo = reader.tgReadObject();
@@ -10749,7 +10618,7 @@ class UpdateUserPhoto extends BaseConstructor {
       readBufferFromBigInt(4062676620, 4),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
-      (this.photo.getBytes() as List<int>),
+      (this.photo.getBytes()),
       [this.previous == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
@@ -10770,18 +10639,17 @@ class UpdateUserPhoto extends BaseConstructor {
   }
 }
 
-class UpdateNewEncryptedMessage extends BaseConstructor {
+class UpdateNewEncryptedMessage extends UpdateBase {
   static const CONSTRUCTOR_ID = 314359194;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 314359194;
-  var message;
+  EncryptedMessageBase message;
   int qts;
 
   UpdateNewEncryptedMessage({required this.message, required this.qts});
 
   static UpdateNewEncryptedMessage fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     var qts = reader.readInt();
     return UpdateNewEncryptedMessage(message: message, qts: qts);
@@ -10791,7 +10659,7 @@ class UpdateNewEncryptedMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(314359194, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
       readBufferFromBigInt(this.qts, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -10812,7 +10680,7 @@ class UpdateNewEncryptedMessage extends BaseConstructor {
   }
 }
 
-class UpdateEncryptedChatTyping extends BaseConstructor {
+class UpdateEncryptedChatTyping extends UpdateBase {
   static const CONSTRUCTOR_ID = 386986326;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -10822,7 +10690,6 @@ class UpdateEncryptedChatTyping extends BaseConstructor {
   UpdateEncryptedChatTyping({required this.chatId});
 
   static UpdateEncryptedChatTyping fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readInt();
     return UpdateEncryptedChatTyping(chatId: chatId);
   }
@@ -10851,18 +10718,17 @@ class UpdateEncryptedChatTyping extends BaseConstructor {
   }
 }
 
-class UpdateEncryption extends BaseConstructor {
+class UpdateEncryption extends UpdateBase {
   static const CONSTRUCTOR_ID = 3030575245;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3030575245;
-  var chat;
+  EncryptedChatBase chat;
   int date;
 
   UpdateEncryption({required this.chat, required this.date});
 
   static UpdateEncryption fromReader(BinaryReader reader) {
-    var len;
     var chat = reader.tgReadObject();
     var date = reader.readInt();
     return UpdateEncryption(chat: chat, date: date);
@@ -10872,7 +10738,7 @@ class UpdateEncryption extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3030575245, 4),
-      (this.chat.getBytes() as List<int>),
+      (this.chat.getBytes()),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -10893,7 +10759,7 @@ class UpdateEncryption extends BaseConstructor {
   }
 }
 
-class UpdateEncryptedMessagesRead extends BaseConstructor {
+class UpdateEncryptedMessagesRead extends UpdateBase {
   static const CONSTRUCTOR_ID = 956179895;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -10906,7 +10772,6 @@ class UpdateEncryptedMessagesRead extends BaseConstructor {
       {required this.chatId, required this.maxDate, required this.date});
 
   static UpdateEncryptedMessagesRead fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readInt();
     var maxDate = reader.readInt();
     var date = reader.readInt();
@@ -10940,7 +10805,7 @@ class UpdateEncryptedMessagesRead extends BaseConstructor {
   }
 }
 
-class UpdateChatParticipantAdd extends BaseConstructor {
+class UpdateChatParticipantAdd extends UpdateBase {
   static const CONSTRUCTOR_ID = 1037718609;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -10959,7 +10824,6 @@ class UpdateChatParticipantAdd extends BaseConstructor {
       required this.version});
 
   static UpdateChatParticipantAdd fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var userId = reader.readLong();
     var inviterId = reader.readLong();
@@ -11001,7 +10865,7 @@ class UpdateChatParticipantAdd extends BaseConstructor {
   }
 }
 
-class UpdateChatParticipantDelete extends BaseConstructor {
+class UpdateChatParticipantDelete extends UpdateBase {
   static const CONSTRUCTOR_ID = 3811523959;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11014,7 +10878,6 @@ class UpdateChatParticipantDelete extends BaseConstructor {
       {required this.chatId, required this.userId, required this.version});
 
   static UpdateChatParticipantDelete fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var userId = reader.readLong();
     var version = reader.readInt();
@@ -11048,12 +10911,12 @@ class UpdateChatParticipantDelete extends BaseConstructor {
   }
 }
 
-class UpdateDcOptions extends BaseConstructor {
+class UpdateDcOptions extends UpdateBase {
   static const CONSTRUCTOR_ID = 2388564083;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2388564083;
-  List<dynamic> dcOptions;
+  List<DcOption> dcOptions;
 
   UpdateDcOptions({required this.dcOptions});
 
@@ -11061,7 +10924,7 @@ class UpdateDcOptions extends BaseConstructor {
     var len;
     var _vectordcOptions = reader.readInt();
     if (_vectordcOptions != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> dcOptions = [];
+    List<DcOption> dcOptions = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       dcOptions.add(reader.tgReadObject());
@@ -11074,11 +10937,10 @@ class UpdateDcOptions extends BaseConstructor {
     return [
       readBufferFromBigInt(2388564083, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.dcOptions!.length, 4,
+      readBufferFromBigInt(this.dcOptions.length, 4,
           little: true, signed: true),
       this
-          .dcOptions!
-          .map((x) => (x.getBytes() as List<int>))
+          .dcOptions.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -11099,18 +10961,17 @@ class UpdateDcOptions extends BaseConstructor {
   }
 }
 
-class UpdateNotifySettings extends BaseConstructor {
+class UpdateNotifySettings extends UpdateBase {
   static const CONSTRUCTOR_ID = 3200411887;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3200411887;
-  var peer;
-  var notifySettings;
+  NotifyPeerBase peer;
+  PeerNotifySettings notifySettings;
 
   UpdateNotifySettings({required this.peer, required this.notifySettings});
 
   static UpdateNotifySettings fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var notifySettings = reader.tgReadObject();
     return UpdateNotifySettings(peer: peer, notifySettings: notifySettings);
@@ -11120,8 +10981,8 @@ class UpdateNotifySettings extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3200411887, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.notifySettings.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.notifySettings.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -11141,7 +11002,7 @@ class UpdateNotifySettings extends BaseConstructor {
   }
 }
 
-class UpdateServiceNotification extends BaseConstructor {
+class UpdateServiceNotification extends UpdateBase {
   static const CONSTRUCTOR_ID = 3957614617;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11150,12 +11011,12 @@ class UpdateServiceNotification extends BaseConstructor {
   int? inboxDate;
   String type;
   String message;
-  var media;
-  List<dynamic> entities;
+  MessageMediaBase media;
+  List<MessageEntityBase> entities;
 
   UpdateServiceNotification(
-      {required this.popup,
-      required this.inboxDate,
+      {this.popup,
+      this.inboxDate,
       required this.type,
       required this.message,
       required this.media,
@@ -11176,7 +11037,7 @@ class UpdateServiceNotification extends BaseConstructor {
     var media = reader.tgReadObject();
     var _vectorentities = reader.readInt();
     if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> entities = [];
+    List<MessageEntityBase> entities = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       entities.add(reader.tgReadObject());
@@ -11203,13 +11064,12 @@ class UpdateServiceNotification extends BaseConstructor {
             ].expand((element) => element).toList(),
       serializeBytes(this.type),
       serializeBytes(this.message),
-      (this.media.getBytes() as List<int>),
+      (this.media.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.entities!.length, 4,
+      readBufferFromBigInt(this.entities.length, 4,
           little: true, signed: true),
       this
-          .entities!
-          .map((x) => (x.getBytes() as List<int>))
+          .entities.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -11230,13 +11090,13 @@ class UpdateServiceNotification extends BaseConstructor {
   }
 }
 
-class UpdatePrivacy extends BaseConstructor {
+class UpdatePrivacy extends UpdateBase {
   static const CONSTRUCTOR_ID = 3996854058;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3996854058;
-  var key;
-  List<dynamic> rules;
+  PrivacyKeyBase key;
+  List<PrivacyRuleBase> rules;
 
   UpdatePrivacy({required this.key, required this.rules});
 
@@ -11245,7 +11105,7 @@ class UpdatePrivacy extends BaseConstructor {
     var key = reader.tgReadObject();
     var _vectorrules = reader.readInt();
     if (_vectorrules != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> rules = [];
+    List<PrivacyRuleBase> rules = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       rules.add(reader.tgReadObject());
@@ -11257,12 +11117,11 @@ class UpdatePrivacy extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3996854058, 4),
-      (this.key.getBytes() as List<int>),
+      (this.key.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.rules!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.rules.length, 4, little: true, signed: true),
       this
-          .rules!
-          .map((x) => (x.getBytes() as List<int>))
+          .rules.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -11283,7 +11142,7 @@ class UpdatePrivacy extends BaseConstructor {
   }
 }
 
-class UpdateUserPhone extends BaseConstructor {
+class UpdateUserPhone extends UpdateBase {
   static const CONSTRUCTOR_ID = 88680979;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11294,7 +11153,6 @@ class UpdateUserPhone extends BaseConstructor {
   UpdateUserPhone({required this.userId, required this.phone});
 
   static UpdateUserPhone fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var phone = reader.tgReadString();
     return UpdateUserPhone(userId: userId, phone: phone);
@@ -11325,20 +11183,20 @@ class UpdateUserPhone extends BaseConstructor {
   }
 }
 
-class UpdateReadHistoryInbox extends BaseConstructor {
+class UpdateReadHistoryInbox extends UpdateBase {
   static const CONSTRUCTOR_ID = 2627162079;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2627162079;
   int? folderId;
-  var peer;
+  PeerBase peer;
   int maxId;
   int stillUnreadCount;
   int pts;
   int ptsCount;
 
   UpdateReadHistoryInbox(
-      {required this.folderId,
+      {this.folderId,
       required this.peer,
       required this.maxId,
       required this.stillUnreadCount,
@@ -11346,7 +11204,6 @@ class UpdateReadHistoryInbox extends BaseConstructor {
       required this.ptsCount});
 
   static UpdateReadHistoryInbox fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var folderId;
     if ((flags & 1) == 1) {
@@ -11378,7 +11235,7 @@ class UpdateReadHistoryInbox extends BaseConstructor {
           : [readBufferFromBigInt(this.folderId, 4, little: true, signed: true)]
               .expand((element) => element)
               .toList(),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.maxId, 4, little: true, signed: true),
       readBufferFromBigInt(this.stillUnreadCount, 4,
           little: true, signed: true),
@@ -11403,12 +11260,12 @@ class UpdateReadHistoryInbox extends BaseConstructor {
   }
 }
 
-class UpdateReadHistoryOutbox extends BaseConstructor {
+class UpdateReadHistoryOutbox extends UpdateBase {
   static const CONSTRUCTOR_ID = 791617983;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 791617983;
-  var peer;
+  PeerBase peer;
   int maxId;
   int pts;
   int ptsCount;
@@ -11420,7 +11277,6 @@ class UpdateReadHistoryOutbox extends BaseConstructor {
       required this.ptsCount});
 
   static UpdateReadHistoryOutbox fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var maxId = reader.readInt();
     var pts = reader.readInt();
@@ -11433,7 +11289,7 @@ class UpdateReadHistoryOutbox extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(791617983, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.maxId, 4, little: true, signed: true),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
@@ -11456,12 +11312,12 @@ class UpdateReadHistoryOutbox extends BaseConstructor {
   }
 }
 
-class UpdateWebPage extends BaseConstructor {
+class UpdateWebPage extends UpdateBase {
   static const CONSTRUCTOR_ID = 2139689491;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2139689491;
-  var webpage;
+  WebPageBase webpage;
   int pts;
   int ptsCount;
 
@@ -11469,7 +11325,6 @@ class UpdateWebPage extends BaseConstructor {
       {required this.webpage, required this.pts, required this.ptsCount});
 
   static UpdateWebPage fromReader(BinaryReader reader) {
-    var len;
     var webpage = reader.tgReadObject();
     var pts = reader.readInt();
     var ptsCount = reader.readInt();
@@ -11480,7 +11335,7 @@ class UpdateWebPage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2139689491, 4),
-      (this.webpage.getBytes() as List<int>),
+      (this.webpage.getBytes()),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -11502,7 +11357,7 @@ class UpdateWebPage extends BaseConstructor {
   }
 }
 
-class UpdateReadMessagesContents extends BaseConstructor {
+class UpdateReadMessagesContents extends UpdateBase {
   static const CONSTRUCTOR_ID = 1757493555;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11534,11 +11389,10 @@ class UpdateReadMessagesContents extends BaseConstructor {
     return [
       readBufferFromBigInt(1757493555, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.messages!.length, 4,
+      readBufferFromBigInt(this.messages.length, 4,
           little: true, signed: true),
       this
-          .messages!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .messages.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
@@ -11561,7 +11415,7 @@ class UpdateReadMessagesContents extends BaseConstructor {
   }
 }
 
-class UpdateChannelTooLong extends BaseConstructor {
+class UpdateChannelTooLong extends UpdateBase {
   static const CONSTRUCTOR_ID = 277713951;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11569,10 +11423,9 @@ class UpdateChannelTooLong extends BaseConstructor {
   BigInt channelId;
   int? pts;
 
-  UpdateChannelTooLong({required this.channelId, required this.pts});
+  UpdateChannelTooLong({required this.channelId, this.pts});
 
   static UpdateChannelTooLong fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var channelId = reader.readLong();
     var pts;
@@ -11614,7 +11467,7 @@ class UpdateChannelTooLong extends BaseConstructor {
   }
 }
 
-class UpdateChannel extends BaseConstructor {
+class UpdateChannel extends UpdateBase {
   static const CONSTRUCTOR_ID = 1666927625;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11624,7 +11477,6 @@ class UpdateChannel extends BaseConstructor {
   UpdateChannel({required this.channelId});
 
   static UpdateChannel fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     return UpdateChannel(channelId: channelId);
   }
@@ -11653,12 +11505,12 @@ class UpdateChannel extends BaseConstructor {
   }
 }
 
-class UpdateNewChannelMessage extends BaseConstructor {
+class UpdateNewChannelMessage extends UpdateBase {
   static const CONSTRUCTOR_ID = 1656358105;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1656358105;
-  var message;
+  MessageBase message;
   int pts;
   int ptsCount;
 
@@ -11666,7 +11518,6 @@ class UpdateNewChannelMessage extends BaseConstructor {
       {required this.message, required this.pts, required this.ptsCount});
 
   static UpdateNewChannelMessage fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     var pts = reader.readInt();
     var ptsCount = reader.readInt();
@@ -11678,7 +11529,7 @@ class UpdateNewChannelMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1656358105, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -11700,7 +11551,7 @@ class UpdateNewChannelMessage extends BaseConstructor {
   }
 }
 
-class UpdateReadChannelInbox extends BaseConstructor {
+class UpdateReadChannelInbox extends UpdateBase {
   static const CONSTRUCTOR_ID = 2452516368;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11712,14 +11563,13 @@ class UpdateReadChannelInbox extends BaseConstructor {
   int pts;
 
   UpdateReadChannelInbox(
-      {required this.folderId,
+      {this.folderId,
       required this.channelId,
       required this.maxId,
       required this.stillUnreadCount,
       required this.pts});
 
   static UpdateReadChannelInbox fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var folderId;
     if ((flags & 1) == 1) {
@@ -11773,7 +11623,7 @@ class UpdateReadChannelInbox extends BaseConstructor {
   }
 }
 
-class UpdateDeleteChannelMessages extends BaseConstructor {
+class UpdateDeleteChannelMessages extends UpdateBase {
   static const CONSTRUCTOR_ID = 3274529554;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11811,11 +11661,10 @@ class UpdateDeleteChannelMessages extends BaseConstructor {
       readBufferFromBigInt(3274529554, 4),
       readBufferFromBigInt(this.channelId, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.messages!.length, 4,
+      readBufferFromBigInt(this.messages.length, 4,
           little: true, signed: true),
       this
-          .messages!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .messages.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
@@ -11838,7 +11687,7 @@ class UpdateDeleteChannelMessages extends BaseConstructor {
   }
 }
 
-class UpdateChannelMessageViews extends BaseConstructor {
+class UpdateChannelMessageViews extends UpdateBase {
   static const CONSTRUCTOR_ID = 4062620680;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11851,7 +11700,6 @@ class UpdateChannelMessageViews extends BaseConstructor {
       {required this.channelId, required this.id, required this.views});
 
   static UpdateChannelMessageViews fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     var id = reader.readInt();
     var views = reader.readInt();
@@ -11885,7 +11733,7 @@ class UpdateChannelMessageViews extends BaseConstructor {
   }
 }
 
-class UpdateChatParticipantAdmin extends BaseConstructor {
+class UpdateChatParticipantAdmin extends UpdateBase {
   static const CONSTRUCTOR_ID = 3620364706;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11902,7 +11750,6 @@ class UpdateChatParticipantAdmin extends BaseConstructor {
       required this.version});
 
   static UpdateChatParticipantAdmin fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var userId = reader.readLong();
     var isAdmin = reader.tgReadBool();
@@ -11938,17 +11785,16 @@ class UpdateChatParticipantAdmin extends BaseConstructor {
   }
 }
 
-class UpdateNewStickerSet extends BaseConstructor {
+class UpdateNewStickerSet extends UpdateBase {
   static const CONSTRUCTOR_ID = 1753886890;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1753886890;
-  var stickerset;
+  messages_ns.StickerSetBase stickerset;
 
   UpdateNewStickerSet({required this.stickerset});
 
   static UpdateNewStickerSet fromReader(BinaryReader reader) {
-    var len;
     var stickerset = reader.tgReadObject();
     return UpdateNewStickerSet(stickerset: stickerset);
   }
@@ -11957,7 +11803,7 @@ class UpdateNewStickerSet extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1753886890, 4),
-      (this.stickerset.getBytes() as List<int>),
+      (this.stickerset.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -11977,7 +11823,7 @@ class UpdateNewStickerSet extends BaseConstructor {
   }
 }
 
-class UpdateStickerSetsOrder extends BaseConstructor {
+class UpdateStickerSetsOrder extends UpdateBase {
   static const CONSTRUCTOR_ID = 196268545;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -11985,7 +11831,7 @@ class UpdateStickerSetsOrder extends BaseConstructor {
   bool? masks;
   List<BigInt> order;
 
-  UpdateStickerSetsOrder({required this.masks, required this.order});
+  UpdateStickerSetsOrder({this.masks, required this.order});
 
   static UpdateStickerSetsOrder fromReader(BinaryReader reader) {
     var len;
@@ -12007,10 +11853,9 @@ class UpdateStickerSetsOrder extends BaseConstructor {
       readBufferFromBigInt(196268545, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.order!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.order.length, 4, little: true, signed: true),
       this
-          .order!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .order.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -12031,7 +11876,7 @@ class UpdateStickerSetsOrder extends BaseConstructor {
   }
 }
 
-class UpdateStickerSets extends BaseConstructor {
+class UpdateStickerSets extends UpdateBase {
   static const CONSTRUCTOR_ID = 1135492588;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -12040,7 +11885,6 @@ class UpdateStickerSets extends BaseConstructor {
   UpdateStickerSets();
 
   static UpdateStickerSets fromReader(BinaryReader reader) {
-    var len;
     return UpdateStickerSets();
   }
 
@@ -12067,7 +11911,7 @@ class UpdateStickerSets extends BaseConstructor {
   }
 }
 
-class UpdateSavedGifs extends BaseConstructor {
+class UpdateSavedGifs extends UpdateBase {
   static const CONSTRUCTOR_ID = 2473931806;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -12076,7 +11920,6 @@ class UpdateSavedGifs extends BaseConstructor {
   UpdateSavedGifs();
 
   static UpdateSavedGifs fromReader(BinaryReader reader) {
-    var len;
     return UpdateSavedGifs();
   }
 
@@ -12103,7 +11946,7 @@ class UpdateSavedGifs extends BaseConstructor {
   }
 }
 
-class UpdateBotInlineQuery extends BaseConstructor {
+class UpdateBotInlineQuery extends UpdateBase {
   static const CONSTRUCTOR_ID = 1232025500;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -12111,20 +11954,19 @@ class UpdateBotInlineQuery extends BaseConstructor {
   BigInt queryId;
   BigInt userId;
   String query;
-  var geo;
-  var peerType;
+  GeoPointBase? geo;
+  InlineQueryPeerTypeBase? peerType;
   String offset;
 
   UpdateBotInlineQuery(
       {required this.queryId,
       required this.userId,
       required this.query,
-      required this.geo,
-      required this.peerType,
+      this.geo,
+      this.peerType,
       required this.offset});
 
   static UpdateBotInlineQuery fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var queryId = reader.readLong();
     var userId = reader.readLong();
@@ -12161,12 +12003,12 @@ class UpdateBotInlineQuery extends BaseConstructor {
       serializeBytes(this.query),
       (this.geo == null || this.geo == false)
           ? List<int>.empty()
-          : [(this.geo.getBytes() as List<int>)]
+          : [(this.geo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.peerType == null || this.peerType == false)
           ? List<int>.empty()
-          : [(this.peerType.getBytes() as List<int>)]
+          : [(this.peerType!.getBytes())]
               .expand((element) => element)
               .toList(),
       serializeBytes(this.offset),
@@ -12189,26 +12031,25 @@ class UpdateBotInlineQuery extends BaseConstructor {
   }
 }
 
-class UpdateBotInlineSend extends BaseConstructor {
+class UpdateBotInlineSend extends UpdateBase {
   static const CONSTRUCTOR_ID = 317794823;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 317794823;
   BigInt userId;
   String query;
-  var geo;
+  GeoPointBase? geo;
   String id;
-  var msgId;
+  InputBotInlineMessageIDBase? msgId;
 
   UpdateBotInlineSend(
       {required this.userId,
       required this.query,
-      required this.geo,
+      this.geo,
       required this.id,
-      required this.msgId});
+      this.msgId});
 
   static UpdateBotInlineSend fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var userId = reader.readLong();
     var query = reader.tgReadString();
@@ -12238,13 +12079,13 @@ class UpdateBotInlineSend extends BaseConstructor {
       serializeBytes(this.query),
       (this.geo == null || this.geo == false)
           ? List<int>.empty()
-          : [(this.geo.getBytes() as List<int>)]
+          : [(this.geo!.getBytes())]
               .expand((element) => element)
               .toList(),
       serializeBytes(this.id),
       (this.msgId == null || this.msgId == false)
           ? List<int>.empty()
-          : [(this.msgId.getBytes() as List<int>)]
+          : [(this.msgId!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -12266,12 +12107,12 @@ class UpdateBotInlineSend extends BaseConstructor {
   }
 }
 
-class UpdateEditChannelMessage extends BaseConstructor {
+class UpdateEditChannelMessage extends UpdateBase {
   static const CONSTRUCTOR_ID = 457133559;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 457133559;
-  var message;
+  MessageBase message;
   int pts;
   int ptsCount;
 
@@ -12279,7 +12120,6 @@ class UpdateEditChannelMessage extends BaseConstructor {
       {required this.message, required this.pts, required this.ptsCount});
 
   static UpdateEditChannelMessage fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     var pts = reader.readInt();
     var ptsCount = reader.readInt();
@@ -12291,7 +12131,7 @@ class UpdateEditChannelMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(457133559, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -12313,14 +12153,14 @@ class UpdateEditChannelMessage extends BaseConstructor {
   }
 }
 
-class UpdateBotCallbackQuery extends BaseConstructor {
+class UpdateBotCallbackQuery extends UpdateBase {
   static const CONSTRUCTOR_ID = 3117401229;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3117401229;
   BigInt queryId;
   BigInt userId;
-  var peer;
+  PeerBase peer;
   int msgId;
   BigInt chatInstance;
   List<int>? data;
@@ -12332,11 +12172,10 @@ class UpdateBotCallbackQuery extends BaseConstructor {
       required this.peer,
       required this.msgId,
       required this.chatInstance,
-      required this.data,
-      required this.gameShortName});
+      this.data,
+      this.gameShortName});
 
   static UpdateBotCallbackQuery fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var queryId = reader.readLong();
     var userId = reader.readLong();
@@ -12372,7 +12211,7 @@ class UpdateBotCallbackQuery extends BaseConstructor {
       [0, 0, 0, 0],
       readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.chatInstance, 8, little: true, signed: true),
       (this.data == null || this.data == false)
@@ -12402,12 +12241,12 @@ class UpdateBotCallbackQuery extends BaseConstructor {
   }
 }
 
-class UpdateEditMessage extends BaseConstructor {
+class UpdateEditMessage extends UpdateBase {
   static const CONSTRUCTOR_ID = 3825430691;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3825430691;
-  var message;
+  MessageBase message;
   int pts;
   int ptsCount;
 
@@ -12415,7 +12254,6 @@ class UpdateEditMessage extends BaseConstructor {
       {required this.message, required this.pts, required this.ptsCount});
 
   static UpdateEditMessage fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     var pts = reader.readInt();
     var ptsCount = reader.readInt();
@@ -12426,7 +12264,7 @@ class UpdateEditMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3825430691, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -12448,14 +12286,14 @@ class UpdateEditMessage extends BaseConstructor {
   }
 }
 
-class UpdateInlineBotCallbackQuery extends BaseConstructor {
+class UpdateInlineBotCallbackQuery extends UpdateBase {
   static const CONSTRUCTOR_ID = 1763610706;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1763610706;
   BigInt queryId;
   BigInt userId;
-  var msgId;
+  InputBotInlineMessageIDBase msgId;
   BigInt chatInstance;
   List<int>? data;
   String? gameShortName;
@@ -12465,11 +12303,10 @@ class UpdateInlineBotCallbackQuery extends BaseConstructor {
       required this.userId,
       required this.msgId,
       required this.chatInstance,
-      required this.data,
-      required this.gameShortName});
+      this.data,
+      this.gameShortName});
 
   static UpdateInlineBotCallbackQuery fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var queryId = reader.readLong();
     var userId = reader.readLong();
@@ -12503,7 +12340,7 @@ class UpdateInlineBotCallbackQuery extends BaseConstructor {
       [0, 0, 0, 0],
       readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      (this.msgId.getBytes() as List<int>),
+      (this.msgId.getBytes()),
       readBufferFromBigInt(this.chatInstance, 8, little: true, signed: true),
       (this.data == null || this.data == false)
           ? List<int>.empty()
@@ -12532,7 +12369,7 @@ class UpdateInlineBotCallbackQuery extends BaseConstructor {
   }
 }
 
-class UpdateReadChannelOutbox extends BaseConstructor {
+class UpdateReadChannelOutbox extends UpdateBase {
   static const CONSTRUCTOR_ID = 3076495785;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -12543,7 +12380,6 @@ class UpdateReadChannelOutbox extends BaseConstructor {
   UpdateReadChannelOutbox({required this.channelId, required this.maxId});
 
   static UpdateReadChannelOutbox fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     var maxId = reader.readInt();
     return UpdateReadChannelOutbox(channelId: channelId, maxId: maxId);
@@ -12574,18 +12410,17 @@ class UpdateReadChannelOutbox extends BaseConstructor {
   }
 }
 
-class UpdateDraftMessage extends BaseConstructor {
+class UpdateDraftMessage extends UpdateBase {
   static const CONSTRUCTOR_ID = 3995842921;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3995842921;
-  var peer;
-  var draft;
+  PeerBase peer;
+  DraftMessageBase draft;
 
   UpdateDraftMessage({required this.peer, required this.draft});
 
   static UpdateDraftMessage fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var draft = reader.tgReadObject();
     return UpdateDraftMessage(peer: peer, draft: draft);
@@ -12595,8 +12430,8 @@ class UpdateDraftMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3995842921, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.draft.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.draft.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -12616,7 +12451,7 @@ class UpdateDraftMessage extends BaseConstructor {
   }
 }
 
-class UpdateReadFeaturedStickers extends BaseConstructor {
+class UpdateReadFeaturedStickers extends UpdateBase {
   static const CONSTRUCTOR_ID = 1461528386;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -12625,7 +12460,6 @@ class UpdateReadFeaturedStickers extends BaseConstructor {
   UpdateReadFeaturedStickers();
 
   static UpdateReadFeaturedStickers fromReader(BinaryReader reader) {
-    var len;
     return UpdateReadFeaturedStickers();
   }
 
@@ -12652,7 +12486,7 @@ class UpdateReadFeaturedStickers extends BaseConstructor {
   }
 }
 
-class UpdateRecentStickers extends BaseConstructor {
+class UpdateRecentStickers extends UpdateBase {
   static const CONSTRUCTOR_ID = 2588027936;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -12661,7 +12495,6 @@ class UpdateRecentStickers extends BaseConstructor {
   UpdateRecentStickers();
 
   static UpdateRecentStickers fromReader(BinaryReader reader) {
-    var len;
     return UpdateRecentStickers();
   }
 
@@ -12688,7 +12521,7 @@ class UpdateRecentStickers extends BaseConstructor {
   }
 }
 
-class UpdateConfig extends BaseConstructor {
+class UpdateConfig extends UpdateBase {
   static const CONSTRUCTOR_ID = 2720652550;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -12697,7 +12530,6 @@ class UpdateConfig extends BaseConstructor {
   UpdateConfig();
 
   static UpdateConfig fromReader(BinaryReader reader) {
-    var len;
     return UpdateConfig();
   }
 
@@ -12724,7 +12556,7 @@ class UpdateConfig extends BaseConstructor {
   }
 }
 
-class UpdatePtsChanged extends BaseConstructor {
+class UpdatePtsChanged extends UpdateBase {
   static const CONSTRUCTOR_ID = 861169551;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -12733,7 +12565,6 @@ class UpdatePtsChanged extends BaseConstructor {
   UpdatePtsChanged();
 
   static UpdatePtsChanged fromReader(BinaryReader reader) {
-    var len;
     return UpdatePtsChanged();
   }
 
@@ -12760,13 +12591,13 @@ class UpdatePtsChanged extends BaseConstructor {
   }
 }
 
-class UpdateChannelWebPage extends BaseConstructor {
+class UpdateChannelWebPage extends UpdateBase {
   static const CONSTRUCTOR_ID = 791390623;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 791390623;
   BigInt channelId;
-  var webpage;
+  WebPageBase webpage;
   int pts;
   int ptsCount;
 
@@ -12777,7 +12608,6 @@ class UpdateChannelWebPage extends BaseConstructor {
       required this.ptsCount});
 
   static UpdateChannelWebPage fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     var webpage = reader.tgReadObject();
     var pts = reader.readInt();
@@ -12791,7 +12621,7 @@ class UpdateChannelWebPage extends BaseConstructor {
     return [
       readBufferFromBigInt(791390623, 4),
       readBufferFromBigInt(this.channelId, 8, little: true, signed: true),
-      (this.webpage.getBytes() as List<int>),
+      (this.webpage.getBytes()),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -12813,20 +12643,18 @@ class UpdateChannelWebPage extends BaseConstructor {
   }
 }
 
-class UpdateDialogPinned extends BaseConstructor {
+class UpdateDialogPinned extends UpdateBase {
   static const CONSTRUCTOR_ID = 1852826908;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1852826908;
   bool? pinned;
   int? folderId;
-  var peer;
+  DialogPeerBase peer;
 
-  UpdateDialogPinned(
-      {required this.pinned, required this.folderId, required this.peer});
+  UpdateDialogPinned({this.pinned, this.folderId, required this.peer});
 
   static UpdateDialogPinned fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final pinned = (flags & 1) == 1;
     var folderId;
@@ -12849,7 +12677,7 @@ class UpdateDialogPinned extends BaseConstructor {
           : [readBufferFromBigInt(this.folderId, 4, little: true, signed: true)]
               .expand((element) => element)
               .toList(),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -12869,15 +12697,15 @@ class UpdateDialogPinned extends BaseConstructor {
   }
 }
 
-class UpdatePinnedDialogs extends BaseConstructor {
+class UpdatePinnedDialogs extends UpdateBase {
   static const CONSTRUCTOR_ID = 4195302562;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 4195302562;
   int? folderId;
-  List<dynamic>? order;
+  List<DialogPeerBase>? order;
 
-  UpdatePinnedDialogs({required this.folderId, required this.order});
+  UpdatePinnedDialogs({this.folderId, this.order});
 
   static UpdatePinnedDialogs fromReader(BinaryReader reader) {
     var len;
@@ -12892,7 +12720,7 @@ class UpdatePinnedDialogs extends BaseConstructor {
     if ((flags & 1) == 1) {
       var _vectororder = reader.readInt();
       if (_vectororder != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> order = [];
+      List<DialogPeerBase> order = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         order.add(reader.tgReadObject());
@@ -12921,7 +12749,7 @@ class UpdatePinnedDialogs extends BaseConstructor {
                   little: true, signed: true),
               this
                   .order!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -12943,17 +12771,16 @@ class UpdatePinnedDialogs extends BaseConstructor {
   }
 }
 
-class UpdateBotWebhookJSON extends BaseConstructor {
+class UpdateBotWebhookJSON extends UpdateBase {
   static const CONSTRUCTOR_ID = 2199371971;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2199371971;
-  var data;
+  DataJSON data;
 
   UpdateBotWebhookJSON({required this.data});
 
   static UpdateBotWebhookJSON fromReader(BinaryReader reader) {
-    var len;
     var data = reader.tgReadObject();
     return UpdateBotWebhookJSON(data: data);
   }
@@ -12962,7 +12789,7 @@ class UpdateBotWebhookJSON extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2199371971, 4),
-      (this.data.getBytes() as List<int>),
+      (this.data.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -12982,20 +12809,19 @@ class UpdateBotWebhookJSON extends BaseConstructor {
   }
 }
 
-class UpdateBotWebhookJSONQuery extends BaseConstructor {
+class UpdateBotWebhookJSONQuery extends UpdateBase {
   static const CONSTRUCTOR_ID = 2610053286;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2610053286;
   BigInt queryId;
-  var data;
+  DataJSON data;
   int timeout;
 
   UpdateBotWebhookJSONQuery(
       {required this.queryId, required this.data, required this.timeout});
 
   static UpdateBotWebhookJSONQuery fromReader(BinaryReader reader) {
-    var len;
     var queryId = reader.readLong();
     var data = reader.tgReadObject();
     var timeout = reader.readInt();
@@ -13008,7 +12834,7 @@ class UpdateBotWebhookJSONQuery extends BaseConstructor {
     return [
       readBufferFromBigInt(2610053286, 4),
       readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
-      (this.data.getBytes() as List<int>),
+      (this.data.getBytes()),
       readBufferFromBigInt(this.timeout, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -13029,7 +12855,7 @@ class UpdateBotWebhookJSONQuery extends BaseConstructor {
   }
 }
 
-class UpdateBotShippingQuery extends BaseConstructor {
+class UpdateBotShippingQuery extends UpdateBase {
   static const CONSTRUCTOR_ID = 3048144253;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -13037,7 +12863,7 @@ class UpdateBotShippingQuery extends BaseConstructor {
   BigInt queryId;
   BigInt userId;
   List<int> payload;
-  var shippingAddress;
+  PostAddress shippingAddress;
 
   UpdateBotShippingQuery(
       {required this.queryId,
@@ -13046,7 +12872,6 @@ class UpdateBotShippingQuery extends BaseConstructor {
       required this.shippingAddress});
 
   static UpdateBotShippingQuery fromReader(BinaryReader reader) {
-    var len;
     var queryId = reader.readLong();
     var userId = reader.readLong();
     var payload = reader.tgReadBytes();
@@ -13065,7 +12890,7 @@ class UpdateBotShippingQuery extends BaseConstructor {
       readBufferFromBigInt(this.queryId, 8, little: true, signed: true),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
       serializeBytes(this.payload),
-      (this.shippingAddress.getBytes() as List<int>),
+      (this.shippingAddress.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -13085,7 +12910,7 @@ class UpdateBotShippingQuery extends BaseConstructor {
   }
 }
 
-class UpdateBotPrecheckoutQuery extends BaseConstructor {
+class UpdateBotPrecheckoutQuery extends UpdateBase {
   static const CONSTRUCTOR_ID = 2359990934;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -13093,7 +12918,7 @@ class UpdateBotPrecheckoutQuery extends BaseConstructor {
   BigInt queryId;
   BigInt userId;
   List<int> payload;
-  var info;
+  PaymentRequestedInfo? info;
   String? shippingOptionId;
   String currency;
   BigInt totalAmount;
@@ -13102,13 +12927,12 @@ class UpdateBotPrecheckoutQuery extends BaseConstructor {
       {required this.queryId,
       required this.userId,
       required this.payload,
-      required this.info,
-      required this.shippingOptionId,
+      this.info,
+      this.shippingOptionId,
       required this.currency,
       required this.totalAmount});
 
   static UpdateBotPrecheckoutQuery fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var queryId = reader.readLong();
     var userId = reader.readLong();
@@ -13147,7 +12971,7 @@ class UpdateBotPrecheckoutQuery extends BaseConstructor {
       serializeBytes(this.payload),
       (this.info == null || this.info == false)
           ? List<int>.empty()
-          : [(this.info.getBytes() as List<int>)]
+          : [(this.info!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.shippingOptionId == null || this.shippingOptionId == false)
@@ -13176,17 +13000,16 @@ class UpdateBotPrecheckoutQuery extends BaseConstructor {
   }
 }
 
-class UpdatePhoneCall extends BaseConstructor {
+class UpdatePhoneCall extends UpdateBase {
   static const CONSTRUCTOR_ID = 2869914398;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2869914398;
-  var phoneCall;
+  PhoneCallBase phoneCall;
 
   UpdatePhoneCall({required this.phoneCall});
 
   static UpdatePhoneCall fromReader(BinaryReader reader) {
-    var len;
     var phoneCall = reader.tgReadObject();
     return UpdatePhoneCall(phoneCall: phoneCall);
   }
@@ -13195,7 +13018,7 @@ class UpdatePhoneCall extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2869914398, 4),
-      (this.phoneCall.getBytes() as List<int>),
+      (this.phoneCall.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -13215,7 +13038,7 @@ class UpdatePhoneCall extends BaseConstructor {
   }
 }
 
-class UpdateLangPackTooLong extends BaseConstructor {
+class UpdateLangPackTooLong extends UpdateBase {
   static const CONSTRUCTOR_ID = 1180041828;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -13225,7 +13048,6 @@ class UpdateLangPackTooLong extends BaseConstructor {
   UpdateLangPackTooLong({required this.langCode});
 
   static UpdateLangPackTooLong fromReader(BinaryReader reader) {
-    var len;
     var langCode = reader.tgReadString();
     return UpdateLangPackTooLong(langCode: langCode);
   }
@@ -13254,17 +13076,16 @@ class UpdateLangPackTooLong extends BaseConstructor {
   }
 }
 
-class UpdateLangPack extends BaseConstructor {
+class UpdateLangPack extends UpdateBase {
   static const CONSTRUCTOR_ID = 1442983757;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1442983757;
-  var difference;
+  LangPackDifference difference;
 
   UpdateLangPack({required this.difference});
 
   static UpdateLangPack fromReader(BinaryReader reader) {
-    var len;
     var difference = reader.tgReadObject();
     return UpdateLangPack(difference: difference);
   }
@@ -13273,7 +13094,7 @@ class UpdateLangPack extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1442983757, 4),
-      (this.difference.getBytes() as List<int>),
+      (this.difference.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -13293,7 +13114,7 @@ class UpdateLangPack extends BaseConstructor {
   }
 }
 
-class UpdateFavedStickers extends BaseConstructor {
+class UpdateFavedStickers extends UpdateBase {
   static const CONSTRUCTOR_ID = 3843135853;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -13302,7 +13123,6 @@ class UpdateFavedStickers extends BaseConstructor {
   UpdateFavedStickers();
 
   static UpdateFavedStickers fromReader(BinaryReader reader) {
-    var len;
     return UpdateFavedStickers();
   }
 
@@ -13329,7 +13149,7 @@ class UpdateFavedStickers extends BaseConstructor {
   }
 }
 
-class UpdateChannelReadMessagesContents extends BaseConstructor {
+class UpdateChannelReadMessagesContents extends UpdateBase {
   static const CONSTRUCTOR_ID = 1153291573;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -13360,11 +13180,10 @@ class UpdateChannelReadMessagesContents extends BaseConstructor {
       readBufferFromBigInt(1153291573, 4),
       readBufferFromBigInt(this.channelId, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.messages!.length, 4,
+      readBufferFromBigInt(this.messages.length, 4,
           little: true, signed: true),
       this
-          .messages!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .messages.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -13385,7 +13204,7 @@ class UpdateChannelReadMessagesContents extends BaseConstructor {
   }
 }
 
-class UpdateContactsReset extends BaseConstructor {
+class UpdateContactsReset extends UpdateBase {
   static const CONSTRUCTOR_ID = 1887741886;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -13394,7 +13213,6 @@ class UpdateContactsReset extends BaseConstructor {
   UpdateContactsReset();
 
   static UpdateContactsReset fromReader(BinaryReader reader) {
-    var len;
     return UpdateContactsReset();
   }
 
@@ -13421,7 +13239,7 @@ class UpdateContactsReset extends BaseConstructor {
   }
 }
 
-class UpdateChannelAvailableMessages extends BaseConstructor {
+class UpdateChannelAvailableMessages extends UpdateBase {
   static const CONSTRUCTOR_ID = 2990524056;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -13433,7 +13251,6 @@ class UpdateChannelAvailableMessages extends BaseConstructor {
       {required this.channelId, required this.availableMinId});
 
   static UpdateChannelAvailableMessages fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     var availableMinId = reader.readInt();
     return UpdateChannelAvailableMessages(
@@ -13465,18 +13282,17 @@ class UpdateChannelAvailableMessages extends BaseConstructor {
   }
 }
 
-class UpdateDialogUnreadMark extends BaseConstructor {
+class UpdateDialogUnreadMark extends UpdateBase {
   static const CONSTRUCTOR_ID = 3781450179;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3781450179;
   bool? unread;
-  var peer;
+  DialogPeerBase peer;
 
-  UpdateDialogUnreadMark({required this.unread, required this.peer});
+  UpdateDialogUnreadMark({this.unread, required this.peer});
 
   static UpdateDialogUnreadMark fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final unread = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -13488,7 +13304,7 @@ class UpdateDialogUnreadMark extends BaseConstructor {
     return [
       readBufferFromBigInt(3781450179, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -13508,20 +13324,18 @@ class UpdateDialogUnreadMark extends BaseConstructor {
   }
 }
 
-class UpdateMessagePoll extends BaseConstructor {
+class UpdateMessagePoll extends UpdateBase {
   static const CONSTRUCTOR_ID = 2896258427;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2896258427;
   BigInt pollId;
-  var poll;
-  var results;
+  Poll? poll;
+  PollResults results;
 
-  UpdateMessagePoll(
-      {required this.pollId, required this.poll, required this.results});
+  UpdateMessagePoll({required this.pollId, this.poll, required this.results});
 
   static UpdateMessagePoll fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var pollId = reader.readLong();
     var poll;
@@ -13542,10 +13356,10 @@ class UpdateMessagePoll extends BaseConstructor {
       readBufferFromBigInt(this.pollId, 8, little: true, signed: true),
       (this.poll == null || this.poll == false)
           ? List<int>.empty()
-          : [(this.poll.getBytes() as List<int>)]
+          : [(this.poll!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.results.getBytes() as List<int>),
+      (this.results.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -13565,13 +13379,13 @@ class UpdateMessagePoll extends BaseConstructor {
   }
 }
 
-class UpdateChatDefaultBannedRights extends BaseConstructor {
+class UpdateChatDefaultBannedRights extends UpdateBase {
   static const CONSTRUCTOR_ID = 1421875280;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1421875280;
-  var peer;
-  var defaultBannedRights;
+  PeerBase peer;
+  ChatBannedRights defaultBannedRights;
   int version;
 
   UpdateChatDefaultBannedRights(
@@ -13580,7 +13394,6 @@ class UpdateChatDefaultBannedRights extends BaseConstructor {
       required this.version});
 
   static UpdateChatDefaultBannedRights fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var defaultBannedRights = reader.tgReadObject();
     var version = reader.readInt();
@@ -13592,8 +13405,8 @@ class UpdateChatDefaultBannedRights extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1421875280, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.defaultBannedRights.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.defaultBannedRights.getBytes()),
       readBufferFromBigInt(this.version, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -13614,12 +13427,12 @@ class UpdateChatDefaultBannedRights extends BaseConstructor {
   }
 }
 
-class UpdateFolderPeers extends BaseConstructor {
+class UpdateFolderPeers extends UpdateBase {
   static const CONSTRUCTOR_ID = 422972864;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 422972864;
-  List<dynamic> folderPeers;
+  List<FolderPeer> folderPeers;
   int pts;
   int ptsCount;
 
@@ -13630,7 +13443,7 @@ class UpdateFolderPeers extends BaseConstructor {
     var len;
     var _vectorfolderPeers = reader.readInt();
     if (_vectorfolderPeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> folderPeers = [];
+    List<FolderPeer> folderPeers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       folderPeers.add(reader.tgReadObject());
@@ -13646,11 +13459,10 @@ class UpdateFolderPeers extends BaseConstructor {
     return [
       readBufferFromBigInt(422972864, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.folderPeers!.length, 4,
+      readBufferFromBigInt(this.folderPeers.length, 4,
           little: true, signed: true),
       this
-          .folderPeers!
-          .map((x) => (x.getBytes() as List<int>))
+          .folderPeers.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
@@ -13673,18 +13485,17 @@ class UpdateFolderPeers extends BaseConstructor {
   }
 }
 
-class UpdatePeerSettings extends BaseConstructor {
+class UpdatePeerSettings extends UpdateBase {
   static const CONSTRUCTOR_ID = 1786671974;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1786671974;
-  var peer;
-  var settings;
+  PeerBase peer;
+  PeerSettings settings;
 
   UpdatePeerSettings({required this.peer, required this.settings});
 
   static UpdatePeerSettings fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var settings = reader.tgReadObject();
     return UpdatePeerSettings(peer: peer, settings: settings);
@@ -13694,8 +13505,8 @@ class UpdatePeerSettings extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1786671974, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.settings.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.settings.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -13715,12 +13526,12 @@ class UpdatePeerSettings extends BaseConstructor {
   }
 }
 
-class UpdatePeerLocated extends BaseConstructor {
+class UpdatePeerLocated extends UpdateBase {
   static const CONSTRUCTOR_ID = 3031420848;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3031420848;
-  List<dynamic> peers;
+  List<PeerLocatedBase> peers;
 
   UpdatePeerLocated({required this.peers});
 
@@ -13728,7 +13539,7 @@ class UpdatePeerLocated extends BaseConstructor {
     var len;
     var _vectorpeers = reader.readInt();
     if (_vectorpeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> peers = [];
+    List<PeerLocatedBase> peers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       peers.add(reader.tgReadObject());
@@ -13741,10 +13552,9 @@ class UpdatePeerLocated extends BaseConstructor {
     return [
       readBufferFromBigInt(3031420848, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.peers!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.peers.length, 4, little: true, signed: true),
       this
-          .peers!
-          .map((x) => (x.getBytes() as List<int>))
+          .peers.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -13765,17 +13575,16 @@ class UpdatePeerLocated extends BaseConstructor {
   }
 }
 
-class UpdateNewScheduledMessage extends BaseConstructor {
+class UpdateNewScheduledMessage extends UpdateBase {
   static const CONSTRUCTOR_ID = 967122427;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 967122427;
-  var message;
+  MessageBase message;
 
   UpdateNewScheduledMessage({required this.message});
 
   static UpdateNewScheduledMessage fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     return UpdateNewScheduledMessage(message: message);
   }
@@ -13784,7 +13593,7 @@ class UpdateNewScheduledMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(967122427, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -13804,12 +13613,12 @@ class UpdateNewScheduledMessage extends BaseConstructor {
   }
 }
 
-class UpdateDeleteScheduledMessages extends BaseConstructor {
+class UpdateDeleteScheduledMessages extends UpdateBase {
   static const CONSTRUCTOR_ID = 2424728814;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2424728814;
-  var peer;
+  PeerBase peer;
   List<int> messages;
 
   UpdateDeleteScheduledMessages({required this.peer, required this.messages});
@@ -13831,13 +13640,12 @@ class UpdateDeleteScheduledMessages extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2424728814, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.messages!.length, 4,
+      readBufferFromBigInt(this.messages.length, 4,
           little: true, signed: true),
       this
-          .messages!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .messages.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -13858,17 +13666,16 @@ class UpdateDeleteScheduledMessages extends BaseConstructor {
   }
 }
 
-class UpdateTheme extends BaseConstructor {
+class UpdateTheme extends UpdateBase {
   static const CONSTRUCTOR_ID = 2182544291;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2182544291;
-  var theme;
+  Theme theme;
 
   UpdateTheme({required this.theme});
 
   static UpdateTheme fromReader(BinaryReader reader) {
-    var len;
     var theme = reader.tgReadObject();
     return UpdateTheme(theme: theme);
   }
@@ -13877,7 +13684,7 @@ class UpdateTheme extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2182544291, 4),
-      (this.theme.getBytes() as List<int>),
+      (this.theme.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -13897,18 +13704,17 @@ class UpdateTheme extends BaseConstructor {
   }
 }
 
-class UpdateGeoLiveViewed extends BaseConstructor {
+class UpdateGeoLiveViewed extends UpdateBase {
   static const CONSTRUCTOR_ID = 2267003193;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2267003193;
-  var peer;
+  PeerBase peer;
   int msgId;
 
   UpdateGeoLiveViewed({required this.peer, required this.msgId});
 
   static UpdateGeoLiveViewed fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     return UpdateGeoLiveViewed(peer: peer, msgId: msgId);
@@ -13918,7 +13724,7 @@ class UpdateGeoLiveViewed extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2267003193, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -13939,7 +13745,7 @@ class UpdateGeoLiveViewed extends BaseConstructor {
   }
 }
 
-class UpdateLoginToken extends BaseConstructor {
+class UpdateLoginToken extends UpdateBase {
   static const CONSTRUCTOR_ID = 1448076945;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -13948,7 +13754,6 @@ class UpdateLoginToken extends BaseConstructor {
   UpdateLoginToken();
 
   static UpdateLoginToken fromReader(BinaryReader reader) {
-    var len;
     return UpdateLoginToken();
   }
 
@@ -13975,7 +13780,7 @@ class UpdateLoginToken extends BaseConstructor {
   }
 }
 
-class UpdateMessagePollVote extends BaseConstructor {
+class UpdateMessagePollVote extends UpdateBase {
   static const CONSTRUCTOR_ID = 274961865;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14014,8 +13819,8 @@ class UpdateMessagePollVote extends BaseConstructor {
       readBufferFromBigInt(this.pollId, 8, little: true, signed: true),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.options!.length, 4, little: true, signed: true),
-      this.options!.map((x) => serializeBytes(x)).expand((element) => element),
+      readBufferFromBigInt(this.options.length, 4, little: true, signed: true),
+      this.options.map((x) => serializeBytes(x)).expand((element) => element),
       readBufferFromBigInt(this.qts, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -14036,18 +13841,17 @@ class UpdateMessagePollVote extends BaseConstructor {
   }
 }
 
-class UpdateDialogFilter extends BaseConstructor {
+class UpdateDialogFilter extends UpdateBase {
   static const CONSTRUCTOR_ID = 654302845;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 654302845;
   int id;
-  var filter;
+  DialogFilterBase? filter;
 
-  UpdateDialogFilter({required this.id, required this.filter});
+  UpdateDialogFilter({required this.id, this.filter});
 
   static UpdateDialogFilter fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.readInt();
     var filter;
@@ -14067,7 +13871,7 @@ class UpdateDialogFilter extends BaseConstructor {
       readBufferFromBigInt(this.id, 4, little: true, signed: true),
       (this.filter == null || this.filter == false)
           ? List<int>.empty()
-          : [(this.filter.getBytes() as List<int>)]
+          : [(this.filter!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -14089,7 +13893,7 @@ class UpdateDialogFilter extends BaseConstructor {
   }
 }
 
-class UpdateDialogFilterOrder extends BaseConstructor {
+class UpdateDialogFilterOrder extends UpdateBase {
   static const CONSTRUCTOR_ID = 2782339333;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14115,10 +13919,9 @@ class UpdateDialogFilterOrder extends BaseConstructor {
     return [
       readBufferFromBigInt(2782339333, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.order!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.order.length, 4, little: true, signed: true),
       this
-          .order!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .order.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -14139,7 +13942,7 @@ class UpdateDialogFilterOrder extends BaseConstructor {
   }
 }
 
-class UpdateDialogFilters extends BaseConstructor {
+class UpdateDialogFilters extends UpdateBase {
   static const CONSTRUCTOR_ID = 889491791;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14148,7 +13951,6 @@ class UpdateDialogFilters extends BaseConstructor {
   UpdateDialogFilters();
 
   static UpdateDialogFilters fromReader(BinaryReader reader) {
-    var len;
     return UpdateDialogFilters();
   }
 
@@ -14175,7 +13977,7 @@ class UpdateDialogFilters extends BaseConstructor {
   }
 }
 
-class UpdatePhoneCallSignalingData extends BaseConstructor {
+class UpdatePhoneCallSignalingData extends UpdateBase {
   static const CONSTRUCTOR_ID = 643940105;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14186,7 +13988,6 @@ class UpdatePhoneCallSignalingData extends BaseConstructor {
   UpdatePhoneCallSignalingData({required this.phoneCallId, required this.data});
 
   static UpdatePhoneCallSignalingData fromReader(BinaryReader reader) {
-    var len;
     var phoneCallId = reader.readLong();
     var data = reader.tgReadBytes();
     return UpdatePhoneCallSignalingData(phoneCallId: phoneCallId, data: data);
@@ -14217,7 +14018,7 @@ class UpdatePhoneCallSignalingData extends BaseConstructor {
   }
 }
 
-class UpdateChannelMessageForwards extends BaseConstructor {
+class UpdateChannelMessageForwards extends UpdateBase {
   static const CONSTRUCTOR_ID = 3533318132;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14230,7 +14031,6 @@ class UpdateChannelMessageForwards extends BaseConstructor {
       {required this.channelId, required this.id, required this.forwards});
 
   static UpdateChannelMessageForwards fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     var id = reader.readInt();
     var forwards = reader.readInt();
@@ -14264,7 +14064,7 @@ class UpdateChannelMessageForwards extends BaseConstructor {
   }
 }
 
-class UpdateReadChannelDiscussionInbox extends BaseConstructor {
+class UpdateReadChannelDiscussionInbox extends UpdateBase {
   static const CONSTRUCTOR_ID = 3601962310;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14279,11 +14079,10 @@ class UpdateReadChannelDiscussionInbox extends BaseConstructor {
       {required this.channelId,
       required this.topMsgId,
       required this.readMaxId,
-      required this.broadcastId,
-      required this.broadcastPost});
+      this.broadcastId,
+      this.broadcastPost});
 
   static UpdateReadChannelDiscussionInbox fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var channelId = reader.readLong();
     var topMsgId = reader.readInt();
@@ -14347,7 +14146,7 @@ class UpdateReadChannelDiscussionInbox extends BaseConstructor {
   }
 }
 
-class UpdateReadChannelDiscussionOutbox extends BaseConstructor {
+class UpdateReadChannelDiscussionOutbox extends UpdateBase {
   static const CONSTRUCTOR_ID = 1767677564;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14362,7 +14161,6 @@ class UpdateReadChannelDiscussionOutbox extends BaseConstructor {
       required this.readMaxId});
 
   static UpdateReadChannelDiscussionOutbox fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     var topMsgId = reader.readInt();
     var readMaxId = reader.readInt();
@@ -14396,18 +14194,17 @@ class UpdateReadChannelDiscussionOutbox extends BaseConstructor {
   }
 }
 
-class UpdatePeerBlocked extends BaseConstructor {
+class UpdatePeerBlocked extends UpdateBase {
   static const CONSTRUCTOR_ID = 610945826;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 610945826;
-  var peerId;
+  PeerBase peerId;
   bool blocked;
 
   UpdatePeerBlocked({required this.peerId, required this.blocked});
 
   static UpdatePeerBlocked fromReader(BinaryReader reader) {
-    var len;
     var peerId = reader.tgReadObject();
     var blocked = reader.tgReadBool();
     return UpdatePeerBlocked(peerId: peerId, blocked: blocked);
@@ -14417,7 +14214,7 @@ class UpdatePeerBlocked extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(610945826, 4),
-      (this.peerId.getBytes() as List<int>),
+      (this.peerId.getBytes()),
       [this.blocked == true ? 0xb5757299 : 0x379779bc],
     ].expand((element) => element).toList();
   }
@@ -14438,24 +14235,23 @@ class UpdatePeerBlocked extends BaseConstructor {
   }
 }
 
-class UpdateChannelUserTyping extends BaseConstructor {
+class UpdateChannelUserTyping extends UpdateBase {
   static const CONSTRUCTOR_ID = 2357774627;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 2357774627;
   BigInt channelId;
   int? topMsgId;
-  var fromId;
-  var action;
+  PeerBase fromId;
+  SendMessageActionBase action;
 
   UpdateChannelUserTyping(
       {required this.channelId,
-      required this.topMsgId,
+      this.topMsgId,
       required this.fromId,
       required this.action});
 
   static UpdateChannelUserTyping fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var channelId = reader.readLong();
     var topMsgId;
@@ -14484,8 +14280,8 @@ class UpdateChannelUserTyping extends BaseConstructor {
           : [readBufferFromBigInt(this.topMsgId, 4, little: true, signed: true)]
               .expand((element) => element)
               .toList(),
-      (this.fromId.getBytes() as List<int>),
-      (this.action.getBytes() as List<int>),
+      (this.fromId.getBytes()),
+      (this.action.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -14505,19 +14301,19 @@ class UpdateChannelUserTyping extends BaseConstructor {
   }
 }
 
-class UpdatePinnedMessages extends BaseConstructor {
+class UpdatePinnedMessages extends UpdateBase {
   static const CONSTRUCTOR_ID = 3984976565;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3984976565;
   bool? pinned;
-  var peer;
+  PeerBase peer;
   List<int> messages;
   int pts;
   int ptsCount;
 
   UpdatePinnedMessages(
-      {required this.pinned,
+      {this.pinned,
       required this.peer,
       required this.messages,
       required this.pts,
@@ -14550,13 +14346,12 @@ class UpdatePinnedMessages extends BaseConstructor {
     return [
       readBufferFromBigInt(3984976565, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.messages!.length, 4,
+      readBufferFromBigInt(this.messages.length, 4,
           little: true, signed: true),
       this
-          .messages!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .messages.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
@@ -14579,7 +14374,7 @@ class UpdatePinnedMessages extends BaseConstructor {
   }
 }
 
-class UpdatePinnedChannelMessages extends BaseConstructor {
+class UpdatePinnedChannelMessages extends UpdateBase {
   static const CONSTRUCTOR_ID = 1538885128;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14591,7 +14386,7 @@ class UpdatePinnedChannelMessages extends BaseConstructor {
   int ptsCount;
 
   UpdatePinnedChannelMessages(
-      {required this.pinned,
+      {this.pinned,
       required this.channelId,
       required this.messages,
       required this.pts,
@@ -14626,11 +14421,10 @@ class UpdatePinnedChannelMessages extends BaseConstructor {
       [0, 0, 0, 0],
       readBufferFromBigInt(this.channelId, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.messages!.length, 4,
+      readBufferFromBigInt(this.messages.length, 4,
           little: true, signed: true),
       this
-          .messages!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .messages.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.ptsCount, 4, little: true, signed: true),
@@ -14653,7 +14447,7 @@ class UpdatePinnedChannelMessages extends BaseConstructor {
   }
 }
 
-class UpdateChat extends BaseConstructor {
+class UpdateChat extends UpdateBase {
   static const CONSTRUCTOR_ID = 4170869326;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14663,7 +14457,6 @@ class UpdateChat extends BaseConstructor {
   UpdateChat({required this.chatId});
 
   static UpdateChat fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     return UpdateChat(chatId: chatId);
   }
@@ -14692,13 +14485,13 @@ class UpdateChat extends BaseConstructor {
   }
 }
 
-class UpdateGroupCallParticipants extends BaseConstructor {
+class UpdateGroupCallParticipants extends UpdateBase {
   static const CONSTRUCTOR_ID = 4075543374;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 4075543374;
-  var call;
-  List<dynamic> participants;
+  InputGroupCall call;
+  List<GroupCallParticipant> participants;
   int version;
 
   UpdateGroupCallParticipants(
@@ -14709,7 +14502,7 @@ class UpdateGroupCallParticipants extends BaseConstructor {
     var call = reader.tgReadObject();
     var _vectorparticipants = reader.readInt();
     if (_vectorparticipants != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> participants = [];
+    List<GroupCallParticipant> participants = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       participants.add(reader.tgReadObject());
@@ -14723,13 +14516,12 @@ class UpdateGroupCallParticipants extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4075543374, 4),
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.participants!.length, 4,
+      readBufferFromBigInt(this.participants.length, 4,
           little: true, signed: true),
       this
-          .participants!
-          .map((x) => (x.getBytes() as List<int>))
+          .participants.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.version, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -14751,18 +14543,17 @@ class UpdateGroupCallParticipants extends BaseConstructor {
   }
 }
 
-class UpdateGroupCall extends BaseConstructor {
+class UpdateGroupCall extends UpdateBase {
   static const CONSTRUCTOR_ID = 347227392;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 347227392;
   BigInt chatId;
-  var call;
+  GroupCallBase call;
 
   UpdateGroupCall({required this.chatId, required this.call});
 
   static UpdateGroupCall fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readLong();
     var call = reader.tgReadObject();
     return UpdateGroupCall(chatId: chatId, call: call);
@@ -14773,7 +14564,7 @@ class UpdateGroupCall extends BaseConstructor {
     return [
       readBufferFromBigInt(347227392, 4),
       readBufferFromBigInt(this.chatId, 8, little: true, signed: true),
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -14793,18 +14584,17 @@ class UpdateGroupCall extends BaseConstructor {
   }
 }
 
-class UpdatePeerHistoryTTL extends BaseConstructor {
+class UpdatePeerHistoryTTL extends UpdateBase {
   static const CONSTRUCTOR_ID = 3147544997;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 3147544997;
-  var peer;
+  PeerBase peer;
   int? ttlPeriod;
 
-  UpdatePeerHistoryTTL({required this.peer, required this.ttlPeriod});
+  UpdatePeerHistoryTTL({required this.peer, this.ttlPeriod});
 
   static UpdatePeerHistoryTTL fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var peer = reader.tgReadObject();
     var ttlPeriod;
@@ -14821,7 +14611,7 @@ class UpdatePeerHistoryTTL extends BaseConstructor {
     return [
       readBufferFromBigInt(3147544997, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       (this.ttlPeriod == null || this.ttlPeriod == false)
           ? List<int>.empty()
           : [
@@ -14847,7 +14637,7 @@ class UpdatePeerHistoryTTL extends BaseConstructor {
   }
 }
 
-class UpdateChatParticipant extends BaseConstructor {
+class UpdateChatParticipant extends UpdateBase {
   static const CONSTRUCTOR_ID = 3498534458;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14856,9 +14646,9 @@ class UpdateChatParticipant extends BaseConstructor {
   int date;
   BigInt actorId;
   BigInt userId;
-  var prevParticipant;
-  var newParticipant;
-  var invite;
+  ChatParticipantBase? prevParticipant;
+  ChatParticipantBase? newParticipant;
+  ExportedChatInviteBase? invite;
   int qts;
 
   UpdateChatParticipant(
@@ -14866,13 +14656,12 @@ class UpdateChatParticipant extends BaseConstructor {
       required this.date,
       required this.actorId,
       required this.userId,
-      required this.prevParticipant,
-      required this.newParticipant,
-      required this.invite,
+      this.prevParticipant,
+      this.newParticipant,
+      this.invite,
       required this.qts});
 
   static UpdateChatParticipant fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var chatId = reader.readLong();
     var date = reader.readInt();
@@ -14919,17 +14708,17 @@ class UpdateChatParticipant extends BaseConstructor {
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
       (this.prevParticipant == null || this.prevParticipant == false)
           ? List<int>.empty()
-          : [(this.prevParticipant.getBytes() as List<int>)]
+          : [(this.prevParticipant!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.newParticipant == null || this.newParticipant == false)
           ? List<int>.empty()
-          : [(this.newParticipant.getBytes() as List<int>)]
+          : [(this.newParticipant!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.invite == null || this.invite == false)
           ? List<int>.empty()
-          : [(this.invite.getBytes() as List<int>)]
+          : [(this.invite!.getBytes())]
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(this.qts, 4, little: true, signed: true),
@@ -14952,7 +14741,7 @@ class UpdateChatParticipant extends BaseConstructor {
   }
 }
 
-class UpdateChannelParticipant extends BaseConstructor {
+class UpdateChannelParticipant extends UpdateBase {
   static const CONSTRUCTOR_ID = 2556246715;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -14961,9 +14750,9 @@ class UpdateChannelParticipant extends BaseConstructor {
   int date;
   BigInt actorId;
   BigInt userId;
-  var prevParticipant;
-  var newParticipant;
-  var invite;
+  ChannelParticipantBase? prevParticipant;
+  ChannelParticipantBase? newParticipant;
+  ExportedChatInviteBase? invite;
   int qts;
 
   UpdateChannelParticipant(
@@ -14971,13 +14760,12 @@ class UpdateChannelParticipant extends BaseConstructor {
       required this.date,
       required this.actorId,
       required this.userId,
-      required this.prevParticipant,
-      required this.newParticipant,
-      required this.invite,
+      this.prevParticipant,
+      this.newParticipant,
+      this.invite,
       required this.qts});
 
   static UpdateChannelParticipant fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var channelId = reader.readLong();
     var date = reader.readInt();
@@ -15024,17 +14812,17 @@ class UpdateChannelParticipant extends BaseConstructor {
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
       (this.prevParticipant == null || this.prevParticipant == false)
           ? List<int>.empty()
-          : [(this.prevParticipant.getBytes() as List<int>)]
+          : [(this.prevParticipant!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.newParticipant == null || this.newParticipant == false)
           ? List<int>.empty()
-          : [(this.newParticipant.getBytes() as List<int>)]
+          : [(this.newParticipant!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.invite == null || this.invite == false)
           ? List<int>.empty()
-          : [(this.invite.getBytes() as List<int>)]
+          : [(this.invite!.getBytes())]
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(this.qts, 4, little: true, signed: true),
@@ -15057,7 +14845,7 @@ class UpdateChannelParticipant extends BaseConstructor {
   }
 }
 
-class UpdateBotStopped extends BaseConstructor {
+class UpdateBotStopped extends UpdateBase {
   static const CONSTRUCTOR_ID = 3297184329;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -15074,7 +14862,6 @@ class UpdateBotStopped extends BaseConstructor {
       required this.qts});
 
   static UpdateBotStopped fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var date = reader.readInt();
     var stopped = reader.tgReadBool();
@@ -15110,18 +14897,17 @@ class UpdateBotStopped extends BaseConstructor {
   }
 }
 
-class UpdateGroupCallConnection extends BaseConstructor {
+class UpdateGroupCallConnection extends UpdateBase {
   static const CONSTRUCTOR_ID = 192428418;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 192428418;
   bool? presentation;
-  var params;
+  DataJSON params;
 
-  UpdateGroupCallConnection({required this.presentation, required this.params});
+  UpdateGroupCallConnection({this.presentation, required this.params});
 
   static UpdateGroupCallConnection fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final presentation = (flags & 1) == 1;
     var params = reader.tgReadObject();
@@ -15134,7 +14920,7 @@ class UpdateGroupCallConnection extends BaseConstructor {
     return [
       readBufferFromBigInt(192428418, 4),
       [0, 0, 0, 0],
-      (this.params.getBytes() as List<int>),
+      (this.params.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -15154,14 +14940,14 @@ class UpdateGroupCallConnection extends BaseConstructor {
   }
 }
 
-class UpdateBotCommands extends BaseConstructor {
+class UpdateBotCommands extends UpdateBase {
   static const CONSTRUCTOR_ID = 1299263278;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1299263278;
-  var peer;
+  PeerBase peer;
   BigInt botId;
-  List<dynamic> commands;
+  List<BotCommand> commands;
 
   UpdateBotCommands(
       {required this.peer, required this.botId, required this.commands});
@@ -15172,7 +14958,7 @@ class UpdateBotCommands extends BaseConstructor {
     var botId = reader.readLong();
     var _vectorcommands = reader.readInt();
     if (_vectorcommands != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> commands = [];
+    List<BotCommand> commands = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       commands.add(reader.tgReadObject());
@@ -15184,14 +14970,13 @@ class UpdateBotCommands extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1299263278, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.botId, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.commands!.length, 4,
+      readBufferFromBigInt(this.commands.length, 4,
           little: true, signed: true),
       this
-          .commands!
-          .map((x) => (x.getBytes() as List<int>))
+          .commands.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -15212,12 +14997,12 @@ class UpdateBotCommands extends BaseConstructor {
   }
 }
 
-class UpdatePendingJoinRequests extends BaseConstructor {
+class UpdatePendingJoinRequests extends UpdateBase {
   static const CONSTRUCTOR_ID = 1885586395;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 1885586395;
-  var peer;
+  PeerBase peer;
   int requestsPending;
   List<BigInt> recentRequesters;
 
@@ -15247,14 +15032,13 @@ class UpdatePendingJoinRequests extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1885586395, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.requestsPending, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.recentRequesters!.length, 4,
+      readBufferFromBigInt(this.recentRequesters.length, 4,
           little: true, signed: true),
       this
-          .recentRequesters!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .recentRequesters.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -15275,16 +15059,16 @@ class UpdatePendingJoinRequests extends BaseConstructor {
   }
 }
 
-class UpdateBotChatInviteRequester extends BaseConstructor {
+class UpdateBotChatInviteRequester extends UpdateBase {
   static const CONSTRUCTOR_ID = 299870598;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 299870598;
-  var peer;
+  PeerBase peer;
   int date;
   BigInt userId;
   String about;
-  var invite;
+  ExportedChatInviteBase invite;
   int qts;
 
   UpdateBotChatInviteRequester(
@@ -15296,7 +15080,6 @@ class UpdateBotChatInviteRequester extends BaseConstructor {
       required this.qts});
 
   static UpdateBotChatInviteRequester fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var date = reader.readInt();
     var userId = reader.readLong();
@@ -15316,11 +15099,11 @@ class UpdateBotChatInviteRequester extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(299870598, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
       serializeBytes(this.about),
-      (this.invite.getBytes() as List<int>),
+      (this.invite.getBytes()),
       readBufferFromBigInt(this.qts, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -15341,20 +15124,19 @@ class UpdateBotChatInviteRequester extends BaseConstructor {
   }
 }
 
-class UpdateMessageReactions extends BaseConstructor {
+class UpdateMessageReactions extends UpdateBase {
   static const CONSTRUCTOR_ID = 357013699;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 357013699;
-  var peer;
+  PeerBase peer;
   int msgId;
-  var reactions;
+  MessageReactions reactions;
 
   UpdateMessageReactions(
       {required this.peer, required this.msgId, required this.reactions});
 
   static UpdateMessageReactions fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var reactions = reader.tgReadObject();
@@ -15366,9 +15148,9 @@ class UpdateMessageReactions extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(357013699, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
-      (this.reactions.getBytes() as List<int>),
+      (this.reactions.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -15388,7 +15170,7 @@ class UpdateMessageReactions extends BaseConstructor {
   }
 }
 
-class UpdateAttachMenuBots extends BaseConstructor {
+class UpdateAttachMenuBots extends UpdateBase {
   static const CONSTRUCTOR_ID = 397910539;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -15397,7 +15179,6 @@ class UpdateAttachMenuBots extends BaseConstructor {
   UpdateAttachMenuBots();
 
   static UpdateAttachMenuBots fromReader(BinaryReader reader) {
-    var len;
     return UpdateAttachMenuBots();
   }
 
@@ -15424,7 +15205,7 @@ class UpdateAttachMenuBots extends BaseConstructor {
   }
 }
 
-class UpdateWebViewResultSent extends BaseConstructor {
+class UpdateWebViewResultSent extends UpdateBase {
   static const CONSTRUCTOR_ID = 361936797;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -15434,7 +15215,6 @@ class UpdateWebViewResultSent extends BaseConstructor {
   UpdateWebViewResultSent({required this.queryId});
 
   static UpdateWebViewResultSent fromReader(BinaryReader reader) {
-    var len;
     var queryId = reader.readLong();
     return UpdateWebViewResultSent(queryId: queryId);
   }
@@ -15463,18 +15243,17 @@ class UpdateWebViewResultSent extends BaseConstructor {
   }
 }
 
-class UpdateBotMenuButton extends BaseConstructor {
+class UpdateBotMenuButton extends UpdateBase {
   static const CONSTRUCTOR_ID = 347625491;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 347625491;
   BigInt botId;
-  var button;
+  BotMenuButtonBase button;
 
   UpdateBotMenuButton({required this.botId, required this.button});
 
   static UpdateBotMenuButton fromReader(BinaryReader reader) {
-    var len;
     var botId = reader.readLong();
     var button = reader.tgReadObject();
     return UpdateBotMenuButton(botId: botId, button: button);
@@ -15485,7 +15264,7 @@ class UpdateBotMenuButton extends BaseConstructor {
     return [
       readBufferFromBigInt(347625491, 4),
       readBufferFromBigInt(this.botId, 8, little: true, signed: true),
-      (this.button.getBytes() as List<int>),
+      (this.button.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -15505,7 +15284,7 @@ class UpdateBotMenuButton extends BaseConstructor {
   }
 }
 
-class UpdateSavedRingtones extends BaseConstructor {
+class UpdateSavedRingtones extends UpdateBase {
   static const CONSTRUCTOR_ID = 1960361625;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
@@ -15514,7 +15293,6 @@ class UpdateSavedRingtones extends BaseConstructor {
   UpdateSavedRingtones();
 
   static UpdateSavedRingtones fromReader(BinaryReader reader) {
-    var len;
     return UpdateSavedRingtones();
   }
 
@@ -15541,26 +15319,25 @@ class UpdateSavedRingtones extends BaseConstructor {
   }
 }
 
-class UpdateTranscribedAudio extends BaseConstructor {
+class UpdateTranscribedAudio extends UpdateBase {
   static const CONSTRUCTOR_ID = 8703322;
   static const SUBCLASS_OF_ID = 2676568142;
   final classType = "constructor";
   final ID = 8703322;
   bool? pending;
-  var peer;
+  PeerBase peer;
   int msgId;
   BigInt transcriptionId;
   String text;
 
   UpdateTranscribedAudio(
-      {required this.pending,
+      {this.pending,
       required this.peer,
       required this.msgId,
       required this.transcriptionId,
       required this.text});
 
   static UpdateTranscribedAudio fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final pending = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -15580,7 +15357,7 @@ class UpdateTranscribedAudio extends BaseConstructor {
     return [
       readBufferFromBigInt(8703322, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.transcriptionId, 8, little: true, signed: true),
       serializeBytes(this.text),
@@ -15603,7 +15380,9 @@ class UpdateTranscribedAudio extends BaseConstructor {
   }
 }
 
-class UpdatesTooLong extends BaseConstructor {
+abstract class UpdatesBase extends BaseConstructor {}
+
+class UpdatesTooLong extends UpdatesBase {
   static const CONSTRUCTOR_ID = 3809980286;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "constructor";
@@ -15612,7 +15391,6 @@ class UpdatesTooLong extends BaseConstructor {
   UpdatesTooLong();
 
   static UpdatesTooLong fromReader(BinaryReader reader) {
-    var len;
     return UpdatesTooLong();
   }
 
@@ -15639,7 +15417,7 @@ class UpdatesTooLong extends BaseConstructor {
   }
 }
 
-class UpdateShortMessage extends BaseConstructor {
+class UpdateShortMessage extends UpdatesBase {
   static const CONSTRUCTOR_ID = 826001400;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "constructor";
@@ -15654,28 +15432,28 @@ class UpdateShortMessage extends BaseConstructor {
   int pts;
   int ptsCount;
   int date;
-  var fwdFrom;
+  MessageFwdHeader? fwdFrom;
   BigInt? viaBotId;
-  var replyTo;
-  List<dynamic>? entities;
+  MessageReplyHeader? replyTo;
+  List<MessageEntityBase>? entities;
   int? ttlPeriod;
 
   UpdateShortMessage(
-      {required this.out,
-      required this.mentioned,
-      required this.mediaUnread,
-      required this.silent,
+      {this.out,
+      this.mentioned,
+      this.mediaUnread,
+      this.silent,
       required this.id,
       required this.userId,
       required this.message,
       required this.pts,
       required this.ptsCount,
       required this.date,
-      required this.fwdFrom,
-      required this.viaBotId,
-      required this.replyTo,
-      required this.entities,
-      required this.ttlPeriod});
+      this.fwdFrom,
+      this.viaBotId,
+      this.replyTo,
+      this.entities,
+      this.ttlPeriod});
 
   static UpdateShortMessage fromReader(BinaryReader reader) {
     var len;
@@ -15712,7 +15490,7 @@ class UpdateShortMessage extends BaseConstructor {
     if ((flags & 128) == 128) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -15757,7 +15535,7 @@ class UpdateShortMessage extends BaseConstructor {
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       (this.fwdFrom == null || this.fwdFrom == false)
           ? List<int>.empty()
-          : [(this.fwdFrom.getBytes() as List<int>)]
+          : [(this.fwdFrom!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.viaBotId == null || this.viaBotId == false)
@@ -15767,7 +15545,7 @@ class UpdateShortMessage extends BaseConstructor {
               .toList(),
       (this.replyTo == null || this.replyTo == false)
           ? List<int>.empty()
-          : [(this.replyTo.getBytes() as List<int>)]
+          : [(this.replyTo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.entities == null || this.entities == false)
@@ -15778,7 +15556,7 @@ class UpdateShortMessage extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.ttlPeriod == null || this.ttlPeriod == false)
@@ -15806,7 +15584,7 @@ class UpdateShortMessage extends BaseConstructor {
   }
 }
 
-class UpdateShortChatMessage extends BaseConstructor {
+class UpdateShortChatMessage extends UpdatesBase {
   static const CONSTRUCTOR_ID = 1299050149;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "constructor";
@@ -15822,17 +15600,17 @@ class UpdateShortChatMessage extends BaseConstructor {
   int pts;
   int ptsCount;
   int date;
-  var fwdFrom;
+  MessageFwdHeader? fwdFrom;
   BigInt? viaBotId;
-  var replyTo;
-  List<dynamic>? entities;
+  MessageReplyHeader? replyTo;
+  List<MessageEntityBase>? entities;
   int? ttlPeriod;
 
   UpdateShortChatMessage(
-      {required this.out,
-      required this.mentioned,
-      required this.mediaUnread,
-      required this.silent,
+      {this.out,
+      this.mentioned,
+      this.mediaUnread,
+      this.silent,
       required this.id,
       required this.fromId,
       required this.chatId,
@@ -15840,11 +15618,11 @@ class UpdateShortChatMessage extends BaseConstructor {
       required this.pts,
       required this.ptsCount,
       required this.date,
-      required this.fwdFrom,
-      required this.viaBotId,
-      required this.replyTo,
-      required this.entities,
-      required this.ttlPeriod});
+      this.fwdFrom,
+      this.viaBotId,
+      this.replyTo,
+      this.entities,
+      this.ttlPeriod});
 
   static UpdateShortChatMessage fromReader(BinaryReader reader) {
     var len;
@@ -15882,7 +15660,7 @@ class UpdateShortChatMessage extends BaseConstructor {
     if ((flags & 128) == 128) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -15929,7 +15707,7 @@ class UpdateShortChatMessage extends BaseConstructor {
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       (this.fwdFrom == null || this.fwdFrom == false)
           ? List<int>.empty()
-          : [(this.fwdFrom.getBytes() as List<int>)]
+          : [(this.fwdFrom!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.viaBotId == null || this.viaBotId == false)
@@ -15939,7 +15717,7 @@ class UpdateShortChatMessage extends BaseConstructor {
               .toList(),
       (this.replyTo == null || this.replyTo == false)
           ? List<int>.empty()
-          : [(this.replyTo.getBytes() as List<int>)]
+          : [(this.replyTo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.entities == null || this.entities == false)
@@ -15950,7 +15728,7 @@ class UpdateShortChatMessage extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.ttlPeriod == null || this.ttlPeriod == false)
@@ -15978,18 +15756,17 @@ class UpdateShortChatMessage extends BaseConstructor {
   }
 }
 
-class UpdateShort extends BaseConstructor {
+class UpdateShort extends UpdatesBase {
   static const CONSTRUCTOR_ID = 2027216577;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "constructor";
   final ID = 2027216577;
-  var update;
+  UpdateBase update;
   int date;
 
   UpdateShort({required this.update, required this.date});
 
   static UpdateShort fromReader(BinaryReader reader) {
-    var len;
     var update = reader.tgReadObject();
     var date = reader.readInt();
     return UpdateShort(update: update, date: date);
@@ -15999,7 +15776,7 @@ class UpdateShort extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2027216577, 4),
-      (this.update.getBytes() as List<int>),
+      (this.update.getBytes()),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -16020,14 +15797,14 @@ class UpdateShort extends BaseConstructor {
   }
 }
 
-class UpdatesCombined extends BaseConstructor {
+class UpdatesCombined extends UpdatesBase {
   static const CONSTRUCTOR_ID = 1918567619;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "constructor";
   final ID = 1918567619;
-  List<dynamic> updates;
-  List<dynamic> users;
-  List<dynamic> chats;
+  List<UpdateBase> updates;
+  List<UserBase> users;
+  List<ChatBase> chats;
   int date;
   int seqStart;
   int seq;
@@ -16044,21 +15821,21 @@ class UpdatesCombined extends BaseConstructor {
     var len;
     var _vectorupdates = reader.readInt();
     if (_vectorupdates != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> updates = [];
+    List<UpdateBase> updates = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       updates.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
     }
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
@@ -16080,22 +15857,19 @@ class UpdatesCombined extends BaseConstructor {
     return [
       readBufferFromBigInt(1918567619, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.updates!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.updates.length, 4, little: true, signed: true),
       this
-          .updates!
-          .map((x) => (x.getBytes() as List<int>))
+          .updates.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(this.seqStart, 4, little: true, signed: true),
@@ -16119,14 +15893,14 @@ class UpdatesCombined extends BaseConstructor {
   }
 }
 
-class Updates extends BaseConstructor {
+class Updates extends UpdatesBase {
   static const CONSTRUCTOR_ID = 1957577280;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "constructor";
   final ID = 1957577280;
-  List<dynamic> updates;
-  List<dynamic> users;
-  List<dynamic> chats;
+  List<UpdateBase> updates;
+  List<UserBase> users;
+  List<ChatBase> chats;
   int date;
   int seq;
 
@@ -16141,21 +15915,21 @@ class Updates extends BaseConstructor {
     var len;
     var _vectorupdates = reader.readInt();
     if (_vectorupdates != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> updates = [];
+    List<UpdateBase> updates = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       updates.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
     }
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
@@ -16171,22 +15945,19 @@ class Updates extends BaseConstructor {
     return [
       readBufferFromBigInt(1957577280, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.updates!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.updates.length, 4, little: true, signed: true),
       this
-          .updates!
-          .map((x) => (x.getBytes() as List<int>))
+          .updates.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(this.seq, 4, little: true, signed: true),
@@ -16209,7 +15980,7 @@ class Updates extends BaseConstructor {
   }
 }
 
-class UpdateShortSentMessage extends BaseConstructor {
+class UpdateShortSentMessage extends UpdatesBase {
   static const CONSTRUCTOR_ID = 2417352961;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "constructor";
@@ -16219,19 +15990,19 @@ class UpdateShortSentMessage extends BaseConstructor {
   int pts;
   int ptsCount;
   int date;
-  var media;
-  List<dynamic>? entities;
+  MessageMediaBase? media;
+  List<MessageEntityBase>? entities;
   int? ttlPeriod;
 
   UpdateShortSentMessage(
-      {required this.out,
+      {this.out,
       required this.id,
       required this.pts,
       required this.ptsCount,
       required this.date,
-      required this.media,
-      required this.entities,
-      required this.ttlPeriod});
+      this.media,
+      this.entities,
+      this.ttlPeriod});
 
   static UpdateShortSentMessage fromReader(BinaryReader reader) {
     var len;
@@ -16251,7 +16022,7 @@ class UpdateShortSentMessage extends BaseConstructor {
     if ((flags & 128) == 128) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -16287,7 +16058,7 @@ class UpdateShortSentMessage extends BaseConstructor {
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       (this.media == null || this.media == false)
           ? List<int>.empty()
-          : [(this.media.getBytes() as List<int>)]
+          : [(this.media!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.entities == null || this.entities == false)
@@ -16298,7 +16069,7 @@ class UpdateShortSentMessage extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.ttlPeriod == null || this.ttlPeriod == false)
@@ -16343,19 +16114,18 @@ class DcOption extends BaseConstructor {
   List<int>? secret;
 
   DcOption(
-      {required this.ipv6,
-      required this.mediaOnly,
-      required this.tcpoOnly,
-      required this.cdn,
-      required this.static,
-      required this.thisPortOnly,
+      {this.ipv6,
+      this.mediaOnly,
+      this.tcpoOnly,
+      this.cdn,
+      this.static,
+      this.thisPortOnly,
       required this.id,
       required this.ipAddress,
       required this.port,
-      required this.secret});
+      this.secret});
 
   static DcOption fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final ipv6 = (flags & 1) == 1;
     final mediaOnly = (flags & 2) == 2;
@@ -16432,7 +16202,7 @@ class Config extends BaseConstructor {
   int expires;
   bool testMode;
   int thisDc;
-  List<dynamic> dcOptions;
+  List<DcOption> dcOptions;
   String dcTxtDomainName;
   int chatSizeMax;
   int megagroupSizeMax;
@@ -16474,14 +16244,14 @@ class Config extends BaseConstructor {
   int? baseLangPackVersion;
 
   Config(
-      {required this.phonecallsEnabled,
-      required this.defaultP2pContacts,
-      required this.preloadFeaturedStickers,
-      required this.ignorePhoneEntities,
-      required this.revokePmInbox,
-      required this.blockedMode,
-      required this.pfsEnabled,
-      required this.forceTryIpv6,
+      {this.phonecallsEnabled,
+      this.defaultP2pContacts,
+      this.preloadFeaturedStickers,
+      this.ignorePhoneEntities,
+      this.revokePmInbox,
+      this.blockedMode,
+      this.pfsEnabled,
+      this.forceTryIpv6,
       required this.date,
       required this.expires,
       required this.testMode,
@@ -16507,7 +16277,7 @@ class Config extends BaseConstructor {
       required this.stickersRecentLimit,
       required this.stickersFavedLimit,
       required this.channelsReadMediaPeriod,
-      required this.tmpSessions,
+      this.tmpSessions,
       required this.pinnedDialogsCountMax,
       required this.pinnedInfolderCountMax,
       required this.callReceiveTimeoutMs,
@@ -16515,17 +16285,17 @@ class Config extends BaseConstructor {
       required this.callConnectTimeoutMs,
       required this.callPacketTimeoutMs,
       required this.meUrlPrefix,
-      required this.autoupdateUrlPrefix,
-      required this.gifSearchUsername,
-      required this.venueSearchUsername,
-      required this.imgSearchUsername,
-      required this.staticMapsProvider,
+      this.autoupdateUrlPrefix,
+      this.gifSearchUsername,
+      this.venueSearchUsername,
+      this.imgSearchUsername,
+      this.staticMapsProvider,
       required this.captionLengthMax,
       required this.messageLengthMax,
       required this.webfileDcId,
-      required this.suggestedLangCode,
-      required this.langPackVersion,
-      required this.baseLangPackVersion});
+      this.suggestedLangCode,
+      this.langPackVersion,
+      this.baseLangPackVersion});
 
   static Config fromReader(BinaryReader reader) {
     var len;
@@ -16544,7 +16314,7 @@ class Config extends BaseConstructor {
     var thisDc = reader.readInt();
     var _vectordcOptions = reader.readInt();
     if (_vectordcOptions != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> dcOptions = [];
+    List<DcOption> dcOptions = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       dcOptions.add(reader.tgReadObject());
@@ -16698,11 +16468,10 @@ class Config extends BaseConstructor {
       [this.testMode == true ? 0xb5757299 : 0x379779bc],
       readBufferFromBigInt(this.thisDc, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.dcOptions!.length, 4,
+      readBufferFromBigInt(this.dcOptions.length, 4,
           little: true, signed: true),
       this
-          .dcOptions!
-          .map((x) => (x.getBytes() as List<int>))
+          .dcOptions.map((x) => x.getBytes())
           .expand((element) => element),
       serializeBytes(this.dcTxtDomainName),
       readBufferFromBigInt(this.chatSizeMax, 4, little: true, signed: true),
@@ -16835,7 +16604,6 @@ class NearestDc extends BaseConstructor {
       {required this.country, required this.thisDc, required this.nearestDc});
 
   static NearestDc fromReader(BinaryReader reader) {
-    var len;
     var country = reader.tgReadString();
     var thisDc = reader.readInt();
     var nearestDc = reader.readInt();
@@ -16868,7 +16636,9 @@ class NearestDc extends BaseConstructor {
   }
 }
 
-class EncryptedChatEmpty extends BaseConstructor {
+abstract class EncryptedChatBase extends BaseConstructor {}
+
+class EncryptedChatEmpty extends EncryptedChatBase {
   static const CONSTRUCTOR_ID = 2877210784;
   static const SUBCLASS_OF_ID = 1831379834;
   final classType = "constructor";
@@ -16878,7 +16648,6 @@ class EncryptedChatEmpty extends BaseConstructor {
   EncryptedChatEmpty({required this.id});
 
   static EncryptedChatEmpty fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readInt();
     return EncryptedChatEmpty(id: id);
   }
@@ -16907,7 +16676,7 @@ class EncryptedChatEmpty extends BaseConstructor {
   }
 }
 
-class EncryptedChatWaiting extends BaseConstructor {
+class EncryptedChatWaiting extends EncryptedChatBase {
   static const CONSTRUCTOR_ID = 1722964307;
   static const SUBCLASS_OF_ID = 1831379834;
   final classType = "constructor";
@@ -16926,7 +16695,6 @@ class EncryptedChatWaiting extends BaseConstructor {
       required this.participantId});
 
   static EncryptedChatWaiting fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readInt();
     var accessHash = reader.readLong();
     var date = reader.readInt();
@@ -16968,7 +16736,7 @@ class EncryptedChatWaiting extends BaseConstructor {
   }
 }
 
-class EncryptedChatRequested extends BaseConstructor {
+class EncryptedChatRequested extends EncryptedChatBase {
   static const CONSTRUCTOR_ID = 1223809356;
   static const SUBCLASS_OF_ID = 1831379834;
   final classType = "constructor";
@@ -16982,7 +16750,7 @@ class EncryptedChatRequested extends BaseConstructor {
   List<int> gA;
 
   EncryptedChatRequested(
-      {required this.folderId,
+      {this.folderId,
       required this.id,
       required this.accessHash,
       required this.date,
@@ -16991,7 +16759,6 @@ class EncryptedChatRequested extends BaseConstructor {
       required this.gA});
 
   static EncryptedChatRequested fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var folderId;
     if ((flags & 1) == 1) {
@@ -17050,7 +16817,7 @@ class EncryptedChatRequested extends BaseConstructor {
   }
 }
 
-class EncryptedChat extends BaseConstructor {
+class EncryptedChat extends EncryptedChatBase {
   static const CONSTRUCTOR_ID = 1643173063;
   static const SUBCLASS_OF_ID = 1831379834;
   final classType = "constructor";
@@ -17073,7 +16840,6 @@ class EncryptedChat extends BaseConstructor {
       required this.keyFingerprint});
 
   static EncryptedChat fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readInt();
     var accessHash = reader.readLong();
     var date = reader.readInt();
@@ -17121,7 +16887,7 @@ class EncryptedChat extends BaseConstructor {
   }
 }
 
-class EncryptedChatDiscarded extends BaseConstructor {
+class EncryptedChatDiscarded extends EncryptedChatBase {
   static const CONSTRUCTOR_ID = 505183301;
   static const SUBCLASS_OF_ID = 1831379834;
   final classType = "constructor";
@@ -17129,10 +16895,9 @@ class EncryptedChatDiscarded extends BaseConstructor {
   bool? historyDeleted;
   int id;
 
-  EncryptedChatDiscarded({required this.historyDeleted, required this.id});
+  EncryptedChatDiscarded({this.historyDeleted, required this.id});
 
   static EncryptedChatDiscarded fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final historyDeleted = (flags & 1) == 1;
     var id = reader.readInt();
@@ -17175,7 +16940,6 @@ class InputEncryptedChat extends BaseConstructor {
   InputEncryptedChat({required this.chatId, required this.accessHash});
 
   static InputEncryptedChat fromReader(BinaryReader reader) {
-    var len;
     var chatId = reader.readInt();
     var accessHash = reader.readLong();
     return InputEncryptedChat(chatId: chatId, accessHash: accessHash);
@@ -17206,7 +16970,9 @@ class InputEncryptedChat extends BaseConstructor {
   }
 }
 
-class EncryptedFileEmpty extends BaseConstructor {
+abstract class EncryptedFileBase extends BaseConstructor {}
+
+class EncryptedFileEmpty extends EncryptedFileBase {
   static const CONSTRUCTOR_ID = 3256830334;
   static const SUBCLASS_OF_ID = 2217371584;
   final classType = "constructor";
@@ -17215,7 +16981,6 @@ class EncryptedFileEmpty extends BaseConstructor {
   EncryptedFileEmpty();
 
   static EncryptedFileEmpty fromReader(BinaryReader reader) {
-    var len;
     return EncryptedFileEmpty();
   }
 
@@ -17242,7 +17007,7 @@ class EncryptedFileEmpty extends BaseConstructor {
   }
 }
 
-class EncryptedFile extends BaseConstructor {
+class EncryptedFile extends EncryptedFileBase {
   static const CONSTRUCTOR_ID = 2818608344;
   static const SUBCLASS_OF_ID = 2217371584;
   final classType = "constructor";
@@ -17261,7 +17026,6 @@ class EncryptedFile extends BaseConstructor {
       required this.keyFingerprint});
 
   static EncryptedFile fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var size = reader.readLong();
@@ -17303,7 +17067,9 @@ class EncryptedFile extends BaseConstructor {
   }
 }
 
-class InputEncryptedFileEmpty extends BaseConstructor {
+abstract class InputEncryptedFileBase extends BaseConstructor {}
+
+class InputEncryptedFileEmpty extends InputEncryptedFileBase {
   static const CONSTRUCTOR_ID = 406307684;
   static const SUBCLASS_OF_ID = 2239021690;
   final classType = "constructor";
@@ -17312,7 +17078,6 @@ class InputEncryptedFileEmpty extends BaseConstructor {
   InputEncryptedFileEmpty();
 
   static InputEncryptedFileEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputEncryptedFileEmpty();
   }
 
@@ -17339,7 +17104,7 @@ class InputEncryptedFileEmpty extends BaseConstructor {
   }
 }
 
-class InputEncryptedFileUploaded extends BaseConstructor {
+class InputEncryptedFileUploaded extends InputEncryptedFileBase {
   static const CONSTRUCTOR_ID = 1690108678;
   static const SUBCLASS_OF_ID = 2239021690;
   final classType = "constructor";
@@ -17356,7 +17121,6 @@ class InputEncryptedFileUploaded extends BaseConstructor {
       required this.keyFingerprint});
 
   static InputEncryptedFileUploaded fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var parts = reader.readInt();
     var md5Checksum = reader.tgReadString();
@@ -17395,7 +17159,7 @@ class InputEncryptedFileUploaded extends BaseConstructor {
   }
 }
 
-class InputEncryptedFile extends BaseConstructor {
+class InputEncryptedFile extends InputEncryptedFileBase {
   static const CONSTRUCTOR_ID = 1511503333;
   static const SUBCLASS_OF_ID = 2239021690;
   final classType = "constructor";
@@ -17406,7 +17170,6 @@ class InputEncryptedFile extends BaseConstructor {
   InputEncryptedFile({required this.id, required this.accessHash});
 
   static InputEncryptedFile fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputEncryptedFile(id: id, accessHash: accessHash);
@@ -17437,7 +17200,7 @@ class InputEncryptedFile extends BaseConstructor {
   }
 }
 
-class InputEncryptedFileBigUploaded extends BaseConstructor {
+class InputEncryptedFileBigUploaded extends InputEncryptedFileBase {
   static const CONSTRUCTOR_ID = 767652808;
   static const SUBCLASS_OF_ID = 2239021690;
   final classType = "constructor";
@@ -17450,7 +17213,6 @@ class InputEncryptedFileBigUploaded extends BaseConstructor {
       {required this.id, required this.parts, required this.keyFingerprint});
 
   static InputEncryptedFileBigUploaded fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var parts = reader.readInt();
     var keyFingerprint = reader.readInt();
@@ -17484,7 +17246,9 @@ class InputEncryptedFileBigUploaded extends BaseConstructor {
   }
 }
 
-class EncryptedMessage extends BaseConstructor {
+abstract class EncryptedMessageBase extends BaseConstructor {}
+
+class EncryptedMessage extends EncryptedMessageBase {
   static const CONSTRUCTOR_ID = 3977822488;
   static const SUBCLASS_OF_ID = 597634641;
   final classType = "constructor";
@@ -17493,7 +17257,7 @@ class EncryptedMessage extends BaseConstructor {
   int chatId;
   int date;
   List<int> bytes;
-  var file;
+  EncryptedFileBase file;
 
   EncryptedMessage(
       {required this.randomId,
@@ -17503,7 +17267,6 @@ class EncryptedMessage extends BaseConstructor {
       required this.file});
 
   static EncryptedMessage fromReader(BinaryReader reader) {
-    var len;
     var randomId = reader.readLong();
     var chatId = reader.readInt();
     var date = reader.readInt();
@@ -17525,7 +17288,7 @@ class EncryptedMessage extends BaseConstructor {
       readBufferFromBigInt(this.chatId, 4, little: true, signed: true),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       serializeBytes(this.bytes),
-      (this.file.getBytes() as List<int>),
+      (this.file.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -17545,7 +17308,7 @@ class EncryptedMessage extends BaseConstructor {
   }
 }
 
-class EncryptedMessageService extends BaseConstructor {
+class EncryptedMessageService extends EncryptedMessageBase {
   static const CONSTRUCTOR_ID = 594758406;
   static const SUBCLASS_OF_ID = 597634641;
   final classType = "constructor";
@@ -17562,7 +17325,6 @@ class EncryptedMessageService extends BaseConstructor {
       required this.bytes});
 
   static EncryptedMessageService fromReader(BinaryReader reader) {
-    var len;
     var randomId = reader.readLong();
     var chatId = reader.readInt();
     var date = reader.readInt();
@@ -17598,7 +17360,9 @@ class EncryptedMessageService extends BaseConstructor {
   }
 }
 
-class InputDocumentEmpty extends BaseConstructor {
+abstract class InputDocumentBase extends BaseConstructor {}
+
+class InputDocumentEmpty extends InputDocumentBase {
   static const CONSTRUCTOR_ID = 1928391342;
   static const SUBCLASS_OF_ID = 4081048424;
   final classType = "constructor";
@@ -17607,7 +17371,6 @@ class InputDocumentEmpty extends BaseConstructor {
   InputDocumentEmpty();
 
   static InputDocumentEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputDocumentEmpty();
   }
 
@@ -17634,7 +17397,7 @@ class InputDocumentEmpty extends BaseConstructor {
   }
 }
 
-class InputDocument extends BaseConstructor {
+class InputDocument extends InputDocumentBase {
   static const CONSTRUCTOR_ID = 448771445;
   static const SUBCLASS_OF_ID = 4081048424;
   final classType = "constructor";
@@ -17649,7 +17412,6 @@ class InputDocument extends BaseConstructor {
       required this.fileReference});
 
   static InputDocument fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var fileReference = reader.tgReadBytes();
@@ -17683,7 +17445,9 @@ class InputDocument extends BaseConstructor {
   }
 }
 
-class DocumentEmpty extends BaseConstructor {
+abstract class DocumentBase extends BaseConstructor {}
+
+class DocumentEmpty extends DocumentBase {
   static const CONSTRUCTOR_ID = 922273905;
   static const SUBCLASS_OF_ID = 555739168;
   final classType = "constructor";
@@ -17693,7 +17457,6 @@ class DocumentEmpty extends BaseConstructor {
   DocumentEmpty({required this.id});
 
   static DocumentEmpty fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     return DocumentEmpty(id: id);
   }
@@ -17722,7 +17485,7 @@ class DocumentEmpty extends BaseConstructor {
   }
 }
 
-class Document extends BaseConstructor {
+class Document extends DocumentBase {
   static const CONSTRUCTOR_ID = 2413085912;
   static const SUBCLASS_OF_ID = 555739168;
   final classType = "constructor";
@@ -17733,10 +17496,10 @@ class Document extends BaseConstructor {
   int date;
   String mimeType;
   BigInt size;
-  List<dynamic>? thumbs;
-  List<dynamic>? videoThumbs;
+  List<PhotoSizeBase>? thumbs;
+  List<VideoSize>? videoThumbs;
   int dcId;
-  List<dynamic> attributes;
+  List<DocumentAttributeBase> attributes;
 
   Document(
       {required this.id,
@@ -17745,8 +17508,8 @@ class Document extends BaseConstructor {
       required this.date,
       required this.mimeType,
       required this.size,
-      required this.thumbs,
-      required this.videoThumbs,
+      this.thumbs,
+      this.videoThumbs,
       required this.dcId,
       required this.attributes});
 
@@ -17763,7 +17526,7 @@ class Document extends BaseConstructor {
     if ((flags & 1) == 1) {
       var _vectorthumbs = reader.readInt();
       if (_vectorthumbs != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> thumbs = [];
+      List<PhotoSizeBase> thumbs = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         thumbs.add(reader.tgReadObject());
@@ -17775,7 +17538,7 @@ class Document extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorvideoThumbs = reader.readInt();
       if (_vectorvideoThumbs != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> videoThumbs = [];
+      List<VideoSize> videoThumbs = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         videoThumbs.add(reader.tgReadObject());
@@ -17786,7 +17549,7 @@ class Document extends BaseConstructor {
     var dcId = reader.readInt();
     var _vectorattributes = reader.readInt();
     if (_vectorattributes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> attributes = [];
+    List<DocumentAttributeBase> attributes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       attributes.add(reader.tgReadObject());
@@ -17823,7 +17586,7 @@ class Document extends BaseConstructor {
                   little: true, signed: true),
               this
                   .thumbs!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.videoThumbs == null || this.videoThumbs == false)
@@ -17834,16 +17597,15 @@ class Document extends BaseConstructor {
                   little: true, signed: true),
               this
                   .videoThumbs!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       readBufferFromBigInt(this.dcId, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.attributes!.length, 4,
+      readBufferFromBigInt(this.attributes.length, 4,
           little: true, signed: true),
       this
-          .attributes!
-          .map((x) => (x.getBytes() as List<int>))
+          .attributes.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -17864,17 +17626,18 @@ class Document extends BaseConstructor {
   }
 }
 
-class NotifyPeer extends BaseConstructor {
+abstract class NotifyPeerBase extends BaseConstructor {}
+
+class NotifyPeer extends NotifyPeerBase {
   static const CONSTRUCTOR_ID = 2681474008;
   static const SUBCLASS_OF_ID = 3756548142;
   final classType = "constructor";
   final ID = 2681474008;
-  var peer;
+  PeerBase peer;
 
   NotifyPeer({required this.peer});
 
   static NotifyPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return NotifyPeer(peer: peer);
   }
@@ -17883,7 +17646,7 @@ class NotifyPeer extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2681474008, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -17903,7 +17666,7 @@ class NotifyPeer extends BaseConstructor {
   }
 }
 
-class NotifyUsers extends BaseConstructor {
+class NotifyUsers extends NotifyPeerBase {
   static const CONSTRUCTOR_ID = 3033021260;
   static const SUBCLASS_OF_ID = 3756548142;
   final classType = "constructor";
@@ -17912,7 +17675,6 @@ class NotifyUsers extends BaseConstructor {
   NotifyUsers();
 
   static NotifyUsers fromReader(BinaryReader reader) {
-    var len;
     return NotifyUsers();
   }
 
@@ -17939,7 +17701,7 @@ class NotifyUsers extends BaseConstructor {
   }
 }
 
-class NotifyChats extends BaseConstructor {
+class NotifyChats extends NotifyPeerBase {
   static const CONSTRUCTOR_ID = 3221737155;
   static const SUBCLASS_OF_ID = 3756548142;
   final classType = "constructor";
@@ -17948,7 +17710,6 @@ class NotifyChats extends BaseConstructor {
   NotifyChats();
 
   static NotifyChats fromReader(BinaryReader reader) {
-    var len;
     return NotifyChats();
   }
 
@@ -17975,7 +17736,7 @@ class NotifyChats extends BaseConstructor {
   }
 }
 
-class NotifyBroadcasts extends BaseConstructor {
+class NotifyBroadcasts extends NotifyPeerBase {
   static const CONSTRUCTOR_ID = 3591563503;
   static const SUBCLASS_OF_ID = 3756548142;
   final classType = "constructor";
@@ -17984,7 +17745,6 @@ class NotifyBroadcasts extends BaseConstructor {
   NotifyBroadcasts();
 
   static NotifyBroadcasts fromReader(BinaryReader reader) {
-    var len;
     return NotifyBroadcasts();
   }
 
@@ -18011,7 +17771,9 @@ class NotifyBroadcasts extends BaseConstructor {
   }
 }
 
-class SendMessageTypingAction extends BaseConstructor {
+abstract class SendMessageActionBase extends BaseConstructor {}
+
+class SendMessageTypingAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 381645902;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18020,7 +17782,6 @@ class SendMessageTypingAction extends BaseConstructor {
   SendMessageTypingAction();
 
   static SendMessageTypingAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageTypingAction();
   }
 
@@ -18047,7 +17808,7 @@ class SendMessageTypingAction extends BaseConstructor {
   }
 }
 
-class SendMessageCancelAction extends BaseConstructor {
+class SendMessageCancelAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 4250847477;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18056,7 +17817,6 @@ class SendMessageCancelAction extends BaseConstructor {
   SendMessageCancelAction();
 
   static SendMessageCancelAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageCancelAction();
   }
 
@@ -18083,7 +17843,7 @@ class SendMessageCancelAction extends BaseConstructor {
   }
 }
 
-class SendMessageRecordVideoAction extends BaseConstructor {
+class SendMessageRecordVideoAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 2710034031;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18092,7 +17852,6 @@ class SendMessageRecordVideoAction extends BaseConstructor {
   SendMessageRecordVideoAction();
 
   static SendMessageRecordVideoAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageRecordVideoAction();
   }
 
@@ -18119,7 +17878,7 @@ class SendMessageRecordVideoAction extends BaseConstructor {
   }
 }
 
-class SendMessageUploadVideoAction extends BaseConstructor {
+class SendMessageUploadVideoAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 3916839660;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18129,7 +17888,6 @@ class SendMessageUploadVideoAction extends BaseConstructor {
   SendMessageUploadVideoAction({required this.progress});
 
   static SendMessageUploadVideoAction fromReader(BinaryReader reader) {
-    var len;
     var progress = reader.readInt();
     return SendMessageUploadVideoAction(progress: progress);
   }
@@ -18158,7 +17916,7 @@ class SendMessageUploadVideoAction extends BaseConstructor {
   }
 }
 
-class SendMessageRecordAudioAction extends BaseConstructor {
+class SendMessageRecordAudioAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 3576656887;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18167,7 +17925,6 @@ class SendMessageRecordAudioAction extends BaseConstructor {
   SendMessageRecordAudioAction();
 
   static SendMessageRecordAudioAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageRecordAudioAction();
   }
 
@@ -18194,7 +17951,7 @@ class SendMessageRecordAudioAction extends BaseConstructor {
   }
 }
 
-class SendMessageUploadAudioAction extends BaseConstructor {
+class SendMessageUploadAudioAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 4082227115;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18204,7 +17961,6 @@ class SendMessageUploadAudioAction extends BaseConstructor {
   SendMessageUploadAudioAction({required this.progress});
 
   static SendMessageUploadAudioAction fromReader(BinaryReader reader) {
-    var len;
     var progress = reader.readInt();
     return SendMessageUploadAudioAction(progress: progress);
   }
@@ -18233,7 +17989,7 @@ class SendMessageUploadAudioAction extends BaseConstructor {
   }
 }
 
-class SendMessageUploadPhotoAction extends BaseConstructor {
+class SendMessageUploadPhotoAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 3520285222;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18243,7 +17999,6 @@ class SendMessageUploadPhotoAction extends BaseConstructor {
   SendMessageUploadPhotoAction({required this.progress});
 
   static SendMessageUploadPhotoAction fromReader(BinaryReader reader) {
-    var len;
     var progress = reader.readInt();
     return SendMessageUploadPhotoAction(progress: progress);
   }
@@ -18272,7 +18027,7 @@ class SendMessageUploadPhotoAction extends BaseConstructor {
   }
 }
 
-class SendMessageUploadDocumentAction extends BaseConstructor {
+class SendMessageUploadDocumentAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 2852968932;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18282,7 +18037,6 @@ class SendMessageUploadDocumentAction extends BaseConstructor {
   SendMessageUploadDocumentAction({required this.progress});
 
   static SendMessageUploadDocumentAction fromReader(BinaryReader reader) {
-    var len;
     var progress = reader.readInt();
     return SendMessageUploadDocumentAction(progress: progress);
   }
@@ -18311,7 +18065,7 @@ class SendMessageUploadDocumentAction extends BaseConstructor {
   }
 }
 
-class SendMessageGeoLocationAction extends BaseConstructor {
+class SendMessageGeoLocationAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 393186209;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18320,7 +18074,6 @@ class SendMessageGeoLocationAction extends BaseConstructor {
   SendMessageGeoLocationAction();
 
   static SendMessageGeoLocationAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageGeoLocationAction();
   }
 
@@ -18347,7 +18100,7 @@ class SendMessageGeoLocationAction extends BaseConstructor {
   }
 }
 
-class SendMessageChooseContactAction extends BaseConstructor {
+class SendMessageChooseContactAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 1653390447;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18356,7 +18109,6 @@ class SendMessageChooseContactAction extends BaseConstructor {
   SendMessageChooseContactAction();
 
   static SendMessageChooseContactAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageChooseContactAction();
   }
 
@@ -18383,7 +18135,7 @@ class SendMessageChooseContactAction extends BaseConstructor {
   }
 }
 
-class SendMessageGamePlayAction extends BaseConstructor {
+class SendMessageGamePlayAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 3714748232;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18392,7 +18144,6 @@ class SendMessageGamePlayAction extends BaseConstructor {
   SendMessageGamePlayAction();
 
   static SendMessageGamePlayAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageGamePlayAction();
   }
 
@@ -18419,7 +18170,7 @@ class SendMessageGamePlayAction extends BaseConstructor {
   }
 }
 
-class SendMessageRecordRoundAction extends BaseConstructor {
+class SendMessageRecordRoundAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 2297593788;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18428,7 +18179,6 @@ class SendMessageRecordRoundAction extends BaseConstructor {
   SendMessageRecordRoundAction();
 
   static SendMessageRecordRoundAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageRecordRoundAction();
   }
 
@@ -18455,7 +18205,7 @@ class SendMessageRecordRoundAction extends BaseConstructor {
   }
 }
 
-class SendMessageUploadRoundAction extends BaseConstructor {
+class SendMessageUploadRoundAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 608050278;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18465,7 +18215,6 @@ class SendMessageUploadRoundAction extends BaseConstructor {
   SendMessageUploadRoundAction({required this.progress});
 
   static SendMessageUploadRoundAction fromReader(BinaryReader reader) {
-    var len;
     var progress = reader.readInt();
     return SendMessageUploadRoundAction(progress: progress);
   }
@@ -18494,7 +18243,7 @@ class SendMessageUploadRoundAction extends BaseConstructor {
   }
 }
 
-class SpeakingInGroupCallAction extends BaseConstructor {
+class SpeakingInGroupCallAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 3643548293;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18503,7 +18252,6 @@ class SpeakingInGroupCallAction extends BaseConstructor {
   SpeakingInGroupCallAction();
 
   static SpeakingInGroupCallAction fromReader(BinaryReader reader) {
-    var len;
     return SpeakingInGroupCallAction();
   }
 
@@ -18530,7 +18278,7 @@ class SpeakingInGroupCallAction extends BaseConstructor {
   }
 }
 
-class SendMessageHistoryImportAction extends BaseConstructor {
+class SendMessageHistoryImportAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 3688534598;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18540,7 +18288,6 @@ class SendMessageHistoryImportAction extends BaseConstructor {
   SendMessageHistoryImportAction({required this.progress});
 
   static SendMessageHistoryImportAction fromReader(BinaryReader reader) {
-    var len;
     var progress = reader.readInt();
     return SendMessageHistoryImportAction(progress: progress);
   }
@@ -18569,7 +18316,7 @@ class SendMessageHistoryImportAction extends BaseConstructor {
   }
 }
 
-class SendMessageChooseStickerAction extends BaseConstructor {
+class SendMessageChooseStickerAction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 2958739121;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18578,7 +18325,6 @@ class SendMessageChooseStickerAction extends BaseConstructor {
   SendMessageChooseStickerAction();
 
   static SendMessageChooseStickerAction fromReader(BinaryReader reader) {
-    var len;
     return SendMessageChooseStickerAction();
   }
 
@@ -18605,20 +18351,19 @@ class SendMessageChooseStickerAction extends BaseConstructor {
   }
 }
 
-class SendMessageEmojiInteraction extends BaseConstructor {
+class SendMessageEmojiInteraction extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 630664139;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
   final ID = 630664139;
   String emoticon;
   int msgId;
-  var interaction;
+  DataJSON interaction;
 
   SendMessageEmojiInteraction(
       {required this.emoticon, required this.msgId, required this.interaction});
 
   static SendMessageEmojiInteraction fromReader(BinaryReader reader) {
-    var len;
     var emoticon = reader.tgReadString();
     var msgId = reader.readInt();
     var interaction = reader.tgReadObject();
@@ -18632,7 +18377,7 @@ class SendMessageEmojiInteraction extends BaseConstructor {
       readBufferFromBigInt(630664139, 4),
       serializeBytes(this.emoticon),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
-      (this.interaction.getBytes() as List<int>),
+      (this.interaction.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -18652,7 +18397,7 @@ class SendMessageEmojiInteraction extends BaseConstructor {
   }
 }
 
-class SendMessageEmojiInteractionSeen extends BaseConstructor {
+class SendMessageEmojiInteractionSeen extends SendMessageActionBase {
   static const CONSTRUCTOR_ID = 3060109358;
   static const SUBCLASS_OF_ID = 548588577;
   final classType = "constructor";
@@ -18662,7 +18407,6 @@ class SendMessageEmojiInteractionSeen extends BaseConstructor {
   SendMessageEmojiInteractionSeen({required this.emoticon});
 
   static SendMessageEmojiInteractionSeen fromReader(BinaryReader reader) {
-    var len;
     var emoticon = reader.tgReadString();
     return SendMessageEmojiInteractionSeen(emoticon: emoticon);
   }
@@ -18691,7 +18435,9 @@ class SendMessageEmojiInteractionSeen extends BaseConstructor {
   }
 }
 
-class InputPrivacyKeyStatusTimestamp extends BaseConstructor {
+abstract class InputPrivacyKeyBase extends BaseConstructor {}
+
+class InputPrivacyKeyStatusTimestamp extends InputPrivacyKeyBase {
   static const CONSTRUCTOR_ID = 1335282456;
   static const SUBCLASS_OF_ID = 87435256;
   final classType = "constructor";
@@ -18700,7 +18446,6 @@ class InputPrivacyKeyStatusTimestamp extends BaseConstructor {
   InputPrivacyKeyStatusTimestamp();
 
   static InputPrivacyKeyStatusTimestamp fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyKeyStatusTimestamp();
   }
 
@@ -18727,7 +18472,7 @@ class InputPrivacyKeyStatusTimestamp extends BaseConstructor {
   }
 }
 
-class InputPrivacyKeyChatInvite extends BaseConstructor {
+class InputPrivacyKeyChatInvite extends InputPrivacyKeyBase {
   static const CONSTRUCTOR_ID = 3187344422;
   static const SUBCLASS_OF_ID = 87435256;
   final classType = "constructor";
@@ -18736,7 +18481,6 @@ class InputPrivacyKeyChatInvite extends BaseConstructor {
   InputPrivacyKeyChatInvite();
 
   static InputPrivacyKeyChatInvite fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyKeyChatInvite();
   }
 
@@ -18763,7 +18507,7 @@ class InputPrivacyKeyChatInvite extends BaseConstructor {
   }
 }
 
-class InputPrivacyKeyPhoneCall extends BaseConstructor {
+class InputPrivacyKeyPhoneCall extends InputPrivacyKeyBase {
   static const CONSTRUCTOR_ID = 4206550111;
   static const SUBCLASS_OF_ID = 87435256;
   final classType = "constructor";
@@ -18772,7 +18516,6 @@ class InputPrivacyKeyPhoneCall extends BaseConstructor {
   InputPrivacyKeyPhoneCall();
 
   static InputPrivacyKeyPhoneCall fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyKeyPhoneCall();
   }
 
@@ -18799,7 +18542,7 @@ class InputPrivacyKeyPhoneCall extends BaseConstructor {
   }
 }
 
-class InputPrivacyKeyPhoneP2P extends BaseConstructor {
+class InputPrivacyKeyPhoneP2P extends InputPrivacyKeyBase {
   static const CONSTRUCTOR_ID = 3684593874;
   static const SUBCLASS_OF_ID = 87435256;
   final classType = "constructor";
@@ -18808,7 +18551,6 @@ class InputPrivacyKeyPhoneP2P extends BaseConstructor {
   InputPrivacyKeyPhoneP2P();
 
   static InputPrivacyKeyPhoneP2P fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyKeyPhoneP2P();
   }
 
@@ -18835,7 +18577,7 @@ class InputPrivacyKeyPhoneP2P extends BaseConstructor {
   }
 }
 
-class InputPrivacyKeyForwards extends BaseConstructor {
+class InputPrivacyKeyForwards extends InputPrivacyKeyBase {
   static const CONSTRUCTOR_ID = 2765966344;
   static const SUBCLASS_OF_ID = 87435256;
   final classType = "constructor";
@@ -18844,7 +18586,6 @@ class InputPrivacyKeyForwards extends BaseConstructor {
   InputPrivacyKeyForwards();
 
   static InputPrivacyKeyForwards fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyKeyForwards();
   }
 
@@ -18871,7 +18612,7 @@ class InputPrivacyKeyForwards extends BaseConstructor {
   }
 }
 
-class InputPrivacyKeyProfilePhoto extends BaseConstructor {
+class InputPrivacyKeyProfilePhoto extends InputPrivacyKeyBase {
   static const CONSTRUCTOR_ID = 1461304012;
   static const SUBCLASS_OF_ID = 87435256;
   final classType = "constructor";
@@ -18880,7 +18621,6 @@ class InputPrivacyKeyProfilePhoto extends BaseConstructor {
   InputPrivacyKeyProfilePhoto();
 
   static InputPrivacyKeyProfilePhoto fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyKeyProfilePhoto();
   }
 
@@ -18907,7 +18647,7 @@ class InputPrivacyKeyProfilePhoto extends BaseConstructor {
   }
 }
 
-class InputPrivacyKeyPhoneNumber extends BaseConstructor {
+class InputPrivacyKeyPhoneNumber extends InputPrivacyKeyBase {
   static const CONSTRUCTOR_ID = 55761658;
   static const SUBCLASS_OF_ID = 87435256;
   final classType = "constructor";
@@ -18916,7 +18656,6 @@ class InputPrivacyKeyPhoneNumber extends BaseConstructor {
   InputPrivacyKeyPhoneNumber();
 
   static InputPrivacyKeyPhoneNumber fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyKeyPhoneNumber();
   }
 
@@ -18943,7 +18682,7 @@ class InputPrivacyKeyPhoneNumber extends BaseConstructor {
   }
 }
 
-class InputPrivacyKeyAddedByPhone extends BaseConstructor {
+class InputPrivacyKeyAddedByPhone extends InputPrivacyKeyBase {
   static const CONSTRUCTOR_ID = 3508640733;
   static const SUBCLASS_OF_ID = 87435256;
   final classType = "constructor";
@@ -18952,7 +18691,6 @@ class InputPrivacyKeyAddedByPhone extends BaseConstructor {
   InputPrivacyKeyAddedByPhone();
 
   static InputPrivacyKeyAddedByPhone fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyKeyAddedByPhone();
   }
 
@@ -18979,7 +18717,9 @@ class InputPrivacyKeyAddedByPhone extends BaseConstructor {
   }
 }
 
-class PrivacyKeyStatusTimestamp extends BaseConstructor {
+abstract class PrivacyKeyBase extends BaseConstructor {}
+
+class PrivacyKeyStatusTimestamp extends PrivacyKeyBase {
   static const CONSTRUCTOR_ID = 3157175088;
   static const SUBCLASS_OF_ID = 2185646531;
   final classType = "constructor";
@@ -18988,7 +18728,6 @@ class PrivacyKeyStatusTimestamp extends BaseConstructor {
   PrivacyKeyStatusTimestamp();
 
   static PrivacyKeyStatusTimestamp fromReader(BinaryReader reader) {
-    var len;
     return PrivacyKeyStatusTimestamp();
   }
 
@@ -19015,7 +18754,7 @@ class PrivacyKeyStatusTimestamp extends BaseConstructor {
   }
 }
 
-class PrivacyKeyChatInvite extends BaseConstructor {
+class PrivacyKeyChatInvite extends PrivacyKeyBase {
   static const CONSTRUCTOR_ID = 1343122938;
   static const SUBCLASS_OF_ID = 2185646531;
   final classType = "constructor";
@@ -19024,7 +18763,6 @@ class PrivacyKeyChatInvite extends BaseConstructor {
   PrivacyKeyChatInvite();
 
   static PrivacyKeyChatInvite fromReader(BinaryReader reader) {
-    var len;
     return PrivacyKeyChatInvite();
   }
 
@@ -19051,7 +18789,7 @@ class PrivacyKeyChatInvite extends BaseConstructor {
   }
 }
 
-class PrivacyKeyPhoneCall extends BaseConstructor {
+class PrivacyKeyPhoneCall extends PrivacyKeyBase {
   static const CONSTRUCTOR_ID = 1030105979;
   static const SUBCLASS_OF_ID = 2185646531;
   final classType = "constructor";
@@ -19060,7 +18798,6 @@ class PrivacyKeyPhoneCall extends BaseConstructor {
   PrivacyKeyPhoneCall();
 
   static PrivacyKeyPhoneCall fromReader(BinaryReader reader) {
-    var len;
     return PrivacyKeyPhoneCall();
   }
 
@@ -19087,7 +18824,7 @@ class PrivacyKeyPhoneCall extends BaseConstructor {
   }
 }
 
-class PrivacyKeyPhoneP2P extends BaseConstructor {
+class PrivacyKeyPhoneP2P extends PrivacyKeyBase {
   static const CONSTRUCTOR_ID = 961092808;
   static const SUBCLASS_OF_ID = 2185646531;
   final classType = "constructor";
@@ -19096,7 +18833,6 @@ class PrivacyKeyPhoneP2P extends BaseConstructor {
   PrivacyKeyPhoneP2P();
 
   static PrivacyKeyPhoneP2P fromReader(BinaryReader reader) {
-    var len;
     return PrivacyKeyPhoneP2P();
   }
 
@@ -19123,7 +18859,7 @@ class PrivacyKeyPhoneP2P extends BaseConstructor {
   }
 }
 
-class PrivacyKeyForwards extends BaseConstructor {
+class PrivacyKeyForwards extends PrivacyKeyBase {
   static const CONSTRUCTOR_ID = 1777096355;
   static const SUBCLASS_OF_ID = 2185646531;
   final classType = "constructor";
@@ -19132,7 +18868,6 @@ class PrivacyKeyForwards extends BaseConstructor {
   PrivacyKeyForwards();
 
   static PrivacyKeyForwards fromReader(BinaryReader reader) {
-    var len;
     return PrivacyKeyForwards();
   }
 
@@ -19159,7 +18894,7 @@ class PrivacyKeyForwards extends BaseConstructor {
   }
 }
 
-class PrivacyKeyProfilePhoto extends BaseConstructor {
+class PrivacyKeyProfilePhoto extends PrivacyKeyBase {
   static const CONSTRUCTOR_ID = 2517966829;
   static const SUBCLASS_OF_ID = 2185646531;
   final classType = "constructor";
@@ -19168,7 +18903,6 @@ class PrivacyKeyProfilePhoto extends BaseConstructor {
   PrivacyKeyProfilePhoto();
 
   static PrivacyKeyProfilePhoto fromReader(BinaryReader reader) {
-    var len;
     return PrivacyKeyProfilePhoto();
   }
 
@@ -19195,7 +18929,7 @@ class PrivacyKeyProfilePhoto extends BaseConstructor {
   }
 }
 
-class PrivacyKeyPhoneNumber extends BaseConstructor {
+class PrivacyKeyPhoneNumber extends PrivacyKeyBase {
   static const CONSTRUCTOR_ID = 3516589165;
   static const SUBCLASS_OF_ID = 2185646531;
   final classType = "constructor";
@@ -19204,7 +18938,6 @@ class PrivacyKeyPhoneNumber extends BaseConstructor {
   PrivacyKeyPhoneNumber();
 
   static PrivacyKeyPhoneNumber fromReader(BinaryReader reader) {
-    var len;
     return PrivacyKeyPhoneNumber();
   }
 
@@ -19231,7 +18964,7 @@ class PrivacyKeyPhoneNumber extends BaseConstructor {
   }
 }
 
-class PrivacyKeyAddedByPhone extends BaseConstructor {
+class PrivacyKeyAddedByPhone extends PrivacyKeyBase {
   static const CONSTRUCTOR_ID = 1124062251;
   static const SUBCLASS_OF_ID = 2185646531;
   final classType = "constructor";
@@ -19240,7 +18973,6 @@ class PrivacyKeyAddedByPhone extends BaseConstructor {
   PrivacyKeyAddedByPhone();
 
   static PrivacyKeyAddedByPhone fromReader(BinaryReader reader) {
-    var len;
     return PrivacyKeyAddedByPhone();
   }
 
@@ -19267,7 +18999,9 @@ class PrivacyKeyAddedByPhone extends BaseConstructor {
   }
 }
 
-class InputPrivacyValueAllowContacts extends BaseConstructor {
+abstract class InputPrivacyRuleBase extends BaseConstructor {}
+
+class InputPrivacyValueAllowContacts extends InputPrivacyRuleBase {
   static const CONSTRUCTOR_ID = 218751099;
   static const SUBCLASS_OF_ID = 1513843490;
   final classType = "constructor";
@@ -19276,7 +19010,6 @@ class InputPrivacyValueAllowContacts extends BaseConstructor {
   InputPrivacyValueAllowContacts();
 
   static InputPrivacyValueAllowContacts fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyValueAllowContacts();
   }
 
@@ -19303,7 +19036,7 @@ class InputPrivacyValueAllowContacts extends BaseConstructor {
   }
 }
 
-class InputPrivacyValueAllowAll extends BaseConstructor {
+class InputPrivacyValueAllowAll extends InputPrivacyRuleBase {
   static const CONSTRUCTOR_ID = 407582158;
   static const SUBCLASS_OF_ID = 1513843490;
   final classType = "constructor";
@@ -19312,7 +19045,6 @@ class InputPrivacyValueAllowAll extends BaseConstructor {
   InputPrivacyValueAllowAll();
 
   static InputPrivacyValueAllowAll fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyValueAllowAll();
   }
 
@@ -19339,12 +19071,12 @@ class InputPrivacyValueAllowAll extends BaseConstructor {
   }
 }
 
-class InputPrivacyValueAllowUsers extends BaseConstructor {
+class InputPrivacyValueAllowUsers extends InputPrivacyRuleBase {
   static const CONSTRUCTOR_ID = 320652927;
   static const SUBCLASS_OF_ID = 1513843490;
   final classType = "constructor";
   final ID = 320652927;
-  List<dynamic> users;
+  List<InputUserBase> users;
 
   InputPrivacyValueAllowUsers({required this.users});
 
@@ -19352,7 +19084,7 @@ class InputPrivacyValueAllowUsers extends BaseConstructor {
     var len;
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<InputUserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -19365,10 +19097,9 @@ class InputPrivacyValueAllowUsers extends BaseConstructor {
     return [
       readBufferFromBigInt(320652927, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -19389,7 +19120,7 @@ class InputPrivacyValueAllowUsers extends BaseConstructor {
   }
 }
 
-class InputPrivacyValueDisallowContacts extends BaseConstructor {
+class InputPrivacyValueDisallowContacts extends InputPrivacyRuleBase {
   static const CONSTRUCTOR_ID = 195371015;
   static const SUBCLASS_OF_ID = 1513843490;
   final classType = "constructor";
@@ -19398,7 +19129,6 @@ class InputPrivacyValueDisallowContacts extends BaseConstructor {
   InputPrivacyValueDisallowContacts();
 
   static InputPrivacyValueDisallowContacts fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyValueDisallowContacts();
   }
 
@@ -19425,7 +19155,7 @@ class InputPrivacyValueDisallowContacts extends BaseConstructor {
   }
 }
 
-class InputPrivacyValueDisallowAll extends BaseConstructor {
+class InputPrivacyValueDisallowAll extends InputPrivacyRuleBase {
   static const CONSTRUCTOR_ID = 3597362889;
   static const SUBCLASS_OF_ID = 1513843490;
   final classType = "constructor";
@@ -19434,7 +19164,6 @@ class InputPrivacyValueDisallowAll extends BaseConstructor {
   InputPrivacyValueDisallowAll();
 
   static InputPrivacyValueDisallowAll fromReader(BinaryReader reader) {
-    var len;
     return InputPrivacyValueDisallowAll();
   }
 
@@ -19461,12 +19190,12 @@ class InputPrivacyValueDisallowAll extends BaseConstructor {
   }
 }
 
-class InputPrivacyValueDisallowUsers extends BaseConstructor {
+class InputPrivacyValueDisallowUsers extends InputPrivacyRuleBase {
   static const CONSTRUCTOR_ID = 2417034343;
   static const SUBCLASS_OF_ID = 1513843490;
   final classType = "constructor";
   final ID = 2417034343;
-  List<dynamic> users;
+  List<InputUserBase> users;
 
   InputPrivacyValueDisallowUsers({required this.users});
 
@@ -19474,7 +19203,7 @@ class InputPrivacyValueDisallowUsers extends BaseConstructor {
     var len;
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<InputUserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -19487,10 +19216,9 @@ class InputPrivacyValueDisallowUsers extends BaseConstructor {
     return [
       readBufferFromBigInt(2417034343, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -19511,7 +19239,7 @@ class InputPrivacyValueDisallowUsers extends BaseConstructor {
   }
 }
 
-class InputPrivacyValueAllowChatParticipants extends BaseConstructor {
+class InputPrivacyValueAllowChatParticipants extends InputPrivacyRuleBase {
   static const CONSTRUCTOR_ID = 2215004623;
   static const SUBCLASS_OF_ID = 1513843490;
   final classType = "constructor";
@@ -19538,10 +19266,9 @@ class InputPrivacyValueAllowChatParticipants extends BaseConstructor {
     return [
       readBufferFromBigInt(2215004623, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .chats.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -19562,7 +19289,7 @@ class InputPrivacyValueAllowChatParticipants extends BaseConstructor {
   }
 }
 
-class InputPrivacyValueDisallowChatParticipants extends BaseConstructor {
+class InputPrivacyValueDisallowChatParticipants extends InputPrivacyRuleBase {
   static const CONSTRUCTOR_ID = 3914272646;
   static const SUBCLASS_OF_ID = 1513843490;
   final classType = "constructor";
@@ -19589,10 +19316,9 @@ class InputPrivacyValueDisallowChatParticipants extends BaseConstructor {
     return [
       readBufferFromBigInt(3914272646, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .chats.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -19613,7 +19339,9 @@ class InputPrivacyValueDisallowChatParticipants extends BaseConstructor {
   }
 }
 
-class PrivacyValueAllowContacts extends BaseConstructor {
+abstract class PrivacyRuleBase extends BaseConstructor {}
+
+class PrivacyValueAllowContacts extends PrivacyRuleBase {
   static const CONSTRUCTOR_ID = 4294843308;
   static const SUBCLASS_OF_ID = 3954700912;
   final classType = "constructor";
@@ -19622,7 +19350,6 @@ class PrivacyValueAllowContacts extends BaseConstructor {
   PrivacyValueAllowContacts();
 
   static PrivacyValueAllowContacts fromReader(BinaryReader reader) {
-    var len;
     return PrivacyValueAllowContacts();
   }
 
@@ -19649,7 +19376,7 @@ class PrivacyValueAllowContacts extends BaseConstructor {
   }
 }
 
-class PrivacyValueAllowAll extends BaseConstructor {
+class PrivacyValueAllowAll extends PrivacyRuleBase {
   static const CONSTRUCTOR_ID = 1698855810;
   static const SUBCLASS_OF_ID = 3954700912;
   final classType = "constructor";
@@ -19658,7 +19385,6 @@ class PrivacyValueAllowAll extends BaseConstructor {
   PrivacyValueAllowAll();
 
   static PrivacyValueAllowAll fromReader(BinaryReader reader) {
-    var len;
     return PrivacyValueAllowAll();
   }
 
@@ -19685,7 +19411,7 @@ class PrivacyValueAllowAll extends BaseConstructor {
   }
 }
 
-class PrivacyValueAllowUsers extends BaseConstructor {
+class PrivacyValueAllowUsers extends PrivacyRuleBase {
   static const CONSTRUCTOR_ID = 3096469426;
   static const SUBCLASS_OF_ID = 3954700912;
   final classType = "constructor";
@@ -19711,10 +19437,9 @@ class PrivacyValueAllowUsers extends BaseConstructor {
     return [
       readBufferFromBigInt(3096469426, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .users.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -19735,7 +19460,7 @@ class PrivacyValueAllowUsers extends BaseConstructor {
   }
 }
 
-class PrivacyValueDisallowContacts extends BaseConstructor {
+class PrivacyValueDisallowContacts extends PrivacyRuleBase {
   static const CONSTRUCTOR_ID = 4169726490;
   static const SUBCLASS_OF_ID = 3954700912;
   final classType = "constructor";
@@ -19744,7 +19469,6 @@ class PrivacyValueDisallowContacts extends BaseConstructor {
   PrivacyValueDisallowContacts();
 
   static PrivacyValueDisallowContacts fromReader(BinaryReader reader) {
-    var len;
     return PrivacyValueDisallowContacts();
   }
 
@@ -19771,7 +19495,7 @@ class PrivacyValueDisallowContacts extends BaseConstructor {
   }
 }
 
-class PrivacyValueDisallowAll extends BaseConstructor {
+class PrivacyValueDisallowAll extends PrivacyRuleBase {
   static const CONSTRUCTOR_ID = 2339628899;
   static const SUBCLASS_OF_ID = 3954700912;
   final classType = "constructor";
@@ -19780,7 +19504,6 @@ class PrivacyValueDisallowAll extends BaseConstructor {
   PrivacyValueDisallowAll();
 
   static PrivacyValueDisallowAll fromReader(BinaryReader reader) {
-    var len;
     return PrivacyValueDisallowAll();
   }
 
@@ -19807,7 +19530,7 @@ class PrivacyValueDisallowAll extends BaseConstructor {
   }
 }
 
-class PrivacyValueDisallowUsers extends BaseConstructor {
+class PrivacyValueDisallowUsers extends PrivacyRuleBase {
   static const CONSTRUCTOR_ID = 3831632193;
   static const SUBCLASS_OF_ID = 3954700912;
   final classType = "constructor";
@@ -19833,10 +19556,9 @@ class PrivacyValueDisallowUsers extends BaseConstructor {
     return [
       readBufferFromBigInt(3831632193, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .users.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -19857,7 +19579,7 @@ class PrivacyValueDisallowUsers extends BaseConstructor {
   }
 }
 
-class PrivacyValueAllowChatParticipants extends BaseConstructor {
+class PrivacyValueAllowChatParticipants extends PrivacyRuleBase {
   static const CONSTRUCTOR_ID = 1796427406;
   static const SUBCLASS_OF_ID = 3954700912;
   final classType = "constructor";
@@ -19883,10 +19605,9 @@ class PrivacyValueAllowChatParticipants extends BaseConstructor {
     return [
       readBufferFromBigInt(1796427406, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .chats.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -19907,7 +19628,7 @@ class PrivacyValueAllowChatParticipants extends BaseConstructor {
   }
 }
 
-class PrivacyValueDisallowChatParticipants extends BaseConstructor {
+class PrivacyValueDisallowChatParticipants extends PrivacyRuleBase {
   static const CONSTRUCTOR_ID = 1103656293;
   static const SUBCLASS_OF_ID = 3954700912;
   final classType = "constructor";
@@ -19933,10 +19654,9 @@ class PrivacyValueDisallowChatParticipants extends BaseConstructor {
     return [
       readBufferFromBigInt(1103656293, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .chats.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -19967,7 +19687,6 @@ class AccountDaysTTL extends BaseConstructor {
   AccountDaysTTL({required this.days});
 
   static AccountDaysTTL fromReader(BinaryReader reader) {
-    var len;
     var days = reader.readInt();
     return AccountDaysTTL(days: days);
   }
@@ -19996,7 +19715,9 @@ class AccountDaysTTL extends BaseConstructor {
   }
 }
 
-class DocumentAttributeImageSize extends BaseConstructor {
+abstract class DocumentAttributeBase extends BaseConstructor {}
+
+class DocumentAttributeImageSize extends DocumentAttributeBase {
   static const CONSTRUCTOR_ID = 1815593308;
   static const SUBCLASS_OF_ID = 4146719643;
   final classType = "constructor";
@@ -20007,7 +19728,6 @@ class DocumentAttributeImageSize extends BaseConstructor {
   DocumentAttributeImageSize({required this.w, required this.h});
 
   static DocumentAttributeImageSize fromReader(BinaryReader reader) {
-    var len;
     var w = reader.readInt();
     var h = reader.readInt();
     return DocumentAttributeImageSize(w: w, h: h);
@@ -20038,7 +19758,7 @@ class DocumentAttributeImageSize extends BaseConstructor {
   }
 }
 
-class DocumentAttributeAnimated extends BaseConstructor {
+class DocumentAttributeAnimated extends DocumentAttributeBase {
   static const CONSTRUCTOR_ID = 297109817;
   static const SUBCLASS_OF_ID = 4146719643;
   final classType = "constructor";
@@ -20047,7 +19767,6 @@ class DocumentAttributeAnimated extends BaseConstructor {
   DocumentAttributeAnimated();
 
   static DocumentAttributeAnimated fromReader(BinaryReader reader) {
-    var len;
     return DocumentAttributeAnimated();
   }
 
@@ -20074,24 +19793,23 @@ class DocumentAttributeAnimated extends BaseConstructor {
   }
 }
 
-class DocumentAttributeSticker extends BaseConstructor {
+class DocumentAttributeSticker extends DocumentAttributeBase {
   static const CONSTRUCTOR_ID = 1662637586;
   static const SUBCLASS_OF_ID = 4146719643;
   final classType = "constructor";
   final ID = 1662637586;
   bool? mask;
   String alt;
-  var stickerset;
-  var maskCoords;
+  InputStickerSetBase stickerset;
+  MaskCoords? maskCoords;
 
   DocumentAttributeSticker(
-      {required this.mask,
+      {this.mask,
       required this.alt,
       required this.stickerset,
-      required this.maskCoords});
+      this.maskCoords});
 
   static DocumentAttributeSticker fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final mask = (flags & 2) == 2;
     var alt = reader.tgReadString();
@@ -20112,10 +19830,10 @@ class DocumentAttributeSticker extends BaseConstructor {
       readBufferFromBigInt(1662637586, 4),
       [0, 0, 0, 0],
       serializeBytes(this.alt),
-      (this.stickerset.getBytes() as List<int>),
+      (this.stickerset.getBytes()),
       (this.maskCoords == null || this.maskCoords == false)
           ? List<int>.empty()
-          : [(this.maskCoords.getBytes() as List<int>)]
+          : [(this.maskCoords!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -20137,7 +19855,7 @@ class DocumentAttributeSticker extends BaseConstructor {
   }
 }
 
-class DocumentAttributeVideo extends BaseConstructor {
+class DocumentAttributeVideo extends DocumentAttributeBase {
   static const CONSTRUCTOR_ID = 250621158;
   static const SUBCLASS_OF_ID = 4146719643;
   final classType = "constructor";
@@ -20149,14 +19867,13 @@ class DocumentAttributeVideo extends BaseConstructor {
   int h;
 
   DocumentAttributeVideo(
-      {required this.roundMessage,
-      required this.supportsStreaming,
+      {this.roundMessage,
+      this.supportsStreaming,
       required this.duration,
       required this.w,
       required this.h});
 
   static DocumentAttributeVideo fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final roundMessage = (flags & 1) == 1;
     final supportsStreaming = (flags & 2) == 2;
@@ -20198,7 +19915,7 @@ class DocumentAttributeVideo extends BaseConstructor {
   }
 }
 
-class DocumentAttributeAudio extends BaseConstructor {
+class DocumentAttributeAudio extends DocumentAttributeBase {
   static const CONSTRUCTOR_ID = 2555574726;
   static const SUBCLASS_OF_ID = 4146719643;
   final classType = "constructor";
@@ -20210,14 +19927,13 @@ class DocumentAttributeAudio extends BaseConstructor {
   List<int>? waveform;
 
   DocumentAttributeAudio(
-      {required this.voice,
+      {this.voice,
       required this.duration,
-      required this.title,
-      required this.performer,
-      required this.waveform});
+      this.title,
+      this.performer,
+      this.waveform});
 
   static DocumentAttributeAudio fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final voice = (flags & 1024) == 1024;
     var duration = reader.readInt();
@@ -20285,7 +20001,7 @@ class DocumentAttributeAudio extends BaseConstructor {
   }
 }
 
-class DocumentAttributeFilename extends BaseConstructor {
+class DocumentAttributeFilename extends DocumentAttributeBase {
   static const CONSTRUCTOR_ID = 358154344;
   static const SUBCLASS_OF_ID = 4146719643;
   final classType = "constructor";
@@ -20295,7 +20011,6 @@ class DocumentAttributeFilename extends BaseConstructor {
   DocumentAttributeFilename({required this.fileName});
 
   static DocumentAttributeFilename fromReader(BinaryReader reader) {
-    var len;
     var fileName = reader.tgReadString();
     return DocumentAttributeFilename(fileName: fileName);
   }
@@ -20324,7 +20039,7 @@ class DocumentAttributeFilename extends BaseConstructor {
   }
 }
 
-class DocumentAttributeHasStickers extends BaseConstructor {
+class DocumentAttributeHasStickers extends DocumentAttributeBase {
   static const CONSTRUCTOR_ID = 2550256375;
   static const SUBCLASS_OF_ID = 4146719643;
   final classType = "constructor";
@@ -20333,7 +20048,6 @@ class DocumentAttributeHasStickers extends BaseConstructor {
   DocumentAttributeHasStickers();
 
   static DocumentAttributeHasStickers fromReader(BinaryReader reader) {
-    var len;
     return DocumentAttributeHasStickers();
   }
 
@@ -20389,11 +20103,10 @@ class StickerPack extends BaseConstructor {
       readBufferFromBigInt(313694676, 4),
       serializeBytes(this.emoticon),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.documents!.length, 4,
+      readBufferFromBigInt(this.documents.length, 4,
           little: true, signed: true),
       this
-          .documents!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .documents.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -20414,7 +20127,9 @@ class StickerPack extends BaseConstructor {
   }
 }
 
-class WebPageEmpty extends BaseConstructor {
+abstract class WebPageBase extends BaseConstructor {}
+
+class WebPageEmpty extends WebPageBase {
   static const CONSTRUCTOR_ID = 3943987176;
   static const SUBCLASS_OF_ID = 1437168769;
   final classType = "constructor";
@@ -20424,7 +20139,6 @@ class WebPageEmpty extends BaseConstructor {
   WebPageEmpty({required this.id});
 
   static WebPageEmpty fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     return WebPageEmpty(id: id);
   }
@@ -20453,7 +20167,7 @@ class WebPageEmpty extends BaseConstructor {
   }
 }
 
-class WebPagePending extends BaseConstructor {
+class WebPagePending extends WebPageBase {
   static const CONSTRUCTOR_ID = 3313949212;
   static const SUBCLASS_OF_ID = 1437168769;
   final classType = "constructor";
@@ -20464,7 +20178,6 @@ class WebPagePending extends BaseConstructor {
   WebPagePending({required this.id, required this.date});
 
   static WebPagePending fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var date = reader.readInt();
     return WebPagePending(id: id, date: date);
@@ -20495,7 +20208,7 @@ class WebPagePending extends BaseConstructor {
   }
 }
 
-class WebPage extends BaseConstructor {
+class WebPage extends WebPageBase {
   static const CONSTRUCTOR_ID = 3902555570;
   static const SUBCLASS_OF_ID = 1437168769;
   final classType = "constructor";
@@ -20508,36 +20221,36 @@ class WebPage extends BaseConstructor {
   String? siteName;
   String? title;
   String? description;
-  var photo;
+  PhotoBase? photo;
   String? embedUrl;
   String? embedType;
   int? embedWidth;
   int? embedHeight;
   int? duration;
   String? author;
-  var document;
-  var cachedPage;
-  List<dynamic>? attributes;
+  DocumentBase? document;
+  Page? cachedPage;
+  List<WebPageAttributeBase>? attributes;
 
   WebPage(
       {required this.id,
       required this.url,
       required this.displayUrl,
       required this.hash,
-      required this.type,
-      required this.siteName,
-      required this.title,
-      required this.description,
-      required this.photo,
-      required this.embedUrl,
-      required this.embedType,
-      required this.embedWidth,
-      required this.embedHeight,
-      required this.duration,
-      required this.author,
-      required this.document,
-      required this.cachedPage,
-      required this.attributes});
+      this.type,
+      this.siteName,
+      this.title,
+      this.description,
+      this.photo,
+      this.embedUrl,
+      this.embedType,
+      this.embedWidth,
+      this.embedHeight,
+      this.duration,
+      this.author,
+      this.document,
+      this.cachedPage,
+      this.attributes});
 
   static WebPage fromReader(BinaryReader reader) {
     var len;
@@ -20628,7 +20341,7 @@ class WebPage extends BaseConstructor {
     if ((flags & 4096) == 4096) {
       var _vectorattributes = reader.readInt();
       if (_vectorattributes != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> attributes = [];
+      List<WebPageAttributeBase> attributes = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         attributes.add(reader.tgReadObject());
@@ -20684,7 +20397,7 @@ class WebPage extends BaseConstructor {
               .toList(),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.embedUrl == null || this.embedUrl == false)
@@ -20719,12 +20432,12 @@ class WebPage extends BaseConstructor {
           : [serializeBytes(this.author)].expand((element) => element).toList(),
       (this.document == null || this.document == false)
           ? List<int>.empty()
-          : [(this.document.getBytes() as List<int>)]
+          : [(this.document!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.cachedPage == null || this.cachedPage == false)
           ? List<int>.empty()
-          : [(this.cachedPage.getBytes() as List<int>)]
+          : [(this.cachedPage!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.attributes == null || this.attributes == false)
@@ -20735,7 +20448,7 @@ class WebPage extends BaseConstructor {
                   little: true, signed: true),
               this
                   .attributes!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -20757,17 +20470,16 @@ class WebPage extends BaseConstructor {
   }
 }
 
-class WebPageNotModified extends BaseConstructor {
+class WebPageNotModified extends WebPageBase {
   static const CONSTRUCTOR_ID = 1930545681;
   static const SUBCLASS_OF_ID = 1437168769;
   final classType = "constructor";
   final ID = 1930545681;
   int? cachedPageViews;
 
-  WebPageNotModified({required this.cachedPageViews});
+  WebPageNotModified({this.cachedPageViews});
 
   static WebPageNotModified fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var cachedPageViews;
     if ((flags & 1) == 1) {
@@ -20832,11 +20544,11 @@ class Authorization extends BaseConstructor {
   String region;
 
   Authorization(
-      {required this.current,
-      required this.officialApp,
-      required this.passwordPending,
-      required this.encryptedRequestsDisabled,
-      required this.callRequestsDisabled,
+      {this.current,
+      this.officialApp,
+      this.passwordPending,
+      this.encryptedRequestsDisabled,
+      this.callRequestsDisabled,
       required this.hash,
       required this.deviceModel,
       required this.platform,
@@ -20851,7 +20563,6 @@ class Authorization extends BaseConstructor {
       required this.region});
 
   static Authorization fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final current = (flags & 1) == 1;
     final officialApp = (flags & 2) == 2;
@@ -20937,7 +20648,6 @@ class ReceivedNotifyMessage extends BaseConstructor {
   ReceivedNotifyMessage({required this.id, required this.flags});
 
   static ReceivedNotifyMessage fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readInt();
     var flags = reader.readInt();
     return ReceivedNotifyMessage(id: id, flags: flags);
@@ -20968,7 +20678,9 @@ class ReceivedNotifyMessage extends BaseConstructor {
   }
 }
 
-class ChatInviteExported extends BaseConstructor {
+abstract class ExportedChatInviteBase extends BaseConstructor {}
+
+class ChatInviteExported extends ExportedChatInviteBase {
   static const CONSTRUCTOR_ID = 179611673;
   static const SUBCLASS_OF_ID = 3027536472;
   final classType = "constructor";
@@ -20987,21 +20699,20 @@ class ChatInviteExported extends BaseConstructor {
   String? title;
 
   ChatInviteExported(
-      {required this.revoked,
-      required this.permanent,
-      required this.requestNeeded,
+      {this.revoked,
+      this.permanent,
+      this.requestNeeded,
       required this.link,
       required this.adminId,
       required this.date,
-      required this.startDate,
-      required this.expireDate,
-      required this.usageLimit,
-      required this.usage,
-      required this.requested,
-      required this.title});
+      this.startDate,
+      this.expireDate,
+      this.usageLimit,
+      this.usage,
+      this.requested,
+      this.title});
 
   static ChatInviteExported fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final revoked = (flags & 1) == 1;
     final permanent = (flags & 32) == 32;
@@ -21119,7 +20830,7 @@ class ChatInviteExported extends BaseConstructor {
   }
 }
 
-class ChatInvitePublicJoinRequests extends BaseConstructor {
+class ChatInvitePublicJoinRequests extends ExportedChatInviteBase {
   static const CONSTRUCTOR_ID = 3977280183;
   static const SUBCLASS_OF_ID = 3027536472;
   final classType = "constructor";
@@ -21128,7 +20839,6 @@ class ChatInvitePublicJoinRequests extends BaseConstructor {
   ChatInvitePublicJoinRequests();
 
   static ChatInvitePublicJoinRequests fromReader(BinaryReader reader) {
-    var len;
     return ChatInvitePublicJoinRequests();
   }
 
@@ -21155,17 +20865,18 @@ class ChatInvitePublicJoinRequests extends BaseConstructor {
   }
 }
 
-class ChatInviteAlready extends BaseConstructor {
+abstract class ChatInviteBase extends BaseConstructor {}
+
+class ChatInviteAlready extends ChatInviteBase {
   static const CONSTRUCTOR_ID = 1516793212;
   static const SUBCLASS_OF_ID = 72750902;
   final classType = "constructor";
   final ID = 1516793212;
-  var chat;
+  ChatBase chat;
 
   ChatInviteAlready({required this.chat});
 
   static ChatInviteAlready fromReader(BinaryReader reader) {
-    var len;
     var chat = reader.tgReadObject();
     return ChatInviteAlready(chat: chat);
   }
@@ -21174,7 +20885,7 @@ class ChatInviteAlready extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1516793212, 4),
-      (this.chat.getBytes() as List<int>),
+      (this.chat.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -21194,7 +20905,7 @@ class ChatInviteAlready extends BaseConstructor {
   }
 }
 
-class ChatInvite extends BaseConstructor {
+class ChatInvite extends ChatInviteBase {
   static const CONSTRUCTOR_ID = 806110401;
   static const SUBCLASS_OF_ID = 72750902;
   final classType = "constructor";
@@ -21206,21 +20917,21 @@ class ChatInvite extends BaseConstructor {
   bool? requestNeeded;
   String title;
   String? about;
-  var photo;
+  PhotoBase photo;
   int participantsCount;
-  List<dynamic>? participants;
+  List<UserBase>? participants;
 
   ChatInvite(
-      {required this.channel,
-      required this.broadcast,
-      required this.public,
-      required this.megagroup,
-      required this.requestNeeded,
+      {this.channel,
+      this.broadcast,
+      this.public,
+      this.megagroup,
+      this.requestNeeded,
       required this.title,
-      required this.about,
+      this.about,
       required this.photo,
       required this.participantsCount,
-      required this.participants});
+      this.participants});
 
   static ChatInvite fromReader(BinaryReader reader) {
     var len;
@@ -21243,7 +20954,7 @@ class ChatInvite extends BaseConstructor {
     if ((flags & 16) == 16) {
       var _vectorparticipants = reader.readInt();
       if (_vectorparticipants != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> participants = [];
+      List<UserBase> participants = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         participants.add(reader.tgReadObject());
@@ -21273,7 +20984,7 @@ class ChatInvite extends BaseConstructor {
       (this.about == null || this.about == false)
           ? List<int>.empty()
           : [serializeBytes(this.about)].expand((element) => element).toList(),
-      (this.photo.getBytes() as List<int>),
+      (this.photo.getBytes()),
       readBufferFromBigInt(this.participantsCount, 4,
           little: true, signed: true),
       (this.participants == null || this.participants == false)
@@ -21284,7 +20995,7 @@ class ChatInvite extends BaseConstructor {
                   little: true, signed: true),
               this
                   .participants!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -21306,18 +21017,17 @@ class ChatInvite extends BaseConstructor {
   }
 }
 
-class ChatInvitePeek extends BaseConstructor {
+class ChatInvitePeek extends ChatInviteBase {
   static const CONSTRUCTOR_ID = 1634294960;
   static const SUBCLASS_OF_ID = 72750902;
   final classType = "constructor";
   final ID = 1634294960;
-  var chat;
+  ChatBase chat;
   int expires;
 
   ChatInvitePeek({required this.chat, required this.expires});
 
   static ChatInvitePeek fromReader(BinaryReader reader) {
-    var len;
     var chat = reader.tgReadObject();
     var expires = reader.readInt();
     return ChatInvitePeek(chat: chat, expires: expires);
@@ -21327,7 +21037,7 @@ class ChatInvitePeek extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1634294960, 4),
-      (this.chat.getBytes() as List<int>),
+      (this.chat.getBytes()),
       readBufferFromBigInt(this.expires, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -21348,7 +21058,9 @@ class ChatInvitePeek extends BaseConstructor {
   }
 }
 
-class InputStickerSetEmpty extends BaseConstructor {
+abstract class InputStickerSetBase extends BaseConstructor {}
+
+class InputStickerSetEmpty extends InputStickerSetBase {
   static const CONSTRUCTOR_ID = 4290128789;
   static const SUBCLASS_OF_ID = 1034127786;
   final classType = "constructor";
@@ -21357,7 +21069,6 @@ class InputStickerSetEmpty extends BaseConstructor {
   InputStickerSetEmpty();
 
   static InputStickerSetEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputStickerSetEmpty();
   }
 
@@ -21384,7 +21095,7 @@ class InputStickerSetEmpty extends BaseConstructor {
   }
 }
 
-class InputStickerSetID extends BaseConstructor {
+class InputStickerSetID extends InputStickerSetBase {
   static const CONSTRUCTOR_ID = 2649203305;
   static const SUBCLASS_OF_ID = 1034127786;
   final classType = "constructor";
@@ -21395,7 +21106,6 @@ class InputStickerSetID extends BaseConstructor {
   InputStickerSetID({required this.id, required this.accessHash});
 
   static InputStickerSetID fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputStickerSetID(id: id, accessHash: accessHash);
@@ -21426,7 +21136,7 @@ class InputStickerSetID extends BaseConstructor {
   }
 }
 
-class InputStickerSetShortName extends BaseConstructor {
+class InputStickerSetShortName extends InputStickerSetBase {
   static const CONSTRUCTOR_ID = 2250033312;
   static const SUBCLASS_OF_ID = 1034127786;
   final classType = "constructor";
@@ -21436,7 +21146,6 @@ class InputStickerSetShortName extends BaseConstructor {
   InputStickerSetShortName({required this.shortName});
 
   static InputStickerSetShortName fromReader(BinaryReader reader) {
-    var len;
     var shortName = reader.tgReadString();
     return InputStickerSetShortName(shortName: shortName);
   }
@@ -21465,7 +21174,7 @@ class InputStickerSetShortName extends BaseConstructor {
   }
 }
 
-class InputStickerSetAnimatedEmoji extends BaseConstructor {
+class InputStickerSetAnimatedEmoji extends InputStickerSetBase {
   static const CONSTRUCTOR_ID = 42402760;
   static const SUBCLASS_OF_ID = 1034127786;
   final classType = "constructor";
@@ -21474,7 +21183,6 @@ class InputStickerSetAnimatedEmoji extends BaseConstructor {
   InputStickerSetAnimatedEmoji();
 
   static InputStickerSetAnimatedEmoji fromReader(BinaryReader reader) {
-    var len;
     return InputStickerSetAnimatedEmoji();
   }
 
@@ -21501,7 +21209,7 @@ class InputStickerSetAnimatedEmoji extends BaseConstructor {
   }
 }
 
-class InputStickerSetDice extends BaseConstructor {
+class InputStickerSetDice extends InputStickerSetBase {
   static const CONSTRUCTOR_ID = 3867103758;
   static const SUBCLASS_OF_ID = 1034127786;
   final classType = "constructor";
@@ -21511,7 +21219,6 @@ class InputStickerSetDice extends BaseConstructor {
   InputStickerSetDice({required this.emoticon});
 
   static InputStickerSetDice fromReader(BinaryReader reader) {
-    var len;
     var emoticon = reader.tgReadString();
     return InputStickerSetDice(emoticon: emoticon);
   }
@@ -21540,7 +21247,7 @@ class InputStickerSetDice extends BaseConstructor {
   }
 }
 
-class InputStickerSetAnimatedEmojiAnimations extends BaseConstructor {
+class InputStickerSetAnimatedEmojiAnimations extends InputStickerSetBase {
   static const CONSTRUCTOR_ID = 215889721;
   static const SUBCLASS_OF_ID = 1034127786;
   final classType = "constructor";
@@ -21550,7 +21257,6 @@ class InputStickerSetAnimatedEmojiAnimations extends BaseConstructor {
 
   static InputStickerSetAnimatedEmojiAnimations fromReader(
       BinaryReader reader) {
-    var len;
     return InputStickerSetAnimatedEmojiAnimations();
   }
 
@@ -21592,26 +21298,26 @@ class StickerSet extends BaseConstructor {
   BigInt accessHash;
   String title;
   String shortName;
-  List<dynamic>? thumbs;
+  List<PhotoSizeBase>? thumbs;
   int? thumbDcId;
   int? thumbVersion;
   int count;
   int hash;
 
   StickerSet(
-      {required this.archived,
-      required this.official,
-      required this.masks,
-      required this.animated,
-      required this.videos,
-      required this.installedDate,
+      {this.archived,
+      this.official,
+      this.masks,
+      this.animated,
+      this.videos,
+      this.installedDate,
       required this.id,
       required this.accessHash,
       required this.title,
       required this.shortName,
-      required this.thumbs,
-      required this.thumbDcId,
-      required this.thumbVersion,
+      this.thumbs,
+      this.thumbDcId,
+      this.thumbVersion,
       required this.count,
       required this.hash});
 
@@ -21637,7 +21343,7 @@ class StickerSet extends BaseConstructor {
     if ((flags & 16) == 16) {
       var _vectorthumbs = reader.readInt();
       if (_vectorthumbs != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> thumbs = [];
+      List<PhotoSizeBase> thumbs = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         thumbs.add(reader.tgReadObject());
@@ -21700,7 +21406,7 @@ class StickerSet extends BaseConstructor {
                   little: true, signed: true),
               this
                   .thumbs!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.thumbDcId == null || this.thumbDcId == false)
@@ -21747,7 +21453,6 @@ class BotCommand extends BaseConstructor {
   BotCommand({required this.command, required this.description});
 
   static BotCommand fromReader(BinaryReader reader) {
-    var len;
     var command = reader.tgReadString();
     var description = reader.tgReadString();
     return BotCommand(command: command, description: description);
@@ -21785,18 +21490,18 @@ class BotInfo extends BaseConstructor {
   final ID = 2402290519;
   BigInt? userId;
   String? description;
-  var descriptionPhoto;
-  var descriptionDocument;
-  List<dynamic>? commands;
-  var menuButton;
+  PhotoBase? descriptionPhoto;
+  DocumentBase? descriptionDocument;
+  List<BotCommand>? commands;
+  BotMenuButtonBase? menuButton;
 
   BotInfo(
-      {required this.userId,
-      required this.description,
-      required this.descriptionPhoto,
-      required this.descriptionDocument,
-      required this.commands,
-      required this.menuButton});
+      {this.userId,
+      this.description,
+      this.descriptionPhoto,
+      this.descriptionDocument,
+      this.commands,
+      this.menuButton});
 
   static BotInfo fromReader(BinaryReader reader) {
     var len;
@@ -21829,7 +21534,7 @@ class BotInfo extends BaseConstructor {
     if ((flags & 4) == 4) {
       var _vectorcommands = reader.readInt();
       if (_vectorcommands != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> commands = [];
+      List<BotCommand> commands = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         commands.add(reader.tgReadObject());
@@ -21869,12 +21574,12 @@ class BotInfo extends BaseConstructor {
               .toList(),
       (this.descriptionPhoto == null || this.descriptionPhoto == false)
           ? List<int>.empty()
-          : [(this.descriptionPhoto.getBytes() as List<int>)]
+          : [(this.descriptionPhoto!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.descriptionDocument == null || this.descriptionDocument == false)
           ? List<int>.empty()
-          : [(this.descriptionDocument.getBytes() as List<int>)]
+          : [(this.descriptionDocument!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.commands == null || this.commands == false)
@@ -21885,12 +21590,12 @@ class BotInfo extends BaseConstructor {
                   little: true, signed: true),
               this
                   .commands!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.menuButton == null || this.menuButton == false)
           ? List<int>.empty()
-          : [(this.menuButton.getBytes() as List<int>)]
+          : [(this.menuButton!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -21912,7 +21617,9 @@ class BotInfo extends BaseConstructor {
   }
 }
 
-class KeyboardButton extends BaseConstructor {
+abstract class KeyboardButtonBase extends BaseConstructor {}
+
+class KeyboardButton extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 2734311552;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -21922,7 +21629,6 @@ class KeyboardButton extends BaseConstructor {
   KeyboardButton({required this.text});
 
   static KeyboardButton fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     return KeyboardButton(text: text);
   }
@@ -21951,7 +21657,7 @@ class KeyboardButton extends BaseConstructor {
   }
 }
 
-class KeyboardButtonUrl extends BaseConstructor {
+class KeyboardButtonUrl extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 629866245;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -21962,7 +21668,6 @@ class KeyboardButtonUrl extends BaseConstructor {
   KeyboardButtonUrl({required this.text, required this.url});
 
   static KeyboardButtonUrl fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var url = reader.tgReadString();
     return KeyboardButtonUrl(text: text, url: url);
@@ -21993,7 +21698,7 @@ class KeyboardButtonUrl extends BaseConstructor {
   }
 }
 
-class KeyboardButtonCallback extends BaseConstructor {
+class KeyboardButtonCallback extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 901503851;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22003,10 +21708,9 @@ class KeyboardButtonCallback extends BaseConstructor {
   List<int> data;
 
   KeyboardButtonCallback(
-      {required this.requiresPassword, required this.text, required this.data});
+      {this.requiresPassword, required this.text, required this.data});
 
   static KeyboardButtonCallback fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final requiresPassword = (flags & 1) == 1;
     var text = reader.tgReadString();
@@ -22041,7 +21745,7 @@ class KeyboardButtonCallback extends BaseConstructor {
   }
 }
 
-class KeyboardButtonRequestPhone extends BaseConstructor {
+class KeyboardButtonRequestPhone extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 2976541737;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22051,7 +21755,6 @@ class KeyboardButtonRequestPhone extends BaseConstructor {
   KeyboardButtonRequestPhone({required this.text});
 
   static KeyboardButtonRequestPhone fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     return KeyboardButtonRequestPhone(text: text);
   }
@@ -22080,7 +21783,7 @@ class KeyboardButtonRequestPhone extends BaseConstructor {
   }
 }
 
-class KeyboardButtonRequestGeoLocation extends BaseConstructor {
+class KeyboardButtonRequestGeoLocation extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 4235815743;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22090,7 +21793,6 @@ class KeyboardButtonRequestGeoLocation extends BaseConstructor {
   KeyboardButtonRequestGeoLocation({required this.text});
 
   static KeyboardButtonRequestGeoLocation fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     return KeyboardButtonRequestGeoLocation(text: text);
   }
@@ -22119,7 +21821,7 @@ class KeyboardButtonRequestGeoLocation extends BaseConstructor {
   }
 }
 
-class KeyboardButtonSwitchInline extends BaseConstructor {
+class KeyboardButtonSwitchInline extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 90744648;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22129,10 +21831,9 @@ class KeyboardButtonSwitchInline extends BaseConstructor {
   String query;
 
   KeyboardButtonSwitchInline(
-      {required this.samePeer, required this.text, required this.query});
+      {this.samePeer, required this.text, required this.query});
 
   static KeyboardButtonSwitchInline fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final samePeer = (flags & 1) == 1;
     var text = reader.tgReadString();
@@ -22167,7 +21868,7 @@ class KeyboardButtonSwitchInline extends BaseConstructor {
   }
 }
 
-class KeyboardButtonGame extends BaseConstructor {
+class KeyboardButtonGame extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 1358175439;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22177,7 +21878,6 @@ class KeyboardButtonGame extends BaseConstructor {
   KeyboardButtonGame({required this.text});
 
   static KeyboardButtonGame fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     return KeyboardButtonGame(text: text);
   }
@@ -22206,7 +21906,7 @@ class KeyboardButtonGame extends BaseConstructor {
   }
 }
 
-class KeyboardButtonBuy extends BaseConstructor {
+class KeyboardButtonBuy extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 2950250427;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22216,7 +21916,6 @@ class KeyboardButtonBuy extends BaseConstructor {
   KeyboardButtonBuy({required this.text});
 
   static KeyboardButtonBuy fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     return KeyboardButtonBuy(text: text);
   }
@@ -22245,7 +21944,7 @@ class KeyboardButtonBuy extends BaseConstructor {
   }
 }
 
-class KeyboardButtonUrlAuth extends BaseConstructor {
+class KeyboardButtonUrlAuth extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 280464681;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22257,12 +21956,11 @@ class KeyboardButtonUrlAuth extends BaseConstructor {
 
   KeyboardButtonUrlAuth(
       {required this.text,
-      required this.fwdText,
+      this.fwdText,
       required this.url,
       required this.buttonId});
 
   static KeyboardButtonUrlAuth fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var text = reader.tgReadString();
     var fwdText;
@@ -22309,7 +22007,7 @@ class KeyboardButtonUrlAuth extends BaseConstructor {
   }
 }
 
-class InputKeyboardButtonUrlAuth extends BaseConstructor {
+class InputKeyboardButtonUrlAuth extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 3492708308;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22318,17 +22016,16 @@ class InputKeyboardButtonUrlAuth extends BaseConstructor {
   String text;
   String? fwdText;
   String url;
-  var bot;
+  InputUserBase bot;
 
   InputKeyboardButtonUrlAuth(
-      {required this.requestWriteAccess,
+      {this.requestWriteAccess,
       required this.text,
-      required this.fwdText,
+      this.fwdText,
       required this.url,
       required this.bot});
 
   static InputKeyboardButtonUrlAuth fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final requestWriteAccess = (flags & 1) == 1;
     var text = reader.tgReadString();
@@ -22360,7 +22057,7 @@ class InputKeyboardButtonUrlAuth extends BaseConstructor {
               .expand((element) => element)
               .toList(),
       serializeBytes(this.url),
-      (this.bot.getBytes() as List<int>),
+      (this.bot.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -22380,7 +22077,7 @@ class InputKeyboardButtonUrlAuth extends BaseConstructor {
   }
 }
 
-class KeyboardButtonRequestPoll extends BaseConstructor {
+class KeyboardButtonRequestPoll extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 3150401885;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22388,10 +22085,9 @@ class KeyboardButtonRequestPoll extends BaseConstructor {
   bool? quiz;
   String text;
 
-  KeyboardButtonRequestPoll({required this.quiz, required this.text});
+  KeyboardButtonRequestPoll({this.quiz, required this.text});
 
   static KeyboardButtonRequestPoll fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var quiz;
     if ((flags & 1) == 1) {
@@ -22433,18 +22129,17 @@ class KeyboardButtonRequestPoll extends BaseConstructor {
   }
 }
 
-class InputKeyboardButtonUserProfile extends BaseConstructor {
+class InputKeyboardButtonUserProfile extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 3918005115;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
   final ID = 3918005115;
   String text;
-  var userId;
+  InputUserBase userId;
 
   InputKeyboardButtonUserProfile({required this.text, required this.userId});
 
   static InputKeyboardButtonUserProfile fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var userId = reader.tgReadObject();
     return InputKeyboardButtonUserProfile(text: text, userId: userId);
@@ -22455,7 +22150,7 @@ class InputKeyboardButtonUserProfile extends BaseConstructor {
     return [
       readBufferFromBigInt(3918005115, 4),
       serializeBytes(this.text),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -22475,7 +22170,7 @@ class InputKeyboardButtonUserProfile extends BaseConstructor {
   }
 }
 
-class KeyboardButtonUserProfile extends BaseConstructor {
+class KeyboardButtonUserProfile extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 814112961;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22486,7 +22181,6 @@ class KeyboardButtonUserProfile extends BaseConstructor {
   KeyboardButtonUserProfile({required this.text, required this.userId});
 
   static KeyboardButtonUserProfile fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var userId = reader.readLong();
     return KeyboardButtonUserProfile(text: text, userId: userId);
@@ -22517,7 +22211,7 @@ class KeyboardButtonUserProfile extends BaseConstructor {
   }
 }
 
-class KeyboardButtonWebView extends BaseConstructor {
+class KeyboardButtonWebView extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 326529584;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22528,7 +22222,6 @@ class KeyboardButtonWebView extends BaseConstructor {
   KeyboardButtonWebView({required this.text, required this.url});
 
   static KeyboardButtonWebView fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var url = reader.tgReadString();
     return KeyboardButtonWebView(text: text, url: url);
@@ -22559,7 +22252,7 @@ class KeyboardButtonWebView extends BaseConstructor {
   }
 }
 
-class KeyboardButtonSimpleWebView extends BaseConstructor {
+class KeyboardButtonSimpleWebView extends KeyboardButtonBase {
   static const CONSTRUCTOR_ID = 2696958044;
   static const SUBCLASS_OF_ID = 195916963;
   final classType = "constructor";
@@ -22570,7 +22263,6 @@ class KeyboardButtonSimpleWebView extends BaseConstructor {
   KeyboardButtonSimpleWebView({required this.text, required this.url});
 
   static KeyboardButtonSimpleWebView fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var url = reader.tgReadString();
     return KeyboardButtonSimpleWebView(text: text, url: url);
@@ -22606,7 +22298,7 @@ class KeyboardButtonRow extends BaseConstructor {
   static const SUBCLASS_OF_ID = 2222403758;
   final classType = "constructor";
   final ID = 2002815875;
-  List<dynamic> buttons;
+  List<KeyboardButtonBase> buttons;
 
   KeyboardButtonRow({required this.buttons});
 
@@ -22614,7 +22306,7 @@ class KeyboardButtonRow extends BaseConstructor {
     var len;
     var _vectorbuttons = reader.readInt();
     if (_vectorbuttons != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> buttons = [];
+    List<KeyboardButtonBase> buttons = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       buttons.add(reader.tgReadObject());
@@ -22627,10 +22319,9 @@ class KeyboardButtonRow extends BaseConstructor {
     return [
       readBufferFromBigInt(2002815875, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.buttons!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.buttons.length, 4, little: true, signed: true),
       this
-          .buttons!
-          .map((x) => (x.getBytes() as List<int>))
+          .buttons.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -22651,17 +22342,18 @@ class KeyboardButtonRow extends BaseConstructor {
   }
 }
 
-class ReplyKeyboardHide extends BaseConstructor {
+abstract class ReplyMarkupBase extends BaseConstructor {}
+
+class ReplyKeyboardHide extends ReplyMarkupBase {
   static const CONSTRUCTOR_ID = 2688441221;
   static const SUBCLASS_OF_ID = 3806400242;
   final classType = "constructor";
   final ID = 2688441221;
   bool? selective;
 
-  ReplyKeyboardHide({required this.selective});
+  ReplyKeyboardHide({this.selective});
 
   static ReplyKeyboardHide fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final selective = (flags & 4) == 4;
     return ReplyKeyboardHide(selective: selective);
@@ -22691,7 +22383,7 @@ class ReplyKeyboardHide extends BaseConstructor {
   }
 }
 
-class ReplyKeyboardForceReply extends BaseConstructor {
+class ReplyKeyboardForceReply extends ReplyMarkupBase {
   static const CONSTRUCTOR_ID = 2259946248;
   static const SUBCLASS_OF_ID = 3806400242;
   final classType = "constructor";
@@ -22700,13 +22392,9 @@ class ReplyKeyboardForceReply extends BaseConstructor {
   bool? selective;
   String? placeholder;
 
-  ReplyKeyboardForceReply(
-      {required this.singleUse,
-      required this.selective,
-      required this.placeholder});
+  ReplyKeyboardForceReply({this.singleUse, this.selective, this.placeholder});
 
   static ReplyKeyboardForceReply fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final singleUse = (flags & 2) == 2;
     final selective = (flags & 4) == 4;
@@ -22749,7 +22437,7 @@ class ReplyKeyboardForceReply extends BaseConstructor {
   }
 }
 
-class ReplyKeyboardMarkup extends BaseConstructor {
+class ReplyKeyboardMarkup extends ReplyMarkupBase {
   static const CONSTRUCTOR_ID = 2245892561;
   static const SUBCLASS_OF_ID = 3806400242;
   final classType = "constructor";
@@ -22757,15 +22445,15 @@ class ReplyKeyboardMarkup extends BaseConstructor {
   bool? resize;
   bool? singleUse;
   bool? selective;
-  List<dynamic> rows;
+  List<KeyboardButtonRow> rows;
   String? placeholder;
 
   ReplyKeyboardMarkup(
-      {required this.resize,
-      required this.singleUse,
-      required this.selective,
+      {this.resize,
+      this.singleUse,
+      this.selective,
       required this.rows,
-      required this.placeholder});
+      this.placeholder});
 
   static ReplyKeyboardMarkup fromReader(BinaryReader reader) {
     var len;
@@ -22775,7 +22463,7 @@ class ReplyKeyboardMarkup extends BaseConstructor {
     final selective = (flags & 4) == 4;
     var _vectorrows = reader.readInt();
     if (_vectorrows != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> rows = [];
+    List<KeyboardButtonRow> rows = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       rows.add(reader.tgReadObject());
@@ -22800,10 +22488,9 @@ class ReplyKeyboardMarkup extends BaseConstructor {
       readBufferFromBigInt(2245892561, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.rows!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.rows.length, 4, little: true, signed: true),
       this
-          .rows!
-          .map((x) => (x.getBytes() as List<int>))
+          .rows.map((x) => x.getBytes())
           .expand((element) => element),
       (this.placeholder == null || this.placeholder == false)
           ? List<int>.empty()
@@ -22829,12 +22516,12 @@ class ReplyKeyboardMarkup extends BaseConstructor {
   }
 }
 
-class ReplyInlineMarkup extends BaseConstructor {
+class ReplyInlineMarkup extends ReplyMarkupBase {
   static const CONSTRUCTOR_ID = 1218642516;
   static const SUBCLASS_OF_ID = 3806400242;
   final classType = "constructor";
   final ID = 1218642516;
-  List<dynamic> rows;
+  List<KeyboardButtonRow> rows;
 
   ReplyInlineMarkup({required this.rows});
 
@@ -22842,7 +22529,7 @@ class ReplyInlineMarkup extends BaseConstructor {
     var len;
     var _vectorrows = reader.readInt();
     if (_vectorrows != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> rows = [];
+    List<KeyboardButtonRow> rows = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       rows.add(reader.tgReadObject());
@@ -22855,10 +22542,9 @@ class ReplyInlineMarkup extends BaseConstructor {
     return [
       readBufferFromBigInt(1218642516, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.rows!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.rows.length, 4, little: true, signed: true),
       this
-          .rows!
-          .map((x) => (x.getBytes() as List<int>))
+          .rows.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -22879,7 +22565,9 @@ class ReplyInlineMarkup extends BaseConstructor {
   }
 }
 
-class MessageEntityUnknown extends BaseConstructor {
+abstract class MessageEntityBase extends BaseConstructor {}
+
+class MessageEntityUnknown extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 3146955413;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -22890,7 +22578,6 @@ class MessageEntityUnknown extends BaseConstructor {
   MessageEntityUnknown({required this.offset, required this.length});
 
   static MessageEntityUnknown fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityUnknown(offset: offset, length: length);
@@ -22921,7 +22608,7 @@ class MessageEntityUnknown extends BaseConstructor {
   }
 }
 
-class MessageEntityMention extends BaseConstructor {
+class MessageEntityMention extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 4194588573;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -22932,7 +22619,6 @@ class MessageEntityMention extends BaseConstructor {
   MessageEntityMention({required this.offset, required this.length});
 
   static MessageEntityMention fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityMention(offset: offset, length: length);
@@ -22963,7 +22649,7 @@ class MessageEntityMention extends BaseConstructor {
   }
 }
 
-class MessageEntityHashtag extends BaseConstructor {
+class MessageEntityHashtag extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 1868782349;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -22974,7 +22660,6 @@ class MessageEntityHashtag extends BaseConstructor {
   MessageEntityHashtag({required this.offset, required this.length});
 
   static MessageEntityHashtag fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityHashtag(offset: offset, length: length);
@@ -23005,7 +22690,7 @@ class MessageEntityHashtag extends BaseConstructor {
   }
 }
 
-class MessageEntityBotCommand extends BaseConstructor {
+class MessageEntityBotCommand extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 1827637959;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23016,7 +22701,6 @@ class MessageEntityBotCommand extends BaseConstructor {
   MessageEntityBotCommand({required this.offset, required this.length});
 
   static MessageEntityBotCommand fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityBotCommand(offset: offset, length: length);
@@ -23047,7 +22731,7 @@ class MessageEntityBotCommand extends BaseConstructor {
   }
 }
 
-class MessageEntityUrl extends BaseConstructor {
+class MessageEntityUrl extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 1859134776;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23058,7 +22742,6 @@ class MessageEntityUrl extends BaseConstructor {
   MessageEntityUrl({required this.offset, required this.length});
 
   static MessageEntityUrl fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityUrl(offset: offset, length: length);
@@ -23089,7 +22772,7 @@ class MessageEntityUrl extends BaseConstructor {
   }
 }
 
-class MessageEntityEmail extends BaseConstructor {
+class MessageEntityEmail extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 1692693954;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23100,7 +22783,6 @@ class MessageEntityEmail extends BaseConstructor {
   MessageEntityEmail({required this.offset, required this.length});
 
   static MessageEntityEmail fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityEmail(offset: offset, length: length);
@@ -23131,7 +22813,7 @@ class MessageEntityEmail extends BaseConstructor {
   }
 }
 
-class MessageEntityBold extends BaseConstructor {
+class MessageEntityBold extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 3177253833;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23142,7 +22824,6 @@ class MessageEntityBold extends BaseConstructor {
   MessageEntityBold({required this.offset, required this.length});
 
   static MessageEntityBold fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityBold(offset: offset, length: length);
@@ -23173,7 +22854,7 @@ class MessageEntityBold extends BaseConstructor {
   }
 }
 
-class MessageEntityItalic extends BaseConstructor {
+class MessageEntityItalic extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 2188348256;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23184,7 +22865,6 @@ class MessageEntityItalic extends BaseConstructor {
   MessageEntityItalic({required this.offset, required this.length});
 
   static MessageEntityItalic fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityItalic(offset: offset, length: length);
@@ -23215,7 +22895,7 @@ class MessageEntityItalic extends BaseConstructor {
   }
 }
 
-class MessageEntityCode extends BaseConstructor {
+class MessageEntityCode extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 681706865;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23226,7 +22906,6 @@ class MessageEntityCode extends BaseConstructor {
   MessageEntityCode({required this.offset, required this.length});
 
   static MessageEntityCode fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityCode(offset: offset, length: length);
@@ -23257,7 +22936,7 @@ class MessageEntityCode extends BaseConstructor {
   }
 }
 
-class MessageEntityPre extends BaseConstructor {
+class MessageEntityPre extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 1938967520;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23270,7 +22949,6 @@ class MessageEntityPre extends BaseConstructor {
       {required this.offset, required this.length, required this.language});
 
   static MessageEntityPre fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     var language = reader.tgReadString();
@@ -23303,7 +22981,7 @@ class MessageEntityPre extends BaseConstructor {
   }
 }
 
-class MessageEntityTextUrl extends BaseConstructor {
+class MessageEntityTextUrl extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 1990644519;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23316,7 +22994,6 @@ class MessageEntityTextUrl extends BaseConstructor {
       {required this.offset, required this.length, required this.url});
 
   static MessageEntityTextUrl fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     var url = reader.tgReadString();
@@ -23349,7 +23026,7 @@ class MessageEntityTextUrl extends BaseConstructor {
   }
 }
 
-class MessageEntityMentionName extends BaseConstructor {
+class MessageEntityMentionName extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 3699052864;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23362,7 +23039,6 @@ class MessageEntityMentionName extends BaseConstructor {
       {required this.offset, required this.length, required this.userId});
 
   static MessageEntityMentionName fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     var userId = reader.readLong();
@@ -23396,20 +23072,19 @@ class MessageEntityMentionName extends BaseConstructor {
   }
 }
 
-class InputMessageEntityMentionName extends BaseConstructor {
+class InputMessageEntityMentionName extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 546203849;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
   final ID = 546203849;
   int offset;
   int length;
-  var userId;
+  InputUserBase userId;
 
   InputMessageEntityMentionName(
       {required this.offset, required this.length, required this.userId});
 
   static InputMessageEntityMentionName fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     var userId = reader.tgReadObject();
@@ -23423,7 +23098,7 @@ class InputMessageEntityMentionName extends BaseConstructor {
       readBufferFromBigInt(546203849, 4),
       readBufferFromBigInt(this.offset, 4, little: true, signed: true),
       readBufferFromBigInt(this.length, 4, little: true, signed: true),
-      (this.userId.getBytes() as List<int>),
+      (this.userId.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -23443,7 +23118,7 @@ class InputMessageEntityMentionName extends BaseConstructor {
   }
 }
 
-class MessageEntityPhone extends BaseConstructor {
+class MessageEntityPhone extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 2607407947;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23454,7 +23129,6 @@ class MessageEntityPhone extends BaseConstructor {
   MessageEntityPhone({required this.offset, required this.length});
 
   static MessageEntityPhone fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityPhone(offset: offset, length: length);
@@ -23485,7 +23159,7 @@ class MessageEntityPhone extends BaseConstructor {
   }
 }
 
-class MessageEntityCashtag extends BaseConstructor {
+class MessageEntityCashtag extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 1280209983;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23496,7 +23170,6 @@ class MessageEntityCashtag extends BaseConstructor {
   MessageEntityCashtag({required this.offset, required this.length});
 
   static MessageEntityCashtag fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityCashtag(offset: offset, length: length);
@@ -23527,7 +23200,7 @@ class MessageEntityCashtag extends BaseConstructor {
   }
 }
 
-class MessageEntityUnderline extends BaseConstructor {
+class MessageEntityUnderline extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 2622389899;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23538,7 +23211,6 @@ class MessageEntityUnderline extends BaseConstructor {
   MessageEntityUnderline({required this.offset, required this.length});
 
   static MessageEntityUnderline fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityUnderline(offset: offset, length: length);
@@ -23569,7 +23241,7 @@ class MessageEntityUnderline extends BaseConstructor {
   }
 }
 
-class MessageEntityStrike extends BaseConstructor {
+class MessageEntityStrike extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 3204879316;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23580,7 +23252,6 @@ class MessageEntityStrike extends BaseConstructor {
   MessageEntityStrike({required this.offset, required this.length});
 
   static MessageEntityStrike fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityStrike(offset: offset, length: length);
@@ -23611,7 +23282,7 @@ class MessageEntityStrike extends BaseConstructor {
   }
 }
 
-class MessageEntityBlockquote extends BaseConstructor {
+class MessageEntityBlockquote extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 34469328;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23622,7 +23293,6 @@ class MessageEntityBlockquote extends BaseConstructor {
   MessageEntityBlockquote({required this.offset, required this.length});
 
   static MessageEntityBlockquote fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityBlockquote(offset: offset, length: length);
@@ -23653,7 +23323,7 @@ class MessageEntityBlockquote extends BaseConstructor {
   }
 }
 
-class MessageEntityBankCard extends BaseConstructor {
+class MessageEntityBankCard extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 1981704948;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23664,7 +23334,6 @@ class MessageEntityBankCard extends BaseConstructor {
   MessageEntityBankCard({required this.offset, required this.length});
 
   static MessageEntityBankCard fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntityBankCard(offset: offset, length: length);
@@ -23695,7 +23364,7 @@ class MessageEntityBankCard extends BaseConstructor {
   }
 }
 
-class MessageEntitySpoiler extends BaseConstructor {
+class MessageEntitySpoiler extends MessageEntityBase {
   static const CONSTRUCTOR_ID = 852137487;
   static const SUBCLASS_OF_ID = 3479443932;
   final classType = "constructor";
@@ -23706,7 +23375,6 @@ class MessageEntitySpoiler extends BaseConstructor {
   MessageEntitySpoiler({required this.offset, required this.length});
 
   static MessageEntitySpoiler fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readInt();
     var length = reader.readInt();
     return MessageEntitySpoiler(offset: offset, length: length);
@@ -23737,7 +23405,9 @@ class MessageEntitySpoiler extends BaseConstructor {
   }
 }
 
-class InputChannelEmpty extends BaseConstructor {
+abstract class InputChannelBase extends BaseConstructor {}
+
+class InputChannelEmpty extends InputChannelBase {
   static const CONSTRUCTOR_ID = 4002160262;
   static const SUBCLASS_OF_ID = 1089602301;
   final classType = "constructor";
@@ -23746,7 +23416,6 @@ class InputChannelEmpty extends BaseConstructor {
   InputChannelEmpty();
 
   static InputChannelEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputChannelEmpty();
   }
 
@@ -23773,7 +23442,7 @@ class InputChannelEmpty extends BaseConstructor {
   }
 }
 
-class InputChannel extends BaseConstructor {
+class InputChannel extends InputChannelBase {
   static const CONSTRUCTOR_ID = 4082822184;
   static const SUBCLASS_OF_ID = 1089602301;
   final classType = "constructor";
@@ -23784,7 +23453,6 @@ class InputChannel extends BaseConstructor {
   InputChannel({required this.channelId, required this.accessHash});
 
   static InputChannel fromReader(BinaryReader reader) {
-    var len;
     var channelId = reader.readLong();
     var accessHash = reader.readLong();
     return InputChannel(channelId: channelId, accessHash: accessHash);
@@ -23815,12 +23483,12 @@ class InputChannel extends BaseConstructor {
   }
 }
 
-class InputChannelFromMessage extends BaseConstructor {
+class InputChannelFromMessage extends InputChannelBase {
   static const CONSTRUCTOR_ID = 1536380829;
   static const SUBCLASS_OF_ID = 1089602301;
   final classType = "constructor";
   final ID = 1536380829;
-  var peer;
+  InputPeerBase peer;
   int msgId;
   BigInt channelId;
 
@@ -23828,7 +23496,6 @@ class InputChannelFromMessage extends BaseConstructor {
       {required this.peer, required this.msgId, required this.channelId});
 
   static InputChannelFromMessage fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     var channelId = reader.readLong();
@@ -23840,7 +23507,7 @@ class InputChannelFromMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1536380829, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.channelId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -23873,7 +23540,6 @@ class MessageRange extends BaseConstructor {
   MessageRange({required this.minId, required this.maxId});
 
   static MessageRange fromReader(BinaryReader reader) {
-    var len;
     var minId = reader.readInt();
     var maxId = reader.readInt();
     return MessageRange(minId: minId, maxId: maxId);
@@ -23904,7 +23570,9 @@ class MessageRange extends BaseConstructor {
   }
 }
 
-class ChannelMessagesFilterEmpty extends BaseConstructor {
+abstract class ChannelMessagesFilterBase extends BaseConstructor {}
+
+class ChannelMessagesFilterEmpty extends ChannelMessagesFilterBase {
   static const CONSTRUCTOR_ID = 2496933607;
   static const SUBCLASS_OF_ID = 322136662;
   final classType = "constructor";
@@ -23913,7 +23581,6 @@ class ChannelMessagesFilterEmpty extends BaseConstructor {
   ChannelMessagesFilterEmpty();
 
   static ChannelMessagesFilterEmpty fromReader(BinaryReader reader) {
-    var len;
     return ChannelMessagesFilterEmpty();
   }
 
@@ -23940,16 +23607,15 @@ class ChannelMessagesFilterEmpty extends BaseConstructor {
   }
 }
 
-class ChannelMessagesFilter extends BaseConstructor {
+class ChannelMessagesFilter extends ChannelMessagesFilterBase {
   static const CONSTRUCTOR_ID = 3447183703;
   static const SUBCLASS_OF_ID = 322136662;
   final classType = "constructor";
   final ID = 3447183703;
   bool? excludeNewMessages;
-  List<dynamic> ranges;
+  List<MessageRange> ranges;
 
-  ChannelMessagesFilter(
-      {required this.excludeNewMessages, required this.ranges});
+  ChannelMessagesFilter({this.excludeNewMessages, required this.ranges});
 
   static ChannelMessagesFilter fromReader(BinaryReader reader) {
     var len;
@@ -23957,7 +23623,7 @@ class ChannelMessagesFilter extends BaseConstructor {
     final excludeNewMessages = (flags & 2) == 2;
     var _vectorranges = reader.readInt();
     if (_vectorranges != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> ranges = [];
+    List<MessageRange> ranges = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       ranges.add(reader.tgReadObject());
@@ -23972,10 +23638,9 @@ class ChannelMessagesFilter extends BaseConstructor {
       readBufferFromBigInt(3447183703, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.ranges!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.ranges.length, 4, little: true, signed: true),
       this
-          .ranges!
-          .map((x) => (x.getBytes() as List<int>))
+          .ranges.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -23996,7 +23661,9 @@ class ChannelMessagesFilter extends BaseConstructor {
   }
 }
 
-class ChannelParticipant extends BaseConstructor {
+abstract class ChannelParticipantBase extends BaseConstructor {}
+
+class ChannelParticipant extends ChannelParticipantBase {
   static const CONSTRUCTOR_ID = 3222013888;
   static const SUBCLASS_OF_ID = 3653762072;
   final classType = "constructor";
@@ -24007,7 +23674,6 @@ class ChannelParticipant extends BaseConstructor {
   ChannelParticipant({required this.userId, required this.date});
 
   static ChannelParticipant fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var date = reader.readInt();
     return ChannelParticipant(userId: userId, date: date);
@@ -24038,7 +23704,7 @@ class ChannelParticipant extends BaseConstructor {
   }
 }
 
-class ChannelParticipantSelf extends BaseConstructor {
+class ChannelParticipantSelf extends ChannelParticipantBase {
   static const CONSTRUCTOR_ID = 900251559;
   static const SUBCLASS_OF_ID = 3653762072;
   final classType = "constructor";
@@ -24049,13 +23715,12 @@ class ChannelParticipantSelf extends BaseConstructor {
   int date;
 
   ChannelParticipantSelf(
-      {required this.viaRequest,
+      {this.viaRequest,
       required this.userId,
       required this.inviterId,
       required this.date});
 
   static ChannelParticipantSelf fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final viaRequest = (flags & 1) == 1;
     var userId = reader.readLong();
@@ -24095,20 +23760,19 @@ class ChannelParticipantSelf extends BaseConstructor {
   }
 }
 
-class ChannelParticipantCreator extends BaseConstructor {
+class ChannelParticipantCreator extends ChannelParticipantBase {
   static const CONSTRUCTOR_ID = 803602899;
   static const SUBCLASS_OF_ID = 3653762072;
   final classType = "constructor";
   final ID = 803602899;
   BigInt userId;
-  var adminRights;
+  ChatAdminRights adminRights;
   String? rank;
 
   ChannelParticipantCreator(
-      {required this.userId, required this.adminRights, required this.rank});
+      {required this.userId, required this.adminRights, this.rank});
 
   static ChannelParticipantCreator fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var userId = reader.readLong();
     var adminRights = reader.tgReadObject();
@@ -24128,7 +23792,7 @@ class ChannelParticipantCreator extends BaseConstructor {
       readBufferFromBigInt(803602899, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      (this.adminRights.getBytes() as List<int>),
+      (this.adminRights.getBytes()),
       (this.rank == null || this.rank == false)
           ? List<int>.empty()
           : [serializeBytes(this.rank)].expand((element) => element).toList(),
@@ -24151,7 +23815,7 @@ class ChannelParticipantCreator extends BaseConstructor {
   }
 }
 
-class ChannelParticipantAdmin extends BaseConstructor {
+class ChannelParticipantAdmin extends ChannelParticipantBase {
   static const CONSTRUCTOR_ID = 885242707;
   static const SUBCLASS_OF_ID = 3653762072;
   final classType = "constructor";
@@ -24162,21 +23826,20 @@ class ChannelParticipantAdmin extends BaseConstructor {
   BigInt? inviterId;
   BigInt promotedBy;
   int date;
-  var adminRights;
+  ChatAdminRights adminRights;
   String? rank;
 
   ChannelParticipantAdmin(
-      {required this.canEdit,
-      required this.self,
+      {this.canEdit,
+      this.self,
       required this.userId,
-      required this.inviterId,
+      this.inviterId,
       required this.promotedBy,
       required this.date,
       required this.adminRights,
-      required this.rank});
+      this.rank});
 
   static ChannelParticipantAdmin fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final canEdit = (flags & 1) == 1;
     final self = (flags & 2) == 2;
@@ -24221,7 +23884,7 @@ class ChannelParticipantAdmin extends BaseConstructor {
             ].expand((element) => element).toList(),
       readBufferFromBigInt(this.promotedBy, 8, little: true, signed: true),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
-      (this.adminRights.getBytes() as List<int>),
+      (this.adminRights.getBytes()),
       (this.rank == null || this.rank == false)
           ? List<int>.empty()
           : [serializeBytes(this.rank)].expand((element) => element).toList(),
@@ -24244,26 +23907,25 @@ class ChannelParticipantAdmin extends BaseConstructor {
   }
 }
 
-class ChannelParticipantBanned extends BaseConstructor {
+class ChannelParticipantBanned extends ChannelParticipantBase {
   static const CONSTRUCTOR_ID = 1844969806;
   static const SUBCLASS_OF_ID = 3653762072;
   final classType = "constructor";
   final ID = 1844969806;
   bool? left;
-  var peer;
+  PeerBase peer;
   BigInt kickedBy;
   int date;
-  var bannedRights;
+  ChatBannedRights bannedRights;
 
   ChannelParticipantBanned(
-      {required this.left,
+      {this.left,
       required this.peer,
       required this.kickedBy,
       required this.date,
       required this.bannedRights});
 
   static ChannelParticipantBanned fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final left = (flags & 1) == 1;
     var peer = reader.tgReadObject();
@@ -24283,10 +23945,10 @@ class ChannelParticipantBanned extends BaseConstructor {
     return [
       readBufferFromBigInt(1844969806, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.kickedBy, 8, little: true, signed: true),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
-      (this.bannedRights.getBytes() as List<int>),
+      (this.bannedRights.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -24306,17 +23968,16 @@ class ChannelParticipantBanned extends BaseConstructor {
   }
 }
 
-class ChannelParticipantLeft extends BaseConstructor {
+class ChannelParticipantLeft extends ChannelParticipantBase {
   static const CONSTRUCTOR_ID = 453242886;
   static const SUBCLASS_OF_ID = 3653762072;
   final classType = "constructor";
   final ID = 453242886;
-  var peer;
+  PeerBase peer;
 
   ChannelParticipantLeft({required this.peer});
 
   static ChannelParticipantLeft fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return ChannelParticipantLeft(peer: peer);
   }
@@ -24325,7 +23986,7 @@ class ChannelParticipantLeft extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(453242886, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -24345,7 +24006,9 @@ class ChannelParticipantLeft extends BaseConstructor {
   }
 }
 
-class ChannelParticipantsRecent extends BaseConstructor {
+abstract class ChannelParticipantsFilterBase extends BaseConstructor {}
+
+class ChannelParticipantsRecent extends ChannelParticipantsFilterBase {
   static const CONSTRUCTOR_ID = 3728686201;
   static const SUBCLASS_OF_ID = 3209570131;
   final classType = "constructor";
@@ -24354,7 +24017,6 @@ class ChannelParticipantsRecent extends BaseConstructor {
   ChannelParticipantsRecent();
 
   static ChannelParticipantsRecent fromReader(BinaryReader reader) {
-    var len;
     return ChannelParticipantsRecent();
   }
 
@@ -24381,7 +24043,7 @@ class ChannelParticipantsRecent extends BaseConstructor {
   }
 }
 
-class ChannelParticipantsAdmins extends BaseConstructor {
+class ChannelParticipantsAdmins extends ChannelParticipantsFilterBase {
   static const CONSTRUCTOR_ID = 3026225513;
   static const SUBCLASS_OF_ID = 3209570131;
   final classType = "constructor";
@@ -24390,7 +24052,6 @@ class ChannelParticipantsAdmins extends BaseConstructor {
   ChannelParticipantsAdmins();
 
   static ChannelParticipantsAdmins fromReader(BinaryReader reader) {
-    var len;
     return ChannelParticipantsAdmins();
   }
 
@@ -24417,7 +24078,7 @@ class ChannelParticipantsAdmins extends BaseConstructor {
   }
 }
 
-class ChannelParticipantsKicked extends BaseConstructor {
+class ChannelParticipantsKicked extends ChannelParticipantsFilterBase {
   static const CONSTRUCTOR_ID = 2746567045;
   static const SUBCLASS_OF_ID = 3209570131;
   final classType = "constructor";
@@ -24427,7 +24088,6 @@ class ChannelParticipantsKicked extends BaseConstructor {
   ChannelParticipantsKicked({required this.q});
 
   static ChannelParticipantsKicked fromReader(BinaryReader reader) {
-    var len;
     var q = reader.tgReadString();
     return ChannelParticipantsKicked(q: q);
   }
@@ -24456,7 +24116,7 @@ class ChannelParticipantsKicked extends BaseConstructor {
   }
 }
 
-class ChannelParticipantsBots extends BaseConstructor {
+class ChannelParticipantsBots extends ChannelParticipantsFilterBase {
   static const CONSTRUCTOR_ID = 2966521435;
   static const SUBCLASS_OF_ID = 3209570131;
   final classType = "constructor";
@@ -24465,7 +24125,6 @@ class ChannelParticipantsBots extends BaseConstructor {
   ChannelParticipantsBots();
 
   static ChannelParticipantsBots fromReader(BinaryReader reader) {
-    var len;
     return ChannelParticipantsBots();
   }
 
@@ -24492,7 +24151,7 @@ class ChannelParticipantsBots extends BaseConstructor {
   }
 }
 
-class ChannelParticipantsBanned extends BaseConstructor {
+class ChannelParticipantsBanned extends ChannelParticipantsFilterBase {
   static const CONSTRUCTOR_ID = 338142689;
   static const SUBCLASS_OF_ID = 3209570131;
   final classType = "constructor";
@@ -24502,7 +24161,6 @@ class ChannelParticipantsBanned extends BaseConstructor {
   ChannelParticipantsBanned({required this.q});
 
   static ChannelParticipantsBanned fromReader(BinaryReader reader) {
-    var len;
     var q = reader.tgReadString();
     return ChannelParticipantsBanned(q: q);
   }
@@ -24531,7 +24189,7 @@ class ChannelParticipantsBanned extends BaseConstructor {
   }
 }
 
-class ChannelParticipantsSearch extends BaseConstructor {
+class ChannelParticipantsSearch extends ChannelParticipantsFilterBase {
   static const CONSTRUCTOR_ID = 106343499;
   static const SUBCLASS_OF_ID = 3209570131;
   final classType = "constructor";
@@ -24541,7 +24199,6 @@ class ChannelParticipantsSearch extends BaseConstructor {
   ChannelParticipantsSearch({required this.q});
 
   static ChannelParticipantsSearch fromReader(BinaryReader reader) {
-    var len;
     var q = reader.tgReadString();
     return ChannelParticipantsSearch(q: q);
   }
@@ -24570,7 +24227,7 @@ class ChannelParticipantsSearch extends BaseConstructor {
   }
 }
 
-class ChannelParticipantsContacts extends BaseConstructor {
+class ChannelParticipantsContacts extends ChannelParticipantsFilterBase {
   static const CONSTRUCTOR_ID = 3144345741;
   static const SUBCLASS_OF_ID = 3209570131;
   final classType = "constructor";
@@ -24580,7 +24237,6 @@ class ChannelParticipantsContacts extends BaseConstructor {
   ChannelParticipantsContacts({required this.q});
 
   static ChannelParticipantsContacts fromReader(BinaryReader reader) {
-    var len;
     var q = reader.tgReadString();
     return ChannelParticipantsContacts(q: q);
   }
@@ -24609,7 +24265,7 @@ class ChannelParticipantsContacts extends BaseConstructor {
   }
 }
 
-class ChannelParticipantsMentions extends BaseConstructor {
+class ChannelParticipantsMentions extends ChannelParticipantsFilterBase {
   static const CONSTRUCTOR_ID = 3763035371;
   static const SUBCLASS_OF_ID = 3209570131;
   final classType = "constructor";
@@ -24617,10 +24273,9 @@ class ChannelParticipantsMentions extends BaseConstructor {
   String? q;
   int? topMsgId;
 
-  ChannelParticipantsMentions({required this.q, required this.topMsgId});
+  ChannelParticipantsMentions({this.q, this.topMsgId});
 
   static ChannelParticipantsMentions fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var q;
     if ((flags & 1) == 1) {
@@ -24669,19 +24324,19 @@ class ChannelParticipantsMentions extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageMediaAuto extends BaseConstructor {
+abstract class InputBotInlineMessageBase extends BaseConstructor {}
+
+class InputBotInlineMessageMediaAuto extends InputBotInlineMessageBase {
   static const CONSTRUCTOR_ID = 864077702;
   static const SUBCLASS_OF_ID = 1408974864;
   final classType = "constructor";
   final ID = 864077702;
   String message;
-  List<dynamic>? entities;
-  var replyMarkup;
+  List<MessageEntityBase>? entities;
+  ReplyMarkupBase? replyMarkup;
 
   InputBotInlineMessageMediaAuto(
-      {required this.message,
-      required this.entities,
-      required this.replyMarkup});
+      {required this.message, this.entities, this.replyMarkup});
 
   static InputBotInlineMessageMediaAuto fromReader(BinaryReader reader) {
     var len;
@@ -24691,7 +24346,7 @@ class InputBotInlineMessageMediaAuto extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -24723,12 +24378,12 @@ class InputBotInlineMessageMediaAuto extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -24750,21 +24405,18 @@ class InputBotInlineMessageMediaAuto extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageText extends BaseConstructor {
+class InputBotInlineMessageText extends InputBotInlineMessageBase {
   static const CONSTRUCTOR_ID = 1036876423;
   static const SUBCLASS_OF_ID = 1408974864;
   final classType = "constructor";
   final ID = 1036876423;
   bool? noWebpage;
   String message;
-  List<dynamic>? entities;
-  var replyMarkup;
+  List<MessageEntityBase>? entities;
+  ReplyMarkupBase? replyMarkup;
 
   InputBotInlineMessageText(
-      {required this.noWebpage,
-      required this.message,
-      required this.entities,
-      required this.replyMarkup});
+      {this.noWebpage, required this.message, this.entities, this.replyMarkup});
 
   static InputBotInlineMessageText fromReader(BinaryReader reader) {
     var len;
@@ -24775,7 +24427,7 @@ class InputBotInlineMessageText extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -24810,12 +24462,12 @@ class InputBotInlineMessageText extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -24837,26 +24489,25 @@ class InputBotInlineMessageText extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageMediaGeo extends BaseConstructor {
+class InputBotInlineMessageMediaGeo extends InputBotInlineMessageBase {
   static const CONSTRUCTOR_ID = 2526190213;
   static const SUBCLASS_OF_ID = 1408974864;
   final classType = "constructor";
   final ID = 2526190213;
-  var geoPoint;
+  InputGeoPointBase geoPoint;
   int? heading;
   int? period;
   int? proximityNotificationRadius;
-  var replyMarkup;
+  ReplyMarkupBase? replyMarkup;
 
   InputBotInlineMessageMediaGeo(
       {required this.geoPoint,
-      required this.heading,
-      required this.period,
-      required this.proximityNotificationRadius,
-      required this.replyMarkup});
+      this.heading,
+      this.period,
+      this.proximityNotificationRadius,
+      this.replyMarkup});
 
   static InputBotInlineMessageMediaGeo fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var geoPoint = reader.tgReadObject();
     var heading;
@@ -24896,7 +24547,7 @@ class InputBotInlineMessageMediaGeo extends BaseConstructor {
     return [
       readBufferFromBigInt(2526190213, 4),
       [0, 0, 0, 0],
-      (this.geoPoint.getBytes() as List<int>),
+      (this.geoPoint.getBytes()),
       (this.heading == null || this.heading == false)
           ? List<int>.empty()
           : [readBufferFromBigInt(this.heading, 4, little: true, signed: true)]
@@ -24916,7 +24567,7 @@ class InputBotInlineMessageMediaGeo extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -24938,18 +24589,18 @@ class InputBotInlineMessageMediaGeo extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageMediaVenue extends BaseConstructor {
+class InputBotInlineMessageMediaVenue extends InputBotInlineMessageBase {
   static const CONSTRUCTOR_ID = 1098628881;
   static const SUBCLASS_OF_ID = 1408974864;
   final classType = "constructor";
   final ID = 1098628881;
-  var geoPoint;
+  InputGeoPointBase geoPoint;
   String title;
   String address;
   String provider;
   String venueId;
   String venueType;
-  var replyMarkup;
+  ReplyMarkupBase? replyMarkup;
 
   InputBotInlineMessageMediaVenue(
       {required this.geoPoint,
@@ -24958,10 +24609,9 @@ class InputBotInlineMessageMediaVenue extends BaseConstructor {
       required this.provider,
       required this.venueId,
       required this.venueType,
-      required this.replyMarkup});
+      this.replyMarkup});
 
   static InputBotInlineMessageMediaVenue fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var geoPoint = reader.tgReadObject();
     var title = reader.tgReadString();
@@ -24990,7 +24640,7 @@ class InputBotInlineMessageMediaVenue extends BaseConstructor {
     return [
       readBufferFromBigInt(1098628881, 4),
       [0, 0, 0, 0],
-      (this.geoPoint.getBytes() as List<int>),
+      (this.geoPoint.getBytes()),
       serializeBytes(this.title),
       serializeBytes(this.address),
       serializeBytes(this.provider),
@@ -24998,7 +24648,7 @@ class InputBotInlineMessageMediaVenue extends BaseConstructor {
       serializeBytes(this.venueType),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25020,7 +24670,7 @@ class InputBotInlineMessageMediaVenue extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageMediaContact extends BaseConstructor {
+class InputBotInlineMessageMediaContact extends InputBotInlineMessageBase {
   static const CONSTRUCTOR_ID = 2800599037;
   static const SUBCLASS_OF_ID = 1408974864;
   final classType = "constructor";
@@ -25029,17 +24679,16 @@ class InputBotInlineMessageMediaContact extends BaseConstructor {
   String firstName;
   String lastName;
   String vcard;
-  var replyMarkup;
+  ReplyMarkupBase? replyMarkup;
 
   InputBotInlineMessageMediaContact(
       {required this.phoneNumber,
       required this.firstName,
       required this.lastName,
       required this.vcard,
-      required this.replyMarkup});
+      this.replyMarkup});
 
   static InputBotInlineMessageMediaContact fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var phoneNumber = reader.tgReadString();
     var firstName = reader.tgReadString();
@@ -25070,7 +24719,7 @@ class InputBotInlineMessageMediaContact extends BaseConstructor {
       serializeBytes(this.vcard),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25092,17 +24741,16 @@ class InputBotInlineMessageMediaContact extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageGame extends BaseConstructor {
+class InputBotInlineMessageGame extends InputBotInlineMessageBase {
   static const CONSTRUCTOR_ID = 1262639204;
   static const SUBCLASS_OF_ID = 1408974864;
   final classType = "constructor";
   final ID = 1262639204;
-  var replyMarkup;
+  ReplyMarkupBase? replyMarkup;
 
-  InputBotInlineMessageGame({required this.replyMarkup});
+  InputBotInlineMessageGame({this.replyMarkup});
 
   static InputBotInlineMessageGame fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var replyMarkup;
     if ((flags & 4) == 4) {
@@ -25120,7 +24768,7 @@ class InputBotInlineMessageGame extends BaseConstructor {
       [0, 0, 0, 0],
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25142,32 +24790,31 @@ class InputBotInlineMessageGame extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageMediaInvoice extends BaseConstructor {
+class InputBotInlineMessageMediaInvoice extends InputBotInlineMessageBase {
   static const CONSTRUCTOR_ID = 3622273573;
   static const SUBCLASS_OF_ID = 1408974864;
   final classType = "constructor";
   final ID = 3622273573;
   String title;
   String description;
-  var photo;
-  var invoice;
+  InputWebDocument? photo;
+  Invoice invoice;
   List<int> payload;
   String provider;
-  var providerData;
-  var replyMarkup;
+  DataJSON providerData;
+  ReplyMarkupBase? replyMarkup;
 
   InputBotInlineMessageMediaInvoice(
       {required this.title,
       required this.description,
-      required this.photo,
+      this.photo,
       required this.invoice,
       required this.payload,
       required this.provider,
       required this.providerData,
-      required this.replyMarkup});
+      this.replyMarkup});
 
   static InputBotInlineMessageMediaInvoice fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var title = reader.tgReadString();
     var description = reader.tgReadString();
@@ -25207,16 +24854,16 @@ class InputBotInlineMessageMediaInvoice extends BaseConstructor {
       serializeBytes(this.description),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.invoice.getBytes() as List<int>),
+      (this.invoice.getBytes()),
       serializeBytes(this.payload),
       serializeBytes(this.provider),
-      (this.providerData.getBytes() as List<int>),
+      (this.providerData.getBytes()),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25238,7 +24885,9 @@ class InputBotInlineMessageMediaInvoice extends BaseConstructor {
   }
 }
 
-class InputBotInlineResult extends BaseConstructor {
+abstract class InputBotInlineResultBase extends BaseConstructor {}
+
+class InputBotInlineResult extends InputBotInlineResultBase {
   static const CONSTRUCTOR_ID = 2294256409;
   static const SUBCLASS_OF_ID = 2158273502;
   final classType = "constructor";
@@ -25248,22 +24897,21 @@ class InputBotInlineResult extends BaseConstructor {
   String? title;
   String? description;
   String? url;
-  var thumb;
-  var content;
-  var sendMessage;
+  InputWebDocument? thumb;
+  InputWebDocument? content;
+  InputBotInlineMessageBase sendMessage;
 
   InputBotInlineResult(
       {required this.id,
       required this.type,
-      required this.title,
-      required this.description,
-      required this.url,
-      required this.thumb,
-      required this.content,
+      this.title,
+      this.description,
+      this.url,
+      this.thumb,
+      this.content,
       required this.sendMessage});
 
   static InputBotInlineResult fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.tgReadString();
     var type = reader.tgReadString();
@@ -25329,15 +24977,15 @@ class InputBotInlineResult extends BaseConstructor {
           : [serializeBytes(this.url)].expand((element) => element).toList(),
       (this.thumb == null || this.thumb == false)
           ? List<int>.empty()
-          : [(this.thumb.getBytes() as List<int>)]
+          : [(this.thumb!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.content == null || this.content == false)
           ? List<int>.empty()
-          : [(this.content.getBytes() as List<int>)]
+          : [(this.content!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.sendMessage.getBytes() as List<int>),
+      (this.sendMessage.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -25357,15 +25005,15 @@ class InputBotInlineResult extends BaseConstructor {
   }
 }
 
-class InputBotInlineResultPhoto extends BaseConstructor {
+class InputBotInlineResultPhoto extends InputBotInlineResultBase {
   static const CONSTRUCTOR_ID = 2832753831;
   static const SUBCLASS_OF_ID = 2158273502;
   final classType = "constructor";
   final ID = 2832753831;
   String id;
   String type;
-  var photo;
-  var sendMessage;
+  InputPhotoBase photo;
+  InputBotInlineMessageBase sendMessage;
 
   InputBotInlineResultPhoto(
       {required this.id,
@@ -25374,7 +25022,6 @@ class InputBotInlineResultPhoto extends BaseConstructor {
       required this.sendMessage});
 
   static InputBotInlineResultPhoto fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadString();
     var type = reader.tgReadString();
     var photo = reader.tgReadObject();
@@ -25389,8 +25036,8 @@ class InputBotInlineResultPhoto extends BaseConstructor {
       readBufferFromBigInt(2832753831, 4),
       serializeBytes(this.id),
       serializeBytes(this.type),
-      (this.photo.getBytes() as List<int>),
-      (this.sendMessage.getBytes() as List<int>),
+      (this.photo.getBytes()),
+      (this.sendMessage.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -25410,7 +25057,7 @@ class InputBotInlineResultPhoto extends BaseConstructor {
   }
 }
 
-class InputBotInlineResultDocument extends BaseConstructor {
+class InputBotInlineResultDocument extends InputBotInlineResultBase {
   static const CONSTRUCTOR_ID = 4294507972;
   static const SUBCLASS_OF_ID = 2158273502;
   final classType = "constructor";
@@ -25419,19 +25066,18 @@ class InputBotInlineResultDocument extends BaseConstructor {
   String type;
   String? title;
   String? description;
-  var document;
-  var sendMessage;
+  InputDocumentBase document;
+  InputBotInlineMessageBase sendMessage;
 
   InputBotInlineResultDocument(
       {required this.id,
       required this.type,
-      required this.title,
-      required this.description,
+      this.title,
+      this.description,
       required this.document,
       required this.sendMessage});
 
   static InputBotInlineResultDocument fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.tgReadString();
     var type = reader.tgReadString();
@@ -25473,8 +25119,8 @@ class InputBotInlineResultDocument extends BaseConstructor {
           : [serializeBytes(this.description)]
               .expand((element) => element)
               .toList(),
-      (this.document.getBytes() as List<int>),
-      (this.sendMessage.getBytes() as List<int>),
+      (this.document.getBytes()),
+      (this.sendMessage.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -25494,20 +25140,19 @@ class InputBotInlineResultDocument extends BaseConstructor {
   }
 }
 
-class InputBotInlineResultGame extends BaseConstructor {
+class InputBotInlineResultGame extends InputBotInlineResultBase {
   static const CONSTRUCTOR_ID = 1336154098;
   static const SUBCLASS_OF_ID = 2158273502;
   final classType = "constructor";
   final ID = 1336154098;
   String id;
   String shortName;
-  var sendMessage;
+  InputBotInlineMessageBase sendMessage;
 
   InputBotInlineResultGame(
       {required this.id, required this.shortName, required this.sendMessage});
 
   static InputBotInlineResultGame fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadString();
     var shortName = reader.tgReadString();
     var sendMessage = reader.tgReadObject();
@@ -25521,7 +25166,7 @@ class InputBotInlineResultGame extends BaseConstructor {
       readBufferFromBigInt(1336154098, 4),
       serializeBytes(this.id),
       serializeBytes(this.shortName),
-      (this.sendMessage.getBytes() as List<int>),
+      (this.sendMessage.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -25541,19 +25186,19 @@ class InputBotInlineResultGame extends BaseConstructor {
   }
 }
 
-class BotInlineMessageMediaAuto extends BaseConstructor {
+abstract class BotInlineMessageBase extends BaseConstructor {}
+
+class BotInlineMessageMediaAuto extends BotInlineMessageBase {
   static const CONSTRUCTOR_ID = 1984755728;
   static const SUBCLASS_OF_ID = 3297841032;
   final classType = "constructor";
   final ID = 1984755728;
   String message;
-  List<dynamic>? entities;
-  var replyMarkup;
+  List<MessageEntityBase>? entities;
+  ReplyMarkupBase? replyMarkup;
 
   BotInlineMessageMediaAuto(
-      {required this.message,
-      required this.entities,
-      required this.replyMarkup});
+      {required this.message, this.entities, this.replyMarkup});
 
   static BotInlineMessageMediaAuto fromReader(BinaryReader reader) {
     var len;
@@ -25563,7 +25208,7 @@ class BotInlineMessageMediaAuto extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -25595,12 +25240,12 @@ class BotInlineMessageMediaAuto extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25622,21 +25267,18 @@ class BotInlineMessageMediaAuto extends BaseConstructor {
   }
 }
 
-class BotInlineMessageText extends BaseConstructor {
+class BotInlineMessageText extends BotInlineMessageBase {
   static const CONSTRUCTOR_ID = 2357159394;
   static const SUBCLASS_OF_ID = 3297841032;
   final classType = "constructor";
   final ID = 2357159394;
   bool? noWebpage;
   String message;
-  List<dynamic>? entities;
-  var replyMarkup;
+  List<MessageEntityBase>? entities;
+  ReplyMarkupBase? replyMarkup;
 
   BotInlineMessageText(
-      {required this.noWebpage,
-      required this.message,
-      required this.entities,
-      required this.replyMarkup});
+      {this.noWebpage, required this.message, this.entities, this.replyMarkup});
 
   static BotInlineMessageText fromReader(BinaryReader reader) {
     var len;
@@ -25647,7 +25289,7 @@ class BotInlineMessageText extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -25682,12 +25324,12 @@ class BotInlineMessageText extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25709,26 +25351,25 @@ class BotInlineMessageText extends BaseConstructor {
   }
 }
 
-class BotInlineMessageMediaGeo extends BaseConstructor {
+class BotInlineMessageMediaGeo extends BotInlineMessageBase {
   static const CONSTRUCTOR_ID = 85477117;
   static const SUBCLASS_OF_ID = 3297841032;
   final classType = "constructor";
   final ID = 85477117;
-  var geo;
+  GeoPointBase geo;
   int? heading;
   int? period;
   int? proximityNotificationRadius;
-  var replyMarkup;
+  ReplyMarkupBase? replyMarkup;
 
   BotInlineMessageMediaGeo(
       {required this.geo,
-      required this.heading,
-      required this.period,
-      required this.proximityNotificationRadius,
-      required this.replyMarkup});
+      this.heading,
+      this.period,
+      this.proximityNotificationRadius,
+      this.replyMarkup});
 
   static BotInlineMessageMediaGeo fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var geo = reader.tgReadObject();
     var heading;
@@ -25768,7 +25409,7 @@ class BotInlineMessageMediaGeo extends BaseConstructor {
     return [
       readBufferFromBigInt(85477117, 4),
       [0, 0, 0, 0],
-      (this.geo.getBytes() as List<int>),
+      (this.geo.getBytes()),
       (this.heading == null || this.heading == false)
           ? List<int>.empty()
           : [readBufferFromBigInt(this.heading, 4, little: true, signed: true)]
@@ -25788,7 +25429,7 @@ class BotInlineMessageMediaGeo extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25810,18 +25451,18 @@ class BotInlineMessageMediaGeo extends BaseConstructor {
   }
 }
 
-class BotInlineMessageMediaVenue extends BaseConstructor {
+class BotInlineMessageMediaVenue extends BotInlineMessageBase {
   static const CONSTRUCTOR_ID = 2324063644;
   static const SUBCLASS_OF_ID = 3297841032;
   final classType = "constructor";
   final ID = 2324063644;
-  var geo;
+  GeoPointBase geo;
   String title;
   String address;
   String provider;
   String venueId;
   String venueType;
-  var replyMarkup;
+  ReplyMarkupBase? replyMarkup;
 
   BotInlineMessageMediaVenue(
       {required this.geo,
@@ -25830,10 +25471,9 @@ class BotInlineMessageMediaVenue extends BaseConstructor {
       required this.provider,
       required this.venueId,
       required this.venueType,
-      required this.replyMarkup});
+      this.replyMarkup});
 
   static BotInlineMessageMediaVenue fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var geo = reader.tgReadObject();
     var title = reader.tgReadString();
@@ -25862,7 +25502,7 @@ class BotInlineMessageMediaVenue extends BaseConstructor {
     return [
       readBufferFromBigInt(2324063644, 4),
       [0, 0, 0, 0],
-      (this.geo.getBytes() as List<int>),
+      (this.geo.getBytes()),
       serializeBytes(this.title),
       serializeBytes(this.address),
       serializeBytes(this.provider),
@@ -25870,7 +25510,7 @@ class BotInlineMessageMediaVenue extends BaseConstructor {
       serializeBytes(this.venueType),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25892,7 +25532,7 @@ class BotInlineMessageMediaVenue extends BaseConstructor {
   }
 }
 
-class BotInlineMessageMediaContact extends BaseConstructor {
+class BotInlineMessageMediaContact extends BotInlineMessageBase {
   static const CONSTRUCTOR_ID = 416402882;
   static const SUBCLASS_OF_ID = 3297841032;
   final classType = "constructor";
@@ -25901,17 +25541,16 @@ class BotInlineMessageMediaContact extends BaseConstructor {
   String firstName;
   String lastName;
   String vcard;
-  var replyMarkup;
+  ReplyMarkupBase? replyMarkup;
 
   BotInlineMessageMediaContact(
       {required this.phoneNumber,
       required this.firstName,
       required this.lastName,
       required this.vcard,
-      required this.replyMarkup});
+      this.replyMarkup});
 
   static BotInlineMessageMediaContact fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var phoneNumber = reader.tgReadString();
     var firstName = reader.tgReadString();
@@ -25942,7 +25581,7 @@ class BotInlineMessageMediaContact extends BaseConstructor {
       serializeBytes(this.vcard),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -25964,7 +25603,7 @@ class BotInlineMessageMediaContact extends BaseConstructor {
   }
 }
 
-class BotInlineMessageMediaInvoice extends BaseConstructor {
+class BotInlineMessageMediaInvoice extends BotInlineMessageBase {
   static const CONSTRUCTOR_ID = 894081801;
   static const SUBCLASS_OF_ID = 3297841032;
   final classType = "constructor";
@@ -25973,23 +25612,22 @@ class BotInlineMessageMediaInvoice extends BaseConstructor {
   bool? test;
   String title;
   String description;
-  var photo;
+  WebDocumentBase? photo;
   String currency;
   BigInt totalAmount;
-  var replyMarkup;
+  ReplyMarkupBase? replyMarkup;
 
   BotInlineMessageMediaInvoice(
-      {required this.shippingAddressRequested,
-      required this.test,
+      {this.shippingAddressRequested,
+      this.test,
       required this.title,
       required this.description,
-      required this.photo,
+      this.photo,
       required this.currency,
       required this.totalAmount,
-      required this.replyMarkup});
+      this.replyMarkup});
 
   static BotInlineMessageMediaInvoice fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final shippingAddressRequested = (flags & 2) == 2;
     final test = (flags & 8) == 8;
@@ -26029,14 +25667,14 @@ class BotInlineMessageMediaInvoice extends BaseConstructor {
       serializeBytes(this.description),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
       serializeBytes(this.currency),
       readBufferFromBigInt(this.totalAmount, 8, little: true, signed: true),
       (this.replyMarkup == null || this.replyMarkup == false)
           ? List<int>.empty()
-          : [(this.replyMarkup.getBytes() as List<int>)]
+          : [(this.replyMarkup!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -26058,7 +25696,9 @@ class BotInlineMessageMediaInvoice extends BaseConstructor {
   }
 }
 
-class BotInlineResult extends BaseConstructor {
+abstract class BotInlineResultBase extends BaseConstructor {}
+
+class BotInlineResult extends BotInlineResultBase {
   static const CONSTRUCTOR_ID = 295067450;
   static const SUBCLASS_OF_ID = 942846933;
   final classType = "constructor";
@@ -26068,22 +25708,21 @@ class BotInlineResult extends BaseConstructor {
   String? title;
   String? description;
   String? url;
-  var thumb;
-  var content;
-  var sendMessage;
+  WebDocumentBase? thumb;
+  WebDocumentBase? content;
+  BotInlineMessageBase sendMessage;
 
   BotInlineResult(
       {required this.id,
       required this.type,
-      required this.title,
-      required this.description,
-      required this.url,
-      required this.thumb,
-      required this.content,
+      this.title,
+      this.description,
+      this.url,
+      this.thumb,
+      this.content,
       required this.sendMessage});
 
   static BotInlineResult fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.tgReadString();
     var type = reader.tgReadString();
@@ -26149,15 +25788,15 @@ class BotInlineResult extends BaseConstructor {
           : [serializeBytes(this.url)].expand((element) => element).toList(),
       (this.thumb == null || this.thumb == false)
           ? List<int>.empty()
-          : [(this.thumb.getBytes() as List<int>)]
+          : [(this.thumb!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.content == null || this.content == false)
           ? List<int>.empty()
-          : [(this.content.getBytes() as List<int>)]
+          : [(this.content!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.sendMessage.getBytes() as List<int>),
+      (this.sendMessage.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -26177,30 +25816,29 @@ class BotInlineResult extends BaseConstructor {
   }
 }
 
-class BotInlineMediaResult extends BaseConstructor {
+class BotInlineMediaResult extends BotInlineResultBase {
   static const CONSTRUCTOR_ID = 400266251;
   static const SUBCLASS_OF_ID = 942846933;
   final classType = "constructor";
   final ID = 400266251;
   String id;
   String type;
-  var photo;
-  var document;
+  PhotoBase? photo;
+  DocumentBase? document;
   String? title;
   String? description;
-  var sendMessage;
+  BotInlineMessageBase sendMessage;
 
   BotInlineMediaResult(
       {required this.id,
       required this.type,
-      required this.photo,
-      required this.document,
-      required this.title,
-      required this.description,
+      this.photo,
+      this.document,
+      this.title,
+      this.description,
       required this.sendMessage});
 
   static BotInlineMediaResult fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.tgReadString();
     var type = reader.tgReadString();
@@ -26248,12 +25886,12 @@ class BotInlineMediaResult extends BaseConstructor {
       serializeBytes(this.type),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.document == null || this.document == false)
           ? List<int>.empty()
-          : [(this.document.getBytes() as List<int>)]
+          : [(this.document!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.title == null || this.title == false)
@@ -26264,7 +25902,7 @@ class BotInlineMediaResult extends BaseConstructor {
           : [serializeBytes(this.description)]
               .expand((element) => element)
               .toList(),
-      (this.sendMessage.getBytes() as List<int>),
+      (this.sendMessage.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -26295,7 +25933,6 @@ class ExportedMessageLink extends BaseConstructor {
   ExportedMessageLink({required this.link, required this.html});
 
   static ExportedMessageLink fromReader(BinaryReader reader) {
-    var len;
     var link = reader.tgReadString();
     var html = reader.tgReadString();
     return ExportedMessageLink(link: link, html: html);
@@ -26332,28 +25969,27 @@ class MessageFwdHeader extends BaseConstructor {
   final classType = "constructor";
   final ID = 1601666510;
   bool? imported;
-  var fromId;
+  PeerBase? fromId;
   String? fromName;
   int date;
   int? channelPost;
   String? postAuthor;
-  var savedFromPeer;
+  PeerBase? savedFromPeer;
   int? savedFromMsgId;
   String? psaType;
 
   MessageFwdHeader(
-      {required this.imported,
-      required this.fromId,
-      required this.fromName,
+      {this.imported,
+      this.fromId,
+      this.fromName,
       required this.date,
-      required this.channelPost,
-      required this.postAuthor,
-      required this.savedFromPeer,
-      required this.savedFromMsgId,
-      required this.psaType});
+      this.channelPost,
+      this.postAuthor,
+      this.savedFromPeer,
+      this.savedFromMsgId,
+      this.psaType});
 
   static MessageFwdHeader fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final imported = (flags & 128) == 128;
     var fromId;
@@ -26418,7 +26054,7 @@ class MessageFwdHeader extends BaseConstructor {
       [0, 0, 0, 0],
       (this.fromId == null || this.fromId == false)
           ? List<int>.empty()
-          : [(this.fromId.getBytes() as List<int>)]
+          : [(this.fromId!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.fromName == null || this.fromName == false)
@@ -26440,7 +26076,7 @@ class MessageFwdHeader extends BaseConstructor {
               .toList(),
       (this.savedFromPeer == null || this.savedFromPeer == false)
           ? List<int>.empty()
-          : [(this.savedFromPeer.getBytes() as List<int>)]
+          : [(this.savedFromPeer!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.savedFromMsgId == null || this.savedFromMsgId == false)
@@ -26473,7 +26109,9 @@ class MessageFwdHeader extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageID extends BaseConstructor {
+abstract class InputBotInlineMessageIDBase extends BaseConstructor {}
+
+class InputBotInlineMessageID extends InputBotInlineMessageIDBase {
   static const CONSTRUCTOR_ID = 2299280777;
   static const SUBCLASS_OF_ID = 768434944;
   final classType = "constructor";
@@ -26486,7 +26124,6 @@ class InputBotInlineMessageID extends BaseConstructor {
       {required this.dcId, required this.id, required this.accessHash});
 
   static InputBotInlineMessageID fromReader(BinaryReader reader) {
-    var len;
     var dcId = reader.readInt();
     var id = reader.readLong();
     var accessHash = reader.readLong();
@@ -26519,7 +26156,7 @@ class InputBotInlineMessageID extends BaseConstructor {
   }
 }
 
-class InputBotInlineMessageID64 extends BaseConstructor {
+class InputBotInlineMessageID64 extends InputBotInlineMessageIDBase {
   static const CONSTRUCTOR_ID = 3067680215;
   static const SUBCLASS_OF_ID = 768434944;
   final classType = "constructor";
@@ -26536,7 +26173,6 @@ class InputBotInlineMessageID64 extends BaseConstructor {
       required this.accessHash});
 
   static InputBotInlineMessageID64 fromReader(BinaryReader reader) {
-    var len;
     var dcId = reader.readInt();
     var ownerId = reader.readLong();
     var id = reader.readInt();
@@ -26583,7 +26219,6 @@ class InlineBotSwitchPM extends BaseConstructor {
   InlineBotSwitchPM({required this.text, required this.startParam});
 
   static InlineBotSwitchPM fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var startParam = reader.tgReadString();
     return InlineBotSwitchPM(text: text, startParam: startParam);
@@ -26619,13 +26254,12 @@ class TopPeer extends BaseConstructor {
   static const SUBCLASS_OF_ID = 1763100161;
   final classType = "constructor";
   final ID = 3989684315;
-  var peer;
+  PeerBase peer;
   double rating;
 
   TopPeer({required this.peer, required this.rating});
 
   static TopPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var rating = reader.readDouble();
     return TopPeer(peer: peer, rating: rating);
@@ -26635,7 +26269,7 @@ class TopPeer extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3989684315, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.rating, 4),
     ].expand((element) => element).toList();
   }
@@ -26656,7 +26290,9 @@ class TopPeer extends BaseConstructor {
   }
 }
 
-class TopPeerCategoryBotsPM extends BaseConstructor {
+abstract class TopPeerCategoryBase extends BaseConstructor {}
+
+class TopPeerCategoryBotsPM extends TopPeerCategoryBase {
   static const CONSTRUCTOR_ID = 2875595611;
   static const SUBCLASS_OF_ID = 3723502850;
   final classType = "constructor";
@@ -26665,7 +26301,6 @@ class TopPeerCategoryBotsPM extends BaseConstructor {
   TopPeerCategoryBotsPM();
 
   static TopPeerCategoryBotsPM fromReader(BinaryReader reader) {
-    var len;
     return TopPeerCategoryBotsPM();
   }
 
@@ -26692,7 +26327,7 @@ class TopPeerCategoryBotsPM extends BaseConstructor {
   }
 }
 
-class TopPeerCategoryBotsInline extends BaseConstructor {
+class TopPeerCategoryBotsInline extends TopPeerCategoryBase {
   static const CONSTRUCTOR_ID = 344356834;
   static const SUBCLASS_OF_ID = 3723502850;
   final classType = "constructor";
@@ -26701,7 +26336,6 @@ class TopPeerCategoryBotsInline extends BaseConstructor {
   TopPeerCategoryBotsInline();
 
   static TopPeerCategoryBotsInline fromReader(BinaryReader reader) {
-    var len;
     return TopPeerCategoryBotsInline();
   }
 
@@ -26728,7 +26362,7 @@ class TopPeerCategoryBotsInline extends BaseConstructor {
   }
 }
 
-class TopPeerCategoryCorrespondents extends BaseConstructor {
+class TopPeerCategoryCorrespondents extends TopPeerCategoryBase {
   static const CONSTRUCTOR_ID = 104314861;
   static const SUBCLASS_OF_ID = 3723502850;
   final classType = "constructor";
@@ -26737,7 +26371,6 @@ class TopPeerCategoryCorrespondents extends BaseConstructor {
   TopPeerCategoryCorrespondents();
 
   static TopPeerCategoryCorrespondents fromReader(BinaryReader reader) {
-    var len;
     return TopPeerCategoryCorrespondents();
   }
 
@@ -26764,7 +26397,7 @@ class TopPeerCategoryCorrespondents extends BaseConstructor {
   }
 }
 
-class TopPeerCategoryGroups extends BaseConstructor {
+class TopPeerCategoryGroups extends TopPeerCategoryBase {
   static const CONSTRUCTOR_ID = 3172442442;
   static const SUBCLASS_OF_ID = 3723502850;
   final classType = "constructor";
@@ -26773,7 +26406,6 @@ class TopPeerCategoryGroups extends BaseConstructor {
   TopPeerCategoryGroups();
 
   static TopPeerCategoryGroups fromReader(BinaryReader reader) {
-    var len;
     return TopPeerCategoryGroups();
   }
 
@@ -26800,7 +26432,7 @@ class TopPeerCategoryGroups extends BaseConstructor {
   }
 }
 
-class TopPeerCategoryChannels extends BaseConstructor {
+class TopPeerCategoryChannels extends TopPeerCategoryBase {
   static const CONSTRUCTOR_ID = 371037736;
   static const SUBCLASS_OF_ID = 3723502850;
   final classType = "constructor";
@@ -26809,7 +26441,6 @@ class TopPeerCategoryChannels extends BaseConstructor {
   TopPeerCategoryChannels();
 
   static TopPeerCategoryChannels fromReader(BinaryReader reader) {
-    var len;
     return TopPeerCategoryChannels();
   }
 
@@ -26836,7 +26467,7 @@ class TopPeerCategoryChannels extends BaseConstructor {
   }
 }
 
-class TopPeerCategoryPhoneCalls extends BaseConstructor {
+class TopPeerCategoryPhoneCalls extends TopPeerCategoryBase {
   static const CONSTRUCTOR_ID = 511092620;
   static const SUBCLASS_OF_ID = 3723502850;
   final classType = "constructor";
@@ -26845,7 +26476,6 @@ class TopPeerCategoryPhoneCalls extends BaseConstructor {
   TopPeerCategoryPhoneCalls();
 
   static TopPeerCategoryPhoneCalls fromReader(BinaryReader reader) {
-    var len;
     return TopPeerCategoryPhoneCalls();
   }
 
@@ -26872,7 +26502,7 @@ class TopPeerCategoryPhoneCalls extends BaseConstructor {
   }
 }
 
-class TopPeerCategoryForwardUsers extends BaseConstructor {
+class TopPeerCategoryForwardUsers extends TopPeerCategoryBase {
   static const CONSTRUCTOR_ID = 2822794409;
   static const SUBCLASS_OF_ID = 3723502850;
   final classType = "constructor";
@@ -26881,7 +26511,6 @@ class TopPeerCategoryForwardUsers extends BaseConstructor {
   TopPeerCategoryForwardUsers();
 
   static TopPeerCategoryForwardUsers fromReader(BinaryReader reader) {
-    var len;
     return TopPeerCategoryForwardUsers();
   }
 
@@ -26908,7 +26537,7 @@ class TopPeerCategoryForwardUsers extends BaseConstructor {
   }
 }
 
-class TopPeerCategoryForwardChats extends BaseConstructor {
+class TopPeerCategoryForwardChats extends TopPeerCategoryBase {
   static const CONSTRUCTOR_ID = 4226728176;
   static const SUBCLASS_OF_ID = 3723502850;
   final classType = "constructor";
@@ -26917,7 +26546,6 @@ class TopPeerCategoryForwardChats extends BaseConstructor {
   TopPeerCategoryForwardChats();
 
   static TopPeerCategoryForwardChats fromReader(BinaryReader reader) {
-    var len;
     return TopPeerCategoryForwardChats();
   }
 
@@ -26949,9 +26577,9 @@ class TopPeerCategoryPeers extends BaseConstructor {
   static const SUBCLASS_OF_ID = 78563632;
   final classType = "constructor";
   final ID = 4219683473;
-  var category;
+  TopPeerCategoryBase category;
   int count;
-  List<dynamic> peers;
+  List<TopPeer> peers;
 
   TopPeerCategoryPeers(
       {required this.category, required this.count, required this.peers});
@@ -26962,7 +26590,7 @@ class TopPeerCategoryPeers extends BaseConstructor {
     var count = reader.readInt();
     var _vectorpeers = reader.readInt();
     if (_vectorpeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> peers = [];
+    List<TopPeer> peers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       peers.add(reader.tgReadObject());
@@ -26974,13 +26602,12 @@ class TopPeerCategoryPeers extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4219683473, 4),
-      (this.category.getBytes() as List<int>),
+      (this.category.getBytes()),
       readBufferFromBigInt(this.count, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.peers!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.peers.length, 4, little: true, signed: true),
       this
-          .peers!
-          .map((x) => (x.getBytes() as List<int>))
+          .peers.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -27001,17 +26628,18 @@ class TopPeerCategoryPeers extends BaseConstructor {
   }
 }
 
-class DraftMessageEmpty extends BaseConstructor {
+abstract class DraftMessageBase extends BaseConstructor {}
+
+class DraftMessageEmpty extends DraftMessageBase {
   static const CONSTRUCTOR_ID = 453805082;
   static const SUBCLASS_OF_ID = 869564229;
   final classType = "constructor";
   final ID = 453805082;
   int? date;
 
-  DraftMessageEmpty({required this.date});
+  DraftMessageEmpty({this.date});
 
   static DraftMessageEmpty fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var date;
     if ((flags & 1) == 1) {
@@ -27051,7 +26679,7 @@ class DraftMessageEmpty extends BaseConstructor {
   }
 }
 
-class DraftMessage extends BaseConstructor {
+class DraftMessage extends DraftMessageBase {
   static const CONSTRUCTOR_ID = 4253970719;
   static const SUBCLASS_OF_ID = 869564229;
   final classType = "constructor";
@@ -27059,14 +26687,14 @@ class DraftMessage extends BaseConstructor {
   bool? noWebpage;
   int? replyToMsgId;
   String message;
-  List<dynamic>? entities;
+  List<MessageEntityBase>? entities;
   int date;
 
   DraftMessage(
-      {required this.noWebpage,
-      required this.replyToMsgId,
+      {this.noWebpage,
+      this.replyToMsgId,
       required this.message,
-      required this.entities,
+      this.entities,
       required this.date});
 
   static DraftMessage fromReader(BinaryReader reader) {
@@ -27084,7 +26712,7 @@ class DraftMessage extends BaseConstructor {
     if ((flags & 8) == 8) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -27121,7 +26749,7 @@ class DraftMessage extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
@@ -27144,18 +26772,19 @@ class DraftMessage extends BaseConstructor {
   }
 }
 
-class StickerSetCovered extends BaseConstructor {
+abstract class StickerSetCoveredBase extends BaseConstructor {}
+
+class StickerSetCovered extends StickerSetCoveredBase {
   static const CONSTRUCTOR_ID = 1678812626;
   static const SUBCLASS_OF_ID = 2139546853;
   final classType = "constructor";
   final ID = 1678812626;
-  var set;
-  var cover;
+  StickerSet set;
+  DocumentBase cover;
 
   StickerSetCovered({required this.set, required this.cover});
 
   static StickerSetCovered fromReader(BinaryReader reader) {
-    var len;
     var set = reader.tgReadObject();
     var cover = reader.tgReadObject();
     return StickerSetCovered(set: set, cover: cover);
@@ -27165,8 +26794,8 @@ class StickerSetCovered extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1678812626, 4),
-      (this.set.getBytes() as List<int>),
-      (this.cover.getBytes() as List<int>),
+      (this.set.getBytes()),
+      (this.cover.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -27186,13 +26815,13 @@ class StickerSetCovered extends BaseConstructor {
   }
 }
 
-class StickerSetMultiCovered extends BaseConstructor {
+class StickerSetMultiCovered extends StickerSetCoveredBase {
   static const CONSTRUCTOR_ID = 872932635;
   static const SUBCLASS_OF_ID = 2139546853;
   final classType = "constructor";
   final ID = 872932635;
-  var set;
-  List<dynamic> covers;
+  StickerSet set;
+  List<DocumentBase> covers;
 
   StickerSetMultiCovered({required this.set, required this.covers});
 
@@ -27201,7 +26830,7 @@ class StickerSetMultiCovered extends BaseConstructor {
     var set = reader.tgReadObject();
     var _vectorcovers = reader.readInt();
     if (_vectorcovers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> covers = [];
+    List<DocumentBase> covers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       covers.add(reader.tgReadObject());
@@ -27213,12 +26842,11 @@ class StickerSetMultiCovered extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(872932635, 4),
-      (this.set.getBytes() as List<int>),
+      (this.set.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.covers!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.covers.length, 4, little: true, signed: true),
       this
-          .covers!
-          .map((x) => (x.getBytes() as List<int>))
+          .covers.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -27253,7 +26881,6 @@ class MaskCoords extends BaseConstructor {
       {required this.n, required this.x, required this.y, required this.zoom});
 
   static MaskCoords fromReader(BinaryReader reader) {
-    var len;
     var n = reader.readInt();
     var x = reader.readDouble();
     var y = reader.readDouble();
@@ -27288,17 +26915,18 @@ class MaskCoords extends BaseConstructor {
   }
 }
 
-class InputStickeredMediaPhoto extends BaseConstructor {
+abstract class InputStickeredMediaBase extends BaseConstructor {}
+
+class InputStickeredMediaPhoto extends InputStickeredMediaBase {
   static const CONSTRUCTOR_ID = 1251549527;
   static const SUBCLASS_OF_ID = 1363597726;
   final classType = "constructor";
   final ID = 1251549527;
-  var id;
+  InputPhotoBase id;
 
   InputStickeredMediaPhoto({required this.id});
 
   static InputStickeredMediaPhoto fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     return InputStickeredMediaPhoto(id: id);
   }
@@ -27307,7 +26935,7 @@ class InputStickeredMediaPhoto extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1251549527, 4),
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -27327,17 +26955,16 @@ class InputStickeredMediaPhoto extends BaseConstructor {
   }
 }
 
-class InputStickeredMediaDocument extends BaseConstructor {
+class InputStickeredMediaDocument extends InputStickeredMediaBase {
   static const CONSTRUCTOR_ID = 70813275;
   static const SUBCLASS_OF_ID = 1363597726;
   final classType = "constructor";
   final ID = 70813275;
-  var id;
+  InputDocumentBase id;
 
   InputStickeredMediaDocument({required this.id});
 
   static InputStickeredMediaDocument fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadObject();
     return InputStickeredMediaDocument(id: id);
   }
@@ -27346,7 +26973,7 @@ class InputStickeredMediaDocument extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(70813275, 4),
-      (this.id.getBytes() as List<int>),
+      (this.id.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -27376,8 +27003,8 @@ class Game extends BaseConstructor {
   String shortName;
   String title;
   String description;
-  var photo;
-  var document;
+  PhotoBase photo;
+  DocumentBase? document;
 
   Game(
       {required this.id,
@@ -27386,10 +27013,9 @@ class Game extends BaseConstructor {
       required this.title,
       required this.description,
       required this.photo,
-      required this.document});
+      this.document});
 
   static Game fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var id = reader.readLong();
     var accessHash = reader.readLong();
@@ -27423,10 +27049,10 @@ class Game extends BaseConstructor {
       serializeBytes(this.shortName),
       serializeBytes(this.title),
       serializeBytes(this.description),
-      (this.photo.getBytes() as List<int>),
+      (this.photo.getBytes()),
       (this.document == null || this.document == false)
           ? List<int>.empty()
-          : [(this.document.getBytes() as List<int>)]
+          : [(this.document!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -27448,7 +27074,9 @@ class Game extends BaseConstructor {
   }
 }
 
-class InputGameID extends BaseConstructor {
+abstract class InputGameBase extends BaseConstructor {}
+
+class InputGameID extends InputGameBase {
   static const CONSTRUCTOR_ID = 53231223;
   static const SUBCLASS_OF_ID = 1221679235;
   final classType = "constructor";
@@ -27459,7 +27087,6 @@ class InputGameID extends BaseConstructor {
   InputGameID({required this.id, required this.accessHash});
 
   static InputGameID fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputGameID(id: id, accessHash: accessHash);
@@ -27490,18 +27117,17 @@ class InputGameID extends BaseConstructor {
   }
 }
 
-class InputGameShortName extends BaseConstructor {
+class InputGameShortName extends InputGameBase {
   static const CONSTRUCTOR_ID = 3274827786;
   static const SUBCLASS_OF_ID = 1221679235;
   final classType = "constructor";
   final ID = 3274827786;
-  var botId;
+  InputUserBase botId;
   String shortName;
 
   InputGameShortName({required this.botId, required this.shortName});
 
   static InputGameShortName fromReader(BinaryReader reader) {
-    var len;
     var botId = reader.tgReadObject();
     var shortName = reader.tgReadString();
     return InputGameShortName(botId: botId, shortName: shortName);
@@ -27511,7 +27137,7 @@ class InputGameShortName extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3274827786, 4),
-      (this.botId.getBytes() as List<int>),
+      (this.botId.getBytes()),
       serializeBytes(this.shortName),
     ].expand((element) => element).toList();
   }
@@ -27544,7 +27170,6 @@ class HighScore extends BaseConstructor {
   HighScore({required this.pos, required this.userId, required this.score});
 
   static HighScore fromReader(BinaryReader reader) {
-    var len;
     var pos = reader.readInt();
     var userId = reader.readLong();
     var score = reader.readInt();
@@ -27577,7 +27202,9 @@ class HighScore extends BaseConstructor {
   }
 }
 
-class TextEmpty extends BaseConstructor {
+abstract class RichTextBase extends BaseConstructor {}
+
+class TextEmpty extends RichTextBase {
   static const CONSTRUCTOR_ID = 3695018575;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
@@ -27586,7 +27213,6 @@ class TextEmpty extends BaseConstructor {
   TextEmpty();
 
   static TextEmpty fromReader(BinaryReader reader) {
-    var len;
     return TextEmpty();
   }
 
@@ -27613,7 +27239,7 @@ class TextEmpty extends BaseConstructor {
   }
 }
 
-class TextPlain extends BaseConstructor {
+class TextPlain extends RichTextBase {
   static const CONSTRUCTOR_ID = 1950782688;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
@@ -27623,7 +27249,6 @@ class TextPlain extends BaseConstructor {
   TextPlain({required this.text});
 
   static TextPlain fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     return TextPlain(text: text);
   }
@@ -27652,17 +27277,16 @@ class TextPlain extends BaseConstructor {
   }
 }
 
-class TextBold extends BaseConstructor {
+class TextBold extends RichTextBase {
   static const CONSTRUCTOR_ID = 1730456516;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 1730456516;
-  var text;
+  RichTextBase text;
 
   TextBold({required this.text});
 
   static TextBold fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return TextBold(text: text);
   }
@@ -27671,7 +27295,7 @@ class TextBold extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1730456516, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -27691,17 +27315,16 @@ class TextBold extends BaseConstructor {
   }
 }
 
-class TextItalic extends BaseConstructor {
+class TextItalic extends RichTextBase {
   static const CONSTRUCTOR_ID = 3641877916;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 3641877916;
-  var text;
+  RichTextBase text;
 
   TextItalic({required this.text});
 
   static TextItalic fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return TextItalic(text: text);
   }
@@ -27710,7 +27333,7 @@ class TextItalic extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3641877916, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -27730,17 +27353,16 @@ class TextItalic extends BaseConstructor {
   }
 }
 
-class TextUnderline extends BaseConstructor {
+class TextUnderline extends RichTextBase {
   static const CONSTRUCTOR_ID = 3240501956;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 3240501956;
-  var text;
+  RichTextBase text;
 
   TextUnderline({required this.text});
 
   static TextUnderline fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return TextUnderline(text: text);
   }
@@ -27749,7 +27371,7 @@ class TextUnderline extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3240501956, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -27769,17 +27391,16 @@ class TextUnderline extends BaseConstructor {
   }
 }
 
-class TextStrike extends BaseConstructor {
+class TextStrike extends RichTextBase {
   static const CONSTRUCTOR_ID = 2616769429;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 2616769429;
-  var text;
+  RichTextBase text;
 
   TextStrike({required this.text});
 
   static TextStrike fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return TextStrike(text: text);
   }
@@ -27788,7 +27409,7 @@ class TextStrike extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2616769429, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -27808,17 +27429,16 @@ class TextStrike extends BaseConstructor {
   }
 }
 
-class TextFixed extends BaseConstructor {
+class TextFixed extends RichTextBase {
   static const CONSTRUCTOR_ID = 1816074681;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 1816074681;
-  var text;
+  RichTextBase text;
 
   TextFixed({required this.text});
 
   static TextFixed fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return TextFixed(text: text);
   }
@@ -27827,7 +27447,7 @@ class TextFixed extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1816074681, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -27847,19 +27467,18 @@ class TextFixed extends BaseConstructor {
   }
 }
 
-class TextUrl extends BaseConstructor {
+class TextUrl extends RichTextBase {
   static const CONSTRUCTOR_ID = 1009288385;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 1009288385;
-  var text;
+  RichTextBase text;
   String url;
   BigInt webpageId;
 
   TextUrl({required this.text, required this.url, required this.webpageId});
 
   static TextUrl fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     var url = reader.tgReadString();
     var webpageId = reader.readLong();
@@ -27870,7 +27489,7 @@ class TextUrl extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1009288385, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
       serializeBytes(this.url),
       readBufferFromBigInt(this.webpageId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -27892,18 +27511,17 @@ class TextUrl extends BaseConstructor {
   }
 }
 
-class TextEmail extends BaseConstructor {
+class TextEmail extends RichTextBase {
   static const CONSTRUCTOR_ID = 3730443734;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 3730443734;
-  var text;
+  RichTextBase text;
   String email;
 
   TextEmail({required this.text, required this.email});
 
   static TextEmail fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     var email = reader.tgReadString();
     return TextEmail(text: text, email: email);
@@ -27913,7 +27531,7 @@ class TextEmail extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3730443734, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
       serializeBytes(this.email),
     ].expand((element) => element).toList();
   }
@@ -27934,12 +27552,12 @@ class TextEmail extends BaseConstructor {
   }
 }
 
-class TextConcat extends BaseConstructor {
+class TextConcat extends RichTextBase {
   static const CONSTRUCTOR_ID = 2120376535;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 2120376535;
-  List<dynamic> texts;
+  List<RichTextBase> texts;
 
   TextConcat({required this.texts});
 
@@ -27947,7 +27565,7 @@ class TextConcat extends BaseConstructor {
     var len;
     var _vectortexts = reader.readInt();
     if (_vectortexts != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> texts = [];
+    List<RichTextBase> texts = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       texts.add(reader.tgReadObject());
@@ -27960,10 +27578,9 @@ class TextConcat extends BaseConstructor {
     return [
       readBufferFromBigInt(2120376535, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.texts!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.texts.length, 4, little: true, signed: true),
       this
-          .texts!
-          .map((x) => (x.getBytes() as List<int>))
+          .texts.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -27984,17 +27601,16 @@ class TextConcat extends BaseConstructor {
   }
 }
 
-class TextSubscript extends BaseConstructor {
+class TextSubscript extends RichTextBase {
   static const CONSTRUCTOR_ID = 3983181060;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 3983181060;
-  var text;
+  RichTextBase text;
 
   TextSubscript({required this.text});
 
   static TextSubscript fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return TextSubscript(text: text);
   }
@@ -28003,7 +27619,7 @@ class TextSubscript extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3983181060, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28023,17 +27639,16 @@ class TextSubscript extends BaseConstructor {
   }
 }
 
-class TextSuperscript extends BaseConstructor {
+class TextSuperscript extends RichTextBase {
   static const CONSTRUCTOR_ID = 3355139585;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 3355139585;
-  var text;
+  RichTextBase text;
 
   TextSuperscript({required this.text});
 
   static TextSuperscript fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return TextSuperscript(text: text);
   }
@@ -28042,7 +27657,7 @@ class TextSuperscript extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3355139585, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28062,17 +27677,16 @@ class TextSuperscript extends BaseConstructor {
   }
 }
 
-class TextMarked extends BaseConstructor {
+class TextMarked extends RichTextBase {
   static const CONSTRUCTOR_ID = 55281185;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 55281185;
-  var text;
+  RichTextBase text;
 
   TextMarked({required this.text});
 
   static TextMarked fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return TextMarked(text: text);
   }
@@ -28081,7 +27695,7 @@ class TextMarked extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(55281185, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28101,18 +27715,17 @@ class TextMarked extends BaseConstructor {
   }
 }
 
-class TextPhone extends BaseConstructor {
+class TextPhone extends RichTextBase {
   static const CONSTRUCTOR_ID = 483104362;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 483104362;
-  var text;
+  RichTextBase text;
   String phone;
 
   TextPhone({required this.text, required this.phone});
 
   static TextPhone fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     var phone = reader.tgReadString();
     return TextPhone(text: text, phone: phone);
@@ -28122,7 +27735,7 @@ class TextPhone extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(483104362, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
       serializeBytes(this.phone),
     ].expand((element) => element).toList();
   }
@@ -28143,7 +27756,7 @@ class TextPhone extends BaseConstructor {
   }
 }
 
-class TextImage extends BaseConstructor {
+class TextImage extends RichTextBase {
   static const CONSTRUCTOR_ID = 136105807;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
@@ -28155,7 +27768,6 @@ class TextImage extends BaseConstructor {
   TextImage({required this.documentId, required this.w, required this.h});
 
   static TextImage fromReader(BinaryReader reader) {
-    var len;
     var documentId = reader.readLong();
     var w = reader.readInt();
     var h = reader.readInt();
@@ -28188,18 +27800,17 @@ class TextImage extends BaseConstructor {
   }
 }
 
-class TextAnchor extends BaseConstructor {
+class TextAnchor extends RichTextBase {
   static const CONSTRUCTOR_ID = 894777186;
   static const SUBCLASS_OF_ID = 4056986745;
   final classType = "constructor";
   final ID = 894777186;
-  var text;
+  RichTextBase text;
   String name;
 
   TextAnchor({required this.text, required this.name});
 
   static TextAnchor fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     var name = reader.tgReadString();
     return TextAnchor(text: text, name: name);
@@ -28209,7 +27820,7 @@ class TextAnchor extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(894777186, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
       serializeBytes(this.name),
     ].expand((element) => element).toList();
   }
@@ -28230,7 +27841,9 @@ class TextAnchor extends BaseConstructor {
   }
 }
 
-class PageBlockUnsupported extends BaseConstructor {
+abstract class PageBlockBase extends BaseConstructor {}
+
+class PageBlockUnsupported extends PageBlockBase {
   static const CONSTRUCTOR_ID = 324435594;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
@@ -28239,7 +27852,6 @@ class PageBlockUnsupported extends BaseConstructor {
   PageBlockUnsupported();
 
   static PageBlockUnsupported fromReader(BinaryReader reader) {
-    var len;
     return PageBlockUnsupported();
   }
 
@@ -28266,17 +27878,16 @@ class PageBlockUnsupported extends BaseConstructor {
   }
 }
 
-class PageBlockTitle extends BaseConstructor {
+class PageBlockTitle extends PageBlockBase {
   static const CONSTRUCTOR_ID = 1890305021;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 1890305021;
-  var text;
+  RichTextBase text;
 
   PageBlockTitle({required this.text});
 
   static PageBlockTitle fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return PageBlockTitle(text: text);
   }
@@ -28285,7 +27896,7 @@ class PageBlockTitle extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1890305021, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28305,17 +27916,16 @@ class PageBlockTitle extends BaseConstructor {
   }
 }
 
-class PageBlockSubtitle extends BaseConstructor {
+class PageBlockSubtitle extends PageBlockBase {
   static const CONSTRUCTOR_ID = 2415565343;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 2415565343;
-  var text;
+  RichTextBase text;
 
   PageBlockSubtitle({required this.text});
 
   static PageBlockSubtitle fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return PageBlockSubtitle(text: text);
   }
@@ -28324,7 +27934,7 @@ class PageBlockSubtitle extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2415565343, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28344,18 +27954,17 @@ class PageBlockSubtitle extends BaseConstructor {
   }
 }
 
-class PageBlockAuthorDate extends BaseConstructor {
+class PageBlockAuthorDate extends PageBlockBase {
   static const CONSTRUCTOR_ID = 3132089824;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 3132089824;
-  var author;
+  RichTextBase author;
   int publishedDate;
 
   PageBlockAuthorDate({required this.author, required this.publishedDate});
 
   static PageBlockAuthorDate fromReader(BinaryReader reader) {
-    var len;
     var author = reader.tgReadObject();
     var publishedDate = reader.readInt();
     return PageBlockAuthorDate(author: author, publishedDate: publishedDate);
@@ -28365,7 +27974,7 @@ class PageBlockAuthorDate extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3132089824, 4),
-      (this.author.getBytes() as List<int>),
+      (this.author.getBytes()),
       readBufferFromBigInt(this.publishedDate, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -28386,17 +27995,16 @@ class PageBlockAuthorDate extends BaseConstructor {
   }
 }
 
-class PageBlockHeader extends BaseConstructor {
+class PageBlockHeader extends PageBlockBase {
   static const CONSTRUCTOR_ID = 3218105580;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 3218105580;
-  var text;
+  RichTextBase text;
 
   PageBlockHeader({required this.text});
 
   static PageBlockHeader fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return PageBlockHeader(text: text);
   }
@@ -28405,7 +28013,7 @@ class PageBlockHeader extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3218105580, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28425,17 +28033,16 @@ class PageBlockHeader extends BaseConstructor {
   }
 }
 
-class PageBlockSubheader extends BaseConstructor {
+class PageBlockSubheader extends PageBlockBase {
   static const CONSTRUCTOR_ID = 4046173921;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 4046173921;
-  var text;
+  RichTextBase text;
 
   PageBlockSubheader({required this.text});
 
   static PageBlockSubheader fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return PageBlockSubheader(text: text);
   }
@@ -28444,7 +28051,7 @@ class PageBlockSubheader extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4046173921, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28464,17 +28071,16 @@ class PageBlockSubheader extends BaseConstructor {
   }
 }
 
-class PageBlockParagraph extends BaseConstructor {
+class PageBlockParagraph extends PageBlockBase {
   static const CONSTRUCTOR_ID = 1182402406;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 1182402406;
-  var text;
+  RichTextBase text;
 
   PageBlockParagraph({required this.text});
 
   static PageBlockParagraph fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return PageBlockParagraph(text: text);
   }
@@ -28483,7 +28089,7 @@ class PageBlockParagraph extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1182402406, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28503,18 +28109,17 @@ class PageBlockParagraph extends BaseConstructor {
   }
 }
 
-class PageBlockPreformatted extends BaseConstructor {
+class PageBlockPreformatted extends PageBlockBase {
   static const CONSTRUCTOR_ID = 3228621118;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 3228621118;
-  var text;
+  RichTextBase text;
   String language;
 
   PageBlockPreformatted({required this.text, required this.language});
 
   static PageBlockPreformatted fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     var language = reader.tgReadString();
     return PageBlockPreformatted(text: text, language: language);
@@ -28524,7 +28129,7 @@ class PageBlockPreformatted extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3228621118, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
       serializeBytes(this.language),
     ].expand((element) => element).toList();
   }
@@ -28545,17 +28150,16 @@ class PageBlockPreformatted extends BaseConstructor {
   }
 }
 
-class PageBlockFooter extends BaseConstructor {
+class PageBlockFooter extends PageBlockBase {
   static const CONSTRUCTOR_ID = 1216809369;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 1216809369;
-  var text;
+  RichTextBase text;
 
   PageBlockFooter({required this.text});
 
   static PageBlockFooter fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return PageBlockFooter(text: text);
   }
@@ -28564,7 +28168,7 @@ class PageBlockFooter extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1216809369, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28584,7 +28188,7 @@ class PageBlockFooter extends BaseConstructor {
   }
 }
 
-class PageBlockDivider extends BaseConstructor {
+class PageBlockDivider extends PageBlockBase {
   static const CONSTRUCTOR_ID = 3676352904;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
@@ -28593,7 +28197,6 @@ class PageBlockDivider extends BaseConstructor {
   PageBlockDivider();
 
   static PageBlockDivider fromReader(BinaryReader reader) {
-    var len;
     return PageBlockDivider();
   }
 
@@ -28620,7 +28223,7 @@ class PageBlockDivider extends BaseConstructor {
   }
 }
 
-class PageBlockAnchor extends BaseConstructor {
+class PageBlockAnchor extends PageBlockBase {
   static const CONSTRUCTOR_ID = 3456972720;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
@@ -28630,7 +28233,6 @@ class PageBlockAnchor extends BaseConstructor {
   PageBlockAnchor({required this.name});
 
   static PageBlockAnchor fromReader(BinaryReader reader) {
-    var len;
     var name = reader.tgReadString();
     return PageBlockAnchor(name: name);
   }
@@ -28659,12 +28261,12 @@ class PageBlockAnchor extends BaseConstructor {
   }
 }
 
-class PageBlockList extends BaseConstructor {
+class PageBlockList extends PageBlockBase {
   static const CONSTRUCTOR_ID = 3840442385;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 3840442385;
-  List<dynamic> items;
+  List<PageListItemBase> items;
 
   PageBlockList({required this.items});
 
@@ -28672,7 +28274,7 @@ class PageBlockList extends BaseConstructor {
     var len;
     var _vectoritems = reader.readInt();
     if (_vectoritems != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> items = [];
+    List<PageListItemBase> items = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       items.add(reader.tgReadObject());
@@ -28685,10 +28287,9 @@ class PageBlockList extends BaseConstructor {
     return [
       readBufferFromBigInt(3840442385, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.items!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.items.length, 4, little: true, signed: true),
       this
-          .items!
-          .map((x) => (x.getBytes() as List<int>))
+          .items.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -28709,18 +28310,17 @@ class PageBlockList extends BaseConstructor {
   }
 }
 
-class PageBlockBlockquote extends BaseConstructor {
+class PageBlockBlockquote extends PageBlockBase {
   static const CONSTRUCTOR_ID = 641563686;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 641563686;
-  var text;
-  var caption;
+  RichTextBase text;
+  RichTextBase caption;
 
   PageBlockBlockquote({required this.text, required this.caption});
 
   static PageBlockBlockquote fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     var caption = reader.tgReadObject();
     return PageBlockBlockquote(text: text, caption: caption);
@@ -28730,8 +28330,8 @@ class PageBlockBlockquote extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(641563686, 4),
-      (this.text.getBytes() as List<int>),
-      (this.caption.getBytes() as List<int>),
+      (this.text.getBytes()),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28751,18 +28351,17 @@ class PageBlockBlockquote extends BaseConstructor {
   }
 }
 
-class PageBlockPullquote extends BaseConstructor {
+class PageBlockPullquote extends PageBlockBase {
   static const CONSTRUCTOR_ID = 1329878739;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 1329878739;
-  var text;
-  var caption;
+  RichTextBase text;
+  RichTextBase caption;
 
   PageBlockPullquote({required this.text, required this.caption});
 
   static PageBlockPullquote fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     var caption = reader.tgReadObject();
     return PageBlockPullquote(text: text, caption: caption);
@@ -28772,8 +28371,8 @@ class PageBlockPullquote extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1329878739, 4),
-      (this.text.getBytes() as List<int>),
-      (this.caption.getBytes() as List<int>),
+      (this.text.getBytes()),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28793,24 +28392,20 @@ class PageBlockPullquote extends BaseConstructor {
   }
 }
 
-class PageBlockPhoto extends BaseConstructor {
+class PageBlockPhoto extends PageBlockBase {
   static const CONSTRUCTOR_ID = 391759200;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 391759200;
   BigInt photoId;
-  var caption;
+  PageCaption caption;
   String? url;
   BigInt? webpageId;
 
   PageBlockPhoto(
-      {required this.photoId,
-      required this.caption,
-      required this.url,
-      required this.webpageId});
+      {required this.photoId, required this.caption, this.url, this.webpageId});
 
   static PageBlockPhoto fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var photoId = reader.readLong();
     var caption = reader.tgReadObject();
@@ -28836,7 +28431,7 @@ class PageBlockPhoto extends BaseConstructor {
       readBufferFromBigInt(391759200, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.photoId, 8, little: true, signed: true),
-      (this.caption.getBytes() as List<int>),
+      (this.caption.getBytes()),
       (this.url == null || this.url == false)
           ? List<int>.empty()
           : [serializeBytes(this.url)].expand((element) => element).toList(),
@@ -28865,7 +28460,7 @@ class PageBlockPhoto extends BaseConstructor {
   }
 }
 
-class PageBlockVideo extends BaseConstructor {
+class PageBlockVideo extends PageBlockBase {
   static const CONSTRUCTOR_ID = 2089805750;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
@@ -28873,16 +28468,12 @@ class PageBlockVideo extends BaseConstructor {
   bool? autoplay;
   bool? loop;
   BigInt videoId;
-  var caption;
+  PageCaption caption;
 
   PageBlockVideo(
-      {required this.autoplay,
-      required this.loop,
-      required this.videoId,
-      required this.caption});
+      {this.autoplay, this.loop, required this.videoId, required this.caption});
 
   static PageBlockVideo fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final autoplay = (flags & 1) == 1;
     final loop = (flags & 2) == 2;
@@ -28898,7 +28489,7 @@ class PageBlockVideo extends BaseConstructor {
       readBufferFromBigInt(2089805750, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(this.videoId, 8, little: true, signed: true),
-      (this.caption.getBytes() as List<int>),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28918,17 +28509,16 @@ class PageBlockVideo extends BaseConstructor {
   }
 }
 
-class PageBlockCover extends BaseConstructor {
+class PageBlockCover extends PageBlockBase {
   static const CONSTRUCTOR_ID = 972174080;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 972174080;
-  var cover;
+  PageBlockBase cover;
 
   PageBlockCover({required this.cover});
 
   static PageBlockCover fromReader(BinaryReader reader) {
-    var len;
     var cover = reader.tgReadObject();
     return PageBlockCover(cover: cover);
   }
@@ -28937,7 +28527,7 @@ class PageBlockCover extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(972174080, 4),
-      (this.cover.getBytes() as List<int>),
+      (this.cover.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -28957,7 +28547,7 @@ class PageBlockCover extends BaseConstructor {
   }
 }
 
-class PageBlockEmbed extends BaseConstructor {
+class PageBlockEmbed extends PageBlockBase {
   static const CONSTRUCTOR_ID = 2826014149;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
@@ -28969,20 +28559,19 @@ class PageBlockEmbed extends BaseConstructor {
   BigInt? posterPhotoId;
   int? w;
   int? h;
-  var caption;
+  PageCaption caption;
 
   PageBlockEmbed(
-      {required this.fullWidth,
-      required this.allowScrolling,
-      required this.url,
-      required this.html,
-      required this.posterPhotoId,
-      required this.w,
-      required this.h,
+      {this.fullWidth,
+      this.allowScrolling,
+      this.url,
+      this.html,
+      this.posterPhotoId,
+      this.w,
+      this.h,
       required this.caption});
 
   static PageBlockEmbed fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final fullWidth = (flags & 1) == 1;
     final allowScrolling = (flags & 8) == 8;
@@ -29055,7 +28644,7 @@ class PageBlockEmbed extends BaseConstructor {
           : [readBufferFromBigInt(this.h, 4, little: true, signed: true)]
               .expand((element) => element)
               .toList(),
-      (this.caption.getBytes() as List<int>),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29075,7 +28664,7 @@ class PageBlockEmbed extends BaseConstructor {
   }
 }
 
-class PageBlockEmbedPost extends BaseConstructor {
+class PageBlockEmbedPost extends PageBlockBase {
   static const CONSTRUCTOR_ID = 4065961995;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
@@ -29085,8 +28674,8 @@ class PageBlockEmbedPost extends BaseConstructor {
   BigInt authorPhotoId;
   String author;
   int date;
-  List<dynamic> blocks;
-  var caption;
+  List<PageBlockBase> blocks;
+  PageCaption caption;
 
   PageBlockEmbedPost(
       {required this.url,
@@ -29106,7 +28695,7 @@ class PageBlockEmbedPost extends BaseConstructor {
     var date = reader.readInt();
     var _vectorblocks = reader.readInt();
     if (_vectorblocks != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> blocks = [];
+    List<PageBlockBase> blocks = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       blocks.add(reader.tgReadObject());
@@ -29132,12 +28721,11 @@ class PageBlockEmbedPost extends BaseConstructor {
       serializeBytes(this.author),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.blocks!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.blocks.length, 4, little: true, signed: true),
       this
-          .blocks!
-          .map((x) => (x.getBytes() as List<int>))
+          .blocks.map((x) => x.getBytes())
           .expand((element) => element),
-      (this.caption.getBytes() as List<int>),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29157,13 +28745,13 @@ class PageBlockEmbedPost extends BaseConstructor {
   }
 }
 
-class PageBlockCollage extends BaseConstructor {
+class PageBlockCollage extends PageBlockBase {
   static const CONSTRUCTOR_ID = 1705048653;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 1705048653;
-  List<dynamic> items;
-  var caption;
+  List<PageBlockBase> items;
+  PageCaption caption;
 
   PageBlockCollage({required this.items, required this.caption});
 
@@ -29171,7 +28759,7 @@ class PageBlockCollage extends BaseConstructor {
     var len;
     var _vectoritems = reader.readInt();
     if (_vectoritems != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> items = [];
+    List<PageBlockBase> items = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       items.add(reader.tgReadObject());
@@ -29185,12 +28773,11 @@ class PageBlockCollage extends BaseConstructor {
     return [
       readBufferFromBigInt(1705048653, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.items!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.items.length, 4, little: true, signed: true),
       this
-          .items!
-          .map((x) => (x.getBytes() as List<int>))
+          .items.map((x) => x.getBytes())
           .expand((element) => element),
-      (this.caption.getBytes() as List<int>),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29210,13 +28797,13 @@ class PageBlockCollage extends BaseConstructor {
   }
 }
 
-class PageBlockSlideshow extends BaseConstructor {
+class PageBlockSlideshow extends PageBlockBase {
   static const CONSTRUCTOR_ID = 52401552;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 52401552;
-  List<dynamic> items;
-  var caption;
+  List<PageBlockBase> items;
+  PageCaption caption;
 
   PageBlockSlideshow({required this.items, required this.caption});
 
@@ -29224,7 +28811,7 @@ class PageBlockSlideshow extends BaseConstructor {
     var len;
     var _vectoritems = reader.readInt();
     if (_vectoritems != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> items = [];
+    List<PageBlockBase> items = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       items.add(reader.tgReadObject());
@@ -29238,12 +28825,11 @@ class PageBlockSlideshow extends BaseConstructor {
     return [
       readBufferFromBigInt(52401552, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.items!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.items.length, 4, little: true, signed: true),
       this
-          .items!
-          .map((x) => (x.getBytes() as List<int>))
+          .items.map((x) => x.getBytes())
           .expand((element) => element),
-      (this.caption.getBytes() as List<int>),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29263,17 +28849,16 @@ class PageBlockSlideshow extends BaseConstructor {
   }
 }
 
-class PageBlockChannel extends BaseConstructor {
+class PageBlockChannel extends PageBlockBase {
   static const CONSTRUCTOR_ID = 4011282869;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 4011282869;
-  var channel;
+  ChatBase channel;
 
   PageBlockChannel({required this.channel});
 
   static PageBlockChannel fromReader(BinaryReader reader) {
-    var len;
     var channel = reader.tgReadObject();
     return PageBlockChannel(channel: channel);
   }
@@ -29282,7 +28867,7 @@ class PageBlockChannel extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4011282869, 4),
-      (this.channel.getBytes() as List<int>),
+      (this.channel.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29302,18 +28887,17 @@ class PageBlockChannel extends BaseConstructor {
   }
 }
 
-class PageBlockAudio extends BaseConstructor {
+class PageBlockAudio extends PageBlockBase {
   static const CONSTRUCTOR_ID = 2151899626;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 2151899626;
   BigInt audioId;
-  var caption;
+  PageCaption caption;
 
   PageBlockAudio({required this.audioId, required this.caption});
 
   static PageBlockAudio fromReader(BinaryReader reader) {
-    var len;
     var audioId = reader.readLong();
     var caption = reader.tgReadObject();
     return PageBlockAudio(audioId: audioId, caption: caption);
@@ -29324,7 +28908,7 @@ class PageBlockAudio extends BaseConstructor {
     return [
       readBufferFromBigInt(2151899626, 4),
       readBufferFromBigInt(this.audioId, 8, little: true, signed: true),
-      (this.caption.getBytes() as List<int>),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29344,17 +28928,16 @@ class PageBlockAudio extends BaseConstructor {
   }
 }
 
-class PageBlockKicker extends BaseConstructor {
+class PageBlockKicker extends PageBlockBase {
   static const CONSTRUCTOR_ID = 504660880;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 504660880;
-  var text;
+  RichTextBase text;
 
   PageBlockKicker({required this.text});
 
   static PageBlockKicker fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return PageBlockKicker(text: text);
   }
@@ -29363,7 +28946,7 @@ class PageBlockKicker extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(504660880, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29383,21 +28966,18 @@ class PageBlockKicker extends BaseConstructor {
   }
 }
 
-class PageBlockTable extends BaseConstructor {
+class PageBlockTable extends PageBlockBase {
   static const CONSTRUCTOR_ID = 3209554562;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 3209554562;
   bool? bordered;
   bool? striped;
-  var title;
-  List<dynamic> rows;
+  RichTextBase title;
+  List<PageTableRow> rows;
 
   PageBlockTable(
-      {required this.bordered,
-      required this.striped,
-      required this.title,
-      required this.rows});
+      {this.bordered, this.striped, required this.title, required this.rows});
 
   static PageBlockTable fromReader(BinaryReader reader) {
     var len;
@@ -29407,7 +28987,7 @@ class PageBlockTable extends BaseConstructor {
     var title = reader.tgReadObject();
     var _vectorrows = reader.readInt();
     if (_vectorrows != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> rows = [];
+    List<PageTableRow> rows = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       rows.add(reader.tgReadObject());
@@ -29421,12 +29001,11 @@ class PageBlockTable extends BaseConstructor {
     return [
       readBufferFromBigInt(3209554562, 4),
       [0, 0, 0, 0],
-      (this.title.getBytes() as List<int>),
+      (this.title.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.rows!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.rows.length, 4, little: true, signed: true),
       this
-          .rows!
-          .map((x) => (x.getBytes() as List<int>))
+          .rows.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -29447,12 +29026,12 @@ class PageBlockTable extends BaseConstructor {
   }
 }
 
-class PageBlockOrderedList extends BaseConstructor {
+class PageBlockOrderedList extends PageBlockBase {
   static const CONSTRUCTOR_ID = 2592793057;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 2592793057;
-  List<dynamic> items;
+  List<PageListOrderedItemBase> items;
 
   PageBlockOrderedList({required this.items});
 
@@ -29460,7 +29039,7 @@ class PageBlockOrderedList extends BaseConstructor {
     var len;
     var _vectoritems = reader.readInt();
     if (_vectoritems != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> items = [];
+    List<PageListOrderedItemBase> items = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       items.add(reader.tgReadObject());
@@ -29473,10 +29052,9 @@ class PageBlockOrderedList extends BaseConstructor {
     return [
       readBufferFromBigInt(2592793057, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.items!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.items.length, 4, little: true, signed: true),
       this
-          .items!
-          .map((x) => (x.getBytes() as List<int>))
+          .items.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -29497,17 +29075,16 @@ class PageBlockOrderedList extends BaseConstructor {
   }
 }
 
-class PageBlockDetails extends BaseConstructor {
+class PageBlockDetails extends PageBlockBase {
   static const CONSTRUCTOR_ID = 1987480557;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 1987480557;
   bool? open;
-  List<dynamic> blocks;
-  var title;
+  List<PageBlockBase> blocks;
+  RichTextBase title;
 
-  PageBlockDetails(
-      {required this.open, required this.blocks, required this.title});
+  PageBlockDetails({this.open, required this.blocks, required this.title});
 
   static PageBlockDetails fromReader(BinaryReader reader) {
     var len;
@@ -29515,7 +29092,7 @@ class PageBlockDetails extends BaseConstructor {
     final open = (flags & 1) == 1;
     var _vectorblocks = reader.readInt();
     if (_vectorblocks != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> blocks = [];
+    List<PageBlockBase> blocks = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       blocks.add(reader.tgReadObject());
@@ -29530,12 +29107,11 @@ class PageBlockDetails extends BaseConstructor {
       readBufferFromBigInt(1987480557, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.blocks!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.blocks.length, 4, little: true, signed: true),
       this
-          .blocks!
-          .map((x) => (x.getBytes() as List<int>))
+          .blocks.map((x) => x.getBytes())
           .expand((element) => element),
-      (this.title.getBytes() as List<int>),
+      (this.title.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29555,13 +29131,13 @@ class PageBlockDetails extends BaseConstructor {
   }
 }
 
-class PageBlockRelatedArticles extends BaseConstructor {
+class PageBlockRelatedArticles extends PageBlockBase {
   static const CONSTRUCTOR_ID = 370236054;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 370236054;
-  var title;
-  List<dynamic> articles;
+  RichTextBase title;
+  List<PageRelatedArticle> articles;
 
   PageBlockRelatedArticles({required this.title, required this.articles});
 
@@ -29570,7 +29146,7 @@ class PageBlockRelatedArticles extends BaseConstructor {
     var title = reader.tgReadObject();
     var _vectorarticles = reader.readInt();
     if (_vectorarticles != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> articles = [];
+    List<PageRelatedArticle> articles = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       articles.add(reader.tgReadObject());
@@ -29582,13 +29158,12 @@ class PageBlockRelatedArticles extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(370236054, 4),
-      (this.title.getBytes() as List<int>),
+      (this.title.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.articles!.length, 4,
+      readBufferFromBigInt(this.articles.length, 4,
           little: true, signed: true),
       this
-          .articles!
-          .map((x) => (x.getBytes() as List<int>))
+          .articles.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -29609,16 +29184,16 @@ class PageBlockRelatedArticles extends BaseConstructor {
   }
 }
 
-class PageBlockMap extends BaseConstructor {
+class PageBlockMap extends PageBlockBase {
   static const CONSTRUCTOR_ID = 2756656886;
   static const SUBCLASS_OF_ID = 449467972;
   final classType = "constructor";
   final ID = 2756656886;
-  var geo;
+  GeoPointBase geo;
   int zoom;
   int w;
   int h;
-  var caption;
+  PageCaption caption;
 
   PageBlockMap(
       {required this.geo,
@@ -29628,7 +29203,6 @@ class PageBlockMap extends BaseConstructor {
       required this.caption});
 
   static PageBlockMap fromReader(BinaryReader reader) {
-    var len;
     var geo = reader.tgReadObject();
     var zoom = reader.readInt();
     var w = reader.readInt();
@@ -29641,11 +29215,11 @@ class PageBlockMap extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2756656886, 4),
-      (this.geo.getBytes() as List<int>),
+      (this.geo.getBytes()),
       readBufferFromBigInt(this.zoom, 4, little: true, signed: true),
       readBufferFromBigInt(this.w, 4, little: true, signed: true),
       readBufferFromBigInt(this.h, 4, little: true, signed: true),
-      (this.caption.getBytes() as List<int>),
+      (this.caption.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -29665,7 +29239,9 @@ class PageBlockMap extends BaseConstructor {
   }
 }
 
-class PhoneCallDiscardReasonMissed extends BaseConstructor {
+abstract class PhoneCallDiscardReasonBase extends BaseConstructor {}
+
+class PhoneCallDiscardReasonMissed extends PhoneCallDiscardReasonBase {
   static const CONSTRUCTOR_ID = 2246320897;
   static const SUBCLASS_OF_ID = 3634081085;
   final classType = "constructor";
@@ -29674,7 +29250,6 @@ class PhoneCallDiscardReasonMissed extends BaseConstructor {
   PhoneCallDiscardReasonMissed();
 
   static PhoneCallDiscardReasonMissed fromReader(BinaryReader reader) {
-    var len;
     return PhoneCallDiscardReasonMissed();
   }
 
@@ -29701,7 +29276,7 @@ class PhoneCallDiscardReasonMissed extends BaseConstructor {
   }
 }
 
-class PhoneCallDiscardReasonDisconnect extends BaseConstructor {
+class PhoneCallDiscardReasonDisconnect extends PhoneCallDiscardReasonBase {
   static const CONSTRUCTOR_ID = 3767910816;
   static const SUBCLASS_OF_ID = 3634081085;
   final classType = "constructor";
@@ -29710,7 +29285,6 @@ class PhoneCallDiscardReasonDisconnect extends BaseConstructor {
   PhoneCallDiscardReasonDisconnect();
 
   static PhoneCallDiscardReasonDisconnect fromReader(BinaryReader reader) {
-    var len;
     return PhoneCallDiscardReasonDisconnect();
   }
 
@@ -29737,7 +29311,7 @@ class PhoneCallDiscardReasonDisconnect extends BaseConstructor {
   }
 }
 
-class PhoneCallDiscardReasonHangup extends BaseConstructor {
+class PhoneCallDiscardReasonHangup extends PhoneCallDiscardReasonBase {
   static const CONSTRUCTOR_ID = 1471006352;
   static const SUBCLASS_OF_ID = 3634081085;
   final classType = "constructor";
@@ -29746,7 +29320,6 @@ class PhoneCallDiscardReasonHangup extends BaseConstructor {
   PhoneCallDiscardReasonHangup();
 
   static PhoneCallDiscardReasonHangup fromReader(BinaryReader reader) {
-    var len;
     return PhoneCallDiscardReasonHangup();
   }
 
@@ -29773,7 +29346,7 @@ class PhoneCallDiscardReasonHangup extends BaseConstructor {
   }
 }
 
-class PhoneCallDiscardReasonBusy extends BaseConstructor {
+class PhoneCallDiscardReasonBusy extends PhoneCallDiscardReasonBase {
   static const CONSTRUCTOR_ID = 4210550985;
   static const SUBCLASS_OF_ID = 3634081085;
   final classType = "constructor";
@@ -29782,7 +29355,6 @@ class PhoneCallDiscardReasonBusy extends BaseConstructor {
   PhoneCallDiscardReasonBusy();
 
   static PhoneCallDiscardReasonBusy fromReader(BinaryReader reader) {
-    var len;
     return PhoneCallDiscardReasonBusy();
   }
 
@@ -29819,7 +29391,6 @@ class DataJSON extends BaseConstructor {
   DataJSON({required this.data});
 
   static DataJSON fromReader(BinaryReader reader) {
-    var len;
     var data = reader.tgReadString();
     return DataJSON(data: data);
   }
@@ -29859,7 +29430,6 @@ class LabeledPrice extends BaseConstructor {
   LabeledPrice({required this.label, required this.amount});
 
   static LabeledPrice fromReader(BinaryReader reader) {
-    var len;
     var label = reader.tgReadString();
     var amount = reader.readLong();
     return LabeledPrice(label: label, amount: amount);
@@ -29905,26 +29475,26 @@ class Invoice extends BaseConstructor {
   bool? emailToProvider;
   bool? recurring;
   String currency;
-  List<dynamic> prices;
+  List<LabeledPrice> prices;
   BigInt? maxTipAmount;
   List<BigInt>? suggestedTipAmounts;
   String? recurringTermsUrl;
 
   Invoice(
-      {required this.test,
-      required this.nameRequested,
-      required this.phoneRequested,
-      required this.emailRequested,
-      required this.shippingAddressRequested,
-      required this.flexible,
-      required this.phoneToProvider,
-      required this.emailToProvider,
-      required this.recurring,
+      {this.test,
+      this.nameRequested,
+      this.phoneRequested,
+      this.emailRequested,
+      this.shippingAddressRequested,
+      this.flexible,
+      this.phoneToProvider,
+      this.emailToProvider,
+      this.recurring,
       required this.currency,
       required this.prices,
-      required this.maxTipAmount,
-      required this.suggestedTipAmounts,
-      required this.recurringTermsUrl});
+      this.maxTipAmount,
+      this.suggestedTipAmounts,
+      this.recurringTermsUrl});
 
   static Invoice fromReader(BinaryReader reader) {
     var len;
@@ -29941,7 +29511,7 @@ class Invoice extends BaseConstructor {
     var currency = reader.tgReadString();
     var _vectorprices = reader.readInt();
     if (_vectorprices != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> prices = [];
+    List<LabeledPrice> prices = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       prices.add(reader.tgReadObject());
@@ -29995,10 +29565,9 @@ class Invoice extends BaseConstructor {
       [0, 0, 0, 0],
       serializeBytes(this.currency),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.prices!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.prices.length, 4, little: true, signed: true),
       this
-          .prices!
-          .map((x) => (x.getBytes() as List<int>))
+          .prices.map((x) => x.getBytes())
           .expand((element) => element),
       (this.maxTipAmount == null || this.maxTipAmount == false)
           ? List<int>.empty()
@@ -30053,7 +29622,6 @@ class PaymentCharge extends BaseConstructor {
   PaymentCharge({required this.id, required this.providerChargeId});
 
   static PaymentCharge fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadString();
     var providerChargeId = reader.tgReadString();
     return PaymentCharge(id: id, providerChargeId: providerChargeId);
@@ -30105,7 +29673,6 @@ class PostAddress extends BaseConstructor {
       required this.postCode});
 
   static PostAddress fromReader(BinaryReader reader) {
-    var len;
     var streetLine1 = reader.tgReadString();
     var streetLine2 = reader.tgReadString();
     var city = reader.tgReadString();
@@ -30158,16 +29725,12 @@ class PaymentRequestedInfo extends BaseConstructor {
   String? name;
   String? phone;
   String? email;
-  var shippingAddress;
+  PostAddress? shippingAddress;
 
   PaymentRequestedInfo(
-      {required this.name,
-      required this.phone,
-      required this.email,
-      required this.shippingAddress});
+      {this.name, this.phone, this.email, this.shippingAddress});
 
   static PaymentRequestedInfo fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var name;
     if ((flags & 1) == 1) {
@@ -30216,7 +29779,7 @@ class PaymentRequestedInfo extends BaseConstructor {
           : [serializeBytes(this.email)].expand((element) => element).toList(),
       (this.shippingAddress == null || this.shippingAddress == false)
           ? List<int>.empty()
-          : [(this.shippingAddress.getBytes() as List<int>)]
+          : [(this.shippingAddress!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -30238,7 +29801,9 @@ class PaymentRequestedInfo extends BaseConstructor {
   }
 }
 
-class PaymentSavedCredentialsCard extends BaseConstructor {
+abstract class PaymentSavedCredentialsBase extends BaseConstructor {}
+
+class PaymentSavedCredentialsCard extends PaymentSavedCredentialsBase {
   static const CONSTRUCTOR_ID = 3452074527;
   static const SUBCLASS_OF_ID = 3009576675;
   final classType = "constructor";
@@ -30249,7 +29814,6 @@ class PaymentSavedCredentialsCard extends BaseConstructor {
   PaymentSavedCredentialsCard({required this.id, required this.title});
 
   static PaymentSavedCredentialsCard fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadString();
     var title = reader.tgReadString();
     return PaymentSavedCredentialsCard(id: id, title: title);
@@ -30280,7 +29844,9 @@ class PaymentSavedCredentialsCard extends BaseConstructor {
   }
 }
 
-class WebDocument extends BaseConstructor {
+abstract class WebDocumentBase extends BaseConstructor {}
+
+class WebDocument extends WebDocumentBase {
   static const CONSTRUCTOR_ID = 475467473;
   static const SUBCLASS_OF_ID = 996419604;
   final classType = "constructor";
@@ -30289,7 +29855,7 @@ class WebDocument extends BaseConstructor {
   BigInt accessHash;
   int size;
   String mimeType;
-  List<dynamic> attributes;
+  List<DocumentAttributeBase> attributes;
 
   WebDocument(
       {required this.url,
@@ -30306,7 +29872,7 @@ class WebDocument extends BaseConstructor {
     var mimeType = reader.tgReadString();
     var _vectorattributes = reader.readInt();
     if (_vectorattributes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> attributes = [];
+    List<DocumentAttributeBase> attributes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       attributes.add(reader.tgReadObject());
@@ -30328,11 +29894,10 @@ class WebDocument extends BaseConstructor {
       readBufferFromBigInt(this.size, 4, little: true, signed: true),
       serializeBytes(this.mimeType),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.attributes!.length, 4,
+      readBufferFromBigInt(this.attributes.length, 4,
           little: true, signed: true),
       this
-          .attributes!
-          .map((x) => (x.getBytes() as List<int>))
+          .attributes.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -30353,7 +29918,7 @@ class WebDocument extends BaseConstructor {
   }
 }
 
-class WebDocumentNoProxy extends BaseConstructor {
+class WebDocumentNoProxy extends WebDocumentBase {
   static const CONSTRUCTOR_ID = 4190682310;
   static const SUBCLASS_OF_ID = 996419604;
   final classType = "constructor";
@@ -30361,7 +29926,7 @@ class WebDocumentNoProxy extends BaseConstructor {
   String url;
   int size;
   String mimeType;
-  List<dynamic> attributes;
+  List<DocumentAttributeBase> attributes;
 
   WebDocumentNoProxy(
       {required this.url,
@@ -30376,7 +29941,7 @@ class WebDocumentNoProxy extends BaseConstructor {
     var mimeType = reader.tgReadString();
     var _vectorattributes = reader.readInt();
     if (_vectorattributes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> attributes = [];
+    List<DocumentAttributeBase> attributes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       attributes.add(reader.tgReadObject());
@@ -30393,11 +29958,10 @@ class WebDocumentNoProxy extends BaseConstructor {
       readBufferFromBigInt(this.size, 4, little: true, signed: true),
       serializeBytes(this.mimeType),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.attributes!.length, 4,
+      readBufferFromBigInt(this.attributes.length, 4,
           little: true, signed: true),
       this
-          .attributes!
-          .map((x) => (x.getBytes() as List<int>))
+          .attributes.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -30426,7 +29990,7 @@ class InputWebDocument extends BaseConstructor {
   String url;
   int size;
   String mimeType;
-  List<dynamic> attributes;
+  List<DocumentAttributeBase> attributes;
 
   InputWebDocument(
       {required this.url,
@@ -30441,7 +30005,7 @@ class InputWebDocument extends BaseConstructor {
     var mimeType = reader.tgReadString();
     var _vectorattributes = reader.readInt();
     if (_vectorattributes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> attributes = [];
+    List<DocumentAttributeBase> attributes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       attributes.add(reader.tgReadObject());
@@ -30458,11 +30022,10 @@ class InputWebDocument extends BaseConstructor {
       readBufferFromBigInt(this.size, 4, little: true, signed: true),
       serializeBytes(this.mimeType),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.attributes!.length, 4,
+      readBufferFromBigInt(this.attributes.length, 4,
           little: true, signed: true),
       this
-          .attributes!
-          .map((x) => (x.getBytes() as List<int>))
+          .attributes.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -30483,7 +30046,9 @@ class InputWebDocument extends BaseConstructor {
   }
 }
 
-class InputWebFileLocation extends BaseConstructor {
+abstract class InputWebFileLocationBase extends BaseConstructor {}
+
+class InputWebFileLocation extends InputWebFileLocationBase {
   static const CONSTRUCTOR_ID = 3258570374;
   static const SUBCLASS_OF_ID = 4147042521;
   final classType = "constructor";
@@ -30494,7 +30059,6 @@ class InputWebFileLocation extends BaseConstructor {
   InputWebFileLocation({required this.url, required this.accessHash});
 
   static InputWebFileLocation fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     var accessHash = reader.readLong();
     return InputWebFileLocation(url: url, accessHash: accessHash);
@@ -30525,12 +30089,12 @@ class InputWebFileLocation extends BaseConstructor {
   }
 }
 
-class InputWebFileGeoPointLocation extends BaseConstructor {
+class InputWebFileGeoPointLocation extends InputWebFileLocationBase {
   static const CONSTRUCTOR_ID = 2669814217;
   static const SUBCLASS_OF_ID = 4147042521;
   final classType = "constructor";
   final ID = 2669814217;
-  var geoPoint;
+  InputGeoPointBase geoPoint;
   BigInt accessHash;
   int w;
   int h;
@@ -30546,7 +30110,6 @@ class InputWebFileGeoPointLocation extends BaseConstructor {
       required this.scale});
 
   static InputWebFileGeoPointLocation fromReader(BinaryReader reader) {
-    var len;
     var geoPoint = reader.tgReadObject();
     var accessHash = reader.readLong();
     var w = reader.readInt();
@@ -30566,7 +30129,7 @@ class InputWebFileGeoPointLocation extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2669814217, 4),
-      (this.geoPoint.getBytes() as List<int>),
+      (this.geoPoint.getBytes()),
       readBufferFromBigInt(this.accessHash, 8, little: true, signed: true),
       readBufferFromBigInt(this.w, 4, little: true, signed: true),
       readBufferFromBigInt(this.h, 4, little: true, signed: true),
@@ -30591,7 +30154,9 @@ class InputWebFileGeoPointLocation extends BaseConstructor {
   }
 }
 
-class InputPaymentCredentialsSaved extends BaseConstructor {
+abstract class InputPaymentCredentialsBase extends BaseConstructor {}
+
+class InputPaymentCredentialsSaved extends InputPaymentCredentialsBase {
   static const CONSTRUCTOR_ID = 3238965967;
   static const SUBCLASS_OF_ID = 681157949;
   final classType = "constructor";
@@ -30602,7 +30167,6 @@ class InputPaymentCredentialsSaved extends BaseConstructor {
   InputPaymentCredentialsSaved({required this.id, required this.tmpPassword});
 
   static InputPaymentCredentialsSaved fromReader(BinaryReader reader) {
-    var len;
     var id = reader.tgReadString();
     var tmpPassword = reader.tgReadBytes();
     return InputPaymentCredentialsSaved(id: id, tmpPassword: tmpPassword);
@@ -30633,18 +30197,17 @@ class InputPaymentCredentialsSaved extends BaseConstructor {
   }
 }
 
-class InputPaymentCredentials extends BaseConstructor {
+class InputPaymentCredentials extends InputPaymentCredentialsBase {
   static const CONSTRUCTOR_ID = 873977640;
   static const SUBCLASS_OF_ID = 681157949;
   final classType = "constructor";
   final ID = 873977640;
   bool? save;
-  var data;
+  DataJSON data;
 
-  InputPaymentCredentials({required this.save, required this.data});
+  InputPaymentCredentials({this.save, required this.data});
 
   static InputPaymentCredentials fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final save = (flags & 1) == 1;
     var data = reader.tgReadObject();
@@ -30656,7 +30219,7 @@ class InputPaymentCredentials extends BaseConstructor {
     return [
       readBufferFromBigInt(873977640, 4),
       [0, 0, 0, 0],
-      (this.data.getBytes() as List<int>),
+      (this.data.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -30676,17 +30239,16 @@ class InputPaymentCredentials extends BaseConstructor {
   }
 }
 
-class InputPaymentCredentialsApplePay extends BaseConstructor {
+class InputPaymentCredentialsApplePay extends InputPaymentCredentialsBase {
   static const CONSTRUCTOR_ID = 178373535;
   static const SUBCLASS_OF_ID = 681157949;
   final classType = "constructor";
   final ID = 178373535;
-  var paymentData;
+  DataJSON paymentData;
 
   InputPaymentCredentialsApplePay({required this.paymentData});
 
   static InputPaymentCredentialsApplePay fromReader(BinaryReader reader) {
-    var len;
     var paymentData = reader.tgReadObject();
     return InputPaymentCredentialsApplePay(paymentData: paymentData);
   }
@@ -30695,7 +30257,7 @@ class InputPaymentCredentialsApplePay extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(178373535, 4),
-      (this.paymentData.getBytes() as List<int>),
+      (this.paymentData.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -30715,17 +30277,16 @@ class InputPaymentCredentialsApplePay extends BaseConstructor {
   }
 }
 
-class InputPaymentCredentialsGooglePay extends BaseConstructor {
+class InputPaymentCredentialsGooglePay extends InputPaymentCredentialsBase {
   static const CONSTRUCTOR_ID = 2328045569;
   static const SUBCLASS_OF_ID = 681157949;
   final classType = "constructor";
   final ID = 2328045569;
-  var paymentToken;
+  DataJSON paymentToken;
 
   InputPaymentCredentialsGooglePay({required this.paymentToken});
 
   static InputPaymentCredentialsGooglePay fromReader(BinaryReader reader) {
-    var len;
     var paymentToken = reader.tgReadObject();
     return InputPaymentCredentialsGooglePay(paymentToken: paymentToken);
   }
@@ -30734,7 +30295,7 @@ class InputPaymentCredentialsGooglePay extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2328045569, 4),
-      (this.paymentToken.getBytes() as List<int>),
+      (this.paymentToken.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -30761,7 +30322,7 @@ class ShippingOption extends BaseConstructor {
   final ID = 3055631583;
   String id;
   String title;
-  List<dynamic> prices;
+  List<LabeledPrice> prices;
 
   ShippingOption({required this.id, required this.title, required this.prices});
 
@@ -30771,7 +30332,7 @@ class ShippingOption extends BaseConstructor {
     var title = reader.tgReadString();
     var _vectorprices = reader.readInt();
     if (_vectorprices != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> prices = [];
+    List<LabeledPrice> prices = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       prices.add(reader.tgReadObject());
@@ -30786,10 +30347,9 @@ class ShippingOption extends BaseConstructor {
       serializeBytes(this.id),
       serializeBytes(this.title),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.prices!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.prices.length, 4, little: true, signed: true),
       this
-          .prices!
-          .map((x) => (x.getBytes() as List<int>))
+          .prices.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -30815,15 +30375,14 @@ class InputStickerSetItem extends BaseConstructor {
   static const SUBCLASS_OF_ID = 2925129845;
   final classType = "constructor";
   final ID = 4288717974;
-  var document;
+  InputDocumentBase document;
   String emoji;
-  var maskCoords;
+  MaskCoords? maskCoords;
 
   InputStickerSetItem(
-      {required this.document, required this.emoji, required this.maskCoords});
+      {required this.document, required this.emoji, this.maskCoords});
 
   static InputStickerSetItem fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var document = reader.tgReadObject();
     var emoji = reader.tgReadString();
@@ -30842,11 +30401,11 @@ class InputStickerSetItem extends BaseConstructor {
     return [
       readBufferFromBigInt(4288717974, 4),
       [0, 0, 0, 0],
-      (this.document.getBytes() as List<int>),
+      (this.document.getBytes()),
       serializeBytes(this.emoji),
       (this.maskCoords == null || this.maskCoords == false)
           ? List<int>.empty()
-          : [(this.maskCoords.getBytes() as List<int>)]
+          : [(this.maskCoords!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -30879,7 +30438,6 @@ class InputPhoneCall extends BaseConstructor {
   InputPhoneCall({required this.id, required this.accessHash});
 
   static InputPhoneCall fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputPhoneCall(id: id, accessHash: accessHash);
@@ -30910,7 +30468,9 @@ class InputPhoneCall extends BaseConstructor {
   }
 }
 
-class PhoneCallEmpty extends BaseConstructor {
+abstract class PhoneCallBase extends BaseConstructor {}
+
+class PhoneCallEmpty extends PhoneCallBase {
   static const CONSTRUCTOR_ID = 1399245077;
   static const SUBCLASS_OF_ID = 3296664529;
   final classType = "constructor";
@@ -30920,7 +30480,6 @@ class PhoneCallEmpty extends BaseConstructor {
   PhoneCallEmpty({required this.id});
 
   static PhoneCallEmpty fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     return PhoneCallEmpty(id: id);
   }
@@ -30949,7 +30508,7 @@ class PhoneCallEmpty extends BaseConstructor {
   }
 }
 
-class PhoneCallWaiting extends BaseConstructor {
+class PhoneCallWaiting extends PhoneCallBase {
   static const CONSTRUCTOR_ID = 3307368215;
   static const SUBCLASS_OF_ID = 3296664529;
   final classType = "constructor";
@@ -30960,21 +30519,20 @@ class PhoneCallWaiting extends BaseConstructor {
   int date;
   BigInt adminId;
   BigInt participantId;
-  var protocol;
+  PhoneCallProtocol protocol;
   int? receiveDate;
 
   PhoneCallWaiting(
-      {required this.video,
+      {this.video,
       required this.id,
       required this.accessHash,
       required this.date,
       required this.adminId,
       required this.participantId,
       required this.protocol,
-      required this.receiveDate});
+      this.receiveDate});
 
   static PhoneCallWaiting fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final video = (flags & 64) == 64;
     var id = reader.readLong();
@@ -31010,7 +30568,7 @@ class PhoneCallWaiting extends BaseConstructor {
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(this.adminId, 8, little: true, signed: true),
       readBufferFromBigInt(this.participantId, 8, little: true, signed: true),
-      (this.protocol.getBytes() as List<int>),
+      (this.protocol.getBytes()),
       (this.receiveDate == null || this.receiveDate == false)
           ? List<int>.empty()
           : [
@@ -31036,7 +30594,7 @@ class PhoneCallWaiting extends BaseConstructor {
   }
 }
 
-class PhoneCallRequested extends BaseConstructor {
+class PhoneCallRequested extends PhoneCallBase {
   static const CONSTRUCTOR_ID = 347139340;
   static const SUBCLASS_OF_ID = 3296664529;
   final classType = "constructor";
@@ -31048,10 +30606,10 @@ class PhoneCallRequested extends BaseConstructor {
   BigInt adminId;
   BigInt participantId;
   List<int> gAHash;
-  var protocol;
+  PhoneCallProtocol protocol;
 
   PhoneCallRequested(
-      {required this.video,
+      {this.video,
       required this.id,
       required this.accessHash,
       required this.date,
@@ -31061,7 +30619,6 @@ class PhoneCallRequested extends BaseConstructor {
       required this.protocol});
 
   static PhoneCallRequested fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final video = (flags & 64) == 64;
     var id = reader.readLong();
@@ -31093,7 +30650,7 @@ class PhoneCallRequested extends BaseConstructor {
       readBufferFromBigInt(this.adminId, 8, little: true, signed: true),
       readBufferFromBigInt(this.participantId, 8, little: true, signed: true),
       serializeBytes(this.gAHash),
-      (this.protocol.getBytes() as List<int>),
+      (this.protocol.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -31113,7 +30670,7 @@ class PhoneCallRequested extends BaseConstructor {
   }
 }
 
-class PhoneCallAccepted extends BaseConstructor {
+class PhoneCallAccepted extends PhoneCallBase {
   static const CONSTRUCTOR_ID = 912311057;
   static const SUBCLASS_OF_ID = 3296664529;
   final classType = "constructor";
@@ -31125,10 +30682,10 @@ class PhoneCallAccepted extends BaseConstructor {
   BigInt adminId;
   BigInt participantId;
   List<int> gB;
-  var protocol;
+  PhoneCallProtocol protocol;
 
   PhoneCallAccepted(
-      {required this.video,
+      {this.video,
       required this.id,
       required this.accessHash,
       required this.date,
@@ -31138,7 +30695,6 @@ class PhoneCallAccepted extends BaseConstructor {
       required this.protocol});
 
   static PhoneCallAccepted fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final video = (flags & 64) == 64;
     var id = reader.readLong();
@@ -31170,7 +30726,7 @@ class PhoneCallAccepted extends BaseConstructor {
       readBufferFromBigInt(this.adminId, 8, little: true, signed: true),
       readBufferFromBigInt(this.participantId, 8, little: true, signed: true),
       serializeBytes(this.gB),
-      (this.protocol.getBytes() as List<int>),
+      (this.protocol.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -31190,7 +30746,7 @@ class PhoneCallAccepted extends BaseConstructor {
   }
 }
 
-class PhoneCall extends BaseConstructor {
+class PhoneCall extends PhoneCallBase {
   static const CONSTRUCTOR_ID = 2524937319;
   static const SUBCLASS_OF_ID = 3296664529;
   final classType = "constructor";
@@ -31204,13 +30760,13 @@ class PhoneCall extends BaseConstructor {
   BigInt participantId;
   List<int> gAOrB;
   BigInt keyFingerprint;
-  var protocol;
-  List<dynamic> connections;
+  PhoneCallProtocol protocol;
+  List<PhoneConnectionBase> connections;
   int startDate;
 
   PhoneCall(
-      {required this.p2pAllowed,
-      required this.video,
+      {this.p2pAllowed,
+      this.video,
       required this.id,
       required this.accessHash,
       required this.date,
@@ -31237,7 +30793,7 @@ class PhoneCall extends BaseConstructor {
     var protocol = reader.tgReadObject();
     var _vectorconnections = reader.readInt();
     if (_vectorconnections != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> connections = [];
+    List<PhoneConnectionBase> connections = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       connections.add(reader.tgReadObject());
@@ -31270,13 +30826,12 @@ class PhoneCall extends BaseConstructor {
       readBufferFromBigInt(this.participantId, 8, little: true, signed: true),
       serializeBytes(this.gAOrB),
       readBufferFromBigInt(this.keyFingerprint, 8, little: true, signed: true),
-      (this.protocol.getBytes() as List<int>),
+      (this.protocol.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.connections!.length, 4,
+      readBufferFromBigInt(this.connections.length, 4,
           little: true, signed: true),
       this
-          .connections!
-          .map((x) => (x.getBytes() as List<int>))
+          .connections.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(this.startDate, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -31298,7 +30853,7 @@ class PhoneCall extends BaseConstructor {
   }
 }
 
-class PhoneCallDiscarded extends BaseConstructor {
+class PhoneCallDiscarded extends PhoneCallBase {
   static const CONSTRUCTOR_ID = 1355435489;
   static const SUBCLASS_OF_ID = 3296664529;
   final classType = "constructor";
@@ -31307,19 +30862,18 @@ class PhoneCallDiscarded extends BaseConstructor {
   bool? needDebug;
   bool? video;
   BigInt id;
-  var reason;
+  PhoneCallDiscardReasonBase? reason;
   int? duration;
 
   PhoneCallDiscarded(
-      {required this.needRating,
-      required this.needDebug,
-      required this.video,
+      {this.needRating,
+      this.needDebug,
+      this.video,
       required this.id,
-      required this.reason,
-      required this.duration});
+      this.reason,
+      this.duration});
 
   static PhoneCallDiscarded fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final needRating = (flags & 4) == 4;
     final needDebug = (flags & 8) == 8;
@@ -31354,7 +30908,7 @@ class PhoneCallDiscarded extends BaseConstructor {
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       (this.reason == null || this.reason == false)
           ? List<int>.empty()
-          : [(this.reason.getBytes() as List<int>)]
+          : [(this.reason!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.duration == null || this.duration == false)
@@ -31381,7 +30935,9 @@ class PhoneCallDiscarded extends BaseConstructor {
   }
 }
 
-class PhoneConnection extends BaseConstructor {
+abstract class PhoneConnectionBase extends BaseConstructor {}
+
+class PhoneConnection extends PhoneConnectionBase {
   static const CONSTRUCTOR_ID = 2629903303;
   static const SUBCLASS_OF_ID = 2861425677;
   final classType = "constructor";
@@ -31394,7 +30950,7 @@ class PhoneConnection extends BaseConstructor {
   List<int> peerTag;
 
   PhoneConnection(
-      {required this.tcp,
+      {this.tcp,
       required this.id,
       required this.ip,
       required this.ipv6,
@@ -31402,7 +30958,6 @@ class PhoneConnection extends BaseConstructor {
       required this.peerTag});
 
   static PhoneConnection fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final tcp = (flags & 1) == 1;
     var id = reader.readLong();
@@ -31443,7 +30998,7 @@ class PhoneConnection extends BaseConstructor {
   }
 }
 
-class PhoneConnectionWebrtc extends BaseConstructor {
+class PhoneConnectionWebrtc extends PhoneConnectionBase {
   static const CONSTRUCTOR_ID = 1667228533;
   static const SUBCLASS_OF_ID = 2861425677;
   final classType = "constructor";
@@ -31458,8 +31013,8 @@ class PhoneConnectionWebrtc extends BaseConstructor {
   String password;
 
   PhoneConnectionWebrtc(
-      {required this.turn,
-      required this.stun,
+      {this.turn,
+      this.stun,
       required this.id,
       required this.ip,
       required this.ipv6,
@@ -31468,7 +31023,6 @@ class PhoneConnectionWebrtc extends BaseConstructor {
       required this.password});
 
   static PhoneConnectionWebrtc fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final turn = (flags & 1) == 1;
     final stun = (flags & 2) == 2;
@@ -31531,8 +31085,8 @@ class PhoneCallProtocol extends BaseConstructor {
   List<String> libraryVersions;
 
   PhoneCallProtocol(
-      {required this.udpP2p,
-      required this.udpReflector,
+      {this.udpP2p,
+      this.udpReflector,
       required this.minLayer,
       required this.maxLayer,
       required this.libraryVersions});
@@ -31567,11 +31121,10 @@ class PhoneCallProtocol extends BaseConstructor {
       readBufferFromBigInt(this.minLayer, 4, little: true, signed: true),
       readBufferFromBigInt(this.maxLayer, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.libraryVersions!.length, 4,
+      readBufferFromBigInt(this.libraryVersions.length, 4,
           little: true, signed: true),
       this
-          .libraryVersions!
-          .map((x) => serializeBytes(x))
+          .libraryVersions.map((x) => serializeBytes(x))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -31603,7 +31156,6 @@ class CdnPublicKey extends BaseConstructor {
   CdnPublicKey({required this.dcId, required this.publicKey});
 
   static CdnPublicKey fromReader(BinaryReader reader) {
-    var len;
     var dcId = reader.readInt();
     var publicKey = reader.tgReadString();
     return CdnPublicKey(dcId: dcId, publicKey: publicKey);
@@ -31639,7 +31191,7 @@ class CdnConfig extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3973724540;
   final classType = "constructor";
   final ID = 1462101002;
-  List<dynamic> publicKeys;
+  List<CdnPublicKey> publicKeys;
 
   CdnConfig({required this.publicKeys});
 
@@ -31647,7 +31199,7 @@ class CdnConfig extends BaseConstructor {
     var len;
     var _vectorpublicKeys = reader.readInt();
     if (_vectorpublicKeys != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> publicKeys = [];
+    List<CdnPublicKey> publicKeys = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       publicKeys.add(reader.tgReadObject());
@@ -31660,11 +31212,10 @@ class CdnConfig extends BaseConstructor {
     return [
       readBufferFromBigInt(1462101002, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.publicKeys!.length, 4,
+      readBufferFromBigInt(this.publicKeys.length, 4,
           little: true, signed: true),
       this
-          .publicKeys!
-          .map((x) => (x.getBytes() as List<int>))
+          .publicKeys.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -31685,7 +31236,9 @@ class CdnConfig extends BaseConstructor {
   }
 }
 
-class LangPackString extends BaseConstructor {
+abstract class LangPackStringBase extends BaseConstructor {}
+
+class LangPackString extends LangPackStringBase {
   static const CONSTRUCTOR_ID = 3402727926;
   static const SUBCLASS_OF_ID = 3692534457;
   final classType = "constructor";
@@ -31696,7 +31249,6 @@ class LangPackString extends BaseConstructor {
   LangPackString({required this.key, required this.value});
 
   static LangPackString fromReader(BinaryReader reader) {
-    var len;
     var key = reader.tgReadString();
     var value = reader.tgReadString();
     return LangPackString(key: key, value: value);
@@ -31727,7 +31279,7 @@ class LangPackString extends BaseConstructor {
   }
 }
 
-class LangPackStringPluralized extends BaseConstructor {
+class LangPackStringPluralized extends LangPackStringBase {
   static const CONSTRUCTOR_ID = 1816636575;
   static const SUBCLASS_OF_ID = 3692534457;
   final classType = "constructor";
@@ -31742,15 +31294,14 @@ class LangPackStringPluralized extends BaseConstructor {
 
   LangPackStringPluralized(
       {required this.key,
-      required this.zeroValue,
-      required this.oneValue,
-      required this.twoValue,
-      required this.fewValue,
-      required this.manyValue,
+      this.zeroValue,
+      this.oneValue,
+      this.twoValue,
+      this.fewValue,
+      this.manyValue,
       required this.otherValue});
 
   static LangPackStringPluralized fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var key = reader.tgReadString();
     var zeroValue;
@@ -31845,7 +31396,7 @@ class LangPackStringPluralized extends BaseConstructor {
   }
 }
 
-class LangPackStringDeleted extends BaseConstructor {
+class LangPackStringDeleted extends LangPackStringBase {
   static const CONSTRUCTOR_ID = 695856818;
   static const SUBCLASS_OF_ID = 3692534457;
   final classType = "constructor";
@@ -31855,7 +31406,6 @@ class LangPackStringDeleted extends BaseConstructor {
   LangPackStringDeleted({required this.key});
 
   static LangPackStringDeleted fromReader(BinaryReader reader) {
-    var len;
     var key = reader.tgReadString();
     return LangPackStringDeleted(key: key);
   }
@@ -31892,7 +31442,7 @@ class LangPackDifference extends BaseConstructor {
   String langCode;
   int fromVersion;
   int version;
-  List<dynamic> strings;
+  List<LangPackStringBase> strings;
 
   LangPackDifference(
       {required this.langCode,
@@ -31907,7 +31457,7 @@ class LangPackDifference extends BaseConstructor {
     var version = reader.readInt();
     var _vectorstrings = reader.readInt();
     if (_vectorstrings != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> strings = [];
+    List<LangPackStringBase> strings = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       strings.add(reader.tgReadObject());
@@ -31927,10 +31477,9 @@ class LangPackDifference extends BaseConstructor {
       readBufferFromBigInt(this.fromVersion, 4, little: true, signed: true),
       readBufferFromBigInt(this.version, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.strings!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.strings.length, 4, little: true, signed: true),
       this
-          .strings!
-          .map((x) => (x.getBytes() as List<int>))
+          .strings.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -31969,20 +31518,19 @@ class LangPackLanguage extends BaseConstructor {
   String translationsUrl;
 
   LangPackLanguage(
-      {required this.official,
-      required this.rtl,
-      required this.beta,
+      {this.official,
+      this.rtl,
+      this.beta,
       required this.name,
       required this.nativeName,
       required this.langCode,
-      required this.baseLangCode,
+      this.baseLangCode,
       required this.pluralCode,
       required this.stringsCount,
       required this.translatedCount,
       required this.translationsUrl});
 
   static LangPackLanguage fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final official = (flags & 1) == 1;
     final rtl = (flags & 4) == 4;
@@ -32050,7 +31598,10 @@ class LangPackLanguage extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionChangeTitle extends BaseConstructor {
+abstract class ChannelAdminLogEventActionBase extends BaseConstructor {}
+
+class ChannelAdminLogEventActionChangeTitle
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3873421349;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32062,7 +31613,6 @@ class ChannelAdminLogEventActionChangeTitle extends BaseConstructor {
       {required this.prevValue, required this.newValue});
 
   static ChannelAdminLogEventActionChangeTitle fromReader(BinaryReader reader) {
-    var len;
     var prevValue = reader.tgReadString();
     var newValue = reader.tgReadString();
     return ChannelAdminLogEventActionChangeTitle(
@@ -32094,7 +31644,8 @@ class ChannelAdminLogEventActionChangeTitle extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionChangeAbout extends BaseConstructor {
+class ChannelAdminLogEventActionChangeAbout
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1427671598;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32106,7 +31657,6 @@ class ChannelAdminLogEventActionChangeAbout extends BaseConstructor {
       {required this.prevValue, required this.newValue});
 
   static ChannelAdminLogEventActionChangeAbout fromReader(BinaryReader reader) {
-    var len;
     var prevValue = reader.tgReadString();
     var newValue = reader.tgReadString();
     return ChannelAdminLogEventActionChangeAbout(
@@ -32138,7 +31688,8 @@ class ChannelAdminLogEventActionChangeAbout extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionChangeUsername extends BaseConstructor {
+class ChannelAdminLogEventActionChangeUsername
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1783299128;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32151,7 +31702,6 @@ class ChannelAdminLogEventActionChangeUsername extends BaseConstructor {
 
   static ChannelAdminLogEventActionChangeUsername fromReader(
       BinaryReader reader) {
-    var len;
     var prevValue = reader.tgReadString();
     var newValue = reader.tgReadString();
     return ChannelAdminLogEventActionChangeUsername(
@@ -32183,19 +31733,19 @@ class ChannelAdminLogEventActionChangeUsername extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionChangePhoto extends BaseConstructor {
+class ChannelAdminLogEventActionChangePhoto
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1129042607;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 1129042607;
-  var prevPhoto;
-  var newPhoto;
+  PhotoBase prevPhoto;
+  PhotoBase newPhoto;
 
   ChannelAdminLogEventActionChangePhoto(
       {required this.prevPhoto, required this.newPhoto});
 
   static ChannelAdminLogEventActionChangePhoto fromReader(BinaryReader reader) {
-    var len;
     var prevPhoto = reader.tgReadObject();
     var newPhoto = reader.tgReadObject();
     return ChannelAdminLogEventActionChangePhoto(
@@ -32206,8 +31756,8 @@ class ChannelAdminLogEventActionChangePhoto extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1129042607, 4),
-      (this.prevPhoto.getBytes() as List<int>),
-      (this.newPhoto.getBytes() as List<int>),
+      (this.prevPhoto.getBytes()),
+      (this.newPhoto.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32227,7 +31777,8 @@ class ChannelAdminLogEventActionChangePhoto extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionToggleInvites extends BaseConstructor {
+class ChannelAdminLogEventActionToggleInvites
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 460916654;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32238,7 +31789,6 @@ class ChannelAdminLogEventActionToggleInvites extends BaseConstructor {
 
   static ChannelAdminLogEventActionToggleInvites fromReader(
       BinaryReader reader) {
-    var len;
     var newValue = reader.tgReadBool();
     return ChannelAdminLogEventActionToggleInvites(newValue: newValue);
   }
@@ -32267,7 +31817,8 @@ class ChannelAdminLogEventActionToggleInvites extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionToggleSignatures extends BaseConstructor {
+class ChannelAdminLogEventActionToggleSignatures
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 648939889;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32278,7 +31829,6 @@ class ChannelAdminLogEventActionToggleSignatures extends BaseConstructor {
 
   static ChannelAdminLogEventActionToggleSignatures fromReader(
       BinaryReader reader) {
-    var len;
     var newValue = reader.tgReadBool();
     return ChannelAdminLogEventActionToggleSignatures(newValue: newValue);
   }
@@ -32307,18 +31857,18 @@ class ChannelAdminLogEventActionToggleSignatures extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionUpdatePinned extends BaseConstructor {
+class ChannelAdminLogEventActionUpdatePinned
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3924306968;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 3924306968;
-  var message;
+  MessageBase message;
 
   ChannelAdminLogEventActionUpdatePinned({required this.message});
 
   static ChannelAdminLogEventActionUpdatePinned fromReader(
       BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     return ChannelAdminLogEventActionUpdatePinned(message: message);
   }
@@ -32327,7 +31877,7 @@ class ChannelAdminLogEventActionUpdatePinned extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3924306968, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32347,19 +31897,19 @@ class ChannelAdminLogEventActionUpdatePinned extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionEditMessage extends BaseConstructor {
+class ChannelAdminLogEventActionEditMessage
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1889215493;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 1889215493;
-  var prevMessage;
-  var newMessage;
+  MessageBase prevMessage;
+  MessageBase newMessage;
 
   ChannelAdminLogEventActionEditMessage(
       {required this.prevMessage, required this.newMessage});
 
   static ChannelAdminLogEventActionEditMessage fromReader(BinaryReader reader) {
-    var len;
     var prevMessage = reader.tgReadObject();
     var newMessage = reader.tgReadObject();
     return ChannelAdminLogEventActionEditMessage(
@@ -32370,8 +31920,8 @@ class ChannelAdminLogEventActionEditMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1889215493, 4),
-      (this.prevMessage.getBytes() as List<int>),
-      (this.newMessage.getBytes() as List<int>),
+      (this.prevMessage.getBytes()),
+      (this.newMessage.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32391,18 +31941,18 @@ class ChannelAdminLogEventActionEditMessage extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionDeleteMessage extends BaseConstructor {
+class ChannelAdminLogEventActionDeleteMessage
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1121994683;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 1121994683;
-  var message;
+  MessageBase message;
 
   ChannelAdminLogEventActionDeleteMessage({required this.message});
 
   static ChannelAdminLogEventActionDeleteMessage fromReader(
       BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     return ChannelAdminLogEventActionDeleteMessage(message: message);
   }
@@ -32411,7 +31961,7 @@ class ChannelAdminLogEventActionDeleteMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1121994683, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32431,7 +31981,8 @@ class ChannelAdminLogEventActionDeleteMessage extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionParticipantJoin extends BaseConstructor {
+class ChannelAdminLogEventActionParticipantJoin
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 405815507;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32441,7 +31992,6 @@ class ChannelAdminLogEventActionParticipantJoin extends BaseConstructor {
 
   static ChannelAdminLogEventActionParticipantJoin fromReader(
       BinaryReader reader) {
-    var len;
     return ChannelAdminLogEventActionParticipantJoin();
   }
 
@@ -32468,7 +32018,8 @@ class ChannelAdminLogEventActionParticipantJoin extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionParticipantLeave extends BaseConstructor {
+class ChannelAdminLogEventActionParticipantLeave
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 4170676210;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32478,7 +32029,6 @@ class ChannelAdminLogEventActionParticipantLeave extends BaseConstructor {
 
   static ChannelAdminLogEventActionParticipantLeave fromReader(
       BinaryReader reader) {
-    var len;
     return ChannelAdminLogEventActionParticipantLeave();
   }
 
@@ -32505,18 +32055,18 @@ class ChannelAdminLogEventActionParticipantLeave extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionParticipantInvite extends BaseConstructor {
+class ChannelAdminLogEventActionParticipantInvite
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3810276568;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 3810276568;
-  var participant;
+  ChannelParticipantBase participant;
 
   ChannelAdminLogEventActionParticipantInvite({required this.participant});
 
   static ChannelAdminLogEventActionParticipantInvite fromReader(
       BinaryReader reader) {
-    var len;
     var participant = reader.tgReadObject();
     return ChannelAdminLogEventActionParticipantInvite(
         participant: participant);
@@ -32526,7 +32076,7 @@ class ChannelAdminLogEventActionParticipantInvite extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3810276568, 4),
-      (this.participant.getBytes() as List<int>),
+      (this.participant.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32546,20 +32096,20 @@ class ChannelAdminLogEventActionParticipantInvite extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionParticipantToggleBan extends BaseConstructor {
+class ChannelAdminLogEventActionParticipantToggleBan
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3872931198;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 3872931198;
-  var prevParticipant;
-  var newParticipant;
+  ChannelParticipantBase prevParticipant;
+  ChannelParticipantBase newParticipant;
 
   ChannelAdminLogEventActionParticipantToggleBan(
       {required this.prevParticipant, required this.newParticipant});
 
   static ChannelAdminLogEventActionParticipantToggleBan fromReader(
       BinaryReader reader) {
-    var len;
     var prevParticipant = reader.tgReadObject();
     var newParticipant = reader.tgReadObject();
     return ChannelAdminLogEventActionParticipantToggleBan(
@@ -32570,8 +32120,8 @@ class ChannelAdminLogEventActionParticipantToggleBan extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3872931198, 4),
-      (this.prevParticipant.getBytes() as List<int>),
-      (this.newParticipant.getBytes() as List<int>),
+      (this.prevParticipant.getBytes()),
+      (this.newParticipant.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32591,20 +32141,20 @@ class ChannelAdminLogEventActionParticipantToggleBan extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionParticipantToggleAdmin extends BaseConstructor {
+class ChannelAdminLogEventActionParticipantToggleAdmin
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3580323600;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 3580323600;
-  var prevParticipant;
-  var newParticipant;
+  ChannelParticipantBase prevParticipant;
+  ChannelParticipantBase newParticipant;
 
   ChannelAdminLogEventActionParticipantToggleAdmin(
       {required this.prevParticipant, required this.newParticipant});
 
   static ChannelAdminLogEventActionParticipantToggleAdmin fromReader(
       BinaryReader reader) {
-    var len;
     var prevParticipant = reader.tgReadObject();
     var newParticipant = reader.tgReadObject();
     return ChannelAdminLogEventActionParticipantToggleAdmin(
@@ -32615,8 +32165,8 @@ class ChannelAdminLogEventActionParticipantToggleAdmin extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3580323600, 4),
-      (this.prevParticipant.getBytes() as List<int>),
-      (this.newParticipant.getBytes() as List<int>),
+      (this.prevParticipant.getBytes()),
+      (this.newParticipant.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32636,20 +32186,20 @@ class ChannelAdminLogEventActionParticipantToggleAdmin extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionChangeStickerSet extends BaseConstructor {
+class ChannelAdminLogEventActionChangeStickerSet
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 2982398631;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 2982398631;
-  var prevStickerset;
-  var newStickerset;
+  InputStickerSetBase prevStickerset;
+  InputStickerSetBase newStickerset;
 
   ChannelAdminLogEventActionChangeStickerSet(
       {required this.prevStickerset, required this.newStickerset});
 
   static ChannelAdminLogEventActionChangeStickerSet fromReader(
       BinaryReader reader) {
-    var len;
     var prevStickerset = reader.tgReadObject();
     var newStickerset = reader.tgReadObject();
     return ChannelAdminLogEventActionChangeStickerSet(
@@ -32660,8 +32210,8 @@ class ChannelAdminLogEventActionChangeStickerSet extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2982398631, 4),
-      (this.prevStickerset.getBytes() as List<int>),
-      (this.newStickerset.getBytes() as List<int>),
+      (this.prevStickerset.getBytes()),
+      (this.newStickerset.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32681,7 +32231,8 @@ class ChannelAdminLogEventActionChangeStickerSet extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionTogglePreHistoryHidden extends BaseConstructor {
+class ChannelAdminLogEventActionTogglePreHistoryHidden
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1599903217;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32692,7 +32243,6 @@ class ChannelAdminLogEventActionTogglePreHistoryHidden extends BaseConstructor {
 
   static ChannelAdminLogEventActionTogglePreHistoryHidden fromReader(
       BinaryReader reader) {
-    var len;
     var newValue = reader.tgReadBool();
     return ChannelAdminLogEventActionTogglePreHistoryHidden(newValue: newValue);
   }
@@ -32721,20 +32271,20 @@ class ChannelAdminLogEventActionTogglePreHistoryHidden extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionDefaultBannedRights extends BaseConstructor {
+class ChannelAdminLogEventActionDefaultBannedRights
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 771095562;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 771095562;
-  var prevBannedRights;
-  var newBannedRights;
+  ChatBannedRights prevBannedRights;
+  ChatBannedRights newBannedRights;
 
   ChannelAdminLogEventActionDefaultBannedRights(
       {required this.prevBannedRights, required this.newBannedRights});
 
   static ChannelAdminLogEventActionDefaultBannedRights fromReader(
       BinaryReader reader) {
-    var len;
     var prevBannedRights = reader.tgReadObject();
     var newBannedRights = reader.tgReadObject();
     return ChannelAdminLogEventActionDefaultBannedRights(
@@ -32745,8 +32295,8 @@ class ChannelAdminLogEventActionDefaultBannedRights extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(771095562, 4),
-      (this.prevBannedRights.getBytes() as List<int>),
-      (this.newBannedRights.getBytes() as List<int>),
+      (this.prevBannedRights.getBytes()),
+      (this.newBannedRights.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32766,17 +32316,17 @@ class ChannelAdminLogEventActionDefaultBannedRights extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionStopPoll extends BaseConstructor {
+class ChannelAdminLogEventActionStopPoll
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 2399639107;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 2399639107;
-  var message;
+  MessageBase message;
 
   ChannelAdminLogEventActionStopPoll({required this.message});
 
   static ChannelAdminLogEventActionStopPoll fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     return ChannelAdminLogEventActionStopPoll(message: message);
   }
@@ -32785,7 +32335,7 @@ class ChannelAdminLogEventActionStopPoll extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2399639107, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32805,7 +32355,8 @@ class ChannelAdminLogEventActionStopPoll extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionChangeLinkedChat extends BaseConstructor {
+class ChannelAdminLogEventActionChangeLinkedChat
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 84703944;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32818,7 +32369,6 @@ class ChannelAdminLogEventActionChangeLinkedChat extends BaseConstructor {
 
   static ChannelAdminLogEventActionChangeLinkedChat fromReader(
       BinaryReader reader) {
-    var len;
     var prevValue = reader.readLong();
     var newValue = reader.readLong();
     return ChannelAdminLogEventActionChangeLinkedChat(
@@ -32850,20 +32400,20 @@ class ChannelAdminLogEventActionChangeLinkedChat extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionChangeLocation extends BaseConstructor {
+class ChannelAdminLogEventActionChangeLocation
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 241923758;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 241923758;
-  var prevValue;
-  var newValue;
+  ChannelLocationBase prevValue;
+  ChannelLocationBase newValue;
 
   ChannelAdminLogEventActionChangeLocation(
       {required this.prevValue, required this.newValue});
 
   static ChannelAdminLogEventActionChangeLocation fromReader(
       BinaryReader reader) {
-    var len;
     var prevValue = reader.tgReadObject();
     var newValue = reader.tgReadObject();
     return ChannelAdminLogEventActionChangeLocation(
@@ -32874,8 +32424,8 @@ class ChannelAdminLogEventActionChangeLocation extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(241923758, 4),
-      (this.prevValue.getBytes() as List<int>),
-      (this.newValue.getBytes() as List<int>),
+      (this.prevValue.getBytes()),
+      (this.newValue.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32895,7 +32445,8 @@ class ChannelAdminLogEventActionChangeLocation extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionToggleSlowMode extends BaseConstructor {
+class ChannelAdminLogEventActionToggleSlowMode
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1401984889;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -32908,7 +32459,6 @@ class ChannelAdminLogEventActionToggleSlowMode extends BaseConstructor {
 
   static ChannelAdminLogEventActionToggleSlowMode fromReader(
       BinaryReader reader) {
-    var len;
     var prevValue = reader.readInt();
     var newValue = reader.readInt();
     return ChannelAdminLogEventActionToggleSlowMode(
@@ -32940,18 +32490,18 @@ class ChannelAdminLogEventActionToggleSlowMode extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionStartGroupCall extends BaseConstructor {
+class ChannelAdminLogEventActionStartGroupCall
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 589338437;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 589338437;
-  var call;
+  InputGroupCall call;
 
   ChannelAdminLogEventActionStartGroupCall({required this.call});
 
   static ChannelAdminLogEventActionStartGroupCall fromReader(
       BinaryReader reader) {
-    var len;
     var call = reader.tgReadObject();
     return ChannelAdminLogEventActionStartGroupCall(call: call);
   }
@@ -32960,7 +32510,7 @@ class ChannelAdminLogEventActionStartGroupCall extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(589338437, 4),
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -32980,18 +32530,18 @@ class ChannelAdminLogEventActionStartGroupCall extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionDiscardGroupCall extends BaseConstructor {
+class ChannelAdminLogEventActionDiscardGroupCall
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3684667712;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 3684667712;
-  var call;
+  InputGroupCall call;
 
   ChannelAdminLogEventActionDiscardGroupCall({required this.call});
 
   static ChannelAdminLogEventActionDiscardGroupCall fromReader(
       BinaryReader reader) {
-    var len;
     var call = reader.tgReadObject();
     return ChannelAdminLogEventActionDiscardGroupCall(call: call);
   }
@@ -33000,7 +32550,7 @@ class ChannelAdminLogEventActionDiscardGroupCall extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3684667712, 4),
-      (this.call.getBytes() as List<int>),
+      (this.call.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33020,18 +32570,18 @@ class ChannelAdminLogEventActionDiscardGroupCall extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionParticipantMute extends BaseConstructor {
+class ChannelAdminLogEventActionParticipantMute
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 4179895506;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 4179895506;
-  var participant;
+  GroupCallParticipant participant;
 
   ChannelAdminLogEventActionParticipantMute({required this.participant});
 
   static ChannelAdminLogEventActionParticipantMute fromReader(
       BinaryReader reader) {
-    var len;
     var participant = reader.tgReadObject();
     return ChannelAdminLogEventActionParticipantMute(participant: participant);
   }
@@ -33040,7 +32590,7 @@ class ChannelAdminLogEventActionParticipantMute extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4179895506, 4),
-      (this.participant.getBytes() as List<int>),
+      (this.participant.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33060,18 +32610,18 @@ class ChannelAdminLogEventActionParticipantMute extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionParticipantUnmute extends BaseConstructor {
+class ChannelAdminLogEventActionParticipantUnmute
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3863226816;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 3863226816;
-  var participant;
+  GroupCallParticipant participant;
 
   ChannelAdminLogEventActionParticipantUnmute({required this.participant});
 
   static ChannelAdminLogEventActionParticipantUnmute fromReader(
       BinaryReader reader) {
-    var len;
     var participant = reader.tgReadObject();
     return ChannelAdminLogEventActionParticipantUnmute(
         participant: participant);
@@ -33081,7 +32631,7 @@ class ChannelAdminLogEventActionParticipantUnmute extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3863226816, 4),
-      (this.participant.getBytes() as List<int>),
+      (this.participant.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33101,7 +32651,8 @@ class ChannelAdminLogEventActionParticipantUnmute extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionToggleGroupCallSetting extends BaseConstructor {
+class ChannelAdminLogEventActionToggleGroupCallSetting
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1456906823;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -33112,7 +32663,6 @@ class ChannelAdminLogEventActionToggleGroupCallSetting extends BaseConstructor {
 
   static ChannelAdminLogEventActionToggleGroupCallSetting fromReader(
       BinaryReader reader) {
-    var len;
     var joinMuted = reader.tgReadBool();
     return ChannelAdminLogEventActionToggleGroupCallSetting(
         joinMuted: joinMuted);
@@ -33143,18 +32693,17 @@ class ChannelAdminLogEventActionToggleGroupCallSetting extends BaseConstructor {
 }
 
 class ChannelAdminLogEventActionParticipantJoinByInvite
-    extends BaseConstructor {
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1557846647;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 1557846647;
-  var invite;
+  ExportedChatInviteBase invite;
 
   ChannelAdminLogEventActionParticipantJoinByInvite({required this.invite});
 
   static ChannelAdminLogEventActionParticipantJoinByInvite fromReader(
       BinaryReader reader) {
-    var len;
     var invite = reader.tgReadObject();
     return ChannelAdminLogEventActionParticipantJoinByInvite(invite: invite);
   }
@@ -33163,7 +32712,7 @@ class ChannelAdminLogEventActionParticipantJoinByInvite
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1557846647, 4),
-      (this.invite.getBytes() as List<int>),
+      (this.invite.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33183,18 +32732,18 @@ class ChannelAdminLogEventActionParticipantJoinByInvite
   }
 }
 
-class ChannelAdminLogEventActionExportedInviteDelete extends BaseConstructor {
+class ChannelAdminLogEventActionExportedInviteDelete
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1515256996;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 1515256996;
-  var invite;
+  ExportedChatInviteBase invite;
 
   ChannelAdminLogEventActionExportedInviteDelete({required this.invite});
 
   static ChannelAdminLogEventActionExportedInviteDelete fromReader(
       BinaryReader reader) {
-    var len;
     var invite = reader.tgReadObject();
     return ChannelAdminLogEventActionExportedInviteDelete(invite: invite);
   }
@@ -33203,7 +32752,7 @@ class ChannelAdminLogEventActionExportedInviteDelete extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1515256996, 4),
-      (this.invite.getBytes() as List<int>),
+      (this.invite.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33223,18 +32772,18 @@ class ChannelAdminLogEventActionExportedInviteDelete extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionExportedInviteRevoke extends BaseConstructor {
+class ChannelAdminLogEventActionExportedInviteRevoke
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1091179342;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 1091179342;
-  var invite;
+  ExportedChatInviteBase invite;
 
   ChannelAdminLogEventActionExportedInviteRevoke({required this.invite});
 
   static ChannelAdminLogEventActionExportedInviteRevoke fromReader(
       BinaryReader reader) {
-    var len;
     var invite = reader.tgReadObject();
     return ChannelAdminLogEventActionExportedInviteRevoke(invite: invite);
   }
@@ -33243,7 +32792,7 @@ class ChannelAdminLogEventActionExportedInviteRevoke extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1091179342, 4),
-      (this.invite.getBytes() as List<int>),
+      (this.invite.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33263,20 +32812,20 @@ class ChannelAdminLogEventActionExportedInviteRevoke extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionExportedInviteEdit extends BaseConstructor {
+class ChannelAdminLogEventActionExportedInviteEdit
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3910056793;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 3910056793;
-  var prevInvite;
-  var newInvite;
+  ExportedChatInviteBase prevInvite;
+  ExportedChatInviteBase newInvite;
 
   ChannelAdminLogEventActionExportedInviteEdit(
       {required this.prevInvite, required this.newInvite});
 
   static ChannelAdminLogEventActionExportedInviteEdit fromReader(
       BinaryReader reader) {
-    var len;
     var prevInvite = reader.tgReadObject();
     var newInvite = reader.tgReadObject();
     return ChannelAdminLogEventActionExportedInviteEdit(
@@ -33287,8 +32836,8 @@ class ChannelAdminLogEventActionExportedInviteEdit extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3910056793, 4),
-      (this.prevInvite.getBytes() as List<int>),
-      (this.newInvite.getBytes() as List<int>),
+      (this.prevInvite.getBytes()),
+      (this.newInvite.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33308,18 +32857,18 @@ class ChannelAdminLogEventActionExportedInviteEdit extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionParticipantVolume extends BaseConstructor {
+class ChannelAdminLogEventActionParticipantVolume
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1048537159;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 1048537159;
-  var participant;
+  GroupCallParticipant participant;
 
   ChannelAdminLogEventActionParticipantVolume({required this.participant});
 
   static ChannelAdminLogEventActionParticipantVolume fromReader(
       BinaryReader reader) {
-    var len;
     var participant = reader.tgReadObject();
     return ChannelAdminLogEventActionParticipantVolume(
         participant: participant);
@@ -33329,7 +32878,7 @@ class ChannelAdminLogEventActionParticipantVolume extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1048537159, 4),
-      (this.participant.getBytes() as List<int>),
+      (this.participant.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33349,7 +32898,8 @@ class ChannelAdminLogEventActionParticipantVolume extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionChangeHistoryTTL extends BaseConstructor {
+class ChannelAdminLogEventActionChangeHistoryTTL
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 1855199800;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -33362,7 +32912,6 @@ class ChannelAdminLogEventActionChangeHistoryTTL extends BaseConstructor {
 
   static ChannelAdminLogEventActionChangeHistoryTTL fromReader(
       BinaryReader reader) {
-    var len;
     var prevValue = reader.readInt();
     var newValue = reader.readInt();
     return ChannelAdminLogEventActionChangeHistoryTTL(
@@ -33395,12 +32944,12 @@ class ChannelAdminLogEventActionChangeHistoryTTL extends BaseConstructor {
 }
 
 class ChannelAdminLogEventActionParticipantJoinByRequest
-    extends BaseConstructor {
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 2947945546;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 2947945546;
-  var invite;
+  ExportedChatInviteBase invite;
   BigInt approvedBy;
 
   ChannelAdminLogEventActionParticipantJoinByRequest(
@@ -33408,7 +32957,6 @@ class ChannelAdminLogEventActionParticipantJoinByRequest
 
   static ChannelAdminLogEventActionParticipantJoinByRequest fromReader(
       BinaryReader reader) {
-    var len;
     var invite = reader.tgReadObject();
     var approvedBy = reader.readLong();
     return ChannelAdminLogEventActionParticipantJoinByRequest(
@@ -33419,7 +32967,7 @@ class ChannelAdminLogEventActionParticipantJoinByRequest
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2947945546, 4),
-      (this.invite.getBytes() as List<int>),
+      (this.invite.getBytes()),
       readBufferFromBigInt(this.approvedBy, 8, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -33440,7 +32988,8 @@ class ChannelAdminLogEventActionParticipantJoinByRequest
   }
 }
 
-class ChannelAdminLogEventActionToggleNoForwards extends BaseConstructor {
+class ChannelAdminLogEventActionToggleNoForwards
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 3408578406;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -33451,7 +33000,6 @@ class ChannelAdminLogEventActionToggleNoForwards extends BaseConstructor {
 
   static ChannelAdminLogEventActionToggleNoForwards fromReader(
       BinaryReader reader) {
-    var len;
     var newValue = reader.tgReadBool();
     return ChannelAdminLogEventActionToggleNoForwards(newValue: newValue);
   }
@@ -33480,17 +33028,17 @@ class ChannelAdminLogEventActionToggleNoForwards extends BaseConstructor {
   }
 }
 
-class ChannelAdminLogEventActionSendMessage extends BaseConstructor {
+class ChannelAdminLogEventActionSendMessage
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 663693416;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
   final ID = 663693416;
-  var message;
+  MessageBase message;
 
   ChannelAdminLogEventActionSendMessage({required this.message});
 
   static ChannelAdminLogEventActionSendMessage fromReader(BinaryReader reader) {
-    var len;
     var message = reader.tgReadObject();
     return ChannelAdminLogEventActionSendMessage(message: message);
   }
@@ -33499,7 +33047,7 @@ class ChannelAdminLogEventActionSendMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(663693416, 4),
-      (this.message.getBytes() as List<int>),
+      (this.message.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33520,7 +33068,7 @@ class ChannelAdminLogEventActionSendMessage extends BaseConstructor {
 }
 
 class ChannelAdminLogEventActionChangeAvailableReactions
-    extends BaseConstructor {
+    extends ChannelAdminLogEventActionBase {
   static const CONSTRUCTOR_ID = 2633496426;
   static const SUBCLASS_OF_ID = 2998503411;
   final classType = "constructor";
@@ -33557,16 +33105,15 @@ class ChannelAdminLogEventActionChangeAvailableReactions
     return [
       readBufferFromBigInt(2633496426, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.prevValue!.length, 4,
+      readBufferFromBigInt(this.prevValue.length, 4,
           little: true, signed: true),
       this
-          .prevValue!
-          .map((x) => serializeBytes(x))
+          .prevValue.map((x) => serializeBytes(x))
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.newValue!.length, 4,
+      readBufferFromBigInt(this.newValue.length, 4,
           little: true, signed: true),
-      this.newValue!.map((x) => serializeBytes(x)).expand((element) => element),
+      this.newValue.map((x) => serializeBytes(x)).expand((element) => element),
     ].expand((element) => element).toList();
   }
 
@@ -33594,7 +33141,7 @@ class ChannelAdminLogEvent extends BaseConstructor {
   BigInt id;
   int date;
   BigInt userId;
-  var action;
+  ChannelAdminLogEventActionBase action;
 
   ChannelAdminLogEvent(
       {required this.id,
@@ -33603,7 +33150,6 @@ class ChannelAdminLogEvent extends BaseConstructor {
       required this.action});
 
   static ChannelAdminLogEvent fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var date = reader.readInt();
     var userId = reader.readLong();
@@ -33619,7 +33165,7 @@ class ChannelAdminLogEvent extends BaseConstructor {
       readBufferFromBigInt(this.id, 8, little: true, signed: true),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
-      (this.action.getBytes() as List<int>),
+      (this.action.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33663,26 +33209,25 @@ class ChannelAdminLogEventsFilter extends BaseConstructor {
   bool? send;
 
   ChannelAdminLogEventsFilter(
-      {required this.join,
-      required this.leave,
-      required this.invite,
-      required this.ban,
-      required this.unban,
-      required this.kick,
-      required this.unkick,
-      required this.promote,
-      required this.demote,
-      required this.info,
-      required this.settings,
-      required this.pinned,
-      required this.edit,
-      required this.delete,
-      required this.groupCall,
-      required this.invites,
-      required this.send});
+      {this.join,
+      this.leave,
+      this.invite,
+      this.ban,
+      this.unban,
+      this.kick,
+      this.unkick,
+      this.promote,
+      this.demote,
+      this.info,
+      this.settings,
+      this.pinned,
+      this.edit,
+      this.delete,
+      this.groupCall,
+      this.invites,
+      this.send});
 
   static ChannelAdminLogEventsFilter fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final join = (flags & 1) == 1;
     final leave = (flags & 2) == 2;
@@ -33756,7 +33301,6 @@ class PopularContact extends BaseConstructor {
   PopularContact({required this.clientId, required this.importers});
 
   static PopularContact fromReader(BinaryReader reader) {
-    var len;
     var clientId = reader.readLong();
     var importers = reader.readInt();
     return PopularContact(clientId: clientId, importers: importers);
@@ -33787,7 +33331,9 @@ class PopularContact extends BaseConstructor {
   }
 }
 
-class RecentMeUrlUnknown extends BaseConstructor {
+abstract class RecentMeUrlBase extends BaseConstructor {}
+
+class RecentMeUrlUnknown extends RecentMeUrlBase {
   static const CONSTRUCTOR_ID = 1189204285;
   static const SUBCLASS_OF_ID = 1436889209;
   final classType = "constructor";
@@ -33797,7 +33343,6 @@ class RecentMeUrlUnknown extends BaseConstructor {
   RecentMeUrlUnknown({required this.url});
 
   static RecentMeUrlUnknown fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     return RecentMeUrlUnknown(url: url);
   }
@@ -33826,7 +33371,7 @@ class RecentMeUrlUnknown extends BaseConstructor {
   }
 }
 
-class RecentMeUrlUser extends BaseConstructor {
+class RecentMeUrlUser extends RecentMeUrlBase {
   static const CONSTRUCTOR_ID = 3106671074;
   static const SUBCLASS_OF_ID = 1436889209;
   final classType = "constructor";
@@ -33837,7 +33382,6 @@ class RecentMeUrlUser extends BaseConstructor {
   RecentMeUrlUser({required this.url, required this.userId});
 
   static RecentMeUrlUser fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     var userId = reader.readLong();
     return RecentMeUrlUser(url: url, userId: userId);
@@ -33868,7 +33412,7 @@ class RecentMeUrlUser extends BaseConstructor {
   }
 }
 
-class RecentMeUrlChat extends BaseConstructor {
+class RecentMeUrlChat extends RecentMeUrlBase {
   static const CONSTRUCTOR_ID = 3000660434;
   static const SUBCLASS_OF_ID = 1436889209;
   final classType = "constructor";
@@ -33879,7 +33423,6 @@ class RecentMeUrlChat extends BaseConstructor {
   RecentMeUrlChat({required this.url, required this.chatId});
 
   static RecentMeUrlChat fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     var chatId = reader.readLong();
     return RecentMeUrlChat(url: url, chatId: chatId);
@@ -33910,18 +33453,17 @@ class RecentMeUrlChat extends BaseConstructor {
   }
 }
 
-class RecentMeUrlChatInvite extends BaseConstructor {
+class RecentMeUrlChatInvite extends RecentMeUrlBase {
   static const CONSTRUCTOR_ID = 3947431965;
   static const SUBCLASS_OF_ID = 1436889209;
   final classType = "constructor";
   final ID = 3947431965;
   String url;
-  var chatInvite;
+  ChatInviteBase chatInvite;
 
   RecentMeUrlChatInvite({required this.url, required this.chatInvite});
 
   static RecentMeUrlChatInvite fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     var chatInvite = reader.tgReadObject();
     return RecentMeUrlChatInvite(url: url, chatInvite: chatInvite);
@@ -33932,7 +33474,7 @@ class RecentMeUrlChatInvite extends BaseConstructor {
     return [
       readBufferFromBigInt(3947431965, 4),
       serializeBytes(this.url),
-      (this.chatInvite.getBytes() as List<int>),
+      (this.chatInvite.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33952,18 +33494,17 @@ class RecentMeUrlChatInvite extends BaseConstructor {
   }
 }
 
-class RecentMeUrlStickerSet extends BaseConstructor {
+class RecentMeUrlStickerSet extends RecentMeUrlBase {
   static const CONSTRUCTOR_ID = 3154794460;
   static const SUBCLASS_OF_ID = 1436889209;
   final classType = "constructor";
   final ID = 3154794460;
   String url;
-  var set;
+  StickerSetCoveredBase set;
 
   RecentMeUrlStickerSet({required this.url, required this.set});
 
   static RecentMeUrlStickerSet fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     var set = reader.tgReadObject();
     return RecentMeUrlStickerSet(url: url, set: set);
@@ -33974,7 +33515,7 @@ class RecentMeUrlStickerSet extends BaseConstructor {
     return [
       readBufferFromBigInt(3154794460, 4),
       serializeBytes(this.url),
-      (this.set.getBytes() as List<int>),
+      (this.set.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -33999,16 +33540,16 @@ class InputSingleMedia extends BaseConstructor {
   static const SUBCLASS_OF_ID = 566922968;
   final classType = "constructor";
   final ID = 482797855;
-  var media;
+  InputMediaBase media;
   BigInt randomId;
   String message;
-  List<dynamic>? entities;
+  List<MessageEntityBase>? entities;
 
   InputSingleMedia(
       {required this.media,
       required this.randomId,
       required this.message,
-      required this.entities});
+      this.entities});
 
   static InputSingleMedia fromReader(BinaryReader reader) {
     var len;
@@ -34020,7 +33561,7 @@ class InputSingleMedia extends BaseConstructor {
     if ((flags & 1) == 1) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -34037,7 +33578,7 @@ class InputSingleMedia extends BaseConstructor {
     return [
       readBufferFromBigInt(482797855, 4),
       [0, 0, 0, 0],
-      (this.media.getBytes() as List<int>),
+      (this.media.getBytes()),
       readBufferFromBigInt(this.randomId, 8, little: true, signed: true),
       serializeBytes(this.message),
       (this.entities == null || this.entities == false)
@@ -34048,7 +33589,7 @@ class InputSingleMedia extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -34097,7 +33638,6 @@ class WebAuthorization extends BaseConstructor {
       required this.region});
 
   static WebAuthorization fromReader(BinaryReader reader) {
-    var len;
     var hash = reader.readLong();
     var botId = reader.readLong();
     var domain = reader.tgReadString();
@@ -34151,7 +33691,9 @@ class WebAuthorization extends BaseConstructor {
   }
 }
 
-class InputMessageID extends BaseConstructor {
+abstract class InputMessageBase extends BaseConstructor {}
+
+class InputMessageID extends InputMessageBase {
   static const CONSTRUCTOR_ID = 2792792866;
   static const SUBCLASS_OF_ID = 1421262021;
   final classType = "constructor";
@@ -34161,7 +33703,6 @@ class InputMessageID extends BaseConstructor {
   InputMessageID({required this.id});
 
   static InputMessageID fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readInt();
     return InputMessageID(id: id);
   }
@@ -34190,7 +33731,7 @@ class InputMessageID extends BaseConstructor {
   }
 }
 
-class InputMessageReplyTo extends BaseConstructor {
+class InputMessageReplyTo extends InputMessageBase {
   static const CONSTRUCTOR_ID = 3134751637;
   static const SUBCLASS_OF_ID = 1421262021;
   final classType = "constructor";
@@ -34200,7 +33741,6 @@ class InputMessageReplyTo extends BaseConstructor {
   InputMessageReplyTo({required this.id});
 
   static InputMessageReplyTo fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readInt();
     return InputMessageReplyTo(id: id);
   }
@@ -34229,7 +33769,7 @@ class InputMessageReplyTo extends BaseConstructor {
   }
 }
 
-class InputMessagePinned extends BaseConstructor {
+class InputMessagePinned extends InputMessageBase {
   static const CONSTRUCTOR_ID = 2257003832;
   static const SUBCLASS_OF_ID = 1421262021;
   final classType = "constructor";
@@ -34238,7 +33778,6 @@ class InputMessagePinned extends BaseConstructor {
   InputMessagePinned();
 
   static InputMessagePinned fromReader(BinaryReader reader) {
-    var len;
     return InputMessagePinned();
   }
 
@@ -34265,7 +33804,7 @@ class InputMessagePinned extends BaseConstructor {
   }
 }
 
-class InputMessageCallbackQuery extends BaseConstructor {
+class InputMessageCallbackQuery extends InputMessageBase {
   static const CONSTRUCTOR_ID = 2902071934;
   static const SUBCLASS_OF_ID = 1421262021;
   final classType = "constructor";
@@ -34276,7 +33815,6 @@ class InputMessageCallbackQuery extends BaseConstructor {
   InputMessageCallbackQuery({required this.id, required this.queryId});
 
   static InputMessageCallbackQuery fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readInt();
     var queryId = reader.readLong();
     return InputMessageCallbackQuery(id: id, queryId: queryId);
@@ -34307,17 +33845,18 @@ class InputMessageCallbackQuery extends BaseConstructor {
   }
 }
 
-class InputDialogPeer extends BaseConstructor {
+abstract class InputDialogPeerBase extends BaseConstructor {}
+
+class InputDialogPeer extends InputDialogPeerBase {
   static const CONSTRUCTOR_ID = 4239064759;
   static const SUBCLASS_OF_ID = 2719782805;
   final classType = "constructor";
   final ID = 4239064759;
-  var peer;
+  InputPeerBase peer;
 
   InputDialogPeer({required this.peer});
 
   static InputDialogPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return InputDialogPeer(peer: peer);
   }
@@ -34326,7 +33865,7 @@ class InputDialogPeer extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4239064759, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -34346,7 +33885,7 @@ class InputDialogPeer extends BaseConstructor {
   }
 }
 
-class InputDialogPeerFolder extends BaseConstructor {
+class InputDialogPeerFolder extends InputDialogPeerBase {
   static const CONSTRUCTOR_ID = 1684014375;
   static const SUBCLASS_OF_ID = 2719782805;
   final classType = "constructor";
@@ -34356,7 +33895,6 @@ class InputDialogPeerFolder extends BaseConstructor {
   InputDialogPeerFolder({required this.folderId});
 
   static InputDialogPeerFolder fromReader(BinaryReader reader) {
-    var len;
     var folderId = reader.readInt();
     return InputDialogPeerFolder(folderId: folderId);
   }
@@ -34385,17 +33923,18 @@ class InputDialogPeerFolder extends BaseConstructor {
   }
 }
 
-class DialogPeer extends BaseConstructor {
+abstract class DialogPeerBase extends BaseConstructor {}
+
+class DialogPeer extends DialogPeerBase {
   static const CONSTRUCTOR_ID = 3849174789;
   static const SUBCLASS_OF_ID = 627892654;
   final classType = "constructor";
   final ID = 3849174789;
-  var peer;
+  PeerBase peer;
 
   DialogPeer({required this.peer});
 
   static DialogPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return DialogPeer(peer: peer);
   }
@@ -34404,7 +33943,7 @@ class DialogPeer extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3849174789, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -34424,7 +33963,7 @@ class DialogPeer extends BaseConstructor {
   }
 }
 
-class DialogPeerFolder extends BaseConstructor {
+class DialogPeerFolder extends DialogPeerBase {
   static const CONSTRUCTOR_ID = 1363483106;
   static const SUBCLASS_OF_ID = 627892654;
   final classType = "constructor";
@@ -34434,7 +33973,6 @@ class DialogPeerFolder extends BaseConstructor {
   DialogPeerFolder({required this.folderId});
 
   static DialogPeerFolder fromReader(BinaryReader reader) {
-    var len;
     var folderId = reader.readInt();
     return DialogPeerFolder(folderId: folderId);
   }
@@ -34475,7 +34013,6 @@ class FileHash extends BaseConstructor {
   FileHash({required this.offset, required this.limit, required this.hash});
 
   static FileHash fromReader(BinaryReader reader) {
-    var len;
     var offset = reader.readLong();
     var limit = reader.readInt();
     var hash = reader.tgReadBytes();
@@ -34519,7 +34056,6 @@ class InputClientProxy extends BaseConstructor {
   InputClientProxy({required this.address, required this.port});
 
   static InputClientProxy fromReader(BinaryReader reader) {
-    var len;
     var address = reader.tgReadString();
     var port = reader.readInt();
     return InputClientProxy(address: address, port: port);
@@ -34550,7 +34086,9 @@ class InputClientProxy extends BaseConstructor {
   }
 }
 
-class InputSecureFileUploaded extends BaseConstructor {
+abstract class InputSecureFileBase extends BaseConstructor {}
+
+class InputSecureFileUploaded extends InputSecureFileBase {
   static const CONSTRUCTOR_ID = 859091184;
   static const SUBCLASS_OF_ID = 3670584828;
   final classType = "constructor";
@@ -34569,7 +34107,6 @@ class InputSecureFileUploaded extends BaseConstructor {
       required this.secret});
 
   static InputSecureFileUploaded fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var parts = reader.readInt();
     var md5Checksum = reader.tgReadString();
@@ -34611,7 +34148,7 @@ class InputSecureFileUploaded extends BaseConstructor {
   }
 }
 
-class InputSecureFile extends BaseConstructor {
+class InputSecureFile extends InputSecureFileBase {
   static const CONSTRUCTOR_ID = 1399317950;
   static const SUBCLASS_OF_ID = 3670584828;
   final classType = "constructor";
@@ -34622,7 +34159,6 @@ class InputSecureFile extends BaseConstructor {
   InputSecureFile({required this.id, required this.accessHash});
 
   static InputSecureFile fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputSecureFile(id: id, accessHash: accessHash);
@@ -34653,7 +34189,9 @@ class InputSecureFile extends BaseConstructor {
   }
 }
 
-class SecureFileEmpty extends BaseConstructor {
+abstract class SecureFileBase extends BaseConstructor {}
+
+class SecureFileEmpty extends SecureFileBase {
   static const CONSTRUCTOR_ID = 1679398724;
   static const SUBCLASS_OF_ID = 1572395975;
   final classType = "constructor";
@@ -34662,7 +34200,6 @@ class SecureFileEmpty extends BaseConstructor {
   SecureFileEmpty();
 
   static SecureFileEmpty fromReader(BinaryReader reader) {
-    var len;
     return SecureFileEmpty();
   }
 
@@ -34689,7 +34226,7 @@ class SecureFileEmpty extends BaseConstructor {
   }
 }
 
-class SecureFile extends BaseConstructor {
+class SecureFile extends SecureFileBase {
   static const CONSTRUCTOR_ID = 2097791614;
   static const SUBCLASS_OF_ID = 1572395975;
   final classType = "constructor";
@@ -34712,7 +34249,6 @@ class SecureFile extends BaseConstructor {
       required this.secret});
 
   static SecureFile fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var size = reader.readLong();
@@ -34773,7 +34309,6 @@ class SecureData extends BaseConstructor {
       {required this.data, required this.dataHash, required this.secret});
 
   static SecureData fromReader(BinaryReader reader) {
-    var len;
     var data = reader.tgReadBytes();
     var dataHash = reader.tgReadBytes();
     var secret = reader.tgReadBytes();
@@ -34806,7 +34341,9 @@ class SecureData extends BaseConstructor {
   }
 }
 
-class SecurePlainPhone extends BaseConstructor {
+abstract class SecurePlainDataBase extends BaseConstructor {}
+
+class SecurePlainPhone extends SecurePlainDataBase {
   static const CONSTRUCTOR_ID = 2103482845;
   static const SUBCLASS_OF_ID = 598912950;
   final classType = "constructor";
@@ -34816,7 +34353,6 @@ class SecurePlainPhone extends BaseConstructor {
   SecurePlainPhone({required this.phone});
 
   static SecurePlainPhone fromReader(BinaryReader reader) {
-    var len;
     var phone = reader.tgReadString();
     return SecurePlainPhone(phone: phone);
   }
@@ -34845,7 +34381,7 @@ class SecurePlainPhone extends BaseConstructor {
   }
 }
 
-class SecurePlainEmail extends BaseConstructor {
+class SecurePlainEmail extends SecurePlainDataBase {
   static const CONSTRUCTOR_ID = 569137759;
   static const SUBCLASS_OF_ID = 598912950;
   final classType = "constructor";
@@ -34855,7 +34391,6 @@ class SecurePlainEmail extends BaseConstructor {
   SecurePlainEmail({required this.email});
 
   static SecurePlainEmail fromReader(BinaryReader reader) {
-    var len;
     var email = reader.tgReadString();
     return SecurePlainEmail(email: email);
   }
@@ -34884,7 +34419,9 @@ class SecurePlainEmail extends BaseConstructor {
   }
 }
 
-class SecureValueTypePersonalDetails extends BaseConstructor {
+abstract class SecureValueTypeBase extends BaseConstructor {}
+
+class SecureValueTypePersonalDetails extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 2636808675;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -34893,7 +34430,6 @@ class SecureValueTypePersonalDetails extends BaseConstructor {
   SecureValueTypePersonalDetails();
 
   static SecureValueTypePersonalDetails fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypePersonalDetails();
   }
 
@@ -34920,7 +34456,7 @@ class SecureValueTypePersonalDetails extends BaseConstructor {
   }
 }
 
-class SecureValueTypePassport extends BaseConstructor {
+class SecureValueTypePassport extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 1034709504;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -34929,7 +34465,6 @@ class SecureValueTypePassport extends BaseConstructor {
   SecureValueTypePassport();
 
   static SecureValueTypePassport fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypePassport();
   }
 
@@ -34956,7 +34491,7 @@ class SecureValueTypePassport extends BaseConstructor {
   }
 }
 
-class SecureValueTypeDriverLicense extends BaseConstructor {
+class SecureValueTypeDriverLicense extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 115615172;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -34965,7 +34500,6 @@ class SecureValueTypeDriverLicense extends BaseConstructor {
   SecureValueTypeDriverLicense();
 
   static SecureValueTypeDriverLicense fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeDriverLicense();
   }
 
@@ -34992,7 +34526,7 @@ class SecureValueTypeDriverLicense extends BaseConstructor {
   }
 }
 
-class SecureValueTypeIdentityCard extends BaseConstructor {
+class SecureValueTypeIdentityCard extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 2698015819;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35001,7 +34535,6 @@ class SecureValueTypeIdentityCard extends BaseConstructor {
   SecureValueTypeIdentityCard();
 
   static SecureValueTypeIdentityCard fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeIdentityCard();
   }
 
@@ -35028,7 +34561,7 @@ class SecureValueTypeIdentityCard extends BaseConstructor {
   }
 }
 
-class SecureValueTypeInternalPassport extends BaseConstructor {
+class SecureValueTypeInternalPassport extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 2577698595;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35037,7 +34570,6 @@ class SecureValueTypeInternalPassport extends BaseConstructor {
   SecureValueTypeInternalPassport();
 
   static SecureValueTypeInternalPassport fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeInternalPassport();
   }
 
@@ -35064,7 +34596,7 @@ class SecureValueTypeInternalPassport extends BaseConstructor {
   }
 }
 
-class SecureValueTypeAddress extends BaseConstructor {
+class SecureValueTypeAddress extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 3420659238;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35073,7 +34605,6 @@ class SecureValueTypeAddress extends BaseConstructor {
   SecureValueTypeAddress();
 
   static SecureValueTypeAddress fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeAddress();
   }
 
@@ -35100,7 +34631,7 @@ class SecureValueTypeAddress extends BaseConstructor {
   }
 }
 
-class SecureValueTypeUtilityBill extends BaseConstructor {
+class SecureValueTypeUtilityBill extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 4231435598;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35109,7 +34640,6 @@ class SecureValueTypeUtilityBill extends BaseConstructor {
   SecureValueTypeUtilityBill();
 
   static SecureValueTypeUtilityBill fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeUtilityBill();
   }
 
@@ -35136,7 +34666,7 @@ class SecureValueTypeUtilityBill extends BaseConstructor {
   }
 }
 
-class SecureValueTypeBankStatement extends BaseConstructor {
+class SecureValueTypeBankStatement extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 2299755533;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35145,7 +34675,6 @@ class SecureValueTypeBankStatement extends BaseConstructor {
   SecureValueTypeBankStatement();
 
   static SecureValueTypeBankStatement fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeBankStatement();
   }
 
@@ -35172,7 +34701,7 @@ class SecureValueTypeBankStatement extends BaseConstructor {
   }
 }
 
-class SecureValueTypeRentalAgreement extends BaseConstructor {
+class SecureValueTypeRentalAgreement extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 2340959368;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35181,7 +34710,6 @@ class SecureValueTypeRentalAgreement extends BaseConstructor {
   SecureValueTypeRentalAgreement();
 
   static SecureValueTypeRentalAgreement fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeRentalAgreement();
   }
 
@@ -35208,7 +34736,7 @@ class SecureValueTypeRentalAgreement extends BaseConstructor {
   }
 }
 
-class SecureValueTypePassportRegistration extends BaseConstructor {
+class SecureValueTypePassportRegistration extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 2581823594;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35217,7 +34745,6 @@ class SecureValueTypePassportRegistration extends BaseConstructor {
   SecureValueTypePassportRegistration();
 
   static SecureValueTypePassportRegistration fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypePassportRegistration();
   }
 
@@ -35244,7 +34771,7 @@ class SecureValueTypePassportRegistration extends BaseConstructor {
   }
 }
 
-class SecureValueTypeTemporaryRegistration extends BaseConstructor {
+class SecureValueTypeTemporaryRegistration extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 3926060083;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35253,7 +34780,6 @@ class SecureValueTypeTemporaryRegistration extends BaseConstructor {
   SecureValueTypeTemporaryRegistration();
 
   static SecureValueTypeTemporaryRegistration fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeTemporaryRegistration();
   }
 
@@ -35280,7 +34806,7 @@ class SecureValueTypeTemporaryRegistration extends BaseConstructor {
   }
 }
 
-class SecureValueTypePhone extends BaseConstructor {
+class SecureValueTypePhone extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 3005262555;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35289,7 +34815,6 @@ class SecureValueTypePhone extends BaseConstructor {
   SecureValueTypePhone();
 
   static SecureValueTypePhone fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypePhone();
   }
 
@@ -35316,7 +34841,7 @@ class SecureValueTypePhone extends BaseConstructor {
   }
 }
 
-class SecureValueTypeEmail extends BaseConstructor {
+class SecureValueTypeEmail extends SecureValueTypeBase {
   static const CONSTRUCTOR_ID = 2386339822;
   static const SUBCLASS_OF_ID = 2291398038;
   final classType = "constructor";
@@ -35325,7 +34850,6 @@ class SecureValueTypeEmail extends BaseConstructor {
   SecureValueTypeEmail();
 
   static SecureValueTypeEmail fromReader(BinaryReader reader) {
-    var len;
     return SecureValueTypeEmail();
   }
 
@@ -35357,25 +34881,25 @@ class SecureValue extends BaseConstructor {
   static const SUBCLASS_OF_ID = 85014702;
   final classType = "constructor";
   final ID = 411017418;
-  var type;
-  var data;
-  var frontSide;
-  var reverseSide;
-  var selfie;
-  List<dynamic>? translation;
-  List<dynamic>? files;
-  var plainData;
+  SecureValueTypeBase type;
+  SecureData? data;
+  SecureFileBase? frontSide;
+  SecureFileBase? reverseSide;
+  SecureFileBase? selfie;
+  List<SecureFileBase>? translation;
+  List<SecureFileBase>? files;
+  SecurePlainDataBase? plainData;
   List<int> hash;
 
   SecureValue(
       {required this.type,
-      required this.data,
-      required this.frontSide,
-      required this.reverseSide,
-      required this.selfie,
-      required this.translation,
-      required this.files,
-      required this.plainData,
+      this.data,
+      this.frontSide,
+      this.reverseSide,
+      this.selfie,
+      this.translation,
+      this.files,
+      this.plainData,
       required this.hash});
 
   static SecureValue fromReader(BinaryReader reader) {
@@ -35410,7 +34934,7 @@ class SecureValue extends BaseConstructor {
     if ((flags & 64) == 64) {
       var _vectortranslation = reader.readInt();
       if (_vectortranslation != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> translation = [];
+      List<SecureFileBase> translation = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         translation.add(reader.tgReadObject());
@@ -35422,7 +34946,7 @@ class SecureValue extends BaseConstructor {
     if ((flags & 16) == 16) {
       var _vectorfiles = reader.readInt();
       if (_vectorfiles != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> files = [];
+      List<SecureFileBase> files = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         files.add(reader.tgReadObject());
@@ -35454,25 +34978,25 @@ class SecureValue extends BaseConstructor {
     return [
       readBufferFromBigInt(411017418, 4),
       [0, 0, 0, 0],
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       (this.data == null || this.data == false)
           ? List<int>.empty()
-          : [(this.data.getBytes() as List<int>)]
+          : [(this.data!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.frontSide == null || this.frontSide == false)
           ? List<int>.empty()
-          : [(this.frontSide.getBytes() as List<int>)]
+          : [(this.frontSide!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.reverseSide == null || this.reverseSide == false)
           ? List<int>.empty()
-          : [(this.reverseSide.getBytes() as List<int>)]
+          : [(this.reverseSide!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.selfie == null || this.selfie == false)
           ? List<int>.empty()
-          : [(this.selfie.getBytes() as List<int>)]
+          : [(this.selfie!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.translation == null || this.translation == false)
@@ -35483,7 +35007,7 @@ class SecureValue extends BaseConstructor {
                   little: true, signed: true),
               this
                   .translation!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.files == null || this.files == false)
@@ -35494,12 +35018,12 @@ class SecureValue extends BaseConstructor {
                   little: true, signed: true),
               this
                   .files!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.plainData == null || this.plainData == false)
           ? List<int>.empty()
-          : [(this.plainData.getBytes() as List<int>)]
+          : [(this.plainData!.getBytes())]
               .expand((element) => element)
               .toList(),
       serializeBytes(this.hash),
@@ -35527,24 +35051,24 @@ class InputSecureValue extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3030229500;
   final classType = "constructor";
   final ID = 3676426407;
-  var type;
-  var data;
-  var frontSide;
-  var reverseSide;
-  var selfie;
-  List<dynamic>? translation;
-  List<dynamic>? files;
-  var plainData;
+  SecureValueTypeBase type;
+  SecureData? data;
+  InputSecureFileBase? frontSide;
+  InputSecureFileBase? reverseSide;
+  InputSecureFileBase? selfie;
+  List<InputSecureFileBase>? translation;
+  List<InputSecureFileBase>? files;
+  SecurePlainDataBase? plainData;
 
   InputSecureValue(
       {required this.type,
-      required this.data,
-      required this.frontSide,
-      required this.reverseSide,
-      required this.selfie,
-      required this.translation,
-      required this.files,
-      required this.plainData});
+      this.data,
+      this.frontSide,
+      this.reverseSide,
+      this.selfie,
+      this.translation,
+      this.files,
+      this.plainData});
 
   static InputSecureValue fromReader(BinaryReader reader) {
     var len;
@@ -35578,7 +35102,7 @@ class InputSecureValue extends BaseConstructor {
     if ((flags & 64) == 64) {
       var _vectortranslation = reader.readInt();
       if (_vectortranslation != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> translation = [];
+      List<InputSecureFileBase> translation = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         translation.add(reader.tgReadObject());
@@ -35590,7 +35114,7 @@ class InputSecureValue extends BaseConstructor {
     if ((flags & 16) == 16) {
       var _vectorfiles = reader.readInt();
       if (_vectorfiles != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> files = [];
+      List<InputSecureFileBase> files = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         files.add(reader.tgReadObject());
@@ -35620,25 +35144,25 @@ class InputSecureValue extends BaseConstructor {
     return [
       readBufferFromBigInt(3676426407, 4),
       [0, 0, 0, 0],
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       (this.data == null || this.data == false)
           ? List<int>.empty()
-          : [(this.data.getBytes() as List<int>)]
+          : [(this.data!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.frontSide == null || this.frontSide == false)
           ? List<int>.empty()
-          : [(this.frontSide.getBytes() as List<int>)]
+          : [(this.frontSide!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.reverseSide == null || this.reverseSide == false)
           ? List<int>.empty()
-          : [(this.reverseSide.getBytes() as List<int>)]
+          : [(this.reverseSide!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.selfie == null || this.selfie == false)
           ? List<int>.empty()
-          : [(this.selfie.getBytes() as List<int>)]
+          : [(this.selfie!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.translation == null || this.translation == false)
@@ -35649,7 +35173,7 @@ class InputSecureValue extends BaseConstructor {
                   little: true, signed: true),
               this
                   .translation!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.files == null || this.files == false)
@@ -35660,12 +35184,12 @@ class InputSecureValue extends BaseConstructor {
                   little: true, signed: true),
               this
                   .files!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.plainData == null || this.plainData == false)
           ? List<int>.empty()
-          : [(this.plainData.getBytes() as List<int>)]
+          : [(this.plainData!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -35692,13 +35216,12 @@ class SecureValueHash extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3589652487;
   final classType = "constructor";
   final ID = 3978218928;
-  var type;
+  SecureValueTypeBase type;
   List<int> hash;
 
   SecureValueHash({required this.type, required this.hash});
 
   static SecureValueHash fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var hash = reader.tgReadBytes();
     return SecureValueHash(type: type, hash: hash);
@@ -35708,7 +35231,7 @@ class SecureValueHash extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3978218928, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       serializeBytes(this.hash),
     ].expand((element) => element).toList();
   }
@@ -35729,12 +35252,14 @@ class SecureValueHash extends BaseConstructor {
   }
 }
 
-class SecureValueErrorData extends BaseConstructor {
+abstract class SecureValueErrorBase extends BaseConstructor {}
+
+class SecureValueErrorData extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 3903065049;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 3903065049;
-  var type;
+  SecureValueTypeBase type;
   List<int> dataHash;
   String field;
   String text;
@@ -35746,7 +35271,6 @@ class SecureValueErrorData extends BaseConstructor {
       required this.text});
 
   static SecureValueErrorData fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var dataHash = reader.tgReadBytes();
     var field = reader.tgReadString();
@@ -35759,7 +35283,7 @@ class SecureValueErrorData extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3903065049, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       serializeBytes(this.dataHash),
       serializeBytes(this.field),
       serializeBytes(this.text),
@@ -35782,12 +35306,12 @@ class SecureValueErrorData extends BaseConstructor {
   }
 }
 
-class SecureValueErrorFrontSide extends BaseConstructor {
+class SecureValueErrorFrontSide extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 12467706;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 12467706;
-  var type;
+  SecureValueTypeBase type;
   List<int> fileHash;
   String text;
 
@@ -35795,7 +35319,6 @@ class SecureValueErrorFrontSide extends BaseConstructor {
       {required this.type, required this.fileHash, required this.text});
 
   static SecureValueErrorFrontSide fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var fileHash = reader.tgReadBytes();
     var text = reader.tgReadString();
@@ -35807,7 +35330,7 @@ class SecureValueErrorFrontSide extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(12467706, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       serializeBytes(this.fileHash),
       serializeBytes(this.text),
     ].expand((element) => element).toList();
@@ -35829,12 +35352,12 @@ class SecureValueErrorFrontSide extends BaseConstructor {
   }
 }
 
-class SecureValueErrorReverseSide extends BaseConstructor {
+class SecureValueErrorReverseSide extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 2257201829;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 2257201829;
-  var type;
+  SecureValueTypeBase type;
   List<int> fileHash;
   String text;
 
@@ -35842,7 +35365,6 @@ class SecureValueErrorReverseSide extends BaseConstructor {
       {required this.type, required this.fileHash, required this.text});
 
   static SecureValueErrorReverseSide fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var fileHash = reader.tgReadBytes();
     var text = reader.tgReadString();
@@ -35854,7 +35376,7 @@ class SecureValueErrorReverseSide extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2257201829, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       serializeBytes(this.fileHash),
       serializeBytes(this.text),
     ].expand((element) => element).toList();
@@ -35876,12 +35398,12 @@ class SecureValueErrorReverseSide extends BaseConstructor {
   }
 }
 
-class SecureValueErrorSelfie extends BaseConstructor {
+class SecureValueErrorSelfie extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 3845639894;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 3845639894;
-  var type;
+  SecureValueTypeBase type;
   List<int> fileHash;
   String text;
 
@@ -35889,7 +35411,6 @@ class SecureValueErrorSelfie extends BaseConstructor {
       {required this.type, required this.fileHash, required this.text});
 
   static SecureValueErrorSelfie fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var fileHash = reader.tgReadBytes();
     var text = reader.tgReadString();
@@ -35900,7 +35421,7 @@ class SecureValueErrorSelfie extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3845639894, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       serializeBytes(this.fileHash),
       serializeBytes(this.text),
     ].expand((element) => element).toList();
@@ -35922,12 +35443,12 @@ class SecureValueErrorSelfie extends BaseConstructor {
   }
 }
 
-class SecureValueErrorFile extends BaseConstructor {
+class SecureValueErrorFile extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 2054162547;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 2054162547;
-  var type;
+  SecureValueTypeBase type;
   List<int> fileHash;
   String text;
 
@@ -35935,7 +35456,6 @@ class SecureValueErrorFile extends BaseConstructor {
       {required this.type, required this.fileHash, required this.text});
 
   static SecureValueErrorFile fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var fileHash = reader.tgReadBytes();
     var text = reader.tgReadString();
@@ -35946,7 +35466,7 @@ class SecureValueErrorFile extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2054162547, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       serializeBytes(this.fileHash),
       serializeBytes(this.text),
     ].expand((element) => element).toList();
@@ -35968,12 +35488,12 @@ class SecureValueErrorFile extends BaseConstructor {
   }
 }
 
-class SecureValueErrorFiles extends BaseConstructor {
+class SecureValueErrorFiles extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 1717706985;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 1717706985;
-  var type;
+  SecureValueTypeBase type;
   List<List<int>> fileHash;
   String text;
 
@@ -35998,11 +35518,11 @@ class SecureValueErrorFiles extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1717706985, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.fileHash!.length, 4,
+      readBufferFromBigInt(this.fileHash.length, 4,
           little: true, signed: true),
-      this.fileHash!.map((x) => serializeBytes(x)).expand((element) => element),
+      this.fileHash.map((x) => serializeBytes(x)).expand((element) => element),
       serializeBytes(this.text),
     ].expand((element) => element).toList();
   }
@@ -36023,12 +35543,12 @@ class SecureValueErrorFiles extends BaseConstructor {
   }
 }
 
-class SecureValueError extends BaseConstructor {
+class SecureValueError extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 2258466191;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 2258466191;
-  var type;
+  SecureValueTypeBase type;
   List<int> hash;
   String text;
 
@@ -36036,7 +35556,6 @@ class SecureValueError extends BaseConstructor {
       {required this.type, required this.hash, required this.text});
 
   static SecureValueError fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var hash = reader.tgReadBytes();
     var text = reader.tgReadString();
@@ -36047,7 +35566,7 @@ class SecureValueError extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2258466191, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       serializeBytes(this.hash),
       serializeBytes(this.text),
     ].expand((element) => element).toList();
@@ -36069,12 +35588,12 @@ class SecureValueError extends BaseConstructor {
   }
 }
 
-class SecureValueErrorTranslationFile extends BaseConstructor {
+class SecureValueErrorTranslationFile extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 2702460784;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 2702460784;
-  var type;
+  SecureValueTypeBase type;
   List<int> fileHash;
   String text;
 
@@ -36082,7 +35601,6 @@ class SecureValueErrorTranslationFile extends BaseConstructor {
       {required this.type, required this.fileHash, required this.text});
 
   static SecureValueErrorTranslationFile fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var fileHash = reader.tgReadBytes();
     var text = reader.tgReadString();
@@ -36094,7 +35612,7 @@ class SecureValueErrorTranslationFile extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2702460784, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       serializeBytes(this.fileHash),
       serializeBytes(this.text),
     ].expand((element) => element).toList();
@@ -36116,12 +35634,12 @@ class SecureValueErrorTranslationFile extends BaseConstructor {
   }
 }
 
-class SecureValueErrorTranslationFiles extends BaseConstructor {
+class SecureValueErrorTranslationFiles extends SecureValueErrorBase {
   static const CONSTRUCTOR_ID = 878931416;
   static const SUBCLASS_OF_ID = 101146574;
   final classType = "constructor";
   final ID = 878931416;
-  var type;
+  SecureValueTypeBase type;
   List<List<int>> fileHash;
   String text;
 
@@ -36147,11 +35665,11 @@ class SecureValueErrorTranslationFiles extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(878931416, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.fileHash!.length, 4,
+      readBufferFromBigInt(this.fileHash.length, 4,
           little: true, signed: true),
-      this.fileHash!.map((x) => serializeBytes(x)).expand((element) => element),
+      this.fileHash.map((x) => serializeBytes(x)).expand((element) => element),
       serializeBytes(this.text),
     ].expand((element) => element).toList();
   }
@@ -36185,7 +35703,6 @@ class SecureCredentialsEncrypted extends BaseConstructor {
       {required this.data, required this.hash, required this.secret});
 
   static SecureCredentialsEncrypted fromReader(BinaryReader reader) {
-    var len;
     var data = reader.tgReadBytes();
     var hash = reader.tgReadBytes();
     var secret = reader.tgReadBytes();
@@ -36218,7 +35735,9 @@ class SecureCredentialsEncrypted extends BaseConstructor {
   }
 }
 
-class SavedPhoneContact extends BaseConstructor {
+abstract class SavedContactBase extends BaseConstructor {}
+
+class SavedPhoneContact extends SavedContactBase {
   static const CONSTRUCTOR_ID = 289586518;
   static const SUBCLASS_OF_ID = 115054788;
   final classType = "constructor";
@@ -36235,7 +35754,6 @@ class SavedPhoneContact extends BaseConstructor {
       required this.date});
 
   static SavedPhoneContact fromReader(BinaryReader reader) {
-    var len;
     var phone = reader.tgReadString();
     var firstName = reader.tgReadString();
     var lastName = reader.tgReadString();
@@ -36271,7 +35789,9 @@ class SavedPhoneContact extends BaseConstructor {
   }
 }
 
-class PasswordKdfAlgoUnknown extends BaseConstructor {
+abstract class PasswordKdfAlgoBase extends BaseConstructor {}
+
+class PasswordKdfAlgoUnknown extends PasswordKdfAlgoBase {
   static const CONSTRUCTOR_ID = 3562713238;
   static const SUBCLASS_OF_ID = 935130572;
   final classType = "constructor";
@@ -36280,7 +35800,6 @@ class PasswordKdfAlgoUnknown extends BaseConstructor {
   PasswordKdfAlgoUnknown();
 
   static PasswordKdfAlgoUnknown fromReader(BinaryReader reader) {
-    var len;
     return PasswordKdfAlgoUnknown();
   }
 
@@ -36308,7 +35827,7 @@ class PasswordKdfAlgoUnknown extends BaseConstructor {
 }
 
 class PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow
-    extends BaseConstructor {
+    extends PasswordKdfAlgoBase {
   static const CONSTRUCTOR_ID = 982592842;
   static const SUBCLASS_OF_ID = 935130572;
   final classType = "constructor";
@@ -36326,7 +35845,6 @@ class PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow
 
   static PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow
       fromReader(BinaryReader reader) {
-    var len;
     var salt1 = reader.tgReadBytes();
     var salt2 = reader.tgReadBytes();
     var g = reader.readInt();
@@ -36362,7 +35880,9 @@ class PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow
   }
 }
 
-class SecurePasswordKdfAlgoUnknown extends BaseConstructor {
+abstract class SecurePasswordKdfAlgoBase extends BaseConstructor {}
+
+class SecurePasswordKdfAlgoUnknown extends SecurePasswordKdfAlgoBase {
   static const CONSTRUCTOR_ID = 4883767;
   static const SUBCLASS_OF_ID = 1998989635;
   final classType = "constructor";
@@ -36371,7 +35891,6 @@ class SecurePasswordKdfAlgoUnknown extends BaseConstructor {
   SecurePasswordKdfAlgoUnknown();
 
   static SecurePasswordKdfAlgoUnknown fromReader(BinaryReader reader) {
-    var len;
     return SecurePasswordKdfAlgoUnknown();
   }
 
@@ -36398,7 +35917,8 @@ class SecurePasswordKdfAlgoUnknown extends BaseConstructor {
   }
 }
 
-class SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000 extends BaseConstructor {
+class SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000
+    extends SecurePasswordKdfAlgoBase {
   static const CONSTRUCTOR_ID = 3153255840;
   static const SUBCLASS_OF_ID = 1998989635;
   final classType = "constructor";
@@ -36409,7 +35929,6 @@ class SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000 extends BaseConstructor {
 
   static SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000 fromReader(
       BinaryReader reader) {
-    var len;
     var salt = reader.tgReadBytes();
     return SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000(salt: salt);
   }
@@ -36438,7 +35957,7 @@ class SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000 extends BaseConstructor {
   }
 }
 
-class SecurePasswordKdfAlgoSHA512 extends BaseConstructor {
+class SecurePasswordKdfAlgoSHA512 extends SecurePasswordKdfAlgoBase {
   static const CONSTRUCTOR_ID = 2252807570;
   static const SUBCLASS_OF_ID = 1998989635;
   final classType = "constructor";
@@ -36448,7 +35967,6 @@ class SecurePasswordKdfAlgoSHA512 extends BaseConstructor {
   SecurePasswordKdfAlgoSHA512({required this.salt});
 
   static SecurePasswordKdfAlgoSHA512 fromReader(BinaryReader reader) {
-    var len;
     var salt = reader.tgReadBytes();
     return SecurePasswordKdfAlgoSHA512(salt: salt);
   }
@@ -36482,7 +36000,7 @@ class SecureSecretSettings extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3334996731;
   final classType = "constructor";
   final ID = 354925740;
-  var secureAlgo;
+  SecurePasswordKdfAlgoBase secureAlgo;
   List<int> secureSecret;
   BigInt secureSecretId;
 
@@ -36492,7 +36010,6 @@ class SecureSecretSettings extends BaseConstructor {
       required this.secureSecretId});
 
   static SecureSecretSettings fromReader(BinaryReader reader) {
-    var len;
     var secureAlgo = reader.tgReadObject();
     var secureSecret = reader.tgReadBytes();
     var secureSecretId = reader.readLong();
@@ -36506,7 +36023,7 @@ class SecureSecretSettings extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(354925740, 4),
-      (this.secureAlgo.getBytes() as List<int>),
+      (this.secureAlgo.getBytes()),
       serializeBytes(this.secureSecret),
       readBufferFromBigInt(this.secureSecretId, 8, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -36528,7 +36045,9 @@ class SecureSecretSettings extends BaseConstructor {
   }
 }
 
-class InputCheckPasswordEmpty extends BaseConstructor {
+abstract class InputCheckPasswordSRPBase extends BaseConstructor {}
+
+class InputCheckPasswordEmpty extends InputCheckPasswordSRPBase {
   static const CONSTRUCTOR_ID = 2558588504;
   static const SUBCLASS_OF_ID = 3558536544;
   final classType = "constructor";
@@ -36537,7 +36056,6 @@ class InputCheckPasswordEmpty extends BaseConstructor {
   InputCheckPasswordEmpty();
 
   static InputCheckPasswordEmpty fromReader(BinaryReader reader) {
-    var len;
     return InputCheckPasswordEmpty();
   }
 
@@ -36564,7 +36082,7 @@ class InputCheckPasswordEmpty extends BaseConstructor {
   }
 }
 
-class InputCheckPasswordSRP extends BaseConstructor {
+class InputCheckPasswordSRP extends InputCheckPasswordSRPBase {
   static const CONSTRUCTOR_ID = 3531600002;
   static const SUBCLASS_OF_ID = 3558536544;
   final classType = "constructor";
@@ -36577,7 +36095,6 @@ class InputCheckPasswordSRP extends BaseConstructor {
       {required this.srpId, required this.A, required this.M1});
 
   static InputCheckPasswordSRP fromReader(BinaryReader reader) {
-    var len;
     var srpId = reader.readLong();
     var A = reader.tgReadBytes();
     var M1 = reader.tgReadBytes();
@@ -36610,7 +36127,9 @@ class InputCheckPasswordSRP extends BaseConstructor {
   }
 }
 
-class SecureRequiredType extends BaseConstructor {
+abstract class SecureRequiredTypeBase extends BaseConstructor {}
+
+class SecureRequiredType extends SecureRequiredTypeBase {
   static const CONSTRUCTOR_ID = 2191366618;
   static const SUBCLASS_OF_ID = 2088452618;
   final classType = "constructor";
@@ -36618,16 +36137,15 @@ class SecureRequiredType extends BaseConstructor {
   bool? nativeNames;
   bool? selfieRequired;
   bool? translationRequired;
-  var type;
+  SecureValueTypeBase type;
 
   SecureRequiredType(
-      {required this.nativeNames,
-      required this.selfieRequired,
-      required this.translationRequired,
+      {this.nativeNames,
+      this.selfieRequired,
+      this.translationRequired,
       required this.type});
 
   static SecureRequiredType fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final nativeNames = (flags & 1) == 1;
     final selfieRequired = (flags & 2) == 2;
@@ -36645,7 +36163,7 @@ class SecureRequiredType extends BaseConstructor {
     return [
       readBufferFromBigInt(2191366618, 4),
       [0, 0, 0, 0],
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -36665,12 +36183,12 @@ class SecureRequiredType extends BaseConstructor {
   }
 }
 
-class SecureRequiredTypeOneOf extends BaseConstructor {
+class SecureRequiredTypeOneOf extends SecureRequiredTypeBase {
   static const CONSTRUCTOR_ID = 41187252;
   static const SUBCLASS_OF_ID = 2088452618;
   final classType = "constructor";
   final ID = 41187252;
-  List<dynamic> types;
+  List<SecureRequiredTypeBase> types;
 
   SecureRequiredTypeOneOf({required this.types});
 
@@ -36678,7 +36196,7 @@ class SecureRequiredTypeOneOf extends BaseConstructor {
     var len;
     var _vectortypes = reader.readInt();
     if (_vectortypes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> types = [];
+    List<SecureRequiredTypeBase> types = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       types.add(reader.tgReadObject());
@@ -36691,10 +36209,9 @@ class SecureRequiredTypeOneOf extends BaseConstructor {
     return [
       readBufferFromBigInt(41187252, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.types!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.types.length, 4, little: true, signed: true),
       this
-          .types!
-          .map((x) => (x.getBytes() as List<int>))
+          .types.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -36723,7 +36240,7 @@ class InputAppEvent extends BaseConstructor {
   double time;
   String type;
   BigInt peer;
-  var data;
+  JSONValueBase data;
 
   InputAppEvent(
       {required this.time,
@@ -36732,7 +36249,6 @@ class InputAppEvent extends BaseConstructor {
       required this.data});
 
   static InputAppEvent fromReader(BinaryReader reader) {
-    var len;
     var time = reader.readDouble();
     var type = reader.tgReadString();
     var peer = reader.readLong();
@@ -36747,7 +36263,7 @@ class InputAppEvent extends BaseConstructor {
       readBufferFromBigInt(this.time, 4),
       serializeBytes(this.type),
       readBufferFromBigInt(this.peer, 8, little: true, signed: true),
-      (this.data.getBytes() as List<int>),
+      (this.data.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -36773,12 +36289,11 @@ class JsonObjectValue extends BaseConstructor {
   final classType = "constructor";
   final ID = 3235781593;
   String key;
-  var value;
+  JSONValueBase value;
 
   JsonObjectValue({required this.key, required this.value});
 
   static JsonObjectValue fromReader(BinaryReader reader) {
-    var len;
     var key = reader.tgReadString();
     var value = reader.tgReadObject();
     return JsonObjectValue(key: key, value: value);
@@ -36789,7 +36304,7 @@ class JsonObjectValue extends BaseConstructor {
     return [
       readBufferFromBigInt(3235781593, 4),
       serializeBytes(this.key),
-      (this.value.getBytes() as List<int>),
+      (this.value.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -36809,7 +36324,9 @@ class JsonObjectValue extends BaseConstructor {
   }
 }
 
-class JsonNull extends BaseConstructor {
+abstract class JSONValueBase extends BaseConstructor {}
+
+class JsonNull extends JSONValueBase {
   static const CONSTRUCTOR_ID = 1064139624;
   static const SUBCLASS_OF_ID = 3952707507;
   final classType = "constructor";
@@ -36818,7 +36335,6 @@ class JsonNull extends BaseConstructor {
   JsonNull();
 
   static JsonNull fromReader(BinaryReader reader) {
-    var len;
     return JsonNull();
   }
 
@@ -36845,7 +36361,7 @@ class JsonNull extends BaseConstructor {
   }
 }
 
-class JsonBool extends BaseConstructor {
+class JsonBool extends JSONValueBase {
   static const CONSTRUCTOR_ID = 3342098026;
   static const SUBCLASS_OF_ID = 3952707507;
   final classType = "constructor";
@@ -36855,7 +36371,6 @@ class JsonBool extends BaseConstructor {
   JsonBool({required this.value});
 
   static JsonBool fromReader(BinaryReader reader) {
-    var len;
     var value = reader.tgReadBool();
     return JsonBool(value: value);
   }
@@ -36884,7 +36399,7 @@ class JsonBool extends BaseConstructor {
   }
 }
 
-class JsonNumber extends BaseConstructor {
+class JsonNumber extends JSONValueBase {
   static const CONSTRUCTOR_ID = 736157604;
   static const SUBCLASS_OF_ID = 3952707507;
   final classType = "constructor";
@@ -36894,7 +36409,6 @@ class JsonNumber extends BaseConstructor {
   JsonNumber({required this.value});
 
   static JsonNumber fromReader(BinaryReader reader) {
-    var len;
     var value = reader.readDouble();
     return JsonNumber(value: value);
   }
@@ -36923,7 +36437,7 @@ class JsonNumber extends BaseConstructor {
   }
 }
 
-class JsonString extends BaseConstructor {
+class JsonString extends JSONValueBase {
   static const CONSTRUCTOR_ID = 3072226938;
   static const SUBCLASS_OF_ID = 3952707507;
   final classType = "constructor";
@@ -36933,7 +36447,6 @@ class JsonString extends BaseConstructor {
   JsonString({required this.value});
 
   static JsonString fromReader(BinaryReader reader) {
-    var len;
     var value = reader.tgReadString();
     return JsonString(value: value);
   }
@@ -36962,12 +36475,12 @@ class JsonString extends BaseConstructor {
   }
 }
 
-class JsonArray extends BaseConstructor {
+class JsonArray extends JSONValueBase {
   static const CONSTRUCTOR_ID = 4148447075;
   static const SUBCLASS_OF_ID = 3952707507;
   final classType = "constructor";
   final ID = 4148447075;
-  List<dynamic> value;
+  List<JSONValueBase> value;
 
   JsonArray({required this.value});
 
@@ -36975,7 +36488,7 @@ class JsonArray extends BaseConstructor {
     var len;
     var _vectorvalue = reader.readInt();
     if (_vectorvalue != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> value = [];
+    List<JSONValueBase> value = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       value.add(reader.tgReadObject());
@@ -36988,10 +36501,9 @@ class JsonArray extends BaseConstructor {
     return [
       readBufferFromBigInt(4148447075, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.value!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.value.length, 4, little: true, signed: true),
       this
-          .value!
-          .map((x) => (x.getBytes() as List<int>))
+          .value.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -37012,12 +36524,12 @@ class JsonArray extends BaseConstructor {
   }
 }
 
-class JsonObject extends BaseConstructor {
+class JsonObject extends JSONValueBase {
   static const CONSTRUCTOR_ID = 2579616925;
   static const SUBCLASS_OF_ID = 3952707507;
   final classType = "constructor";
   final ID = 2579616925;
-  List<dynamic> value;
+  List<JsonObjectValue> value;
 
   JsonObject({required this.value});
 
@@ -37025,7 +36537,7 @@ class JsonObject extends BaseConstructor {
     var len;
     var _vectorvalue = reader.readInt();
     if (_vectorvalue != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> value = [];
+    List<JsonObjectValue> value = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       value.add(reader.tgReadObject());
@@ -37038,10 +36550,9 @@ class JsonObject extends BaseConstructor {
     return [
       readBufferFromBigInt(2579616925, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.value!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.value.length, 4, little: true, signed: true),
       this
-          .value!
-          .map((x) => (x.getBytes() as List<int>))
+          .value.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -37072,22 +36583,21 @@ class PageTableCell extends BaseConstructor {
   bool? alignRight;
   bool? valignMiddle;
   bool? valignBottom;
-  var text;
+  RichTextBase? text;
   int? colspan;
   int? rowspan;
 
   PageTableCell(
-      {required this.header,
-      required this.alignCenter,
-      required this.alignRight,
-      required this.valignMiddle,
-      required this.valignBottom,
-      required this.text,
-      required this.colspan,
-      required this.rowspan});
+      {this.header,
+      this.alignCenter,
+      this.alignRight,
+      this.valignMiddle,
+      this.valignBottom,
+      this.text,
+      this.colspan,
+      this.rowspan});
 
   static PageTableCell fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final header = (flags & 1) == 1;
     final alignCenter = (flags & 8) == 8;
@@ -37130,7 +36640,7 @@ class PageTableCell extends BaseConstructor {
       [0, 0, 0, 0],
       (this.text == null || this.text == false)
           ? List<int>.empty()
-          : [(this.text.getBytes() as List<int>)]
+          : [(this.text!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.colspan == null || this.colspan == false)
@@ -37167,7 +36677,7 @@ class PageTableRow extends BaseConstructor {
   static const SUBCLASS_OF_ID = 1504505361;
   final classType = "constructor";
   final ID = 3770729957;
-  List<dynamic> cells;
+  List<PageTableCell> cells;
 
   PageTableRow({required this.cells});
 
@@ -37175,7 +36685,7 @@ class PageTableRow extends BaseConstructor {
     var len;
     var _vectorcells = reader.readInt();
     if (_vectorcells != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> cells = [];
+    List<PageTableCell> cells = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       cells.add(reader.tgReadObject());
@@ -37188,10 +36698,9 @@ class PageTableRow extends BaseConstructor {
     return [
       readBufferFromBigInt(3770729957, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.cells!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.cells.length, 4, little: true, signed: true),
       this
-          .cells!
-          .map((x) => (x.getBytes() as List<int>))
+          .cells.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -37217,13 +36726,12 @@ class PageCaption extends BaseConstructor {
   static const SUBCLASS_OF_ID = 699985587;
   final classType = "constructor";
   final ID = 1869903447;
-  var text;
-  var credit;
+  RichTextBase text;
+  RichTextBase credit;
 
   PageCaption({required this.text, required this.credit});
 
   static PageCaption fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     var credit = reader.tgReadObject();
     return PageCaption(text: text, credit: credit);
@@ -37233,8 +36741,8 @@ class PageCaption extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1869903447, 4),
-      (this.text.getBytes() as List<int>),
-      (this.credit.getBytes() as List<int>),
+      (this.text.getBytes()),
+      (this.credit.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -37254,17 +36762,18 @@ class PageCaption extends BaseConstructor {
   }
 }
 
-class PageListItemText extends BaseConstructor {
+abstract class PageListItemBase extends BaseConstructor {}
+
+class PageListItemText extends PageListItemBase {
   static const CONSTRUCTOR_ID = 3106911949;
   static const SUBCLASS_OF_ID = 2360261809;
   final classType = "constructor";
   final ID = 3106911949;
-  var text;
+  RichTextBase text;
 
   PageListItemText({required this.text});
 
   static PageListItemText fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadObject();
     return PageListItemText(text: text);
   }
@@ -37273,7 +36782,7 @@ class PageListItemText extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3106911949, 4),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -37293,12 +36802,12 @@ class PageListItemText extends BaseConstructor {
   }
 }
 
-class PageListItemBlocks extends BaseConstructor {
+class PageListItemBlocks extends PageListItemBase {
   static const CONSTRUCTOR_ID = 635466748;
   static const SUBCLASS_OF_ID = 2360261809;
   final classType = "constructor";
   final ID = 635466748;
-  List<dynamic> blocks;
+  List<PageBlockBase> blocks;
 
   PageListItemBlocks({required this.blocks});
 
@@ -37306,7 +36815,7 @@ class PageListItemBlocks extends BaseConstructor {
     var len;
     var _vectorblocks = reader.readInt();
     if (_vectorblocks != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> blocks = [];
+    List<PageBlockBase> blocks = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       blocks.add(reader.tgReadObject());
@@ -37319,10 +36828,9 @@ class PageListItemBlocks extends BaseConstructor {
     return [
       readBufferFromBigInt(635466748, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.blocks!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.blocks.length, 4, little: true, signed: true),
       this
-          .blocks!
-          .map((x) => (x.getBytes() as List<int>))
+          .blocks.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -37343,18 +36851,19 @@ class PageListItemBlocks extends BaseConstructor {
   }
 }
 
-class PageListOrderedItemText extends BaseConstructor {
+abstract class PageListOrderedItemBase extends BaseConstructor {}
+
+class PageListOrderedItemText extends PageListOrderedItemBase {
   static const CONSTRUCTOR_ID = 1577484359;
   static const SUBCLASS_OF_ID = 4007268024;
   final classType = "constructor";
   final ID = 1577484359;
   String num;
-  var text;
+  RichTextBase text;
 
   PageListOrderedItemText({required this.num, required this.text});
 
   static PageListOrderedItemText fromReader(BinaryReader reader) {
-    var len;
     var num = reader.tgReadString();
     var text = reader.tgReadObject();
     return PageListOrderedItemText(num: num, text: text);
@@ -37365,7 +36874,7 @@ class PageListOrderedItemText extends BaseConstructor {
     return [
       readBufferFromBigInt(1577484359, 4),
       serializeBytes(this.num),
-      (this.text.getBytes() as List<int>),
+      (this.text.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -37385,13 +36894,13 @@ class PageListOrderedItemText extends BaseConstructor {
   }
 }
 
-class PageListOrderedItemBlocks extends BaseConstructor {
+class PageListOrderedItemBlocks extends PageListOrderedItemBase {
   static const CONSTRUCTOR_ID = 2564655414;
   static const SUBCLASS_OF_ID = 4007268024;
   final classType = "constructor";
   final ID = 2564655414;
   String num;
-  List<dynamic> blocks;
+  List<PageBlockBase> blocks;
 
   PageListOrderedItemBlocks({required this.num, required this.blocks});
 
@@ -37400,7 +36909,7 @@ class PageListOrderedItemBlocks extends BaseConstructor {
     var num = reader.tgReadString();
     var _vectorblocks = reader.readInt();
     if (_vectorblocks != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> blocks = [];
+    List<PageBlockBase> blocks = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       blocks.add(reader.tgReadObject());
@@ -37414,10 +36923,9 @@ class PageListOrderedItemBlocks extends BaseConstructor {
       readBufferFromBigInt(2564655414, 4),
       serializeBytes(this.num),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.blocks!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.blocks.length, 4, little: true, signed: true),
       this
-          .blocks!
-          .map((x) => (x.getBytes() as List<int>))
+          .blocks.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -37454,14 +36962,13 @@ class PageRelatedArticle extends BaseConstructor {
   PageRelatedArticle(
       {required this.url,
       required this.webpageId,
-      required this.title,
-      required this.description,
-      required this.photoId,
-      required this.author,
-      required this.publishedDate});
+      this.title,
+      this.description,
+      this.photoId,
+      this.author,
+      this.publishedDate});
 
   static PageRelatedArticle fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var url = reader.tgReadString();
     var webpageId = reader.readLong();
@@ -37562,20 +37069,20 @@ class Page extends BaseConstructor {
   bool? rtl;
   bool? v2;
   String url;
-  List<dynamic> blocks;
-  List<dynamic> photos;
-  List<dynamic> documents;
+  List<PageBlockBase> blocks;
+  List<PhotoBase> photos;
+  List<DocumentBase> documents;
   int? views;
 
   Page(
-      {required this.part,
-      required this.rtl,
-      required this.v2,
+      {this.part,
+      this.rtl,
+      this.v2,
       required this.url,
       required this.blocks,
       required this.photos,
       required this.documents,
-      required this.views});
+      this.views});
 
   static Page fromReader(BinaryReader reader) {
     var len;
@@ -37586,21 +37093,21 @@ class Page extends BaseConstructor {
     var url = reader.tgReadString();
     var _vectorblocks = reader.readInt();
     if (_vectorblocks != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> blocks = [];
+    List<PageBlockBase> blocks = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       blocks.add(reader.tgReadObject());
     }
     var _vectorphotos = reader.readInt();
     if (_vectorphotos != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> photos = [];
+    List<PhotoBase> photos = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       photos.add(reader.tgReadObject());
     }
     var _vectordocuments = reader.readInt();
     if (_vectordocuments != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> documents = [];
+    List<DocumentBase> documents = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       documents.add(reader.tgReadObject());
@@ -37629,23 +37136,20 @@ class Page extends BaseConstructor {
       [0, 0, 0, 0],
       serializeBytes(this.url),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.blocks!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.blocks.length, 4, little: true, signed: true),
       this
-          .blocks!
-          .map((x) => (x.getBytes() as List<int>))
+          .blocks.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.photos!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.photos.length, 4, little: true, signed: true),
       this
-          .photos!
-          .map((x) => (x.getBytes() as List<int>))
+          .photos.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.documents!.length, 4,
+      readBufferFromBigInt(this.documents.length, 4,
           little: true, signed: true),
       this
-          .documents!
-          .map((x) => (x.getBytes() as List<int>))
+          .documents.map((x) => x.getBytes())
           .expand((element) => element),
       (this.views == null || this.views == false)
           ? List<int>.empty()
@@ -37682,7 +37186,6 @@ class PollAnswer extends BaseConstructor {
   PollAnswer({required this.text, required this.option});
 
   static PollAnswer fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var option = reader.tgReadBytes();
     return PollAnswer(text: text, option: option);
@@ -37724,20 +37227,20 @@ class Poll extends BaseConstructor {
   bool? multipleChoice;
   bool? quiz;
   String question;
-  List<dynamic> answers;
+  List<PollAnswer> answers;
   int? closePeriod;
   int? closeDate;
 
   Poll(
       {required this.id,
-      required this.closed,
-      required this.publicVoters,
-      required this.multipleChoice,
-      required this.quiz,
+      this.closed,
+      this.publicVoters,
+      this.multipleChoice,
+      this.quiz,
       required this.question,
       required this.answers,
-      required this.closePeriod,
-      required this.closeDate});
+      this.closePeriod,
+      this.closeDate});
 
   static Poll fromReader(BinaryReader reader) {
     var len;
@@ -37750,7 +37253,7 @@ class Poll extends BaseConstructor {
     var question = reader.tgReadString();
     var _vectoranswers = reader.readInt();
     if (_vectoranswers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> answers = [];
+    List<PollAnswer> answers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       answers.add(reader.tgReadObject());
@@ -37787,10 +37290,9 @@ class Poll extends BaseConstructor {
       [0, 0, 0, 0],
       serializeBytes(this.question),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.answers!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.answers.length, 4, little: true, signed: true),
       this
-          .answers!
-          .map((x) => (x.getBytes() as List<int>))
+          .answers.map((x) => x.getBytes())
           .expand((element) => element),
       (this.closePeriod == null || this.closePeriod == false)
           ? List<int>.empty()
@@ -37834,13 +37336,9 @@ class PollAnswerVoters extends BaseConstructor {
   int voters;
 
   PollAnswerVoters(
-      {required this.chosen,
-      required this.correct,
-      required this.option,
-      required this.voters});
+      {this.chosen, this.correct, required this.option, required this.voters});
 
   static PollAnswerVoters fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final chosen = (flags & 1) == 1;
     final correct = (flags & 2) == 2;
@@ -37882,19 +37380,19 @@ class PollResults extends BaseConstructor {
   final classType = "constructor";
   final ID = 3703058083;
   bool? min;
-  List<dynamic>? results;
+  List<PollAnswerVoters>? results;
   int? totalVoters;
   List<BigInt>? recentVoters;
   String? solution;
-  List<dynamic>? solutionEntities;
+  List<MessageEntityBase>? solutionEntities;
 
   PollResults(
-      {required this.min,
-      required this.results,
-      required this.totalVoters,
-      required this.recentVoters,
-      required this.solution,
-      required this.solutionEntities});
+      {this.min,
+      this.results,
+      this.totalVoters,
+      this.recentVoters,
+      this.solution,
+      this.solutionEntities});
 
   static PollResults fromReader(BinaryReader reader) {
     var len;
@@ -37904,7 +37402,7 @@ class PollResults extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorresults = reader.readInt();
       if (_vectorresults != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> results = [];
+      List<PollAnswerVoters> results = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         results.add(reader.tgReadObject());
@@ -37941,7 +37439,7 @@ class PollResults extends BaseConstructor {
       var _vectorsolutionEntities = reader.readInt();
       if (_vectorsolutionEntities != 481674261)
         throw Exception('Wrong vectorId');
-      List<dynamic> solutionEntities = [];
+      List<MessageEntityBase> solutionEntities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         solutionEntities.add(reader.tgReadObject());
@@ -37971,7 +37469,7 @@ class PollResults extends BaseConstructor {
                   little: true, signed: true),
               this
                   .results!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.totalVoters == null || this.totalVoters == false)
@@ -38005,7 +37503,7 @@ class PollResults extends BaseConstructor {
                   little: true, signed: true),
               this
                   .solutionEntities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -38037,7 +37535,6 @@ class ChatOnlines extends BaseConstructor {
   ChatOnlines({required this.onlines});
 
   static ChatOnlines fromReader(BinaryReader reader) {
-    var len;
     var onlines = reader.readInt();
     return ChatOnlines(onlines: onlines);
   }
@@ -38076,7 +37573,6 @@ class StatsURL extends BaseConstructor {
   StatsURL({required this.url});
 
   static StatsURL fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     return StatsURL(url: url);
   }
@@ -38123,20 +37619,19 @@ class ChatAdminRights extends BaseConstructor {
   bool? other;
 
   ChatAdminRights(
-      {required this.changeInfo,
-      required this.postMessages,
-      required this.editMessages,
-      required this.deleteMessages,
-      required this.banUsers,
-      required this.inviteUsers,
-      required this.pinMessages,
-      required this.addAdmins,
-      required this.anonymous,
-      required this.manageCall,
-      required this.other});
+      {this.changeInfo,
+      this.postMessages,
+      this.editMessages,
+      this.deleteMessages,
+      this.banUsers,
+      this.inviteUsers,
+      this.pinMessages,
+      this.addAdmins,
+      this.anonymous,
+      this.manageCall,
+      this.other});
 
   static ChatAdminRights fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final changeInfo = (flags & 1) == 1;
     final postMessages = (flags & 2) == 2;
@@ -38207,22 +37702,21 @@ class ChatBannedRights extends BaseConstructor {
   int untilDate;
 
   ChatBannedRights(
-      {required this.viewMessages,
-      required this.sendMessages,
-      required this.sendMedia,
-      required this.sendStickers,
-      required this.sendGifs,
-      required this.sendGames,
-      required this.sendInline,
-      required this.embedLinks,
-      required this.sendPolls,
-      required this.changeInfo,
-      required this.inviteUsers,
-      required this.pinMessages,
+      {this.viewMessages,
+      this.sendMessages,
+      this.sendMedia,
+      this.sendStickers,
+      this.sendGifs,
+      this.sendGames,
+      this.sendInline,
+      this.embedLinks,
+      this.sendPolls,
+      this.changeInfo,
+      this.inviteUsers,
+      this.pinMessages,
       required this.untilDate});
 
   static ChatBannedRights fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final viewMessages = (flags & 1) == 1;
     final sendMessages = (flags & 2) == 2;
@@ -38278,7 +37772,9 @@ class ChatBannedRights extends BaseConstructor {
   }
 }
 
-class InputWallPaper extends BaseConstructor {
+abstract class InputWallPaperBase extends BaseConstructor {}
+
+class InputWallPaper extends InputWallPaperBase {
   static const CONSTRUCTOR_ID = 3861952889;
   static const SUBCLASS_OF_ID = 4000784410;
   final classType = "constructor";
@@ -38289,7 +37785,6 @@ class InputWallPaper extends BaseConstructor {
   InputWallPaper({required this.id, required this.accessHash});
 
   static InputWallPaper fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputWallPaper(id: id, accessHash: accessHash);
@@ -38320,7 +37815,7 @@ class InputWallPaper extends BaseConstructor {
   }
 }
 
-class InputWallPaperSlug extends BaseConstructor {
+class InputWallPaperSlug extends InputWallPaperBase {
   static const CONSTRUCTOR_ID = 1913199744;
   static const SUBCLASS_OF_ID = 4000784410;
   final classType = "constructor";
@@ -38330,7 +37825,6 @@ class InputWallPaperSlug extends BaseConstructor {
   InputWallPaperSlug({required this.slug});
 
   static InputWallPaperSlug fromReader(BinaryReader reader) {
-    var len;
     var slug = reader.tgReadString();
     return InputWallPaperSlug(slug: slug);
   }
@@ -38359,7 +37853,7 @@ class InputWallPaperSlug extends BaseConstructor {
   }
 }
 
-class InputWallPaperNoFile extends BaseConstructor {
+class InputWallPaperNoFile extends InputWallPaperBase {
   static const CONSTRUCTOR_ID = 2524595758;
   static const SUBCLASS_OF_ID = 4000784410;
   final classType = "constructor";
@@ -38369,7 +37863,6 @@ class InputWallPaperNoFile extends BaseConstructor {
   InputWallPaperNoFile({required this.id});
 
   static InputWallPaperNoFile fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     return InputWallPaperNoFile(id: id);
   }
@@ -38410,11 +37903,11 @@ class CodeSettings extends BaseConstructor {
   List<List<int>>? logoutTokens;
 
   CodeSettings(
-      {required this.allowFlashcall,
-      required this.currentNumber,
-      required this.allowAppHash,
-      required this.allowMissedCall,
-      required this.logoutTokens});
+      {this.allowFlashcall,
+      this.currentNumber,
+      this.allowAppHash,
+      this.allowMissedCall,
+      this.logoutTokens});
 
   static CodeSettings fromReader(BinaryReader reader) {
     var len;
@@ -38493,17 +37986,16 @@ class WallPaperSettings extends BaseConstructor {
   int? rotation;
 
   WallPaperSettings(
-      {required this.blur,
-      required this.motion,
-      required this.backgroundColor,
-      required this.secondBackgroundColor,
-      required this.thirdBackgroundColor,
-      required this.fourthBackgroundColor,
-      required this.intensity,
-      required this.rotation});
+      {this.blur,
+      this.motion,
+      this.backgroundColor,
+      this.secondBackgroundColor,
+      this.thirdBackgroundColor,
+      this.fourthBackgroundColor,
+      this.intensity,
+      this.rotation});
 
   static WallPaperSettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final blur = (flags & 2) == 2;
     final motion = (flags & 4) == 4;
@@ -38630,17 +38122,16 @@ class AutoDownloadSettings extends BaseConstructor {
   int videoUploadMaxbitrate;
 
   AutoDownloadSettings(
-      {required this.disabled,
-      required this.videoPreloadLarge,
-      required this.audioPreloadNext,
-      required this.phonecallsLessData,
+      {this.disabled,
+      this.videoPreloadLarge,
+      this.audioPreloadNext,
+      this.phonecallsLessData,
       required this.photoSizeMax,
       required this.videoSizeMax,
       required this.fileSizeMax,
       required this.videoUploadMaxbitrate});
 
   static AutoDownloadSettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final disabled = (flags & 1) == 1;
     final videoPreloadLarge = (flags & 2) == 2;
@@ -38690,7 +38181,9 @@ class AutoDownloadSettings extends BaseConstructor {
   }
 }
 
-class EmojiKeyword extends BaseConstructor {
+abstract class EmojiKeywordBase extends BaseConstructor {}
+
+class EmojiKeyword extends EmojiKeywordBase {
   static const CONSTRUCTOR_ID = 3585325561;
   static const SUBCLASS_OF_ID = 1712497982;
   final classType = "constructor";
@@ -38719,11 +38212,10 @@ class EmojiKeyword extends BaseConstructor {
       readBufferFromBigInt(3585325561, 4),
       serializeBytes(this.keyword),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.emoticons!.length, 4,
+      readBufferFromBigInt(this.emoticons.length, 4,
           little: true, signed: true),
       this
-          .emoticons!
-          .map((x) => serializeBytes(x))
+          .emoticons.map((x) => serializeBytes(x))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -38744,7 +38236,7 @@ class EmojiKeyword extends BaseConstructor {
   }
 }
 
-class EmojiKeywordDeleted extends BaseConstructor {
+class EmojiKeywordDeleted extends EmojiKeywordBase {
   static const CONSTRUCTOR_ID = 594408994;
   static const SUBCLASS_OF_ID = 1712497982;
   final classType = "constructor";
@@ -38773,11 +38265,10 @@ class EmojiKeywordDeleted extends BaseConstructor {
       readBufferFromBigInt(594408994, 4),
       serializeBytes(this.keyword),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.emoticons!.length, 4,
+      readBufferFromBigInt(this.emoticons.length, 4,
           little: true, signed: true),
       this
-          .emoticons!
-          .map((x) => serializeBytes(x))
+          .emoticons.map((x) => serializeBytes(x))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -38806,7 +38297,7 @@ class EmojiKeywordsDifference extends BaseConstructor {
   String langCode;
   int fromVersion;
   int version;
-  List<dynamic> keywords;
+  List<EmojiKeywordBase> keywords;
 
   EmojiKeywordsDifference(
       {required this.langCode,
@@ -38821,7 +38312,7 @@ class EmojiKeywordsDifference extends BaseConstructor {
     var version = reader.readInt();
     var _vectorkeywords = reader.readInt();
     if (_vectorkeywords != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> keywords = [];
+    List<EmojiKeywordBase> keywords = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       keywords.add(reader.tgReadObject());
@@ -38841,11 +38332,10 @@ class EmojiKeywordsDifference extends BaseConstructor {
       readBufferFromBigInt(this.fromVersion, 4, little: true, signed: true),
       readBufferFromBigInt(this.version, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.keywords!.length, 4,
+      readBufferFromBigInt(this.keywords.length, 4,
           little: true, signed: true),
       this
-          .keywords!
-          .map((x) => (x.getBytes() as List<int>))
+          .keywords.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -38876,7 +38366,6 @@ class EmojiURL extends BaseConstructor {
   EmojiURL({required this.url});
 
   static EmojiURL fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     return EmojiURL(url: url);
   }
@@ -38915,7 +38404,6 @@ class EmojiLanguage extends BaseConstructor {
   EmojiLanguage({required this.langCode});
 
   static EmojiLanguage fromReader(BinaryReader reader) {
-    var len;
     var langCode = reader.tgReadString();
     return EmojiLanguage(langCode: langCode);
   }
@@ -38954,18 +38442,17 @@ class Folder extends BaseConstructor {
   bool? autofillNewCorrespondents;
   int id;
   String title;
-  var photo;
+  ChatPhotoBase? photo;
 
   Folder(
-      {required this.autofillNewBroadcasts,
-      required this.autofillPublicGroups,
-      required this.autofillNewCorrespondents,
+      {this.autofillNewBroadcasts,
+      this.autofillPublicGroups,
+      this.autofillNewCorrespondents,
       required this.id,
       required this.title,
-      required this.photo});
+      this.photo});
 
   static Folder fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final autofillNewBroadcasts = (flags & 1) == 1;
     final autofillPublicGroups = (flags & 2) == 2;
@@ -38996,7 +38483,7 @@ class Folder extends BaseConstructor {
       serializeBytes(this.title),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -39023,13 +38510,12 @@ class InputFolderPeer extends BaseConstructor {
   static const SUBCLASS_OF_ID = 1954700800;
   final classType = "constructor";
   final ID = 4224893590;
-  var peer;
+  InputPeerBase peer;
   int folderId;
 
   InputFolderPeer({required this.peer, required this.folderId});
 
   static InputFolderPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var folderId = reader.readInt();
     return InputFolderPeer(peer: peer, folderId: folderId);
@@ -39039,7 +38525,7 @@ class InputFolderPeer extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4224893590, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.folderId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -39065,13 +38551,12 @@ class FolderPeer extends BaseConstructor {
   static const SUBCLASS_OF_ID = 4092733499;
   final classType = "constructor";
   final ID = 3921323624;
-  var peer;
+  PeerBase peer;
   int folderId;
 
   FolderPeer({required this.peer, required this.folderId});
 
   static FolderPeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var folderId = reader.readInt();
     return FolderPeer(peer: peer, folderId: folderId);
@@ -39081,7 +38566,7 @@ class FolderPeer extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3921323624, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.folderId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -39102,22 +38587,21 @@ class FolderPeer extends BaseConstructor {
   }
 }
 
-class UrlAuthResultRequest extends BaseConstructor {
+abstract class UrlAuthResultBase extends BaseConstructor {}
+
+class UrlAuthResultRequest extends UrlAuthResultBase {
   static const CONSTRUCTOR_ID = 2463316494;
   static const SUBCLASS_OF_ID = 2003159838;
   final classType = "constructor";
   final ID = 2463316494;
   bool? requestWriteAccess;
-  var bot;
+  UserBase bot;
   String domain;
 
   UrlAuthResultRequest(
-      {required this.requestWriteAccess,
-      required this.bot,
-      required this.domain});
+      {this.requestWriteAccess, required this.bot, required this.domain});
 
   static UrlAuthResultRequest fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final requestWriteAccess = (flags & 1) == 1;
     var bot = reader.tgReadObject();
@@ -39131,7 +38615,7 @@ class UrlAuthResultRequest extends BaseConstructor {
     return [
       readBufferFromBigInt(2463316494, 4),
       [0, 0, 0, 0],
-      (this.bot.getBytes() as List<int>),
+      (this.bot.getBytes()),
       serializeBytes(this.domain),
     ].expand((element) => element).toList();
   }
@@ -39152,7 +38636,7 @@ class UrlAuthResultRequest extends BaseConstructor {
   }
 }
 
-class UrlAuthResultAccepted extends BaseConstructor {
+class UrlAuthResultAccepted extends UrlAuthResultBase {
   static const CONSTRUCTOR_ID = 2408320590;
   static const SUBCLASS_OF_ID = 2003159838;
   final classType = "constructor";
@@ -39162,7 +38646,6 @@ class UrlAuthResultAccepted extends BaseConstructor {
   UrlAuthResultAccepted({required this.url});
 
   static UrlAuthResultAccepted fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     return UrlAuthResultAccepted(url: url);
   }
@@ -39191,7 +38674,7 @@ class UrlAuthResultAccepted extends BaseConstructor {
   }
 }
 
-class UrlAuthResultDefault extends BaseConstructor {
+class UrlAuthResultDefault extends UrlAuthResultBase {
   static const CONSTRUCTOR_ID = 2849430303;
   static const SUBCLASS_OF_ID = 2003159838;
   final classType = "constructor";
@@ -39200,7 +38683,6 @@ class UrlAuthResultDefault extends BaseConstructor {
   UrlAuthResultDefault();
 
   static UrlAuthResultDefault fromReader(BinaryReader reader) {
-    var len;
     return UrlAuthResultDefault();
   }
 
@@ -39227,7 +38709,9 @@ class UrlAuthResultDefault extends BaseConstructor {
   }
 }
 
-class ChannelLocationEmpty extends BaseConstructor {
+abstract class ChannelLocationBase extends BaseConstructor {}
+
+class ChannelLocationEmpty extends ChannelLocationBase {
   static const CONSTRUCTOR_ID = 3216354699;
   static const SUBCLASS_OF_ID = 3961916287;
   final classType = "constructor";
@@ -39236,7 +38720,6 @@ class ChannelLocationEmpty extends BaseConstructor {
   ChannelLocationEmpty();
 
   static ChannelLocationEmpty fromReader(BinaryReader reader) {
-    var len;
     return ChannelLocationEmpty();
   }
 
@@ -39263,18 +38746,17 @@ class ChannelLocationEmpty extends BaseConstructor {
   }
 }
 
-class ChannelLocation extends BaseConstructor {
+class ChannelLocation extends ChannelLocationBase {
   static const CONSTRUCTOR_ID = 547062491;
   static const SUBCLASS_OF_ID = 3961916287;
   final classType = "constructor";
   final ID = 547062491;
-  var geoPoint;
+  GeoPointBase geoPoint;
   String address;
 
   ChannelLocation({required this.geoPoint, required this.address});
 
   static ChannelLocation fromReader(BinaryReader reader) {
-    var len;
     var geoPoint = reader.tgReadObject();
     var address = reader.tgReadString();
     return ChannelLocation(geoPoint: geoPoint, address: address);
@@ -39284,7 +38766,7 @@ class ChannelLocation extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(547062491, 4),
-      (this.geoPoint.getBytes() as List<int>),
+      (this.geoPoint.getBytes()),
       serializeBytes(this.address),
     ].expand((element) => element).toList();
   }
@@ -39305,12 +38787,14 @@ class ChannelLocation extends BaseConstructor {
   }
 }
 
-class PeerLocated extends BaseConstructor {
+abstract class PeerLocatedBase extends BaseConstructor {}
+
+class PeerLocated extends PeerLocatedBase {
   static const CONSTRUCTOR_ID = 3393592157;
   static const SUBCLASS_OF_ID = 4208604332;
   final classType = "constructor";
   final ID = 3393592157;
-  var peer;
+  PeerBase peer;
   int expires;
   int distance;
 
@@ -39318,7 +38802,6 @@ class PeerLocated extends BaseConstructor {
       {required this.peer, required this.expires, required this.distance});
 
   static PeerLocated fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var expires = reader.readInt();
     var distance = reader.readInt();
@@ -39329,7 +38812,7 @@ class PeerLocated extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3393592157, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.expires, 4, little: true, signed: true),
       readBufferFromBigInt(this.distance, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -39351,7 +38834,7 @@ class PeerLocated extends BaseConstructor {
   }
 }
 
-class PeerSelfLocated extends BaseConstructor {
+class PeerSelfLocated extends PeerLocatedBase {
   static const CONSTRUCTOR_ID = 4176226379;
   static const SUBCLASS_OF_ID = 4208604332;
   final classType = "constructor";
@@ -39361,7 +38844,6 @@ class PeerSelfLocated extends BaseConstructor {
   PeerSelfLocated({required this.expires});
 
   static PeerSelfLocated fromReader(BinaryReader reader) {
-    var len;
     var expires = reader.readInt();
     return PeerSelfLocated(expires: expires);
   }
@@ -39403,7 +38885,6 @@ class RestrictionReason extends BaseConstructor {
       {required this.platform, required this.reason, required this.text});
 
   static RestrictionReason fromReader(BinaryReader reader) {
-    var len;
     var platform = reader.tgReadString();
     var reason = reader.tgReadString();
     var text = reader.tgReadString();
@@ -39436,7 +38917,9 @@ class RestrictionReason extends BaseConstructor {
   }
 }
 
-class InputTheme extends BaseConstructor {
+abstract class InputThemeBase extends BaseConstructor {}
+
+class InputTheme extends InputThemeBase {
   static const CONSTRUCTOR_ID = 1012306921;
   static const SUBCLASS_OF_ID = 127992048;
   final classType = "constructor";
@@ -39447,7 +38930,6 @@ class InputTheme extends BaseConstructor {
   InputTheme({required this.id, required this.accessHash});
 
   static InputTheme fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputTheme(id: id, accessHash: accessHash);
@@ -39478,7 +38960,7 @@ class InputTheme extends BaseConstructor {
   }
 }
 
-class InputThemeSlug extends BaseConstructor {
+class InputThemeSlug extends InputThemeBase {
   static const CONSTRUCTOR_ID = 4119399921;
   static const SUBCLASS_OF_ID = 127992048;
   final classType = "constructor";
@@ -39488,7 +38970,6 @@ class InputThemeSlug extends BaseConstructor {
   InputThemeSlug({required this.slug});
 
   static InputThemeSlug fromReader(BinaryReader reader) {
-    var len;
     var slug = reader.tgReadString();
     return InputThemeSlug(slug: slug);
   }
@@ -39529,23 +39010,23 @@ class Theme extends BaseConstructor {
   BigInt accessHash;
   String slug;
   String title;
-  var document;
-  List<dynamic>? settings;
+  DocumentBase? document;
+  List<ThemeSettings>? settings;
   String? emoticon;
   int? installsCount;
 
   Theme(
-      {required this.creator,
-      required this.defaultVar,
-      required this.forChat,
+      {this.creator,
+      this.defaultVar,
+      this.forChat,
       required this.id,
       required this.accessHash,
       required this.slug,
       required this.title,
-      required this.document,
-      required this.settings,
-      required this.emoticon,
-      required this.installsCount});
+      this.document,
+      this.settings,
+      this.emoticon,
+      this.installsCount});
 
   static Theme fromReader(BinaryReader reader) {
     var len;
@@ -39567,7 +39048,7 @@ class Theme extends BaseConstructor {
     if ((flags & 8) == 8) {
       var _vectorsettings = reader.readInt();
       if (_vectorsettings != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> settings = [];
+      List<ThemeSettings> settings = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         settings.add(reader.tgReadObject());
@@ -39612,7 +39093,7 @@ class Theme extends BaseConstructor {
       serializeBytes(this.title),
       (this.document == null || this.document == false)
           ? List<int>.empty()
-          : [(this.document.getBytes() as List<int>)]
+          : [(this.document!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.settings == null || this.settings == false)
@@ -39623,7 +39104,7 @@ class Theme extends BaseConstructor {
                   little: true, signed: true),
               this
                   .settings!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.emoticon == null || this.emoticon == false)
@@ -39656,7 +39137,9 @@ class Theme extends BaseConstructor {
   }
 }
 
-class BaseThemeClassic extends BaseConstructor {
+abstract class BaseThemeBase extends BaseConstructor {}
+
+class BaseThemeClassic extends BaseThemeBase {
   static const CONSTRUCTOR_ID = 3282117730;
   static const SUBCLASS_OF_ID = 520352836;
   final classType = "constructor";
@@ -39665,7 +39148,6 @@ class BaseThemeClassic extends BaseConstructor {
   BaseThemeClassic();
 
   static BaseThemeClassic fromReader(BinaryReader reader) {
-    var len;
     return BaseThemeClassic();
   }
 
@@ -39692,7 +39174,7 @@ class BaseThemeClassic extends BaseConstructor {
   }
 }
 
-class BaseThemeDay extends BaseConstructor {
+class BaseThemeDay extends BaseThemeBase {
   static const CONSTRUCTOR_ID = 4225242760;
   static const SUBCLASS_OF_ID = 520352836;
   final classType = "constructor";
@@ -39701,7 +39183,6 @@ class BaseThemeDay extends BaseConstructor {
   BaseThemeDay();
 
   static BaseThemeDay fromReader(BinaryReader reader) {
-    var len;
     return BaseThemeDay();
   }
 
@@ -39728,7 +39209,7 @@ class BaseThemeDay extends BaseConstructor {
   }
 }
 
-class BaseThemeNight extends BaseConstructor {
+class BaseThemeNight extends BaseThemeBase {
   static const CONSTRUCTOR_ID = 3081969320;
   static const SUBCLASS_OF_ID = 520352836;
   final classType = "constructor";
@@ -39737,7 +39218,6 @@ class BaseThemeNight extends BaseConstructor {
   BaseThemeNight();
 
   static BaseThemeNight fromReader(BinaryReader reader) {
-    var len;
     return BaseThemeNight();
   }
 
@@ -39764,7 +39244,7 @@ class BaseThemeNight extends BaseConstructor {
   }
 }
 
-class BaseThemeTinted extends BaseConstructor {
+class BaseThemeTinted extends BaseThemeBase {
   static const CONSTRUCTOR_ID = 1834973166;
   static const SUBCLASS_OF_ID = 520352836;
   final classType = "constructor";
@@ -39773,7 +39253,6 @@ class BaseThemeTinted extends BaseConstructor {
   BaseThemeTinted();
 
   static BaseThemeTinted fromReader(BinaryReader reader) {
-    var len;
     return BaseThemeTinted();
   }
 
@@ -39800,7 +39279,7 @@ class BaseThemeTinted extends BaseConstructor {
   }
 }
 
-class BaseThemeArctic extends BaseConstructor {
+class BaseThemeArctic extends BaseThemeBase {
   static const CONSTRUCTOR_ID = 1527845466;
   static const SUBCLASS_OF_ID = 520352836;
   final classType = "constructor";
@@ -39809,7 +39288,6 @@ class BaseThemeArctic extends BaseConstructor {
   BaseThemeArctic();
 
   static BaseThemeArctic fromReader(BinaryReader reader) {
-    var len;
     return BaseThemeArctic();
   }
 
@@ -39842,21 +39320,21 @@ class InputThemeSettings extends BaseConstructor {
   final classType = "constructor";
   final ID = 2413711439;
   bool? messageColorsAnimated;
-  var baseTheme;
+  BaseThemeBase baseTheme;
   int accentColor;
   int? outboxAccentColor;
   List<int>? messageColors;
-  var wallpaper;
-  var wallpaperSettings;
+  InputWallPaperBase? wallpaper;
+  WallPaperSettings? wallpaperSettings;
 
   InputThemeSettings(
-      {required this.messageColorsAnimated,
+      {this.messageColorsAnimated,
       required this.baseTheme,
       required this.accentColor,
-      required this.outboxAccentColor,
-      required this.messageColors,
-      required this.wallpaper,
-      required this.wallpaperSettings});
+      this.outboxAccentColor,
+      this.messageColors,
+      this.wallpaper,
+      this.wallpaperSettings});
 
   static InputThemeSettings fromReader(BinaryReader reader) {
     var len;
@@ -39909,7 +39387,7 @@ class InputThemeSettings extends BaseConstructor {
     return [
       readBufferFromBigInt(2413711439, 4),
       [0, 0, 0, 0],
-      (this.baseTheme.getBytes() as List<int>),
+      (this.baseTheme.getBytes()),
       readBufferFromBigInt(this.accentColor, 4, little: true, signed: true),
       (this.outboxAccentColor == null || this.outboxAccentColor == false)
           ? List<int>.empty()
@@ -39931,12 +39409,12 @@ class InputThemeSettings extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.wallpaper == null || this.wallpaper == false)
           ? List<int>.empty()
-          : [(this.wallpaper.getBytes() as List<int>)]
+          : [(this.wallpaper!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.wallpaperSettings == null || this.wallpaperSettings == false)
           ? List<int>.empty()
-          : [(this.wallpaperSettings.getBytes() as List<int>)]
+          : [(this.wallpaperSettings!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -39964,19 +39442,19 @@ class ThemeSettings extends BaseConstructor {
   final classType = "constructor";
   final ID = 4200117972;
   bool? messageColorsAnimated;
-  var baseTheme;
+  BaseThemeBase baseTheme;
   int accentColor;
   int? outboxAccentColor;
   List<int>? messageColors;
-  var wallpaper;
+  WallPaperBase? wallpaper;
 
   ThemeSettings(
-      {required this.messageColorsAnimated,
+      {this.messageColorsAnimated,
       required this.baseTheme,
       required this.accentColor,
-      required this.outboxAccentColor,
-      required this.messageColors,
-      required this.wallpaper});
+      this.outboxAccentColor,
+      this.messageColors,
+      this.wallpaper});
 
   static ThemeSettings fromReader(BinaryReader reader) {
     var len;
@@ -40022,7 +39500,7 @@ class ThemeSettings extends BaseConstructor {
     return [
       readBufferFromBigInt(4200117972, 4),
       [0, 0, 0, 0],
-      (this.baseTheme.getBytes() as List<int>),
+      (this.baseTheme.getBytes()),
       readBufferFromBigInt(this.accentColor, 4, little: true, signed: true),
       (this.outboxAccentColor == null || this.outboxAccentColor == false)
           ? List<int>.empty()
@@ -40044,7 +39522,7 @@ class ThemeSettings extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.wallpaper == null || this.wallpaper == false)
           ? List<int>.empty()
-          : [(this.wallpaper.getBytes() as List<int>)]
+          : [(this.wallpaper!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -40066,15 +39544,17 @@ class ThemeSettings extends BaseConstructor {
   }
 }
 
-class WebPageAttributeTheme extends BaseConstructor {
+abstract class WebPageAttributeBase extends BaseConstructor {}
+
+class WebPageAttributeTheme extends WebPageAttributeBase {
   static const CONSTRUCTOR_ID = 1421174295;
   static const SUBCLASS_OF_ID = 2949638599;
   final classType = "constructor";
   final ID = 1421174295;
-  List<dynamic>? documents;
-  var settings;
+  List<DocumentBase>? documents;
+  ThemeSettings? settings;
 
-  WebPageAttributeTheme({required this.documents, required this.settings});
+  WebPageAttributeTheme({this.documents, this.settings});
 
   static WebPageAttributeTheme fromReader(BinaryReader reader) {
     var len;
@@ -40083,7 +39563,7 @@ class WebPageAttributeTheme extends BaseConstructor {
     if ((flags & 1) == 1) {
       var _vectordocuments = reader.readInt();
       if (_vectordocuments != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> documents = [];
+      List<DocumentBase> documents = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         documents.add(reader.tgReadObject());
@@ -40113,12 +39593,12 @@ class WebPageAttributeTheme extends BaseConstructor {
                   little: true, signed: true),
               this
                   .documents!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.settings == null || this.settings == false)
           ? List<int>.empty()
-          : [(this.settings.getBytes() as List<int>)]
+          : [(this.settings!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -40140,7 +39620,9 @@ class WebPageAttributeTheme extends BaseConstructor {
   }
 }
 
-class MessageUserVote extends BaseConstructor {
+abstract class MessageUserVoteBase extends BaseConstructor {}
+
+class MessageUserVote extends MessageUserVoteBase {
   static const CONSTRUCTOR_ID = 886196148;
   static const SUBCLASS_OF_ID = 3375158674;
   final classType = "constructor";
@@ -40153,7 +39635,6 @@ class MessageUserVote extends BaseConstructor {
       {required this.userId, required this.option, required this.date});
 
   static MessageUserVote fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var option = reader.tgReadBytes();
     var date = reader.readInt();
@@ -40186,7 +39667,7 @@ class MessageUserVote extends BaseConstructor {
   }
 }
 
-class MessageUserVoteInputOption extends BaseConstructor {
+class MessageUserVoteInputOption extends MessageUserVoteBase {
   static const CONSTRUCTOR_ID = 1017491692;
   static const SUBCLASS_OF_ID = 3375158674;
   final classType = "constructor";
@@ -40197,7 +39678,6 @@ class MessageUserVoteInputOption extends BaseConstructor {
   MessageUserVoteInputOption({required this.userId, required this.date});
 
   static MessageUserVoteInputOption fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var date = reader.readInt();
     return MessageUserVoteInputOption(userId: userId, date: date);
@@ -40228,7 +39708,7 @@ class MessageUserVoteInputOption extends BaseConstructor {
   }
 }
 
-class MessageUserVoteMultiple extends BaseConstructor {
+class MessageUserVoteMultiple extends MessageUserVoteBase {
   static const CONSTRUCTOR_ID = 2321933655;
   static const SUBCLASS_OF_ID = 3375158674;
   final classType = "constructor";
@@ -40261,8 +39741,8 @@ class MessageUserVoteMultiple extends BaseConstructor {
       readBufferFromBigInt(2321933655, 4),
       readBufferFromBigInt(this.userId, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.options!.length, 4, little: true, signed: true),
-      this.options!.map((x) => serializeBytes(x)).expand((element) => element),
+      readBufferFromBigInt(this.options.length, 4, little: true, signed: true),
+      this.options.map((x) => serializeBytes(x)).expand((element) => element),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -40294,7 +39774,6 @@ class BankCardOpenUrl extends BaseConstructor {
   BankCardOpenUrl({required this.url, required this.name});
 
   static BankCardOpenUrl fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     var name = reader.tgReadString();
     return BankCardOpenUrl(url: url, name: name);
@@ -40325,7 +39804,9 @@ class BankCardOpenUrl extends BaseConstructor {
   }
 }
 
-class DialogFilter extends BaseConstructor {
+abstract class DialogFilterBase extends BaseConstructor {}
+
+class DialogFilter extends DialogFilterBase {
   static const CONSTRUCTOR_ID = 1949890536;
   static const SUBCLASS_OF_ID = 1764475991;
   final classType = "constructor";
@@ -40341,22 +39822,22 @@ class DialogFilter extends BaseConstructor {
   int id;
   String title;
   String? emoticon;
-  List<dynamic> pinnedPeers;
-  List<dynamic> includePeers;
-  List<dynamic> excludePeers;
+  List<InputPeerBase> pinnedPeers;
+  List<InputPeerBase> includePeers;
+  List<InputPeerBase> excludePeers;
 
   DialogFilter(
-      {required this.contacts,
-      required this.nonContacts,
-      required this.groups,
-      required this.broadcasts,
-      required this.bots,
-      required this.excludeMuted,
-      required this.excludeRead,
-      required this.excludeArchived,
+      {this.contacts,
+      this.nonContacts,
+      this.groups,
+      this.broadcasts,
+      this.bots,
+      this.excludeMuted,
+      this.excludeRead,
+      this.excludeArchived,
       required this.id,
       required this.title,
-      required this.emoticon,
+      this.emoticon,
       required this.pinnedPeers,
       required this.includePeers,
       required this.excludePeers});
@@ -40382,21 +39863,21 @@ class DialogFilter extends BaseConstructor {
     }
     var _vectorpinnedPeers = reader.readInt();
     if (_vectorpinnedPeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> pinnedPeers = [];
+    List<InputPeerBase> pinnedPeers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       pinnedPeers.add(reader.tgReadObject());
     }
     var _vectorincludePeers = reader.readInt();
     if (_vectorincludePeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> includePeers = [];
+    List<InputPeerBase> includePeers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       includePeers.add(reader.tgReadObject());
     }
     var _vectorexcludePeers = reader.readInt();
     if (_vectorexcludePeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> excludePeers = [];
+    List<InputPeerBase> excludePeers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       excludePeers.add(reader.tgReadObject());
@@ -40431,25 +39912,22 @@ class DialogFilter extends BaseConstructor {
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.pinnedPeers!.length, 4,
+      readBufferFromBigInt(this.pinnedPeers.length, 4,
           little: true, signed: true),
       this
-          .pinnedPeers!
-          .map((x) => (x.getBytes() as List<int>))
+          .pinnedPeers.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.includePeers!.length, 4,
+      readBufferFromBigInt(this.includePeers.length, 4,
           little: true, signed: true),
       this
-          .includePeers!
-          .map((x) => (x.getBytes() as List<int>))
+          .includePeers.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.excludePeers!.length, 4,
+      readBufferFromBigInt(this.excludePeers.length, 4,
           little: true, signed: true),
       this
-          .excludePeers!
-          .map((x) => (x.getBytes() as List<int>))
+          .excludePeers.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -40470,7 +39948,7 @@ class DialogFilter extends BaseConstructor {
   }
 }
 
-class DialogFilterDefault extends BaseConstructor {
+class DialogFilterDefault extends DialogFilterBase {
   static const CONSTRUCTOR_ID = 909284270;
   static const SUBCLASS_OF_ID = 1764475991;
   final classType = "constructor";
@@ -40479,7 +39957,6 @@ class DialogFilterDefault extends BaseConstructor {
   DialogFilterDefault();
 
   static DialogFilterDefault fromReader(BinaryReader reader) {
-    var len;
     return DialogFilterDefault();
   }
 
@@ -40511,13 +39988,12 @@ class DialogFilterSuggested extends BaseConstructor {
   static const SUBCLASS_OF_ID = 837673094;
   final classType = "constructor";
   final ID = 2004110666;
-  var filter;
+  DialogFilterBase filter;
   String description;
 
   DialogFilterSuggested({required this.filter, required this.description});
 
   static DialogFilterSuggested fromReader(BinaryReader reader) {
-    var len;
     var filter = reader.tgReadObject();
     var description = reader.tgReadString();
     return DialogFilterSuggested(filter: filter, description: description);
@@ -40527,7 +40003,7 @@ class DialogFilterSuggested extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2004110666, 4),
-      (this.filter.getBytes() as List<int>),
+      (this.filter.getBytes()),
       serializeBytes(this.description),
     ].expand((element) => element).toList();
   }
@@ -40559,7 +40035,6 @@ class StatsDateRangeDays extends BaseConstructor {
   StatsDateRangeDays({required this.minDate, required this.maxDate});
 
   static StatsDateRangeDays fromReader(BinaryReader reader) {
-    var len;
     var minDate = reader.readInt();
     var maxDate = reader.readInt();
     return StatsDateRangeDays(minDate: minDate, maxDate: maxDate);
@@ -40601,7 +40076,6 @@ class StatsAbsValueAndPrev extends BaseConstructor {
   StatsAbsValueAndPrev({required this.current, required this.previous});
 
   static StatsAbsValueAndPrev fromReader(BinaryReader reader) {
-    var len;
     var current = reader.readDouble();
     var previous = reader.readDouble();
     return StatsAbsValueAndPrev(current: current, previous: previous);
@@ -40643,7 +40117,6 @@ class StatsPercentValue extends BaseConstructor {
   StatsPercentValue({required this.part, required this.total});
 
   static StatsPercentValue fromReader(BinaryReader reader) {
-    var len;
     var part = reader.readDouble();
     var total = reader.readDouble();
     return StatsPercentValue(part: part, total: total);
@@ -40674,7 +40147,9 @@ class StatsPercentValue extends BaseConstructor {
   }
 }
 
-class StatsGraphAsync extends BaseConstructor {
+abstract class StatsGraphBase extends BaseConstructor {}
+
+class StatsGraphAsync extends StatsGraphBase {
   static const CONSTRUCTOR_ID = 1244130093;
   static const SUBCLASS_OF_ID = 2609918291;
   final classType = "constructor";
@@ -40684,7 +40159,6 @@ class StatsGraphAsync extends BaseConstructor {
   StatsGraphAsync({required this.token});
 
   static StatsGraphAsync fromReader(BinaryReader reader) {
-    var len;
     var token = reader.tgReadString();
     return StatsGraphAsync(token: token);
   }
@@ -40713,7 +40187,7 @@ class StatsGraphAsync extends BaseConstructor {
   }
 }
 
-class StatsGraphError extends BaseConstructor {
+class StatsGraphError extends StatsGraphBase {
   static const CONSTRUCTOR_ID = 3202127906;
   static const SUBCLASS_OF_ID = 2609918291;
   final classType = "constructor";
@@ -40723,7 +40197,6 @@ class StatsGraphError extends BaseConstructor {
   StatsGraphError({required this.error});
 
   static StatsGraphError fromReader(BinaryReader reader) {
-    var len;
     var error = reader.tgReadString();
     return StatsGraphError(error: error);
   }
@@ -40752,18 +40225,17 @@ class StatsGraphError extends BaseConstructor {
   }
 }
 
-class StatsGraph extends BaseConstructor {
+class StatsGraph extends StatsGraphBase {
   static const CONSTRUCTOR_ID = 2393138358;
   static const SUBCLASS_OF_ID = 2609918291;
   final classType = "constructor";
   final ID = 2393138358;
-  var json;
+  DataJSON json;
   String? zoomToken;
 
-  StatsGraph({required this.json, required this.zoomToken});
+  StatsGraph({required this.json, this.zoomToken});
 
   static StatsGraph fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var json = reader.tgReadObject();
     var zoomToken;
@@ -40780,7 +40252,7 @@ class StatsGraph extends BaseConstructor {
     return [
       readBufferFromBigInt(2393138358, 4),
       [0, 0, 0, 0],
-      (this.json.getBytes() as List<int>),
+      (this.json.getBytes()),
       (this.zoomToken == null || this.zoomToken == false)
           ? List<int>.empty()
           : [serializeBytes(this.zoomToken)]
@@ -40818,7 +40290,6 @@ class MessageInteractionCounters extends BaseConstructor {
       {required this.msgId, required this.views, required this.forwards});
 
   static MessageInteractionCounters fromReader(BinaryReader reader) {
-    var len;
     var msgId = reader.readInt();
     var views = reader.readInt();
     var forwards = reader.readInt();
@@ -40868,10 +40339,9 @@ class VideoSize extends BaseConstructor {
       required this.w,
       required this.h,
       required this.size,
-      required this.videoStartTs});
+      this.videoStartTs});
 
   static VideoSize fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var type = reader.tgReadString();
     var w = reader.readInt();
@@ -40933,7 +40403,6 @@ class StatsGroupTopPoster extends BaseConstructor {
       {required this.userId, required this.messages, required this.avgChars});
 
   static StatsGroupTopPoster fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var messages = reader.readInt();
     var avgChars = reader.readInt();
@@ -40984,7 +40453,6 @@ class StatsGroupTopAdmin extends BaseConstructor {
       required this.banned});
 
   static StatsGroupTopAdmin fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var deleted = reader.readInt();
     var kicked = reader.readInt();
@@ -41031,7 +40499,6 @@ class StatsGroupTopInviter extends BaseConstructor {
   StatsGroupTopInviter({required this.userId, required this.invitations});
 
   static StatsGroupTopInviter fromReader(BinaryReader reader) {
-    var len;
     var userId = reader.readLong();
     var invitations = reader.readInt();
     return StatsGroupTopInviter(userId: userId, invitations: invitations);
@@ -41069,10 +40536,9 @@ class GlobalPrivacySettings extends BaseConstructor {
   final ID = 3198350372;
   bool? archiveAndMuteNewNoncontactPeers;
 
-  GlobalPrivacySettings({required this.archiveAndMuteNewNoncontactPeers});
+  GlobalPrivacySettings({this.archiveAndMuteNewNoncontactPeers});
 
   static GlobalPrivacySettings fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var archiveAndMuteNewNoncontactPeers;
     if ((flags & 1) == 1) {
@@ -41125,13 +40591,11 @@ class MessageViews extends BaseConstructor {
   final ID = 1163625789;
   int? views;
   int? forwards;
-  var replies;
+  MessageReplies? replies;
 
-  MessageViews(
-      {required this.views, required this.forwards, required this.replies});
+  MessageViews({this.views, this.forwards, this.replies});
 
   static MessageViews fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var views;
     if ((flags & 1) == 1) {
@@ -41171,7 +40635,7 @@ class MessageViews extends BaseConstructor {
               .toList(),
       (this.replies == null || this.replies == false)
           ? List<int>.empty()
-          : [(this.replies.getBytes() as List<int>)]
+          : [(this.replies!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -41200,17 +40664,16 @@ class MessageReplyHeader extends BaseConstructor {
   final ID = 2799007587;
   bool? replyToScheduled;
   int replyToMsgId;
-  var replyToPeerId;
+  PeerBase? replyToPeerId;
   int? replyToTopId;
 
   MessageReplyHeader(
-      {required this.replyToScheduled,
+      {this.replyToScheduled,
       required this.replyToMsgId,
-      required this.replyToPeerId,
-      required this.replyToTopId});
+      this.replyToPeerId,
+      this.replyToTopId});
 
   static MessageReplyHeader fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final replyToScheduled = (flags & 4) == 4;
     var replyToMsgId = reader.readInt();
@@ -41241,7 +40704,7 @@ class MessageReplyHeader extends BaseConstructor {
       readBufferFromBigInt(this.replyToMsgId, 4, little: true, signed: true),
       (this.replyToPeerId == null || this.replyToPeerId == false)
           ? List<int>.empty()
-          : [(this.replyToPeerId.getBytes() as List<int>)]
+          : [(this.replyToPeerId!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.replyToTopId == null || this.replyToTopId == false)
@@ -41277,19 +40740,19 @@ class MessageReplies extends BaseConstructor {
   bool? comments;
   int replies;
   int repliesPts;
-  List<dynamic>? recentRepliers;
+  List<PeerBase>? recentRepliers;
   BigInt? channelId;
   int? maxId;
   int? readMaxId;
 
   MessageReplies(
-      {required this.comments,
+      {this.comments,
       required this.replies,
       required this.repliesPts,
-      required this.recentRepliers,
-      required this.channelId,
-      required this.maxId,
-      required this.readMaxId});
+      this.recentRepliers,
+      this.channelId,
+      this.maxId,
+      this.readMaxId});
 
   static MessageReplies fromReader(BinaryReader reader) {
     var len;
@@ -41301,7 +40764,7 @@ class MessageReplies extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorrecentRepliers = reader.readInt();
       if (_vectorrecentRepliers != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> recentRepliers = [];
+      List<PeerBase> recentRepliers = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         recentRepliers.add(reader.tgReadObject());
@@ -41352,7 +40815,7 @@ class MessageReplies extends BaseConstructor {
                   little: true, signed: true),
               this
                   .recentRepliers!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
       (this.channelId == null || this.channelId == false)
@@ -41396,13 +40859,12 @@ class PeerBlocked extends BaseConstructor {
   static const SUBCLASS_OF_ID = 1425210520;
   final classType = "constructor";
   final ID = 3908927508;
-  var peerId;
+  PeerBase peerId;
   int date;
 
   PeerBlocked({required this.peerId, required this.date});
 
   static PeerBlocked fromReader(BinaryReader reader) {
-    var len;
     var peerId = reader.tgReadObject();
     var date = reader.readInt();
     return PeerBlocked(peerId: peerId, date: date);
@@ -41412,7 +40874,7 @@ class PeerBlocked extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3908927508, 4),
-      (this.peerId.getBytes() as List<int>),
+      (this.peerId.getBytes()),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -41433,7 +40895,9 @@ class PeerBlocked extends BaseConstructor {
   }
 }
 
-class GroupCallDiscarded extends BaseConstructor {
+abstract class GroupCallBase extends BaseConstructor {}
+
+class GroupCallDiscarded extends GroupCallBase {
   static const CONSTRUCTOR_ID = 2004925620;
   static const SUBCLASS_OF_ID = 548729632;
   final classType = "constructor";
@@ -41446,7 +40910,6 @@ class GroupCallDiscarded extends BaseConstructor {
       {required this.id, required this.accessHash, required this.duration});
 
   static GroupCallDiscarded fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     var duration = reader.readInt();
@@ -41480,7 +40943,7 @@ class GroupCallDiscarded extends BaseConstructor {
   }
 }
 
-class GroupCall extends BaseConstructor {
+class GroupCall extends GroupCallBase {
   static const CONSTRUCTOR_ID = 3583468812;
   static const SUBCLASS_OF_ID = 548729632;
   final classType = "constructor";
@@ -41505,27 +40968,26 @@ class GroupCall extends BaseConstructor {
   int version;
 
   GroupCall(
-      {required this.joinMuted,
-      required this.canChangeJoinMuted,
-      required this.joinDateAsc,
-      required this.scheduleStartSubscribed,
-      required this.canStartVideo,
-      required this.recordVideoActive,
-      required this.rtmpStream,
-      required this.listenersHidden,
+      {this.joinMuted,
+      this.canChangeJoinMuted,
+      this.joinDateAsc,
+      this.scheduleStartSubscribed,
+      this.canStartVideo,
+      this.recordVideoActive,
+      this.rtmpStream,
+      this.listenersHidden,
       required this.id,
       required this.accessHash,
       required this.participantsCount,
-      required this.title,
-      required this.streamDcId,
-      required this.recordStartDate,
-      required this.scheduleDate,
-      required this.unmutedVideoCount,
+      this.title,
+      this.streamDcId,
+      this.recordStartDate,
+      this.scheduleDate,
+      this.unmutedVideoCount,
       required this.unmutedVideoLimit,
       required this.version});
 
   static GroupCall fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final joinMuted = (flags & 2) == 2;
     final canChangeJoinMuted = (flags & 4) == 4;
@@ -41660,7 +41122,6 @@ class InputGroupCall extends BaseConstructor {
   InputGroupCall({required this.id, required this.accessHash});
 
   static InputGroupCall fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     var accessHash = reader.readLong();
     return InputGroupCall(id: id, accessHash: accessHash);
@@ -41706,39 +41167,38 @@ class GroupCallParticipant extends BaseConstructor {
   bool? volumeByAdmin;
   bool? self;
   bool? videoJoined;
-  var peer;
+  PeerBase peer;
   int date;
   int? activeDate;
   int source;
   int? volume;
   String? about;
   BigInt? raiseHandRating;
-  var video;
-  var presentation;
+  GroupCallParticipantVideo? video;
+  GroupCallParticipantVideo? presentation;
 
   GroupCallParticipant(
-      {required this.muted,
-      required this.left,
-      required this.canSelfUnmute,
-      required this.justJoined,
-      required this.versioned,
-      required this.min,
-      required this.mutedByYou,
-      required this.volumeByAdmin,
-      required this.self,
-      required this.videoJoined,
+      {this.muted,
+      this.left,
+      this.canSelfUnmute,
+      this.justJoined,
+      this.versioned,
+      this.min,
+      this.mutedByYou,
+      this.volumeByAdmin,
+      this.self,
+      this.videoJoined,
       required this.peer,
       required this.date,
-      required this.activeDate,
+      this.activeDate,
       required this.source,
-      required this.volume,
-      required this.about,
-      required this.raiseHandRating,
-      required this.video,
-      required this.presentation});
+      this.volume,
+      this.about,
+      this.raiseHandRating,
+      this.video,
+      this.presentation});
 
   static GroupCallParticipant fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final muted = (flags & 1) == 1;
     final left = (flags & 2) == 2;
@@ -41816,7 +41276,7 @@ class GroupCallParticipant extends BaseConstructor {
     return [
       readBufferFromBigInt(3953538814, 4),
       [0, 0, 0, 0],
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.date, 4, little: true, signed: true),
       (this.activeDate == null || this.activeDate == false)
           ? List<int>.empty()
@@ -41841,12 +41301,12 @@ class GroupCallParticipant extends BaseConstructor {
             ].expand((element) => element).toList(),
       (this.video == null || this.video == false)
           ? List<int>.empty()
-          : [(this.video.getBytes() as List<int>)]
+          : [(this.video!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.presentation == null || this.presentation == false)
           ? List<int>.empty()
-          : [(this.presentation.getBytes() as List<int>)]
+          : [(this.presentation!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -41868,7 +41328,9 @@ class GroupCallParticipant extends BaseConstructor {
   }
 }
 
-class InlineQueryPeerTypeSameBotPM extends BaseConstructor {
+abstract class InlineQueryPeerTypeBase extends BaseConstructor {}
+
+class InlineQueryPeerTypeSameBotPM extends InlineQueryPeerTypeBase {
   static const CONSTRUCTOR_ID = 813821341;
   static const SUBCLASS_OF_ID = 2947611167;
   final classType = "constructor";
@@ -41877,7 +41339,6 @@ class InlineQueryPeerTypeSameBotPM extends BaseConstructor {
   InlineQueryPeerTypeSameBotPM();
 
   static InlineQueryPeerTypeSameBotPM fromReader(BinaryReader reader) {
-    var len;
     return InlineQueryPeerTypeSameBotPM();
   }
 
@@ -41904,7 +41365,7 @@ class InlineQueryPeerTypeSameBotPM extends BaseConstructor {
   }
 }
 
-class InlineQueryPeerTypePM extends BaseConstructor {
+class InlineQueryPeerTypePM extends InlineQueryPeerTypeBase {
   static const CONSTRUCTOR_ID = 2201751468;
   static const SUBCLASS_OF_ID = 2947611167;
   final classType = "constructor";
@@ -41913,7 +41374,6 @@ class InlineQueryPeerTypePM extends BaseConstructor {
   InlineQueryPeerTypePM();
 
   static InlineQueryPeerTypePM fromReader(BinaryReader reader) {
-    var len;
     return InlineQueryPeerTypePM();
   }
 
@@ -41940,7 +41400,7 @@ class InlineQueryPeerTypePM extends BaseConstructor {
   }
 }
 
-class InlineQueryPeerTypeChat extends BaseConstructor {
+class InlineQueryPeerTypeChat extends InlineQueryPeerTypeBase {
   static const CONSTRUCTOR_ID = 3613836554;
   static const SUBCLASS_OF_ID = 2947611167;
   final classType = "constructor";
@@ -41949,7 +41409,6 @@ class InlineQueryPeerTypeChat extends BaseConstructor {
   InlineQueryPeerTypeChat();
 
   static InlineQueryPeerTypeChat fromReader(BinaryReader reader) {
-    var len;
     return InlineQueryPeerTypeChat();
   }
 
@@ -41976,7 +41435,7 @@ class InlineQueryPeerTypeChat extends BaseConstructor {
   }
 }
 
-class InlineQueryPeerTypeMegagroup extends BaseConstructor {
+class InlineQueryPeerTypeMegagroup extends InlineQueryPeerTypeBase {
   static const CONSTRUCTOR_ID = 1589952067;
   static const SUBCLASS_OF_ID = 2947611167;
   final classType = "constructor";
@@ -41985,7 +41444,6 @@ class InlineQueryPeerTypeMegagroup extends BaseConstructor {
   InlineQueryPeerTypeMegagroup();
 
   static InlineQueryPeerTypeMegagroup fromReader(BinaryReader reader) {
-    var len;
     return InlineQueryPeerTypeMegagroup();
   }
 
@@ -42012,7 +41470,7 @@ class InlineQueryPeerTypeMegagroup extends BaseConstructor {
   }
 }
 
-class InlineQueryPeerTypeBroadcast extends BaseConstructor {
+class InlineQueryPeerTypeBroadcast extends InlineQueryPeerTypeBase {
   static const CONSTRUCTOR_ID = 1664413338;
   static const SUBCLASS_OF_ID = 2947611167;
   final classType = "constructor";
@@ -42021,7 +41479,6 @@ class InlineQueryPeerTypeBroadcast extends BaseConstructor {
   InlineQueryPeerTypeBroadcast();
 
   static InlineQueryPeerTypeBroadcast fromReader(BinaryReader reader) {
-    var len;
     return InlineQueryPeerTypeBroadcast();
   }
 
@@ -42060,14 +41517,13 @@ class ChatInviteImporter extends BaseConstructor {
   BigInt? approvedBy;
 
   ChatInviteImporter(
-      {required this.requested,
+      {this.requested,
       required this.userId,
       required this.date,
-      required this.about,
-      required this.approvedBy});
+      this.about,
+      this.approvedBy});
 
   static ChatInviteImporter fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final requested = (flags & 1) == 1;
     var userId = reader.readLong();
@@ -42142,7 +41598,6 @@ class ChatAdminWithInvites extends BaseConstructor {
       required this.revokedInvitesCount});
 
   static ChatAdminWithInvites fromReader(BinaryReader reader) {
-    var len;
     var adminId = reader.readLong();
     var invitesCount = reader.readInt();
     var revokedInvitesCount = reader.readInt();
@@ -42210,10 +41665,9 @@ class GroupCallParticipantVideoSourceGroup extends BaseConstructor {
       readBufferFromBigInt(3702593719, 4),
       serializeBytes(this.semantics),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.sources!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.sources.length, 4, little: true, signed: true),
       this
-          .sources!
-          .map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
+          .sources.map((x) => readBufferFromBigInt(x, 4, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -42241,14 +41695,14 @@ class GroupCallParticipantVideo extends BaseConstructor {
   final ID = 1735736008;
   bool? paused;
   String endpoint;
-  List<dynamic> sourceGroups;
+  List<GroupCallParticipantVideoSourceGroup> sourceGroups;
   int? audioSource;
 
   GroupCallParticipantVideo(
-      {required this.paused,
+      {this.paused,
       required this.endpoint,
       required this.sourceGroups,
-      required this.audioSource});
+      this.audioSource});
 
   static GroupCallParticipantVideo fromReader(BinaryReader reader) {
     var len;
@@ -42257,7 +41711,7 @@ class GroupCallParticipantVideo extends BaseConstructor {
     var endpoint = reader.tgReadString();
     var _vectorsourceGroups = reader.readInt();
     if (_vectorsourceGroups != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> sourceGroups = [];
+    List<GroupCallParticipantVideoSourceGroup> sourceGroups = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       sourceGroups.add(reader.tgReadObject());
@@ -42282,11 +41736,10 @@ class GroupCallParticipantVideo extends BaseConstructor {
       [0, 0, 0, 0],
       serializeBytes(this.endpoint),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.sourceGroups!.length, 4,
+      readBufferFromBigInt(this.sourceGroups.length, 4,
           little: true, signed: true),
       this
-          .sourceGroups!
-          .map((x) => (x.getBytes() as List<int>))
+          .sourceGroups.map((x) => x.getBytes())
           .expand((element) => element),
       (this.audioSource == null || this.audioSource == false)
           ? List<int>.empty()
@@ -42313,7 +41766,9 @@ class GroupCallParticipantVideo extends BaseConstructor {
   }
 }
 
-class BotCommandScopeDefault extends BaseConstructor {
+abstract class BotCommandScopeBase extends BaseConstructor {}
+
+class BotCommandScopeDefault extends BotCommandScopeBase {
   static const CONSTRUCTOR_ID = 795652779;
   static const SUBCLASS_OF_ID = 1269783824;
   final classType = "constructor";
@@ -42322,7 +41777,6 @@ class BotCommandScopeDefault extends BaseConstructor {
   BotCommandScopeDefault();
 
   static BotCommandScopeDefault fromReader(BinaryReader reader) {
-    var len;
     return BotCommandScopeDefault();
   }
 
@@ -42349,7 +41803,7 @@ class BotCommandScopeDefault extends BaseConstructor {
   }
 }
 
-class BotCommandScopeUsers extends BaseConstructor {
+class BotCommandScopeUsers extends BotCommandScopeBase {
   static const CONSTRUCTOR_ID = 1011811544;
   static const SUBCLASS_OF_ID = 1269783824;
   final classType = "constructor";
@@ -42358,7 +41812,6 @@ class BotCommandScopeUsers extends BaseConstructor {
   BotCommandScopeUsers();
 
   static BotCommandScopeUsers fromReader(BinaryReader reader) {
-    var len;
     return BotCommandScopeUsers();
   }
 
@@ -42385,7 +41838,7 @@ class BotCommandScopeUsers extends BaseConstructor {
   }
 }
 
-class BotCommandScopeChats extends BaseConstructor {
+class BotCommandScopeChats extends BotCommandScopeBase {
   static const CONSTRUCTOR_ID = 1877059713;
   static const SUBCLASS_OF_ID = 1269783824;
   final classType = "constructor";
@@ -42394,7 +41847,6 @@ class BotCommandScopeChats extends BaseConstructor {
   BotCommandScopeChats();
 
   static BotCommandScopeChats fromReader(BinaryReader reader) {
-    var len;
     return BotCommandScopeChats();
   }
 
@@ -42421,7 +41873,7 @@ class BotCommandScopeChats extends BaseConstructor {
   }
 }
 
-class BotCommandScopeChatAdmins extends BaseConstructor {
+class BotCommandScopeChatAdmins extends BotCommandScopeBase {
   static const CONSTRUCTOR_ID = 3114950762;
   static const SUBCLASS_OF_ID = 1269783824;
   final classType = "constructor";
@@ -42430,7 +41882,6 @@ class BotCommandScopeChatAdmins extends BaseConstructor {
   BotCommandScopeChatAdmins();
 
   static BotCommandScopeChatAdmins fromReader(BinaryReader reader) {
-    var len;
     return BotCommandScopeChatAdmins();
   }
 
@@ -42457,17 +41908,16 @@ class BotCommandScopeChatAdmins extends BaseConstructor {
   }
 }
 
-class BotCommandScopePeer extends BaseConstructor {
+class BotCommandScopePeer extends BotCommandScopeBase {
   static const CONSTRUCTOR_ID = 3684534653;
   static const SUBCLASS_OF_ID = 1269783824;
   final classType = "constructor";
   final ID = 3684534653;
-  var peer;
+  InputPeerBase peer;
 
   BotCommandScopePeer({required this.peer});
 
   static BotCommandScopePeer fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return BotCommandScopePeer(peer: peer);
   }
@@ -42476,7 +41926,7 @@ class BotCommandScopePeer extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3684534653, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -42496,17 +41946,16 @@ class BotCommandScopePeer extends BaseConstructor {
   }
 }
 
-class BotCommandScopePeerAdmins extends BaseConstructor {
+class BotCommandScopePeerAdmins extends BotCommandScopeBase {
   static const CONSTRUCTOR_ID = 1071145937;
   static const SUBCLASS_OF_ID = 1269783824;
   final classType = "constructor";
   final ID = 1071145937;
-  var peer;
+  InputPeerBase peer;
 
   BotCommandScopePeerAdmins({required this.peer});
 
   static BotCommandScopePeerAdmins fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     return BotCommandScopePeerAdmins(peer: peer);
   }
@@ -42515,7 +41964,7 @@ class BotCommandScopePeerAdmins extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1071145937, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -42535,18 +41984,17 @@ class BotCommandScopePeerAdmins extends BaseConstructor {
   }
 }
 
-class BotCommandScopePeerUser extends BaseConstructor {
+class BotCommandScopePeerUser extends BotCommandScopeBase {
   static const CONSTRUCTOR_ID = 169026035;
   static const SUBCLASS_OF_ID = 1269783824;
   final classType = "constructor";
   final ID = 169026035;
-  var peer;
-  var userId;
+  InputPeerBase peer;
+  InputUserBase userId;
 
   BotCommandScopePeerUser({required this.peer, required this.userId});
 
   static BotCommandScopePeerUser fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var userId = reader.tgReadObject();
     return BotCommandScopePeerUser(peer: peer, userId: userId);
@@ -42556,8 +42004,8 @@ class BotCommandScopePeerUser extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(169026035, 4),
-      (this.peer.getBytes() as List<int>),
-      (this.userId.getBytes() as List<int>),
+      (this.peer.getBytes()),
+      (this.userId.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -42584,24 +42032,24 @@ class SponsoredMessage extends BaseConstructor {
   final ID = 981691896;
   bool? recommended;
   List<int> randomId;
-  var fromId;
-  var chatInvite;
+  PeerBase? fromId;
+  ChatInviteBase? chatInvite;
   String? chatInviteHash;
   int? channelPost;
   String? startParam;
   String message;
-  List<dynamic>? entities;
+  List<MessageEntityBase>? entities;
 
   SponsoredMessage(
-      {required this.recommended,
+      {this.recommended,
       required this.randomId,
-      required this.fromId,
-      required this.chatInvite,
-      required this.chatInviteHash,
-      required this.channelPost,
-      required this.startParam,
+      this.fromId,
+      this.chatInvite,
+      this.chatInviteHash,
+      this.channelPost,
+      this.startParam,
       required this.message,
-      required this.entities});
+      this.entities});
 
   static SponsoredMessage fromReader(BinaryReader reader) {
     var len;
@@ -42643,7 +42091,7 @@ class SponsoredMessage extends BaseConstructor {
     if ((flags & 2) == 2) {
       var _vectorentities = reader.readInt();
       if (_vectorentities != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> entities = [];
+      List<MessageEntityBase> entities = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         entities.add(reader.tgReadObject());
@@ -42671,12 +42119,12 @@ class SponsoredMessage extends BaseConstructor {
       serializeBytes(this.randomId),
       (this.fromId == null || this.fromId == false)
           ? List<int>.empty()
-          : [(this.fromId.getBytes() as List<int>)]
+          : [(this.fromId!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.chatInvite == null || this.chatInvite == false)
           ? List<int>.empty()
-          : [(this.chatInvite.getBytes() as List<int>)]
+          : [(this.chatInvite!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.chatInviteHash == null || this.chatInviteHash == false)
@@ -42704,7 +42152,7 @@ class SponsoredMessage extends BaseConstructor {
                   little: true, signed: true),
               this
                   .entities!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -42743,7 +42191,6 @@ class SearchResultsCalendarPeriod extends BaseConstructor {
       required this.count});
 
   static SearchResultsCalendarPeriod fromReader(BinaryReader reader) {
-    var len;
     var date = reader.readInt();
     var minMsgId = reader.readInt();
     var maxMsgId = reader.readInt();
@@ -42779,7 +42226,9 @@ class SearchResultsCalendarPeriod extends BaseConstructor {
   }
 }
 
-class SearchResultPosition extends BaseConstructor {
+abstract class SearchResultsPositionBase extends BaseConstructor {}
+
+class SearchResultPosition extends SearchResultsPositionBase {
   static const CONSTRUCTOR_ID = 2137295719;
   static const SUBCLASS_OF_ID = 3101824532;
   final classType = "constructor";
@@ -42792,7 +42241,6 @@ class SearchResultPosition extends BaseConstructor {
       {required this.msgId, required this.date, required this.offset});
 
   static SearchResultPosition fromReader(BinaryReader reader) {
-    var len;
     var msgId = reader.readInt();
     var date = reader.readInt();
     var offset = reader.readInt();
@@ -42834,11 +42282,9 @@ class ReactionCount extends BaseConstructor {
   String reaction;
   int count;
 
-  ReactionCount(
-      {required this.chosen, required this.reaction, required this.count});
+  ReactionCount({this.chosen, required this.reaction, required this.count});
 
   static ReactionCount fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final chosen = (flags & 1) == 1;
     var reaction = reader.tgReadString();
@@ -42879,14 +42325,11 @@ class MessageReactions extends BaseConstructor {
   final ID = 1328256121;
   bool? min;
   bool? canSeeList;
-  List<dynamic> results;
-  List<dynamic>? recentReactions;
+  List<ReactionCount> results;
+  List<MessagePeerReaction>? recentReactions;
 
   MessageReactions(
-      {required this.min,
-      required this.canSeeList,
-      required this.results,
-      required this.recentReactions});
+      {this.min, this.canSeeList, required this.results, this.recentReactions});
 
   static MessageReactions fromReader(BinaryReader reader) {
     var len;
@@ -42895,7 +42338,7 @@ class MessageReactions extends BaseConstructor {
     final canSeeList = (flags & 4) == 4;
     var _vectorresults = reader.readInt();
     if (_vectorresults != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> results = [];
+    List<ReactionCount> results = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       results.add(reader.tgReadObject());
@@ -42905,7 +42348,7 @@ class MessageReactions extends BaseConstructor {
       var _vectorrecentReactions = reader.readInt();
       if (_vectorrecentReactions != 481674261)
         throw Exception('Wrong vectorId');
-      List<dynamic> recentReactions = [];
+      List<MessagePeerReaction> recentReactions = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         recentReactions.add(reader.tgReadObject());
@@ -42926,10 +42369,9 @@ class MessageReactions extends BaseConstructor {
       readBufferFromBigInt(1328256121, 4),
       [0, 0, 0, 0],
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.results!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.results.length, 4, little: true, signed: true),
       this
-          .results!
-          .map((x) => (x.getBytes() as List<int>))
+          .results.map((x) => x.getBytes())
           .expand((element) => element),
       (this.recentReactions == null || this.recentReactions == false)
           ? List<int>.empty()
@@ -42939,7 +42381,7 @@ class MessageReactions extends BaseConstructor {
                   little: true, signed: true),
               this
                   .recentReactions!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -42970,17 +42412,17 @@ class AvailableReaction extends BaseConstructor {
   bool? premium;
   String reaction;
   String title;
-  var staticIcon;
-  var appearAnimation;
-  var selectAnimation;
-  var activateAnimation;
-  var effectAnimation;
-  var aroundAnimation;
-  var centerIcon;
+  DocumentBase staticIcon;
+  DocumentBase appearAnimation;
+  DocumentBase selectAnimation;
+  DocumentBase activateAnimation;
+  DocumentBase effectAnimation;
+  DocumentBase? aroundAnimation;
+  DocumentBase? centerIcon;
 
   AvailableReaction(
-      {required this.inactive,
-      required this.premium,
+      {this.inactive,
+      this.premium,
       required this.reaction,
       required this.title,
       required this.staticIcon,
@@ -42988,11 +42430,10 @@ class AvailableReaction extends BaseConstructor {
       required this.selectAnimation,
       required this.activateAnimation,
       required this.effectAnimation,
-      required this.aroundAnimation,
-      required this.centerIcon});
+      this.aroundAnimation,
+      this.centerIcon});
 
   static AvailableReaction fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final inactive = (flags & 1) == 1;
     final premium = (flags & 4) == 4;
@@ -43036,19 +42477,19 @@ class AvailableReaction extends BaseConstructor {
       [0, 0, 0, 0],
       serializeBytes(this.reaction),
       serializeBytes(this.title),
-      (this.staticIcon.getBytes() as List<int>),
-      (this.appearAnimation.getBytes() as List<int>),
-      (this.selectAnimation.getBytes() as List<int>),
-      (this.activateAnimation.getBytes() as List<int>),
-      (this.effectAnimation.getBytes() as List<int>),
+      (this.staticIcon.getBytes()),
+      (this.appearAnimation.getBytes()),
+      (this.selectAnimation.getBytes()),
+      (this.activateAnimation.getBytes()),
+      (this.effectAnimation.getBytes()),
       (this.aroundAnimation == null || this.aroundAnimation == false)
           ? List<int>.empty()
-          : [(this.aroundAnimation.getBytes() as List<int>)]
+          : [(this.aroundAnimation!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.centerIcon == null || this.centerIcon == false)
           ? List<int>.empty()
-          : [(this.centerIcon.getBytes() as List<int>)]
+          : [(this.centerIcon!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -43077,17 +42518,13 @@ class MessagePeerReaction extends BaseConstructor {
   final ID = 1370914559;
   bool? big;
   bool? unread;
-  var peerId;
+  PeerBase peerId;
   String reaction;
 
   MessagePeerReaction(
-      {required this.big,
-      required this.unread,
-      required this.peerId,
-      required this.reaction});
+      {this.big, this.unread, required this.peerId, required this.reaction});
 
   static MessagePeerReaction fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final big = (flags & 1) == 1;
     final unread = (flags & 2) == 2;
@@ -43102,7 +42539,7 @@ class MessagePeerReaction extends BaseConstructor {
     return [
       readBufferFromBigInt(1370914559, 4),
       [0, 0, 0, 0],
-      (this.peerId.getBytes() as List<int>),
+      (this.peerId.getBytes()),
       serializeBytes(this.reaction),
     ].expand((element) => element).toList();
   }
@@ -43138,7 +42575,6 @@ class GroupCallStreamChannel extends BaseConstructor {
       required this.lastTimestampMs});
 
   static GroupCallStreamChannel fromReader(BinaryReader reader) {
-    var len;
     var channel = reader.readInt();
     var scale = reader.readInt();
     var lastTimestampMs = reader.readLong();
@@ -43183,7 +42619,6 @@ class AttachMenuBotIconColor extends BaseConstructor {
   AttachMenuBotIconColor({required this.name, required this.color});
 
   static AttachMenuBotIconColor fromReader(BinaryReader reader) {
-    var len;
     var name = reader.tgReadString();
     var color = reader.readInt();
     return AttachMenuBotIconColor(name: name, color: color);
@@ -43220,11 +42655,10 @@ class AttachMenuBotIcon extends BaseConstructor {
   final classType = "constructor";
   final ID = 2997303403;
   String name;
-  var icon;
-  List<dynamic>? colors;
+  DocumentBase icon;
+  List<AttachMenuBotIconColor>? colors;
 
-  AttachMenuBotIcon(
-      {required this.name, required this.icon, required this.colors});
+  AttachMenuBotIcon({required this.name, required this.icon, this.colors});
 
   static AttachMenuBotIcon fromReader(BinaryReader reader) {
     var len;
@@ -43235,7 +42669,7 @@ class AttachMenuBotIcon extends BaseConstructor {
     if ((flags & 1) == 1) {
       var _vectorcolors = reader.readInt();
       if (_vectorcolors != 481674261) throw Exception('Wrong vectorId');
-      List<dynamic> colors = [];
+      List<AttachMenuBotIconColor> colors = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         colors.add(reader.tgReadObject());
@@ -43252,7 +42686,7 @@ class AttachMenuBotIcon extends BaseConstructor {
       readBufferFromBigInt(2997303403, 4),
       [0, 0, 0, 0],
       serializeBytes(this.name),
-      (this.icon.getBytes() as List<int>),
+      (this.icon.getBytes()),
       (this.colors == null || this.colors == false)
           ? List<int>.empty()
           : [
@@ -43261,7 +42695,7 @@ class AttachMenuBotIcon extends BaseConstructor {
                   little: true, signed: true),
               this
                   .colors!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -43292,12 +42726,12 @@ class AttachMenuBot extends BaseConstructor {
   bool? hasSettings;
   BigInt botId;
   String shortName;
-  List<dynamic> peerTypes;
-  List<dynamic> icons;
+  List<AttachMenuPeerTypeBase> peerTypes;
+  List<AttachMenuBotIcon> icons;
 
   AttachMenuBot(
-      {required this.inactive,
-      required this.hasSettings,
+      {this.inactive,
+      this.hasSettings,
       required this.botId,
       required this.shortName,
       required this.peerTypes,
@@ -43312,14 +42746,14 @@ class AttachMenuBot extends BaseConstructor {
     var shortName = reader.tgReadString();
     var _vectorpeerTypes = reader.readInt();
     if (_vectorpeerTypes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> peerTypes = [];
+    List<AttachMenuPeerTypeBase> peerTypes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       peerTypes.add(reader.tgReadObject());
     }
     var _vectoricons = reader.readInt();
     if (_vectoricons != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> icons = [];
+    List<AttachMenuBotIcon> icons = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       icons.add(reader.tgReadObject());
@@ -43341,17 +42775,15 @@ class AttachMenuBot extends BaseConstructor {
       readBufferFromBigInt(this.botId, 8, little: true, signed: true),
       serializeBytes(this.shortName),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.peerTypes!.length, 4,
+      readBufferFromBigInt(this.peerTypes.length, 4,
           little: true, signed: true),
       this
-          .peerTypes!
-          .map((x) => (x.getBytes() as List<int>))
+          .peerTypes.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.icons!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.icons.length, 4, little: true, signed: true),
       this
-          .icons!
-          .map((x) => (x.getBytes() as List<int>))
+          .icons.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -43372,7 +42804,9 @@ class AttachMenuBot extends BaseConstructor {
   }
 }
 
-class AttachMenuBotsNotModified extends BaseConstructor {
+abstract class AttachMenuBotsBase extends BaseConstructor {}
+
+class AttachMenuBotsNotModified extends AttachMenuBotsBase {
   static const CONSTRUCTOR_ID = 4057500252;
   static const SUBCLASS_OF_ID = 2217616346;
   final classType = "constructor";
@@ -43381,7 +42815,6 @@ class AttachMenuBotsNotModified extends BaseConstructor {
   AttachMenuBotsNotModified();
 
   static AttachMenuBotsNotModified fromReader(BinaryReader reader) {
-    var len;
     return AttachMenuBotsNotModified();
   }
 
@@ -43408,14 +42841,14 @@ class AttachMenuBotsNotModified extends BaseConstructor {
   }
 }
 
-class AttachMenuBots extends BaseConstructor {
+class AttachMenuBots extends AttachMenuBotsBase {
   static const CONSTRUCTOR_ID = 1011024320;
   static const SUBCLASS_OF_ID = 2217616346;
   final classType = "constructor";
   final ID = 1011024320;
   BigInt hash;
-  List<dynamic> bots;
-  List<dynamic> users;
+  List<AttachMenuBot> bots;
+  List<UserBase> users;
 
   AttachMenuBots({required this.hash, required this.bots, required this.users});
 
@@ -43424,14 +42857,14 @@ class AttachMenuBots extends BaseConstructor {
     var hash = reader.readLong();
     var _vectorbots = reader.readInt();
     if (_vectorbots != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> bots = [];
+    List<AttachMenuBot> bots = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       bots.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -43445,16 +42878,14 @@ class AttachMenuBots extends BaseConstructor {
       readBufferFromBigInt(1011024320, 4),
       readBufferFromBigInt(this.hash, 8, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.bots!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.bots.length, 4, little: true, signed: true),
       this
-          .bots!
-          .map((x) => (x.getBytes() as List<int>))
+          .bots.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -43480,8 +42911,8 @@ class AttachMenuBotsBot extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3677587517;
   final classType = "constructor";
   final ID = 2478794367;
-  var bot;
-  List<dynamic> users;
+  AttachMenuBot bot;
+  List<UserBase> users;
 
   AttachMenuBotsBot({required this.bot, required this.users});
 
@@ -43490,7 +42921,7 @@ class AttachMenuBotsBot extends BaseConstructor {
     var bot = reader.tgReadObject();
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -43502,12 +42933,11 @@ class AttachMenuBotsBot extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2478794367, 4),
-      (this.bot.getBytes() as List<int>),
+      (this.bot.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -43528,7 +42958,9 @@ class AttachMenuBotsBot extends BaseConstructor {
   }
 }
 
-class WebViewResultUrl extends BaseConstructor {
+abstract class WebViewResultBase extends BaseConstructor {}
+
+class WebViewResultUrl extends WebViewResultBase {
   static const CONSTRUCTOR_ID = 202659196;
   static const SUBCLASS_OF_ID = 2479793990;
   final classType = "constructor";
@@ -43539,7 +42971,6 @@ class WebViewResultUrl extends BaseConstructor {
   WebViewResultUrl({required this.queryId, required this.url});
 
   static WebViewResultUrl fromReader(BinaryReader reader) {
-    var len;
     var queryId = reader.readLong();
     var url = reader.tgReadString();
     return WebViewResultUrl(queryId: queryId, url: url);
@@ -43570,7 +43001,9 @@ class WebViewResultUrl extends BaseConstructor {
   }
 }
 
-class SimpleWebViewResultUrl extends BaseConstructor {
+abstract class SimpleWebViewResultBase extends BaseConstructor {}
+
+class SimpleWebViewResultUrl extends SimpleWebViewResultBase {
   static const CONSTRUCTOR_ID = 2284811963;
   static const SUBCLASS_OF_ID = 367977435;
   final classType = "constructor";
@@ -43580,7 +43013,6 @@ class SimpleWebViewResultUrl extends BaseConstructor {
   SimpleWebViewResultUrl({required this.url});
 
   static SimpleWebViewResultUrl fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     return SimpleWebViewResultUrl(url: url);
   }
@@ -43614,12 +43046,11 @@ class WebViewMessageSent extends BaseConstructor {
   static const SUBCLASS_OF_ID = 1977914130;
   final classType = "constructor";
   final ID = 211046684;
-  var msgId;
+  InputBotInlineMessageIDBase? msgId;
 
-  WebViewMessageSent({required this.msgId});
+  WebViewMessageSent({this.msgId});
 
   static WebViewMessageSent fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var msgId;
     if ((flags & 1) == 1) {
@@ -43637,7 +43068,7 @@ class WebViewMessageSent extends BaseConstructor {
       [0, 0, 0, 0],
       (this.msgId == null || this.msgId == false)
           ? List<int>.empty()
-          : [(this.msgId.getBytes() as List<int>)]
+          : [(this.msgId!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -43659,7 +43090,9 @@ class WebViewMessageSent extends BaseConstructor {
   }
 }
 
-class BotMenuButtonDefault extends BaseConstructor {
+abstract class BotMenuButtonBase extends BaseConstructor {}
+
+class BotMenuButtonDefault extends BotMenuButtonBase {
   static const CONSTRUCTOR_ID = 1966318984;
   static const SUBCLASS_OF_ID = 1282522428;
   final classType = "constructor";
@@ -43668,7 +43101,6 @@ class BotMenuButtonDefault extends BaseConstructor {
   BotMenuButtonDefault();
 
   static BotMenuButtonDefault fromReader(BinaryReader reader) {
-    var len;
     return BotMenuButtonDefault();
   }
 
@@ -43695,7 +43127,7 @@ class BotMenuButtonDefault extends BaseConstructor {
   }
 }
 
-class BotMenuButtonCommands extends BaseConstructor {
+class BotMenuButtonCommands extends BotMenuButtonBase {
   static const CONSTRUCTOR_ID = 1113113093;
   static const SUBCLASS_OF_ID = 1282522428;
   final classType = "constructor";
@@ -43704,7 +43136,6 @@ class BotMenuButtonCommands extends BaseConstructor {
   BotMenuButtonCommands();
 
   static BotMenuButtonCommands fromReader(BinaryReader reader) {
-    var len;
     return BotMenuButtonCommands();
   }
 
@@ -43731,7 +43162,7 @@ class BotMenuButtonCommands extends BaseConstructor {
   }
 }
 
-class BotMenuButton extends BaseConstructor {
+class BotMenuButton extends BotMenuButtonBase {
   static const CONSTRUCTOR_ID = 3350559974;
   static const SUBCLASS_OF_ID = 1282522428;
   final classType = "constructor";
@@ -43742,7 +43173,6 @@ class BotMenuButton extends BaseConstructor {
   BotMenuButton({required this.text, required this.url});
 
   static BotMenuButton fromReader(BinaryReader reader) {
-    var len;
     var text = reader.tgReadString();
     var url = reader.tgReadString();
     return BotMenuButton(text: text, url: url);
@@ -43773,7 +43203,9 @@ class BotMenuButton extends BaseConstructor {
   }
 }
 
-class NotificationSoundDefault extends BaseConstructor {
+abstract class NotificationSoundBase extends BaseConstructor {}
+
+class NotificationSoundDefault extends NotificationSoundBase {
   static const CONSTRUCTOR_ID = 2548612798;
   static const SUBCLASS_OF_ID = 4076201307;
   final classType = "constructor";
@@ -43782,7 +43214,6 @@ class NotificationSoundDefault extends BaseConstructor {
   NotificationSoundDefault();
 
   static NotificationSoundDefault fromReader(BinaryReader reader) {
-    var len;
     return NotificationSoundDefault();
   }
 
@@ -43809,7 +43240,7 @@ class NotificationSoundDefault extends BaseConstructor {
   }
 }
 
-class NotificationSoundNone extends BaseConstructor {
+class NotificationSoundNone extends NotificationSoundBase {
   static const CONSTRUCTOR_ID = 1863070943;
   static const SUBCLASS_OF_ID = 4076201307;
   final classType = "constructor";
@@ -43818,7 +43249,6 @@ class NotificationSoundNone extends BaseConstructor {
   NotificationSoundNone();
 
   static NotificationSoundNone fromReader(BinaryReader reader) {
-    var len;
     return NotificationSoundNone();
   }
 
@@ -43845,7 +43275,7 @@ class NotificationSoundNone extends BaseConstructor {
   }
 }
 
-class NotificationSoundLocal extends BaseConstructor {
+class NotificationSoundLocal extends NotificationSoundBase {
   static const CONSTRUCTOR_ID = 2198575844;
   static const SUBCLASS_OF_ID = 4076201307;
   final classType = "constructor";
@@ -43856,7 +43286,6 @@ class NotificationSoundLocal extends BaseConstructor {
   NotificationSoundLocal({required this.title, required this.data});
 
   static NotificationSoundLocal fromReader(BinaryReader reader) {
-    var len;
     var title = reader.tgReadString();
     var data = reader.tgReadString();
     return NotificationSoundLocal(title: title, data: data);
@@ -43887,7 +43316,7 @@ class NotificationSoundLocal extends BaseConstructor {
   }
 }
 
-class NotificationSoundRingtone extends BaseConstructor {
+class NotificationSoundRingtone extends NotificationSoundBase {
   static const CONSTRUCTOR_ID = 4285300809;
   static const SUBCLASS_OF_ID = 4076201307;
   final classType = "constructor";
@@ -43897,7 +43326,6 @@ class NotificationSoundRingtone extends BaseConstructor {
   NotificationSoundRingtone({required this.id});
 
   static NotificationSoundRingtone fromReader(BinaryReader reader) {
-    var len;
     var id = reader.readLong();
     return NotificationSoundRingtone(id: id);
   }
@@ -43926,7 +43354,9 @@ class NotificationSoundRingtone extends BaseConstructor {
   }
 }
 
-class AttachMenuPeerTypeSameBotPM extends BaseConstructor {
+abstract class AttachMenuPeerTypeBase extends BaseConstructor {}
+
+class AttachMenuPeerTypeSameBotPM extends AttachMenuPeerTypeBase {
   static const CONSTRUCTOR_ID = 2104224014;
   static const SUBCLASS_OF_ID = 3520628432;
   final classType = "constructor";
@@ -43935,7 +43365,6 @@ class AttachMenuPeerTypeSameBotPM extends BaseConstructor {
   AttachMenuPeerTypeSameBotPM();
 
   static AttachMenuPeerTypeSameBotPM fromReader(BinaryReader reader) {
-    var len;
     return AttachMenuPeerTypeSameBotPM();
   }
 
@@ -43962,7 +43391,7 @@ class AttachMenuPeerTypeSameBotPM extends BaseConstructor {
   }
 }
 
-class AttachMenuPeerTypeBotPM extends BaseConstructor {
+class AttachMenuPeerTypeBotPM extends AttachMenuPeerTypeBase {
   static const CONSTRUCTOR_ID = 3274439194;
   static const SUBCLASS_OF_ID = 3520628432;
   final classType = "constructor";
@@ -43971,7 +43400,6 @@ class AttachMenuPeerTypeBotPM extends BaseConstructor {
   AttachMenuPeerTypeBotPM();
 
   static AttachMenuPeerTypeBotPM fromReader(BinaryReader reader) {
-    var len;
     return AttachMenuPeerTypeBotPM();
   }
 
@@ -43998,7 +43426,7 @@ class AttachMenuPeerTypeBotPM extends BaseConstructor {
   }
 }
 
-class AttachMenuPeerTypePM extends BaseConstructor {
+class AttachMenuPeerTypePM extends AttachMenuPeerTypeBase {
   static const CONSTRUCTOR_ID = 4047950623;
   static const SUBCLASS_OF_ID = 3520628432;
   final classType = "constructor";
@@ -44007,7 +43435,6 @@ class AttachMenuPeerTypePM extends BaseConstructor {
   AttachMenuPeerTypePM();
 
   static AttachMenuPeerTypePM fromReader(BinaryReader reader) {
-    var len;
     return AttachMenuPeerTypePM();
   }
 
@@ -44034,7 +43461,7 @@ class AttachMenuPeerTypePM extends BaseConstructor {
   }
 }
 
-class AttachMenuPeerTypeChat extends BaseConstructor {
+class AttachMenuPeerTypeChat extends AttachMenuPeerTypeBase {
   static const CONSTRUCTOR_ID = 84480319;
   static const SUBCLASS_OF_ID = 3520628432;
   final classType = "constructor";
@@ -44043,7 +43470,6 @@ class AttachMenuPeerTypeChat extends BaseConstructor {
   AttachMenuPeerTypeChat();
 
   static AttachMenuPeerTypeChat fromReader(BinaryReader reader) {
-    var len;
     return AttachMenuPeerTypeChat();
   }
 
@@ -44070,7 +43496,7 @@ class AttachMenuPeerTypeChat extends BaseConstructor {
   }
 }
 
-class AttachMenuPeerTypeBroadcast extends BaseConstructor {
+class AttachMenuPeerTypeBroadcast extends AttachMenuPeerTypeBase {
   static const CONSTRUCTOR_ID = 2080104188;
   static const SUBCLASS_OF_ID = 3520628432;
   final classType = "constructor";
@@ -44079,7 +43505,6 @@ class AttachMenuPeerTypeBroadcast extends BaseConstructor {
   AttachMenuPeerTypeBroadcast();
 
   static AttachMenuPeerTypeBroadcast fromReader(BinaryReader reader) {
-    var len;
     return AttachMenuPeerTypeBroadcast();
   }
 
@@ -44106,18 +43531,19 @@ class AttachMenuPeerTypeBroadcast extends BaseConstructor {
   }
 }
 
-class InputInvoiceMessage extends BaseConstructor {
+abstract class InputInvoiceBase extends BaseConstructor {}
+
+class InputInvoiceMessage extends InputInvoiceBase {
   static const CONSTRUCTOR_ID = 3317000281;
   static const SUBCLASS_OF_ID = 1919851518;
   final classType = "constructor";
   final ID = 3317000281;
-  var peer;
+  InputPeerBase peer;
   int msgId;
 
   InputInvoiceMessage({required this.peer, required this.msgId});
 
   static InputInvoiceMessage fromReader(BinaryReader reader) {
-    var len;
     var peer = reader.tgReadObject();
     var msgId = reader.readInt();
     return InputInvoiceMessage(peer: peer, msgId: msgId);
@@ -44127,7 +43553,7 @@ class InputInvoiceMessage extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3317000281, 4),
-      (this.peer.getBytes() as List<int>),
+      (this.peer.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
@@ -44148,7 +43574,7 @@ class InputInvoiceMessage extends BaseConstructor {
   }
 }
 
-class InputInvoiceSlug extends BaseConstructor {
+class InputInvoiceSlug extends InputInvoiceBase {
   static const CONSTRUCTOR_ID = 3274099439;
   static const SUBCLASS_OF_ID = 1919851518;
   final classType = "constructor";
@@ -44158,7 +43584,6 @@ class InputInvoiceSlug extends BaseConstructor {
   InputInvoiceSlug({required this.slug});
 
   static InputInvoiceSlug fromReader(BinaryReader reader) {
-    var len;
     var slug = reader.tgReadString();
     return InputInvoiceSlug(slug: slug);
   }
@@ -44231,11 +43656,10 @@ class ResPQ extends BaseConstructor {
       readBufferFromBigInt(this.serverNonce, 16, little: true, signed: true),
       serializeBytes(this.pq),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.serverPublicKeyFingerprints!.length, 4,
+      readBufferFromBigInt(this.serverPublicKeyFingerprints.length, 4,
           little: true, signed: true),
       this
-          .serverPublicKeyFingerprints!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .serverPublicKeyFingerprints.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -44256,7 +43680,9 @@ class ResPQ extends BaseConstructor {
   }
 }
 
-class PQInnerData extends BaseConstructor {
+abstract class P_Q_inner_dataBase extends BaseConstructor {}
+
+class PQInnerData extends P_Q_inner_dataBase {
   static const CONSTRUCTOR_ID = 2211011308;
   static const SUBCLASS_OF_ID = 1097864055;
   final classType = "constructor";
@@ -44277,7 +43703,6 @@ class PQInnerData extends BaseConstructor {
       required this.newNonce});
 
   static PQInnerData fromReader(BinaryReader reader) {
-    var len;
     var pq = reader.tgReadBytes();
     var p = reader.tgReadBytes();
     var q = reader.tgReadBytes();
@@ -44322,7 +43747,7 @@ class PQInnerData extends BaseConstructor {
   }
 }
 
-class PQInnerDataDc extends BaseConstructor {
+class PQInnerDataDc extends P_Q_inner_dataBase {
   static const CONSTRUCTOR_ID = 2851430293;
   static const SUBCLASS_OF_ID = 1097864055;
   final classType = "constructor";
@@ -44345,7 +43770,6 @@ class PQInnerDataDc extends BaseConstructor {
       required this.dc});
 
   static PQInnerDataDc fromReader(BinaryReader reader) {
-    var len;
     var pq = reader.tgReadBytes();
     var p = reader.tgReadBytes();
     var q = reader.tgReadBytes();
@@ -44393,7 +43817,7 @@ class PQInnerDataDc extends BaseConstructor {
   }
 }
 
-class PQInnerDataTemp extends BaseConstructor {
+class PQInnerDataTemp extends P_Q_inner_dataBase {
   static const CONSTRUCTOR_ID = 1013613780;
   static const SUBCLASS_OF_ID = 1097864055;
   final classType = "constructor";
@@ -44416,7 +43840,6 @@ class PQInnerDataTemp extends BaseConstructor {
       required this.expiresIn});
 
   static PQInnerDataTemp fromReader(BinaryReader reader) {
-    var len;
     var pq = reader.tgReadBytes();
     var p = reader.tgReadBytes();
     var q = reader.tgReadBytes();
@@ -44464,7 +43887,7 @@ class PQInnerDataTemp extends BaseConstructor {
   }
 }
 
-class PQInnerDataTempDc extends BaseConstructor {
+class PQInnerDataTempDc extends P_Q_inner_dataBase {
   static const CONSTRUCTOR_ID = 1459478408;
   static const SUBCLASS_OF_ID = 1097864055;
   final classType = "constructor";
@@ -44489,7 +43912,6 @@ class PQInnerDataTempDc extends BaseConstructor {
       required this.expiresIn});
 
   static PQInnerDataTempDc fromReader(BinaryReader reader) {
-    var len;
     var pq = reader.tgReadBytes();
     var p = reader.tgReadBytes();
     var q = reader.tgReadBytes();
@@ -44540,7 +43962,9 @@ class PQInnerDataTempDc extends BaseConstructor {
   }
 }
 
-class ServerDHParamsFail extends BaseConstructor {
+abstract class Server_DH_ParamsBase extends BaseConstructor {}
+
+class ServerDHParamsFail extends Server_DH_ParamsBase {
   static const CONSTRUCTOR_ID = 2043348061;
   static const SUBCLASS_OF_ID = 2786626974;
   final classType = "constructor";
@@ -44555,7 +43979,6 @@ class ServerDHParamsFail extends BaseConstructor {
       required this.newNonceHash});
 
   static ServerDHParamsFail fromReader(BinaryReader reader) {
-    var len;
     var nonce = reader.readLargeInt(128);
     var serverNonce = reader.readLargeInt(128);
     var newNonceHash = reader.readLargeInt(128);
@@ -44589,7 +44012,7 @@ class ServerDHParamsFail extends BaseConstructor {
   }
 }
 
-class ServerDHParamsOk extends BaseConstructor {
+class ServerDHParamsOk extends Server_DH_ParamsBase {
   static const CONSTRUCTOR_ID = 3504867164;
   static const SUBCLASS_OF_ID = 2786626974;
   final classType = "constructor";
@@ -44604,7 +44027,6 @@ class ServerDHParamsOk extends BaseConstructor {
       required this.encryptedAnswer});
 
   static ServerDHParamsOk fromReader(BinaryReader reader) {
-    var len;
     var nonce = reader.readLargeInt(128);
     var serverNonce = reader.readLargeInt(128);
     var encryptedAnswer = reader.tgReadBytes();
@@ -44640,7 +44062,9 @@ class ServerDHParamsOk extends BaseConstructor {
   }
 }
 
-class ServerDHInnerData extends BaseConstructor {
+abstract class Server_DH_inner_dataBase extends BaseConstructor {}
+
+class ServerDHInnerData extends Server_DH_inner_dataBase {
   static const CONSTRUCTOR_ID = 3045658042;
   static const SUBCLASS_OF_ID = 3332007868;
   final classType = "constructor";
@@ -44661,7 +44085,6 @@ class ServerDHInnerData extends BaseConstructor {
       required this.serverTime});
 
   static ServerDHInnerData fromReader(BinaryReader reader) {
-    var len;
     var nonce = reader.readLargeInt(128);
     var serverNonce = reader.readLargeInt(128);
     var g = reader.readInt();
@@ -44706,7 +44129,9 @@ class ServerDHInnerData extends BaseConstructor {
   }
 }
 
-class ClientDHInnerData extends BaseConstructor {
+abstract class Client_DH_Inner_DataBase extends BaseConstructor {}
+
+class ClientDHInnerData extends Client_DH_Inner_DataBase {
   static const CONSTRUCTOR_ID = 1715713620;
   static const SUBCLASS_OF_ID = 4176408426;
   final classType = "constructor";
@@ -44723,7 +44148,6 @@ class ClientDHInnerData extends BaseConstructor {
       required this.gB});
 
   static ClientDHInnerData fromReader(BinaryReader reader) {
-    var len;
     var nonce = reader.readLargeInt(128);
     var serverNonce = reader.readLargeInt(128);
     var retryId = reader.readLong();
@@ -44759,7 +44183,9 @@ class ClientDHInnerData extends BaseConstructor {
   }
 }
 
-class DhGenOk extends BaseConstructor {
+abstract class Set_client_DH_params_answerBase extends BaseConstructor {}
+
+class DhGenOk extends Set_client_DH_params_answerBase {
   static const CONSTRUCTOR_ID = 1003222836;
   static const SUBCLASS_OF_ID = 1440574683;
   final classType = "constructor";
@@ -44774,7 +44200,6 @@ class DhGenOk extends BaseConstructor {
       required this.newNonceHash1});
 
   static DhGenOk fromReader(BinaryReader reader) {
-    var len;
     var nonce = reader.readLargeInt(128);
     var serverNonce = reader.readLargeInt(128);
     var newNonceHash1 = reader.readLargeInt(128);
@@ -44808,7 +44233,7 @@ class DhGenOk extends BaseConstructor {
   }
 }
 
-class DhGenRetry extends BaseConstructor {
+class DhGenRetry extends Set_client_DH_params_answerBase {
   static const CONSTRUCTOR_ID = 1188831161;
   static const SUBCLASS_OF_ID = 1440574683;
   final classType = "constructor";
@@ -44823,7 +44248,6 @@ class DhGenRetry extends BaseConstructor {
       required this.newNonceHash2});
 
   static DhGenRetry fromReader(BinaryReader reader) {
-    var len;
     var nonce = reader.readLargeInt(128);
     var serverNonce = reader.readLargeInt(128);
     var newNonceHash2 = reader.readLargeInt(128);
@@ -44857,7 +44281,7 @@ class DhGenRetry extends BaseConstructor {
   }
 }
 
-class DhGenFail extends BaseConstructor {
+class DhGenFail extends Set_client_DH_params_answerBase {
   static const CONSTRUCTOR_ID = 2795351554;
   static const SUBCLASS_OF_ID = 1440574683;
   final classType = "constructor";
@@ -44872,7 +44296,6 @@ class DhGenFail extends BaseConstructor {
       required this.newNonceHash3});
 
   static DhGenFail fromReader(BinaryReader reader) {
-    var len;
     var nonce = reader.readLargeInt(128);
     var serverNonce = reader.readLargeInt(128);
     var newNonceHash3 = reader.readLargeInt(128);
@@ -44906,7 +44329,9 @@ class DhGenFail extends BaseConstructor {
   }
 }
 
-class DestroyAuthKeyOk extends BaseConstructor {
+abstract class DestroyAuthKeyResBase extends BaseConstructor {}
+
+class DestroyAuthKeyOk extends DestroyAuthKeyResBase {
   static const CONSTRUCTOR_ID = 4133544404;
   static const SUBCLASS_OF_ID = 2190599822;
   final classType = "constructor";
@@ -44915,7 +44340,6 @@ class DestroyAuthKeyOk extends BaseConstructor {
   DestroyAuthKeyOk();
 
   static DestroyAuthKeyOk fromReader(BinaryReader reader) {
-    var len;
     return DestroyAuthKeyOk();
   }
 
@@ -44942,7 +44366,7 @@ class DestroyAuthKeyOk extends BaseConstructor {
   }
 }
 
-class DestroyAuthKeyNone extends BaseConstructor {
+class DestroyAuthKeyNone extends DestroyAuthKeyResBase {
   static const CONSTRUCTOR_ID = 178201177;
   static const SUBCLASS_OF_ID = 2190599822;
   final classType = "constructor";
@@ -44951,7 +44375,6 @@ class DestroyAuthKeyNone extends BaseConstructor {
   DestroyAuthKeyNone();
 
   static DestroyAuthKeyNone fromReader(BinaryReader reader) {
-    var len;
     return DestroyAuthKeyNone();
   }
 
@@ -44978,7 +44401,7 @@ class DestroyAuthKeyNone extends BaseConstructor {
   }
 }
 
-class DestroyAuthKeyFail extends BaseConstructor {
+class DestroyAuthKeyFail extends DestroyAuthKeyResBase {
   static const CONSTRUCTOR_ID = 3926956819;
   static const SUBCLASS_OF_ID = 2190599822;
   final classType = "constructor";
@@ -44987,7 +44410,6 @@ class DestroyAuthKeyFail extends BaseConstructor {
   DestroyAuthKeyFail();
 
   static DestroyAuthKeyFail fromReader(BinaryReader reader) {
-    var len;
     return DestroyAuthKeyFail();
   }
 
@@ -45040,10 +44462,9 @@ class MsgsAck extends BaseConstructor {
     return [
       readBufferFromBigInt(1658238041, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.msgIds!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.msgIds.length, 4, little: true, signed: true),
       this
-          .msgIds!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .msgIds.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -45064,7 +44485,9 @@ class MsgsAck extends BaseConstructor {
   }
 }
 
-class BadMsgNotification extends BaseConstructor {
+abstract class BadMsgNotificationBase extends BaseConstructor {}
+
+class BadMsgNotification extends BadMsgNotificationBase {
   static const CONSTRUCTOR_ID = 2817521681;
   static const SUBCLASS_OF_ID = 3468337495;
   final classType = "constructor";
@@ -45079,7 +44502,6 @@ class BadMsgNotification extends BaseConstructor {
       required this.errorCode});
 
   static BadMsgNotification fromReader(BinaryReader reader) {
-    var len;
     var badMsgId = reader.readLong();
     var badMsgSeqno = reader.readInt();
     var errorCode = reader.readInt();
@@ -45113,7 +44535,7 @@ class BadMsgNotification extends BaseConstructor {
   }
 }
 
-class BadServerSalt extends BaseConstructor {
+class BadServerSalt extends BadMsgNotificationBase {
   static const CONSTRUCTOR_ID = 3987424379;
   static const SUBCLASS_OF_ID = 3468337495;
   final classType = "constructor";
@@ -45130,7 +44552,6 @@ class BadServerSalt extends BaseConstructor {
       required this.newServerSalt});
 
   static BadServerSalt fromReader(BinaryReader reader) {
-    var len;
     var badMsgId = reader.readLong();
     var badMsgSeqno = reader.readInt();
     var errorCode = reader.readInt();
@@ -45195,10 +44616,9 @@ class MsgsStateReq extends BaseConstructor {
     return [
       readBufferFromBigInt(3664378706, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.msgIds!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.msgIds.length, 4, little: true, signed: true),
       this
-          .msgIds!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .msgIds.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -45230,7 +44650,6 @@ class MsgsStateInfo extends BaseConstructor {
   MsgsStateInfo({required this.reqMsgId, required this.info});
 
   static MsgsStateInfo fromReader(BinaryReader reader) {
-    var len;
     var reqMsgId = reader.readLong();
     var info = reader.tgReadString();
     return MsgsStateInfo(reqMsgId: reqMsgId, info: info);
@@ -45289,10 +44708,9 @@ class MsgsAllInfo extends BaseConstructor {
     return [
       readBufferFromBigInt(2361446705, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.msgIds!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.msgIds.length, 4, little: true, signed: true),
       this
-          .msgIds!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .msgIds.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
       serializeBytes(this.info),
     ].expand((element) => element).toList();
@@ -45314,7 +44732,9 @@ class MsgsAllInfo extends BaseConstructor {
   }
 }
 
-class MsgDetailedInfo extends BaseConstructor {
+abstract class MsgDetailedInfoBase extends BaseConstructor {}
+
+class MsgDetailedInfo extends MsgDetailedInfoBase {
   static const CONSTRUCTOR_ID = 661470918;
   static const SUBCLASS_OF_ID = 1597167086;
   final classType = "constructor";
@@ -45331,7 +44751,6 @@ class MsgDetailedInfo extends BaseConstructor {
       required this.status});
 
   static MsgDetailedInfo fromReader(BinaryReader reader) {
-    var len;
     var msgId = reader.readLong();
     var answerMsgId = reader.readLong();
     var bytes = reader.readInt();
@@ -45367,7 +44786,7 @@ class MsgDetailedInfo extends BaseConstructor {
   }
 }
 
-class MsgNewDetailedInfo extends BaseConstructor {
+class MsgNewDetailedInfo extends MsgDetailedInfoBase {
   static const CONSTRUCTOR_ID = 2157819615;
   static const SUBCLASS_OF_ID = 1597167086;
   final classType = "constructor";
@@ -45380,7 +44799,6 @@ class MsgNewDetailedInfo extends BaseConstructor {
       {required this.answerMsgId, required this.bytes, required this.status});
 
   static MsgNewDetailedInfo fromReader(BinaryReader reader) {
-    var len;
     var answerMsgId = reader.readLong();
     var bytes = reader.readInt();
     var status = reader.readInt();
@@ -45440,10 +44858,9 @@ class MsgResendReq extends BaseConstructor {
     return [
       readBufferFromBigInt(2105940488, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.msgIds!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.msgIds.length, 4, little: true, signed: true),
       this
-          .msgIds!
-          .map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
+          .msgIds.map((x) => readBufferFromBigInt(x, 8, little: true, signed: true))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -45475,7 +44892,6 @@ class RpcError extends BaseConstructor {
   RpcError({required this.errorCode, required this.errorMessage});
 
   static RpcError fromReader(BinaryReader reader) {
-    var len;
     var errorCode = reader.readInt();
     var errorMessage = reader.tgReadString();
     return RpcError(errorCode: errorCode, errorMessage: errorMessage);
@@ -45506,7 +44922,9 @@ class RpcError extends BaseConstructor {
   }
 }
 
-class RpcAnswerUnknown extends BaseConstructor {
+abstract class RpcDropAnswerBase extends BaseConstructor {}
+
+class RpcAnswerUnknown extends RpcDropAnswerBase {
   static const CONSTRUCTOR_ID = 1579864942;
   static const SUBCLASS_OF_ID = 1271559536;
   final classType = "constructor";
@@ -45515,7 +44933,6 @@ class RpcAnswerUnknown extends BaseConstructor {
   RpcAnswerUnknown();
 
   static RpcAnswerUnknown fromReader(BinaryReader reader) {
-    var len;
     return RpcAnswerUnknown();
   }
 
@@ -45542,7 +44959,7 @@ class RpcAnswerUnknown extends BaseConstructor {
   }
 }
 
-class RpcAnswerDroppedRunning extends BaseConstructor {
+class RpcAnswerDroppedRunning extends RpcDropAnswerBase {
   static const CONSTRUCTOR_ID = 3447252358;
   static const SUBCLASS_OF_ID = 1271559536;
   final classType = "constructor";
@@ -45551,7 +44968,6 @@ class RpcAnswerDroppedRunning extends BaseConstructor {
   RpcAnswerDroppedRunning();
 
   static RpcAnswerDroppedRunning fromReader(BinaryReader reader) {
-    var len;
     return RpcAnswerDroppedRunning();
   }
 
@@ -45578,7 +44994,7 @@ class RpcAnswerDroppedRunning extends BaseConstructor {
   }
 }
 
-class RpcAnswerDropped extends BaseConstructor {
+class RpcAnswerDropped extends RpcDropAnswerBase {
   static const CONSTRUCTOR_ID = 2755319991;
   static const SUBCLASS_OF_ID = 1271559536;
   final classType = "constructor";
@@ -45591,7 +45007,6 @@ class RpcAnswerDropped extends BaseConstructor {
       {required this.msgId, required this.seqNo, required this.bytes});
 
   static RpcAnswerDropped fromReader(BinaryReader reader) {
-    var len;
     var msgId = reader.readLong();
     var seqNo = reader.readInt();
     var bytes = reader.readInt();
@@ -45637,7 +45052,6 @@ class FutureSalt extends BaseConstructor {
       {required this.validSince, required this.validUntil, required this.salt});
 
   static FutureSalt fromReader(BinaryReader reader) {
-    var len;
     var validSince = reader.readInt();
     var validUntil = reader.readInt();
     var salt = reader.readLong();
@@ -45700,10 +45114,9 @@ class FutureSalts extends BaseConstructor {
       readBufferFromBigInt(2924480661, 4),
       readBufferFromBigInt(this.reqMsgId, 8, little: true, signed: true),
       readBufferFromBigInt(this.now, 4, little: true, signed: true),
-      readBufferFromBigInt(this.salts!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.salts.length, 4, little: true, signed: true),
       this
-          .salts!
-          .map((x) => (x.getBytes() as List<int>).sublist(4))
+          .salts.map((x) => (x!.getBytes() as List<int>).sublist(4))
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -45735,7 +45148,6 @@ class Pong extends BaseConstructor {
   Pong({required this.msgId, required this.pingId});
 
   static Pong fromReader(BinaryReader reader) {
-    var len;
     var msgId = reader.readLong();
     var pingId = reader.readLong();
     return Pong(msgId: msgId, pingId: pingId);
@@ -45766,7 +45178,9 @@ class Pong extends BaseConstructor {
   }
 }
 
-class DestroySessionOk extends BaseConstructor {
+abstract class DestroySessionResBase extends BaseConstructor {}
+
+class DestroySessionOk extends DestroySessionResBase {
   static const CONSTRUCTOR_ID = 3793765884;
   static const SUBCLASS_OF_ID = 2936858557;
   final classType = "constructor";
@@ -45776,7 +45190,6 @@ class DestroySessionOk extends BaseConstructor {
   DestroySessionOk({required this.sessionId});
 
   static DestroySessionOk fromReader(BinaryReader reader) {
-    var len;
     var sessionId = reader.readLong();
     return DestroySessionOk(sessionId: sessionId);
   }
@@ -45805,7 +45218,7 @@ class DestroySessionOk extends BaseConstructor {
   }
 }
 
-class DestroySessionNone extends BaseConstructor {
+class DestroySessionNone extends DestroySessionResBase {
   static const CONSTRUCTOR_ID = 1658015945;
   static const SUBCLASS_OF_ID = 2936858557;
   final classType = "constructor";
@@ -45815,7 +45228,6 @@ class DestroySessionNone extends BaseConstructor {
   DestroySessionNone({required this.sessionId});
 
   static DestroySessionNone fromReader(BinaryReader reader) {
-    var len;
     var sessionId = reader.readLong();
     return DestroySessionNone(sessionId: sessionId);
   }
@@ -45844,7 +45256,9 @@ class DestroySessionNone extends BaseConstructor {
   }
 }
 
-class NewSessionCreated extends BaseConstructor {
+abstract class NewSessionBase extends BaseConstructor {}
+
+class NewSessionCreated extends NewSessionBase {
   static const CONSTRUCTOR_ID = 2663516424;
   static const SUBCLASS_OF_ID = 1359818801;
   final classType = "constructor";
@@ -45859,7 +45273,6 @@ class NewSessionCreated extends BaseConstructor {
       required this.serverSalt});
 
   static NewSessionCreated fromReader(BinaryReader reader) {
-    var len;
     var firstMsgId = reader.readLong();
     var uniqueId = reader.readLong();
     var serverSalt = reader.readLong();
@@ -45906,7 +45319,6 @@ class HttpWait extends BaseConstructor {
       {required this.maxDelay, required this.waitAfter, required this.maxWait});
 
   static HttpWait fromReader(BinaryReader reader) {
-    var len;
     var maxDelay = reader.readInt();
     var waitAfter = reader.readInt();
     var maxWait = reader.readInt();
@@ -45939,7 +45351,9 @@ class HttpWait extends BaseConstructor {
   }
 }
 
-class IpPort extends BaseConstructor {
+abstract class IpPortBase extends BaseConstructor {}
+
+class IpPort extends IpPortBase {
   static const CONSTRUCTOR_ID = 3560156531;
   static const SUBCLASS_OF_ID = 2728408870;
   final classType = "constructor";
@@ -45950,7 +45364,6 @@ class IpPort extends BaseConstructor {
   IpPort({required this.ipv4, required this.port});
 
   static IpPort fromReader(BinaryReader reader) {
-    var len;
     var ipv4 = reader.readInt();
     var port = reader.readInt();
     return IpPort(ipv4: ipv4, port: port);
@@ -45981,7 +45394,7 @@ class IpPort extends BaseConstructor {
   }
 }
 
-class IpPortSecret extends BaseConstructor {
+class IpPortSecret extends IpPortBase {
   static const CONSTRUCTOR_ID = 932718150;
   static const SUBCLASS_OF_ID = 2728408870;
   final classType = "constructor";
@@ -45993,7 +45406,6 @@ class IpPortSecret extends BaseConstructor {
   IpPortSecret({required this.ipv4, required this.port, required this.secret});
 
   static IpPortSecret fromReader(BinaryReader reader) {
-    var len;
     var ipv4 = reader.readInt();
     var port = reader.readInt();
     var secret = reader.tgReadBytes();
@@ -46033,7 +45445,7 @@ class AccessPointRule extends BaseConstructor {
   final ID = 1182381663;
   String phonePrefixRules;
   int dcId;
-  List<dynamic> ips;
+  List<IpPortBase> ips;
 
   AccessPointRule(
       {required this.phonePrefixRules, required this.dcId, required this.ips});
@@ -46042,7 +45454,7 @@ class AccessPointRule extends BaseConstructor {
     var len;
     var phonePrefixRules = reader.tgReadString();
     var dcId = reader.readInt();
-    List<dynamic> ips = [];
+    List<IpPortBase> ips = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       ips.add(reader.tgReadObject());
@@ -46057,10 +45469,9 @@ class AccessPointRule extends BaseConstructor {
       readBufferFromBigInt(1182381663, 4),
       serializeBytes(this.phonePrefixRules),
       readBufferFromBigInt(this.dcId, 4, little: true, signed: true),
-      readBufferFromBigInt(this.ips!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.ips.length, 4, little: true, signed: true),
       this
-          .ips!
-          .map((x) => (x.getBytes() as List<int>))
+          .ips.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -46086,13 +45497,13 @@ class TlsClientHello extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3203533088;
   final classType = "constructor";
   final ID = 262524817;
-  List<dynamic> blocks;
+  List<TlsBlockBase> blocks;
 
   TlsClientHello({required this.blocks});
 
   static TlsClientHello fromReader(BinaryReader reader) {
     var len;
-    List<dynamic> blocks = [];
+    List<TlsBlockBase> blocks = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       blocks.add(reader.tgReadObject());
@@ -46104,10 +45515,9 @@ class TlsClientHello extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(262524817, 4),
-      readBufferFromBigInt(this.blocks!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.blocks.length, 4, little: true, signed: true),
       this
-          .blocks!
-          .map((x) => (x.getBytes() as List<int>))
+          .blocks.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -46128,7 +45538,9 @@ class TlsClientHello extends BaseConstructor {
   }
 }
 
-class TlsBlockString extends BaseConstructor {
+abstract class TlsBlockBase extends BaseConstructor {}
+
+class TlsBlockString extends TlsBlockBase {
   static const CONSTRUCTOR_ID = 1488907607;
   static const SUBCLASS_OF_ID = 4044764304;
   final classType = "constructor";
@@ -46138,7 +45550,6 @@ class TlsBlockString extends BaseConstructor {
   TlsBlockString({required this.data});
 
   static TlsBlockString fromReader(BinaryReader reader) {
-    var len;
     var data = reader.tgReadString();
     return TlsBlockString(data: data);
   }
@@ -46167,7 +45578,7 @@ class TlsBlockString extends BaseConstructor {
   }
 }
 
-class TlsBlockRandom extends BaseConstructor {
+class TlsBlockRandom extends TlsBlockBase {
   static const CONSTRUCTOR_ID = 3265966728;
   static const SUBCLASS_OF_ID = 4044764304;
   final classType = "constructor";
@@ -46177,7 +45588,6 @@ class TlsBlockRandom extends BaseConstructor {
   TlsBlockRandom({required this.length});
 
   static TlsBlockRandom fromReader(BinaryReader reader) {
-    var len;
     var length = reader.readInt();
     return TlsBlockRandom(length: length);
   }
@@ -46206,7 +45616,7 @@ class TlsBlockRandom extends BaseConstructor {
   }
 }
 
-class TlsBlockZero extends BaseConstructor {
+class TlsBlockZero extends TlsBlockBase {
   static const CONSTRUCTOR_ID = 3400654219;
   static const SUBCLASS_OF_ID = 4044764304;
   final classType = "constructor";
@@ -46216,7 +45626,6 @@ class TlsBlockZero extends BaseConstructor {
   TlsBlockZero({required this.length});
 
   static TlsBlockZero fromReader(BinaryReader reader) {
-    var len;
     var length = reader.readInt();
     return TlsBlockZero(length: length);
   }
@@ -46245,7 +45654,7 @@ class TlsBlockZero extends BaseConstructor {
   }
 }
 
-class TlsBlockDomain extends BaseConstructor {
+class TlsBlockDomain extends TlsBlockBase {
   static const CONSTRUCTOR_ID = 283665263;
   static const SUBCLASS_OF_ID = 4044764304;
   final classType = "constructor";
@@ -46254,7 +45663,6 @@ class TlsBlockDomain extends BaseConstructor {
   TlsBlockDomain();
 
   static TlsBlockDomain fromReader(BinaryReader reader) {
-    var len;
     return TlsBlockDomain();
   }
 
@@ -46281,7 +45689,7 @@ class TlsBlockDomain extends BaseConstructor {
   }
 }
 
-class TlsBlockGrease extends BaseConstructor {
+class TlsBlockGrease extends TlsBlockBase {
   static const CONSTRUCTOR_ID = 2623335513;
   static const SUBCLASS_OF_ID = 4044764304;
   final classType = "constructor";
@@ -46291,7 +45699,6 @@ class TlsBlockGrease extends BaseConstructor {
   TlsBlockGrease({required this.seed});
 
   static TlsBlockGrease fromReader(BinaryReader reader) {
-    var len;
     var seed = reader.readInt();
     return TlsBlockGrease(seed: seed);
   }
@@ -46320,12 +45727,12 @@ class TlsBlockGrease extends BaseConstructor {
   }
 }
 
-class TlsBlockScope extends BaseConstructor {
+class TlsBlockScope extends TlsBlockBase {
   static const CONSTRUCTOR_ID = 3638474097;
   static const SUBCLASS_OF_ID = 4044764304;
   final classType = "constructor";
   final ID = 3638474097;
-  List<dynamic> entries;
+  List<TlsBlockBase> entries;
 
   TlsBlockScope({required this.entries});
 
@@ -46333,7 +45740,7 @@ class TlsBlockScope extends BaseConstructor {
     var len;
     var _vectorentries = reader.readInt();
     if (_vectorentries != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> entries = [];
+    List<TlsBlockBase> entries = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       entries.add(reader.tgReadObject());
@@ -46346,10 +45753,9 @@ class TlsBlockScope extends BaseConstructor {
     return [
       readBufferFromBigInt(3638474097, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.entries!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.entries.length, 4, little: true, signed: true),
       this
-          .entries!
-          .map((x) => (x.getBytes() as List<int>))
+          .entries.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }

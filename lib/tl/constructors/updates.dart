@@ -1,7 +1,10 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
+import '../constructors/constructors.dart';
+import '../constructors/updates.dart' as updates_ns;
 
 class State extends BaseConstructor {
   static const CONSTRUCTOR_ID = 2775329342;
@@ -22,7 +25,6 @@ class State extends BaseConstructor {
       required this.unreadCount});
 
   static State fromReader(BinaryReader reader) {
-    var len;
     var pts = reader.readInt();
     var qts = reader.readInt();
     var date = reader.readInt();
@@ -60,7 +62,9 @@ class State extends BaseConstructor {
   }
 }
 
-class DifferenceEmpty extends BaseConstructor {
+abstract class DifferenceBase extends BaseConstructor {}
+
+class DifferenceEmpty extends DifferenceBase {
   static const CONSTRUCTOR_ID = 1567990072;
   static const SUBCLASS_OF_ID = 541599860;
   final classType = "constructor";
@@ -71,7 +75,6 @@ class DifferenceEmpty extends BaseConstructor {
   DifferenceEmpty({required this.date, required this.seq});
 
   static DifferenceEmpty fromReader(BinaryReader reader) {
-    var len;
     var date = reader.readInt();
     var seq = reader.readInt();
     return DifferenceEmpty(date: date, seq: seq);
@@ -102,17 +105,17 @@ class DifferenceEmpty extends BaseConstructor {
   }
 }
 
-class Difference extends BaseConstructor {
+class Difference extends DifferenceBase {
   static const CONSTRUCTOR_ID = 16030880;
   static const SUBCLASS_OF_ID = 541599860;
   final classType = "constructor";
   final ID = 16030880;
-  List<dynamic> newMessages;
-  List<dynamic> newEncryptedMessages;
-  List<dynamic> otherUpdates;
-  List<dynamic> chats;
-  List<dynamic> users;
-  var state;
+  List<MessageBase> newMessages;
+  List<EncryptedMessageBase> newEncryptedMessages;
+  List<UpdateBase> otherUpdates;
+  List<ChatBase> chats;
+  List<UserBase> users;
+  updates_ns.State state;
 
   Difference(
       {required this.newMessages,
@@ -126,7 +129,7 @@ class Difference extends BaseConstructor {
     var len;
     var _vectornewMessages = reader.readInt();
     if (_vectornewMessages != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> newMessages = [];
+    List<MessageBase> newMessages = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       newMessages.add(reader.tgReadObject());
@@ -134,28 +137,28 @@ class Difference extends BaseConstructor {
     var _vectornewEncryptedMessages = reader.readInt();
     if (_vectornewEncryptedMessages != 481674261)
       throw Exception('Wrong vectorId');
-    List<dynamic> newEncryptedMessages = [];
+    List<EncryptedMessageBase> newEncryptedMessages = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       newEncryptedMessages.add(reader.tgReadObject());
     }
     var _vectorotherUpdates = reader.readInt();
     if (_vectorotherUpdates != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> otherUpdates = [];
+    List<UpdateBase> otherUpdates = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       otherUpdates.add(reader.tgReadObject());
     }
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -175,39 +178,34 @@ class Difference extends BaseConstructor {
     return [
       readBufferFromBigInt(16030880, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.newMessages!.length, 4,
+      readBufferFromBigInt(this.newMessages.length, 4,
           little: true, signed: true),
       this
-          .newMessages!
-          .map((x) => (x.getBytes() as List<int>))
+          .newMessages.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.newEncryptedMessages!.length, 4,
+      readBufferFromBigInt(this.newEncryptedMessages.length, 4,
           little: true, signed: true),
       this
-          .newEncryptedMessages!
-          .map((x) => (x.getBytes() as List<int>))
+          .newEncryptedMessages.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.otherUpdates!.length, 4,
+      readBufferFromBigInt(this.otherUpdates.length, 4,
           little: true, signed: true),
       this
-          .otherUpdates!
-          .map((x) => (x.getBytes() as List<int>))
+          .otherUpdates.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
-      (this.state.getBytes() as List<int>),
+      (this.state.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -227,17 +225,17 @@ class Difference extends BaseConstructor {
   }
 }
 
-class DifferenceSlice extends BaseConstructor {
+class DifferenceSlice extends DifferenceBase {
   static const CONSTRUCTOR_ID = 2835028353;
   static const SUBCLASS_OF_ID = 541599860;
   final classType = "constructor";
   final ID = 2835028353;
-  List<dynamic> newMessages;
-  List<dynamic> newEncryptedMessages;
-  List<dynamic> otherUpdates;
-  List<dynamic> chats;
-  List<dynamic> users;
-  var intermediateState;
+  List<MessageBase> newMessages;
+  List<EncryptedMessageBase> newEncryptedMessages;
+  List<UpdateBase> otherUpdates;
+  List<ChatBase> chats;
+  List<UserBase> users;
+  updates_ns.State intermediateState;
 
   DifferenceSlice(
       {required this.newMessages,
@@ -251,7 +249,7 @@ class DifferenceSlice extends BaseConstructor {
     var len;
     var _vectornewMessages = reader.readInt();
     if (_vectornewMessages != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> newMessages = [];
+    List<MessageBase> newMessages = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       newMessages.add(reader.tgReadObject());
@@ -259,28 +257,28 @@ class DifferenceSlice extends BaseConstructor {
     var _vectornewEncryptedMessages = reader.readInt();
     if (_vectornewEncryptedMessages != 481674261)
       throw Exception('Wrong vectorId');
-    List<dynamic> newEncryptedMessages = [];
+    List<EncryptedMessageBase> newEncryptedMessages = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       newEncryptedMessages.add(reader.tgReadObject());
     }
     var _vectorotherUpdates = reader.readInt();
     if (_vectorotherUpdates != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> otherUpdates = [];
+    List<UpdateBase> otherUpdates = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       otherUpdates.add(reader.tgReadObject());
     }
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -300,39 +298,34 @@ class DifferenceSlice extends BaseConstructor {
     return [
       readBufferFromBigInt(2835028353, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.newMessages!.length, 4,
+      readBufferFromBigInt(this.newMessages.length, 4,
           little: true, signed: true),
       this
-          .newMessages!
-          .map((x) => (x.getBytes() as List<int>))
+          .newMessages.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.newEncryptedMessages!.length, 4,
+      readBufferFromBigInt(this.newEncryptedMessages.length, 4,
           little: true, signed: true),
       this
-          .newEncryptedMessages!
-          .map((x) => (x.getBytes() as List<int>))
+          .newEncryptedMessages.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.otherUpdates!.length, 4,
+      readBufferFromBigInt(this.otherUpdates.length, 4,
           little: true, signed: true),
       this
-          .otherUpdates!
-          .map((x) => (x.getBytes() as List<int>))
+          .otherUpdates.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
-      (this.intermediateState.getBytes() as List<int>),
+      (this.intermediateState.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -352,7 +345,7 @@ class DifferenceSlice extends BaseConstructor {
   }
 }
 
-class DifferenceTooLong extends BaseConstructor {
+class DifferenceTooLong extends DifferenceBase {
   static const CONSTRUCTOR_ID = 1258196845;
   static const SUBCLASS_OF_ID = 541599860;
   final classType = "constructor";
@@ -362,7 +355,6 @@ class DifferenceTooLong extends BaseConstructor {
   DifferenceTooLong({required this.pts});
 
   static DifferenceTooLong fromReader(BinaryReader reader) {
-    var len;
     var pts = reader.readInt();
     return DifferenceTooLong(pts: pts);
   }
@@ -391,7 +383,9 @@ class DifferenceTooLong extends BaseConstructor {
   }
 }
 
-class ChannelDifferenceEmpty extends BaseConstructor {
+abstract class ChannelDifferenceBase extends BaseConstructor {}
+
+class ChannelDifferenceEmpty extends ChannelDifferenceBase {
   static const CONSTRUCTOR_ID = 1041346555;
   static const SUBCLASS_OF_ID = 696872797;
   final classType = "constructor";
@@ -400,11 +394,9 @@ class ChannelDifferenceEmpty extends BaseConstructor {
   int pts;
   int? timeout;
 
-  ChannelDifferenceEmpty(
-      {required this.finalVar, required this.pts, required this.timeout});
+  ChannelDifferenceEmpty({this.finalVar, required this.pts, this.timeout});
 
   static ChannelDifferenceEmpty fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final finalVar = (flags & 1) == 1;
     var pts = reader.readInt();
@@ -448,21 +440,21 @@ class ChannelDifferenceEmpty extends BaseConstructor {
   }
 }
 
-class ChannelDifferenceTooLong extends BaseConstructor {
+class ChannelDifferenceTooLong extends ChannelDifferenceBase {
   static const CONSTRUCTOR_ID = 2763835134;
   static const SUBCLASS_OF_ID = 696872797;
   final classType = "constructor";
   final ID = 2763835134;
   bool? finalVar;
   int? timeout;
-  var dialog;
-  List<dynamic> messages;
-  List<dynamic> chats;
-  List<dynamic> users;
+  DialogBase dialog;
+  List<MessageBase> messages;
+  List<ChatBase> chats;
+  List<UserBase> users;
 
   ChannelDifferenceTooLong(
-      {required this.finalVar,
-      required this.timeout,
+      {this.finalVar,
+      this.timeout,
       required this.dialog,
       required this.messages,
       required this.chats,
@@ -481,21 +473,21 @@ class ChannelDifferenceTooLong extends BaseConstructor {
     var dialog = reader.tgReadObject();
     var _vectormessages = reader.readInt();
     if (_vectormessages != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> messages = [];
+    List<MessageBase> messages = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       messages.add(reader.tgReadObject());
     }
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -519,25 +511,22 @@ class ChannelDifferenceTooLong extends BaseConstructor {
           : [readBufferFromBigInt(this.timeout, 4, little: true, signed: true)]
               .expand((element) => element)
               .toList(),
-      (this.dialog.getBytes() as List<int>),
+      (this.dialog.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.messages!.length, 4,
+      readBufferFromBigInt(this.messages.length, 4,
           little: true, signed: true),
       this
-          .messages!
-          .map((x) => (x.getBytes() as List<int>))
+          .messages.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -558,7 +547,7 @@ class ChannelDifferenceTooLong extends BaseConstructor {
   }
 }
 
-class ChannelDifference extends BaseConstructor {
+class ChannelDifference extends ChannelDifferenceBase {
   static const CONSTRUCTOR_ID = 543450958;
   static const SUBCLASS_OF_ID = 696872797;
   final classType = "constructor";
@@ -566,15 +555,15 @@ class ChannelDifference extends BaseConstructor {
   bool? finalVar;
   int pts;
   int? timeout;
-  List<dynamic> newMessages;
-  List<dynamic> otherUpdates;
-  List<dynamic> chats;
-  List<dynamic> users;
+  List<MessageBase> newMessages;
+  List<UpdateBase> otherUpdates;
+  List<ChatBase> chats;
+  List<UserBase> users;
 
   ChannelDifference(
-      {required this.finalVar,
+      {this.finalVar,
       required this.pts,
-      required this.timeout,
+      this.timeout,
       required this.newMessages,
       required this.otherUpdates,
       required this.chats,
@@ -593,28 +582,28 @@ class ChannelDifference extends BaseConstructor {
     }
     var _vectornewMessages = reader.readInt();
     if (_vectornewMessages != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> newMessages = [];
+    List<MessageBase> newMessages = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       newMessages.add(reader.tgReadObject());
     }
     var _vectorotherUpdates = reader.readInt();
     if (_vectorotherUpdates != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> otherUpdates = [];
+    List<UpdateBase> otherUpdates = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       otherUpdates.add(reader.tgReadObject());
     }
     var _vectorchats = reader.readInt();
     if (_vectorchats != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> chats = [];
+    List<ChatBase> chats = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       chats.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -641,30 +630,26 @@ class ChannelDifference extends BaseConstructor {
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.newMessages!.length, 4,
+      readBufferFromBigInt(this.newMessages.length, 4,
           little: true, signed: true),
       this
-          .newMessages!
-          .map((x) => (x.getBytes() as List<int>))
+          .newMessages.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.otherUpdates!.length, 4,
+      readBufferFromBigInt(this.otherUpdates.length, 4,
           little: true, signed: true),
       this
-          .otherUpdates!
-          .map((x) => (x.getBytes() as List<int>))
+          .otherUpdates.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.chats!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.chats.length, 4, little: true, signed: true),
       this
-          .chats!
-          .map((x) => (x.getBytes() as List<int>))
+          .chats.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }

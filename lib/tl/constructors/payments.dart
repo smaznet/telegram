@@ -1,7 +1,9 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
+import '../constructors/constructors.dart';
 
 class PaymentForm extends BaseConstructor {
   static const CONSTRUCTOR_ID = 2954050359;
@@ -14,31 +16,31 @@ class PaymentForm extends BaseConstructor {
   BigInt botId;
   String title;
   String description;
-  var photo;
-  var invoice;
+  WebDocumentBase? photo;
+  Invoice invoice;
   BigInt providerId;
   String url;
   String? nativeProvider;
-  var nativeParams;
-  var savedInfo;
-  var savedCredentials;
-  List<dynamic> users;
+  DataJSON? nativeParams;
+  PaymentRequestedInfo? savedInfo;
+  PaymentSavedCredentialsBase? savedCredentials;
+  List<UserBase> users;
 
   PaymentForm(
-      {required this.canSaveCredentials,
-      required this.passwordMissing,
+      {this.canSaveCredentials,
+      this.passwordMissing,
       required this.formId,
       required this.botId,
       required this.title,
       required this.description,
-      required this.photo,
+      this.photo,
       required this.invoice,
       required this.providerId,
       required this.url,
-      required this.nativeProvider,
-      required this.nativeParams,
-      required this.savedInfo,
-      required this.savedCredentials,
+      this.nativeProvider,
+      this.nativeParams,
+      this.savedInfo,
+      this.savedCredentials,
       required this.users});
 
   static PaymentForm fromReader(BinaryReader reader) {
@@ -85,7 +87,7 @@ class PaymentForm extends BaseConstructor {
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -119,10 +121,10 @@ class PaymentForm extends BaseConstructor {
       serializeBytes(this.description),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.invoice.getBytes() as List<int>),
+      (this.invoice.getBytes()),
       readBufferFromBigInt(this.providerId, 8, little: true, signed: true),
       serializeBytes(this.url),
       (this.nativeProvider == null || this.nativeProvider == false)
@@ -132,24 +134,23 @@ class PaymentForm extends BaseConstructor {
               .toList(),
       (this.nativeParams == null || this.nativeParams == false)
           ? List<int>.empty()
-          : [(this.nativeParams.getBytes() as List<int>)]
+          : [(this.nativeParams!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.savedInfo == null || this.savedInfo == false)
           ? List<int>.empty()
-          : [(this.savedInfo.getBytes() as List<int>)]
+          : [(this.savedInfo!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.savedCredentials == null || this.savedCredentials == false)
           ? List<int>.empty()
-          : [(this.savedCredentials.getBytes() as List<int>)]
+          : [(this.savedCredentials!.getBytes())]
               .expand((element) => element)
               .toList(),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -176,9 +177,9 @@ class ValidatedRequestedInfo extends BaseConstructor {
   final classType = "constructor";
   final ID = 3510966403;
   String? id;
-  List<dynamic>? shippingOptions;
+  List<ShippingOption>? shippingOptions;
 
-  ValidatedRequestedInfo({required this.id, required this.shippingOptions});
+  ValidatedRequestedInfo({this.id, this.shippingOptions});
 
   static ValidatedRequestedInfo fromReader(BinaryReader reader) {
     var len;
@@ -194,7 +195,7 @@ class ValidatedRequestedInfo extends BaseConstructor {
       var _vectorshippingOptions = reader.readInt();
       if (_vectorshippingOptions != 481674261)
         throw Exception('Wrong vectorId');
-      List<dynamic> shippingOptions = [];
+      List<ShippingOption> shippingOptions = [];
       len = reader.readInt();
       for (var i = 0; i < len; i++) {
         shippingOptions.add(reader.tgReadObject());
@@ -221,7 +222,7 @@ class ValidatedRequestedInfo extends BaseConstructor {
                   little: true, signed: true),
               this
                   .shippingOptions!
-                  .map((x) => (x.getBytes() as List<int>))
+                  .map((x) => x.getBytes())
                   .expand((element) => element)
             ].expand((element) => element).toList(),
     ].expand((element) => element).toList();
@@ -243,17 +244,18 @@ class ValidatedRequestedInfo extends BaseConstructor {
   }
 }
 
-class PaymentResult extends BaseConstructor {
+abstract class PaymentResultBase extends BaseConstructor {}
+
+class PaymentResult extends PaymentResultBase {
   static const CONSTRUCTOR_ID = 1314881805;
   static const SUBCLASS_OF_ID = 2330028701;
   final classType = "constructor";
   final ID = 1314881805;
-  var updates;
+  UpdatesBase updates;
 
   PaymentResult({required this.updates});
 
   static PaymentResult fromReader(BinaryReader reader) {
-    var len;
     var updates = reader.tgReadObject();
     return PaymentResult(updates: updates);
   }
@@ -262,7 +264,7 @@ class PaymentResult extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1314881805, 4),
-      (this.updates.getBytes() as List<int>),
+      (this.updates.getBytes()),
     ].expand((element) => element).toList();
   }
 
@@ -282,7 +284,7 @@ class PaymentResult extends BaseConstructor {
   }
 }
 
-class PaymentVerificationNeeded extends BaseConstructor {
+class PaymentVerificationNeeded extends PaymentResultBase {
   static const CONSTRUCTOR_ID = 3628142905;
   static const SUBCLASS_OF_ID = 2330028701;
   final classType = "constructor";
@@ -292,7 +294,6 @@ class PaymentVerificationNeeded extends BaseConstructor {
   PaymentVerificationNeeded({required this.url});
 
   static PaymentVerificationNeeded fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     return PaymentVerificationNeeded(url: url);
   }
@@ -331,15 +332,15 @@ class PaymentReceipt extends BaseConstructor {
   BigInt providerId;
   String title;
   String description;
-  var photo;
-  var invoice;
-  var info;
-  var shipping;
+  WebDocumentBase? photo;
+  Invoice invoice;
+  PaymentRequestedInfo? info;
+  ShippingOption? shipping;
   BigInt? tipAmount;
   String currency;
   BigInt totalAmount;
   String credentialsTitle;
-  List<dynamic> users;
+  List<UserBase> users;
 
   PaymentReceipt(
       {required this.date,
@@ -347,11 +348,11 @@ class PaymentReceipt extends BaseConstructor {
       required this.providerId,
       required this.title,
       required this.description,
-      required this.photo,
+      this.photo,
       required this.invoice,
-      required this.info,
-      required this.shipping,
-      required this.tipAmount,
+      this.info,
+      this.shipping,
+      this.tipAmount,
       required this.currency,
       required this.totalAmount,
       required this.credentialsTitle,
@@ -395,7 +396,7 @@ class PaymentReceipt extends BaseConstructor {
     var credentialsTitle = reader.tgReadString();
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -429,18 +430,18 @@ class PaymentReceipt extends BaseConstructor {
       serializeBytes(this.description),
       (this.photo == null || this.photo == false)
           ? List<int>.empty()
-          : [(this.photo.getBytes() as List<int>)]
+          : [(this.photo!.getBytes())]
               .expand((element) => element)
               .toList(),
-      (this.invoice.getBytes() as List<int>),
+      (this.invoice.getBytes()),
       (this.info == null || this.info == false)
           ? List<int>.empty()
-          : [(this.info.getBytes() as List<int>)]
+          : [(this.info!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.shipping == null || this.shipping == false)
           ? List<int>.empty()
-          : [(this.shipping.getBytes() as List<int>)]
+          : [(this.shipping!.getBytes())]
               .expand((element) => element)
               .toList(),
       (this.tipAmount == null || this.tipAmount == false)
@@ -453,10 +454,9 @@ class PaymentReceipt extends BaseConstructor {
       readBufferFromBigInt(this.totalAmount, 8, little: true, signed: true),
       serializeBytes(this.credentialsTitle),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -483,12 +483,11 @@ class SavedInfo extends BaseConstructor {
   final classType = "constructor";
   final ID = 4220511292;
   bool? hasSavedCredentials;
-  var savedInfo;
+  PaymentRequestedInfo? savedInfo;
 
-  SavedInfo({required this.hasSavedCredentials, required this.savedInfo});
+  SavedInfo({this.hasSavedCredentials, this.savedInfo});
 
   static SavedInfo fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final hasSavedCredentials = (flags & 2) == 2;
     var savedInfo;
@@ -508,7 +507,7 @@ class SavedInfo extends BaseConstructor {
       [0, 0, 0, 0],
       (this.savedInfo == null || this.savedInfo == false)
           ? List<int>.empty()
-          : [(this.savedInfo.getBytes() as List<int>)]
+          : [(this.savedInfo!.getBytes())]
               .expand((element) => element)
               .toList(),
     ].expand((element) => element).toList();
@@ -536,7 +535,7 @@ class BankCardData extends BaseConstructor {
   final classType = "constructor";
   final ID = 1042605427;
   String title;
-  List<dynamic> openUrls;
+  List<BankCardOpenUrl> openUrls;
 
   BankCardData({required this.title, required this.openUrls});
 
@@ -545,7 +544,7 @@ class BankCardData extends BaseConstructor {
     var title = reader.tgReadString();
     var _vectoropenUrls = reader.readInt();
     if (_vectoropenUrls != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> openUrls = [];
+    List<BankCardOpenUrl> openUrls = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       openUrls.add(reader.tgReadObject());
@@ -559,11 +558,10 @@ class BankCardData extends BaseConstructor {
       readBufferFromBigInt(1042605427, 4),
       serializeBytes(this.title),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.openUrls!.length, 4,
+      readBufferFromBigInt(this.openUrls.length, 4,
           little: true, signed: true),
       this
-          .openUrls!
-          .map((x) => (x.getBytes() as List<int>))
+          .openUrls.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -594,7 +592,6 @@ class ExportedInvoice extends BaseConstructor {
   ExportedInvoice({required this.url});
 
   static ExportedInvoice fromReader(BinaryReader reader) {
-    var len;
     var url = reader.tgReadString();
     return ExportedInvoice(url: url);
   }

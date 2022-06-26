@@ -1,21 +1,25 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
+import '../constructors/storage.dart' as storage_ns;
+import '../constructors/constructors.dart';
 
-class File extends BaseConstructor {
+abstract class FileBase extends BaseConstructor {}
+
+class File extends FileBase {
   static const CONSTRUCTOR_ID = 157948117;
   static const SUBCLASS_OF_ID = 1822152488;
   final classType = "constructor";
   final ID = 157948117;
-  var type;
+  storage_ns.FileTypeBase type;
   int mtime;
   List<int> bytes;
 
   File({required this.type, required this.mtime, required this.bytes});
 
   static File fromReader(BinaryReader reader) {
-    var len;
     var type = reader.tgReadObject();
     var mtime = reader.readInt();
     var bytes = reader.tgReadBytes();
@@ -26,7 +30,7 @@ class File extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(157948117, 4),
-      (this.type.getBytes() as List<int>),
+      (this.type.getBytes()),
       readBufferFromBigInt(this.mtime, 4, little: true, signed: true),
       serializeBytes(this.bytes),
     ].expand((element) => element).toList();
@@ -48,7 +52,7 @@ class File extends BaseConstructor {
   }
 }
 
-class FileCdnRedirect extends BaseConstructor {
+class FileCdnRedirect extends FileBase {
   static const CONSTRUCTOR_ID = 4052539972;
   static const SUBCLASS_OF_ID = 1822152488;
   final classType = "constructor";
@@ -57,7 +61,7 @@ class FileCdnRedirect extends BaseConstructor {
   List<int> fileToken;
   List<int> encryptionKey;
   List<int> encryptionIv;
-  List<dynamic> fileHashes;
+  List<FileHash> fileHashes;
 
   FileCdnRedirect(
       {required this.dcId,
@@ -74,7 +78,7 @@ class FileCdnRedirect extends BaseConstructor {
     var encryptionIv = reader.tgReadBytes();
     var _vectorfileHashes = reader.readInt();
     if (_vectorfileHashes != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> fileHashes = [];
+    List<FileHash> fileHashes = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       fileHashes.add(reader.tgReadObject());
@@ -96,11 +100,10 @@ class FileCdnRedirect extends BaseConstructor {
       serializeBytes(this.encryptionKey),
       serializeBytes(this.encryptionIv),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.fileHashes!.length, 4,
+      readBufferFromBigInt(this.fileHashes.length, 4,
           little: true, signed: true),
       this
-          .fileHashes!
-          .map((x) => (x.getBytes() as List<int>))
+          .fileHashes.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -128,7 +131,7 @@ class WebFile extends BaseConstructor {
   final ID = 568808380;
   int size;
   String mimeType;
-  var fileType;
+  storage_ns.FileTypeBase fileType;
   int mtime;
   List<int> bytes;
 
@@ -140,7 +143,6 @@ class WebFile extends BaseConstructor {
       required this.bytes});
 
   static WebFile fromReader(BinaryReader reader) {
-    var len;
     var size = reader.readInt();
     var mimeType = reader.tgReadString();
     var fileType = reader.tgReadObject();
@@ -160,7 +162,7 @@ class WebFile extends BaseConstructor {
       readBufferFromBigInt(568808380, 4),
       readBufferFromBigInt(this.size, 4, little: true, signed: true),
       serializeBytes(this.mimeType),
-      (this.fileType.getBytes() as List<int>),
+      (this.fileType.getBytes()),
       readBufferFromBigInt(this.mtime, 4, little: true, signed: true),
       serializeBytes(this.bytes),
     ].expand((element) => element).toList();
@@ -182,7 +184,9 @@ class WebFile extends BaseConstructor {
   }
 }
 
-class CdnFileReuploadNeeded extends BaseConstructor {
+abstract class CdnFileBase extends BaseConstructor {}
+
+class CdnFileReuploadNeeded extends CdnFileBase {
   static const CONSTRUCTOR_ID = 4004045934;
   static const SUBCLASS_OF_ID = 4123851048;
   final classType = "constructor";
@@ -192,7 +196,6 @@ class CdnFileReuploadNeeded extends BaseConstructor {
   CdnFileReuploadNeeded({required this.requestToken});
 
   static CdnFileReuploadNeeded fromReader(BinaryReader reader) {
-    var len;
     var requestToken = reader.tgReadBytes();
     return CdnFileReuploadNeeded(requestToken: requestToken);
   }
@@ -221,7 +224,7 @@ class CdnFileReuploadNeeded extends BaseConstructor {
   }
 }
 
-class CdnFile extends BaseConstructor {
+class CdnFile extends CdnFileBase {
   static const CONSTRUCTOR_ID = 2845821519;
   static const SUBCLASS_OF_ID = 4123851048;
   final classType = "constructor";
@@ -231,7 +234,6 @@ class CdnFile extends BaseConstructor {
   CdnFile({required this.bytes});
 
   static CdnFile fromReader(BinaryReader reader) {
-    var len;
     var bytes = reader.tgReadBytes();
     return CdnFile(bytes: bytes);
   }

@@ -58,6 +58,7 @@ class MessagePacker {
     while (this._queue.length > 0 &&
         batch.length <= MessageContainer.MAXIMUM_LENGTH) {
       final state = this._queue.removeAt(0);
+      if (state == null) continue;
 
       size += (state.data.length as int) + TLMessage.SIZE_OVERHEAD;
       if (size <= MessageContainer.MAXIMUM_SIZE) {

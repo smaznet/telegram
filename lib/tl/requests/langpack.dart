@@ -1,9 +1,11 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/constructors.dart';
 
-class GetLangPack extends BaseRequest {
+class GetLangPack extends BaseRequest<LangPackDifference, dynamic> {
   static const CONSTRUCTOR_ID = 4075959050;
   static const SUBCLASS_OF_ID = 1382427989;
   final classType = "request";
@@ -14,7 +16,6 @@ class GetLangPack extends BaseRequest {
   GetLangPack({required this.langPack, required this.langCode});
 
   static GetLangPack fromReader(BinaryReader reader) {
-    var len;
     var langPack = reader.tgReadString();
     var langCode = reader.tgReadString();
     return GetLangPack(langPack: langPack, langCode: langCode);
@@ -31,7 +32,7 @@ class GetLangPack extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<LangPackDifference, dynamic>();
   }
 
   @override
@@ -50,7 +51,8 @@ class GetLangPack extends BaseRequest {
   }
 }
 
-class GetStrings extends BaseRequest {
+class GetStrings
+    extends BaseRequest<List<LangPackStringBase>, LangPackStringBase> {
   static const CONSTRUCTOR_ID = 4025104387;
   static const SUBCLASS_OF_ID = 3350672701;
   final classType = "request";
@@ -83,14 +85,14 @@ class GetStrings extends BaseRequest {
       serializeBytes(this.langPack),
       serializeBytes(this.langCode),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.keys!.length, 4, little: true, signed: true),
-      this.keys!.map((x) => serializeBytes(x)).expand((element) => element),
+      readBufferFromBigInt(this.keys.length, 4, little: true, signed: true),
+      this.keys.map((x) => serializeBytes(x)).expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<LangPackStringBase>, LangPackStringBase>();
   }
 
   @override
@@ -109,7 +111,7 @@ class GetStrings extends BaseRequest {
   }
 }
 
-class GetDifference extends BaseRequest {
+class GetDifference extends BaseRequest<LangPackDifference, dynamic> {
   static const CONSTRUCTOR_ID = 3449309861;
   static const SUBCLASS_OF_ID = 1382427989;
   final classType = "request";
@@ -124,7 +126,6 @@ class GetDifference extends BaseRequest {
       required this.fromVersion});
 
   static GetDifference fromReader(BinaryReader reader) {
-    var len;
     var langPack = reader.tgReadString();
     var langCode = reader.tgReadString();
     var fromVersion = reader.readInt();
@@ -144,7 +145,7 @@ class GetDifference extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<LangPackDifference, dynamic>();
   }
 
   @override
@@ -163,7 +164,8 @@ class GetDifference extends BaseRequest {
   }
 }
 
-class GetLanguages extends BaseRequest {
+class GetLanguages
+    extends BaseRequest<List<LangPackLanguage>, LangPackLanguage> {
   static const CONSTRUCTOR_ID = 1120311183;
   static const SUBCLASS_OF_ID = 671683273;
   final classType = "request";
@@ -173,7 +175,6 @@ class GetLanguages extends BaseRequest {
   GetLanguages({required this.langPack});
 
   static GetLanguages fromReader(BinaryReader reader) {
-    var len;
     var langPack = reader.tgReadString();
     return GetLanguages(langPack: langPack);
   }
@@ -188,7 +189,7 @@ class GetLanguages extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<LangPackLanguage>, LangPackLanguage>();
   }
 
   @override
@@ -207,7 +208,7 @@ class GetLanguages extends BaseRequest {
   }
 }
 
-class GetLanguage extends BaseRequest {
+class GetLanguage extends BaseRequest<LangPackLanguage, dynamic> {
   static const CONSTRUCTOR_ID = 1784243458;
   static const SUBCLASS_OF_ID = 2880211383;
   final classType = "request";
@@ -218,7 +219,6 @@ class GetLanguage extends BaseRequest {
   GetLanguage({required this.langPack, required this.langCode});
 
   static GetLanguage fromReader(BinaryReader reader) {
-    var len;
     var langPack = reader.tgReadString();
     var langCode = reader.tgReadString();
     return GetLanguage(langPack: langPack, langCode: langCode);
@@ -235,7 +235,7 @@ class GetLanguage extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<LangPackLanguage, dynamic>();
   }
 
   @override

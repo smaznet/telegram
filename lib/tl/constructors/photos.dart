@@ -1,15 +1,19 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
+import '../constructors/constructors.dart';
 
-class Photos extends BaseConstructor {
+abstract class PhotosBase extends BaseConstructor {}
+
+class Photos extends PhotosBase {
   static const CONSTRUCTOR_ID = 2378853029;
   static const SUBCLASS_OF_ID = 667924839;
   final classType = "constructor";
   final ID = 2378853029;
-  List<dynamic> photos;
-  List<dynamic> users;
+  List<PhotoBase> photos;
+  List<UserBase> users;
 
   Photos({required this.photos, required this.users});
 
@@ -17,14 +21,14 @@ class Photos extends BaseConstructor {
     var len;
     var _vectorphotos = reader.readInt();
     if (_vectorphotos != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> photos = [];
+    List<PhotoBase> photos = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       photos.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -37,16 +41,14 @@ class Photos extends BaseConstructor {
     return [
       readBufferFromBigInt(2378853029, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.photos!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.photos.length, 4, little: true, signed: true),
       this
-          .photos!
-          .map((x) => (x.getBytes() as List<int>))
+          .photos.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -67,14 +69,14 @@ class Photos extends BaseConstructor {
   }
 }
 
-class PhotosSlice extends BaseConstructor {
+class PhotosSlice extends PhotosBase {
   static const CONSTRUCTOR_ID = 352657236;
   static const SUBCLASS_OF_ID = 667924839;
   final classType = "constructor";
   final ID = 352657236;
   int count;
-  List<dynamic> photos;
-  List<dynamic> users;
+  List<PhotoBase> photos;
+  List<UserBase> users;
 
   PhotosSlice({required this.count, required this.photos, required this.users});
 
@@ -83,14 +85,14 @@ class PhotosSlice extends BaseConstructor {
     var count = reader.readInt();
     var _vectorphotos = reader.readInt();
     if (_vectorphotos != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> photos = [];
+    List<PhotoBase> photos = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       photos.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -104,16 +106,14 @@ class PhotosSlice extends BaseConstructor {
       readBufferFromBigInt(352657236, 4),
       readBufferFromBigInt(this.count, 4, little: true, signed: true),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.photos!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.photos.length, 4, little: true, signed: true),
       this
-          .photos!
-          .map((x) => (x.getBytes() as List<int>))
+          .photos.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -139,8 +139,8 @@ class Photo extends BaseConstructor {
   static const SUBCLASS_OF_ID = 3264396580;
   final classType = "constructor";
   final ID = 539045032;
-  var photo;
-  List<dynamic> users;
+  PhotoBase photo;
+  List<UserBase> users;
 
   Photo({required this.photo, required this.users});
 
@@ -149,7 +149,7 @@ class Photo extends BaseConstructor {
     var photo = reader.tgReadObject();
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -161,12 +161,11 @@ class Photo extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(539045032, 4),
-      (this.photo.getBytes() as List<int>),
+      (this.photo.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }

@@ -23,8 +23,7 @@ class FullPacketCodec extends PacketCodec {
     toSend.addAll(readBufferFromBigInt(this._sendCounter, 4, signed: true));
     toSend.addAll(data);
     toSend.addAll(
-        readBufferFromBigInt(new Crc32Xz().convert(toSend), 4, signed: true));
-
+        readBufferFromBigInt(new Crc32Xz().convert(toSend), 4, signed: false));
     this._sendCounter += 1;
 
     return toSend;
@@ -38,6 +37,7 @@ class FullPacketCodec extends PacketCodec {
   Future<List<int>> readPacket(FutureSocket reader) async {
     final packetLenSeq = await reader.readExactly(8); // 4 and 4
 
+    print("packetLenSeq: ${packetLenSeq}");
     if (packetLenSeq == false) {
       return [];
     }

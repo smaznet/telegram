@@ -40,7 +40,7 @@ class MTProtoPlainSender {
     body = await this._connection.recv();
 
     if (body.length < 8) {
-      throw ("Invalid response buffer (too short $body)");
+      throw ("Invalid response buffer (too short $body) ${request.runtimeType}");
     }
     final reader = new BinaryReader(body);
     final authKeyId = reader.readLong();

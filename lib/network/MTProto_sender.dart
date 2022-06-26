@@ -1,3 +1,4 @@
+import 'package:telegram/tl/base_request.dart';
 import 'package:telegram/tl/tlobject.dart';
 
 import '../crypto/auth_key.dart';
@@ -208,12 +209,12 @@ class MTProtoSender {
    * @param request
    * @returns {RequestState}
    */
-  send(request) {
+  Future<T> send<T, U>(BaseRequest<T, U> request) {
     if (!this._userConnected) {
       throw ('Cannot send requests while disconnected');
     }
 //CONTEST
-    final state = new RequestState(request);
+    final state = new RequestState<T, U>(request);
     this._sendQueue.append(state);
     return state.completer.future;
 /*
@@ -437,6 +438,7 @@ class MTProtoSender {
     this._pendingAck.add(message.msgId);
 // eslint-disable-next-line require-atomic-updates
     message.obj = await message.obj;
+
     var handler = this._handlers[message.obj.ID];
     if (handler == null) {
       handler = this._handleUpdate;
@@ -541,11 +543,12 @@ class MTProtoSender {
       this
           ._sendQueue
           .append(new RequestState(new MsgsAck(msgIds: [state?.msgId])));
-      print("Appended");
+
       state?.completer.completeError(error);
     } else {
       final reader = new BinaryReader(rpcResult.body);
-      final read = state?.request.readResult(reader);
+      final read = (state?.request as BaseRequest).readResult(reader);
+      print("RUntimeType: ${read.runtimeType}");
       state?.completer.complete(read);
     }
   }

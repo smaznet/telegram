@@ -1,28 +1,30 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
+import '../constructors/constructors.dart';
 
 class BroadcastStats extends BaseConstructor {
   static const CONSTRUCTOR_ID = 3187114900;
   static const SUBCLASS_OF_ID = 2146587688;
   final classType = "constructor";
   final ID = 3187114900;
-  var period;
-  var followers;
-  var viewsPerPost;
-  var sharesPerPost;
-  var enabledNotifications;
-  var growthGraph;
-  var followersGraph;
-  var muteGraph;
-  var topHoursGraph;
-  var interactionsGraph;
-  var ivInteractionsGraph;
-  var viewsBySourceGraph;
-  var newFollowersBySourceGraph;
-  var languagesGraph;
-  List<dynamic> recentMessageInteractions;
+  StatsDateRangeDays period;
+  StatsAbsValueAndPrev followers;
+  StatsAbsValueAndPrev viewsPerPost;
+  StatsAbsValueAndPrev sharesPerPost;
+  StatsPercentValue enabledNotifications;
+  StatsGraphBase growthGraph;
+  StatsGraphBase followersGraph;
+  StatsGraphBase muteGraph;
+  StatsGraphBase topHoursGraph;
+  StatsGraphBase interactionsGraph;
+  StatsGraphBase ivInteractionsGraph;
+  StatsGraphBase viewsBySourceGraph;
+  StatsGraphBase newFollowersBySourceGraph;
+  StatsGraphBase languagesGraph;
+  List<MessageInteractionCounters> recentMessageInteractions;
 
   BroadcastStats(
       {required this.period,
@@ -60,7 +62,7 @@ class BroadcastStats extends BaseConstructor {
     var _vectorrecentMessageInteractions = reader.readInt();
     if (_vectorrecentMessageInteractions != 481674261)
       throw Exception('Wrong vectorId');
-    List<dynamic> recentMessageInteractions = [];
+    List<MessageInteractionCounters> recentMessageInteractions = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       recentMessageInteractions.add(reader.tgReadObject());
@@ -87,26 +89,25 @@ class BroadcastStats extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(3187114900, 4),
-      (this.period.getBytes() as List<int>),
-      (this.followers.getBytes() as List<int>),
-      (this.viewsPerPost.getBytes() as List<int>),
-      (this.sharesPerPost.getBytes() as List<int>),
-      (this.enabledNotifications.getBytes() as List<int>),
-      (this.growthGraph.getBytes() as List<int>),
-      (this.followersGraph.getBytes() as List<int>),
-      (this.muteGraph.getBytes() as List<int>),
-      (this.topHoursGraph.getBytes() as List<int>),
-      (this.interactionsGraph.getBytes() as List<int>),
-      (this.ivInteractionsGraph.getBytes() as List<int>),
-      (this.viewsBySourceGraph.getBytes() as List<int>),
-      (this.newFollowersBySourceGraph.getBytes() as List<int>),
-      (this.languagesGraph.getBytes() as List<int>),
+      (this.period.getBytes()),
+      (this.followers.getBytes()),
+      (this.viewsPerPost.getBytes()),
+      (this.sharesPerPost.getBytes()),
+      (this.enabledNotifications.getBytes()),
+      (this.growthGraph.getBytes()),
+      (this.followersGraph.getBytes()),
+      (this.muteGraph.getBytes()),
+      (this.topHoursGraph.getBytes()),
+      (this.interactionsGraph.getBytes()),
+      (this.ivInteractionsGraph.getBytes()),
+      (this.viewsBySourceGraph.getBytes()),
+      (this.newFollowersBySourceGraph.getBytes()),
+      (this.languagesGraph.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.recentMessageInteractions!.length, 4,
+      readBufferFromBigInt(this.recentMessageInteractions.length, 4,
           little: true, signed: true),
       this
-          .recentMessageInteractions!
-          .map((x) => (x.getBytes() as List<int>))
+          .recentMessageInteractions.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -132,23 +133,23 @@ class MegagroupStats extends BaseConstructor {
   static const SUBCLASS_OF_ID = 1532608141;
   final classType = "constructor";
   final ID = 4018141462;
-  var period;
-  var members;
-  var messages;
-  var viewers;
-  var posters;
-  var growthGraph;
-  var membersGraph;
-  var newMembersBySourceGraph;
-  var languagesGraph;
-  var messagesGraph;
-  var actionsGraph;
-  var topHoursGraph;
-  var weekdaysGraph;
-  List<dynamic> topPosters;
-  List<dynamic> topAdmins;
-  List<dynamic> topInviters;
-  List<dynamic> users;
+  StatsDateRangeDays period;
+  StatsAbsValueAndPrev members;
+  StatsAbsValueAndPrev messages;
+  StatsAbsValueAndPrev viewers;
+  StatsAbsValueAndPrev posters;
+  StatsGraphBase growthGraph;
+  StatsGraphBase membersGraph;
+  StatsGraphBase newMembersBySourceGraph;
+  StatsGraphBase languagesGraph;
+  StatsGraphBase messagesGraph;
+  StatsGraphBase actionsGraph;
+  StatsGraphBase topHoursGraph;
+  StatsGraphBase weekdaysGraph;
+  List<StatsGroupTopPoster> topPosters;
+  List<StatsGroupTopAdmin> topAdmins;
+  List<StatsGroupTopInviter> topInviters;
+  List<UserBase> users;
 
   MegagroupStats(
       {required this.period,
@@ -186,28 +187,28 @@ class MegagroupStats extends BaseConstructor {
     var weekdaysGraph = reader.tgReadObject();
     var _vectortopPosters = reader.readInt();
     if (_vectortopPosters != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> topPosters = [];
+    List<StatsGroupTopPoster> topPosters = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       topPosters.add(reader.tgReadObject());
     }
     var _vectortopAdmins = reader.readInt();
     if (_vectortopAdmins != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> topAdmins = [];
+    List<StatsGroupTopAdmin> topAdmins = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       topAdmins.add(reader.tgReadObject());
     }
     var _vectortopInviters = reader.readInt();
     if (_vectortopInviters != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> topInviters = [];
+    List<StatsGroupTopInviter> topInviters = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       topInviters.add(reader.tgReadObject());
     }
     var _vectorusers = reader.readInt();
     if (_vectorusers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> users = [];
+    List<UserBase> users = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       users.add(reader.tgReadObject());
@@ -236,45 +237,41 @@ class MegagroupStats extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(4018141462, 4),
-      (this.period.getBytes() as List<int>),
-      (this.members.getBytes() as List<int>),
-      (this.messages.getBytes() as List<int>),
-      (this.viewers.getBytes() as List<int>),
-      (this.posters.getBytes() as List<int>),
-      (this.growthGraph.getBytes() as List<int>),
-      (this.membersGraph.getBytes() as List<int>),
-      (this.newMembersBySourceGraph.getBytes() as List<int>),
-      (this.languagesGraph.getBytes() as List<int>),
-      (this.messagesGraph.getBytes() as List<int>),
-      (this.actionsGraph.getBytes() as List<int>),
-      (this.topHoursGraph.getBytes() as List<int>),
-      (this.weekdaysGraph.getBytes() as List<int>),
+      (this.period.getBytes()),
+      (this.members.getBytes()),
+      (this.messages.getBytes()),
+      (this.viewers.getBytes()),
+      (this.posters.getBytes()),
+      (this.growthGraph.getBytes()),
+      (this.membersGraph.getBytes()),
+      (this.newMembersBySourceGraph.getBytes()),
+      (this.languagesGraph.getBytes()),
+      (this.messagesGraph.getBytes()),
+      (this.actionsGraph.getBytes()),
+      (this.topHoursGraph.getBytes()),
+      (this.weekdaysGraph.getBytes()),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.topPosters!.length, 4,
+      readBufferFromBigInt(this.topPosters.length, 4,
           little: true, signed: true),
       this
-          .topPosters!
-          .map((x) => (x.getBytes() as List<int>))
+          .topPosters.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.topAdmins!.length, 4,
+      readBufferFromBigInt(this.topAdmins.length, 4,
           little: true, signed: true),
       this
-          .topAdmins!
-          .map((x) => (x.getBytes() as List<int>))
+          .topAdmins.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.topInviters!.length, 4,
+      readBufferFromBigInt(this.topInviters.length, 4,
           little: true, signed: true),
       this
-          .topInviters!
-          .map((x) => (x.getBytes() as List<int>))
+          .topInviters.map((x) => x.getBytes())
           .expand((element) => element),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.users!.length, 4, little: true, signed: true),
+      readBufferFromBigInt(this.users.length, 4, little: true, signed: true),
       this
-          .users!
-          .map((x) => (x.getBytes() as List<int>))
+          .users.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
@@ -300,12 +297,11 @@ class MessageStats extends BaseConstructor {
   static const SUBCLASS_OF_ID = 2516886306;
   final classType = "constructor";
   final ID = 2308567701;
-  var viewsGraph;
+  StatsGraphBase viewsGraph;
 
   MessageStats({required this.viewsGraph});
 
   static MessageStats fromReader(BinaryReader reader) {
-    var len;
     var viewsGraph = reader.tgReadObject();
     return MessageStats(viewsGraph: viewsGraph);
   }
@@ -314,7 +310,7 @@ class MessageStats extends BaseConstructor {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2308567701, 4),
-      (this.viewsGraph.getBytes() as List<int>),
+      (this.viewsGraph.getBytes()),
     ].expand((element) => element).toList();
   }
 

@@ -53,9 +53,45 @@ buildApiFromTlSchema() {
     writer.write("${tlobject['name']}.fromReader(reader),\n");
   }
   writer.write("};");
-
+  checkAbstract(definitions['constructors']);
   createClasses('constructors', definitions['constructors']);
+
   createClasses('requests', definitions['requests']);
+
+  for (final path in imports.keys) {
+    List<String> fileImports = Set<String>.from(imports[path]!).toList();
+    final output = File(path);
+    String append = "// Auto generated file\n\n" +
+        fileImports.map((e) => "import $e;").join("\n") +
+        "\n\n";
+    final String fileData = output.readAsStringSync();
+    output.writeAsStringSync(
+      append + fileData,
+      mode: FileMode.writeOnly,
+    );
+  }
+}
+
+void checkAbstract(definition) {
+  Map<String, int> _used = {};
+  Set<String> orphans = {};
+  for (final classParams in definition) {
+    final String name = classParams['name'];
+    final String result = classParams['result'];
+    if (name.toLowerCase() != result.split(".").last.toLowerCase()) {
+      orphans.add(result);
+    } else {
+      orphans.remove(result);
+    }
+
+    _used[result] = (_used[result] ?? 0) + 1;
+    if (_used[result]! > 1) {
+      abstracts[result] = false;
+    }
+  }
+  orphans.forEach((element) {
+    abstracts[element] = false;
+  });
 }
 
 final tlContent = new File('lib/static/api.tl').readAsStringSync();
@@ -127,14 +163,33 @@ String getType(String tgType, bool isVector, [bool isFlag = false]) {
     case "Bool":
       result += "bool";
       break;
+    case "X":
+      result += "dynamic";
+      break;
     case "true":
       result += "bool";
       break;
     default:
-      if (isVector) {
-        result += "dynamic";
+      if (tgType.contains("_")) {
+        tgType = "dynamic";
       } else {
-        result += "var";
+        String? nameSpace = checkImport(currentFilePath!, tgType);
+        String append = "";
+        if (abstracts[tgType] != null) {
+          append = "Base";
+        }
+        if (nameSpace != null) {
+          tgType = tgType.replaceFirst(nameSpace, nameSpace + "_ns");
+        }
+        if(tgType == "JSONObjectValue"){
+          tgType = "JsonObjectValue";
+        }
+        tgType += append;
+      }
+      if (isVector) {
+        result += "${tgType}";
+      } else {
+        result += "${tgType}";
       }
       break;
   }
@@ -148,13 +203,21 @@ String getType(String tgType, bool isVector, [bool isFlag = false]) {
   return result;
 }
 
-writeFromReader(writer, name, argsConfig) {
+writeFromReader(writer, name, Map<String, dynamic> argsConfig) {
   //fromReader
   writer.write("\t");
 
   writer.write("static $name fromReader(BinaryReader reader) {");
   writer.write("\n");
-  writer.write("\tvar len;");
+  bool usedLen = false;
+  argsConfig.forEach((key, value) {
+    if (usedLen == false) {
+      if (value["isVector"]) {
+        usedLen = true;
+      }
+    }
+  });
+  if (usedLen) writer.write("\tvar len;");
 
   final args = {};
   argsConfig.forEach((argName, arg) {
@@ -273,7 +336,7 @@ bool writeArgToBytes(ClassWriter writer, arg, Map<dynamic, dynamic> argsConfig,
   } else if (arg['type'] == 'date') {
     writer.write('serializeDatetime($name)');
   } else {
-    writer.write("($name.getBytes() as List<int>)");
+    writer.write("($name!.getBytes() as List<int>)");
 
     var boxed = arg['type'][arg['type'].indexOf('.') + 1];
     boxed = boxed == boxed.toUpperCase();
@@ -315,39 +378,65 @@ writeGetBytes(ClassWriter writer, String name, argsConfig, constructorId) {
   writer.write("}");
 }
 
+Map<String, List<String>> imports = {};
+Map<String, bool> abstracts = {};
+Map<String, List<String>> genericDefinitions = {};
+String? currentFilePath;
 createClasses(classesType, params) {
   int total = params.length;
   int done = 0;
   for (final classParams in params) {
-    final name = classParams['name'];
+    final String name = classParams['name'];
     final constructorId = classParams['constructorId'];
     final subclassOfId = classParams['subclassOfId'];
     final Map<String, dynamic> argsConfig = classParams['argsConfig'];
     final namespace = classParams['namespace'];
-    final result = classParams['result'];
+    final String result = classParams['result'];
+    String abstractClassName = result.split(".").last;
+    final needAbstract =
+        classesType == "constructors" && abstracts.containsKey(result);
+
+    abstractClassName += "Base";
     final file =
         new File('lib/tl/${classesType}/${namespace ?? classesType}.dart');
     var append = "\n\n";
     //Creating files
     if (!file.existsSync()) {
       // append = "part of ${classesType == "requests" ? "request" : "constructor"};\n";
-      append = "import '../../utils.dart';\n";
-      append += "import '../../extensions/binary_reader.dart';\n\n";
-      if (classesType == "requests") {
-        append += "import '../base_request.dart';\n";
-      } else {
-        append += "import '../base_contructor.dart';\n";
-      }
+      imports[file.path] = [
+        "'../../utils.dart'",
+        "'../../extensions/binary_reader.dart'",
+        classesType == "requests"
+            ? "'../base_request.dart'"
+            : "'../base_contructor.dart'"
+      ];
       file.createSync(recursive: true);
     }
+    currentFilePath = file.path;
     ClassWriter writer = new ClassWriter(file: file);
     writer.write(append);
+
+    if (needAbstract && abstracts[result] == false) {
+      writer.write(
+          "abstract class $abstractClassName extends BaseConstructor {}\n\n");
+      abstracts[result] = true;
+    }
+
     //Declaring classes
     var extend = "";
     if (classesType == "requests") {
-      extend = "extends BaseRequest ";
+      var returnType = getReturnType(result);
+
+      final secondType = returnType.length == 2 ? returnType.last : "dynamic";
+
+      genericDefinitions[name] = [returnType.first!, secondType!];
+      extend = "extends BaseRequest<${returnType.first},$secondType> ";
     } else {
-      extend = "extends BaseConstructor ";
+      if (needAbstract) {
+        extend = "extends $abstractClassName ";
+      } else {
+        extend = "extends BaseConstructor ";
+      }
     }
 
     writer.write("""class $name $extend{\n""");
@@ -363,7 +452,7 @@ createClasses(classesType, params) {
       if ((key == "flags" || key == "flags2") && value['flagIndicator']) {
         return;
       }
-      filtered.add("this.$key");
+      filtered.add("${value["isFlag"] ? "" : "required "}this.$key");
 
       writer.write(
           """\t${getType(value['type'], value['isVector'], value["isFlag"])} $key;\n""");
@@ -371,7 +460,7 @@ createClasses(classesType, params) {
     //Constructor
     argsConfig.forEach((key, value) {});
     writer.write(
-        """\n\n\t$name(${argsConfig.length > 0 ? '{${filtered.map((e) => "required $e").join(", ")}}' : ''});""");
+        """\n\n\t$name(${argsConfig.length > 0 ? '{${filtered.map((e) => "$e").join(", ")}}' : ''});""");
     writer.write("""\n\n""");
     writeFromReader(writer, name, argsConfig);
     writeGetBytes(writer, name, argsConfig, constructorId);
@@ -381,6 +470,64 @@ createClasses(classesType, params) {
     writer.write("}");
     print("Progress ${++done}/$total");
   }
+}
+
+String? checkImport(
+  String currentFilePath,
+  String type,
+) {
+  var importPath = "";
+  String? nameSpace;
+  if (type.contains(".")) {
+    nameSpace =
+        type.split(".").first.replaceFirst("List<", "").replaceFirst(">", "");
+    importPath = "'../constructors/$nameSpace.dart' as ${nameSpace}_ns";
+  } else {
+    importPath = "'../constructors/constructors.dart'";
+  }
+  if (importPath.isNotEmpty) {
+    imports[currentFilePath]!.add(importPath);
+  }
+  return nameSpace;
+}
+
+List<String?> getReturnType(String result) {
+  if (result == "long") {
+    return ['BigInt'];
+  }
+  if (result == "Bool") {
+    return ["bool"];
+  } else if (result == "X" || result == "JSONValue" || result.contains("_"))
+    return ["dynamic"];
+
+  result = result.replaceFirst("Vector", "List");
+  if (result == "List<long>") {
+    return ["List<BigInt>", "BigInt"];
+  }
+  final Match? listType = (RegExp(r"List\<([\w\.]+)\>")).matchAsPrefix(result);
+
+  String? nameSpace = checkImport(currentFilePath!, result);
+
+  if (abstracts[result] != null) {
+    result += "Base";
+  }
+
+  String? secoundType;
+  if (listType != null) {
+    if (abstracts[listType.group(1)] != null) {
+      result = "List<${listType.group(1)}Base>";
+      secoundType = listType.group(1)! + "Base";
+    } else {
+      secoundType = listType.group(1);
+    }
+  }
+  if (nameSpace != null) {
+    result = result.replaceFirst(nameSpace, nameSpace + "_ns");
+    if (secoundType != null) {
+      secoundType = secoundType.replaceFirst(nameSpace, nameSpace + "_ns");
+    }
+  }
+  return [result, if (secoundType != null) secoundType];
 }
 
 void writeSubAndCatGetter(
@@ -409,10 +556,12 @@ void writeReadResults(ClassWriter writer, String name,
   }
   final m = new RegExp(r'Vector<(int|long)>').firstMatch(result);
 
+  print("Func ${name} result: $result");
   if (m == null) {
     writer.write("\n\t@override\n\treadResult(BinaryReader reader) {");
     writer.write("\n\t");
-    writer.write("return reader.tgReadObject();\n\t}");
+    writer.write(
+        "return reader.tgReadObject<${genericDefinitions[name]!.join(",")}>();\n\t}");
     return;
   }
   final type = m.group(1);
@@ -547,14 +696,34 @@ Future formatCode(String path) async {
   return end.future;
 }
 
+Future fixCode(String path) async {
+  var dartPath = Platform.executable;
+  var process = await Process.start(
+    dartPath,
+    ['fix', "--apply", path],
+  );
+  Completer end = Completer();
+  process.stdout.listen((event) {
+    print(utf8.decode(event));
+  }).onDone(() {
+    end.complete();
+  });
+  return end.future;
+}
+
 void main() async {
-  deleteDir('lib/tl/constructors');
-  deleteDir('lib/tl/requests');
-  deleteDir('lib/tl/all_tl_objects.dart');
+  List<String> paths = [
+    'lib/tl/constructors',
+    'lib/tl/requests',
+    'lib/tl/all_tl_objects.dart'
+  ];
+  paths.forEach(deleteDir);
   print("${Directory.current}");
   buildApiFromTlSchema();
-
-  await formatCode('lib/tl/constructors');
-  await formatCode('lib/tl/requests');
-  await formatCode('lib/tl/all_tl_objects.dart');
+  for (final path in paths) {
+    await formatCode(path);
+  }
+  for (final path in paths) {
+    await fixCode(path);
+  }
 }

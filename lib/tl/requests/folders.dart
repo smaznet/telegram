@@ -1,14 +1,16 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/constructors.dart';
 
-class EditPeerFolders extends BaseRequest {
+class EditPeerFolders extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1749536939;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
   final ID = 1749536939;
-  List<dynamic> folderPeers;
+  List<InputFolderPeer> folderPeers;
 
   EditPeerFolders({required this.folderPeers});
 
@@ -16,7 +18,7 @@ class EditPeerFolders extends BaseRequest {
     var len;
     var _vectorfolderPeers = reader.readInt();
     if (_vectorfolderPeers != 481674261) throw Exception('Wrong vectorId');
-    List<dynamic> folderPeers = [];
+    List<InputFolderPeer> folderPeers = [];
     len = reader.readInt();
     for (var i = 0; i < len; i++) {
       folderPeers.add(reader.tgReadObject());
@@ -29,18 +31,17 @@ class EditPeerFolders extends BaseRequest {
     return [
       readBufferFromBigInt(1749536939, 4),
       readBufferFromBigInt(0x15c4b51c, 4, little: false, signed: false),
-      readBufferFromBigInt(this.folderPeers!.length, 4,
+      readBufferFromBigInt(this.folderPeers.length, 4,
           little: true, signed: true),
       this
-          .folderPeers!
-          .map((x) => (x.getBytes() as List<int>))
+          .folderPeers.map((x) => x.getBytes())
           .expand((element) => element),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override
@@ -59,7 +60,7 @@ class EditPeerFolders extends BaseRequest {
   }
 }
 
-class DeleteFolder extends BaseRequest {
+class DeleteFolder extends BaseRequest<UpdatesBase, dynamic> {
   static const CONSTRUCTOR_ID = 472471681;
   static const SUBCLASS_OF_ID = 2331323052;
   final classType = "request";
@@ -69,7 +70,6 @@ class DeleteFolder extends BaseRequest {
   DeleteFolder({required this.folderId});
 
   static DeleteFolder fromReader(BinaryReader reader) {
-    var len;
     var folderId = reader.readInt();
     return DeleteFolder(folderId: folderId);
   }
@@ -84,7 +84,7 @@ class DeleteFolder extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<UpdatesBase, dynamic>();
   }
 
   @override

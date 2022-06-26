@@ -1,20 +1,23 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/stats.dart' as stats_ns;
+import '../constructors/constructors.dart';
+import '../constructors/messages.dart' as messages_ns;
 
-class GetBroadcastStats extends BaseRequest {
+class GetBroadcastStats extends BaseRequest<stats_ns.BroadcastStats, dynamic> {
   static const CONSTRUCTOR_ID = 2873246746;
   static const SUBCLASS_OF_ID = 2146587688;
   final classType = "request";
   final ID = 2873246746;
   bool? dark;
-  var channel;
+  InputChannelBase channel;
 
-  GetBroadcastStats({required this.dark, required this.channel});
+  GetBroadcastStats({this.dark, required this.channel});
 
   static GetBroadcastStats fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final dark = (flags & 1) == 1;
     var channel = reader.tgReadObject();
@@ -26,13 +29,13 @@ class GetBroadcastStats extends BaseRequest {
     return [
       readBufferFromBigInt(2873246746, 4),
       [0, 0, 0, 0],
-      (this.channel.getBytes() as List<int>),
+      (this.channel.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<stats_ns.BroadcastStats, dynamic>();
   }
 
   @override
@@ -51,7 +54,7 @@ class GetBroadcastStats extends BaseRequest {
   }
 }
 
-class LoadAsyncGraph extends BaseRequest {
+class LoadAsyncGraph extends BaseRequest<StatsGraphBase, dynamic> {
   static const CONSTRUCTOR_ID = 1646092192;
   static const SUBCLASS_OF_ID = 2609918291;
   final classType = "request";
@@ -59,10 +62,9 @@ class LoadAsyncGraph extends BaseRequest {
   String token;
   BigInt? x;
 
-  LoadAsyncGraph({required this.token, required this.x});
+  LoadAsyncGraph({required this.token, this.x});
 
   static LoadAsyncGraph fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var token = reader.tgReadString();
     var x;
@@ -90,7 +92,7 @@ class LoadAsyncGraph extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<StatsGraphBase, dynamic>();
   }
 
   @override
@@ -109,18 +111,17 @@ class LoadAsyncGraph extends BaseRequest {
   }
 }
 
-class GetMegagroupStats extends BaseRequest {
+class GetMegagroupStats extends BaseRequest<stats_ns.MegagroupStats, dynamic> {
   static const CONSTRUCTOR_ID = 3705636359;
   static const SUBCLASS_OF_ID = 1532608141;
   final classType = "request";
   final ID = 3705636359;
   bool? dark;
-  var channel;
+  InputChannelBase channel;
 
-  GetMegagroupStats({required this.dark, required this.channel});
+  GetMegagroupStats({this.dark, required this.channel});
 
   static GetMegagroupStats fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final dark = (flags & 1) == 1;
     var channel = reader.tgReadObject();
@@ -132,13 +133,13 @@ class GetMegagroupStats extends BaseRequest {
     return [
       readBufferFromBigInt(3705636359, 4),
       [0, 0, 0, 0],
-      (this.channel.getBytes() as List<int>),
+      (this.channel.getBytes()),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<stats_ns.MegagroupStats, dynamic>();
   }
 
   @override
@@ -157,15 +158,16 @@ class GetMegagroupStats extends BaseRequest {
   }
 }
 
-class GetMessagePublicForwards extends BaseRequest {
+class GetMessagePublicForwards
+    extends BaseRequest<messages_ns.MessagesBase, dynamic> {
   static const CONSTRUCTOR_ID = 1445996571;
   static const SUBCLASS_OF_ID = 3568569182;
   final classType = "request";
   final ID = 1445996571;
-  var channel;
+  InputChannelBase channel;
   int msgId;
   int offsetRate;
-  var offsetPeer;
+  InputPeerBase offsetPeer;
   int offsetId;
   int limit;
 
@@ -178,7 +180,6 @@ class GetMessagePublicForwards extends BaseRequest {
       required this.limit});
 
   static GetMessagePublicForwards fromReader(BinaryReader reader) {
-    var len;
     var channel = reader.tgReadObject();
     var msgId = reader.readInt();
     var offsetRate = reader.readInt();
@@ -198,10 +199,10 @@ class GetMessagePublicForwards extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(1445996571, 4),
-      (this.channel.getBytes() as List<int>),
+      (this.channel.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
       readBufferFromBigInt(this.offsetRate, 4, little: true, signed: true),
-      (this.offsetPeer.getBytes() as List<int>),
+      (this.offsetPeer.getBytes()),
       readBufferFromBigInt(this.offsetId, 4, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -209,7 +210,7 @@ class GetMessagePublicForwards extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<messages_ns.MessagesBase, dynamic>();
   }
 
   @override
@@ -228,20 +229,18 @@ class GetMessagePublicForwards extends BaseRequest {
   }
 }
 
-class GetMessageStats extends BaseRequest {
+class GetMessageStats extends BaseRequest<stats_ns.MessageStats, dynamic> {
   static const CONSTRUCTOR_ID = 3068175349;
   static const SUBCLASS_OF_ID = 2516886306;
   final classType = "request";
   final ID = 3068175349;
   bool? dark;
-  var channel;
+  InputChannelBase channel;
   int msgId;
 
-  GetMessageStats(
-      {required this.dark, required this.channel, required this.msgId});
+  GetMessageStats({this.dark, required this.channel, required this.msgId});
 
   static GetMessageStats fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final dark = (flags & 1) == 1;
     var channel = reader.tgReadObject();
@@ -254,14 +253,14 @@ class GetMessageStats extends BaseRequest {
     return [
       readBufferFromBigInt(3068175349, 4),
       [0, 0, 0, 0],
-      (this.channel.getBytes() as List<int>),
+      (this.channel.getBytes()),
       readBufferFromBigInt(this.msgId, 4, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<stats_ns.MessageStats, dynamic>();
   }
 
   @override

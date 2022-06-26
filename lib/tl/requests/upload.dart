@@ -1,9 +1,12 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/upload.dart' as upload_ns;
+import '../constructors/constructors.dart';
 
-class SaveFilePart extends BaseRequest {
+class SaveFilePart extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3003426337;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -16,7 +19,6 @@ class SaveFilePart extends BaseRequest {
       {required this.fileId, required this.filePart, required this.bytes});
 
   static SaveFilePart fromReader(BinaryReader reader) {
-    var len;
     var fileId = reader.readLong();
     var filePart = reader.readInt();
     var bytes = reader.tgReadBytes();
@@ -35,7 +37,7 @@ class SaveFilePart extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -54,26 +56,25 @@ class SaveFilePart extends BaseRequest {
   }
 }
 
-class GetFile extends BaseRequest {
+class GetFile extends BaseRequest<upload_ns.FileBase, dynamic> {
   static const CONSTRUCTOR_ID = 3193124286;
   static const SUBCLASS_OF_ID = 1822152488;
   final classType = "request";
   final ID = 3193124286;
   bool? precise;
   bool? cdnSupported;
-  var location;
+  InputFileLocationBase location;
   BigInt offset;
   int limit;
 
   GetFile(
-      {required this.precise,
-      required this.cdnSupported,
+      {this.precise,
+      this.cdnSupported,
       required this.location,
       required this.offset,
       required this.limit});
 
   static GetFile fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final precise = (flags & 1) == 1;
     final cdnSupported = (flags & 2) == 2;
@@ -93,7 +94,7 @@ class GetFile extends BaseRequest {
     return [
       readBufferFromBigInt(3193124286, 4),
       [0, 0, 0, 0],
-      (this.location.getBytes() as List<int>),
+      (this.location.getBytes()),
       readBufferFromBigInt(this.offset, 8, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -101,7 +102,7 @@ class GetFile extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<upload_ns.FileBase, dynamic>();
   }
 
   @override
@@ -120,7 +121,7 @@ class GetFile extends BaseRequest {
   }
 }
 
-class SaveBigFilePart extends BaseRequest {
+class SaveBigFilePart extends BaseRequest<bool, dynamic> {
   static const CONSTRUCTOR_ID = 3732629309;
   static const SUBCLASS_OF_ID = 4122188204;
   final classType = "request";
@@ -137,7 +138,6 @@ class SaveBigFilePart extends BaseRequest {
       required this.bytes});
 
   static SaveBigFilePart fromReader(BinaryReader reader) {
-    var len;
     var fileId = reader.readLong();
     var filePart = reader.readInt();
     var fileTotalParts = reader.readInt();
@@ -162,7 +162,7 @@ class SaveBigFilePart extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<bool, dynamic>();
   }
 
   @override
@@ -181,12 +181,12 @@ class SaveBigFilePart extends BaseRequest {
   }
 }
 
-class GetWebFile extends BaseRequest {
+class GetWebFile extends BaseRequest<upload_ns.WebFile, dynamic> {
   static const CONSTRUCTOR_ID = 619086221;
   static const SUBCLASS_OF_ID = 1760657233;
   final classType = "request";
   final ID = 619086221;
-  var location;
+  InputWebFileLocationBase location;
   int offset;
   int limit;
 
@@ -194,7 +194,6 @@ class GetWebFile extends BaseRequest {
       {required this.location, required this.offset, required this.limit});
 
   static GetWebFile fromReader(BinaryReader reader) {
-    var len;
     var location = reader.tgReadObject();
     var offset = reader.readInt();
     var limit = reader.readInt();
@@ -205,7 +204,7 @@ class GetWebFile extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(619086221, 4),
-      (this.location.getBytes() as List<int>),
+      (this.location.getBytes()),
       readBufferFromBigInt(this.offset, 4, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -213,7 +212,7 @@ class GetWebFile extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<upload_ns.WebFile, dynamic>();
   }
 
   @override
@@ -232,7 +231,7 @@ class GetWebFile extends BaseRequest {
   }
 }
 
-class GetCdnFile extends BaseRequest {
+class GetCdnFile extends BaseRequest<upload_ns.CdnFileBase, dynamic> {
   static const CONSTRUCTOR_ID = 962554330;
   static const SUBCLASS_OF_ID = 4123851048;
   final classType = "request";
@@ -245,7 +244,6 @@ class GetCdnFile extends BaseRequest {
       {required this.fileToken, required this.offset, required this.limit});
 
   static GetCdnFile fromReader(BinaryReader reader) {
-    var len;
     var fileToken = reader.tgReadBytes();
     var offset = reader.readLong();
     var limit = reader.readInt();
@@ -264,7 +262,7 @@ class GetCdnFile extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<upload_ns.CdnFileBase, dynamic>();
   }
 
   @override
@@ -283,7 +281,7 @@ class GetCdnFile extends BaseRequest {
   }
 }
 
-class ReuploadCdnFile extends BaseRequest {
+class ReuploadCdnFile extends BaseRequest<List<FileHash>, FileHash> {
   static const CONSTRUCTOR_ID = 2603046056;
   static const SUBCLASS_OF_ID = 2777941798;
   final classType = "request";
@@ -294,7 +292,6 @@ class ReuploadCdnFile extends BaseRequest {
   ReuploadCdnFile({required this.fileToken, required this.requestToken});
 
   static ReuploadCdnFile fromReader(BinaryReader reader) {
-    var len;
     var fileToken = reader.tgReadBytes();
     var requestToken = reader.tgReadBytes();
     return ReuploadCdnFile(fileToken: fileToken, requestToken: requestToken);
@@ -311,7 +308,7 @@ class ReuploadCdnFile extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<FileHash>, FileHash>();
   }
 
   @override
@@ -330,7 +327,7 @@ class ReuploadCdnFile extends BaseRequest {
   }
 }
 
-class GetCdnFileHashes extends BaseRequest {
+class GetCdnFileHashes extends BaseRequest<List<FileHash>, FileHash> {
   static const CONSTRUCTOR_ID = 2447130417;
   static const SUBCLASS_OF_ID = 2777941798;
   final classType = "request";
@@ -341,7 +338,6 @@ class GetCdnFileHashes extends BaseRequest {
   GetCdnFileHashes({required this.fileToken, required this.offset});
 
   static GetCdnFileHashes fromReader(BinaryReader reader) {
-    var len;
     var fileToken = reader.tgReadBytes();
     var offset = reader.readLong();
     return GetCdnFileHashes(fileToken: fileToken, offset: offset);
@@ -358,7 +354,7 @@ class GetCdnFileHashes extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<FileHash>, FileHash>();
   }
 
   @override
@@ -377,18 +373,17 @@ class GetCdnFileHashes extends BaseRequest {
   }
 }
 
-class GetFileHashes extends BaseRequest {
+class GetFileHashes extends BaseRequest<List<FileHash>, FileHash> {
   static const CONSTRUCTOR_ID = 2438371370;
   static const SUBCLASS_OF_ID = 2777941798;
   final classType = "request";
   final ID = 2438371370;
-  var location;
+  InputFileLocationBase location;
   BigInt offset;
 
   GetFileHashes({required this.location, required this.offset});
 
   static GetFileHashes fromReader(BinaryReader reader) {
-    var len;
     var location = reader.tgReadObject();
     var offset = reader.readLong();
     return GetFileHashes(location: location, offset: offset);
@@ -398,14 +393,14 @@ class GetFileHashes extends BaseRequest {
   List<int> getBytes() {
     return [
       readBufferFromBigInt(2438371370, 4),
-      (this.location.getBytes() as List<int>),
+      (this.location.getBytes()),
       readBufferFromBigInt(this.offset, 8, little: true, signed: true),
     ].expand((element) => element).toList();
   }
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<List<FileHash>, FileHash>();
   }
 
   @override

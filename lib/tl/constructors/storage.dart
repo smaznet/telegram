@@ -1,9 +1,12 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_contructor.dart';
 
-class FileUnknown extends BaseConstructor {
+abstract class FileTypeBase extends BaseConstructor {}
+
+class FileUnknown extends FileTypeBase {
   static const CONSTRUCTOR_ID = 2861972229;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -12,7 +15,6 @@ class FileUnknown extends BaseConstructor {
   FileUnknown();
 
   static FileUnknown fromReader(BinaryReader reader) {
-    var len;
     return FileUnknown();
   }
 
@@ -39,7 +41,7 @@ class FileUnknown extends BaseConstructor {
   }
 }
 
-class FilePartial extends BaseConstructor {
+class FilePartial extends FileTypeBase {
   static const CONSTRUCTOR_ID = 1086091090;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -48,7 +50,6 @@ class FilePartial extends BaseConstructor {
   FilePartial();
 
   static FilePartial fromReader(BinaryReader reader) {
-    var len;
     return FilePartial();
   }
 
@@ -75,7 +76,7 @@ class FilePartial extends BaseConstructor {
   }
 }
 
-class FileJpeg extends BaseConstructor {
+class FileJpeg extends FileTypeBase {
   static const CONSTRUCTOR_ID = 8322574;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -84,7 +85,6 @@ class FileJpeg extends BaseConstructor {
   FileJpeg();
 
   static FileJpeg fromReader(BinaryReader reader) {
-    var len;
     return FileJpeg();
   }
 
@@ -111,7 +111,7 @@ class FileJpeg extends BaseConstructor {
   }
 }
 
-class FileGif extends BaseConstructor {
+class FileGif extends FileTypeBase {
   static const CONSTRUCTOR_ID = 3403786975;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -120,7 +120,6 @@ class FileGif extends BaseConstructor {
   FileGif();
 
   static FileGif fromReader(BinaryReader reader) {
-    var len;
     return FileGif();
   }
 
@@ -147,7 +146,7 @@ class FileGif extends BaseConstructor {
   }
 }
 
-class FilePng extends BaseConstructor {
+class FilePng extends FileTypeBase {
   static const CONSTRUCTOR_ID = 172975040;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -156,7 +155,6 @@ class FilePng extends BaseConstructor {
   FilePng();
 
   static FilePng fromReader(BinaryReader reader) {
-    var len;
     return FilePng();
   }
 
@@ -183,7 +181,7 @@ class FilePng extends BaseConstructor {
   }
 }
 
-class FilePdf extends BaseConstructor {
+class FilePdf extends FileTypeBase {
   static const CONSTRUCTOR_ID = 2921222285;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -192,7 +190,6 @@ class FilePdf extends BaseConstructor {
   FilePdf();
 
   static FilePdf fromReader(BinaryReader reader) {
-    var len;
     return FilePdf();
   }
 
@@ -219,7 +216,7 @@ class FilePdf extends BaseConstructor {
   }
 }
 
-class FileMp3 extends BaseConstructor {
+class FileMp3 extends FileTypeBase {
   static const CONSTRUCTOR_ID = 1384777335;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -228,7 +225,6 @@ class FileMp3 extends BaseConstructor {
   FileMp3();
 
   static FileMp3 fromReader(BinaryReader reader) {
-    var len;
     return FileMp3();
   }
 
@@ -255,7 +251,7 @@ class FileMp3 extends BaseConstructor {
   }
 }
 
-class FileMov extends BaseConstructor {
+class FileMov extends FileTypeBase {
   static const CONSTRUCTOR_ID = 1258941372;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -264,7 +260,6 @@ class FileMov extends BaseConstructor {
   FileMov();
 
   static FileMov fromReader(BinaryReader reader) {
-    var len;
     return FileMov();
   }
 
@@ -291,7 +286,7 @@ class FileMov extends BaseConstructor {
   }
 }
 
-class FileMp4 extends BaseConstructor {
+class FileMp4 extends FileTypeBase {
   static const CONSTRUCTOR_ID = 3016663268;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -300,7 +295,6 @@ class FileMp4 extends BaseConstructor {
   FileMp4();
 
   static FileMp4 fromReader(BinaryReader reader) {
-    var len;
     return FileMp4();
   }
 
@@ -327,7 +321,7 @@ class FileMp4 extends BaseConstructor {
   }
 }
 
-class FileWebp extends BaseConstructor {
+class FileWebp extends FileTypeBase {
   static const CONSTRUCTOR_ID = 276907596;
   static const SUBCLASS_OF_ID = 4087473907;
   final classType = "constructor";
@@ -336,7 +330,6 @@ class FileWebp extends BaseConstructor {
   FileWebp();
 
   static FileWebp fromReader(BinaryReader reader) {
-    var len;
     return FileWebp();
   }
 

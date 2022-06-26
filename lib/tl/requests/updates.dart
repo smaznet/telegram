@@ -1,9 +1,12 @@
+// Auto generated file
+
 import '../../utils.dart';
 import '../../extensions/binary_reader.dart';
-
 import '../base_request.dart';
+import '../constructors/updates.dart' as updates_ns;
+import '../constructors/constructors.dart';
 
-class GetState extends BaseRequest {
+class GetState extends BaseRequest<updates_ns.State, dynamic> {
   static const CONSTRUCTOR_ID = 3990128682;
   static const SUBCLASS_OF_ID = 601823745;
   final classType = "request";
@@ -12,7 +15,6 @@ class GetState extends BaseRequest {
   GetState();
 
   static GetState fromReader(BinaryReader reader) {
-    var len;
     return GetState();
   }
 
@@ -25,7 +27,7 @@ class GetState extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<updates_ns.State, dynamic>();
   }
 
   @override
@@ -44,7 +46,7 @@ class GetState extends BaseRequest {
   }
 }
 
-class GetDifference extends BaseRequest {
+class GetDifference extends BaseRequest<updates_ns.DifferenceBase, dynamic> {
   static const CONSTRUCTOR_ID = 630429265;
   static const SUBCLASS_OF_ID = 541599860;
   final classType = "request";
@@ -56,12 +58,11 @@ class GetDifference extends BaseRequest {
 
   GetDifference(
       {required this.pts,
-      required this.ptsTotalLimit,
+      this.ptsTotalLimit,
       required this.date,
       required this.qts});
 
   static GetDifference fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     var pts = reader.readInt();
     var ptsTotalLimit;
@@ -95,7 +96,7 @@ class GetDifference extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<updates_ns.DifferenceBase, dynamic>();
   }
 
   @override
@@ -114,26 +115,26 @@ class GetDifference extends BaseRequest {
   }
 }
 
-class GetChannelDifference extends BaseRequest {
+class GetChannelDifference
+    extends BaseRequest<updates_ns.ChannelDifferenceBase, dynamic> {
   static const CONSTRUCTOR_ID = 51854712;
   static const SUBCLASS_OF_ID = 696872797;
   final classType = "request";
   final ID = 51854712;
   bool? force;
-  var channel;
-  var filter;
+  InputChannelBase channel;
+  ChannelMessagesFilterBase filter;
   int pts;
   int limit;
 
   GetChannelDifference(
-      {required this.force,
+      {this.force,
       required this.channel,
       required this.filter,
       required this.pts,
       required this.limit});
 
   static GetChannelDifference fromReader(BinaryReader reader) {
-    var len;
     final flags = reader.readInt();
     final force = (flags & 1) == 1;
     var channel = reader.tgReadObject();
@@ -149,8 +150,8 @@ class GetChannelDifference extends BaseRequest {
     return [
       readBufferFromBigInt(51854712, 4),
       [0, 0, 0, 0],
-      (this.channel.getBytes() as List<int>),
-      (this.filter.getBytes() as List<int>),
+      (this.channel.getBytes()),
+      (this.filter.getBytes()),
       readBufferFromBigInt(this.pts, 4, little: true, signed: true),
       readBufferFromBigInt(this.limit, 4, little: true, signed: true),
     ].expand((element) => element).toList();
@@ -158,7 +159,7 @@ class GetChannelDifference extends BaseRequest {
 
   @override
   readResult(BinaryReader reader) {
-    return reader.tgReadObject();
+    return reader.tgReadObject<updates_ns.ChannelDifferenceBase, dynamic>();
   }
 
   @override

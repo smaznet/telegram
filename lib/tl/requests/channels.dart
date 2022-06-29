@@ -1869,7 +1869,7 @@ class ViewSponsoredMessage extends BaseRequest<bool, dynamic> {
 
   @override
   String toString() {
-    return 'ViewSponsoredMessage{ID: $ID, channel: $channel, randomId: $randomId}';
+    return 'ViewSponsoredMessage{ID: $ID, channel: $channel, randomId: ${randomId.sublist(0, 5)}<...${randomId.length}>}';
   }
 }
 

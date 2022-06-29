@@ -108,7 +108,7 @@ class RequestCall extends BaseRequest<phone_ns.PhoneCall, dynamic> {
 
   @override
   String toString() {
-    return 'RequestCall{ID: $ID, video: $video, userId: $userId, randomId: $randomId, gAHash: $gAHash, protocol: $protocol}';
+    return 'RequestCall{ID: $ID, video: $video, userId: $userId, randomId: $randomId, gAHash: ${gAHash.sublist(0, 5)}<...${gAHash.length}>, protocol: $protocol}';
   }
 }
 
@@ -157,7 +157,7 @@ class AcceptCall extends BaseRequest<phone_ns.PhoneCall, dynamic> {
 
   @override
   String toString() {
-    return 'AcceptCall{ID: $ID, peer: $peer, gB: $gB, protocol: $protocol}';
+    return 'AcceptCall{ID: $ID, peer: $peer, gB: ${gB.sublist(0, 5)}<...${gB.length}>, protocol: $protocol}';
   }
 }
 
@@ -214,7 +214,7 @@ class ConfirmCall extends BaseRequest<phone_ns.PhoneCall, dynamic> {
 
   @override
   String toString() {
-    return 'ConfirmCall{ID: $ID, peer: $peer, gA: $gA, keyFingerprint: $keyFingerprint, protocol: $protocol}';
+    return 'ConfirmCall{ID: $ID, peer: $peer, gA: ${gA.sublist(0, 5)}<...${gA.length}>, keyFingerprint: $keyFingerprint, protocol: $protocol}';
   }
 }
 
@@ -476,7 +476,7 @@ class SendSignalingData extends BaseRequest<bool, dynamic> {
 
   @override
   String toString() {
-    return 'SendSignalingData{ID: $ID, peer: $peer, data: $data}';
+    return 'SendSignalingData{ID: $ID, peer: $peer, data: ${data.sublist(0, 5)}<...${data.length}>}';
   }
 }
 

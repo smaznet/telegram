@@ -842,7 +842,7 @@ class DhConfigNotModified extends DhConfigBase {
 
   @override
   String toString() {
-    return 'DhConfigNotModified{ID: $ID, random: $random}';
+    return 'DhConfigNotModified{ID: $ID, random: ${random.sublist(0, 5)}<...${random.length}>}';
   }
 }
 
@@ -893,7 +893,7 @@ class DhConfig extends DhConfigBase {
 
   @override
   String toString() {
-    return 'DhConfig{ID: $ID, g: $g, p: $p, version: $version, random: $random}';
+    return 'DhConfig{ID: $ID, g: $g, p: ${p.sublist(0, 5)}<...${p.length}>, version: $version, random: ${random.sublist(0, 5)}<...${random.length}>}';
   }
 }
 

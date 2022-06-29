@@ -201,7 +201,7 @@ class BinaryReader {
         // If there was still no luck, give up
         this.seek(-4); // Go back
         final pos = this.tellPosition();
-        print("Not found constructor for ${constructorId}");
+
         final error = new TypeNotFoundError(
             invalidConstructorId: constructorId, remaining: this.read());
 

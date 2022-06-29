@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'binary_writer.dart';
@@ -7,7 +6,7 @@ import 'binary_writer.dart';
 class FutureSocket {
   Socket? client;
   bool closed = false;
-  BinaryWriter? stream;
+  late final BinaryWriter stream;
   Completer<bool> canRead = new Completer<bool>();
 
   Future<void> connect(String ip, int port) async {
@@ -43,9 +42,9 @@ class FutureSocket {
     if (this.closed) {
       throw ("Socket was closed");
     }
-    final toReturn = this.stream!.read(number);
+    final toReturn = this.stream.read(number);
 
-    if (this.stream!.length == 0) {
+    if (this.stream.length == 0) {
       this.canRead = new Completer<bool>();
     }
     return toReturn;
@@ -63,21 +62,15 @@ class FutureSocket {
     }
   }
 
-  Future<void> receive() async {
-    this.client!.listen((List<int> event) {
-      this.stream!.write(event);
-      if (!this.canRead.isCompleted) {
-        this.canRead.complete(true);
-      }
-    });
-  }
-}
+  void receive() {
+    this.client!.listen(
+      (List<int> event) {
+        this.stream.write(event);
 
-void main() async {
-  final s = new FutureSocket();
-  await s.connect("91.108.56.130", 443);
-  s.write([]);
-  final data = await s.read(1);
-  print(utf8.decode(data).replaceAll("\n", r"\n").replaceAll("\r", r"\r"));
-  await s.close();
+        if (!this.canRead.isCompleted) {
+          this.canRead.complete(true);
+        }
+      },
+    );
+  }
 }

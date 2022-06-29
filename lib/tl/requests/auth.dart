@@ -349,7 +349,7 @@ class ImportAuthorization
 
   @override
   String toString() {
-    return 'ImportAuthorization{ID: $ID, id: $id, bytes: $bytes}';
+    return 'ImportAuthorization{ID: $ID, id: $id, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -409,7 +409,7 @@ class BindTempAuthKey extends BaseRequest<bool, dynamic> {
 
   @override
   String toString() {
-    return 'BindTempAuthKey{ID: $ID, permAuthKeyId: $permAuthKeyId, nonce: $nonce, expiresAt: $expiresAt, encryptedMessage: $encryptedMessage}';
+    return 'BindTempAuthKey{ID: $ID, permAuthKeyId: $permAuthKeyId, nonce: $nonce, expiresAt: $expiresAt, encryptedMessage: ${encryptedMessage.sublist(0, 5)}<...${encryptedMessage.length}>}';
   }
 }
 
@@ -864,7 +864,7 @@ class ImportLoginToken extends BaseRequest<auth_ns.LoginTokenBase, dynamic> {
 
   @override
   String toString() {
-    return 'ImportLoginToken{ID: $ID, token: $token}';
+    return 'ImportLoginToken{ID: $ID, token: ${token.sublist(0, 5)}<...${token.length}>}';
   }
 }
 
@@ -907,7 +907,7 @@ class AcceptLoginToken extends BaseRequest<Authorization, dynamic> {
 
   @override
   String toString() {
-    return 'AcceptLoginToken{ID: $ID, token: $token}';
+    return 'AcceptLoginToken{ID: $ID, token: ${token.sublist(0, 5)}<...${token.length}>}';
   }
 }
 

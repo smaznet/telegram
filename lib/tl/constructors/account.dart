@@ -279,7 +279,7 @@ class Password extends BaseConstructor {
 
   @override
   String toString() {
-    return 'Password{ID: $ID, hasRecovery: $hasRecovery, hasSecureValues: $hasSecureValues, hasPassword: $hasPassword, currentAlgo: $currentAlgo, srp_B: $srp_B, srpId: $srpId, hint: $hint, emailUnconfirmedPattern: $emailUnconfirmedPattern, newAlgo: $newAlgo, newSecureAlgo: $newSecureAlgo, secureRandom: $secureRandom, pendingResetDate: $pendingResetDate}';
+    return 'Password{ID: $ID, hasRecovery: $hasRecovery, hasSecureValues: $hasSecureValues, hasPassword: $hasPassword, currentAlgo: $currentAlgo, srp_B: ${srp_B?.sublist(0, 5)}<...${srp_B?.length}>, srpId: $srpId, hint: $hint, emailUnconfirmedPattern: $emailUnconfirmedPattern, newAlgo: $newAlgo, newSecureAlgo: $newSecureAlgo, secureRandom: ${secureRandom.sublist(0, 5)}<...${secureRandom.length}>, pendingResetDate: $pendingResetDate}';
   }
 }
 
@@ -441,7 +441,7 @@ class PasswordInputSettings extends BaseConstructor {
 
   @override
   String toString() {
-    return 'PasswordInputSettings{ID: $ID, newAlgo: $newAlgo, newPasswordHash: $newPasswordHash, hint: $hint, email: $email, newSecureSettings: $newSecureSettings}';
+    return 'PasswordInputSettings{ID: $ID, newAlgo: $newAlgo, newPasswordHash: ${newPasswordHash?.sublist(0, 5)}<...${newPasswordHash?.length}>, hint: $hint, email: $email, newSecureSettings: $newSecureSettings}';
   }
 }
 
@@ -482,7 +482,7 @@ class TmpPassword extends BaseConstructor {
 
   @override
   String toString() {
-    return 'TmpPassword{ID: $ID, tmpPassword: $tmpPassword, validUntil: $validUntil}';
+    return 'TmpPassword{ID: $ID, tmpPassword: ${tmpPassword.sublist(0, 5)}<...${tmpPassword.length}>, validUntil: $validUntil}';
   }
 }
 

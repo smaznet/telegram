@@ -1703,7 +1703,7 @@ class RequestEncryption extends BaseRequest<EncryptedChatBase, dynamic> {
 
   @override
   String toString() {
-    return 'RequestEncryption{ID: $ID, userId: $userId, randomId: $randomId, gA: $gA}';
+    return 'RequestEncryption{ID: $ID, userId: $userId, randomId: $randomId, gA: ${gA.sublist(0, 5)}<...${gA.length}>}';
   }
 }
 
@@ -1753,7 +1753,7 @@ class AcceptEncryption extends BaseRequest<EncryptedChatBase, dynamic> {
 
   @override
   String toString() {
-    return 'AcceptEncryption{ID: $ID, peer: $peer, gB: $gB, keyFingerprint: $keyFingerprint}';
+    return 'AcceptEncryption{ID: $ID, peer: $peer, gB: ${gB.sublist(0, 5)}<...${gB.length}>, keyFingerprint: $keyFingerprint}';
   }
 }
 
@@ -1951,7 +1951,7 @@ class SendEncrypted
 
   @override
   String toString() {
-    return 'SendEncrypted{ID: $ID, silent: $silent, peer: $peer, randomId: $randomId, data: $data}';
+    return 'SendEncrypted{ID: $ID, silent: $silent, peer: $peer, randomId: $randomId, data: ${data.sublist(0, 5)}<...${data.length}>}';
   }
 }
 
@@ -2014,7 +2014,7 @@ class SendEncryptedFile
 
   @override
   String toString() {
-    return 'SendEncryptedFile{ID: $ID, silent: $silent, peer: $peer, randomId: $randomId, data: $data, file: $file}';
+    return 'SendEncryptedFile{ID: $ID, silent: $silent, peer: $peer, randomId: $randomId, data: ${data.sublist(0, 5)}<...${data.length}>, file: $file}';
   }
 }
 
@@ -2065,7 +2065,7 @@ class SendEncryptedService
 
   @override
   String toString() {
-    return 'SendEncryptedService{ID: $ID, peer: $peer, randomId: $randomId, data: $data}';
+    return 'SendEncryptedService{ID: $ID, peer: $peer, randomId: $randomId, data: ${data.sublist(0, 5)}<...${data.length}>}';
   }
 }
 
@@ -3106,7 +3106,7 @@ class GetDocumentByHash extends BaseRequest<DocumentBase, dynamic> {
 
   @override
   String toString() {
-    return 'GetDocumentByHash{ID: $ID, sha256: $sha256, size: $size, mimeType: $mimeType}';
+    return 'GetDocumentByHash{ID: $ID, sha256: ${sha256.sublist(0, 5)}<...${sha256.length}>, size: $size, mimeType: $mimeType}';
   }
 }
 
@@ -3879,7 +3879,7 @@ class GetBotCallbackAnswer
 
   @override
   String toString() {
-    return 'GetBotCallbackAnswer{ID: $ID, game: $game, peer: $peer, msgId: $msgId, data: $data, password: $password}';
+    return 'GetBotCallbackAnswer{ID: $ID, game: $game, peer: $peer, msgId: $msgId, data: ${data?.sublist(0, 5)}<...${data?.length}>, password: $password}';
   }
 }
 
@@ -6070,7 +6070,7 @@ class SendVote extends BaseRequest<UpdatesBase, dynamic> {
 
   @override
   String toString() {
-    return 'SendVote{ID: $ID, peer: $peer, msgId: $msgId, options: $options}';
+    return 'SendVote{ID: $ID, peer: $peer, msgId: $msgId, options: ${options.sublist(0, 5)}<...${options.length}>}';
   }
 }
 
@@ -7025,7 +7025,7 @@ class GetPollVotes extends BaseRequest<messages_ns.VotesList, dynamic> {
 
   @override
   String toString() {
-    return 'GetPollVotes{ID: $ID, peer: $peer, id: $id, option: $option, offset: $offset, limit: $limit}';
+    return 'GetPollVotes{ID: $ID, peer: $peer, id: $id, option: ${option?.sublist(0, 5)}<...${option?.length}>, offset: $offset, limit: $limit}';
   }
 }
 

@@ -86,7 +86,7 @@ class RegisterDevice extends BaseRequest<bool, dynamic> {
 
   @override
   String toString() {
-    return 'RegisterDevice{ID: $ID, noMuted: $noMuted, tokenType: $tokenType, token: $token, appSandbox: $appSandbox, secret: $secret, otherUids: $otherUids}';
+    return 'RegisterDevice{ID: $ID, noMuted: $noMuted, tokenType: $tokenType, token: $token, appSandbox: $appSandbox, secret: ${secret.sublist(0, 5)}<...${secret.length}>, otherUids: $otherUids}';
   }
 }
 

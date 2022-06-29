@@ -246,7 +246,7 @@ class ExportedAuthorization extends BaseConstructor {
 
   @override
   String toString() {
-    return 'ExportedAuthorization{ID: $ID, id: $id, bytes: $bytes}';
+    return 'ExportedAuthorization{ID: $ID, id: $id, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -664,7 +664,7 @@ class LoginToken extends LoginTokenBase {
 
   @override
   String toString() {
-    return 'LoginToken{ID: $ID, expires: $expires, token: $token}';
+    return 'LoginToken{ID: $ID, expires: $expires, token: ${token.sublist(0, 5)}<...${token.length}>}';
   }
 }
 
@@ -705,7 +705,7 @@ class LoginTokenMigrateTo extends LoginTokenBase {
 
   @override
   String toString() {
-    return 'LoginTokenMigrateTo{ID: $ID, dcId: $dcId, token: $token}';
+    return 'LoginTokenMigrateTo{ID: $ID, dcId: $dcId, token: ${token.sublist(0, 5)}<...${token.length}>}';
   }
 }
 
@@ -792,6 +792,6 @@ class LoggedOut extends BaseConstructor {
 
   @override
   String toString() {
-    return 'LoggedOut{ID: $ID, futureAuthToken: $futureAuthToken}';
+    return 'LoggedOut{ID: $ID, futureAuthToken: ${futureAuthToken?.sublist(0, 5)}<...${futureAuthToken?.length}>}';
   }
 }

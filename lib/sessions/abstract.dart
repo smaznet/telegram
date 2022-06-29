@@ -19,7 +19,7 @@ class Session {
    * @param serverAddress {string}
    * @param port {number}
    */
-  setDC(dcId, serverAddress, port) {
+  setDC(int dcId, String serverAddress, int port) {
     throw ('Not implemented');
   }
 

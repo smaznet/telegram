@@ -1,6 +1,9 @@
 import 'dart:io' show Platform;
 import 'dart:math';
 
+import 'package:telegram/client/authMethods.dart';
+import 'package:telegram/errors/rpc_base_error.dart';
+import 'package:telegram/tl/base_contructor.dart';
 import 'package:telegram/tl/base_request.dart';
 import 'package:telegram/tl/requests/auth.dart';
 
@@ -13,6 +16,7 @@ import '../tl/constructors/constructors.dart';
 import '../tl/requests/help.dart';
 import '../tl/requests/requests.dart';
 import '../utils.dart';
+import 'authMethods.dart' as auth;
 
 const int DEFAULT_DC_ID = 4;
 const String DEFAULT_IPV4_IP = '149.154.167.91';
@@ -22,13 +26,15 @@ const int DEFAULT_PORT = 443;
 class TelegramClient {
   final int apiId;
   late StringSession session;
-  var _initWith;
+  late Function(BaseRequest x) _initWith;
   int _connectionRetries = 10, _requestRetries = 10, _retryDelay = 5;
   final String apiHash;
   MTProtoSender? _sender;
   late Logger _log;
   late Type _connection;
-  List<Function(UpdateBase update, List entities)> _eventBuilders =
+  Config? _config;
+  List<MTProtoSender> _borrowedSenders = [];
+  List<Function(UpdateBase update, List? entities)> _eventBuilders =
       List.empty(growable: true);
 
   TelegramClient(session,
@@ -51,8 +57,8 @@ class TelegramClient {
     this._eventBuilders = [];
 
     this._log = new Logger();
-    this.session = StringSession(session: null);
-    _initWith = (x) {
+    this.session = StringSession(session: session);
+    _initWith = (BaseRequest x) {
       return new InvokeWithLayer(
         layer: LAYER,
         query: new InitConnection(
@@ -90,7 +96,7 @@ class TelegramClient {
 
     if (update is Updates || update is UpdatesCombined) {
       // TODO deal with entities
-      final entities = List.empty(growable: true);
+      final entities = List<BaseConstructor>.empty(growable: true);
       for (final x in [...update.users, ...update.chats]) {
         entities.add(x);
       }
@@ -107,8 +113,12 @@ class TelegramClient {
     // this._stateCache.update(update)
   }
 
-  _processUpdate({update, others, entities}) {
+  _processUpdate<T extends BaseConstructor>(
+      {update, others, List<T>? entities}) {
     // update._entities = entities ?? [];
+    if (entities != null) {
+      this.session.addEntities<T>(entities);
+    }
     this._dispatchUpdate(update: update, others: others, entities: entities);
   }
 
@@ -124,8 +134,36 @@ class TelegramClient {
     }
   }
 
-  addEventListener(Function(UpdateBase update, List entities) listener) {
+  Future<DcOption> getDc(int dcId,
+      {bool downloadDc = false, web = false}) async {
+    this._log.info("Getting dc ${dcId}");
+    if (this._config == null) {
+      this._config = await this.invoke(GetConfig());
+    }
+    for (final dc in this._config!.dcOptions) {
+      if (dc.id == dcId) {
+        return dc;
+      }
+    }
+    throw ("Cannot find dc $dcId");
+  }
+
+  switchDc(int newDc) async {
+    this._log.info("Reconnection to new dataCenter dc ${newDc}");
+    final dc = await getDc(newDc);
+    this.session.setDC(newDc, dc.ipAddress, dc.port);
+    await this._sender?.authKey?.setKey(null);
+    await this.disconnect();
+
+    return this.connect();
+  }
+
+  addEventListener(Function(UpdateBase update, List? entities) listener) {
     this._eventBuilders.add(listener);
+  }
+
+  removeEventListener(Function(UpdateBase update, List? entities) listener) {
+    this._eventBuilders.remove(listener);
   }
 
   connect() async {
@@ -202,19 +240,19 @@ class TelegramClient {
     if (this.session.dcId == dcId) {
       return this._sender!;
     } else {
+      final _senderIndex =
+          _borrowedSenders.indexWhere((element) => element.dcId == dcId);
+      if (_senderIndex > -1) return _borrowedSenders[_senderIndex];
+
       MTProtoSender sender = MTProtoSender(
         this.session.getAuthKey(dcId),
-        dcId: this.session.dcId,
+        dcId: dcId,
         retries: this._connectionRetries,
         delay: this._retryDelay,
+        authKeyCallback: this._authKeyCallback,
       );
-      final connection = ConnectionTCPFull(
-        this.session.serverAddress,
-        this.session.port,
-        this.session.dcId,
-        this._log,
-      );
-      await sender.connect(connection);
+      await _connectSender(sender, dcId);
+      _borrowedSenders.add(sender);
       return sender;
     }
   }
@@ -224,15 +262,44 @@ class TelegramClient {
     return (sender ?? this._sender!).send(request);
   }
 
-  Future start({Future<String> Function()? botToken}) async {
+  Future start(SignInType signInType) async {
     if (!this.isConnected()) {
       await this.connect();
     }
-    var res = await this.invoke(ImportBotAuthorization(
-        flags: 0,
-        apiId: apiId,
-        apiHash: apiHash,
-        botAuthToken: await botToken!()));
-    print("GOT RES ${res}");
+    await auth.start(this, signInType);
+  }
+
+  Future disconnect() async {
+    if (this._sender != null) {
+      this._sender!.disconnect();
+    }
+    for (var value in this._borrowedSenders) {
+      await value.disconnect();
+    }
+  }
+
+  Future _connectSender(MTProtoSender sender, int dcId) async {
+    try {
+      final DcOption dcOption = await getDc(dcId);
+      final connection = ConnectionTCPFull(
+        dcOption.ipAddress,
+        dcOption.port,
+        dcId,
+        this._log,
+      );
+      await sender.connect(connection);
+      if (this.session.dcId != dcId && !sender.authenticated) {
+        final auth = await this.invoke(ExportAuthorization(dcId: dcId));
+        await sender.send(this
+            ._initWith(ImportAuthorization(id: auth.id, bytes: auth.bytes)));
+
+        sender.authenticated = true;
+      }
+      return sender;
+    } on RPCError catch (err) {
+      _log.error("_connectSender RPCERR ${err.message}");
+    } catch (err) {
+      _log.error("_connectSender $err");
+    }
   }
 }

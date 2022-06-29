@@ -1,5 +1,6 @@
 import 'package:crclib/catalog.dart';
 
+import '../../errors/common.dart';
 import '../../extensions/future_socket.dart';
 import '../../utils.dart';
 import 'connection.dart';
@@ -37,13 +38,13 @@ class FullPacketCodec extends PacketCodec {
   Future<List<int>> readPacket(FutureSocket reader) async {
     final packetLenSeq = await reader.readExactly(8); // 4 and 4
 
-    print("packetLenSeq: ${packetLenSeq}");
     if (packetLenSeq == false) {
       return [];
     }
     final int packetLen =
         readBigIntFromBuffer(packetLenSeq.sublist(0, 4), signed: true).toInt();
-    final body = await reader.read(packetLen - 8);
+
+    final body = await reader.readExactly(packetLen - 8);
 
     final int checksum =
         readBigIntFromBuffer(body.sublist(body.length - 4), signed: false)
@@ -52,8 +53,9 @@ class FullPacketCodec extends PacketCodec {
     body.removeRange(body.length - 4, body.length);
     packetLenSeq.addAll(body);
     final validChecksum = new Crc32Xz().convert(packetLenSeq);
+
     if (!(validChecksum == checksum)) {
-      throw ("Invalid checksum (${checksum} when ${validChecksum} was expected). This packet should be skipped.");
+      throw InvalidChecksumError();
     }
     return body;
   }

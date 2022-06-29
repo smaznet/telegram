@@ -31,7 +31,7 @@ class Logger {
    * @param message {string}
    */
   void warn(String message) {
-    this._log('warn', message, this.colors!['warn']!);
+    this._log('warn', message, this.colors['warn']!);
   }
 
   /**
@@ -77,6 +77,7 @@ class Logger {
       return;
     }
     if (this.canSend(level)) {
+      // ignore: avoid_print
       print(color + this.format(message, level) + this.colors['end']!);
     }
   }

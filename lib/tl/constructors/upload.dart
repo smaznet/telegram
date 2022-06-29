@@ -48,7 +48,7 @@ class File extends FileBase {
 
   @override
   String toString() {
-    return 'File{ID: $ID, type: $type, mtime: $mtime, bytes: $bytes}';
+    return 'File{ID: $ID, type: $type, mtime: $mtime, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -120,7 +120,7 @@ class FileCdnRedirect extends FileBase {
 
   @override
   String toString() {
-    return 'FileCdnRedirect{ID: $ID, dcId: $dcId, fileToken: $fileToken, encryptionKey: $encryptionKey, encryptionIv: $encryptionIv, fileHashes: $fileHashes}';
+    return 'FileCdnRedirect{ID: $ID, dcId: $dcId, fileToken: ${fileToken.sublist(0, 5)}<...${fileToken.length}>, encryptionKey: ${encryptionKey.sublist(0, 5)}<...${encryptionKey.length}>, encryptionIv: ${encryptionIv.sublist(0, 5)}<...${encryptionIv.length}>, fileHashes: $fileHashes}';
   }
 }
 
@@ -180,7 +180,7 @@ class WebFile extends BaseConstructor {
 
   @override
   String toString() {
-    return 'WebFile{ID: $ID, size: $size, mimeType: $mimeType, fileType: $fileType, mtime: $mtime, bytes: $bytes}';
+    return 'WebFile{ID: $ID, size: $size, mimeType: $mimeType, fileType: $fileType, mtime: $mtime, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -220,7 +220,7 @@ class CdnFileReuploadNeeded extends CdnFileBase {
 
   @override
   String toString() {
-    return 'CdnFileReuploadNeeded{ID: $ID, requestToken: $requestToken}';
+    return 'CdnFileReuploadNeeded{ID: $ID, requestToken: ${requestToken.sublist(0, 5)}<...${requestToken.length}>}';
   }
 }
 
@@ -258,6 +258,6 @@ class CdnFile extends CdnFileBase {
 
   @override
   String toString() {
-    return 'CdnFile{ID: $ID, bytes: $bytes}';
+    return 'CdnFile{ID: $ID, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }

@@ -1,5 +1,7 @@
 import "dart:collection";
 
+import 'package:telegram/errors/common.dart';
+
 import '../../extensions/async_queue.dart';
 import '../../extensions/future_socket.dart';
 import 'TCP_full.dart';
@@ -93,9 +95,7 @@ class Connection {
         }
         await this._send(data);
       }
-    } catch (e, stacktrace) {
-      print(stacktrace);
-      print(e);
+    } catch (e) {
       this._log.info('The server closed the connection while sending');
     }
   }
@@ -109,9 +109,11 @@ class Connection {
         if (data.length == 0) {
           throw ("no data received");
         }
-      } catch (e, stacktrace) {
-        print(e);
-        print(stacktrace);
+      } catch (e) {
+        if (e is InvalidChecksumError) {
+          continue;
+        }
+
         this._log.info('connection closed');
         //await this._recvArray.push()
 

@@ -1353,7 +1353,7 @@ class InputMediaInvoice extends InputMediaBase {
 
   @override
   String toString() {
-    return 'InputMediaInvoice{ID: $ID, title: $title, description: $description, photo: $photo, invoice: $invoice, payload: $payload, provider: $provider, providerData: $providerData, startParam: $startParam}';
+    return 'InputMediaInvoice{ID: $ID, title: $title, description: $description, photo: $photo, invoice: $invoice, payload: ${payload.sublist(0, 5)}<...${payload.length}>, provider: $provider, providerData: $providerData, startParam: $startParam}';
   }
 }
 
@@ -1553,7 +1553,7 @@ class InputMediaPoll extends InputMediaBase {
 
   @override
   String toString() {
-    return 'InputMediaPoll{ID: $ID, poll: $poll, correctAnswers: $correctAnswers, solution: $solution, solutionEntities: $solutionEntities}';
+    return 'InputMediaPoll{ID: $ID, poll: $poll, correctAnswers: ${correctAnswers?.sublist(0, 5)}<...${correctAnswers?.length}>, solution: $solution, solutionEntities: $solutionEntities}';
   }
 }
 
@@ -1918,7 +1918,7 @@ class InputPhoto extends InputPhotoBase {
 
   @override
   String toString() {
-    return 'InputPhoto{ID: $ID, id: $id, accessHash: $accessHash, fileReference: $fileReference}';
+    return 'InputPhoto{ID: $ID, id: $id, accessHash: $accessHash, fileReference: ${fileReference.sublist(0, 5)}<...${fileReference.length}>}';
   }
 }
 
@@ -1975,7 +1975,7 @@ class InputFileLocation extends InputFileLocationBase {
 
   @override
   String toString() {
-    return 'InputFileLocation{ID: $ID, volumeId: $volumeId, localId: $localId, secret: $secret, fileReference: $fileReference}';
+    return 'InputFileLocation{ID: $ID, volumeId: $volumeId, localId: $localId, secret: $secret, fileReference: ${fileReference.sublist(0, 5)}<...${fileReference.length}>}';
   }
 }
 
@@ -2071,7 +2071,7 @@ class InputDocumentFileLocation extends InputFileLocationBase {
 
   @override
   String toString() {
-    return 'InputDocumentFileLocation{ID: $ID, id: $id, accessHash: $accessHash, fileReference: $fileReference, thumbSize: $thumbSize}';
+    return 'InputDocumentFileLocation{ID: $ID, id: $id, accessHash: $accessHash, fileReference: ${fileReference.sublist(0, 5)}<...${fileReference.length}>, thumbSize: $thumbSize}';
   }
 }
 
@@ -2202,7 +2202,7 @@ class InputPhotoFileLocation extends InputFileLocationBase {
 
   @override
   String toString() {
-    return 'InputPhotoFileLocation{ID: $ID, id: $id, accessHash: $accessHash, fileReference: $fileReference, thumbSize: $thumbSize}';
+    return 'InputPhotoFileLocation{ID: $ID, id: $id, accessHash: $accessHash, fileReference: ${fileReference.sublist(0, 5)}<...${fileReference.length}>, thumbSize: $thumbSize}';
   }
 }
 
@@ -2267,7 +2267,7 @@ class InputPhotoLegacyFileLocation extends InputFileLocationBase {
 
   @override
   String toString() {
-    return 'InputPhotoLegacyFileLocation{ID: $ID, id: $id, accessHash: $accessHash, fileReference: $fileReference, volumeId: $volumeId, localId: $localId, secret: $secret}';
+    return 'InputPhotoLegacyFileLocation{ID: $ID, id: $id, accessHash: $accessHash, fileReference: ${fileReference.sublist(0, 5)}<...${fileReference.length}>, volumeId: $volumeId, localId: $localId, secret: $secret}';
   }
 }
 
@@ -2977,7 +2977,7 @@ class UserProfilePhoto extends UserProfilePhotoBase {
 
   @override
   String toString() {
-    return 'UserProfilePhoto{ID: $ID, hasVideo: $hasVideo, photoId: $photoId, strippedThumb: $strippedThumb, dcId: $dcId}';
+    return 'UserProfilePhoto{ID: $ID, hasVideo: $hasVideo, photoId: $photoId, strippedThumb: ${strippedThumb?.sublist(0, 5)}<...${strippedThumb?.length}>, dcId: $dcId}';
   }
 }
 
@@ -4909,7 +4909,7 @@ class ChatPhoto extends ChatPhotoBase {
 
   @override
   String toString() {
-    return 'ChatPhoto{ID: $ID, hasVideo: $hasVideo, photoId: $photoId, strippedThumb: $strippedThumb, dcId: $dcId}';
+    return 'ChatPhoto{ID: $ID, hasVideo: $hasVideo, photoId: $photoId, strippedThumb: ${strippedThumb?.sublist(0, 5)}<...${strippedThumb?.length}>, dcId: $dcId}';
   }
 }
 
@@ -6778,7 +6778,7 @@ class MessageActionPaymentSentMe extends MessageActionBase {
 
   @override
   String toString() {
-    return 'MessageActionPaymentSentMe{ID: $ID, recurringInit: $recurringInit, recurringUsed: $recurringUsed, currency: $currency, totalAmount: $totalAmount, payload: $payload, info: $info, shippingOptionId: $shippingOptionId, charge: $charge}';
+    return 'MessageActionPaymentSentMe{ID: $ID, recurringInit: $recurringInit, recurringUsed: $recurringUsed, currency: $currency, totalAmount: $totalAmount, payload: ${payload.sublist(0, 5)}<...${payload.length}>, info: $info, shippingOptionId: $shippingOptionId, charge: $charge}';
   }
 }
 
@@ -7906,7 +7906,7 @@ class Photo extends PhotoBase {
 
   @override
   String toString() {
-    return 'Photo{ID: $ID, hasStickers: $hasStickers, id: $id, accessHash: $accessHash, fileReference: $fileReference, date: $date, sizes: $sizes, videoSizes: $videoSizes, dcId: $dcId}';
+    return 'Photo{ID: $ID, hasStickers: $hasStickers, id: $id, accessHash: $accessHash, fileReference: ${fileReference.sublist(0, 5)}<...${fileReference.length}>, date: $date, sizes: $sizes, videoSizes: $videoSizes, dcId: $dcId}';
   }
 }
 
@@ -8048,7 +8048,7 @@ class PhotoCachedSize extends PhotoSizeBase {
 
   @override
   String toString() {
-    return 'PhotoCachedSize{ID: $ID, type: $type, w: $w, h: $h, bytes: $bytes}';
+    return 'PhotoCachedSize{ID: $ID, type: $type, w: $w, h: $h, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -8089,7 +8089,7 @@ class PhotoStrippedSize extends PhotoSizeBase {
 
   @override
   String toString() {
-    return 'PhotoStrippedSize{ID: $ID, type: $type, bytes: $bytes}';
+    return 'PhotoStrippedSize{ID: $ID, type: $type, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -8192,7 +8192,7 @@ class PhotoPathSize extends PhotoSizeBase {
 
   @override
   String toString() {
-    return 'PhotoPathSize{ID: $ID, type: $type, bytes: $bytes}';
+    return 'PhotoPathSize{ID: $ID, type: $type, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -12237,7 +12237,7 @@ class UpdateBotCallbackQuery extends UpdateBase {
 
   @override
   String toString() {
-    return 'UpdateBotCallbackQuery{ID: $ID, queryId: $queryId, userId: $userId, peer: $peer, msgId: $msgId, chatInstance: $chatInstance, data: $data, gameShortName: $gameShortName}';
+    return 'UpdateBotCallbackQuery{ID: $ID, queryId: $queryId, userId: $userId, peer: $peer, msgId: $msgId, chatInstance: $chatInstance, data: ${data?.sublist(0, 5)}<...${data?.length}>, gameShortName: $gameShortName}';
   }
 }
 
@@ -12365,7 +12365,7 @@ class UpdateInlineBotCallbackQuery extends UpdateBase {
 
   @override
   String toString() {
-    return 'UpdateInlineBotCallbackQuery{ID: $ID, queryId: $queryId, userId: $userId, msgId: $msgId, chatInstance: $chatInstance, data: $data, gameShortName: $gameShortName}';
+    return 'UpdateInlineBotCallbackQuery{ID: $ID, queryId: $queryId, userId: $userId, msgId: $msgId, chatInstance: $chatInstance, data: ${data?.sublist(0, 5)}<...${data?.length}>, gameShortName: $gameShortName}';
   }
 }
 
@@ -12906,7 +12906,7 @@ class UpdateBotShippingQuery extends UpdateBase {
 
   @override
   String toString() {
-    return 'UpdateBotShippingQuery{ID: $ID, queryId: $queryId, userId: $userId, payload: $payload, shippingAddress: $shippingAddress}';
+    return 'UpdateBotShippingQuery{ID: $ID, queryId: $queryId, userId: $userId, payload: ${payload.sublist(0, 5)}<...${payload.length}>, shippingAddress: $shippingAddress}';
   }
 }
 
@@ -12996,7 +12996,7 @@ class UpdateBotPrecheckoutQuery extends UpdateBase {
 
   @override
   String toString() {
-    return 'UpdateBotPrecheckoutQuery{ID: $ID, queryId: $queryId, userId: $userId, payload: $payload, info: $info, shippingOptionId: $shippingOptionId, currency: $currency, totalAmount: $totalAmount}';
+    return 'UpdateBotPrecheckoutQuery{ID: $ID, queryId: $queryId, userId: $userId, payload: ${payload.sublist(0, 5)}<...${payload.length}>, info: $info, shippingOptionId: $shippingOptionId, currency: $currency, totalAmount: $totalAmount}';
   }
 }
 
@@ -13837,7 +13837,7 @@ class UpdateMessagePollVote extends UpdateBase {
 
   @override
   String toString() {
-    return 'UpdateMessagePollVote{ID: $ID, pollId: $pollId, userId: $userId, options: $options, qts: $qts}';
+    return 'UpdateMessagePollVote{ID: $ID, pollId: $pollId, userId: $userId, options: ${options.sublist(0, 5)}<...${options.length}>, qts: $qts}';
   }
 }
 
@@ -14014,7 +14014,7 @@ class UpdatePhoneCallSignalingData extends UpdateBase {
 
   @override
   String toString() {
-    return 'UpdatePhoneCallSignalingData{ID: $ID, phoneCallId: $phoneCallId, data: $data}';
+    return 'UpdatePhoneCallSignalingData{ID: $ID, phoneCallId: $phoneCallId, data: ${data.sublist(0, 5)}<...${data.length}>}';
   }
 }
 
@@ -16181,7 +16181,7 @@ class DcOption extends BaseConstructor {
 
   @override
   String toString() {
-    return 'DcOption{ID: $ID, ipv6: $ipv6, mediaOnly: $mediaOnly, tcpoOnly: $tcpoOnly, cdn: $cdn, static: $static, thisPortOnly: $thisPortOnly, id: $id, ipAddress: $ipAddress, port: $port, secret: $secret}';
+    return 'DcOption{ID: $ID, ipv6: $ipv6, mediaOnly: $mediaOnly, tcpoOnly: $tcpoOnly, cdn: $cdn, static: $static, thisPortOnly: $thisPortOnly, id: $id, ipAddress: $ipAddress, port: $port, secret: ${secret?.sublist(0, 5)}<...${secret?.length}>}';
   }
 }
 
@@ -16813,7 +16813,7 @@ class EncryptedChatRequested extends EncryptedChatBase {
 
   @override
   String toString() {
-    return 'EncryptedChatRequested{ID: $ID, folderId: $folderId, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gA: $gA}';
+    return 'EncryptedChatRequested{ID: $ID, folderId: $folderId, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gA: ${gA.sublist(0, 5)}<...${gA.length}>}';
   }
 }
 
@@ -16883,7 +16883,7 @@ class EncryptedChat extends EncryptedChatBase {
 
   @override
   String toString() {
-    return 'EncryptedChat{ID: $ID, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gAOrB: $gAOrB, keyFingerprint: $keyFingerprint}';
+    return 'EncryptedChat{ID: $ID, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gAOrB: ${gAOrB.sublist(0, 5)}<...${gAOrB.length}>, keyFingerprint: $keyFingerprint}';
   }
 }
 
@@ -17304,7 +17304,7 @@ class EncryptedMessage extends EncryptedMessageBase {
 
   @override
   String toString() {
-    return 'EncryptedMessage{ID: $ID, randomId: $randomId, chatId: $chatId, date: $date, bytes: $bytes, file: $file}';
+    return 'EncryptedMessage{ID: $ID, randomId: $randomId, chatId: $chatId, date: $date, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>, file: $file}';
   }
 }
 
@@ -17356,7 +17356,7 @@ class EncryptedMessageService extends EncryptedMessageBase {
 
   @override
   String toString() {
-    return 'EncryptedMessageService{ID: $ID, randomId: $randomId, chatId: $chatId, date: $date, bytes: $bytes}';
+    return 'EncryptedMessageService{ID: $ID, randomId: $randomId, chatId: $chatId, date: $date, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -17441,7 +17441,7 @@ class InputDocument extends InputDocumentBase {
 
   @override
   String toString() {
-    return 'InputDocument{ID: $ID, id: $id, accessHash: $accessHash, fileReference: $fileReference}';
+    return 'InputDocument{ID: $ID, id: $id, accessHash: $accessHash, fileReference: ${fileReference.sublist(0, 5)}<...${fileReference.length}>}';
   }
 }
 
@@ -17622,7 +17622,7 @@ class Document extends DocumentBase {
 
   @override
   String toString() {
-    return 'Document{ID: $ID, id: $id, accessHash: $accessHash, fileReference: $fileReference, date: $date, mimeType: $mimeType, size: $size, thumbs: $thumbs, videoThumbs: $videoThumbs, dcId: $dcId, attributes: $attributes}';
+    return 'Document{ID: $ID, id: $id, accessHash: $accessHash, fileReference: ${fileReference.sublist(0, 5)}<...${fileReference.length}>, date: $date, mimeType: $mimeType, size: $size, thumbs: $thumbs, videoThumbs: $videoThumbs, dcId: $dcId, attributes: $attributes}';
   }
 }
 
@@ -19997,7 +19997,7 @@ class DocumentAttributeAudio extends DocumentAttributeBase {
 
   @override
   String toString() {
-    return 'DocumentAttributeAudio{ID: $ID, voice: $voice, duration: $duration, title: $title, performer: $performer, waveform: $waveform}';
+    return 'DocumentAttributeAudio{ID: $ID, voice: $voice, duration: $duration, title: $title, performer: $performer, waveform: ${waveform?.sublist(0, 5)}<...${waveform?.length}>}';
   }
 }
 
@@ -21741,7 +21741,7 @@ class KeyboardButtonCallback extends KeyboardButtonBase {
 
   @override
   String toString() {
-    return 'KeyboardButtonCallback{ID: $ID, requiresPassword: $requiresPassword, text: $text, data: $data}';
+    return 'KeyboardButtonCallback{ID: $ID, requiresPassword: $requiresPassword, text: $text, data: ${data.sublist(0, 5)}<...${data.length}>}';
   }
 }
 
@@ -24881,7 +24881,7 @@ class InputBotInlineMessageMediaInvoice extends InputBotInlineMessageBase {
 
   @override
   String toString() {
-    return 'InputBotInlineMessageMediaInvoice{ID: $ID, title: $title, description: $description, photo: $photo, invoice: $invoice, payload: $payload, provider: $provider, providerData: $providerData, replyMarkup: $replyMarkup}';
+    return 'InputBotInlineMessageMediaInvoice{ID: $ID, title: $title, description: $description, photo: $photo, invoice: $invoice, payload: ${payload.sublist(0, 5)}<...${payload.length}>, provider: $provider, providerData: $providerData, replyMarkup: $replyMarkup}';
   }
 }
 
@@ -30193,7 +30193,7 @@ class InputPaymentCredentialsSaved extends InputPaymentCredentialsBase {
 
   @override
   String toString() {
-    return 'InputPaymentCredentialsSaved{ID: $ID, id: $id, tmpPassword: $tmpPassword}';
+    return 'InputPaymentCredentialsSaved{ID: $ID, id: $id, tmpPassword: ${tmpPassword.sublist(0, 5)}<...${tmpPassword.length}>}';
   }
 }
 
@@ -30666,7 +30666,7 @@ class PhoneCallRequested extends PhoneCallBase {
 
   @override
   String toString() {
-    return 'PhoneCallRequested{ID: $ID, video: $video, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gAHash: $gAHash, protocol: $protocol}';
+    return 'PhoneCallRequested{ID: $ID, video: $video, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gAHash: ${gAHash.sublist(0, 5)}<...${gAHash.length}>, protocol: $protocol}';
   }
 }
 
@@ -30742,7 +30742,7 @@ class PhoneCallAccepted extends PhoneCallBase {
 
   @override
   String toString() {
-    return 'PhoneCallAccepted{ID: $ID, video: $video, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gB: $gB, protocol: $protocol}';
+    return 'PhoneCallAccepted{ID: $ID, video: $video, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gB: ${gB.sublist(0, 5)}<...${gB.length}>, protocol: $protocol}';
   }
 }
 
@@ -30849,7 +30849,7 @@ class PhoneCall extends PhoneCallBase {
 
   @override
   String toString() {
-    return 'PhoneCall{ID: $ID, p2pAllowed: $p2pAllowed, video: $video, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gAOrB: $gAOrB, keyFingerprint: $keyFingerprint, protocol: $protocol, connections: $connections, startDate: $startDate}';
+    return 'PhoneCall{ID: $ID, p2pAllowed: $p2pAllowed, video: $video, id: $id, accessHash: $accessHash, date: $date, adminId: $adminId, participantId: $participantId, gAOrB: ${gAOrB.sublist(0, 5)}<...${gAOrB.length}>, keyFingerprint: $keyFingerprint, protocol: $protocol, connections: $connections, startDate: $startDate}';
   }
 }
 
@@ -30994,7 +30994,7 @@ class PhoneConnection extends PhoneConnectionBase {
 
   @override
   String toString() {
-    return 'PhoneConnection{ID: $ID, tcp: $tcp, id: $id, ip: $ip, ipv6: $ipv6, port: $port, peerTag: $peerTag}';
+    return 'PhoneConnection{ID: $ID, tcp: $tcp, id: $id, ip: $ip, ipv6: $ipv6, port: $port, peerTag: ${peerTag.sublist(0, 5)}<...${peerTag.length}>}';
   }
 }
 
@@ -34041,7 +34041,7 @@ class FileHash extends BaseConstructor {
 
   @override
   String toString() {
-    return 'FileHash{ID: $ID, offset: $offset, limit: $limit, hash: $hash}';
+    return 'FileHash{ID: $ID, offset: $offset, limit: $limit, hash: ${hash.sublist(0, 5)}<...${hash.length}>}';
   }
 }
 
@@ -34144,7 +34144,7 @@ class InputSecureFileUploaded extends InputSecureFileBase {
 
   @override
   String toString() {
-    return 'InputSecureFileUploaded{ID: $ID, id: $id, parts: $parts, md5Checksum: $md5Checksum, fileHash: $fileHash, secret: $secret}';
+    return 'InputSecureFileUploaded{ID: $ID, id: $id, parts: $parts, md5Checksum: $md5Checksum, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, secret: ${secret.sublist(0, 5)}<...${secret.length}>}';
   }
 }
 
@@ -34292,7 +34292,7 @@ class SecureFile extends SecureFileBase {
 
   @override
   String toString() {
-    return 'SecureFile{ID: $ID, id: $id, accessHash: $accessHash, size: $size, dcId: $dcId, date: $date, fileHash: $fileHash, secret: $secret}';
+    return 'SecureFile{ID: $ID, id: $id, accessHash: $accessHash, size: $size, dcId: $dcId, date: $date, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, secret: ${secret.sublist(0, 5)}<...${secret.length}>}';
   }
 }
 
@@ -34337,7 +34337,7 @@ class SecureData extends BaseConstructor {
 
   @override
   String toString() {
-    return 'SecureData{ID: $ID, data: $data, dataHash: $dataHash, secret: $secret}';
+    return 'SecureData{ID: $ID, data: ${data.sublist(0, 5)}<...${data.length}>, dataHash: ${dataHash.sublist(0, 5)}<...${dataHash.length}>, secret: ${secret.sublist(0, 5)}<...${secret.length}>}';
   }
 }
 
@@ -35042,7 +35042,7 @@ class SecureValue extends BaseConstructor {
 
   @override
   String toString() {
-    return 'SecureValue{ID: $ID, type: $type, data: $data, frontSide: $frontSide, reverseSide: $reverseSide, selfie: $selfie, translation: $translation, files: $files, plainData: $plainData, hash: $hash}';
+    return 'SecureValue{ID: $ID, type: $type, data: $data, frontSide: $frontSide, reverseSide: $reverseSide, selfie: $selfie, translation: $translation, files: $files, plainData: $plainData, hash: ${hash.sublist(0, 5)}<...${hash.length}>}';
   }
 }
 
@@ -35248,7 +35248,7 @@ class SecureValueHash extends BaseConstructor {
 
   @override
   String toString() {
-    return 'SecureValueHash{ID: $ID, type: $type, hash: $hash}';
+    return 'SecureValueHash{ID: $ID, type: $type, hash: ${hash.sublist(0, 5)}<...${hash.length}>}';
   }
 }
 
@@ -35302,7 +35302,7 @@ class SecureValueErrorData extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueErrorData{ID: $ID, type: $type, dataHash: $dataHash, field: $field, text: $text}';
+    return 'SecureValueErrorData{ID: $ID, type: $type, dataHash: ${dataHash.sublist(0, 5)}<...${dataHash.length}>, field: $field, text: $text}';
   }
 }
 
@@ -35348,7 +35348,7 @@ class SecureValueErrorFrontSide extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueErrorFrontSide{ID: $ID, type: $type, fileHash: $fileHash, text: $text}';
+    return 'SecureValueErrorFrontSide{ID: $ID, type: $type, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, text: $text}';
   }
 }
 
@@ -35394,7 +35394,7 @@ class SecureValueErrorReverseSide extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueErrorReverseSide{ID: $ID, type: $type, fileHash: $fileHash, text: $text}';
+    return 'SecureValueErrorReverseSide{ID: $ID, type: $type, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, text: $text}';
   }
 }
 
@@ -35439,7 +35439,7 @@ class SecureValueErrorSelfie extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueErrorSelfie{ID: $ID, type: $type, fileHash: $fileHash, text: $text}';
+    return 'SecureValueErrorSelfie{ID: $ID, type: $type, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, text: $text}';
   }
 }
 
@@ -35484,7 +35484,7 @@ class SecureValueErrorFile extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueErrorFile{ID: $ID, type: $type, fileHash: $fileHash, text: $text}';
+    return 'SecureValueErrorFile{ID: $ID, type: $type, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, text: $text}';
   }
 }
 
@@ -35539,7 +35539,7 @@ class SecureValueErrorFiles extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueErrorFiles{ID: $ID, type: $type, fileHash: $fileHash, text: $text}';
+    return 'SecureValueErrorFiles{ID: $ID, type: $type, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, text: $text}';
   }
 }
 
@@ -35584,7 +35584,7 @@ class SecureValueError extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueError{ID: $ID, type: $type, hash: $hash, text: $text}';
+    return 'SecureValueError{ID: $ID, type: $type, hash: ${hash.sublist(0, 5)}<...${hash.length}>, text: $text}';
   }
 }
 
@@ -35630,7 +35630,7 @@ class SecureValueErrorTranslationFile extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueErrorTranslationFile{ID: $ID, type: $type, fileHash: $fileHash, text: $text}';
+    return 'SecureValueErrorTranslationFile{ID: $ID, type: $type, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, text: $text}';
   }
 }
 
@@ -35686,7 +35686,7 @@ class SecureValueErrorTranslationFiles extends SecureValueErrorBase {
 
   @override
   String toString() {
-    return 'SecureValueErrorTranslationFiles{ID: $ID, type: $type, fileHash: $fileHash, text: $text}';
+    return 'SecureValueErrorTranslationFiles{ID: $ID, type: $type, fileHash: ${fileHash.sublist(0, 5)}<...${fileHash.length}>, text: $text}';
   }
 }
 
@@ -35731,7 +35731,7 @@ class SecureCredentialsEncrypted extends BaseConstructor {
 
   @override
   String toString() {
-    return 'SecureCredentialsEncrypted{ID: $ID, data: $data, hash: $hash, secret: $secret}';
+    return 'SecureCredentialsEncrypted{ID: $ID, data: ${data.sublist(0, 5)}<...${data.length}>, hash: ${hash.sublist(0, 5)}<...${hash.length}>, secret: ${secret.sublist(0, 5)}<...${secret.length}>}';
   }
 }
 
@@ -35876,7 +35876,7 @@ class PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow
 
   @override
   String toString() {
-    return 'PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow{ID: $ID, salt1: $salt1, salt2: $salt2, g: $g, p: $p}';
+    return 'PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow{ID: $ID, salt1: ${salt1.sublist(0, 5)}<...${salt1.length}>, salt2: ${salt2.sublist(0, 5)}<...${salt2.length}>, g: $g, p: ${p.sublist(0, 5)}<...${p.length}>}';
   }
 }
 
@@ -35953,7 +35953,7 @@ class SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000
 
   @override
   String toString() {
-    return 'SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000{ID: $ID, salt: $salt}';
+    return 'SecurePasswordKdfAlgoPBKDF2HMACSHA512iter100000{ID: $ID, salt: ${salt.sublist(0, 5)}<...${salt.length}>}';
   }
 }
 
@@ -35991,7 +35991,7 @@ class SecurePasswordKdfAlgoSHA512 extends SecurePasswordKdfAlgoBase {
 
   @override
   String toString() {
-    return 'SecurePasswordKdfAlgoSHA512{ID: $ID, salt: $salt}';
+    return 'SecurePasswordKdfAlgoSHA512{ID: $ID, salt: ${salt.sublist(0, 5)}<...${salt.length}>}';
   }
 }
 
@@ -36041,7 +36041,7 @@ class SecureSecretSettings extends BaseConstructor {
 
   @override
   String toString() {
-    return 'SecureSecretSettings{ID: $ID, secureAlgo: $secureAlgo, secureSecret: $secureSecret, secureSecretId: $secureSecretId}';
+    return 'SecureSecretSettings{ID: $ID, secureAlgo: $secureAlgo, secureSecret: ${secureSecret.sublist(0, 5)}<...${secureSecret.length}>, secureSecretId: $secureSecretId}';
   }
 }
 
@@ -36123,7 +36123,7 @@ class InputCheckPasswordSRP extends InputCheckPasswordSRPBase {
 
   @override
   String toString() {
-    return 'InputCheckPasswordSRP{ID: $ID, srpId: $srpId, A: $A, M1: $M1}';
+    return 'InputCheckPasswordSRP{ID: $ID, srpId: $srpId, A: ${A.sublist(0, 5)}<...${A.length}>, M1: ${M1.sublist(0, 5)}<...${M1.length}>}';
   }
 }
 
@@ -37212,7 +37212,7 @@ class PollAnswer extends BaseConstructor {
 
   @override
   String toString() {
-    return 'PollAnswer{ID: $ID, text: $text, option: $option}';
+    return 'PollAnswer{ID: $ID, text: $text, option: ${option.sublist(0, 5)}<...${option.length}>}';
   }
 }
 
@@ -37370,7 +37370,7 @@ class PollAnswerVoters extends BaseConstructor {
 
   @override
   String toString() {
-    return 'PollAnswerVoters{ID: $ID, chosen: $chosen, correct: $correct, option: $option, voters: $voters}';
+    return 'PollAnswerVoters{ID: $ID, chosen: $chosen, correct: $correct, option: ${option.sublist(0, 5)}<...${option.length}>, voters: $voters}';
   }
 }
 
@@ -37967,7 +37967,7 @@ class CodeSettings extends BaseConstructor {
 
   @override
   String toString() {
-    return 'CodeSettings{ID: $ID, allowFlashcall: $allowFlashcall, currentNumber: $currentNumber, allowAppHash: $allowAppHash, allowMissedCall: $allowMissedCall, logoutTokens: $logoutTokens}';
+    return 'CodeSettings{ID: $ID, allowFlashcall: $allowFlashcall, currentNumber: $currentNumber, allowAppHash: $allowAppHash, allowMissedCall: $allowMissedCall, logoutTokens: ${logoutTokens?.sublist(0, 5)}<...${logoutTokens?.length}>}';
   }
 }
 
@@ -39663,7 +39663,7 @@ class MessageUserVote extends MessageUserVoteBase {
 
   @override
   String toString() {
-    return 'MessageUserVote{ID: $ID, userId: $userId, option: $option, date: $date}';
+    return 'MessageUserVote{ID: $ID, userId: $userId, option: ${option.sublist(0, 5)}<...${option.length}>, date: $date}';
   }
 }
 
@@ -39759,7 +39759,7 @@ class MessageUserVoteMultiple extends MessageUserVoteBase {
 
   @override
   String toString() {
-    return 'MessageUserVoteMultiple{ID: $ID, userId: $userId, options: $options, date: $date}';
+    return 'MessageUserVoteMultiple{ID: $ID, userId: $userId, options: ${options.sublist(0, 5)}<...${options.length}>, date: $date}';
   }
 }
 
@@ -42170,7 +42170,7 @@ class SponsoredMessage extends BaseConstructor {
 
   @override
   String toString() {
-    return 'SponsoredMessage{ID: $ID, recommended: $recommended, randomId: $randomId, fromId: $fromId, chatInvite: $chatInvite, chatInviteHash: $chatInviteHash, channelPost: $channelPost, startParam: $startParam, message: $message, entities: $entities}';
+    return 'SponsoredMessage{ID: $ID, recommended: $recommended, randomId: ${randomId.sublist(0, 5)}<...${randomId.length}>, fromId: $fromId, chatInvite: $chatInvite, chatInviteHash: $chatInviteHash, channelPost: $channelPost, startParam: $startParam, message: $message, entities: $entities}';
   }
 }
 
@@ -43676,7 +43676,7 @@ class ResPQ extends BaseConstructor {
 
   @override
   String toString() {
-    return 'ResPQ{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, pq: $pq, serverPublicKeyFingerprints: $serverPublicKeyFingerprints}';
+    return 'ResPQ{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, pq: ${pq.sublist(0, 5)}<...${pq.length}>, serverPublicKeyFingerprints: $serverPublicKeyFingerprints}';
   }
 }
 
@@ -43743,7 +43743,7 @@ class PQInnerData extends P_Q_inner_dataBase {
 
   @override
   String toString() {
-    return 'PQInnerData{ID: $ID, pq: $pq, p: $p, q: $q, nonce: $nonce, serverNonce: $serverNonce, newNonce: $newNonce}';
+    return 'PQInnerData{ID: $ID, pq: ${pq.sublist(0, 5)}<...${pq.length}>, p: ${p.sublist(0, 5)}<...${p.length}>, q: ${q.sublist(0, 5)}<...${q.length}>, nonce: $nonce, serverNonce: $serverNonce, newNonce: $newNonce}';
   }
 }
 
@@ -43813,7 +43813,7 @@ class PQInnerDataDc extends P_Q_inner_dataBase {
 
   @override
   String toString() {
-    return 'PQInnerDataDc{ID: $ID, pq: $pq, p: $p, q: $q, nonce: $nonce, serverNonce: $serverNonce, newNonce: $newNonce, dc: $dc}';
+    return 'PQInnerDataDc{ID: $ID, pq: ${pq.sublist(0, 5)}<...${pq.length}>, p: ${p.sublist(0, 5)}<...${p.length}>, q: ${q.sublist(0, 5)}<...${q.length}>, nonce: $nonce, serverNonce: $serverNonce, newNonce: $newNonce, dc: $dc}';
   }
 }
 
@@ -43883,7 +43883,7 @@ class PQInnerDataTemp extends P_Q_inner_dataBase {
 
   @override
   String toString() {
-    return 'PQInnerDataTemp{ID: $ID, pq: $pq, p: $p, q: $q, nonce: $nonce, serverNonce: $serverNonce, newNonce: $newNonce, expiresIn: $expiresIn}';
+    return 'PQInnerDataTemp{ID: $ID, pq: ${pq.sublist(0, 5)}<...${pq.length}>, p: ${p.sublist(0, 5)}<...${p.length}>, q: ${q.sublist(0, 5)}<...${q.length}>, nonce: $nonce, serverNonce: $serverNonce, newNonce: $newNonce, expiresIn: $expiresIn}';
   }
 }
 
@@ -43958,7 +43958,7 @@ class PQInnerDataTempDc extends P_Q_inner_dataBase {
 
   @override
   String toString() {
-    return 'PQInnerDataTempDc{ID: $ID, pq: $pq, p: $p, q: $q, nonce: $nonce, serverNonce: $serverNonce, newNonce: $newNonce, dc: $dc, expiresIn: $expiresIn}';
+    return 'PQInnerDataTempDc{ID: $ID, pq: ${pq.sublist(0, 5)}<...${pq.length}>, p: ${p.sublist(0, 5)}<...${p.length}>, q: ${q.sublist(0, 5)}<...${q.length}>, nonce: $nonce, serverNonce: $serverNonce, newNonce: $newNonce, dc: $dc, expiresIn: $expiresIn}';
   }
 }
 
@@ -44058,7 +44058,7 @@ class ServerDHParamsOk extends Server_DH_ParamsBase {
 
   @override
   String toString() {
-    return 'ServerDHParamsOk{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, encryptedAnswer: $encryptedAnswer}';
+    return 'ServerDHParamsOk{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, encryptedAnswer: ${encryptedAnswer.sublist(0, 5)}<...${encryptedAnswer.length}>}';
   }
 }
 
@@ -44125,7 +44125,7 @@ class ServerDHInnerData extends Server_DH_inner_dataBase {
 
   @override
   String toString() {
-    return 'ServerDHInnerData{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, g: $g, dhPrime: $dhPrime, gA: $gA, serverTime: $serverTime}';
+    return 'ServerDHInnerData{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, g: $g, dhPrime: ${dhPrime.sublist(0, 5)}<...${dhPrime.length}>, gA: ${gA.sublist(0, 5)}<...${gA.length}>, serverTime: $serverTime}';
   }
 }
 
@@ -44179,7 +44179,7 @@ class ClientDHInnerData extends Client_DH_Inner_DataBase {
 
   @override
   String toString() {
-    return 'ClientDHInnerData{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, retryId: $retryId, gB: $gB}';
+    return 'ClientDHInnerData{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, retryId: $retryId, gB: ${gB.sublist(0, 5)}<...${gB.length}>}';
   }
 }
 
@@ -45434,7 +45434,7 @@ class IpPortSecret extends IpPortBase {
 
   @override
   String toString() {
-    return 'IpPortSecret{ID: $ID, ipv4: $ipv4, port: $port, secret: $secret}';
+    return 'IpPortSecret{ID: $ID, ipv4: $ipv4, port: $port, secret: ${secret.sublist(0, 5)}<...${secret.length}>}';
   }
 }
 

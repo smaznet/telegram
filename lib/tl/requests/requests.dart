@@ -552,7 +552,7 @@ class ReqDHParams extends BaseRequest<dynamic, dynamic> {
 
   @override
   String toString() {
-    return 'ReqDHParams{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, p: $p, q: $q, publicKeyFingerprint: $publicKeyFingerprint, encryptedData: $encryptedData}';
+    return 'ReqDHParams{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, p: ${p.sublist(0, 5)}<...${p.length}>, q: ${q.sublist(0, 5)}<...${q.length}>, publicKeyFingerprint: $publicKeyFingerprint, encryptedData: ${encryptedData.sublist(0, 5)}<...${encryptedData.length}>}';
   }
 }
 
@@ -605,7 +605,7 @@ class SetClientDHParams extends BaseRequest<dynamic, dynamic> {
 
   @override
   String toString() {
-    return 'SetClientDHParams{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, encryptedData: $encryptedData}';
+    return 'SetClientDHParams{ID: $ID, nonce: $nonce, serverNonce: $serverNonce, encryptedData: ${encryptedData.sublist(0, 5)}<...${encryptedData.length}>}';
   }
 }
 

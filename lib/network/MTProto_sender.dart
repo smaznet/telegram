@@ -48,6 +48,7 @@ class MTProtoSender {
   var _sendLoopHandle, _recvLoopHandle, _autoReconnectCallback;
   late int _retries, _delay, _dcId;
   dynamic _authKeyCallback, _updateCallback;
+  bool authenticated = false;
 
   /**
    * @param authKey
@@ -56,13 +57,13 @@ class MTProtoSender {
   MTProtoSender(AuthKey? authKey,
       {updateCallback: null,
       autoReconnectCallback: null,
-      dcId: null,
-      logger: null,
-      retries: 10,
-      delay: 2,
-      authKeyCallback: null}) {
-    _log = logger;
-    _dcId = dcId;
+      int? dcId: null,
+      Logger? logger,
+      int retries: 10,
+      int delay: 2,
+      Function? authKeyCallback}) {
+    _log = logger ?? Logger();
+    _dcId = dcId ?? 0;
     _autoReconnectCallback = autoReconnectCallback;
     _authKeyCallback = authKeyCallback;
     _retries = retries;
@@ -140,6 +141,7 @@ class MTProtoSender {
 
 // Public API
 
+  int get dcId => _dcId;
   /**
    * Connects to the specified given connection using the given auth key.
    * @param connection
@@ -360,6 +362,10 @@ class MTProtoSender {
       try {
         body = await this._connection.recv();
       } catch (e) {
+        if (e is InvalidChecksumError) {
+          this._log.error(e.toString());
+          return;
+        }
 // this._log.info('Connection closed while receiving data');
         this._log.warn('Connection closed while receiving data');
         this._startReconnect();
@@ -367,10 +373,10 @@ class MTProtoSender {
       }
       try {
         message = await this._state.decryptMessageData(body);
-      } catch (e, stackTrace) {
+      } catch (e) {
         if (e is TypeNotFoundError) {
 // Received object which we don't know how to deserialize
-          print(stackTrace);
+
           this._log.info(
               'Type ${e.invalidConstructorId} not found, remaining data ${e.remaining?.length}');
           continue;
@@ -405,7 +411,6 @@ class MTProtoSender {
           return;
         } else {
           this._log.error('Unhandled error while receiving data');
-          print(stackTrace);
 
           this._log.error(e.toString());
           //this._startReconnect();
@@ -416,8 +421,7 @@ class MTProtoSender {
       try {
         this._log.debug('Decrypted message: ${message.obj.runtimeType}');
         await this._processMessage(message);
-      } catch (e, stacktrace) {
-        print(stacktrace);
+      } catch (e) {
         this._log.error('Unhandled error while receiving data');
         this._log.error(e.toString());
       }
@@ -500,7 +504,6 @@ class MTProtoSender {
   _handleRPCResult(TLMessage message) {
     final RPCResult rpcResult = message.obj;
     if (rpcResult.error != null) {
-      print("GOT ERR ${rpcResult.error}");
       if (rpcResult.error is RPCError) {}
     }
     final RequestState? state = this._pendingState[rpcResult.reqMsgId];
@@ -519,27 +522,22 @@ class MTProtoSender {
         if (!(reader.tgReadObject() is File)) {
           throw ('Not an upload.File');
         }
-      } catch (e, stacktrace) {
-        print("GOT ERR2");
-        print("${e} $stacktrace");
+      } catch (e) {
         this._log.error(e.toString());
         if (e is TypeNotFoundError) {
           this._log.info(
               'Received response without parent request: ${rpcResult.body}');
           return;
         } else {
-          print("GOT ERR3");
-          print(stacktrace);
           throw e;
         }
       }
     }
 
     if (rpcResult.error != null) {
-      print("toError");
 // eslint-disable-next-line new-cap
       final error = RPCMessageToError(rpcResult.error, state?.request);
-      print("Error is ${error}");
+
       this
           ._sendQueue
           .append(new RequestState(new MsgsAck(msgIds: [state?.msgId])));
@@ -548,7 +546,7 @@ class MTProtoSender {
     } else {
       final reader = new BinaryReader(rpcResult.body);
       final read = (state?.request as BaseRequest).readResult(reader);
-      print("RUntimeType: ${read.runtimeType}");
+
       state?.completer.complete(read);
     }
   }

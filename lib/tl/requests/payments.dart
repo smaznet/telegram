@@ -482,7 +482,7 @@ class AssignAppStoreTransaction extends BaseRequest<UpdatesBase, dynamic> {
 
   @override
   String toString() {
-    return 'AssignAppStoreTransaction{ID: $ID, restore: $restore, transactionId: $transactionId, receipt: $receipt}';
+    return 'AssignAppStoreTransaction{ID: $ID, restore: $restore, transactionId: $transactionId, receipt: ${receipt.sublist(0, 5)}<...${receipt.length}>}';
   }
 }
 
@@ -568,7 +568,7 @@ class RestorePlayMarketReceipt extends BaseRequest<UpdatesBase, dynamic> {
 
   @override
   String toString() {
-    return 'RestorePlayMarketReceipt{ID: $ID, receipt: $receipt}';
+    return 'RestorePlayMarketReceipt{ID: $ID, receipt: ${receipt.sublist(0, 5)}<...${receipt.length}>}';
   }
 }
 

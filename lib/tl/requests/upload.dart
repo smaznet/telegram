@@ -52,7 +52,7 @@ class SaveFilePart extends BaseRequest<bool, dynamic> {
 
   @override
   String toString() {
-    return 'SaveFilePart{ID: $ID, fileId: $fileId, filePart: $filePart, bytes: $bytes}';
+    return 'SaveFilePart{ID: $ID, fileId: $fileId, filePart: $filePart, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -177,7 +177,7 @@ class SaveBigFilePart extends BaseRequest<bool, dynamic> {
 
   @override
   String toString() {
-    return 'SaveBigFilePart{ID: $ID, fileId: $fileId, filePart: $filePart, fileTotalParts: $fileTotalParts, bytes: $bytes}';
+    return 'SaveBigFilePart{ID: $ID, fileId: $fileId, filePart: $filePart, fileTotalParts: $fileTotalParts, bytes: ${bytes.sublist(0, 5)}<...${bytes.length}>}';
   }
 }
 
@@ -277,7 +277,7 @@ class GetCdnFile extends BaseRequest<upload_ns.CdnFileBase, dynamic> {
 
   @override
   String toString() {
-    return 'GetCdnFile{ID: $ID, fileToken: $fileToken, offset: $offset, limit: $limit}';
+    return 'GetCdnFile{ID: $ID, fileToken: ${fileToken.sublist(0, 5)}<...${fileToken.length}>, offset: $offset, limit: $limit}';
   }
 }
 
@@ -323,7 +323,7 @@ class ReuploadCdnFile extends BaseRequest<List<FileHash>, FileHash> {
 
   @override
   String toString() {
-    return 'ReuploadCdnFile{ID: $ID, fileToken: $fileToken, requestToken: $requestToken}';
+    return 'ReuploadCdnFile{ID: $ID, fileToken: ${fileToken.sublist(0, 5)}<...${fileToken.length}>, requestToken: ${requestToken.sublist(0, 5)}<...${requestToken.length}>}';
   }
 }
 
@@ -369,7 +369,7 @@ class GetCdnFileHashes extends BaseRequest<List<FileHash>, FileHash> {
 
   @override
   String toString() {
-    return 'GetCdnFileHashes{ID: $ID, fileToken: $fileToken, offset: $offset}';
+    return 'GetCdnFileHashes{ID: $ID, fileToken: ${fileToken.sublist(0, 5)}<...${fileToken.length}>, offset: $offset}';
   }
 }
 

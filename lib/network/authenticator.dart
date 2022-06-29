@@ -20,9 +20,6 @@ doAuthentication(MTProtoPlainSender sender, log) async {
   log.debug('Generated nonce: $nonce');
   final ResPQ resPQ = await sender.send(new ReqPqMulti(nonce: nonce));
 
-  if (!(resPQ is ResPQ)) {
-    throw ('Step 1 answer was ${resPQ}');
-  }
   if (resPQ.nonce != nonce) {
     throw new SecurityError('Step 1 invalid nonce from server');
   }
@@ -122,9 +119,6 @@ doAuthentication(MTProtoPlainSender sender, log) async {
   final reader = new BinaryReader(plainTextAnswer);
   reader.read(length: 20); // hash sum
   final ServerDHInnerData serverDhInner = reader.tgReadObject();
-  if (!(serverDhInner is ServerDHInnerData)) {
-    throw ('Step 3 answer was ${serverDhInner}');
-  }
 
   if (serverDhInner.nonce != resPQ.nonce) {
     throw new SecurityError('Step 3 Invalid nonce in encrypted answer');
@@ -191,9 +185,6 @@ doAuthentication(MTProtoPlainSender sender, log) async {
     throw new SecurityError('Step 3 invalid new nonce hash');
   }
 
-  if (!(dhGen is DhGenOk)) {
-    throw ('Step 3.2 answer was ${dhGen}');
-  }
   log.debug('Finished authKey generation step 3');
 
   return {"authKey": authKey, "timeOffset": timeOffset};

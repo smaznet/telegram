@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -103,7 +105,6 @@ extractLayer(String tlContent) {
   for (String line in tlContent.split("\n")) {
     if (layerRegex.hasMatch(line)) {
       return layerRegex.allMatches(line).first.group(1);
-      throw ("stop");
     }
   }
 }
@@ -181,7 +182,7 @@ String getType(String tgType, bool isVector, [bool isFlag = false]) {
         if (nameSpace != null) {
           tgType = tgType.replaceFirst(nameSpace, nameSpace + "_ns");
         }
-        if(tgType == "JSONObjectValue"){
+        if (tgType == "JSONObjectValue") {
           tgType = "JsonObjectValue";
         }
         tgType += append;
@@ -219,7 +220,6 @@ writeFromReader(writer, name, Map<String, dynamic> argsConfig) {
   });
   if (usedLen) writer.write("\tvar len;");
 
-  final args = {};
   argsConfig.forEach((argName, arg) {
     if (arg['isFlag']) {
       final num = 1 << arg['flagIndex'];
@@ -543,7 +543,7 @@ void writeSubAndCatGetter(
   }
   @override
   String toString() {
-    return '$name{ID: \$ID, ${argsConfig.keys.where((key) => !argsConfig[key]['flagIndicator']).map((key) => "$key: \$$key").join(", ")}}';
+    return '$name{ID: \$ID, ${argsConfig.keys.where((key) => !argsConfig[key]['flagIndicator']).map((key) => (argsConfig[key]["type"] == "bytes" || (argsConfig[key]["type"] as String).startsWith("Vector")) ? "$key: \$\{$key?.sublist(0,5)\}<...\$\{$key?.length\}>" : "$key: \$$key").join(", ")}}';
   }
   
   """);
